@@ -146,6 +146,7 @@ of the present paper hold under $\mathbf{L}^c (X_\et,n)$.
 
 \subsection*{Notation and conventions}
 
+\paragraph{Complexes.}
 All the constructions will take place in the derived category of abelian groups
 $\mathbf{D} (\ZZ)$. For our purposes, we introduce the following terminology.
 First recall that a complex of abelian groups $A^\bullet$ is \textbf{perfect} if
@@ -182,6 +183,7 @@ See \cite[Appendix~A]{Flach-Morin-2018} for more details. We will not use
 Artin--Verdier topology to simplify the exposition, at the cost of some
 technical hurdles with $2$-torsion.
 
+\paragraph{Étale cohomology.}
 For an arithmetic scheme $X$ and a complex of étale sheaves
 $\mathcal{F}^\bullet$, we denote by
 \[ R\Gamma (X_\et, \mathcal{F}^\bullet) ~
@@ -196,6 +198,7 @@ places of $X$. There is a canonical projection
 $R\widehat{\Gamma}_c (X_\et, \mathcal{F}^\bullet) \to R\Gamma_c (X_\et, \mathcal{F}^\bullet)$,
 which is an isomorphism whenever $X (\RR) = \emptyset$.
 
+\paragraph{Equivariant cohomology.}
 We denote by $X (\CC)$ the complex points of $X$ equipped with the analytic
 topology. It carries the action of the Galois group $G_\RR \dfn \Gal (\CC/\RR)$.
 For a subring $A \subseteq \RR$ we denote by $A (n)$ the constant
@@ -250,14 +253,14 @@ to be its cone:
 \[ \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]) \xrightarrow{\alpha_{X,n}}
 R\Gamma_c (X_\et, \ZZ (n)) \to R\Gamma_\fg (X, \ZZ(n)) \to [1] \]
 The notation \emph{fg} comes from the fact that the complex
-$R\Gamma_\fg (X, \ZZ(n))$ is almost of finite type in the sense of
-Definition~\ref{dfn:almost-of-(co)finite-type}. Because of the specific
-properties of the involved complexes, it turns out that
-$R\Gamma_\fg (X, \ZZ(n))$ is defined up to a unique isomorphism in the derived
-category (something one usually does not expect from a cone).
+$R\Gamma_\fg (X, \ZZ(n))$ is almost perfect in the sense of
+Definition~\ref{dfn:almost-of-(co)finite-type}. Thanks to specific properties
+of the involved complexes, it turns out that $R\Gamma_\fg (X, \ZZ(n))$ is
+defined up to a \emph{unique} isomorphism in the derived category (something one
+usually does not expect from a cone).
 
 Finally, in \S\ref{sec:RGamma-Wc} we define Weil-étale complexes
-$R\Gamma_\Wc (X, \ZZ(n))$. For this we firs consider a canonical morphism
+$R\Gamma_\Wc (X, \ZZ(n))$. For this we first consider a canonical morphism
   $$u_\infty^*\colon R\Gamma_c (X_\et, \ZZ (n)) \to R\Gamma_c (G_\RR, X (\CC), \ZZ(n)),$$
 which is essentially the comparison between étale and singular cohomology.
 Here in the complex on the right hand side, $\ZZ (n) \dfn (2\pi i)^n\,\ZZ$
@@ -273,15 +276,12 @@ $R\Gamma_\Wc (X, \ZZ (n))$, which is a perfect complex.
 All the above fits in the following commutative diagram involving distinguished
 triangles in the derived category $\mathbf{D} (\ZZ)$.
 
-\begin{equation}
-  \label{eqn:diagram-for-RGammaWc}
-  \begin{tikzcd}[column sep=1em]
-    & & R\Gamma_\Wc (X, \ZZ (n)) \ar{d} \\
-    \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]) \ar{r}{\alpha_{X,n}}\ar{d} & R\Gamma_c (X_\et, \ZZ (n)) \ar{r}\ar{d}{u_\infty^*} & R\Gamma_\fg (X, \ZZ(n)) \ar{r}\ar[dashed]{d}{i_\infty^*} & \cdots \ar{d} \\
-    0 \ar{r} & R\Gamma_c (G_\RR, X (\CC), \ZZ(n)) \ar{r}{\mathrm{id}} & R\Gamma_c (G_\RR, X (\CC), \ZZ(n)) \ar{r}\ar{d} & 0 \\
-    & & R\Gamma_\Wc (X, \ZZ (n)) [1]
-  \end{tikzcd}
-\end{equation}
+\[ \begin{tikzcd}[column sep=1em]
+  & & R\Gamma_\Wc (X, \ZZ (n)) \ar{d} \\
+  \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]) \ar{r}{\alpha_{X,n}}\ar{d} & R\Gamma_c (X_\et, \ZZ (n)) \ar{r}\ar{d}{u_\infty^*} & R\Gamma_\fg (X, \ZZ(n)) \ar{r}\ar[dashed]{d}{i_\infty^*} & \cdots \ar{d} \\
+  0 \ar{r} & R\Gamma_c (G_\RR, X (\CC), \ZZ(n)) \ar{r}{\mathrm{id}} & R\Gamma_c (G_\RR, X (\CC), \ZZ(n)) \ar{r}\ar{d} & 0 \\
+  & & R\Gamma_\Wc (X, \ZZ (n)) [1]
+\end{tikzcd} \]
 
 Our construction follows \cite{Flach-Morin-2018}, and in particular,
 the resulting complex is the same whenever $X$ is proper and regular, which is
