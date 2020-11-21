@@ -192,9 +192,9 @@ and modified cohomology with compact support. For convenience of the reader,
 the definitions are reviewed in
 Appendix~\ref{app:modified-cohomology-with-compact-support}. The purpose of
 $R\widehat{\Gamma}_c (X_\et, \mathcal{F}^\bullet)$ is to take care of real
-places of $X$. There is a canonical projection $R\widehat{\Gamma}_c (X_\et,
-\mathcal{F}^\bullet) \to R\widehat{\Gamma} (X_\et, \mathcal{F}^\bullet)$, which
-is an isomorphism whenever $X (\RR) = \emptyset$.
+places of $X$. There is a canonical projection
+$R\widehat{\Gamma}_c (X_\et, \mathcal{F}^\bullet) \to R\Gamma_c (X_\et, \mathcal{F}^\bullet)$,
+which is an isomorphism whenever $X (\RR) = \emptyset$.
 
 We denote by $X (\CC)$ the complex points of $X$ equipped with the analytic
 topology. It carries the action of the Galois group $G_\RR \dfn \Gal (\CC/\RR)$.
@@ -202,6 +202,20 @@ For a subring $A \subseteq \RR$ we denote by $A (n)$ the constant
 $G_\RR$-equivariant sheaf $(2\pi i)^n \, A$ on $X (\CC)$. In what follows,
 we will be interested in $A = \ZZ, \QQ, \RR$. For $A = \QQ/\ZZ$ we also consider
 $\QQ/\ZZ (n) = \QQ (n)/\ZZ (n)$.
+
+In general, a $G$-equivariant sheaf $\mathcal{F}$ on $X (\CC)$ can be defined as
+an espace étalé $\pi\colon E\to X (\CC)$ with a $G$-action on $E$ such that the
+projection $\pi$ is $G$-equivariant. The equivariant global sections are given
+by
+$$\Gamma (G,X,\mathcal{F}) = \mathcal{F} (X)^G,$$
+with $G$ acting on
+$\mathcal{F} (X) = \{ s\colon X\to E \mid \pi\circ s = id_X \}$
+via $(g\cdot s) (x) = g\cdot s (g^{-1}\cdot x)$. Then by definition,
+the equivariant cohomology is given by the right derived functors of
+$\Gamma (G,X,-)$. More details on $G$-equivariant sheaves can be found in
+\cite[Chapitre~2]{Morin-these}. For our modest purposes, it is enough to know
+that any $G$-module $A$ gives rise to the corresponding abelian $G$-equivariant
+constant sheaf, corresponding to the espace étalé $X (\CC)\times A \to X (\CC)$.
 
 There is also a complex of sheaves $\ZZ (n)$ on $X_\et$, defined below in
 \ref{dfn:sheaf-Z(n)}. It is not the same as the sheaf
@@ -2126,10 +2140,6 @@ corresponding \textbf{group hypercohomology}
 \Tot^\oplus (\Hom^{\bullet\bullet} (P_\bullet, A^\bullet)), \quad
 R\widehat{\Gamma} (G, A^\bullet) \dfn
 \Tot^\oplus (\Hom^{\bullet\bullet} (\widehat{P}_\bullet, A^\bullet)). \]
-
-The canonical morphism of complexes $\widehat{P}_\bullet \to P_\bullet$ gives a
-canonical morphism
-$$R\Gamma (G,A^\bullet) \to R\widehat{\Gamma} (G,A^\bullet).$$
 
 Now if $\mathcal{F}$ is an abelian sheaf on $(\Spec \ZZ)_\et$, then the
 corresponding \textbf{modified cohomology with compact support} is characterized
