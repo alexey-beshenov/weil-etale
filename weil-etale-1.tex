@@ -98,10 +98,10 @@
 \section{Introduction}
 
 To a scheme $X$ of finite type over $\Spec \ZZ$ one can attach its
-\textbf{zeta function} $\zeta (X,s)$ (see \cite{Serre-1965}).
-
-Lichtenbaum envisioned a cohomology theory, known as
-\textbf{Weil-étale cohomology}, that captures information about the special
+\textbf{zeta function}
+$$\zeta (X,s) = \prod_{\substack{x \in X \\ \text{closed pt.}}} \frac{1}{1 - \#\kappa (x)^{-s}}$$
+(see e.g. \cite{Serre-1965}). Lichtenbaum envisioned a cohomology theory, known
+as \textbf{Weil-étale cohomology}, that captures information about the special
 value of $\zeta (X,s)$ at $s = n$, namely the vanishing order and corresponding
 residue
 \cite{Lichtenbaum-2005,Lichtenbaum-2009-number-rings,Lichtenbaum-2009-Euler-char}.
@@ -117,13 +117,13 @@ Weil-étale cohomology for $X$ separated and of finite type over $\Spec\ZZ$
 (without assuming that it is proper and regular) for the case of $n < 0$.
 
 As Flach and Morin already suggest in \cite[Remark 3.11]{Flach-Morin-2018},
-we rewrite all their constructions in terms of Geisser's dualizing cycle
+we rework all their constructions in terms of Geisser's dualizing cycle
 complexes $\ZZ^c (n)$.
 
 For the reader's convenience, this work is split into two parts. The present
-Part~I is devoted to the construction of Weil-étale complex
-$R\Gamma_\Wc (X, \ZZ (n))$. Its conjectural relation to the special value
-of $\zeta (X,s)$ at $s = n$ will be treated in Part~II.
+Part~I is devoted to the construction of Weil-étale complexes
+$R\Gamma_\Wc (X, \ZZ (n))$. Their conjectural relation to the special value
+of $\zeta (X,s)$ at $s = n$ will be treated in the forthcoming Part~II.
 
 \subsection*{Assumptions}
 
@@ -131,7 +131,7 @@ For the purposes of this article, we will call an \textbf{arithmetic scheme} an
 arbitrary scheme $X$ that is separated and of finite type over $\Spec \ZZ$.
 By $n$ we will always denote a strictly negative integer.
 
-The construction is based on motivic cohomology, defined in terms of Geisser's
+Our construction is based on motivic cohomology, defined in terms of Geisser's
 dualizing cycle complexes $\ZZ^c (n)$, as introduced and studied in
 \cite{Geisser-2010}. Given $X$ and $n$ as above, we assume the following
 conjecture.
@@ -149,7 +149,7 @@ of the present paper hold under $\mathbf{L}^c (X_\et,n)$.
 
 \paragraph{Complexes.}
 All the constructions will take place in the derived category of abelian groups
-$\mathbf{D} (\ZZ)$. For our purposes, we introduce the following terminology.
+$\mathbf{D} (\ZZ)$. For our needs, we introduce the following terminology.
 First recall that a complex of abelian groups $A^\bullet$ is \textbf{perfect} if
 it is bounded (i.e. $H^i (A^\bullet) = 0$ for $|i| \gg 0$), and $H^i (A^\bullet)$
 are finitely generated abelian groups.
@@ -166,21 +166,21 @@ are finitely generated abelian groups.
   a finitely generated abelian group.
 
   A complex of abelian groups $A^\bullet$ is of \textbf{cofinite type} if the
-  cohomology groups $H^i (A^\bullet)$ are of cofinite type, and bounded.
+  cohomology groups $H^i (A^\bullet)$ are of cofinite type and bounded.
 
   A complex of abelian groups $A^\bullet$ is \textbf{almost of cofinite type}
-  if the cohomology groups $H^i (A^\bullet)$ are of cofinite type, and
+  if the cohomology groups $H^i (A^\bullet)$ are of cofinite type and
   bounded, except for possible finite $2$-torsion in arbitrarily high
   degree.
 \end{definition}
 
-This terminology is ad hoc and was invented for the purposes of this text,
-as such complexes will appear frequently. Some basic observations about almost
-perfect and almost cofinite type complexes are collected in
+This terminology is ad hoc and was invented for this text, as such complexes
+will appear frequently. Some basic observations about almost perfect and almost
+cofinite type complexes are collected in
 Appendix~\ref{app:homological-algebra}. We note that this finite $2$-torsion
 in arbitrarily high degrees could be removed by working with Artin--Verdier
-topology $\overline{X}_\et$ instead of the usual étale topology $X_\et$.
-See \cite[Appendix~A]{Flach-Morin-2018} for more details. We will not use
+topology $\overline{X}_\et$ instead of the usual étale topology $X_\et$;
+see \cite[Appendix~A]{Flach-Morin-2018} for more details. We will not use
 Artin--Verdier topology to simplify the exposition, at the cost of some
 technical hurdles with $2$-torsion.
 
@@ -189,10 +189,10 @@ For an arithmetic scheme $X$ and a complex of étale sheaves
 $\mathcal{F}^\bullet$, we denote by
 \[ R\Gamma (X_\et, \mathcal{F}^\bullet) ~
 \text{(resp. }R\Gamma_c (X_\et, \mathcal{F}^\bullet), ~
-R\widehat{\Gamma}_c (X_\et, \mathcal{F}^\bullet)\text{)} \] the complex that
-calculates the corresponding cohomology, resp. cohomology with compact support,
-and modified cohomology with compact support. For convenience of the reader,
-the definitions are reviewed in
+R\widehat{\Gamma}_c (X_\et, \mathcal{F}^\bullet)\text{)} \]
+the complex that calculates the corresponding cohomology, resp. cohomology with
+compact support, and modified cohomology with compact support. For convenience
+of the reader, the definitions are reviewed in
 Appendix~\ref{app:modified-cohomology-with-compact-support}. The purpose of
 $R\widehat{\Gamma}_c (X_\et, \mathcal{F}^\bullet)$ is to take care of real
 places of $X$. There is a canonical projection
@@ -200,33 +200,32 @@ $R\widehat{\Gamma}_c (X_\et, \mathcal{F}^\bullet) \to R\Gamma_c (X_\et, \mathcal
 which is an isomorphism whenever $X (\RR) = \emptyset$.
 
 \paragraph{Equivariant cohomology.}
-We denote by $X (\CC)$ the complex points of $X$ equipped with the analytic
-topology. It carries the action of the Galois group $G_\RR \dfn \Gal (\CC/\RR)$.
-For a subring $A \subseteq \RR$ we denote by $A (n)$ the constant
-$G_\RR$-equivariant sheaf $(2\pi i)^n \, A$ on $X (\CC)$. In what follows,
-we will be interested in $A = \ZZ, \QQ, \RR$. For $A = \QQ/\ZZ$ we also consider
-$\QQ/\ZZ (n) = \QQ (n)/\ZZ (n)$.
+We denote by $X (\CC)$ the set of complex points of $X$ equipped with the
+analytic topology. It carries the natural action of the Galois group
+$G_\RR \dfn \Gal (\CC/\RR)$. For a subring $A \subseteq \RR$ we denote by
+$A (n)$ the constant $G_\RR$-equivariant sheaf $(2\pi i)^n \, A$ on
+$X (\CC)$. In what follows, we will be interested in $A = \ZZ$, $\QQ$, $\RR$.
+For $A = \QQ/\ZZ$ we also consider $\QQ/\ZZ (n) = \QQ (n)/\ZZ (n)$.
 
 In general, a $G$-equivariant sheaf $\mathcal{F}$ on $X (\CC)$ can be defined as
 an espace étalé $\pi\colon E\to X (\CC)$ with a $G$-action on $E$ such that the
-projection $\pi$ is $G$-equivariant. The equivariant global sections are given
-by
-$$\Gamma (G,X,\mathcal{F}) = \mathcal{F} (X)^G,$$
-with $G$ acting on
-$\mathcal{F} (X) = \{ s\colon X\to E \mid \pi\circ s = id_X \}$
-via $(g\cdot s) (x) = g\cdot s (g^{-1}\cdot x)$. Then by definition,
-the equivariant cohomology is given by the right derived functors of
-$\Gamma (G,X,-)$. More details on $G$-equivariant sheaves can be found in
+projection $\pi$ is $G$-equivariant. The equivariant global sections are defined
+by $\Gamma (G,X,\mathcal{F}) = \mathcal{F} (X)^G$, with $G$ acting on
+$\mathcal{F} (X) = \{ s\colon X\to E \mid \pi\circ s = id_X \}$ via
+$(g\cdot s) (x) = g\cdot s (g^{-1}\cdot x)$. Then by definition, the equivariant
+cohomology is given by the right derived functors of $\Gamma (G,X,-)$. More
+details on $G$-equivariant sheaves can be found in
 \cite[Chapitre~2]{Morin-these}. For our modest purposes, it is enough to know
 that any $G$-module $A$ gives rise to the corresponding abelian $G$-equivariant
-constant sheaf, corresponding to the espace étalé $X (\CC)\times A \to X (\CC)$.
+constant sheaf. The latter corresponds to the espace étalé
+$X (\CC)\times A \to X (\CC)$.
 
 There is also a complex of sheaves $\ZZ (n)$ on $X_\et$, defined below in
 \ref{dfn:sheaf-Z(n)}. It is not the same as the sheaf
 $\ZZ (n) = (2\pi i)^n\,\ZZ$ on $X (\CC)$, but there is no possible confusion,
-since these live in very different topologies. The notation is deliberate, as we
-will actually see that the comparison between the étale topology on $X$ and
-analytic topology on $X (\CC)$ identifies them.
+since these two live in very different topologies. The notation is deliberate,
+as we will actually see that the comparison between the étale topology on $X$
+and analytic topology on $X (\CC)$ identifies them.
 
 \subsection*{Outline of the construction}
 
@@ -239,20 +238,21 @@ $X_\et$. These should not be confused with cycle complexes: in our setting the
 cycle complexes are $\ZZ^n (n)$, and $\ZZ (n)$ are defined in a different
 manner, following \cite{Flach-Morin-2018}.
 
-Then \S\ref{sec:GR-equivariant-cohomology} is devoted to some calculations of
-$G_\RR$-equivariant cohomology of the space $X (\CC)$.
+Then \S\ref{sec:GR-equivariant-cohomology} is devoted to various lemmas about
+$G_\RR$-equivariant cohomology of $X (\CC)$ that are needed in the subsequent
+sections.
 
-Using Geisser's results from \cite{Geisser-2010}, we establish in
-\S\ref{sec:arithmetic-duality-theorem} a quasi-isomorphism
+In \S\ref{sec:arithmetic-duality-theorem} we deduce from Geisser's results from
+\cite{Geisser-2010}, a quasi-isomorphism of complexes
 \[ R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \cong
 \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ/\ZZ [-2]), \]
-which is a sort of arithmetic duality.
-
-Using the duality theorem, in \S\ref{sec:RGamma-fg} we define a morphism
-$\alpha_{X,n}$ in the derived category, and declare $R\Gamma_\fg (X, \ZZ(n))$
-to be its cone:
+which is a sort of arithmetic duality theorem. It is then used in
+\S\ref{sec:RGamma-fg} to define a morphism $\alpha_{X,n}$ in the derived
+category, and declare $R\Gamma_\fg (X, \ZZ(n))$ to be its cone:
 \[ \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]) \xrightarrow{\alpha_{X,n}}
-R\Gamma_c (X_\et, \ZZ (n)) \to R\Gamma_\fg (X, \ZZ(n)) \to [1] \]
+R\Gamma_c (X_\et, \ZZ (n)) \to
+R\Gamma_\fg (X, \ZZ(n)) \to
+\RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-1]) \]
 The notation \emph{fg} comes from the fact that the complex
 $R\Gamma_\fg (X, \ZZ(n))$ is almost perfect in the sense of
 Definition~\ref{dfn:almost-of-(co)finite-type}. Thanks to specific properties
@@ -264,19 +264,24 @@ Finally, in \S\ref{sec:RGamma-Wc} we define Weil-étale complexes
 $R\Gamma_\Wc (X, \ZZ(n))$. For this we first consider a canonical morphism
   $$u_\infty^*\colon R\Gamma_c (X_\et, \ZZ (n)) \to R\Gamma_c (G_\RR, X (\CC), \ZZ(n)),$$
 which is essentially the comparison between étale and singular cohomology.
-Here in the complex on the right hand side, $\ZZ (n) \dfn (2\pi i)^n\,\ZZ$
-is considered as a constant $G_\RR$-equivariant sheaf on the space $X (\CC)$,
-and we take its equivariant cohomology with compact support.
 We verify that $u_\infty^* \circ \alpha_{X,n} = 0$, which implies that
 there exists a morphism in the derived category
 $$i_\infty^*\colon R\Gamma_\fg (X, \ZZ (n)) \to R\Gamma_c (G_\RR, X (\CC), \ZZ(n))$$
 (see the diagram below).
 We pick a mapping fiber of $i_\infty^*$ and call it
-$R\Gamma_\Wc (X, \ZZ (n))$, which is a perfect complex.
+$R\Gamma_\Wc (X, \ZZ (n))$, which turns out to be a perfect complex.
 
-All the above fits in the following commutative diagram involving distinguished
-triangles in the derived category $\mathbf{D} (\ZZ)$.
+There are two appendices to this paper: Appendix~\ref{app:homological-algebra}
+collects some lemmas from homological algebra, and
+Appendix~\ref{app:modified-cohomology-with-compact-support} reviews the
+definitions of étale cohomology with compact support $R\Gamma_c (X_\et, -)$
+and its modified version $R\widehat{\Gamma}_c (X_\et, -)$.
 
+\pagebreak
+
+The definition of $R\Gamma_\Wc (X,\ZZ(n))$ fits in the following commutative
+diagram involving distinguished triangles in the derived category
+$\mathbf{D} (\ZZ)$:
 \[ \begin{tikzcd}[column sep=1em]
   & & R\Gamma_\Wc (X, \ZZ (n)) \ar{d} \\
   \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]) \ar{r}{\alpha_{X,n}}\ar{d} & R\Gamma_c (X_\et, \ZZ (n)) \ar{r}\ar{d}{u_\infty^*} & R\Gamma_\fg (X, \ZZ(n)) \ar{r}\ar[dashed]{d}{i_\infty^*} & \cdots \ar{d} \\
@@ -308,22 +313,16 @@ Further properties of $R\Gamma_\Wc (X, \ZZ (n))$ that are needed to establish
 its conjectural relation to the special value of $\zeta (X,s)$ at $s = n$ will
 be treated in the second part of this article.
 
-There are two appendices to this paper: Appendix~\ref{app:homological-algebra}
-collects some lemmas from homological algebra, and
-Appendix~\ref{app:modified-cohomology-with-compact-support} reviews the
-definitions of étale cohomology with compact support $R\Gamma_c (X_\et, -)$
-and its modified version $R\widehat{\Gamma}_c (X_\et, -)$.
-
 \subsection*{Acknowledgments}
 
 This text is based on the results of my PhD thesis, prepared in Université de
 Bordeaux and Universiteit Leiden under supervision of Baptiste Morin and Bas
-Edixhoven. I thank my PhD advisors for their support during working on this
+Edixhoven. I am deeply grateful for their support during working on this
 project. I am also indebted to Matthias Flach, since the ideas of this work come
 from \cite{Flach-Morin-2018}. I thank Stephen Lichtenbaum and Niranjan
-Ramachandran who kindly accepted to be the referees for my thesis and gave
-various useful comments and suggestions. Finally, I thank Maxim Mornev for
-various fruitful conversations.
+Ramachandran who kindly accepted to be the referees for my thesis and provided
+many useful comments and suggestions. Finally, I thank Maxim Mornev for various
+fruitful conversations.
 
 This paper was edited while I was visiting CIMAT, Guanajuato. I am grateful
 personally to Pedro Luis del Ángel and Xavier Gómez Mont for their hospitality.
@@ -343,7 +342,7 @@ We begin by considering complexes of sheaves $\ZZ (n)$ on $X_\et$.
   as
   $$\mu_{p^r}^{\otimes n} = \iHom_{X[1/p]} (\mu_{p^r}^{\otimes (-n)}, \ZZ/p^r).$$
 
-  Now $\ZZ (n)$ is a complex of sheaves on $X_\et$ given by
+  Now $\ZZ (n)$ is the complex of sheaves on $X_\et$ given by
   \[ \ZZ (n) = \QQ/\ZZ (n) [-1],
   \quad \text{where }
   \QQ/\ZZ (n) = \bigoplus_p \varinjlim_r j_{p!} \mu_{p^r}^{\otimes n}, \]
@@ -387,14 +386,14 @@ We begin by considering complexes of sheaves $\ZZ (n)$ on $X_\et$.
 
     Here the twist is given by
     $$\mu_m (\CC)^{\otimes (-n)} \dfn \underbrace{\mu_m (\CC)\otimes\cdots\otimes\mu_m (\CC)}_{-n},$$
-    with the $G_\RR$-action on tensor products on $A\otimes B$ defined as usual
+    with the $G_\RR$-action on tensor products $A\otimes B$ defined as usual
     by $g\cdot (a\otimes b) = g\cdot a\otimes g\cdot b$, and the
-    $G_\RR$-action on $\iHom (A,B)$ is
+    $G_\RR$-action on $\iHom (A,B)$ being
     $(g\cdot f) (a) \dfn g\cdot f (g^{-1}\cdot a)$.
 
-    What follows are straightforward calculations, and we just take care of the
-    actions of $G_\RR$. First we see that there is a canonical isomorphism of
-    $G_\RR$-modules
+    What follows are well-known calculations, and we just need to take care of
+    the actions of $G_\RR$ and make sure that everything is equivariant. First
+    we see that there is a canonical isomorphism of $G_\RR$-modules
     \begin{equation}
       \label{eqn:roots-of-unity-iso-1}
       \mu_m (\CC) \cong \frac{(2\pi i) \, \ZZ}{m\,(2\pi i)\,\ZZ}, \quad
@@ -416,7 +415,7 @@ We begin by considering complexes of sheaves $\ZZ (n)$ on $X_\et$.
     \frac{(2\pi i)^n\,\ZZ}{m\,(2\pi i)^n\,\ZZ}, \]
     where the last isomorphism is given by
     $f \mapsto (2\pi i)^n \, f ((2\pi i)^{-n}\cdot 1)$.
-    Finally,
+    Now
     \[ \alpha^* \ZZ (n) \cong
     \bigoplus_p \varinjlim_r \mu_{p^r} (\CC)^{\otimes n} \cong
     \bigoplus_p \varinjlim_r \frac{(2\pi i)^n\,\ZZ}{p^r\,(2\pi i)^n\,\ZZ} \cong
@@ -492,7 +491,7 @@ is well-known, but we include a proof for the sake of completeness.
 
     To deal with the general case, we use induction on the dimension. If the
     dimension is $0$, then the statement is obvious. For induction step,
-    consider the open-closed decomposition
+    consider the decomposition
     $$U (\CC) \hookrightarrow X (\CC) \hookleftarrow Z (\CC)$$
     where $Z (\CC)$ is the singular locus, having smaller dimension. This gives
     us a distinguished triangle
@@ -510,7 +509,7 @@ For $\QQ/\ZZ$ coefficients, the following result will be useful.
 
 \begin{lemma}
   \label{lemma:extensions-of-cofinite-type-groups}
-  Given an extension of groups
+  Given an extension of abelian groups
   $0 \to A \to B \to C \to 0$,
   if $A$ and $C$ are of cofinite type, then $B$ is of cofinite type as well.
 
@@ -522,6 +521,7 @@ For $\QQ/\ZZ$ coefficients, the following result will be useful.
     is equivalent to the $\QQ/\ZZ$-dual of an extension
     $$0 \to G'' \to G \to G' \to 0$$
     where $G$ is a finitely generated abelian group. In other words,
+    we want to show that
     \begin{align*}
       E (G',G'') & \to E (G''^D,G'^D),\\
       [G'' \rightarrowtail G \twoheadrightarrow G'] & \mapsto
@@ -531,7 +531,7 @@ For $\QQ/\ZZ$ coefficients, the following result will be useful.
 
     For this we first note that $E (G',G'') \cong \Ext_\ZZ^1 (G',G'')$ and
     $E (G''^D, G'^D) \cong \Ext_\ZZ^1 (G''^D, G'^D)$ are indeed isomorphic
-    finite groups, e.g. considering separately the cases
+    finite groups, e.g. by considering separately the cases
     $G', G'' = \ZZ, \ZZ/m\ZZ$ and using additivity of $\Ext$. For finitely
     generated abelian groups, the functor $G \rightsquigarrow (G^D)^D$ is the
     same as profinite completion
@@ -548,8 +548,7 @@ For $\QQ/\ZZ$ coefficients, the following result will be useful.
   The complex $R\Gamma_c (X (\CC), \QQ/\ZZ (n))$ is of cofinite type.
 
   \begin{proof}
-    The statement follows from the distinguished triangle (keep in mind that
-    tensoring with $\QQ$ is exact)
+    The statement follows from the distinguished triangle
     \[ R\Gamma_c (X (\CC), \ZZ) \to
     R\Gamma_c (X (\CC), \ZZ)\otimes_\ZZ \QQ \to
     R\Gamma_c (X (\CC), \QQ/\ZZ) \to
@@ -765,12 +764,12 @@ Similarly for $\QQ/\ZZ$-coefficients, we have the following observation.
     \[ E_r^{p-r,q+r-1} \xrightarrow{d_r^{p-r,q+r-1}}
     E_r^{pq} \xrightarrow{d_r^{pq}} E_r^{p+r,q-r+1} \]
     where $E_r^{pq}$ is finite $2$-torsion for $p > 0$. It follows by induction
-    that all the members of the filtration \eqref{eqn:ss-filtrations} are finite
+    that all terms of the filtration \eqref{eqn:ss-filtrations} are finite
     groups, except for $F^0 (H^{p+q}) = H^{p+q}$ itself, which is of cofinite
     type, being an extension of a group of cofinite type $E_\infty^{0q}$ by a
-    finite group $F^1 (H^{p+q})$
-    (see Lemma~\ref{lemma:extensions-of-cofinite-type-groups}).
-    We also see that $H^{p+q}$ is $2$-torsion for $p+q \gg 0$.
+    finite group $F^1 (H^{p+q})$ (see
+    Lemma~\ref{lemma:extensions-of-cofinite-type-groups}). We also see that
+    $H^{p+q}$ is $2$-torsion for $p+q \gg 0$.
   \end{proof}
 \end{lemma}
 
@@ -912,7 +911,7 @@ We split our proof of Theorem~\ref{thm:duality} in two propositions.
       \RHom (R\widehat{\Gamma}_c (X_\et, j_{p !} \mu_{p^r}^{\otimes n} [-1]), \QQ/\ZZ [-2]).
     \end{equation}
 
-    So what we obtain at the end is a quasi-isomorphism
+    What we obtain at the end is a quasi-isomorphism
     \[ R\Gamma (X_\et, \ZZ^c/p^r (n)) \cong
     \RHom (R\widehat{\Gamma}_c (X_\et, j_{p !} \mu_{p^r}^{\otimes n} [-1]), \QQ/\ZZ [-2]). \]
     This is almost what we need: if we apply $\RHom (-,\QQ/\ZZ [-2])$, then, as
@@ -948,13 +947,12 @@ will need the conjecture $\mathbf{L}^c (X_\et, n)$.
       0 \to \ZZ^c (n) \xrightarrow{\times m} \ZZ^c (n) \to \ZZ/m\ZZ^c (n) \to 0
     \end{equation}
 
-    The morphism $\ZZ^c (n) \to \ZZ/m\ZZ^c (n)$ induces some morphisms in
+    The morphism $\ZZ^c (n) \to \ZZ/m\ZZ^c (n)$ induces certain morphisms in
     cohomology
     $$H^i (X_\et, \ZZ^c (n)) \to H^i (X_\et, \ZZ/m\ZZ^c (n)).$$
-
     We claim that if we pass to the duals $\Hom (-, \QQ/\ZZ)$ and then to the
-    filtered colimits $\varinjlim_m$, then we obtain an isomorphism. (Note that
-    both $\Hom (-, \QQ/\ZZ)$ and $\varinjlim_m$ are exact.)
+    filtered colimits $\varinjlim_m$, then we obtain an isomorphism.
+    (Note that both $\Hom (-, \QQ/\ZZ)$ and $\varinjlim_m$ are exact.)
 
     The short exact sequence \eqref{short-exact-sequence-with-Z/m} induces
     a long exact sequence in cohomology
@@ -1008,9 +1006,9 @@ complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded.
   \begin{proof}
     First we claim that
     $$H^i (X_\et, \ZZ^c (n)) = 0\quad\text{for }i < -2\,\dim X.$$
-    The complex of sheaves $\ZZ^c (n)$ is flat, so the short exact sequence of
+    Since the complex of sheaves $\ZZ^c (n)$ is flat, the short exact sequence of
     abelian groups
-    $$0 \to \ZZ \to \QQ \to \QQ/\ZZ \to 0$$
+    $0 \to \ZZ \to \QQ \to \QQ/\ZZ \to 0$
     gives us a short exact sequence of étale sheaves
     $$0 \to \ZZ^c (n) \to \QQ^c (n) \to \QQ/\ZZ^c (n) \to 0$$
     and then applying $R\Gamma (X_\et, -)$, we obtain a distinguished
@@ -1035,7 +1033,7 @@ complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded.
     \[ \widehat{H}_c^i (X_\et, \ZZ (n)) \cong
     \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ/\ZZ), \]
     where $H^{2-i} (X_\et, \ZZ^c (n))$ is a finitely generated group by our
-    conjecture and $\widehat{H}_c^i (X_\et, \ZZ (n)) = 0$ for $i \ll 0$.
+    conjecture, and $\widehat{H}_c^i (X_\et, \ZZ (n)) = 0$ for $i \ll 0$.
   \end{proof}
 \end{lemma}
 
@@ -1055,7 +1053,7 @@ complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded.
 
   \begin{proof}
     The exact sequence follows from the definition of modified étale cohomology
-    with compact support and Artin's comparison theorem. This is done in
+    with compact support and Artin's comparison theorem. This is proved in
     \cite[Lemma~6.14]{Flach-Morin-2018}.
     The fact that $\widehat{H}^i_c (G_\RR, X (\CC), \ZZ (n))$ are finite
     $2$-torsion is Lemma~\ref{lemma:H-hat-c-GR-X(C)-Z(n)-finite-2-torsion}.
@@ -1116,14 +1114,14 @@ complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded.
   \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-1]) \]
 \end{definition}
 
-\vspace{1em}
-
-We note that our $R\Gamma_\fg (X, \ZZ (n))$ plays the same role as
-$R\Gamma_W (\overline{X}_\et, \ZZ (n))$ that appears in
-\cite[Definition~3.6]{Flach-Morin-2018}. We use a different notation, since
-Flach and Morin work with Artin--Verdier topology and their complex
-$R\Gamma_W (\overline{X}_\et, \ZZ (n))$ is perfect, while for our complex
-$H^i_\fg (X, \ZZ (n))$ may be finite $2$-torsion in arbitrarily high degree.
+\begin{remark}
+  We note that our $R\Gamma_\fg (X, \ZZ (n))$ plays the same role as
+  $R\Gamma_W (\overline{X}_\et, \ZZ (n))$ that appears in
+  \cite[Definition~3.6]{Flach-Morin-2018}. We use a different notation, since
+  Flach and Morin work with Artin--Verdier topology, and their complex
+  $R\Gamma_W (\overline{X}_\et, \ZZ (n))$ is perfect, while for our complex
+  $H^i_\fg (X, \ZZ (n))$ may be finite $2$-torsion in arbitrarily high degree.
+\end{remark}
 
 We first note that although the definition might seem complicated at first,
 it simplifies if $X$ has no real places.
@@ -1137,10 +1135,8 @@ it simplifies if $X$ has no real places.
   \begin{proof}
     In this case
     $R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \to R\Gamma_c (X_\et, \ZZ (n))$
-    is the identity morphism
-    (see Appendix~\ref{app:modified-cohomology-with-compact-support}),
-    and therefore $\alpha_{X,n}$ sits in the following commutative diagram with
-    exact columns:
+    is the identity morphism, and therefore $\alpha_{X,n}$ sits in the following
+    commutative diagram with distinguished columns:
     \[ \begin{tikzcd}
       \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2])\ar{d}{\alpha_{X,n}} \ar{r}{\mathrm{id}} & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2])\ar{d} \\
       R\Gamma_c (X_\et, \ZZ (n))\ar{d} \ar{r}{\cong}[swap]{\text{Theorem \ref{thm:duality}}} & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ/\ZZ [-2])\ar{d} \\
@@ -1169,7 +1165,7 @@ it simplifies if $X$ has no real places.
       & \Hom (H^{1-i} (X_\et, \ZZ^c (n)), \QQ)\ar{r}{H^{i+1} (\alpha_{X,n})} & H^{i+1}_c (X_\et, \ZZ (n))\ar{r} & \cdots
     \end{tikzcd} \]
 
-    First we observe from this that for $i \ll 0$ we have
+    First we observe that for $i \ll 0$ we have
     $\widehat{H}_c^i (X_\et, \ZZ(n)) = H_c^i (X_\et, \ZZ(n)) = 0$, and then
     \[ H^i_\fg (X, \ZZ(n)) \cong \Hom (H^{1-i} (X_\et, \ZZ^c (n)), \QQ)
     = 0 \quad\text{by Lemma~\ref{lemma:RGamma(Xet,Zc(n))-perfect}}. \]
@@ -1210,8 +1206,8 @@ it simplifies if $X$ has no real places.
 
 \begin{proposition}
   \label{prop:RGamma-fg-uniquely-defined}
-  $R\Gamma_\fg (X, \ZZ (n))$ is defined up to a unique isomorphism in the
-  derived category $\mathbf{D} (\ZZ)$.
+  The complex $R\Gamma_\fg (X, \ZZ (n))$ is defined up to a unique isomorphism
+  in the derived category $\mathbf{D} (\ZZ)$.
 
   \begin{proof}
     The complex $\RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2])$ consists of
@@ -1255,7 +1251,7 @@ it simplifies if $X$ has no real places.
 \label{sec:RGamma-Wc}
 
 The goal of this section is to construct Weil-étale cohomology complexes
-$R\Gamma_\Wc (X, \ZZ(n))$.
+$R\Gamma_\Wc (X, \ZZ(n))$. We begin with an auxiliary morphism. 
 
 \begin{definition}
   \label{dfn:u-infty}
@@ -1266,9 +1262,8 @@ $R\Gamma_\Wc (X, \ZZ(n))$.
   \[ \Gamma_c (X_\et, \QQ/\ZZ (n)) \to
   \Gamma_c (G_\RR, X (\CC), \alpha^* \QQ/\ZZ (n)) \cong
   \Gamma_c (G_\RR, X (\CC), \QQ/\ZZ (n)) \]
-  (see \ref{prop:inverse-image-gamma} and \ref{propn:image-of-QZn-under-alpha}).
-  
-  Let
+  (see Proposition~\ref{prop:inverse-image-gamma} and
+  \ref{propn:image-of-QZn-under-alpha}). Then we let
   $u_\infty^*\colon R\Gamma_c (X_\et, \ZZ(n)) \to R\Gamma_c (G_\RR, X (\CC), \ZZ (n))$
   be the composition
   \[ R\Gamma_c (X_\et, \ZZ(n)) \dfn R\Gamma_c (X_\et, \QQ/\ZZ (n)) [-1]
@@ -1288,7 +1283,7 @@ The main result of this section is the following.
   Then $u_\infty^* \circ \alpha_{X,n} = 0$.
 
   \[ \begin{tikzcd}
-    \RHom (R\Gamma (X, \ZZ^c (n)), \QQ [-2]) \ar{d}[swap]{\alpha_{X,n}}\ar{r} & 0\ar{d} \\
+    \RHom (R\Gamma (X, \ZZ^c (n)), \QQ [-2]) \ar{d}[swap]{\alpha_{X,n}}\ar{dr}{= 0} \\
       R\Gamma_c (X_\et, \ZZ (n)) \ar{r}{u_\infty^*} & R\Gamma_c (G_\RR, X (\CC), \ZZ (n))
     \end{tikzcd} \]
 \end{theorem}
@@ -1301,12 +1296,12 @@ cohomology.
 \begin{proposition}
   \label{prop:l-adic-cohomology-key-lemma}
   Let $f\colon X\to \Spec \ZZ$ be an arithmetic scheme (that is, with $f$
-  separated, of finite type). Let $n < 0$. Then for any prime $\ell$ we have
+  separated, of finite type) and $n < 0$. Then for any prime $\ell$ we have
   $$(H^i_c (X_{\overline{\QQ},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))^{G_\QQ})_{div} = 0.$$
 
   \begin{proof}
     Let us recall some facts about $\ell$-adic cohomology. We refer to
-    \cite[Exposé~VI]{SGA5} for details. Let us first consider the sheaf
+    \cite[Exposé~VI]{SGA5} for the details. Let us first consider the sheaf
     $\ZZ_\ell (n)$. It is a
     \textbf{constructible $\ZZ_\ell$-sheaf}\footnote{Or simply
       \textbf{$\ZZ_\ell$-sheaf} in the terminology of \cite[Rapport]{SGA4-1-2}.}
@@ -1366,7 +1361,7 @@ cohomology.
     $$U = \Spec \ZZ_S \subset \Spec \ZZ,$$
     where $\ZZ_S$ denotes the localization of $\ZZ$ at a finite set of primes
     $S$, such that the sheaves $R^i f_! \ZZ_\ell (n)$ are twisted constant on
-    $U$. By removing all the necessary bad primes, we can make sure this holds
+    $U$. By removing the necessary bad primes, we can make sure this holds
     for all $i$.
 
     Now there exists some prime $p \notin S$ (that is, $(p) \in U$), for which
@@ -1394,10 +1389,10 @@ cohomology.
 
     To state this more accurately, note that the $\ZZ_\ell$-module
     $H^i_c (X_{\overline{\QQ}, \text{\it ét}}, \ZZ_\ell (n))$ carries a natural
-    action of $G_\QQ$ while $H^i_c (X_{\overline{\FF_p}, \text{\it ét}},
-    \ZZ_\ell (n))$ carries a natural action of $G_{\FF_p}$. After making the
-    necessary choices, we have $G_{\QQ_p} \subset G_\QQ$ and a short exact
-    sequence
+    action of $G_\QQ$, while
+    $H^i_c (X_{\overline{\FF_p}, \text{\it ét}}, \ZZ_\ell (n))$ carries a
+    natural action of $G_{\FF_p}$. After making the necessary choices, we have
+    $G_{\QQ_p} \subset G_\QQ$ and a short exact sequence
     $$1 \to I_p \to G_{\QQ_p} \to G_{\FF_p} \to 1$$
     where $I_p$ is the inertia subgroup, acting trivially on
     $H^i_c (X_{\overline{\QQ}, \text{\it ét}}, \ZZ_\ell (n))$. We have thus
@@ -1407,7 +1402,7 @@ cohomology.
     equivariant under the action of $G_{\QQ_p}/I_p$ on the left hand side and of
     $G_{\FF_p}$ on the right hand side. To relate all this to $\QQ_\ell (n)$ and
     $\QQ_\ell/\ZZ_\ell (n)$-coefficients, note that we have the following
-    isomorphic long exact sequences in cohomology
+    isomorphic long exact sequences in cohomology:
     \begin{equation}
       \label{eqn:Zl-Ql-Ql/Zl-les}
       \begin{tikzcd}[column sep=small, font=\small]
@@ -1493,7 +1488,7 @@ cohomology.
   \end{proof}
 \end{proposition}
 
-\begin{proof}[Now we are ready to prove Theorem~\ref{thm:u-alpha-0}]
+\begin{proof}[We are now ready to prove Theorem~\ref{thm:u-alpha-0}]
   The morphism $\alpha_{X,n}$ is defined on
   $$\RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]),$$
   which is a complex of $\QQ$-vector spaces, so it will be enough to show that
@@ -1528,7 +1523,7 @@ cohomology.
 \end{proof}
 
 \begin{definition}
-  Let
+  We let
   $i_\infty^*\colon R\Gamma_\fg (X, \ZZ (n)) \to R\Gamma_c (G_\RR, X (\CC), \ZZ (n))$
   be a morphism in $\mathbf{D} (\ZZ)$ that gives a morphism of distinguished
   triangles
@@ -1548,9 +1543,9 @@ cohomology.
   The morphism $i_\infty^*$ is uniquely defined.
 
   \begin{proof}
-    We may apply \ref{TR3-TR1-with-uniqueness}, because
+    We may apply \ref{TR3-TR1-with-uniqueness}, since
     $\RHom (R\Gamma (X, \ZZ^c (n)), \QQ [-2])$ is a complex of $\QQ$-vector
-    spaces and both
+    spaces, and both
     $R\Gamma_\fg (X, \ZZ (n))$ and
     $R\Gamma_c (G_\RR, X (\CC), \ZZ (n))$
     are almost perfect complexes by
@@ -1769,7 +1764,7 @@ Let us write down this formula for further reference:
     $\Ext_\ZZ^1 (H^i (A^\bullet), H^{i-1} (C^\bullet))$ is a direct sum of
     finitely many groups isomorphic to $\Ext_\ZZ^1 (\QQ,\ZZ)$, which is
     divisible. Therefore, $\Hom_{\mathbf{D} (\ZZ)} (A^\bullet, C^\bullet)$ is
-    direct product of divisible groups, hence divisible.
+    a direct product of divisible groups, hence divisible.
   \end{proof}
 \end{lemma}
 
@@ -1798,7 +1793,7 @@ distinguished triangles
 The cone $C^\bullet$ in (TR1) and the morphism $h$ in (TR3) are neither unique
 nor canonical. Two different cones of the same morphism are necessarily
 isomorphic, but the isomorphism between them is not unique, because it is
-provided by (TR3). This is a well-known issue with the derived category
+provided by (TR3). This is a notorious issue with the derived category
 formalism. Let us recall a useful standard argument which shows that at least in
 some special cases, things are uniquely defined. The following is basically
 \cite[Proposition~1.1.9, Corollaire~1.1.10]{Beilinson-Bernstein-Deligne}.
@@ -1852,19 +1847,12 @@ Here is a particular case that we are going to use.
 
   \begin{enumerate}
   \item[1)] Suppose we have a commutative diagram with distinguished rows
-    \[ \begin{tikzcd}
-    A^\bullet\ar{r}{u}\ar{d}{f} & B^\bullet\ar{r}{v}\ar{d}{g} & C^\bullet\ar{r}{w} & A^\bullet [1] \\
-    A'^\bullet\ar{r}{u'} & B'^\bullet\ar{r}{v'} & C'^\bullet\ar{r}{w'} & A'^\bullet [1]
-  \end{tikzcd} \]
-    where $A^\bullet$ is a complex such that $H^i (A^\bullet)$ are finite
-    dimensional $\QQ$-vector spaces and $C^\bullet$ and $C'^\bullet$ are almost
-    perfect complexes in the sense of
+    \eqref{eqn:TR3-input}, where $A^\bullet$ is a complex such that
+    $H^i (A^\bullet)$ are finite dimensional $\QQ$-vector spaces and
+    $C^\bullet$ and $C'^\bullet$ are almost perfect complexes in the sense of
     Definition~\ref{dfn:almost-of-(co)finite-type}. Then there exists a unique
     morphism ${h\colon C^\bullet \to C'^\bullet}$ giving a morphism of triangles
-    \[ \begin{tikzcd}
-      A^\bullet\ar{r}{u}\ar{d}{f} & B^\bullet\ar{r}{v}\ar{d}{g} & C^\bullet\ar{r}{w}\ar[dashed]{d}[d]{\exists ! h} & A^\bullet [1]\ar{d}{f [1]} \\
-      A'^\bullet\ar{r}{u'} & B'^\bullet\ar{r}{v'} & C'^\bullet\ar{r}{w'} & A'^\bullet [1]
-    \end{tikzcd} \]
+    \eqref{eqn:TR3-output}.
 
   \item[2)] For a distinguished triangle
     $$A^\bullet \xrightarrow{u} B^\bullet \xrightarrow{v} C^\bullet \xrightarrow{w} A^\bullet[1]$$
@@ -1876,7 +1864,7 @@ Here is a particular case that we are going to use.
   \begin{proof}
     In this situation, according to \ref{lemma:morphisms-inDAb-not-divisible},
     the group $\Hom_{\mathbf{D} (\ZZ)} (C^\bullet, C'^\bullet)$ has no
-    nontrivial divisible subgroups and
+    nontrivial divisible subgroups, and
     $\Hom_{\mathbf{D} (\ZZ)} (A^\bullet [1], C'^\bullet)$ is divisible. This
     means that there are no nontrivial homomorphisms
     $\Hom_{\mathbf{D} (\ZZ)} (A^\bullet [1], C'^\bullet) \to \Hom_{\mathbf{D} (\ZZ)} (C^\bullet, C'^\bullet)$,
@@ -1892,8 +1880,8 @@ Here is a particular case that we are going to use.
   (i.e. a torsion element in the group
   $\Hom_{\mathbf{D} (\ZZ)} (A^\bullet, B^\bullet)$, i.e.
   $f\otimes \mathbb{Q} = 0$) if and only if the morphisms
-  $$H^i (f)\colon H^i (A^\bullet) \to H^i (B^\bullet)$$
-  are torsion, that is, they are trivial on the maximal divisible subgroups:
+  $H^i (f)\colon H^i (A^\bullet) \to H^i (B^\bullet)$
+  are torsion; that is, they are trivial on the maximal divisible subgroups:
   $$(H^i (f)_{div}\colon H^i (A^\bullet)_{div} \to H^i (B^\bullet)_{div}) = 0.$$
 
   \begin{proof}
@@ -1952,7 +1940,7 @@ Here is a particular case that we are going to use.
 \section{Cohomology with compact support}
 \label{app:modified-cohomology-with-compact-support}
 
-Let us first we recall the definition of étale cohomology with compact support.
+Let us first recall the definition of étale cohomology with compact support.
 For any arithmetic scheme $f\colon X\to \Spec \ZZ$ (separated, of finite type)
 there exists a \textbf{Nagata compactification}
 \[ \begin{tikzcd}
@@ -1965,9 +1953,9 @@ Nagata, and a modern exposition (following Deligne) may be found in
 \cite[Exposé~XVII]{SGA4}.
 
 \begin{definition}
-  Let $X$ be an arithmetic scheme and let $\mathcal{F}$ be an abelian torsion
+  Let $X$ be an arithmetic scheme and let $\mathcal{F}$ an abelian torsion
   sheaf on $X_\et$. Then one defines the
-  \textbf{cohomology of $\mathcal{F}$ with compact support} via the complex
+  \textbf{cohomology with compact support of $\mathcal{F}$} via the complex
   \begin{equation}
     \label{eqn:RGammac-via-extension-by-zero}
     R\Gamma_c (X_\et, \mathcal{F}) \dfn
@@ -2007,9 +1995,9 @@ $\Spec \ZZ$).
 \item As always, we denote by $X (\CC)$ the set of complex points of $X$
   equipped with the usual analytic topology.
 
-  Let $X_\text{\it cl}$ be the site of étale maps $f\colon U\to X (\CC)$.
-  A covering family in $X_\text{\it cl}$\footnote{``cl'' for ``classique''.}
-  is a family of maps $\{ U_i \to U \}$ such that $U$ is the union of images of
+  Let $X_\text{\it cl}$\footnote{``cl'' for ``classique''.} be the site of étale
+  maps $f\colon U\to X (\CC)$. A covering family in $X_\text{\it cl}$ is a
+  family of maps $\{ U_i \to U \}$ such that $U$ is the union of images of
   $U_i$.
 
   As the inclusion of an open subset $U \subset X (\CC)$ is trivially an étale
@@ -2046,41 +2034,35 @@ $$\alpha^*\colon \mathbf{Sh} (X_\et) \to \mathbf{Sh} (G_\RR, X (\CC)).$$
 
 \begin{proposition}
   \label{prop:inverse-image-gamma}
-  Let $\mathcal{F}$ be a sheaf on $X_\et$.
-
-  \begin{enumerate}
-  \item[1)] There exists a natural morphism
-    $$\Gamma (X_\et, \mathcal{F}) \to \Gamma (G_\RR, X (\CC), \alpha^* \mathcal{F}).$$
-
-  \item[2)] Similarly for cohomology with compact support, there is a natural morphism
-    $$\Gamma_c (X_\et, \mathcal{F}) \to \Gamma_c (G_\RR, X (\CC), \alpha^* \mathcal{F}).$$
-  \end{enumerate}
+  Given an sheaf $\mathcal{F}$ on $X_\et$, there exists a natural morphism
+  $$\Gamma (X_\et, \mathcal{F}) \to \Gamma (G_\RR, X (\CC), \alpha^* \mathcal{F}),$$
+  and similarly for cohomology with compact support,
+  $$\Gamma_c (X_\et, \mathcal{F}) \to \Gamma_c (G_\RR, X (\CC), \alpha^* \mathcal{F}).$$
 
   \begin{proof}
     This is standard and follows from the functoriality of $\alpha^*$.
-    The morphism in 1) may be described as
+    The first morphism may be described as
     \begin{multline*}
       \Gamma (X_\et, \mathcal{F}) \xrightarrow{\cong} \Hom_{\mathbf{Sh} (X_\et)} (\underline{\{ \ast \}}, \mathcal{F}) \to
       \Hom_{\mathbf{Sh} (G_\RR, X (\CC))} (\alpha^*\underline{\{ \ast \}}, \alpha^* \mathcal{F}) \\
       \xrightarrow{\cong} \Hom_{\mathbf{Sh} (G_\RR, X (\CC))} (\underline{\{ \ast \}}, \alpha^* \mathcal{F}) \xrightarrow{\cong}
       \Gamma (G_\RR, X (\CC), \alpha^* \mathcal{F}).
     \end{multline*}
-
     For abelian sheaves, in the above formula one has to replace the constant
     sheaf $\underline{\{\ast\}}$ with $\underline{\ZZ}$. The naturality is
     easily seen from the above definition.
 
-    In 2), if $j\colon X \hookrightarrow \mathfrak{X}$ is a Nagata
-    compactification, then we have the corresponding compactification
+    Now if $j\colon X \hookrightarrow \mathfrak{X}$ is a Nagata
+    compactification, we have the corresponding compactification
     $j (\CC)\colon X (\CC) \hookrightarrow \mathfrak{X} (\CC)$. The extension by
     zero morphism
     $j (\CC)_!\colon \mathbf{Sh} (X (\CC)) \to \mathbf{Sh} (\mathfrak{X} (\CC))$
-    restricts to the subcategory of $G_\RR$-equivariant sheaves:
-    if $\mathcal{F}$ is a $G_\RR$-equivariant sheaf on $X (\CC)$, then
-    $j (\CC)_!  \mathcal{F}$ is a $G_\RR$-equivariant sheaf on
-    $\mathfrak{X} (\CC)$ (this is evident from the definition of equivariant
-    sheaves as equivariant espaces étalés). It should be clear from the
-    definition of $\alpha^*$ that there is a commutative diagram
+    restricts to the subcategory of $G_\RR$-equivariant sheaves: if
+    $\mathcal{F}$ is a $G_\RR$-equivariant sheaf on $X (\CC)$, then $j (\CC)_!
+    \mathcal{F}$ is a $G_\RR$-equivariant sheaf on $\mathfrak{X} (\CC)$ (this is
+    evident from the definition of equivariant sheaves as equivariant espaces
+    étalés). It should be clear from the definition of $\alpha^*$ that there is
+    a commutative diagram
     \[ \begin{tikzcd}
       \mathbf{Sh} (X_\et) \ar{r}{\alpha^*}\ar{d}[swap]{j_!} & \mathbf{Sh} (G_\RR, X (\CC)) \ar{d}{j (\CC)_!} \\
       \mathbf{Sh} (\mathfrak{X}_\et) \ar{r}[swap]{\alpha^*_\mathfrak{X}} & \mathbf{Sh} (G_\RR, \mathfrak{X} (\CC))
@@ -2099,20 +2081,21 @@ $$\alpha^*\colon \mathbf{Sh} (X_\et) \to \mathbf{Sh} (G_\RR, X (\CC)).$$
 \end{proposition}
 
 The morphism $\alpha$ is also discussed in \cite[Appendix~A]{Flach-Morin-2018},
-but Flach and Morin work with proper schemes. The above remarks are to make sure
+but Flach and Morin work with proper schemes; the above remarks are to make sure
 that everything works fine for compactifications.
 
 \subsection*{Modified étale cohomology}
 
 Here we briefly review the
-\textbf{modified étale cohomology with compact support}. It was introduced by
-Th.~Zink in \cite[Appendix~2]{Haberland-1978} for $X_\et$, where
-$X = \Spec \mathcal{O}_K$ is the spectrum of the ring of integers of a number
-field $K$. It is also discussed in \cite[\S II.2]{Milne-ADT}.
-The general definition for $X \to \Spec\ZZ$ is treated in
-\cite[\S 6.7]{Flach-Morin-2018} and \cite[\S 2]{Geisser-Schmidt-2018}.
+\textbf{modified étale cohomology with compact support}
+$R\widehat{\Gamma}_c (X_\et, -)$. It was introduced by Th.~Zink in
+\cite[Appendix~2]{Haberland-1978} for the case of number rings
+$X = \Spec \mathcal{O}_{K,S}$, and it is also discussed in
+\cite[\S II.2]{Milne-ADT}. The general definition for $X \to \Spec\ZZ$
+is treated in \cite[\S 6.7]{Flach-Morin-2018} and
+\cite[\S 2]{Geisser-Schmidt-2018}.
 
-Note that thanks to the \textbf{Leray spectral sequence}
+Note that thanks to the Leray spectral sequence
 $R\Gamma (\mathfrak{X}_\et, -) \cong R\Gamma (\Spec \ZZ_\et, -)\circ R g_*$,
 we have
 \begin{equation}
@@ -2131,7 +2114,7 @@ corresponding group cohomology $H^i (G,A)$ (resp. Tate cohomology
 $\widehat{H}^i (G,A)$) may be defined in terms of resolutions $P_\bullet$
 (resp. complete resolutions $\widehat{P}_\bullet$) of $\ZZ$ by free
 $\ZZ G$-modules (see e.g. \cite[Chapter~VI]{Brown-1994}). Slightly more
-generally, if $A^\bullet$ is a bounded below (cohomological) complex of
+generally, if $A^\bullet$ is a bounded (cohomological) complex of
 $G$-modules, we obtain a \emph{double complex} of abelian groups
 $\Hom^{\bullet\bullet} (P_\bullet, A^\bullet)$ (resp.  $\Hom^{\bullet\bullet}
 (\widehat{P}_\bullet, A^\bullet)$), and it makes sense to define the
