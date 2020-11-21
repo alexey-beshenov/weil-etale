@@ -716,12 +716,11 @@ $p$, including $p = 0$.
       \cdots\ar{r} & P_3\ar{r}\ar{d}{2} & P_2\ar{r}\ar{d}{2} & P_1\ar{r}\ar{d}{2} & P_0\ar{r}\ar{d}{2-N} & 0 \\
       \cdots\ar{r} & P_3\ar{r} & P_2\ar{r} & P_1\ar{r} & P_0\ar{r} & 0
     \end{tikzcd} \]
-
-    \begin{align*}
-      \text{``}2\text{''}\colon P_\bullet & \to P_\bullet,\\
-      (2-N)\colon P_0 & \to P_0,\\
-      2\colon P_i & \to P_i \quad\text{for }i > 1,
-    \end{align*}
+    %% \begin{align*}
+    %%   \text{``}2\text{''}\colon P_\bullet & \to P_\bullet,\\
+    %%   (2-N)\colon P_0 & \to P_0,\\
+    %%   2\colon P_i & \to P_i \quad\text{for }i > 1,
+    %% \end{align*}
     which induces multiplication by $2$ on $H^i (G,-)$ for $i > 0$
     is null-homotopic \cite[Theorem 6.5.8]{Weibel-1994}. It is not
     multiplication by $2$ in degree $0$, but as the complex
@@ -1040,23 +1039,22 @@ complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded.
 \begin{lemma}
   \label{lemma:morphism-hat-Hc(Xet,Z(n))->Hc(Xet,Z(n))}
   The canonical morphism
-  $\widehat{H}^i_c (X_\et, \ZZ (n)) \to H^i_c (X_\et, \ZZ (n))$
+  $\phi^i\colon \widehat{H}^i_c (X_\et, \ZZ (n)) \to H^i_c (X_\et, \ZZ (n))$
   sits in a long exact sequence
   \[ \cdots \to \widehat{H}^{i-1}_c (G_\RR, X (\CC), \ZZ (n)) \to
-  \widehat{H}_c^i (X_\et, \ZZ(n)) \to
+  \widehat{H}_c^i (X_\et, \ZZ(n)) \xrightarrow{\phi^i}
   H_c^i (X_\et, \ZZ(n)) \to
   \widehat{H}^i_c (G_\RR, X (\CC), \ZZ (n)) \to \cdots \]
   where the groups $\widehat{H}^i_c (G_\RR, X (\CC), \ZZ (n))$ are finite
   $2$-torsion.  In particular, the kernel and cokernel of
-  $\widehat{H}^i_c (X_\et, \ZZ (n)) \to H^i_c (X_\et, \ZZ (n))$ is finite
-  $2$-torsion.
+  $\phi^i$ is finite $2$-torsion.
 
   \begin{proof}
     The exact sequence follows from the definition of modified étale cohomology
     with compact support and Artin's comparison theorem. This is proved in
     \cite[Lemma~6.14]{Flach-Morin-2018}.
     The fact that $\widehat{H}^i_c (G_\RR, X (\CC), \ZZ (n))$ are finite
-    $2$-torsion is Lemma~\ref{lemma:H-hat-c-GR-X(C)-Z(n)-finite-2-torsion}.
+    $2$-torsion is our Lemma~\ref{lemma:H-hat-c-GR-X(C)-Z(n)-finite-2-torsion}.
   \end{proof}
 \end{lemma}
 
@@ -1402,7 +1400,8 @@ cohomology.
     equivariant under the action of $G_{\QQ_p}/I_p$ on the left hand side and of
     $G_{\FF_p}$ on the right hand side. To relate all this to $\QQ_\ell (n)$ and
     $\QQ_\ell/\ZZ_\ell (n)$-coefficients, note that we have the following
-    isomorphic long exact sequences in cohomology:
+    isomorphic long exact sequences in cohomology.
+
     \begin{equation}
       \label{eqn:Zl-Ql-Ql/Zl-les}
       \begin{tikzcd}[column sep=small, font=\small]
