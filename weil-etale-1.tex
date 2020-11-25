@@ -2,7 +2,7 @@
 
 \usepackage{fullpage}
 
-\usepackage{authblk}
+\usepackage[titletoc]{appendix}
 
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb}
@@ -56,9 +56,12 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 
+\newtheorem{maintheorem}{Theorem}
+\renewcommand*{\themaintheorem}{\Roman{maintheorem}}
+
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
-\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem*{conjecture*}{Conjecture}
 \newtheorem{remark}[theorem]{Remark}
 
 \usepackage[perpage,symbol]{footmisc}
@@ -67,7 +70,7 @@
 \title{Weil-étale cohomology for arbitrary arithmetic schemes and $n < 0$.
   Part I: Construction of Weil-étale complexes}
 \author{Alexey Beshenov}
-\date{November 21, 2020}
+% \date{November 21, 2020}
 
 \AtEndDocument{%
   \par
@@ -113,7 +116,7 @@ This construction was further generalized by Flach and Morin in
 
 The goal of this work is to remove the assumption that $X$ is proper and
 regular, and following the ideas from \cite{Flach-Morin-2018}, construct
-Weil-étale cohomology for $X$ separated and of finite type over $\Spec\ZZ$
+Weil-étale cohomology for any $X$ separated and of finite type over $\Spec\ZZ$
 for the case of $n < 0$.
 
 As Flach and Morin already suggest in \cite[Remark 3.11]{Flach-Morin-2018},
@@ -124,26 +127,6 @@ For the reader's convenience, this work is split into two parts. The present
 Part~I is devoted to the construction of Weil-étale complexes
 $R\Gamma_\Wc (X, \ZZ (n))$. Their conjectural relation to the special value
 of $\zeta (X,s)$ at $s = n$ will be treated in the forthcoming Part~II.
-
-\subsection*{Assumptions}
-
-For the purposes of this article, we will call an \textbf{arithmetic scheme} an
-arbitrary scheme $X$ that is separated and of finite type over $\Spec \ZZ$.
-By $n$ we will always denote a strictly negative integer.
-
-Our construction is based on motivic cohomology, defined in terms of Geisser's
-dualizing cycle complexes $\ZZ^c (n)$, as introduced and studied in
-\cite{Geisser-2010}. Given $X$ and $n$ as above, we assume the following
-conjecture.
-
-\begin{conjecture}
-  $\mathbf{L}^c (X_\et,n)$: the cohomology groups $H^i (X_\et, \ZZ^c (n))$ are
-  finitely generated for all $i \in \ZZ$.
-\end{conjecture}
-
-Here ``L'' stays for ``Lichtenbaum''. This is analogous to the conjecture
-$\mathbf{L} (X_\et,n)$ in \cite[\S 3.2]{Flach-Morin-2018}. Most of the results
-of the present paper hold under $\mathbf{L}^c (X_\et,n)$.
 
 \subsection*{Notation and conventions}
 
@@ -218,37 +201,133 @@ details on $G$-equivariant sheaves can be found in
 \cite[Chapitre~2]{Morin-these}. For our modest purposes, it is enough to know
 that any $G$-module $A$ gives rise to the corresponding abelian $G$-equivariant
 constant sheaf. The latter corresponds to the espace étalé
-$X (\CC)\times A \to X (\CC)$.
+$X (\CC)\times A \to X (\CC)$, with $A$ equipped with the discrete topology.
 
 There is also a complex of sheaves $\ZZ (n)$ on $X_\et$, defined below in
 \ref{dfn:sheaf-Z(n)}. It is not the same as the sheaf
 $\ZZ (n) = (2\pi i)^n\,\ZZ$ on $X (\CC)$, but there is no possible confusion,
 since these two live in very different topologies. The notation is deliberate,
 as we will actually see that the comparison between the étale topology on $X$
-and analytic topology on $X (\CC)$ identifies them.
+and analytic topology on $X (\CC)$ relates them
+(see Proposition~\ref{propn:image-of-QZn-under-alpha}).
 
-\subsection*{Outline of the construction}
+\subsection*{Assumptions}
+
+For the purposes of this article, we will call an \textbf{arithmetic scheme} an
+arbitrary scheme $X$ that is separated and of finite type over $\Spec \ZZ$.
+By $n$ we will always denote a strictly negative integer.
+
+Our construction is based on motivic cohomology, defined in terms of Geisser's
+dualizing cycle complexes $\ZZ^c (n)$, as introduced and studied in
+\cite{Geisser-2010}. Given $X$ and $n$ as above, we state the following
+conjecture.
+
+\begin{conjecture*}
+  $\mathbf{L}^c (X_\et,n)$: the cohomology groups $H^i (X_\et, \ZZ^c (n))$ are
+  finitely generated for all $i \in \ZZ$.
+\end{conjecture*}
+
+Here ``L'' stays for ``Lichtenbaum''. This is analogous to the conjecture
+$\mathbf{L} (X_\et,n)$ in \cite[\S 3.2]{Flach-Morin-2018}. Our construction of
+Weil-étale complexes $R\Gamma_\Wc (X,\ZZ(n))$ will assume
+$\mathbf{L}^c (X_\et,n)$.
+
+\subsection*{Main results}
+
+Before outlining the construction of Weil-étale cohomology, we state the main
+results of this paper that make it possible. One of our principal objects is the
+following complex of abelian sheaves $\ZZ (n)$ on $X_\et$.
+
+\begin{definition}[{\cite[\S 3.1]{Flach-Morin-2018}}]
+  \label{dfn:sheaf-Z(n)}
+  Let $X$ be an arithmetic scheme and $n < 0$. For a prime $p$, consider
+  the localization $X [1/p]$, and let $\mu_{p^r}$ be the sheaf of $p^r$-th
+  roots of unity on $X [1/p]$. We define the twist of $\mu_{p^r}$ by $n$
+  as
+  $$\mu_{p^r}^{\otimes n} = \iHom_{X[1/p]} (\mu_{p^r}^{\otimes (-n)}, \ZZ/p^r).$$
+
+  Now $\ZZ (n)$ is the complex of sheaves on $X_\et$ given by
+  \[ \ZZ (n) = \QQ/\ZZ (n) [-1],
+  \quad \text{where }
+  \QQ/\ZZ (n) = \bigoplus_p \varinjlim_r j_{p!} \mu_{p^r}^{\otimes n}, \]
+  and $j_p$ is the canonical open immersion $X[1/p] \to X$.
+\end{definition}
+
+The above sheaves $\ZZ (n)$ should not be confused with cycle complexes;
+the latter are $\ZZ^c (n)$ in the setting of this paper.
+In \S\ref{sec:arithmetic-duality-theorem} we prove the following arithmetic
+duality theorem relating the two.
+
+\begin{maintheorem}
+  \label{theorem-I}
+  Assuming the conjecture $\mathbf{L}^c (X_\et,n)$, there is a quasi-isomorphism
+  of complexes
+  \[ R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \xrightarrow{\cong}
+  \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ/\ZZ [-2]). \]
+\end{maintheorem}
+
+The second result we will need is related to the following morphism of
+complexes.
+
+\begin{definition}
+  \label{dfn:u-infty}
+  We define
+  $v_\infty^*\colon R\Gamma_c (X_\et, \QQ/\ZZ (n)) \to R\Gamma_c (G_\RR, X (\CC), \QQ/\ZZ (n))$
+  as the morphism in the derived category $\mathbf{D} (\ZZ)$ induced by the
+  comparison of étale and analytic topology
+  \[ \Gamma_c (X_\et, \QQ/\ZZ (n)) \to
+  \Gamma_c (G_\RR, X (\CC), \alpha^* \QQ/\ZZ (n)) \cong
+  \Gamma_c (G_\RR, X (\CC), \QQ/\ZZ (n)) \]
+  (see Proposition~\ref{prop:inverse-image-gamma} and
+  \ref{propn:image-of-QZn-under-alpha}). Then we let
+  $u_\infty^*\colon R\Gamma_c (X_\et, \ZZ(n)) \to R\Gamma_c (G_\RR, X (\CC), \ZZ (n))$
+  be the composition
+  \[ R\Gamma_c (X_\et, \ZZ(n)) \dfn R\Gamma_c (X_\et, \QQ/\ZZ (n)) [-1]
+  \xrightarrow{v_\infty^* [-1]} R\Gamma_c (G_\RR, X (\CC), \QQ/\ZZ (n)) [-1] \to
+  R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \]
+  where the last arrow is induced by $\QQ/\ZZ (n) [-1] \to \ZZ (n)$, which comes
+  from the distinguished triangle of constant $G_\RR$-equivariant sheaves
+  $\ZZ (n) \to \QQ (n) \to \QQ/\ZZ (n) \to \ZZ (n) [1]$.
+\end{definition}
+
+Then \S\ref{sec:theorem-II} is devoted to the following result.
+
+\begin{maintheorem}
+  \label{theorem-II}
+  The morphism $u_\infty^*$ is torsion, i.e. it is a torsion element in the
+  abelian group
+  $$\Hom_{\mathbf{D} (\ZZ)} (R\Gamma_c (X_\et, \ZZ(n)), R\Gamma_c (G_\RR, X (\CC), \ZZ(n))).$$
+\end{maintheorem}
+
+\subsection*{Outline of the construction of Weil-étale cohomology}
 
 Here we outline the structure of this paper, as well as our construction of
-Weil-étale complexes $R\Gamma_\Wc (X, \ZZ (n))$. Essentially all steps make use
-of the Conjecture~$\mathbf{L}^c (X_\et,n)$.
+Weil-étale complexes $R\Gamma_\Wc (X, \ZZ (n))$.
 
-In \S\ref{sec:sheaves-Z(n)} we define certain sheaves $\ZZ (n)$ on
-$X_\et$. These should not be confused with cycle complexes: in our setting the
-cycle complexes are $\ZZ^n (n)$, and $\ZZ (n)$ are defined in a different
-manner, following \cite{Flach-Morin-2018}.
+First, \S\ref{sec:arithmetic-duality-theorem} is devoted to a proof of
+Theorem~\ref{theorem-I}. Some of its consequences are deduced in
+\S\ref{sec:consecuences-of-theorem-I}. Namely, if we assume the conjecture
+$\mathbf{L}^c (X_\et, n)$, then our complexes have the following
+type.
+\begin{center}
+  \renewcommand{\arraystretch}{1.5}
+  \begin{tabular}{cc}
+    \hline
+    \textbf{complex} & \textbf{type} \\
+    \hline
+    $R\Gamma (X_\et, \ZZ^c (n))$ & perfect \\
+    $R\widehat{\Gamma}_c (X_\et, \ZZ (n)) = R\widehat{\Gamma}_c (X_\et, \QQ/\ZZ (n)) [-1]$ & cofinite type \\
+    $R\widehat\Gamma_c (X_\et, \ZZ (n)) = R\Gamma_c (X_\et, \QQ/\ZZ (n)) [-1]$ & almost cofinite type \\
+    \hline
+  \end{tabular}
+\end{center}
+For this we first make a little digression in
+\S\ref{sec:GR-equivariant-cohomology} to analyze what kind of complexes
+we obtain for $G_\RR$-equivariant cohomology on $X (\CC)$.
 
-Then \S\ref{sec:GR-equivariant-cohomology} is devoted to various lemmas about
-$G_\RR$-equivariant cohomology of $X (\CC)$ that are needed in the subsequent
-sections.
-
-In \S\ref{sec:arithmetic-duality-theorem} we deduce from Geisser's results from
-\cite{Geisser-2010}, a quasi-isomorphism of complexes
-\[ R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \cong
-\RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ/\ZZ [-2]), \]
-which is a sort of arithmetic duality theorem. It is then used in
-\S\ref{sec:RGamma-fg} to define a morphism $\alpha_{X,n}$ in the derived
-category, and declare $R\Gamma_\fg (X, \ZZ(n))$ to be its cone:
+Theorem~\ref{theorem-I} is used in \S\ref{sec:RGamma-fg} to define a morphism
+$\alpha_{X,n}$ in the derived category (see definition~\ref{def:RGamma-fg}),
+and declare $R\Gamma_\fg (X, \ZZ(n))$ to be its cone:
 \[ \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]) \xrightarrow{\alpha_{X,n}}
 R\Gamma_c (X_\et, \ZZ (n)) \to
 R\Gamma_\fg (X, \ZZ(n)) \to
@@ -260,15 +339,13 @@ of the involved complexes, it turns out that $R\Gamma_\fg (X, \ZZ(n))$ is
 defined up to a \emph{unique} isomorphism in the derived category (something one
 usually does not expect from a cone).
 
-Finally, in \S\ref{sec:RGamma-Wc} we define Weil-étale complexes
-$R\Gamma_\Wc (X, \ZZ(n))$. For this we first consider a canonical morphism
-  $$u_\infty^*\colon R\Gamma_c (X_\et, \ZZ (n)) \to R\Gamma_c (G_\RR, X (\CC), \ZZ(n)),$$
-which is essentially the comparison between étale and singular cohomology.
-We verify that $u_\infty^* \circ \alpha_{X,n} = 0$, which implies that
-there exists a morphism in the derived category
+Then in \S\ref{sec:theorem-II} we establish Theorem~\ref{theorem-II},
+and finally, it is used in \S\ref{sec:RGamma-Wc} to define Weil-étale complexes
+$R\Gamma_\Wc (X, \ZZ(n))$. For this we deduce from Theorem~\ref{theorem-II} that
+$u_\infty^* \circ \alpha_{X,n} = 0$, which implies that there exists a morphism
+in the derived category
 $$i_\infty^*\colon R\Gamma_\fg (X, \ZZ (n)) \to R\Gamma_c (G_\RR, X (\CC), \ZZ(n))$$
-(see the diagram below).
-We pick a mapping fiber of $i_\infty^*$ and call it
+(see the diagram below). We pick a mapping fiber of $i_\infty^*$ and call it
 $R\Gamma_\Wc (X, \ZZ (n))$, which turns out to be a perfect complex.
 
 There are two appendices to this paper: Appendix~\ref{app:homological-algebra}
@@ -277,14 +354,12 @@ Appendix~\ref{app:modified-cohomology-with-compact-support} reviews the
 definitions of étale cohomology with compact support $R\Gamma_c (X_\et, -)$
 and its modified version $R\widehat{\Gamma}_c (X_\et, -)$.
 
-\pagebreak
-
 The definition of $R\Gamma_\Wc (X,\ZZ(n))$ fits in the following commutative
 diagram involving distinguished triangles in the derived category
 $\mathbf{D} (\ZZ)$:
-\[ \begin{tikzcd}[column sep=1em]
+\[ \begin{tikzcd}[column sep=1.5em]
   & & R\Gamma_\Wc (X, \ZZ (n)) \ar{d} \\
-  \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]) \ar{r}{\alpha_{X,n}}\ar{d} & R\Gamma_c (X_\et, \ZZ (n)) \ar{r}\ar{d}{u_\infty^*} & R\Gamma_\fg (X, \ZZ(n)) \ar{r}\ar[dashed]{d}{i_\infty^*} & \cdots \ar{d} \\
+  \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]) \ar{r}{\alpha_{X,n}}[swap]{\text{dfn.~\ref{def:RGamma-fg}}}\ar{d} & R\Gamma_c (X_\et, \ZZ (n)) \ar{r}\ar{d}{u_\infty^*} & R\Gamma_\fg (X, \ZZ(n)) \ar{r}\ar[dashed]{d}{i_\infty^*} & \cdots \ar{d} \\
   0 \ar{r} & R\Gamma_c (G_\RR, X (\CC), \ZZ(n)) \ar{r}{\mathrm{id}} & R\Gamma_c (G_\RR, X (\CC), \ZZ(n)) \ar{r}\ar{d} & 0 \\
   & & R\Gamma_\Wc (X, \ZZ (n)) [1]
 \end{tikzcd} \]
@@ -298,9 +373,9 @@ the notation.
     \renewcommand{\arraystretch}{1.5}
   \begin{tabular}{cc}
     \hline
-    This paper & Flach--Morin \\
+    \textbf{this paper} & \textbf{Flach--Morin} \\
     \hline
-    \begin{tabular}{c} dualizing cycle complexes \\ $\ZZ^c (n)$ \end{tabular} & \begin{tabular}{c} Bloch's cycle complexes \\ $\ZZ (d-n)[2d]$, $d = \dim X$ \end{tabular} \\
+    \begin{tabular}{c} Geisser's dualizing cycle complexes \\ $\ZZ^c (n)$ \end{tabular} & \begin{tabular}{c} Bloch's cycle complexes \\ $\ZZ (d-n)[2d]$, $d = \dim X$ \end{tabular} \\
     \hline
     $R\Gamma_\fg (X, \ZZ(n))$ & \begin{tabular}{c} $R\Gamma_W (\overline{X}, \ZZ(n))$, \\ up to finite $2$-torsion for $i\gg 0$ \end{tabular} \\
     \hline
@@ -329,99 +404,216 @@ personally to Pedro Luis del Ángel and Xavier Gómez Mont for their hospitality
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Complexes of étale sheaves $\ZZ (n)$}
-\label{sec:sheaves-Z(n)}
+\section{Proof of Theorem~I}
+\label{sec:arithmetic-duality-theorem}
 
-We begin by considering complexes of sheaves $\ZZ (n)$ on $X_\et$.
+At the heart of our constructions is a certain arithmetic duality theorem for
+cycle complexes obtained by Thomas Geisser in \cite{Geisser-2010}. The goal of
+this section is to deduce Theorem~\ref{theorem-I} from Geisser's duality.
+We would like to establish a quasi-isomorphism of complexes
+\[ R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \xrightarrow{\cong}
+\RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ/\ZZ [-2]). \]
 
-\begin{definition}[{\cite[\S 3.1]{Flach-Morin-2018}}]
-  \label{dfn:sheaf-Z(n)}
-  Let $X$ be an arithmetic scheme and $n < 0$. For a prime $p$, consider
-  the localization $X [1/p]$, and let $\mu_{p^r}$ be the sheaf of $p^r$-th
-  roots of unity on $X [1/p]$. We define the twist of $\mu_{p^r}$ by $n$
-  as
-  $$\mu_{p^r}^{\otimes n} = \iHom_{X[1/p]} (\mu_{p^r}^{\otimes (-n)}, \ZZ/p^r).$$
+Here $R\widehat{\Gamma}_c (X_\et, \ZZ (n))$ denotes the modified étale
+cohomology with compact support, which is reviewed in the appendix
+\ref{app:modified-cohomology-with-compact-support}. We note that
+\cite{Geisser-2010} uses the notation ``$R\Gamma_c$'' for our
+``$R\widehat{\Gamma}_c$'', but we take extra care to distinguish the two things,
+as we will also need the usual étale cohomology with compact support
+$R\Gamma_c (X_\et, \ZZ (n))$.
 
-  Now $\ZZ (n)$ is the complex of sheaves on $X_\et$ given by
-  \[ \ZZ (n) = \QQ/\ZZ (n) [-1],
-  \quad \text{where }
-  \QQ/\ZZ (n) = \bigoplus_p \varinjlim_r j_{p!} \mu_{p^r}^{\otimes n}, \]
-  and $j_p$ is the canonical open immersion $X[1/p] \to X$.
-\end{definition}
+We split our proof of Theorem~\ref{theorem-I} in two propositions.
 
 \begin{proposition}
-  \label{propn:image-of-QZn-under-alpha}
-  Consider the comparison morphism
-  $\alpha^*\colon \mathbf{Sh} (X_\et) \to \mathbf{Sh} (G_\RR, X (\CC))$,
-  as described in
-  Appendix~\ref{app:modified-cohomology-with-compact-support}. For the sheaf
-  $\QQ/\ZZ (n)$ on $X_\et$ we have an isomorphism of $G_\RR$-equivariant
-  constant sheaves on $X (\CC)$
-  $$\alpha^* \QQ/\ZZ (n) \cong \frac{(2\pi i)^n\,\QQ}{(2\pi i)^n\,\ZZ} \rdfn \QQ/\ZZ (n).$$
+  For any $n < 0$ we have a quasi-isomorphism of complexes
+  \begin{equation}
+    \label{eqn:duality-quasi-isomorphism-1}
+    R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \cong
+    \varinjlim_m \RHom (R\Gamma (X_\et, \ZZ/m\ZZ^c (n)), \QQ/\ZZ [-2]).
+  \end{equation}
 
   \begin{proof}
-    First of all, since $\alpha^*$ is the composition of certain inverse image
-    functors $\gamma^*$ and $\epsilon^*$ (which are left adjoint) and an
-    equivalence of categories $\delta_*$, the functor $\alpha^*$ preserves
-    colimits, and in particular
-    \begin{equation}
-      \label{eqn:alpha-star-commutes-with-colimits}
-      \alpha^* \QQ/\ZZ (n) \cong \bigoplus_p \varinjlim_r \alpha^* j_{p!} \mu_{p^r}^{\otimes n}.
-    \end{equation}
+    We unwind our definition of $\ZZ (n)$ for $n < 0$ and reduce everything to
+    the results from \cite{Geisser-2010}.
 
-    Another formal observation is that the base change from $\Spec \ZZ$ to
-    $\Spec \CC$ factors through the base change to $\Spec \ZZ [1/p]$, and then
-    $j_p^* \circ j_{p!} = id_{\mathbf{Sh} (X [1/p]_\et)}$:
+    \vspace{1em}
+
+    As we have
+    $\ZZ (n) \dfn \bigoplus_p \varinjlim_r j_{p!} \mu_{p^r}^{\otimes n} [-1]$,
+    it will be enough to show that for every prime $p$ and $r=1,2,3,\ldots$
+    there is a quasi-isomorphism of complexes
+    \[ R\widehat{\Gamma}_c (X_\et, j_{p!} \mu_{p^r}^{\otimes n} [-1]) \cong
+    \RHom (R\Gamma (X_\et, \ZZ^c/p^r (n)), \QQ/\ZZ [-2]), \]
+    and then pass to the corresponding filtered colimits.
+
+    As in the Definition~\ref{dfn:sheaf-Z(n)}, here $j_p$ denotes the canonical
+    open immersion $j_p\colon X[1/p] \hookrightarrow X$. We further denote by
+    $f$ the structure morphism $X\to \Spec \ZZ$ and by $f_p$ the structure
+    morphism $X [1/p] \to \Spec \ZZ [1/p]$:
+
     \[ \begin{tikzcd}
-      \mathbf{Sh} (X [1/p]_\et) \ar{r}{j_{p!}}\ar{drr}[swap]{id} & \mathbf{Sh} (X_\et) \ar{rr}{\gamma^*}\ar{dr}{j_p^*} & & \mathbf{Sh} (X_{\CC,\text{\it ét}}) \\
-      & & \mathbf{Sh} (X [1/p]_\et)\ar[dashed]{ur}
+      X [1/p]\ar[hookrightarrow]{r}{j_p}\ar{d}[swap]{f_p} & X\ar{d}{f} \\
+      \Spec \ZZ [1/p]\ar[hookrightarrow]{r} & \Spec \ZZ
     \end{tikzcd} \]
-    which means that we may safely erase ``$j_{p!}$'' in
-    \eqref{eqn:alpha-star-commutes-with-colimits}, and everything boils down to
-    calculating the sheaves
-    $$\alpha^* \mu_{p^r}^{\otimes n} = \alpha^* \iHom_{X [1/p]} (\mu_{p^r}^{\otimes (-n)}, \ZZ/p^r \ZZ).$$
-    As we base change to $\Spec \CC$, the étale sheaf $\mu_{p^r}$ simply becomes
-    the constant sheaf $\mu_{p^r} (\CC)$ on $X (\CC)$, and
-    $$\alpha^* \mu_{p^r}^{\otimes n} = \iHom_{X (\CC)} (\mu_{p^r}^{\otimes (-n)} (\CC), \ZZ/p^r \ZZ).$$
 
-    Here the twist is given by
-    $$\mu_m (\CC)^{\otimes (-n)} \dfn \underbrace{\mu_m (\CC)\otimes\cdots\otimes\mu_m (\CC)}_{-n},$$
-    with the $G_\RR$-action on tensor products $A\otimes B$ defined as usual
-    by $g\cdot (a\otimes b) = g\cdot a\otimes g\cdot b$, and the
-    $G_\RR$-action on $\iHom (A,B)$ being
-    $(g\cdot f) (a) \dfn g\cdot f (g^{-1}\cdot a)$.
+    As we are going to change the base scheme, let us write $\Hom_X (-,-)$ for
+    the $\Hom$ between sheaves on $X_\et$ and $\iHom_X (-,-)$ for the
+    internal $\Hom$. Instead of $\Hom_{\Spec R}$, we will simply write
+    $\Hom_R$.
 
-    What follows are well-known calculations, and we just need to take care of
-    the actions of $G_\RR$ and make sure that everything is equivariant. First
-    we see that there is a canonical isomorphism of $G_\RR$-modules
-    \begin{equation}
-      \label{eqn:roots-of-unity-iso-1}
-      \mu_m (\CC) \cong \frac{(2\pi i) \, \ZZ}{m\,(2\pi i)\,\ZZ}, \quad
-      e^{2\pi i k/m} \mapsto 2\pi i k.
-    \end{equation}
-    Now there is a $G_\RR$-isomorphism
+    By \cite[Proposition 7.10, (c)]{Geisser-2010}, we have the following
+    exchange formulas. If we work with complexes of constructible sheaves on the
+    étale site of schemes over the spectrum of a number ring
+    $\Spec\mathcal{O}$, then for a morphism $\phi$ of such schemes we have
     \begin{align}
-      \label{eqn:roots-of-unity-iso-2}
-      \underbrace{(2\pi i)\,\ZZ\otimes\cdots\otimes (2\pi i)\,\ZZ}_{-n} & \xrightarrow{\cong} (2\pi i)^{-n}\,\ZZ,\\
-      \notag (2\pi i)\,a_1\otimes\cdots\otimes (2\pi i)\,a_{-n} & \mapsto (2\pi i)^{-n}\,a_1\cdots a_{-n},
+      \label{eqn:exchange-formula-1} R \phi_* \mathcal{D} (\mathcal{F}) & \cong \mathcal{D} (R \phi_! \mathcal{F}),\\
+      \label{eqn:exchange-formula-2} R \phi^! \mathcal{D} (\mathcal{G}) & \cong \mathcal{D} (\phi^* \mathcal{G}),
     \end{align}
-    and combining \eqref{eqn:roots-of-unity-iso-1}
-    and \eqref{eqn:roots-of-unity-iso-2}, we obtain
-    $$\mu_m (\CC)^{(-n)} \cong \frac{(2\pi i)^{-n} \, \ZZ}{m\,(2\pi i)^{-n}\,\ZZ}.$$
-    Finally, we have $G_\RR$-isomorphisms
-    \[ \iHom (\mu_m (\CC)^{(-n)}, \ZZ/m\ZZ) \cong
-    \iHom \Bigl(\frac{(2\pi i)^{-n} \, \ZZ}{m\,(2\pi i)^{-n}\,\ZZ}, \ZZ/m\ZZ\Bigr) \cong
-    \iHom ((2\pi i)^{-n}\,\ZZ, \ZZ/m\ZZ) \cong
-    \frac{(2\pi i)^n\,\ZZ}{m\,(2\pi i)^n\,\ZZ}, \]
-    where the last isomorphism is given by
-    $f \mapsto (2\pi i)^n \, f ((2\pi i)^{-n}\cdot 1)$.
-    Now
-    \[ \alpha^* \ZZ (n) \cong
-    \bigoplus_p \varinjlim_r \mu_{p^r} (\CC)^{\otimes n} \cong
-    \bigoplus_p \varinjlim_r \frac{(2\pi i)^n\,\ZZ}{p^r\,(2\pi i)^n\,\ZZ} \cong
-    \frac{(2\pi i)^n\,\QQ}{(2\pi i)^n\,\ZZ}. \]
-    This is a colimit of $G_\RR$-modules, since the transition morphisms are
-    $G_\RR$-equivariant.
+    where the dualization is given by
+    \[ \mathcal{D} (\mathcal{F}^\bullet) \dfn
+    R\iHom_X (\mathcal{F}^\bullet, \ZZ^c (0)). \]
+
+    Applying the exchange formula \eqref{eqn:exchange-formula-1} to our
+    situation, we get
+    \begin{equation}
+      R\iHom_X (j_{p!} \mu_{p^r}^{\otimes n} [-1], \ZZ^c_X (0)) \cong
+      R j_{p*} R\iHom_{X [1/p]} (\mu_{p^r}^{\otimes n} [-1], \ZZ^c_{X [1/p]} (0)).
+    \end{equation}
+
+    Using the other exchange formula \eqref{eqn:exchange-formula-2}, we may
+    identify the sheaf
+    $R\iHom_{X [1/p]} (\mu_{p^r}^{\otimes n} [-1], \ZZ^c_{X [1/p]} (0))$:
+    \begin{align}
+      \label{eqn:inverse-image-of-mu} R\iHom_{X [1/p]} (\mu_{p^r}^{\otimes n} [-1], \ZZ^c_{X [1/p]} (0)) & \cong R\iHom_{X[1/p]} (f_p^* \mu_{p^r}^{\otimes n} [-1], \ZZ^c_{X [1/p]} (0)) \\
+      \label{eqn:exchange-formula-applied} & \cong R f^!_p R\iHom_{\ZZ [1/p]} (\mu_{p^r}^{\otimes n} [-1], \ZZ^c_{\ZZ [1/p]} (0)) \\
+      \label{eqn:identification-of-Zc0-with-Gm} & \cong R f^!_p R\iHom_{\ZZ [1/p]} (\mu_{p^r}^{\otimes n} [-1], \mathbb{G}_\mathrm{m} [1]) \\
+      & \cong R f^!_p R\iHom_{\ZZ [1/p]} (\mu_{p^r}^{\otimes n}, \mathbb{G}_\mathrm{m}) [2] \\
+      & \cong R f^!_p \mu_{p^r}^{\otimes (1-n)} [2]
+    \end{align}
+
+    Here \eqref{eqn:inverse-image-of-mu} simply means that the sheaf
+    $\mu_{p^r}^{\otimes n}$ on $X[1/p]$ is the same as the inverse image of the
+    corresponding sheaf on $\Spec \ZZ [1/p]$. The quasi-isomorphism
+    \eqref{eqn:exchange-formula-applied} is the first exchange formula. Then,
+    \eqref{eqn:identification-of-Zc0-with-Gm} is the fact that the complex
+    $\ZZ^c_{\ZZ [1/p]} (0)$ is quasi-isomorphic to $\mathbb{G}_\mathrm{m} [1]$
+    according to \cite[Lemma 7.4]{Geisser-2010}. Thanks to
+    \cite[Theorem 1.2]{Geisser-2004}, we may identify the sheaf
+    $\mu_{p^r}^{\otimes (1-n)}$:
+    \begin{equation}
+      \mu_{p^r}^{\otimes (1-n)} \cong \ZZ_{\ZZ [1/p]}/p^r (1-n) =
+      \ZZ^c_{\ZZ [1/p]}/p^r (n) [-2].
+    \end{equation}
+
+    Then \cite[Corollary 7.9]{Geisser-2010} tells us that
+    \begin{equation}
+      R f^!_p \ZZ^c_{\ZZ [1/p]} / p^r (n) \cong \ZZ^c_{X [1/p]} / p^r (n).
+    \end{equation}
+
+    Finally, thanks to \cite[Theorem 7.2 (a)]{Geisser-2010} and
+    \cite[Proposition 2.3]{Geisser-2010}, we have
+    $\ZZ^c_{X [1/p]}/p^r (n) \cong j_p^*\ZZ^c_X/p^r (n)$, and all the above
+    gives
+    \begin{equation}
+      R\iHom_X (j_{p!} \mu_{p^r}^{\otimes n} [-1], \ZZ^c_X (0)) \cong
+      R j_{p*} j_p^* \ZZ^c_X/p^r (n) \cong \ZZ^c_X/p^r (n).
+    \end{equation}
+
+    After applying $R\Gamma (X_\et, -)$, we get a quasi-isomorphism of
+    complexes of abelian groups
+    \begin{equation}
+      \RHom (j_{p!} \mu_{p^r}^{\otimes n} [-1], \ZZ^c_X (0)) \cong
+      R\Gamma (X_\et, \ZZ^c_X/p^r (n)).
+    \end{equation}
+
+    Now according to the duality theorem \cite[Theorem 7.8]{Geisser-2010},
+    we have
+    \begin{equation}
+      \RHom (j_{p !} \mu_{p^r}^{\otimes n} [-1], \ZZ^c (0)) \cong
+      \RHom (R\widehat{\Gamma}_c (X_\et, j_{p !} \mu_{p^r}^{\otimes n} [-1]), \QQ/\ZZ [-2]).
+    \end{equation}
+
+    What we obtain at the end is a quasi-isomorphism
+    \[ R\Gamma (X_\et, \ZZ^c/p^r (n)) \cong
+    \RHom (R\widehat{\Gamma}_c (X_\et, j_{p !} \mu_{p^r}^{\otimes n} [-1]), \QQ/\ZZ [-2]). \]
+    This is almost what we need: if we apply $\RHom (-,\QQ/\ZZ [-2])$, then, as
+    $\widehat{H}^i_c (X_\et, j_{p!} \mu_{p^r}^{\otimes n} [-1])$ are
+    finite groups (because the sheaves $j_{p!} \mu_{p^r}^{\otimes n}$ are
+    constructible), we have
+    \begin{multline*}
+      \RHom (R\Gamma (X_\et, \ZZ^c/p^r (n)), \QQ/\ZZ[-2]) \cong\\
+      \RHom (\RHom (R\widehat{\Gamma}_c (X_\et, j_{p !} \mu_{p^r}^{\otimes n} [-1]), \QQ/\ZZ[-2]), \QQ/\ZZ[-2]) \\
+      \cong R\widehat{\Gamma}_c (X_\et, j_{p !} \mu_{p^r}^{\otimes n} [-1]). \qedhere
+    \end{multline*}
+  \end{proof}
+\end{proposition}
+
+Now to conclude the proof of Theorem~\ref{theorem-I}, we identify the complex
+on the right hand side of \eqref{eqn:duality-quasi-isomorphism-1}. For this we
+will need the conjecture $\mathbf{L}^c (X_\et, n)$.
+
+\begin{proposition}
+  \label{prop:a-quasi-isomorphism-with-dirlim}
+  Assuming the conjecture $\mathbf{L}^c (X_\et, n)$, there is
+  a quasi-isomorphism of complexes
+  \[ \varinjlim_m \RHom (R\Gamma (X_\et, \ZZ/m\ZZ^c (n)), \QQ/\ZZ [-2]) \cong
+  \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ/\ZZ [-2]). \]
+
+  \begin{proof}
+    As $\ZZ^c (n)$ is a complex of flat sheaves, the short exact sequence of
+    abelian groups
+    $$0 \to \ZZ \xrightarrow{\times m} \ZZ \to \ZZ/m\ZZ \to 0$$
+    induces a short exact sequence of sheaves
+    \begin{equation}
+      \label{short-exact-sequence-with-Z/m}
+      0 \to \ZZ^c (n) \xrightarrow{\times m} \ZZ^c (n) \to \ZZ/m\ZZ^c (n) \to 0
+    \end{equation}
+
+    The morphism $\ZZ^c (n) \to \ZZ/m\ZZ^c (n)$ induces certain morphisms in
+    cohomology
+    $$H^i (X_\et, \ZZ^c (n)) \to H^i (X_\et, \ZZ/m\ZZ^c (n)).$$
+    We claim that if we pass to the duals $\Hom (-, \QQ/\ZZ)$ and then to the
+    filtered colimits $\varinjlim_m$, then we obtain an isomorphism.
+    (Note that both $\Hom (-, \QQ/\ZZ)$ and $\varinjlim_m$ are exact.)
+
+    The short exact sequence \eqref{short-exact-sequence-with-Z/m} induces
+    a long exact sequence in cohomology
+    \[ \begin{tikzcd}[column sep=1em,font=\small]
+      \cdots\ar{r} & H^i (X_\et, \ZZ^c (n)) \ar{r}{\times m} & H^i (X_\et, \ZZ^c (n))\ar{r} \ar[draw=none]{d}[name=X, anchor=center]{} & H^i (X_\et, \ZZ/m\ZZ^c (n)) \ar[rounded corners,to path={ -- ([xshift=2ex]\tikztostart.east) |- (X.center) \tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget)}]{dll}[at end]{\delta^i} \\
+      & H^{i+1} (X_\et, \ZZ^c (n)) \ar{r}{\times m} & H^{i+1} (X_\et, \ZZ^c (n))\ar{r} & H^{i+1} (X_\et, \ZZ/m\ZZ^c (n)) \ar{r} & \cdots
+    \end{tikzcd} \]
+
+    We further have exact sequences
+    \[ \begin{tikzcd}[row sep=0.8em,column sep=1em,font=\small]
+      & & & \ker \delta^i\ar[equal]{d} \\
+      & H^i (X_\et, \ZZ^c (n)) \ar{r}{\times m} & H^i (X_\et, \ZZ^c (n))\ar{r} & H^i (X_\et, \ZZ^c (n))_m \ar{r} & 0 \\
+      0\ar{r} & {}_m H^{i+1} (X_\et, \ZZ^c (n)) \ar{r} & H^{i+1} (X_\et, \ZZ^c (n))\ar{r}{\times m} & H^{i+1} (X_\et, \ZZ^c (n)) \\
+      & \im \delta^i\ar[equal]{u}
+    \end{tikzcd} \]
+    that give us
+    \[ 0 \to H^i (X_\et, \ZZ^c (n))_m \to
+    H^i (X_\et, \ZZ/m\ZZ^c (n)) \to
+    {}_m H^{i+1} (X_\et, \ZZ^c (n)) \to 0 \]
+    Now if we take $\Hom (-,\QQ/\ZZ)$ and filtered colimits $\varinjlim_m$,
+    we get
+    \begin{multline}
+      \label{eqn:short-exact-sequence-with-dirlim}
+      0 \to \varinjlim_m \Hom ({}_m H^{i+1} (X_\et, \ZZ^c (n)), \QQ/\ZZ) \to \\
+      \varinjlim_m \Hom (H^i (X_\et, \ZZ/m\ZZ^c (n)), \QQ/\ZZ) \to
+      \varinjlim_m \Hom (H^i (X_\et, \ZZ^c (n))_m, \QQ/\ZZ) \to 0
+    \end{multline}
+
+    By the conjecture $\mathbf{L}^c (X_\et, n)$, the group
+    $H^{i+1} (X_\et, \ZZ^c (n))$ is finitely generated, and therefore
+    the first $\varinjlim_m$ in the short exact sequence
+    \eqref{eqn:short-exact-sequence-with-dirlim} vanishes, and we obtain
+    isomorphisms
+    \[ \varinjlim_m \Hom (H^i (X_\et, \ZZ^c (n))_m, \QQ/\ZZ) \xrightarrow{\cong}
+    \varinjlim_m \Hom (H^i (X_\et, \ZZ/m\ZZ^c (n)), \QQ/\ZZ). \]
+    It remains to note that the first $\varinjlim_m$ above is canonically
+    isomorphic to $\Hom (H^i (X_\et, \ZZ^c (n)), \QQ/\ZZ)$, again,
+    thanks to finite generation of $H^i (X_\et, \ZZ^c (n))$,
+    assuming the conjecture $\mathbf{L}^c (X_\et, n)$.
   \end{proof}
 \end{proposition}
 
@@ -455,7 +647,7 @@ lemmas are summarized in the below table.
   \renewcommand{\arraystretch}{1.5}
   \begin{tabular}{cc}
     \hline
-    complex & type \\
+    \textbf{complex} & \textbf{type} \\
     \hline
     $R\Gamma_c (X (\CC), \ZZ (n))$ & perfect \\
     $R\Gamma_c (G_\RR, X (\CC), \ZZ (n))$ & almost perfect \\
@@ -471,41 +663,12 @@ lemmas are summarized in the below table.
   \end{tabular}
 \end{center}
 
-First we analyze the usual, non-equivariant cohomology. The following result
-is well-known, but we include a proof for the sake of completeness.
-
-\begin{lemma}
-  The complex $R\Gamma_c (X (\CC), \ZZ (n))$ is perfect.
-
-  \begin{proof}
-    Everything relies on the fact that $X (\CC)$ has homotopy type of a finite
-    CW-complex.
-
-    If $X (\CC)$ is smooth, then we may reduce the problem to the case of pure
-    dimension $d$, and by Poincaré duality,
-    $$H^i_c (X (\CC), \ZZ) \cong H_{2d-i} (X (\CC), \ZZ),$$
-    where $H_{2d-i} (X (\CC), \ZZ)$ are finitely generated groups, trivial for
-    all but finitely many $i$, as $X (\CC)$ is homotopy equivalent to a finite
-    CW-complex, and the homology $H_\bullet (X (\CC), \ZZ)$ is homotopy
-    invariant.
-
-    To deal with the general case, we use induction on the dimension. If the
-    dimension is $0$, then the statement is obvious. For induction step,
-    consider the decomposition
-    $$U (\CC) \hookrightarrow X (\CC) \hookleftarrow Z (\CC)$$
-    where $Z (\CC)$ is the singular locus, having smaller dimension. This gives
-    us a distinguished triangle
-    \[ R\Gamma_c (U (\CC), \ZZ) \to
-    R\Gamma_c (X (\CC), \ZZ) \to
-    R\Gamma_c (Z (\CC), \ZZ) \to
-    R\Gamma_c (U (\CC), \ZZ) [1] \]
-    where $R\Gamma_c (U (\CC), \ZZ)$ is a perfect complex by the above argument,
-    and the complex $R\Gamma_c (Z (\CC), \ZZ)$ is perfect by induction. This
-    implies that $R\Gamma_c (X (\CC), \ZZ)$ is a perfect complex.
-  \end{proof}
-\end{lemma}
-
-For $\QQ/\ZZ$ coefficients, the following result will be useful.
+First we consider the usual, non-equivariant cohomology. As is well-known,
+$R\Gamma_c (X (\CC), \ZZ)$ are perfect complexes, i.e. the cohomology groups
+$H^i_c (X (\CC), \ZZ)$ are finitely generated and zero for $|i| \gg 0$.  The
+same is true for $H^i_c (X (\CC), \ZZ (n))$ (here the twist in $\ZZ (n)$ only
+changes the $G_\RR$-module structure). For $\QQ/\ZZ$ coefficients, the following
+result will be useful.
 
 \begin{lemma}
   \label{lemma:extensions-of-cofinite-type-groups}
@@ -774,225 +937,8 @@ Similarly for $\QQ/\ZZ$-coefficients, we have the following observation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{An arithmetic duality theorem}
-\label{sec:arithmetic-duality-theorem}
-
-At the heart of our constructions is a certain arithmetic duality theorem for
-cycle complexes obtained by Thomas Geisser in \cite{Geisser-2010}. The goal of
-this section is to deduce the following result from Geisser's duality.
-
-\begin{theorem}
-  \label{thm:duality}
-  Assuming the conjecture $\mathbf{L}^c (X_\et,n)$, there is a quasi-isomorphism
-  of complexes
-  \[ R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \xrightarrow{\cong}
-  \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ/\ZZ [-2]). \]
-  In particular, the cohomology of
-  $R\widehat{\Gamma}_c (X_\et, \ZZ (n))$ is of cofinite type.
-\end{theorem}
-
-Here $R\widehat{\Gamma}_c (X_\et, \ZZ (n))$ denotes the modified étale
-cohomology with compact support, which is reviewed in the appendix
-\ref{app:modified-cohomology-with-compact-support}. We note that
-\cite{Geisser-2010} uses the notation ``$R\Gamma_c$'' for our
-``$R\widehat{\Gamma}_c$'', but we take extra care to distinguish the two things,
-as we will also need the usual étale cohomology with compact support
-$R\Gamma_c (X_\et, \ZZ (n))$.
-
-We split our proof of Theorem~\ref{thm:duality} in two propositions.
-
-\begin{proposition}
-  For any $n < 0$ we have a quasi-isomorphism of complexes
-  \begin{equation}
-    \label{eqn:duality-quasi-isomorphism-1}
-    R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \cong
-    \varinjlim_m \RHom (R\Gamma (X_\et, \ZZ/m\ZZ^c (n)), \QQ/\ZZ [-2]).
-  \end{equation}
-
-  \begin{proof}
-    We unwind our definition of $\ZZ (n)$ for $n < 0$ and reduce everything to
-    the results from \cite{Geisser-2010}.
-
-    \vspace{1em}
-
-    As we have
-    $\ZZ (n) \dfn \bigoplus_p \varinjlim_r j_{p!} \mu_{p^r}^{\otimes n} [-1]$,
-    it will be enough to show that for every prime $p$ and $r=1,2,3,\ldots$
-    there is a quasi-isomorphism of complexes
-    \[ R\widehat{\Gamma}_c (X_\et, j_{p!} \mu_{p^r}^{\otimes n} [-1]) \cong
-    \RHom (R\Gamma (X_\et, \ZZ^c/p^r (n)), \QQ/\ZZ [-2]), \]
-    and then pass to the corresponding filtered colimits.
-
-    As in the Definition~\ref{dfn:sheaf-Z(n)}, here $j_p$ denotes the canonical
-    open immersion $j_p\colon X[1/p] \hookrightarrow X$. We further denote by
-    $f$ the structure morphism $X\to \Spec \ZZ$ and by $f_p$ the structure
-    morphism $X [1/p] \to \Spec \ZZ [1/p]$:
-
-    \[ \begin{tikzcd}
-      X [1/p]\ar[hookrightarrow]{r}{j_p}\ar{d}[swap]{f_p} & X\ar{d}{f} \\
-      \Spec \ZZ [1/p]\ar[hookrightarrow]{r} & \Spec \ZZ
-    \end{tikzcd} \]
-
-    As we are going to change the base scheme, let us write $\Hom_X (-,-)$ for
-    the $\Hom$ between sheaves on $X_\et$ and $\iHom_X (-,-)$ for the
-    internal $\Hom$. Instead of $\Hom_{\Spec R}$, we will simply write
-    $\Hom_R$.
-
-    By \cite[Proposition 7.10, (c)]{Geisser-2010}, we have the following
-    exchange formulas. If we work with complexes of constructible sheaves on the
-    étale site of schemes over the spectrum of a number ring
-    $\Spec\mathcal{O}$, then for a morphism $\phi$ of such schemes we have
-    \begin{align}
-      \label{eqn:exchange-formua-1} R \phi_* \mathcal{D} (\mathcal{F}) & \cong \mathcal{D} (R \phi_! \mathcal{F}),\\
-      \label{eqn:exchange-formua-2} R \phi^! \mathcal{D} (\mathcal{G}) & \cong \mathcal{D} (\phi^* \mathcal{G}),
-    \end{align}
-    where the dualization is given by
-    \[ \mathcal{D} (\mathcal{F}^\bullet) \dfn
-    R\iHom_X (\mathcal{F}^\bullet, \ZZ^c (0)). \]
-
-    Applying the exchange formula \eqref{eqn:exchange-formua-1} to our
-    situation, we get
-    \begin{equation}
-      R\iHom_X (j_{p!} \mu_{p^r}^{\otimes n} [-1], \ZZ^c_X (0)) \cong
-      R j_{p*} R\iHom_{X [1/p]} (\mu_{p^r}^{\otimes n} [-1], \ZZ^c_{X [1/p]} (0)).
-    \end{equation}
-
-    Using the other exchange formula \eqref{eqn:exchange-formua-2}, we may
-    identify the sheaf
-    $R\iHom_{X [1/p]} (\mu_{p^r}^{\otimes n} [-1], \ZZ^c_{X [1/p]} (0))$:
-    \begin{align}
-      \label{eqn:inverse-image-of-mu} R\iHom_{X [1/p]} (\mu_{p^r}^{\otimes n} [-1], \ZZ^c_{X [1/p]} (0)) & \cong R\iHom_{X[1/p]} (f_p^* \mu_{p^r}^{\otimes n} [-1], \ZZ^c_{X [1/p]} (0)) \\
-      \label{eqn:exchange-formula-applied} & \cong R f^!_p R\iHom_{\ZZ [1/p]} (\mu_{p^r}^{\otimes n} [-1], \ZZ^c_{\ZZ [1/p]} (0)) \\
-      \label{eqn:identification-of-Zc0-with-Gm} & \cong R f^!_p R\iHom_{\ZZ [1/p]} (\mu_{p^r}^{\otimes n} [-1], \mathbb{G}_\mathrm{m} [1]) \\
-      & \cong R f^!_p R\iHom_{\ZZ [1/p]} (\mu_{p^r}^{\otimes n}, \mathbb{G}_\mathrm{m}) [2] \\
-      & \cong R f^!_p \mu_{p^r}^{\otimes (1-n)} [2]
-    \end{align}
-
-    Here \eqref{eqn:inverse-image-of-mu} simply means that the sheaf
-    $\mu_{p^r}^{\otimes n}$ on $X[1/p]$ is the same as the inverse image of the
-    corresponding sheaf on $\Spec \ZZ [1/p]$. The quasi-isomorphism
-    \eqref{eqn:exchange-formula-applied} is the first exchange formula. Then,
-    \eqref{eqn:identification-of-Zc0-with-Gm} is the fact that the complex
-    $\ZZ^c_{\ZZ [1/p]} (0)$ is quasi-isomorphic to $\mathbb{G}_\mathrm{m} [1]$
-    according to \cite[Lemma 7.4]{Geisser-2010}. Thanks to
-    \cite[Theorem 1.2]{Geisser-2004}, we may identify the sheaf
-    $\mu_{p^r}^{\otimes (1-n)}$:
-    \begin{equation}
-      \mu_{p^r}^{\otimes (1-n)} \cong \ZZ_{\ZZ [1/p]}/p^r (1-n) =
-      \ZZ^c_{\ZZ [1/p]}/p^r (n) [-2].
-    \end{equation}
-
-    Then \cite[Corollary 7.9]{Geisser-2010} tells us that
-    \begin{equation}
-      R f^!_p \ZZ^c_{\ZZ [1/p]} / p^r (n) \cong \ZZ^c_{X [1/p]} / p^r (n).
-    \end{equation}
-
-    Finally, thanks to \cite[Theorem 7.2 (a)]{Geisser-2010} and
-    \cite[Proposition 2.3]{Geisser-2010}, we have
-    $\ZZ^c_{X [1/p]}/p^r (n) \cong j_p^*\ZZ^c_X/p^r (n)$, and all the above
-    gives
-    \begin{equation}
-      R\iHom_X (j_{p!} \mu_{p^r}^{\otimes n} [-1], \ZZ^c_X (0)) \cong
-      R j_{p*} j_p^* \ZZ^c_X/p^r (n) \cong \ZZ^c_X/p^r (n).
-    \end{equation}
-
-    After applying $R\Gamma (X_\et, -)$, we get a quasi-isomorphism of
-    complexes of abelian groups
-    \begin{equation}
-      \RHom (j_{p!} \mu_{p^r}^{\otimes n} [-1], \ZZ^c_X (0)) \cong
-      R\Gamma (X_\et, \ZZ^c_X/p^r (n)).
-    \end{equation}
-
-    Now according to the duality theorem \cite[Theorem 7.8]{Geisser-2010},
-    we have
-    \begin{equation}
-      \RHom (j_{p !} \mu_{p^r}^{\otimes n} [-1], \ZZ^c (0)) \cong
-      \RHom (R\widehat{\Gamma}_c (X_\et, j_{p !} \mu_{p^r}^{\otimes n} [-1]), \QQ/\ZZ [-2]).
-    \end{equation}
-
-    What we obtain at the end is a quasi-isomorphism
-    \[ R\Gamma (X_\et, \ZZ^c/p^r (n)) \cong
-    \RHom (R\widehat{\Gamma}_c (X_\et, j_{p !} \mu_{p^r}^{\otimes n} [-1]), \QQ/\ZZ [-2]). \]
-    This is almost what we need: if we apply $\RHom (-,\QQ/\ZZ [-2])$, then, as
-    $\widehat{H}^i_c (X_\et, j_{p!} \mu_{p^r}^{\otimes n} [-1])$ are
-    finite groups (because the sheaves $j_{p!} \mu_{p^r}^{\otimes n}$ are
-    constructible), we have
-    \begin{multline*}
-      \RHom (R\Gamma (X_\et, \ZZ^c/p^r (n)), \QQ/\ZZ[-2]) \cong\\
-      \RHom (\RHom (R\widehat{\Gamma}_c (X_\et, j_{p !} \mu_{p^r}^{\otimes n} [-1]), \QQ/\ZZ[-2]), \QQ/\ZZ[-2]) \\
-      \cong R\widehat{\Gamma}_c (X_\et, j_{p !} \mu_{p^r}^{\otimes n} [-1]). \qedhere
-    \end{multline*}
-  \end{proof}
-\end{proposition}
-
-Now to conclude the proof of Theorem~\ref{thm:duality}, we identify the complex
-on the right hand side of \eqref{eqn:duality-quasi-isomorphism-1}. For this we
-will need the conjecture $\mathbf{L}^c (X_\et, n)$.
-
-\begin{proposition}
-  \label{prop:a-quasi-isomorphism-with-dirlim}
-  Assuming the conjecture $\mathbf{L}^c (X_\et, n)$, there is
-  a quasi-isomorphism of complexes
-  \[ \varinjlim_m \RHom (R\Gamma (X_\et, \ZZ/m\ZZ^c (n)), \QQ/\ZZ [-2]) \cong
-  \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ/\ZZ [-2]). \]
-
-  \begin{proof}
-    As $\ZZ^c (n)$ is a complex of flat sheaves, the short exact sequence of
-    abelian groups
-    $$0 \to \ZZ \xrightarrow{\times m} \ZZ \to \ZZ/m\ZZ \to 0$$
-    induces a short exact sequence of sheaves
-    \begin{equation}
-      \label{short-exact-sequence-with-Z/m}
-      0 \to \ZZ^c (n) \xrightarrow{\times m} \ZZ^c (n) \to \ZZ/m\ZZ^c (n) \to 0
-    \end{equation}
-
-    The morphism $\ZZ^c (n) \to \ZZ/m\ZZ^c (n)$ induces certain morphisms in
-    cohomology
-    $$H^i (X_\et, \ZZ^c (n)) \to H^i (X_\et, \ZZ/m\ZZ^c (n)).$$
-    We claim that if we pass to the duals $\Hom (-, \QQ/\ZZ)$ and then to the
-    filtered colimits $\varinjlim_m$, then we obtain an isomorphism.
-    (Note that both $\Hom (-, \QQ/\ZZ)$ and $\varinjlim_m$ are exact.)
-
-    The short exact sequence \eqref{short-exact-sequence-with-Z/m} induces
-    a long exact sequence in cohomology
-    \[ \begin{tikzcd}[column sep=1em,font=\small]
-      \cdots\ar{r} & H^i (X_\et, \ZZ^c (n)) \ar{r}{\times m} & H^i (X_\et, \ZZ^c (n))\ar{r} \ar[draw=none]{d}[name=X, anchor=center]{} & H^i (X_\et, \ZZ/m\ZZ^c (n)) \ar[rounded corners,to path={ -- ([xshift=2ex]\tikztostart.east) |- (X.center) \tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget)}]{dll}[at end]{\delta^i} \\
-      & H^{i+1} (X_\et, \ZZ^c (n)) \ar{r}{\times m} & H^{i+1} (X_\et, \ZZ^c (n))\ar{r} & H^{i+1} (X_\et, \ZZ/m\ZZ^c (n)) \ar{r} & \cdots
-    \end{tikzcd} \]
-
-    We further have exact sequences
-    \[ \begin{tikzcd}[row sep=0.8em,column sep=1em,font=\small]
-      & & & \ker \delta^i\ar[equal]{d} \\
-      & H^i (X_\et, \ZZ^c (n)) \ar{r}{\times m} & H^i (X_\et, \ZZ^c (n))\ar{r} & H^i (X_\et, \ZZ^c (n))_m \ar{r} & 0 \\
-      0\ar{r} & {}_m H^{i+1} (X_\et, \ZZ^c (n)) \ar{r} & H^{i+1} (X_\et, \ZZ^c (n))\ar{r}{\times m} & H^{i+1} (X_\et, \ZZ^c (n)) \\
-      & \im \delta^i\ar[equal]{u}
-    \end{tikzcd} \]
-    that give us
-    \[ 0 \to H^i (X_\et, \ZZ^c (n))_m \to
-    H^i (X_\et, \ZZ/m\ZZ^c (n)) \to
-    {}_m H^{i+1} (X_\et, \ZZ^c (n)) \to 0 \]
-    Now if we take $\Hom (-,\QQ/\ZZ)$ and filtered colimits $\varinjlim_m$,
-    we get
-    \begin{multline}
-      \label{eqn:short-exact-sequence-with-dirlim}
-      0 \to \varinjlim_m \Hom ({}_m H^{i+1} (X_\et, \ZZ^c (n)), \QQ/\ZZ) \to \\
-      \varinjlim_m \Hom (H^i (X_\et, \ZZ/m\ZZ^c (n)), \QQ/\ZZ) \to
-      \varinjlim_m \Hom (H^i (X_\et, \ZZ^c (n))_m, \QQ/\ZZ) \to 0
-    \end{multline}
-
-    By the conjecture $\mathbf{L}^c (X_\et, n)$, the group
-    $H^{i+1} (X_\et, \ZZ^c (n))$ is finitely generated, and therefore
-    the first $\varinjlim_m$ in the short exact sequence
-    \eqref{eqn:short-exact-sequence-with-dirlim} vanishes, and we obtain
-    isomorphisms
-    \[ \varinjlim_m \Hom (H^i (X_\et, \ZZ^c (n))_m, \QQ/\ZZ) \xrightarrow{\cong}
-    \varinjlim_m \Hom (H^i (X_\et, \ZZ/m\ZZ^c (n)), \QQ/\ZZ). \]
-    It remains to note that the first $\varinjlim_m$ above is canonically
-    isomorphic to $\Hom (H^i (X_\et, \ZZ^c (n)), \QQ/\ZZ)$, again,
-    thanks to finite generation of $H^i (X_\et, \ZZ^c (n))$,
-    assuming the conjecture $\mathbf{L}^c (X_\et, n)$.
-  \end{proof}
-\end{proposition}
+\section{Some consecuences of Theorem~I}
+\label{sec:consecuences-of-theorem-I}
 
 We note that the conjecture $\mathbf{L}^c (X_\et, n)$ actually implies that the
 complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded.
@@ -1028,7 +974,7 @@ complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded.
     means that for $i < -2\,\dim X$ these groups are trivial.
 
     Now to see that $H^i (X_\et, \ZZ^c (n)) = 0$ for $i \gg 0$, note that the
-    duality theorem~\ref{thm:duality} gives
+    duality theorem~\ref{theorem-I} gives
     \[ \widehat{H}_c^i (X_\et, \ZZ (n)) \cong
     \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ/\ZZ), \]
     where $H^{2-i} (X_\et, \ZZ^c (n))$ is a finitely generated group by our
@@ -1073,7 +1019,7 @@ complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded.
     Recall that by the definition, $\ZZ (n) = \QQ/\ZZ (n) [-1]$.
     By Lemma~\ref{lemma:RGamma(Xet,Zc(n))-perfect}, the conjecture
     $\mathbf{L}^c (X_\et,n)$ implies that $R\Gamma (X_\et, \ZZ^c (n))$ is a
-    perfect complex, and by Theorem~\ref{thm:duality} we have
+    perfect complex, and by Theorem~\ref{theorem-I} we have
     \[ R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \cong
     \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ/\ZZ [-2]), \]
     so that $R\widehat{\Gamma}_c (X_\et, \ZZ (n))$ is of cofinite type.
@@ -1091,12 +1037,13 @@ complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded.
 \label{sec:RGamma-fg}
 
 \begin{definition}
+  \label{def:RGamma-fg}
   Assuming the conjecture $\mathbf{L}^c (X_\et,n)$, consider a morphism
   $\alpha_{X,n}$ in the derived category $\mathbf{D} (\ZZ)$ given by the
   composition
   \[ \begin{tikzcd}[column sep=4em]
     \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ[-2]) \ar{r}{\QQ \twoheadrightarrow \QQ/\ZZ}\ar{ddr}[swap]{\alpha_{X,n}} & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ/\ZZ[-2]) \\
-    & R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \ar{u}{\text{Theorem \ref{thm:duality}}}[swap]{\cong} \ar{d}{\text{proj.}} \\
+    & R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \ar{u}{\text{Theorem \ref{theorem-I}}}[swap]{\cong} \ar{d}{\text{proj.}} \\
     & R\Gamma_c (X_\et, \ZZ (n))
   \end{tikzcd} \]
 
@@ -1137,7 +1084,7 @@ it simplifies if $X$ has no real places.
     commutative diagram with distinguished columns:
     \[ \begin{tikzcd}
       \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2])\ar{d}{\alpha_{X,n}} \ar{r}{\mathrm{id}} & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2])\ar{d} \\
-      R\Gamma_c (X_\et, \ZZ (n))\ar{d} \ar{r}{\cong}[swap]{\text{Theorem \ref{thm:duality}}} & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ/\ZZ [-2])\ar{d} \\
+      R\Gamma_c (X_\et, \ZZ (n))\ar{d} \ar{r}{\cong}[swap]{\text{Theorem~\ref{theorem-I}}} & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ/\ZZ [-2])\ar{d} \\
       R\Gamma_\fg (X, \ZZ (n))\ar{d} \ar[dashed]{r}{\cong} & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \ZZ [-1])\ar{d} \\
       \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-1]) \ar{r}{\mathrm{id}} & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-1])
     \end{tikzcd} \]
@@ -1245,51 +1192,104 @@ it simplifies if $X$ has no real places.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Weil-étale complexes $R\Gamma_\Wc (X, \ZZ(n))$}
-\label{sec:RGamma-Wc}
+\section{Proof of Theorem~II}
+\label{sec:theorem-II}
 
-The goal of this section is to construct Weil-étale cohomology complexes
-$R\Gamma_\Wc (X, \ZZ(n))$. We begin with an auxiliary morphism. 
+The goal of this section is to prove Theorem~\ref{theorem-II}. We recall that it
+states that the morphism of complexes $u_\infty^*$, defined as the composition
+\[ \begin{tikzcd}
+  R\Gamma_c (X_\et, \ZZ(n)) \ar[equals]{d}\ar[dashed]{r}{u_\infty^*} & R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \\
+  R\Gamma_c (X_\et, \QQ/\ZZ (n)) [-1] \ar{r}{v_\infty^* [-1]} & R\Gamma_c (G_\RR, X (\CC), \QQ/\ZZ (n)) [-1] \ar{u}
+\end{tikzcd} \]
+is torsion. Here the morphism
+$v_\infty^*\colon R\Gamma_c (X_\et, \QQ/\ZZ (n)) \to R\Gamma_c (G_\RR, X (\CC), \QQ/\ZZ (n))$
+is induced by the comparison functor
+$\alpha^*\colon \mathbf{Sh} (X_\et) \to \mathbf{Sh} (G_\RR, X (\CC))$, as
+explained in Proposition~\ref{prop:inverse-image-gamma}. We first make sure that
+$\alpha^*$ identifies the sheaf $\QQ/\ZZ (n)$ on $X_\et$ from
+definition~\ref{dfn:sheaf-Z(n)} with the $G_\RR$-equivariant sheaf
+$\QQ/\ZZ (n) \dfn \frac{(2\pi i)^n\,\QQ}{(2\pi i)^n\,\ZZ}$ on $X (\CC)$.
 
-\begin{definition}
-  \label{dfn:u-infty}
-  We define
-  $v_\infty^*\colon R\Gamma_c (X_\et, \QQ/\ZZ (n)) \to R\Gamma_c (G_\RR, X (\CC), \QQ/\ZZ (n))$
-  as the morphism in the derived category $\mathbf{D} (\ZZ)$ induced by the
-  comparison of étale and analytic topology
-  \[ \Gamma_c (X_\et, \QQ/\ZZ (n)) \to
-  \Gamma_c (G_\RR, X (\CC), \alpha^* \QQ/\ZZ (n)) \cong
-  \Gamma_c (G_\RR, X (\CC), \QQ/\ZZ (n)) \]
-  (see Proposition~\ref{prop:inverse-image-gamma} and
-  \ref{propn:image-of-QZn-under-alpha}). Then we let
-  $u_\infty^*\colon R\Gamma_c (X_\et, \ZZ(n)) \to R\Gamma_c (G_\RR, X (\CC), \ZZ (n))$
-  be the composition
-  \[ R\Gamma_c (X_\et, \ZZ(n)) \dfn R\Gamma_c (X_\et, \QQ/\ZZ (n)) [-1]
-  \xrightarrow{v_\infty^* [-1]} R\Gamma_c (G_\RR, X (\CC), \QQ/\ZZ (n)) [-1] \to
-  R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \]
-  where the last arrow is induced by $\QQ/\ZZ (n) [-1] \to \ZZ (n)$, which comes
-  from the distinguished triangle of constant $G_\RR$-equivariant sheaves
-  $\ZZ (n) \to \QQ (n) \to \QQ/\ZZ (n) \to \ZZ (n) [1]$.
-\end{definition}
+\begin{proposition}
+  \label{propn:image-of-QZn-under-alpha}
+  Consider the comparison morphism
+  $\alpha^*\colon \mathbf{Sh} (X_\et) \to \mathbf{Sh} (G_\RR, X (\CC))$,
+  as described in
+  Appendix~\ref{app:modified-cohomology-with-compact-support}. For the sheaf
+  $\QQ/\ZZ (n)$ on $X_\et$ (see Definition~\ref{dfn:sheaf-Z(n)}) we have an
+  isomorphism of $G_\RR$-equivariant constant sheaves on $X (\CC)$
+  $$\alpha^* \QQ/\ZZ (n) \cong \QQ/\ZZ (n).$$
 
-The main result of this section is the following.
+  \begin{proof}
+    First of all, since $\alpha^*$ is the composition of certain inverse image
+    functors $\gamma^*$ and $\epsilon^*$ (which are left adjoint) and an
+    equivalence of categories $\delta_*$, the functor $\alpha^*$ preserves
+    colimits, and in particular
+    \begin{equation}
+      \label{eqn:alpha-star-commutes-with-colimits}
+      \alpha^* \QQ/\ZZ (n) \cong \bigoplus_p \varinjlim_r \alpha^* j_{p!} \mu_{p^r}^{\otimes n}.
+    \end{equation}
 
-\begin{theorem}
-  \label{thm:u-alpha-0}
-  Let $X$ be an arithmetic scheme and $n < 0$. Assume the conjecture
-  $\mathbf{L}^c (X_\et, n)$, so that the morphism $\alpha_{X,n}$ exists.
-  Then $u_\infty^* \circ \alpha_{X,n} = 0$.
-
-  \[ \begin{tikzcd}
-    \RHom (R\Gamma (X, \ZZ^c (n)), \QQ [-2]) \ar{d}[swap]{\alpha_{X,n}}\ar{dr}{= 0} \\
-      R\Gamma_c (X_\et, \ZZ (n)) \ar{r}{u_\infty^*} & R\Gamma_c (G_\RR, X (\CC), \ZZ (n))
+    Another formal observation is that the base change from $\Spec \ZZ$ to
+    $\Spec \CC$ factors through the base change to $\Spec \ZZ [1/p]$, and then
+    $j_p^* \circ j_{p!} = id_{\mathbf{Sh} (X [1/p]_\et)}$:
+    \[ \begin{tikzcd}
+      \mathbf{Sh} (X [1/p]_\et) \ar{r}{j_{p!}}\ar{drr}[swap]{id} & \mathbf{Sh} (X_\et) \ar{rr}{\gamma^*}\ar{dr}{j_p^*} & & \mathbf{Sh} (X_{\CC,\text{\it ét}}) \\
+      & & \mathbf{Sh} (X [1/p]_\et)\ar[dashed]{ur}
     \end{tikzcd} \]
-\end{theorem}
+    which means that we may safely erase ``$j_{p!}$'' in
+    \eqref{eqn:alpha-star-commutes-with-colimits}, and everything boils down to
+    calculating the sheaves
+    $$\alpha^* \mu_{p^r}^{\otimes n} = \alpha^* \iHom_{X [1/p]} (\mu_{p^r}^{\otimes (-n)}, \ZZ/p^r \ZZ).$$
+    As we base change to $\Spec \CC$, the étale sheaf $\mu_{p^r}$ simply becomes
+    the constant sheaf $\mu_{p^r} (\CC)$ on $X (\CC)$, and
+    $$\alpha^* \mu_{p^r}^{\otimes n} = \iHom_{X (\CC)} (\mu_{p^r}^{\otimes (-n)} (\CC), \ZZ/p^r \ZZ).$$
 
-This seems to be rather nontrivial; our argument (motivated by
-\cite{Flach-Morin-2018} where it is given under the assumption that $X$ is
-proper and regular) will be based on the following result about $\ell$-adic
-cohomology.
+    Here the twist is given by
+    $$\mu_m (\CC)^{\otimes (-n)} \dfn \underbrace{\mu_m (\CC)\otimes\cdots\otimes\mu_m (\CC)}_{-n},$$
+    with the $G_\RR$-action on tensor products $A\otimes B$ defined as usual
+    by $g\cdot (a\otimes b) = g\cdot a\otimes g\cdot b$, and the
+    $G_\RR$-action on $\iHom (A,B)$ being
+    $(g\cdot f) (a) \dfn g\cdot f (g^{-1}\cdot a)$.
+
+    What follows are well-known calculations, and we just need to take care of
+    the actions of $G_\RR$ and make sure that everything is equivariant. First
+    we see that there is a canonical isomorphism of $G_\RR$-modules
+    \begin{equation}
+      \label{eqn:roots-of-unity-iso-1}
+      \mu_m (\CC) \cong \frac{(2\pi i) \, \ZZ}{m\,(2\pi i)\,\ZZ}, \quad
+      e^{2\pi i k/m} \mapsto 2\pi i k.
+    \end{equation}
+    Now there is a $G_\RR$-isomorphism
+    \begin{align}
+      \label{eqn:roots-of-unity-iso-2}
+      \underbrace{(2\pi i)\,\ZZ\otimes\cdots\otimes (2\pi i)\,\ZZ}_{-n} & \xrightarrow{\cong} (2\pi i)^{-n}\,\ZZ,\\
+      \notag (2\pi i)\,a_1\otimes\cdots\otimes (2\pi i)\,a_{-n} & \mapsto (2\pi i)^{-n}\,a_1\cdots a_{-n},
+    \end{align}
+    and combining \eqref{eqn:roots-of-unity-iso-1}
+    and \eqref{eqn:roots-of-unity-iso-2}, we obtain
+    $$\mu_m (\CC)^{(-n)} \cong \frac{(2\pi i)^{-n} \, \ZZ}{m\,(2\pi i)^{-n}\,\ZZ}.$$
+    Finally, we have $G_\RR$-isomorphisms
+    \[ \iHom (\mu_m (\CC)^{(-n)}, \ZZ/m\ZZ) \cong
+    \iHom \Bigl(\frac{(2\pi i)^{-n} \, \ZZ}{m\,(2\pi i)^{-n}\,\ZZ}, \ZZ/m\ZZ\Bigr) \cong
+    \iHom ((2\pi i)^{-n}\,\ZZ, \ZZ/m\ZZ) \cong
+    \frac{(2\pi i)^n\,\ZZ}{m\,(2\pi i)^n\,\ZZ}, \]
+    where the last isomorphism is given by
+    $f \mapsto (2\pi i)^n \, f ((2\pi i)^{-n}\cdot 1)$.
+    Now
+    \[ \alpha^* \ZZ (n) \cong
+    \bigoplus_p \varinjlim_r \mu_{p^r} (\CC)^{\otimes n} \cong
+    \bigoplus_p \varinjlim_r \frac{(2\pi i)^n\,\ZZ}{p^r\,(2\pi i)^n\,\ZZ} \cong
+    \frac{(2\pi i)^n\,\QQ}{(2\pi i)^n\,\ZZ}. \]
+    This is a colimit of $G_\RR$-modules, since the transition morphisms are
+    $G_\RR$-equivariant.
+  \end{proof}
+\end{proposition}
+
+We proceed with our proof of Theorem~\ref{theorem-II}. This seems to be rather
+nontrivial; our argument (motivated by \cite{Flach-Morin-2018} where it is given
+under the assumption that $X$ is proper and regular) will be based on the
+following result about $\ell$-adic cohomology.
 
 \begin{proposition}
   \label{prop:l-adic-cohomology-key-lemma}
@@ -1487,23 +1487,19 @@ cohomology.
   \end{proof}
 \end{proposition}
 
-\begin{proof}[We are now ready to prove Theorem~\ref{thm:u-alpha-0}]
-  The morphism $\alpha_{X,n}$ is defined on
-  $$\RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]),$$
-  which is a complex of $\QQ$-vector spaces, so it will be enough to show that
-  $v_\infty^*$ is a torsion element in the abelian group
-  $$\Hom_{\mathbf{D} (\ZZ)} (R\Gamma_c (X_\et, \QQ/\ZZ (n)), \, R\Gamma_c (G_\RR, X (\CC), \QQ/\ZZ (n))).$$
-
-  The complexes $R\Gamma_c (X_\et, \QQ/\ZZ (n))$ and
+\begin{proof}[Proof of Theorem~\ref{theorem-II}]
+  By Definition~\ref{dfn:u-infty}, this amounts to showing that the morphism
+  $$v_\infty^*\colon R\Gamma_c (X_\et, \QQ/\ZZ (n)) \to R\Gamma_c (G_\RR, X (\CC), \QQ/\ZZ (n))$$
+  is torsion. The complexes $R\Gamma_c (X_\et, \QQ/\ZZ (n))$ and
   $R\Gamma_c (G_\RR, X (\CC), \QQ/\ZZ (n))$ are almost of cofinite type by
   Lemma~\ref{lemma:RGammac(Xet,Z(n))-almost-cofinite-type} and
   \ref{lemma:RGammac(GR,X(C),Q/Z(n))-almost-cofinite-type} respectively.
   Therefore, according to \ref{lemma:torsion-morphisms-in-D(Z)}, to show that
-  $v^*_\infty\colon R\Gamma_c (X_\et, \QQ/\ZZ (n)) \to R\Gamma_c (G_\RR, X (\CC), \QQ/\ZZ (n))$
-  is torsion in $\mathbf{D} (\ZZ)$, it is enough to show that the corresponding
-  morphisms on the maximal divisible subgroups
+  $v^*_\infty\colon R\Gamma_c (X_\et, \QQ/\ZZ (n)) \to R\Gamma_c (G_\RR, X
+  (\CC), \QQ/\ZZ (n))$ is torsion in $\mathbf{D} (\ZZ)$, it is enough to show
+  that the corresponding morphisms on the maximal divisible subgroups
   \[ H^i_c (v^*_\infty)_{div}\colon H^i_c (X_\et, \QQ/\ZZ (n))_{div} \to
-  H^i_c (G_\RR, X (\CC), \QQ/\ZZ (n))_{div} \]
+     H^i_c (G_\RR, X (\CC), \QQ/\ZZ (n))_{div} \]
   are all trivial. The morphism $H^i_c (v^*_\infty)$ factors through
   $H^i_c (X_{\overline{\QQ}, \text{\it ét}}, \mu^{\otimes n})^{G_\QQ}$, where
   $\mu^{\otimes n}$ is the sheaf of all roots of unity on
@@ -1520,6 +1516,31 @@ cohomology.
   where all summands are trivial according to
   \ref{prop:l-adic-cohomology-key-lemma}.
 \end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Weil-étale complexes $R\Gamma_\Wc (X, \ZZ(n))$}
+\label{sec:RGamma-Wc}
+
+The goal of this section is to construct Weil-étale cohomology complexes
+$R\Gamma_\Wc (X, \ZZ(n))$.
+
+\begin{lemma}
+  Let $X$ be an arithmetic scheme and $n < 0$. Assume the conjecture
+  $\mathbf{L}^c (X_\et, n)$, so that the morphism $\alpha_{X,n}$ exists.
+  Then $u_\infty^* \circ \alpha_{X,n} = 0$.
+
+  \[ \begin{tikzcd}
+    \RHom (R\Gamma (X, \ZZ^c (n)), \QQ [-2]) \ar{d}[swap]{\alpha_{X,n}}\ar{dr}{= 0} \\
+      R\Gamma_c (X_\et, \ZZ (n)) \ar{r}{u_\infty^*} & R\Gamma_c (G_\RR, X (\CC), \ZZ (n))
+    \end{tikzcd} \]
+
+  \begin{proof}
+    The morphism $\alpha_{X,n}$ is defined on the complex of $\QQ$-vector spaces
+    $\RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2])$, and $u_\infty^*$ is torsion
+    by Theorem~\ref{theorem-II}.
+  \end{proof}
+\end{lemma}
 
 \begin{definition}
   We let
@@ -1577,9 +1598,8 @@ cohomology.
       \Hom_{\mathbf{D} (\ZZ)} (R\Gamma_\fg (X,\ZZ (n)), R\Gamma_c (G_\RR, X (\CC), \ZZ (n)))\otimes_\ZZ \QQ \to\\
       \Hom_{\mathbf{D} (\ZZ)} (R\Gamma_c (X_\et, \ZZ (n)), R\Gamma_c (G_\RR, X (\CC), \ZZ (n)))\otimes_\ZZ \QQ
     \end{multline*}
-    is mono as well. However, we just saw in the proof of \ref{thm:u-alpha-0}
-    that $u_\infty^*\otimes \QQ = 0$, and this implies that
-    $i_\infty^*\otimes \QQ = 0$.
+    is mono as well. However, $u_\infty^*\otimes \QQ = 0$ by
+    Theorem~\ref{theorem-II}, and this implies that $i_\infty^*\otimes \QQ = 0$.
   \end{proof}
 \end{proposition}
 
@@ -1587,7 +1607,8 @@ Now we are ready to define Weil-étale complexes.
 
 \begin{definition}
   \label{dfn:RGammaWc}
-  $R\Gamma_\Wc (X,\ZZ(n))$ is an object in the derived category
+  We let
+  $R\Gamma_\Wc (X,\ZZ(n))$ be an object in the derived category
   $\mathbf{D} (\ZZ)$ which is a mapping fiber of $i_\infty^*$:
   \[ R\Gamma_\Wc (X,\ZZ(n)) \to
   R\Gamma_\fg (X, \ZZ (n)) \xrightarrow{i_\infty^*}
@@ -1691,7 +1712,7 @@ Now we are ready to define Weil-étale complexes.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \pagebreak
-\appendix
+\begin{appendices}
 \section{Some homological algebra}
 \label{app:homological-algebra}
 
@@ -2040,28 +2061,28 @@ $$\alpha^*\colon \mathbf{Sh} (X_\et) \to \mathbf{Sh} (G_\RR, X (\CC)).$$
 
   \begin{proof}
     This is standard and follows from the functoriality of $\alpha^*$.
-    The first morphism may be described as
-    \begin{multline*}
-      \Gamma (X_\et, \mathcal{F}) \xrightarrow{\cong} \Hom_{\mathbf{Sh} (X_\et)} (\underline{\{ \ast \}}, \mathcal{F}) \to
-      \Hom_{\mathbf{Sh} (G_\RR, X (\CC))} (\alpha^*\underline{\{ \ast \}}, \alpha^* \mathcal{F}) \\
-      \xrightarrow{\cong} \Hom_{\mathbf{Sh} (G_\RR, X (\CC))} (\underline{\{ \ast \}}, \alpha^* \mathcal{F}) \xrightarrow{\cong}
-      \Gamma (G_\RR, X (\CC), \alpha^* \mathcal{F}).
-    \end{multline*}
-    For abelian sheaves, in the above formula one has to replace the constant
-    sheaf $\underline{\{\ast\}}$ with $\underline{\ZZ}$. The naturality is
-    easily seen from the above definition.
-
-    Now if $j\colon X \hookrightarrow \mathfrak{X}$ is a Nagata
-    compactification, we have the corresponding compactification
+    %% The first morphism may be described as
+    %% \begin{multline*}
+    %%   \Gamma (X_\et, \mathcal{F}) \xrightarrow{\cong} \Hom_{\mathbf{Sh} (X_\et)} (\underline{\{ \ast \}}, \mathcal{F}) \to
+    %%   \Hom_{\mathbf{Sh} (G_\RR, X (\CC))} (\alpha^*\underline{\{ \ast \}}, \alpha^* \mathcal{F}) \\
+    %%   \xrightarrow{\cong} \Hom_{\mathbf{Sh} (G_\RR, X (\CC))} (\underline{\{ \ast \}}, \alpha^* \mathcal{F}) \xrightarrow{\cong}
+    %%   \Gamma (G_\RR, X (\CC), \alpha^* \mathcal{F}).
+    %% \end{multline*}
+    %% For abelian sheaves, in the above formula one has to replace the constant
+    %% sheaf $\underline{\{\ast\}}$ with $\underline{\ZZ}$. The naturality is
+    %% easily seen from the above definition.
+    As for cohomology with compact support, if
+    $j\colon X \hookrightarrow \mathfrak{X}$ is a Nagata compactification,
+    we have the corresponding compactification
     $j (\CC)\colon X (\CC) \hookrightarrow \mathfrak{X} (\CC)$. The extension by
     zero morphism
     $j (\CC)_!\colon \mathbf{Sh} (X (\CC)) \to \mathbf{Sh} (\mathfrak{X} (\CC))$
-    restricts to the subcategory of $G_\RR$-equivariant sheaves: if
-    $\mathcal{F}$ is a $G_\RR$-equivariant sheaf on $X (\CC)$, then $j (\CC)_!
-    \mathcal{F}$ is a $G_\RR$-equivariant sheaf on $\mathfrak{X} (\CC)$ (this is
-    evident from the definition of equivariant sheaves as equivariant espaces
-    étalés). It should be clear from the definition of $\alpha^*$ that there is
-    a commutative diagram
+    restricts to the subcategory of $G_\RR$-equivariant sheaves:
+    if $\mathcal{F}$ is a $G_\RR$-equivariant sheaf on $X (\CC)$, then
+    $j (\CC)_!  \mathcal{F}$ is a $G_\RR$-equivariant sheaf on
+    $\mathfrak{X} (\CC)$ (this is evident from the definition of equivariant
+    sheaves as equivariant espaces étalés). It should be clear from the
+    definition of $\alpha^*$ that there is a commutative diagram
     \[ \begin{tikzcd}
       \mathbf{Sh} (X_\et) \ar{r}{\alpha^*}\ar{d}[swap]{j_!} & \mathbf{Sh} (G_\RR, X (\CC)) \ar{d}{j (\CC)_!} \\
       \mathbf{Sh} (\mathfrak{X}_\et) \ar{r}[swap]{\alpha^*_\mathfrak{X}} & \mathbf{Sh} (G_\RR, \mathfrak{X} (\CC))
@@ -2160,6 +2181,7 @@ $\widehat{H}^i_c (X_\et,\mathcal{F}) \to H^i_c (X_\et,\mathcal{F})$
 has $2$-torsion kernel and cokernel.
 
 For canonicity and functoriality, I refer to \cite[\S 2]{Geisser-Schmidt-2018}.
+\end{appendices}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
