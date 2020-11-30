@@ -306,24 +306,13 @@ Weil-étale complexes $R\Gamma_\Wc (X, \ZZ (n))$.
 
 First, \S\ref{sec:arithmetic-duality-theorem} is devoted to a proof of
 Theorem~\ref{theorem-I}. Some of its consequences are deduced in
-\S\ref{sec:consecuences-of-theorem-I}. Namely, if we assume the conjecture
-$\mathbf{L}^c (X_\et, n)$, then our complexes have the following
-type.
-\begin{center}
-  \renewcommand{\arraystretch}{1.5}
-  \begin{tabular}{cc}
-    \hline
-    \textbf{complex} & \textbf{type} \\
-    \hline
-    $R\Gamma (X_\et, \ZZ^c (n))$ & perfect \\
-    $R\widehat{\Gamma}_c (X_\et, \ZZ (n)) = R\widehat{\Gamma}_c (X_\et, \QQ/\ZZ (n)) [-1]$ & cofinite type \\
-    $R\widehat\Gamma_c (X_\et, \ZZ (n)) = R\Gamma_c (X_\et, \QQ/\ZZ (n)) [-1]$ & almost cofinite type \\
-    \hline
-  \end{tabular}
-\end{center}
-For this we first make a little digression in
-\S\ref{sec:GR-equivariant-cohomology} to analyze what kind of complexes
-we obtain for $G_\RR$-equivariant cohomology on $X (\CC)$.
+\S\ref{sec:consequences-of-theorem-I}. Namely, if we assume the conjecture
+$\mathbf{L}^c (X_\et, n)$, then $R\Gamma (X_\et, \ZZ^c (n))$ is an almost
+perfect complex, while $R\Gamma_c (X_\et, \ZZ (n))$ is almost of cofinite type
+in the sense of Definition~\ref{dfn:almost-of-(co)finite-type}. For this we
+first make a little digression in \S\ref{sec:GR-equivariant-cohomology} to
+analyze what kind of complexes we obtain for $G_\RR$-equivariant cohomology on
+$X (\CC)$.
 
 Theorem~\ref{theorem-I} is used in \S\ref{sec:RGamma-fg} to define a morphism
 $\alpha_{X,n}$ in the derived category (see definition~\ref{def:RGamma-fg}),
@@ -937,23 +926,22 @@ Similarly for $\QQ/\ZZ$-coefficients, we have the following observation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Some consecuences of Theorem~I}
-\label{sec:consecuences-of-theorem-I}
+\section{Some consequences of Theorem~I}
+\label{sec:consequences-of-theorem-I}
 
 We note that the conjecture $\mathbf{L}^c (X_\et, n)$ actually implies that the
-complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded.
+complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded from below.
 
 \begin{lemma}
-  \label{lemma:RGamma(Xet,Zc(n))-perfect}
+  \label{lemma:RGamma(Xet,Zc(n))-bounded-from-below}
   Assuming the conjecture $\mathbf{L}^c (X_\et, n)$, the complex
-  $R\Gamma (X_\et, \ZZ^c (n))$ is perfect.
+  $R\Gamma (X_\et, \ZZ^c (n))$ is bounded from below:
+  one has $H^i (X_\et, \ZZ^c (n)) = 0$ for $i < 2\dim X$.
 
   \begin{proof}
-    First we claim that
-    $$H^i (X_\et, \ZZ^c (n)) = 0\quad\text{for }i < -2\,\dim X.$$
     Since the complex of sheaves $\ZZ^c (n)$ is flat, the short exact sequence of
     abelian groups
-    $0 \to \ZZ \to \QQ \to \QQ/\ZZ \to 0$
+    $$0 \to \ZZ \to \QQ \to \QQ/\ZZ \to 0$$
     gives us a short exact sequence of étale sheaves
     $$0 \to \ZZ^c (n) \to \QQ^c (n) \to \QQ/\ZZ^c (n) \to 0$$
     and then applying $R\Gamma (X_\et, -)$, we obtain a distinguished
@@ -972,13 +960,6 @@ complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded.
     according to the conjecture $\mathbf{L}^c (X_\et, n)$, the groups
     $H^i (X_\et, \ZZ^c (n))$ are finitely generated over $\ZZ$. This
     means that for $i < -2\,\dim X$ these groups are trivial.
-
-    Now to see that $H^i (X_\et, \ZZ^c (n)) = 0$ for $i \gg 0$, note that the
-    duality theorem~\ref{theorem-I} gives
-    \[ \widehat{H}_c^i (X_\et, \ZZ (n)) \cong
-    \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ/\ZZ), \]
-    where $H^{2-i} (X_\et, \ZZ^c (n))$ is a finitely generated group by our
-    conjecture, and $\widehat{H}_c^i (X_\et, \ZZ (n)) = 0$ for $i \ll 0$.
   \end{proof}
 \end{lemma}
 
@@ -1006,28 +987,40 @@ complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded.
 
 \begin{lemma}
   \label{lemma:RGammac(Xet,Z(n))-almost-cofinite-type}
-  Assuming the conjecture $\mathbf{L}^c (X_\et,n)$, the complexes
-  \[ R\widehat{\Gamma}_c (X_\et, \ZZ (n)), ~
-  R\widehat{\Gamma}_c (X_\et, \QQ/\ZZ (n)), \quad
-  \text{(resp. }
-  R\Gamma_c (X_\et, \ZZ (n)), ~
-  R\Gamma_c (X_\et, \QQ/\ZZ (n))\text{).} \]
-  are of cofinite type (resp. almost of cofinite type) in the sense of
-  \ref{dfn:almost-of-(co)finite-type}.
+  Assuming the conjecture $\mathbf{L}^c (X_\et,n)$, we have the following
+  cohomology:
+  \begin{center}
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{cccc}
+      \hline
+      \textbf{groups} & \textbf{type} & $i \ll 0$ & $i \gg 0$ \\
+      \hline
+      $H^i (X_\et, \ZZ^c (n))$ & finitely generated & $0$ & finite $2$-torsion \\
+      $\widehat{H}^i_c (X_\et, \ZZ (n))$ & cofinite type & finite $2$-torsion & 0 \\
+      $H^i_c (X_\et, \ZZ (n))$ & cofinite type & $0$ & finite $2$-torsion \\
+      \hline
+    \end{tabular}
+  \end{center}
+  In particular, $R\Gamma (X_\et, \ZZ^c (n))$ is an almost perfect complex,
+  while $R\Gamma_c (X_\et, \ZZ (n))$ is almost of cofinite type in the sense of
+  Definition~\ref{dfn:almost-of-(co)finite-type}.
 
   \begin{proof}
-    Recall that by the definition, $\ZZ (n) = \QQ/\ZZ (n) [-1]$.
-    By Lemma~\ref{lemma:RGamma(Xet,Zc(n))-perfect}, the conjecture
-    $\mathbf{L}^c (X_\et,n)$ implies that $R\Gamma (X_\et, \ZZ^c (n))$ is a
-    perfect complex, and by Theorem~\ref{theorem-I} we have
-    \[ R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \cong
-    \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ/\ZZ [-2]), \]
-    so that $R\widehat{\Gamma}_c (X_\et, \ZZ (n))$ is of cofinite type.
-
-    As for $R\Gamma_c (X_\et, \ZZ (n))$, we have
-    $H^i_c (X_\et, \ZZ (n)) \cong \widehat{H}^i_c (X_\et, \ZZ (n))$
-    up to some finite $2$-torsion according to
+    The groups $H^i (X_\et, \ZZ^c (n))$ are finitely generated by the conjecture
+    $\mathbf{L}^c (X_\et,n)$, so the duality Theorem~\ref{theorem-I} implies that
+    $\widehat{H}^i_c (X_\et, \ZZ (n))$ are of cofinite type. The same holds for
+    $H^i_c (X_\et, \ZZ(n))$, since they differ by finite $2$-torsion according to
     Lemma~\ref{lemma:morphism-hat-Hc(Xet,Z(n))->Hc(Xet,Z(n))}.
+
+    By Lemma~\ref{lemma:RGamma(Xet,Zc(n))-bounded-from-below} we have
+    $H^i (X_\et, \ZZ^c (n)) = 0$ for $i \ll 0$, and therefore
+    $\widehat{H}^i_c (X_\et, \ZZ (n)) = 0$ for $i \gg 0$ by duality,
+    and then $H^i_c (X_\et, \ZZ (n))$ is finite $2$-torsion for $i \gg 0$
+    (again using Lemma~\ref{lemma:morphism-hat-Hc(Xet,Z(n))->Hc(Xet,Z(n))}).
+
+    For $i \ll 0$ we have $H^i_c (X_\et, \ZZ (n)) = 0$, so that
+    $\widehat{H}^i_c (X_\et, \ZZ (n))$ is finite $2$-torsion. By duality,
+    $H^i (X_\et, \ZZ^c (n))$ is finite $2$-torsion for $i \gg 0$.
   \end{proof}
 \end{lemma}
 
@@ -1096,7 +1089,8 @@ it simplifies if $X$ has no real places.
 
 \begin{proposition}
   \label{prop:RGammafg-almost-perfect}
-  The complex $R\Gamma_\fg (X, \ZZ (n))$ is almost perfect in the
+  Assuming the conjecture $\mathbf{L}^c (X_\et, n)$,
+  the complex $R\Gamma_\fg (X, \ZZ (n))$ is almost perfect in the
   sense of \ref{dfn:almost-of-(co)finite-type}, i.e. its cohomology groups
   $H^i_\fg (X, \ZZ (n)) \dfn H^i (R\Gamma_\fg (X, \ZZ (n)))$
   are finitely generated, trivial for $i \ll 0$, and only have $2$-torsion for
@@ -1110,14 +1104,17 @@ it simplifies if $X$ has no real places.
       & \Hom (H^{1-i} (X_\et, \ZZ^c (n)), \QQ)\ar{r}{H^{i+1} (\alpha_{X,n})} & H^{i+1}_c (X_\et, \ZZ (n))\ar{r} & \cdots
     \end{tikzcd} \]
 
-    First we observe that for $i \ll 0$ we have
-    $\widehat{H}_c^i (X_\et, \ZZ(n)) = H_c^i (X_\et, \ZZ(n)) = 0$, and then
-    \[ H^i_\fg (X, \ZZ(n)) \cong \Hom (H^{1-i} (X_\et, \ZZ^c (n)), \QQ)
-    = 0 \quad\text{by Lemma~\ref{lemma:RGamma(Xet,Zc(n))-perfect}}. \]
-    Similarly, for $i \gg 0$ holds $H^{2-i} (X_\et, \ZZ^c (n)) = 0$
-    thanks to Lemma~\ref{lemma:RGamma(Xet,Zc(n))-perfect}, and therefore
-    \[ H^i_\fg (X, \ZZ (n)) \cong H^i_c (X_\et, \ZZ(n))
-    = \text{finite }2\text{-torsion by Lemma~\ref{lemma:RGammac(Xet,Z(n))-almost-cofinite-type}}. \]
+    First we observe what happens for $|i| \gg 0$.
+    For $i \ll 0$ we have $H^i_c (X_\et, \ZZ (n)) = 0$, and therefore
+    $$H^i_\fg (X, \ZZ (n)) \cong \Hom (H^{1-i} (X_\et, \ZZ^c (n)), \QQ) = 0,$$
+    since the group $H^{1-i} (X_\et, \ZZ^c (n))$ is torsion by
+    Lemma~\ref{lemma:RGammac(Xet,Z(n))-almost-cofinite-type}.
+    Similarly, the complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded from below by
+    Lemma~\ref{lemma:RGamma(Xet,Zc(n))-bounded-from-below}, and therefore
+    for $i \gg 0$ we have
+    $\Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ) = 0$, so that
+    $H^i_\fg (X, \ZZ (n)) \cong H^i_c (X_\et, \ZZ (n))$, which is finite
+    $2$-torsion by Lemma~\ref{lemma:RGammac(Xet,Z(n))-almost-cofinite-type}.
 
     Now we consider short exact sequences
     \[ \begin{tikzcd}[row sep=0.5em]
@@ -1131,8 +1128,9 @@ it simplifies if $X$ has no real places.
     \widehat{H}^i_c (X_\et, \ZZ (n)) \to H^i_c (X_\et, \ZZ (n)) \]
 
     We recall from Lemma~\ref{lemma:morphism-hat-Hc(Xet,Z(n))->Hc(Xet,Z(n))}
-    that the morphism $\widehat{H}^i_c (X_\et, \ZZ (n)) \to H^i_c (X_\et, \ZZ
-    (n))$ has finite $2$-torsion kernel and cokernel.
+    that the morphism
+    $\widehat{H}^i_c (X_\et, \ZZ (n)) \to H^i_c (X_\et, \ZZ (n))$ has finite
+    $2$-torsion kernel and cokernel.
 
     The group $H^{2-i} (X_\et, \ZZ^c (n))$ is finitely generated
     according to the conjecture $\mathbf{L}^c (X_\et, n)$. If this
@@ -1207,7 +1205,7 @@ is induced by the comparison functor
 $\alpha^*\colon \mathbf{Sh} (X_\et) \to \mathbf{Sh} (G_\RR, X (\CC))$, as
 explained in Proposition~\ref{prop:inverse-image-gamma}. We first make sure that
 $\alpha^*$ identifies the sheaf $\QQ/\ZZ (n)$ on $X_\et$ from
-definition~\ref{dfn:sheaf-Z(n)} with the $G_\RR$-equivariant sheaf
+Definition~\ref{dfn:sheaf-Z(n)} with the $G_\RR$-equivariant sheaf
 $\QQ/\ZZ (n) \dfn \frac{(2\pi i)^n\,\QQ}{(2\pi i)^n\,\ZZ}$ on $X (\CC)$.
 
 \begin{proposition}
