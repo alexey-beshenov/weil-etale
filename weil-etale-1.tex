@@ -26,6 +26,8 @@
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\ZZ}{\mathbb{Z}}
 
+\renewcommand{\AA}{\mathbb{A}}
+
 \renewcommand{\emptyset}{\varnothing}
 
 \newcommand{\et}{\text{\it ét}}
@@ -230,7 +232,8 @@ conjecture.
 Here ``L'' stays for ``Lichtenbaum''. This is analogous to the conjecture
 $\mathbf{L} (X_\et,n)$ in \cite[\S 3.2]{Flach-Morin-2018}. Our construction of
 Weil-étale complexes $R\Gamma_\Wc (X,\ZZ(n))$ will assume
-$\mathbf{L}^c (X_\et,n)$.
+$\mathbf{L}^c (X_\et,n)$. See \S\ref{sec:known-cases-of-Lc-Xet-n} for the
+particular cases when the conjecture is known.
 
 \subsection*{Main results}
 
@@ -238,7 +241,7 @@ Before outlining the construction of Weil-étale cohomology, we state the main
 results of this paper that make it possible. One of our principal objects is the
 following complex of abelian sheaves $\ZZ (n)$ on $X_\et$.
 
-\begin{definition}[{\cite[\S 3.1]{Flach-Morin-2018}}]
+\begin{definition}[{\cite[\S 3.1]{Flach-Morin-2018}}, {\cite[\S 7]{Geisser-2004}}]
   \label{dfn:sheaf-Z(n)}
   Let $X$ be an arithmetic scheme and $n < 0$. For a prime $p$, consider
   the localization $X [1/p]$, and let $\mu_{p^r}$ be the sheaf of $p^r$-th
@@ -328,14 +331,16 @@ of the involved complexes, it turns out that $R\Gamma_\fg (X, \ZZ(n))$ is
 defined up to a \emph{unique} isomorphism in the derived category (something one
 usually does not expect from a cone).
 
-Then in \S\ref{sec:theorem-II} we establish Theorem~\ref{theorem-II},
-and finally, it is used in \S\ref{sec:RGamma-Wc} to define Weil-étale complexes
+Then in \S\ref{sec:theorem-II} we establish Theorem~\ref{theorem-II}, and it is
+used in \S\ref{sec:RGamma-Wc} to define Weil-étale complexes
 $R\Gamma_\Wc (X, \ZZ(n))$. For this we deduce from Theorem~\ref{theorem-II} that
 $u_\infty^* \circ \alpha_{X,n} = 0$, which implies that there exists a morphism
 in the derived category
 $$i_\infty^*\colon R\Gamma_\fg (X, \ZZ (n)) \to R\Gamma_c (G_\RR, X (\CC), \ZZ(n))$$
 (see the diagram below). We pick a mapping fiber of $i_\infty^*$ and call it
 $R\Gamma_\Wc (X, \ZZ (n))$, which turns out to be a perfect complex.
+Finally, in \S\ref{sec:known-cases-of-Lc-Xet-n} we consider the cases of $X$ for
+which the conjecture $\mathbf{L}^c (X_\et, n)$ is known, and hence our results hold unconditionally.
 
 There are two appendices to this paper: Appendix~\ref{app:homological-algebra}
 collects some lemmas from homological algebra, and
@@ -1161,31 +1166,41 @@ it simplifies if $X$ has no real places.
 
 \begin{proposition}
   \label{prop:tensoring-RGammafg-with-Z/m-and-Q}
-   Consider a distinguished triangle defining $R\Gamma_\fg (X, \ZZ (n))$:
-   \[ \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]) \xrightarrow{\alpha_{X,n}}
-   R\Gamma_c (X_\et, \ZZ (n)) \xrightarrow{f}
-   R\Gamma_\fg (X, \ZZ (n)) \xrightarrow{g}
-   \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-1]) \]
+  Assume the conjecture $\mathbf{L}^c (X_\et,n)$ holds and consider the
+  distinguished triangle defining $R\Gamma_\fg (X, \ZZ (n))$:
+  \[ \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]) \xrightarrow{\alpha_{X,n}}
+     R\Gamma_c (X_\et, \ZZ (n)) \xrightarrow{f}
+     R\Gamma_\fg (X, \ZZ (n)) \xrightarrow{g}
+     \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-1]) \]
 
-   \begin{enumerate}
-   \item[1)] For each $m = 1,2,3$ the morphism $f$ induces an isomorphism
-     \[ f\otimes \ZZ/m\ZZ\colon
-     R\Gamma_c (X_\et, \ZZ (n))\otimes_\ZZ^\mathbf{L} \ZZ/m\ZZ \xrightarrow{\cong}
-     R\Gamma_\fg (X, \ZZ (n))\otimes_\ZZ^\mathbf{L} \ZZ/m\ZZ \]
+  \begin{enumerate}
+  \item[1)] The morphism $g$ induces an isomorphism
+    \[ g\otimes \QQ\colon R\Gamma_\fg (X, \ZZ (n)) \otimes_\ZZ \QQ \xrightarrow{\cong}
+       \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-1]).\]
 
-   \item[2)] The morphism $g$ induces an isomorphism
-     \[ g\otimes \QQ\colon R\Gamma_\fg (X, \ZZ (n)) \otimes_\ZZ \QQ \xrightarrow{\cong}
-     \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-1]).\]
-   \end{enumerate}
+  \item[2)] For each $m = 1,2,3$ the morphism $f$ induces an isomorphism
+    \[ f\otimes \ZZ/m\ZZ\colon
+       R\Gamma_c (X_\et, \ZZ (n))\otimes_\ZZ^\mathbf{L} \ZZ/m\ZZ \xrightarrow{\cong}
+       R\Gamma_\fg (X, \ZZ (n))\otimes_\ZZ^\mathbf{L} \ZZ/m\ZZ \]
+    
+  \item[3)] For any prime $\ell$ the morphism $f$ induces an isomorphism
+    $$\varprojlim_r H_c (X_\et, \ZZ/\ell^r (n)) \cong H_\fg (X, \ZZ (n)) \otimes \ZZ_\ell.$$
+  \end{enumerate}
+  
+  \begin{proof}
+    The cohomology groups $H_c^i (X_\et, \ZZ (n))$ are all torsion, and
+    therefore one has $R\Gamma_c (X_\et, \ZZ (n)) \otimes_\ZZ \QQ \cong 0$ in
+    the derived category. Similarly, the complexes
+    $\RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [\cdots])$ consist of $\QQ$-vector
+    spaces, so they are killed by tensoring with $\ZZ/m\ZZ$.
+    This proves 1) and 2).
 
-   \begin{proof}
-     The complexes $\RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [\cdots])$ consist of
-     $\QQ$-vector spaces, so they are killed by tensoring with
-     $\ZZ/m\ZZ$. Similarly, the cohomology groups $H_c^i (X_\et, \ZZ (n))$ are
-     all torsion, and therefore one has
-     $R\Gamma_c (X_\et, \ZZ (n)) \otimes_\ZZ \QQ \cong 0$ in the derived
-     category.
-   \end{proof}
+    Now 2) implies 3): by finite generation of $H_\fg^i (X, \ZZ (n))$, we have
+    \[ \varprojlim_r H_c (X_\et, \ZZ/\ell^r (n)) \stackrel{\text{2)}}{\cong}
+      \varprojlim_r H_\fg (X, \ZZ/\ell^r (n)) \cong
+      \varprojlim_r H_\fg (X, \ZZ (n))/\ell^r \cong
+      H_\fg^i (X, \ZZ (n)) \otimes \ZZ_\ell. \qedhere \]
+  \end{proof}
 \end{proposition}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1704,6 +1719,257 @@ Now we are ready to define Weil-étale complexes.
     Finally, according to \ref{prop:RGamma-fg-for-X(R)-empty}, we have
     an isomorphism
     $R\Gamma_\fg (X, \ZZ (n)) \cong \RHom (R\Gamma (X_\et, \ZZ^c (n)), \ZZ [-1])$.
+  \end{proof}
+\end{proposition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Known cases of the conjectutre $\mathbf{L}^c (X_\et,n)$}
+\label{sec:known-cases-of-Lc-Xet-n}
+
+Since the main constructions of this paper assume the conjecture
+$\mathbf{L}^c (X_\et,n)$, here we list some particular cases when it is known to
+hold, and therefore gives unconditional results. This section follows
+\cite[\S 5]{Morin-2014} very closely. For an arithmetic scheme $X$, we formulate
+the following conjecture that is the conjunction of $\mathbf{L}^c (X_\et,n)$ for
+all $n < 0$.
+
+\begin{conjecture*}
+  $\mathbf{L}^c (X_\et)$: the cohomology groups $H^i (X_\et, \ZZ^c (n))$ are
+  finitely generated for all $i \in \ZZ$ and $n < 0$.
+\end{conjecture*}
+
+We note that this is similar to the conjecture
+\cite[Definition~5.8]{Morin-2014}, the only difference being that Morin also
+requires finite generation of $H^i (X_\et, \ZZ^c (0))$ for $i \le 0$.
+
+The conjecture $\mathbf{L}^c (X_\et)$ is known for number rings, and also for
+certain varieties over finite fields. As in \cite{Soule-1984},
+\cite{Geisser-2004}, and \cite{Morin-2014}, we consider the following class.
+
+\begin{definition}
+  Let $A (\FF_q)$ be the full subcategory of the category of smooth projective
+  varieties over a finite field $\FF_q$ generated by products of curves and the
+  following operations.
+  \begin{enumerate}
+  \item[1)] If $X$ and $Y$ lie in $A (\FF_q)$, then $X \sqcup Y$ lies
+    $A (\FF_q)$.
+  \item[2)] If $Y$ lies in $A (\FF_q)$ and there are morphisms $c\colon X\to Y$
+    and $c'\colon Y\to X$ in the category of Chow motives such that
+    $c'\circ c\colon X\to X$ is a multiplication by constant, then
+    $X$ lies in $A (\FF_q)$.
+  \item[3)] If $\FF_{q^m}/\FF_q$ is a finite extension and
+    $X_{\FF_q^m} = X \times_{\Spec \FF_q} \Spec \FF_{q^m}$ lies in
+    $A (\FF_{q^m})$, then $X$ lies in $A (\FF_q)$.
+  \item[4)] If $X$ and $Y$ lie in $A (\FF_q)$, and $Y$ is a closed subscheme of
+    $X$, then the blowup of $X$ along $Y$ lies in $A (\FF_q)$.
+  \end{enumerate}
+\end{definition}
+
+\begin{lemma}
+  \label{lemma:Lc(Xet)-holds-for-OF-and-A(Fq)}
+  The conjecture $\mathbf{L}^c (X_\et)$ holds in the following cases.
+
+  \begin{enumerate}
+  \item[1)] $X = \Spec \mathcal{O}_F$ for a number field $F$.
+
+  \item[2)] $X$ is a variety over a finite field that belongs to $A (\FF_q)$.
+  \end{enumerate}
+
+  \begin{proof}
+    For part 1), by \cite[Theorem~5.1~(b)]{Morin-2014}, the groups
+    $H^i (X_\et, \ZZ(n))$ are finitely generated for all $i \in \ZZ$ and
+    $n \ge 2$, where $\ZZ (n)$ denotes Bloch's cycle complex. If
+    $X \to \Spec \ZZ$ is proper of pure dimension $d$, then
+    $\ZZ (n) = \ZZ^c (d-n) [-2d]$. In this particular case $d = 1$ and $n < 0$.
+
+    Part 2) is proved in \cite[Proposition~5.7]{Morin-2014}.
+  \end{proof}
+\end{lemma}
+
+\begin{lemma}
+  \label{lemma:Lc(Xet)-operations}
+  As always, let $n < 0$ be a strictly negative integer.
+
+  \begin{enumerate}
+  \item[1)] Let $X$ be an arithmetic scheme, $Z \subset X$ a closed subscheme
+    and $U \dfn X\setminus Z$ its open complement. If the conjecture
+    $\mathbf{L}^c (Y_\et,n)$ holds for two schemes of $Y = X,Z,U$, then it holds
+    for the third.
+
+  \item[2)] For a finite disjoint union of arithmetic schemes
+    $X = \coprod_{1 \le j \le p} X_j$, the conjecture $\mathbf{L}^c (X_\et,n)$
+    is equivalent to the conjunction of $\mathbf{L}^c (X_{j,\et},n)$ for all
+    $1 \le j \le p$.
+
+  \item[3)] For the relative affine space $\AA^r_X = \AA^r \times_{\Spec \ZZ} X$
+    the conjectures $\mathbf{L}^c (\AA^r_{X,\et},n)$ and
+    $\mathbf{L}^c (X_\et,n-r)$ are equivalent.
+
+  \item[4)] Let $\{ U_i \to X \}_{i \in I}$ be a finite surjective family of
+    étale morphisms. For $(i_0,\ldots,i_p) \in I^{p+1}$ denote
+    $U_{i_0,\ldots,i_p} \dfn U_{i_0} \times_X \cdots \times_X U_{i_p}$.
+    If the conjecture $\mathbf{L}^c (U_{i_0,\ldots,i_p, \et},n)$ holds for any
+    $(i_0,\ldots,i_p)$, then $\mathbf{L}^c (X_\et,n)$ holds as well.
+  \end{enumerate}
+
+  \begin{proof}
+    For part 1), according to \cite[Corollary~7.2]{Geisser-2010}, there is a
+    distinguished triangle
+    \[ R\Gamma (Z_\et, \ZZ^c (n)) \to
+       R\Gamma (X_\et, \ZZ^c (n)) \to
+       R\Gamma (U_\et, \ZZ^c (n)) \to
+       R\Gamma (Z_\et, \ZZ^c (n)) [1] \]
+    and the claim follows from the corresponding long exact sequence
+    \[ \cdots \to H^i (Z_\et, \ZZ^c (n)) \to
+       H^i (X_\et, \ZZ^c (n)) \to
+       H^i (U_\et, \ZZ^c (n)) \to
+       H^{i+1} (Z_\et, \ZZ^c (n)) \to \cdots \]
+
+    Part 2) is immediate from
+    $H^i (X_\et, \ZZ^c (n)) \cong \bigoplus_{1 \le j \le p} H^i (X_{j,\et}, \ZZ^c (n))$.
+
+    Part 3) is a consequence of the isomorphism
+    $H^i (\AA^r_{X,\et}, \ZZ^c (n)) \cong H^{i+2r} (X_\et, \ZZ^c (n-r))$
+    proved in \cite[Lemma~5.11]{Morin-2014}.
+
+    Finally, for part 4), thanks to the Cartan--Leray spectral sequence
+    $$E_1^{p,q} = \bigoplus_{(i_0,\ldots,i_p) \in I^{p+1}} H^q (U_{i_0,\ldots,i_p, \et}, \ZZ^c (n)) \Longrightarrow H^{p+q} (X_\et, \ZZ^c (n)),$$
+    if the groups $H^q (U_{i_0,\ldots,i_p, \et}, \ZZ^c (n))$ are finitely
+    generated, then $H^i (X_\et, \ZZ^c (n))$ are finitely generated for all
+    $i\in \ZZ$. (We recall from
+    lemma~\ref{lemma:RGamma(Xet,Zc(n))-bounded-from-below} that assuming finite
+    generation, one has $H^q (U_{i_0,\ldots,i_p, \et}, \ZZ^c (n)) = 0$ for
+    $q \ll 0$.)
+  \end{proof}
+\end{lemma}
+
+Now following \cite{Morin-2014}, we consider the following class of schemes.
+
+\begin{definition}
+  Let $\mathcal{L} (\ZZ)$ be the full subcategory of arithmetic schemes
+  generated by the following objects:
+  \begin{itemize}
+  \item the empty scheme $\emptyset$,
+  \item $\Spec \mathcal{O}_F$ for a number field $F$,
+  \item varieties $X \in A (\FF_q)$ for any finite field $\FF_q$,
+  \end{itemize}
+  and the following operations.
+  \begin{enumerate}
+  \item[$\mathcal{L}$1)] Let $X$ be an arithmetic scheme, $Z \subset X$ a closed
+    subscheme and $U \dfn X\setminus Z$ its open complement. If one of the
+    schemes $X,Z,U$ lies in $\mathcal{L} (\ZZ)$, then the third also lies in
+    $\mathcal{L} (\ZZ)$.
+
+  \item[$\mathcal{L}$2)] A finite disjoint union
+    $X = \coprod_{1 \le j \le p} X_j$ lies in $\mathcal{L} (\ZZ)$ if and only if
+    each $X_j$ lies in $\mathcal{L} (\ZZ)$.
+
+  \item[$\mathcal{L}$3)] If $V \to U$ is an affine bundle and $U$ lies in
+    $\mathcal{L} (\ZZ)$, then $V$ also lies in $\mathcal{L} (\ZZ)$.
+
+  \item[$\mathcal{L}$4)] If $\{ U_i \to X \}_{i \in I}$ is a finite surjective
+    family of étale morphisms such that each $U_{i_0,\ldots,i_p}$ lies in
+    $\mathcal{L} (\ZZ)$, then $X$ also lies in $\mathcal{L} (\ZZ)$.
+  \end{enumerate}
+\end{definition}
+
+This is similar to the class $\mathcal{L} (\ZZ)$ from
+\cite[Definition~5.9]{Morin-2014}, with the only difference that Morin requires
+in $\mathcal{L}$1) that $Z$ is proper and regular.
+
+\begin{proposition}
+  The conjecture $\mathbf{L}^c (X_\et)$ holds for any arithmetic scheme
+  $X \in \mathcal{L} (\ZZ)$.
+
+  \begin{proof}
+    Follows from lemmas~\ref{lemma:Lc(Xet)-holds-for-OF-and-A(Fq)} and
+    \ref{lemma:Lc(Xet)-operations} (that in fact motivate the definition of
+    $\mathcal{L} (\ZZ)$).
+  \end{proof}
+\end{proposition}
+
+Finally, as in \cite[\S 5.4]{Morin-2014}, we consider cellular schemes.
+
+\begin{definition}
+  Let $Y$ be a scheme separated and of finite type over $\Spec k$ for a field
+  $k$. We say that $Y$ \textbf{admits a cellular decomposition} if there exists
+  a filtration of $Y$ by reduced closed subschemes
+  $$Y^{red} = Y_N \supseteq Y_{N-1} \supseteq \cdots \supseteq Y_{-1} = \emptyset$$
+  such that $Y_i\setminus Y_{i-1} \cong \AA^{r_i}_k$ is isomorphic to an affine
+  space over $k$.
+
+  We say that $Y$ is \textbf{geometrically cellular} if
+  $Y_{\overline{k}} = Y \times_{\Spec k} \Spec \overline{k}$ admits a cellular
+  decomposition. This is equivalent to existence of a finite Galois extension
+  $k'/k$ such that $Y_{k'}$ admits a cellular decomposition.
+
+  Finally, given an $S$-scheme $X \to S$ that is separated and of finite type,
+  we say that $X$ is \textbf{geometrically cellular} if for each $s \in S$ the
+  corresponding fiber $X_s$ is geometrically cellular.
+\end{definition}
+
+\begin{proposition}
+  Let $Y$ be a separated scheme of finite type over $\Spec \FF_q$.
+  If $Y$ is geometrically cellular, then $X \in \mathcal{L} (\ZZ)$,
+  and in particular the conjecture $\mathbf{L}^c (Y_\et)$ holds.
+
+  \begin{proof}
+    Let $k = \FF_q$. By the assumption, there exists a finite Galois extension
+    $k'/k$ that gives a cellular decomposition
+    $$(Y_{k'})^{red} = Y_N \supseteq Y_{N-1} \supseteq \cdots \supseteq Y_{-1} = \emptyset,$$
+    where $Y_i \setminus Y_{i-1} \cong \AA^{r_i}_{k'}$. Affine spaces
+    $\AA^{r_i}_{k'}$ lie in $\mathcal{L} (\ZZ)$, as follows from
+    $\Spec k' \in \mathcal{L} (\ZZ)$ and operation $\mathcal{L}$3). Now by
+    induction, using $\mathcal{L}$1), we conclude that
+    $(Y_{k'})^{red} \in \mathcal{L} (\ZZ)$. Similarly, $\mathcal{L}$1) implies
+    that $Y_{k'} \in \mathcal{L} (\ZZ)$. Aplying $\mathcal{L}$4) to the finite
+    étale Galois cover $Y_{k'} \to Y$, we conclude that
+    $Y \in \mathcal{L} (\ZZ)$.
+  \end{proof}
+\end{proposition}
+
+\begin{proposition}[{\cite[Proposition~5.14]{Morin-2014}}]
+  Let $X \to \Spec \mathcal{O}_F$ be a separated scheme of finite type.
+  If $X$ is geometrically cellular, then $X \in \mathcal{L} (\ZZ)$,
+  and in particular the conjecture $\mathbf{L}^c (X_\et)$ holds.
+
+  \begin{proof}
+    Since $X$ is geometrically cellular, in particular $X_F$ is geometrically
+    cellular, meaning that there exists a finite Galois extension $K/F$ such
+    that there is a cellular decomposition
+    $$(X \times_{\Spec \mathcal{O}_F} \Spec K)^{red} = Y_n \supseteq Y_{N-1} \supseteq \cdots \supseteq Y_{-1} = \emptyset,$$
+    where $Y_i\setminus Y_{i-1} \cong \AA^{r_i}_K$. Denote by $\overline{Y_i}$
+    the closure of $Y_i$ in $X\times_{\Spec \mathcal{O}_F} \Spec \mathcal{O}_K$ endowed with
+    the reduced closed subscheme structure. Then
+    $$(\overline{Y_i}\setminus \overline{Y_{i-1}}) \times_{\Spec \mathcal{O}_K} \Spec K \cong Y_i \setminus Y_{i-1} \cong \AA^{r_i}_K.$$
+    This implies that there exists an open subscheme
+    $\Spec \mathcal{O}_{K,S_i} \subseteq \Spec \mathcal{O}_K$ and an isomorphism
+    of $\Spec \mathcal{O}_{K,S_i}$-schemes
+    $$(\overline{Y_i}\setminus \overline{Y_{i-1}}) \times_{\Spec \mathcal{O}_K} \Spec \mathcal{O}_{K,S_i} \cong \AA^{r_i}_{\mathcal{O}_{K,S_i}}.$$
+    We let $S$ be a finite set of primes in $\mathcal{O}_K$ that contains all
+    $S_i$ such that $\Spec \mathcal{O}_{K,S} \to \Spec \mathcal{O}_{F,S}$ is an
+    étale Galois cover. Now denoting
+    $\mathcal{Y}_i = \overline{Y_i} \times_{\Spec \mathcal{O}_K} \Spec \mathcal{O}_{K,S}$,
+    there exists a cellular decomposition
+    $$(X \times_{\Spec \mathcal{O}_F} \mathcal{O}_{K,S})^{red} = \mathcal{Y}_N \supseteq \mathcal{Y}_{N-1} \supseteq \cdots \supseteq \mathcal{Y}_{-1} = \emptyset,$$
+    where
+    $\mathcal{Y}_i \setminus \mathcal{Y}_{i-1} \cong \AA^{r_i}_{\mathcal{O}_{K,S}}$.
+    Here $\AA^{r_i}_{\mathcal{O}_{K,S}} \in \mathcal{L} (\ZZ)$ by
+    $\mathcal{L}$1) and $\mathcal{L}$3). It follows by induction and
+    $\mathcal{L}$1) that
+    $(X \times_{\Spec \mathcal{O}_F} \mathcal{O}_{K,S})^{red} \in \mathcal{L} (\ZZ)$,
+    and therefore $X \times_{\Spec \mathcal{O}_F} \mathcal{O}_{K,S} \in \mathcal{L} (\ZZ)$.
+    Applying $\mathcal{L}$4) to the finite Galois cover
+    $$X \times_{\Spec \mathcal{O}_F} \mathcal{O}_{K,S} \to X \times_{\Spec \mathcal{O}_F} \mathcal{O}_{F,S},$$
+    we conclude that
+    $X \times_{\Spec \mathcal{O}_F} \mathcal{O}_{F,S} \in \mathcal{L} (\ZZ)$.
+    Finally, by our assumption on $X$, the fiber $X_\mathfrak{p}$ is
+    geometrically cellular for each finite place
+    $\mathfrak{p} \subset \mathcal{O}_F$, and therefore
+    $X_\mathfrak{p} \in \mathcal{L} (\ZZ)$ by the previous proposition.
+    Applying $\mathcal{L}$1) and $\mathcal{L}$2), we conclude that
+    $X \in \mathcal{L} (\ZZ)$.
   \end{proof}
 \end{proposition}
 
