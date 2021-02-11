@@ -1,73 +1,9 @@
 \documentclass{article}
 
+\usepackage[utf8]{inputenc}
 \usepackage{fullpage}
 
-\usepackage[titletoc]{appendix}
-
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath,amssymb}
-
-\usepackage{tikz-cd}
-\usetikzlibrary{arrows}
-\usetikzlibrary{calc}
-
-\DeclareMathOperator{\coker}{coker}
-\DeclareMathOperator{\Ext}{Ext}
-\DeclareMathOperator{\Gal}{Gal}
-\DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\im}{im}
-\DeclareMathOperator{\Spec}{Spec}
-\DeclareMathOperator{\Tot}{Tot}
-
-\newcommand{\CC}{\mathbb{C}}
-\newcommand{\FF}{\mathbb{F}}
-\newcommand{\NN}{\mathbb{N}}
-\newcommand{\QQ}{\mathbb{Q}}
-\newcommand{\RR}{\mathbb{R}}
-\newcommand{\ZZ}{\mathbb{Z}}
-
-\renewcommand{\AA}{\mathbb{A}}
-
-\renewcommand{\emptyset}{\varnothing}
-
-\newcommand{\et}{\text{\it ét}}
-\newcommand{\fg}{\text{\it fg}}
-\newcommand{\Wc}{\text{\it W,c}}
-\newcommand{\dfn}{\mathrel{\mathop:}=}
-\newcommand{\rdfn}{=\mathrel{\mathop:}}
-\newcommand{\iHom}{\underline{\Hom}}
-\newcommand{\RHom}{R\!\Hom}
-
-\newcommand{\tikzpb}{\ar[phantom,pos=0.2]{dr}{\text{\large$\lrcorner$}}}
-\newcommand{\tikzpbur}{\ar[phantom,pos=0.2]{dl}{\text{\large$\llcorner$}}}
-
-\usepackage[numbers]{natbib}
-\usepackage[hidelinks]{hyperref}
-
-\hypersetup{
-    colorlinks,
-    linkcolor={red!60!black},
-    citecolor={blue!60!black},
-    urlcolor={blue!80!black}
-}
-
-\usepackage{amsthm}
-
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
-
-\newtheorem{maintheorem}{Theorem}
-\renewcommand*{\themaintheorem}{\Roman{maintheorem}}
-
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem*{conjecture*}{Conjecture}
-\newtheorem{remark}[theorem]{Remark}
-
-\usepackage[perpage,symbol]{footmisc}
-\renewcommand{\thefootnote}{\ifcase\value{footnote}\or{*}\or{**}\or{***}\or{****}\fi}
+\input{definitions.tex}
 
 \title{Weil-étale cohomology for arbitrary arithmetic schemes and $n < 0$.
   Part I: Construction of Weil-étale complexes}
@@ -110,11 +46,12 @@ as \textbf{Weil-étale cohomology}, that captures information about the special
 value of $\zeta (X,s)$ at $s = n$, namely the vanishing order and corresponding
 residue
 \cite{Lichtenbaum-2005,Lichtenbaum-2009-number-rings,Lichtenbaum-2009-Euler-char}.
-For varieties over finite fields $X_{/\FF_p}$, it was further studied by Geisser
-\cite{Geisser-2004,Geisser-2006}. Morin gave in \cite{Morin-2014} a construction
-for $X \to \Spec\ZZ$ separated, of finite type, proper, regular, and $n = 0$.
-This construction was further generalized by Flach and Morin in
-\cite{Flach-Morin-2018} to any $n \in \ZZ$, under the same assumptions on $X$.
+For varieties over finite fields $X/\FF_q$, it was further studied by Geisser
+\cite{Geisser-2004,Geisser-2006,Geisser-2010-arithmetic-homology}.
+Morin gave in \cite{Morin-2014} a construction for $X \to \Spec\ZZ$ separated,
+of finite type, proper, regular, and $n = 0$. This construction was further
+generalized by Flach and Morin in \cite{Flach-Morin-2018} to any $n \in \ZZ$,
+under the same assumptions on $X$.
 
 The goal of this work is to remove the assumption that $X$ is proper and
 regular, and following the ideas from \cite{Flach-Morin-2018}, construct
@@ -219,21 +156,27 @@ For the purposes of this article, we will call an \textbf{arithmetic scheme} an
 arbitrary scheme $X$ that is separated and of finite type over $\Spec \ZZ$.
 By $n$ we will always denote a strictly negative integer.
 
-Our construction is based on motivic cohomology, defined in terms of Geisser's
-dualizing cycle complexes $\ZZ^c (n)$, as introduced and studied in
-\cite{Geisser-2010}. Given $X$ and $n$ as above, we state the following
-conjecture.
+Our construction is based on motivic cohomology, defined in terms of complexes
+$\ZZ^c (n)$, based on Bloch's cycle complexes \cite{Bloch-1986} (see also
+Geisser's survey \cite{Geisser-2005}). For the details about $\ZZ^c (n)$, we
+refer to \cite[\S 2]{Geisser-2010}.
 
-\begin{conjecture*}
+Now given $X$ and $n$ as above, we state the following conjecture.
+
+\begin{conjecture}
   $\mathbf{L}^c (X_\et,n)$: the cohomology groups $H^i (X_\et, \ZZ^c (n))$ are
   finitely generated for all $i \in \ZZ$.
-\end{conjecture*}
+\end{conjecture}
 
-Here ``L'' stays for ``Lichtenbaum''. This is analogous to the conjecture
-$\mathbf{L} (X_\et,n)$ in \cite[\S 3.2]{Flach-Morin-2018}. Our construction of
-Weil-étale complexes $R\Gamma_\Wc (X,\ZZ(n))$ will assume
-$\mathbf{L}^c (X_\et,n)$. See \S\ref{sec:known-cases-of-Lc-Xet-n} for the
-particular cases when the conjecture is known.
+The conjecture $\mathbf{L}^c (X_\et,n)$ appears in
+\cite[Definition~5.8]{Morin-2014}, and it is analogous to the conjecture
+$\mathbf{L} (X_\et,d-n)$ in \cite[\S 3.2]{Flach-Morin-2018}. See propositions
+\ref{prop:Lc-Xet-n-vs-L-Xet-d-n} and \ref{prop:Lc-Xet-n-over-finite-fields} for
+the precise relation of $\mathbf{L}^c (X_\et,n)$ to other conjectures that
+appear in the literature. Our construction of Weil-étale complexes
+$R\Gamma_\Wc (X,\ZZ(n))$ will assume $\mathbf{L}^c (X_\et,n)$.
+See \S\ref{sec:known-cases-of-Lc-Xet-n} for the particular cases when the
+conjecture is known.
 
 \subsection*{Main results}
 
@@ -364,12 +307,12 @@ the assumption considered by Flach and Morin. Here is a brief comparison between
 the notation.
 
 \begin{center}
-    \renewcommand{\arraystretch}{1.5}
+  \renewcommand{\arraystretch}{1.5}
   \begin{tabular}{cc}
     \hline
     \textbf{this paper} & \textbf{Flach--Morin} \\
     \hline
-    \begin{tabular}{c} Geisser's dualizing cycle complexes \\ $\ZZ^c (n)$ \end{tabular} & \begin{tabular}{c} Bloch's cycle complexes \\ $\ZZ (d-n)[2d]$, $d = \dim X$ \end{tabular} \\
+    \begin{tabular}{c} cycle complexes \\ $\ZZ^c (n)$ \end{tabular} & \begin{tabular}{c} cycle complexes \\ $\ZZ (d-n)[2d]$, $d = \dim X$ \end{tabular} \\
     \hline
     $R\Gamma_\fg (X, \ZZ(n))$ & \begin{tabular}{c} $R\Gamma_W (\overline{X}, \ZZ(n))$, \\ up to finite $2$-torsion for $i\gg 0$ \end{tabular} \\
     \hline
@@ -593,7 +536,7 @@ will need the conjecture $\mathbf{L}^c (X_\et, n)$.
     \begin{multline}
       \label{eqn:short-exact-sequence-with-dirlim}
       0 \to \varinjlim_m \Hom ({}_m H^{i+1} (X_\et, \ZZ^c (n)), \QQ/\ZZ) \to \\
-      \varinjlim_m \Hom (H^i (X_\et, \ZZ/m\ZZ^c (n)), \QQ/\ZZ) \to
+      \varinjlim_m \Hom (H^i (X_\et, \ZZ/m\ZZ^c (n)), \QQ/\ZZ) \to \\
       \varinjlim_m \Hom (H^i (X_\et, \ZZ^c (n))_m, \QQ/\ZZ) \to 0
     \end{multline}
 
@@ -1184,7 +1127,7 @@ it simplifies if $X$ has no real places.
        R\Gamma_\fg (X, \ZZ (n))\otimes_\ZZ^\mathbf{L} \ZZ/m\ZZ \]
     
   \item[3)] For any prime $\ell$ the morphism $f$ induces an isomorphism
-    $$\varprojlim_r H_c (X_\et, \ZZ/\ell^r (n)) \cong H_\fg (X, \ZZ (n)) \otimes \ZZ_\ell.$$
+    $$\varprojlim_r H_c^i (X_\et, \ZZ/\ell^r (n)) \cong H_\fg^i (X, \ZZ (n)) \otimes \ZZ_\ell.$$
   \end{enumerate}
   
   \begin{proof}
@@ -1196,12 +1139,35 @@ it simplifies if $X$ has no real places.
     This proves 1) and 2).
 
     Now 2) implies 3): by finite generation of $H_\fg^i (X, \ZZ (n))$, we have
-    \[ \varprojlim_r H_c (X_\et, \ZZ/\ell^r (n)) \stackrel{\text{2)}}{\cong}
-      \varprojlim_r H_\fg (X, \ZZ/\ell^r (n)) \cong
-      \varprojlim_r H_\fg (X, \ZZ (n))/\ell^r \cong
+    \[ \varprojlim_r H_c^i (X_\et, \ZZ/\ell^r (n)) \stackrel{\text{2)}}{\cong}
+      \varprojlim_r H_\fg^i (X, \ZZ/\ell^r (n)) \cong
+      \varprojlim_r H_\fg^i (X, \ZZ (n))/\ell^r \cong
       H_\fg^i (X, \ZZ (n)) \otimes \ZZ_\ell. \qedhere \]
   \end{proof}
 \end{proposition}
+
+For varieties over finite fields, the groups $H_\fg^i (X, \ZZ (n))$ provide an
+integral model for $\ell$-adic cohomology in the following sense
+(see also \cite[\S 8]{Geisser-2004}).
+
+\begin{corollary}
+  Let $X/\FF_q$ be a variety over a finite field $\FF_q$ of characteristic $p$.
+  Under the conjecture $\mathbf{L}^c (X_\et, n)$, for every prime $\ell \ne p$
+  holds
+  $$H_\fg^i (X, \ZZ (n)) \otimes \ZZ_\ell \cong H^i_c (X_\et, \ZZ_\ell (n)),$$
+  where the right hand side denotes the $\ell$-adic cohomology with compact
+  support.
+
+  \begin{proof}
+    We have by the definition
+    $$\ZZ (n) = \QQ/\ZZ (n) [-1] = \varinjlim_{p\nmid m} \mu_m^{\otimes n} [-1].$$
+    Now if $\ell \ne p$, then $\ZZ/\ell^r (n) = \mu_{\ell^r}^{\otimes n} [0]$,
+    and by part 3) of the previous proposition,
+    \[ H_\fg^i (X, \ZZ (n)) \otimes \ZZ_\ell \cong
+      \varprojlim_r H_c^i (X_\et, \mu_{\ell^r}^{\otimes n})
+      \stackrel{\text{dfn}}{=} H_c^i (X_\et, \ZZ_\ell (n)). \qedhere \]
+  \end{proof}
+\end{corollary}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1682,45 +1648,91 @@ Now we are ready to define Weil-étale complexes.
 \begin{proposition}
   There is a non-canonical splitting
   \[ R\Gamma_\Wc (X, \ZZ(n)) \otimes_\ZZ \QQ \cong
-  \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-1] \oplus
-  R\Gamma_c (G_\RR, X (\CC), \QQ (n)) [-1]. \]
+    \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-1] \oplus
+    R\Gamma_c (G_\RR, X (\CC), \QQ (n)) [-1]. \]
 
   \begin{proof}
     The distinguished triangle defining $R\Gamma_\Wc (X, \ZZ(n))$
     \[ R\Gamma_\Wc (X, \ZZ (n)) \to
-    R\Gamma_\fg (X, \ZZ(n)) \xrightarrow{i_\infty^*}
-    R\Gamma_c (G_\RR, X (\CC), \ZZ(n)) \to
-    R\Gamma_\Wc (X, \ZZ (n)) [1] \]
+      R\Gamma_\fg (X, \ZZ(n)) \xrightarrow{i_\infty^*}
+      R\Gamma_c (G_\RR, X (\CC), \ZZ(n)) \to
+      R\Gamma_\Wc (X, \ZZ (n)) [1] \]
     after tensoring with $\QQ$ becomes
     \[ R\Gamma_\Wc (X, \ZZ (n))\otimes_\ZZ \QQ \to
-    R\Gamma_\fg (X, \ZZ(n))\otimes_\ZZ \QQ \xrightarrow{i_\infty^*\otimes\QQ = 0}
-    R\Gamma_c (G_\RR, X (\CC), \ZZ(n))\otimes_\ZZ \QQ \to
-    R\Gamma_\Wc (X, \ZZ (n))\otimes_\ZZ \QQ [1] \]
+      R\Gamma_\fg (X, \ZZ(n))\otimes_\ZZ \QQ \xrightarrow{i_\infty^*\otimes\QQ = 0}
+      R\Gamma_c (G_\RR, X (\CC), \ZZ(n))\otimes_\ZZ \QQ \to
+      R\Gamma_\Wc (X, \ZZ (n))\otimes_\ZZ \QQ [1] \]
     which gives us a non-canonical splitting
     \cite[Chapitre~II, Corollaire~1.2.6]{Verdier-thesis}
     \[ R\Gamma_\Wc (X, \ZZ (n))\otimes_\ZZ \QQ \cong
-    R\Gamma_\fg (X, \ZZ(n))\otimes_\ZZ \QQ \oplus
-    R\Gamma_c (G_\RR, X (\CC), \ZZ(n)) [-1]\otimes_\ZZ \QQ, \]
+      R\Gamma_\fg (X, \ZZ(n))\otimes_\ZZ \QQ \oplus
+      R\Gamma_c (G_\RR, X (\CC), \ZZ(n)) [-1]\otimes_\ZZ \QQ, \]
     and we already noticed in \ref{prop:tensoring-RGammafg-with-Z/m-and-Q} that
     \[ R\Gamma_\fg (X, \ZZ (n)) \otimes_\ZZ \QQ \cong
-    \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-1]. \qedhere \]
+      \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-1]. \qedhere \]
   \end{proof}
 \end{proposition}
+
+For varieties over finite fields, our Weil-étale cohomology groups are expected
+to be $\QQ/\ZZ$-dual to the arithmetic homology groups studied by Geisser in
+\cite{Geisser-2010-arithmetic-homology}.
 
 \begin{proposition}
-  If the scheme $X$ is of characteristic $p$ (i.e. the morphism
-  $X \to \Spec \ZZ$ factors through $\Spec \FF_p \to \Spec \ZZ$), then
-  $$R\Gamma_\Wc (X,\ZZ(n)) \cong \RHom (R\Gamma (X_\et, \ZZ^c (n)), \ZZ [-1]).$$
+  If $X$ is a variety over a finite field $\FF_q$, then assuming
+  $\mathbf{L}^c (X,n)$, there is an isomorphism
+  \begin{equation}
+    \label{eqn:RGamma-Wc-over-finite-fields}
+    R\Gamma_\Wc (X,\ZZ(n)) \cong \RHom (R\Gamma (X_\et, \ZZ^c (n)), \ZZ [-1]).
+  \end{equation}
 
-  \begin{proof}
-    Under our assumptions, $X (\CC) = X (\RR) = \emptyset$, and therefore
-    $R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) = 0$, so that
-    $R\Gamma_\Wc (X,\ZZ(n)) \cong R\Gamma_\fg (X, \ZZ (n))$.
-    Finally, according to \ref{prop:RGamma-fg-for-X(R)-empty}, we have
-    an isomorphism
-    $R\Gamma_\fg (X, \ZZ (n)) \cong \RHom (R\Gamma (X_\et, \ZZ^c (n)), \ZZ [-1])$.
-  \end{proof}
+  Moreover, assuming that the groups $H^i (X_\et, \ZZ^c (n))$ are torsion
+  for all $i \in \ZZ$ (hence finite torsion by $\mathbf{L}^c (X,n)$),
+  there is an isomorphism of finite groups
+  $$H^i_{W,c} (X, \ZZ (n)) \cong \Hom (H_{i-1}^c (X_\ar, \ZZ (n)), \QQ/\ZZ),$$
+  where $H_\bullet^c (X_\ar, \ZZ (n))$ are the arithmetic homology groups
+  defined in \cite[\S 3]{Geisser-2010-arithmetic-homology}. In particular,
+  $$\# H^i_{W,c} (X, \ZZ (n)) = \# H_{i-1}^c (X_\ar, \ZZ (n)).$$
 \end{proposition}
+
+As explained below in proposition~\ref{prop:Lc-Xet-n-over-finite-fields}, the
+assumption that the groups $H^i (X_\et, \ZZ^c(n))$ are finite for all $n < 0$
+and $i \in \ZZ$ is consistent with Lichtenbaum's conjectures on étale motivic
+cohomology of $X/\FF_q$.
+
+\begin{proof}
+  Under our assumptions, $X (\CC) = X (\RR) = \emptyset$, and therefore
+  $R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) = 0$, so that
+  $R\Gamma_\Wc (X,\ZZ(n)) \cong R\Gamma_\fg (X, \ZZ (n))$.
+  Finally, according to \ref{prop:RGamma-fg-for-X(R)-empty}, we have
+  an isomorphism
+  $R\Gamma_\fg (X, \ZZ (n)) \cong \RHom (R\Gamma (X_\et, \ZZ^c (n)), \ZZ [-1])$.
+
+  Now to relate this to Geisser's arithmetic homology, according to
+  \cite[Theorem~3.1]{Geisser-2010-arithmetic-homology}, there is a long exact
+  sequence
+  \[ \cdots \to H_{i-1}^c (X_\et, \ZZ (n)) \to
+    H_i^c (X_\ar, \ZZ (n)) \to CH_n (X, i-2n)_\QQ \to
+    H_{i-2}^c (X_\et, \ZZ (n)) \to \cdots \]
+  Here the homological notation means that
+  $H_i^c (X_\et, \ZZ (n)) = H^{-i} (X_\et, \ZZ^c (n))$,
+  and $CH_n (X, i-2n)_\QQ = H_i^c (X_\et, \QQ (n))$. By our assumption that
+  $H^i (X_\et, \ZZ^c (n))$ is torsion for all $i \in \ZZ$, we have
+  $CH_n (X, i-2n)_\QQ = 0$, and therefore
+  $$H_i^c (X_\ar, \ZZ (n)) \cong H^{1-i} (X_\et, \ZZ^c (n)).$$
+
+  Now \eqref{eqn:RGamma-Wc-over-finite-fields} gives
+  \[ E_2^{p,q} = \Ext_\ZZ^p (H^{1-q} (X_\et, \ZZ^c (n)), \ZZ) \Longrightarrow
+    H^{p+q}_{W,c} (X, \ZZ (n)), \]
+  and again, by the assumption that $H^{1-q} (X_\et, \ZZ^c (n))$ are finite
+  torsion groups, this spectral sequence is concentrated in $p = 1$,
+  where the interesting terms are
+  \[ \Ext_\ZZ^1 (H^{1-q} (X_\et, \ZZ^c (n)), \ZZ) \cong
+    \Hom (H^{1-q} (X_\et, \ZZ^c (n)), \QQ/\ZZ), \]
+  so that the spectral sequence gives
+  \[ H^{1+i}_{W,c} (X, \ZZ (n)) \cong
+    \Hom (H^{1-i} (X_\et, \ZZ^c (n)), \QQ/\ZZ) \cong
+    \Hom (H_i (X_\ar, \ZZ (n)), \QQ/\ZZ). \qedhere \]
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1728,16 +1740,101 @@ Now we are ready to define Weil-étale complexes.
 \label{sec:known-cases-of-Lc-Xet-n}
 
 Since the main constructions of this paper assume the conjecture
-$\mathbf{L}^c (X_\et,n)$, here we list some particular cases when it is known to
-hold, and therefore gives unconditional results. This section follows
+$\mathbf{L}^c (X_\et,n)$, here we relate it to other known conjectures about
+finite generation of étale motivic cohomology, and also describe certain schemes
+$X$ for which $\mathbf{L}^c (X_\et,n)$ is known.
+
+\vspace{1em}
+
+Flach and Morin in \cite{Flach-Morin-2018} make use of the following conjecture
+for $m \in \ZZ$.
+
+\begin{conjecture}
+  $\mathbf{L} (X_\et, m)$: the groups $H^i (X_\et, \ZZ (m))$ are finitely
+  generated for $i \le 2m+1$. Here $\ZZ (m)$ for $m \ge 0$ denotes Bloch's cycle
+  complex.
+\end{conjecture}
+
+A more precise description of the structure of étale motivic cohomology is
+\cite[Conjecture~4.12]{Geisser-2017}, which reads as follows.
+
+\begin{conjecture}
+  $\mathbf{L}' (X_\et, m)$: one has
+  \[ H^i (X_\et, \ZZ (m)) = \begin{cases}
+      \text{finitely generated}, & i \le 2m, \\
+      \text{finite}, & i = 2m + 1, \\
+      \text{cofinite type}, & i \ge 2m + 2.
+    \end{cases} \]
+\end{conjecture}
+
+\begin{proposition}
+  \label{prop:Lc-Xet-n-vs-L-Xet-d-n}
+  Let $X$ be a proper regular scheme of dimension $d$. Then for $n < 0$
+  \[ \mathbf{L}^c (X_\et, n) \Longleftrightarrow
+    \mathbf{L} (X_\et, d-n) \Longleftrightarrow
+    \mathbf{L}' (X_\et, d-n). \]
+
+  \begin{proof}
+    Under our assumptions, one has $\ZZ^c (n) = \ZZ (d-n) [2d]$. The trivial
+    implications are
+    \[ \mathbf{L}^c (X, n) \Longrightarrow \mathbf{L} (X_\et, d-n), \quad
+      \mathbf{L}' (X_\et, d-n) \Longrightarrow \mathbf{L} (X_\et, d-n). \]
+
+    We also note that $\mathbf{L} (X_\et, n)$ holds trivially for $n < 0$, since
+    $H^i (X_\et, \ZZ (n)) = H^{i-1} (X_\et, \QQ/\ZZ (n)) = 0$ for $i < 1$.
+    Now assume $\mathbf{L} (X_\et, d-n)$. This gives finite generation of
+    $H^i (X_\et, \ZZ^c (n)) = H^{2d+i} (X_\et, \ZZ (d-n))$ for $i \le -2n + 1$.
+    Then from \cite[Proposition~3.4]{Flach-Morin-2018} we have Artin--Verdier
+    duality, which up to finite $2$-torsion reads
+    $$H^i (X_\et, \ZZ (n)) \cong \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ/\ZZ).$$
+    It follows that up to finite $2$-torsion, one has
+    $H^i (X_\et, \ZZ^c (n)) = 0$ for $i \ge 2$, and in particular for
+    $i > -2n + 1$. This proves the implication
+    $\mathbf{L} (X_\et, d-n) \Longrightarrow \mathbf{L}^c (X_\et, n)$.
+
+    Finally, the remaining nontrivial implication
+    $\mathbf{L} (X_\et, d-n) \Longrightarrow \mathbf{L}' (X_\et, d-n)$ is
+    established in \cite[Proposition~3.4]{Flach-Morin-2018}.
+  \end{proof}
+\end{proposition}
+
+For varieties over finite fields, Lichtenbaum gives the following conjecture in
+\cite[\S 7]{Lichtenbaum-1984} (see also \cite[\S 4]{Geisser-2017}).
+
+\begin{conjecture}
+  $\mathbf{L}_{/\FF_q} (X_\et, m)$: given a variety over a finite field
+  $X/\FF_q$, one has
+  \[ H^i (X_\et, \ZZ (m)) = \begin{cases}
+      \text{finite}, & i \ne 2m, 2m+2, \\
+      \text{finitely generated}, & i = 2m, \\
+      \text{cofinite type}, & i = 2m + 2.
+    \end{cases} \]
+\end{conjecture}
+
+\begin{proposition}
+  \label{prop:Lc-Xet-n-over-finite-fields}
+  For smooth proper $X/\FF_q$ of dimension $d$ and $n < 0$, the conjectures
+  $\mathbf{L}^c (X_\et, n)$ and $\mathbf{L}_{/\FF_q} (X_\et, d-n)$ imply that
+  $H^i (X_\et, \ZZ^c (n))$ are finite groups for all $i \in \ZZ$.
+
+  \begin{proof}
+    The conjecture $\mathbf{L}_{/\FF_q} (X_\et, d-n)$ gives finiteness of
+    $H^i (X_\et, \ZZ^c (n)) = H^{2d + i} (X_\et, \ZZ (d-n))$ for all $i$, except
+    for possibly $i = -2n, -2n + 2$. However, the previous proposition shows
+    that these groups are finite if we assume $\mathbf{L}^c (X_\et, n)$.
+  \end{proof}
+\end{proposition}
+
+Now we list some particular cases when the conjecture $\mathbf{L}^c (X_\et,n)$
+is known to hold, and therefore gives unconditional results. We follow
 \cite[\S 5]{Morin-2014} very closely. For an arithmetic scheme $X$, we formulate
 the following conjecture that is the conjunction of $\mathbf{L}^c (X_\et,n)$ for
 all $n < 0$.
 
-\begin{conjecture*}
+\begin{conjecture}
   $\mathbf{L}^c (X_\et)$: the cohomology groups $H^i (X_\et, \ZZ^c (n))$ are
   finitely generated for all $i \in \ZZ$ and $n < 0$.
-\end{conjecture*}
+\end{conjecture}
 
 We note that this is similar to the conjecture
 \cite[Definition~5.8]{Morin-2014}, the only difference being that Morin also
@@ -1915,8 +2012,8 @@ Finally, as in \cite[\S 5.4]{Morin-2014}, we consider cellular schemes.
   and in particular the conjecture $\mathbf{L}^c (Y_\et)$ holds.
 
   \begin{proof}
-    Let $k = \FF_q$. By the assumption, there exists a finite Galois extension
-    $k'/k$ that gives a cellular decomposition
+    Let $k = \FF_q$. By the assumption, there exists a finite extension $k'/k$
+    that gives a cellular decomposition
     $$(Y_{k'})^{red} = Y_N \supseteq Y_{N-1} \supseteq \cdots \supseteq Y_{-1} = \emptyset,$$
     where $Y_i \setminus Y_{i-1} \cong \AA^{r_i}_{k'}$. Affine spaces
     $\AA^{r_i}_{k'}$ lie in $\mathcal{L} (\ZZ)$, as follows from
@@ -1929,6 +2026,13 @@ Finally, as in \cite[\S 5.4]{Morin-2014}, we consider cellular schemes.
   \end{proof}
 \end{proposition}
 
+Finally, it is proved in \cite[Proposition~5.14]{Morin-2014} that if
+$X \to \Spec \mathcal{O}_F$ is a flat, separated scheme of finite type over the
+ring of integers of a number field, and $X$ is geometrically cellular, then
+$X \in \mathcal{L} (\ZZ)$. In particular, the conjecture $\mathbf{L}^c (X_\et)$
+holds for such $X$.
+
+\iffalse
 \begin{proposition}[{\cite[Proposition~5.14]{Morin-2014}}]
   Let $X \to \Spec \mathcal{O}_F$ be a separated scheme of finite type.
   If $X$ is geometrically cellular, then $X \in \mathcal{L} (\ZZ)$,
@@ -1972,6 +2076,7 @@ Finally, as in \cite[\S 5.4]{Morin-2014}, we consider cellular schemes.
     $X \in \mathcal{L} (\ZZ)$.
   \end{proof}
 \end{proposition}
+\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
