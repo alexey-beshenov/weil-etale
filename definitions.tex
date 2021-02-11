@@ -1,0 +1,79 @@
+\usepackage[titletoc]{appendix}
+\usepackage[russian,english]{babel}
+
+\usepackage{amsmath,amssymb}
+
+\DeclareMathOperator{\Cone}{Cone}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Tot}{Tot}
+
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\AA}{\mathbb{A}}
+\renewcommand{\emptyset}{\varnothing}
+
+\newcommand{\ar}{\text{\it ar}}
+\newcommand{\BM}{\text{\it BM}}
+\newcommand{\DB}{{\mathcal{D}\text{-\foreignlanguage{russian}{Б}}}}
+\newcommand{\et}{\text{\it ét}}
+\newcommand{\fg}{\text{\it fg}}
+\newcommand{\Wc}{\text{\it W,c}}
+
+\newcommand{\dfn}{\mathrel{\mathop:}=}
+\newcommand{\rdfn}{=\mathrel{\mathop:}}
+
+\newcommand{\iHom}{\underline{\Hom}}
+\newcommand{\RHom}{R\!\Hom}
+
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{babel}
+
+\newcommand{\tikzpb}{\ar[phantom,pos=0.2]{dr}{\text{\large$\lrcorner$}}}
+\newcommand{\tikzpbur}{\ar[phantom,pos=0.2]{dl}{\text{\large$\llcorner$}}}
+
+\usepackage[numbers]{natbib}
+
+\usepackage[hidelinks]{hyperref}
+
+\hypersetup{
+    colorlinks,
+    linkcolor={red!60!black},
+    citecolor={blue!60!black},
+    urlcolor={blue!80!black}
+}
+
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newtheorem{maintheorem}{Theorem}
+\renewcommand*{\themaintheorem}{\Roman{maintheorem}}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem*{conjecture*}{Conjecture}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\usepackage[perpage,symbol]{footmisc}
+\renewcommand{\thefootnote}{\ifcase\value{footnote}\or{*}\or{**}\or{***}\or{****}\fi}
