@@ -14,4 +14,4 @@ weil-etale-2.pdf:
 
 clean:
 	rm -f *.aux *.bbl *.blg *.log *.out *.toc
-	rm -f weil-etale-1.pdf
+	rm -f weil-etale-1.pdf weil-etale-2.pdf
