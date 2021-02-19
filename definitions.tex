@@ -3,6 +3,10 @@
 
 \usepackage{amsmath,amssymb}
 
+\usepackage{lscape}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \DeclareMathOperator{\Cone}{Cone}
 \DeclareMathOperator{\coker}{coker}
 \DeclareMathOperator{\Ext}{Ext}
@@ -15,6 +19,8 @@
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\Tot}{Tot}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\FF}{\mathbb{F}}
 \newcommand{\NN}{\mathbb{N}}
@@ -22,8 +28,17 @@
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\ZZ}{\mathbb{Z}}
 
-\renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\AA}{\mathbb{A}}
+\newcommand{\PP}{\mathbb{P}}
+
+\newcommand{\bone}{1\!\!1}
+
+\newcommand{\Parf}{\mathcal{P}\!\text{\it arf}}
+
+% force \nolimits on \det:
+\renewcommand{\det}{\operatorname{det}}
+
+\renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\emptyset}{\varnothing}
 
 \newcommand{\ar}{\text{\it ar}}
@@ -31,6 +46,8 @@
 \newcommand{\DB}{{\mathcal{D}\text{-\foreignlanguage{russian}{Б}}}}
 \newcommand{\et}{\text{\it ét}}
 \newcommand{\fg}{\text{\it fg}}
+\newcommand{\fin}{\text{\it fin}}
+\newcommand{\is}{\text{\it is}}
 \newcommand{\Wc}{\text{\it W,c}}
 
 \newcommand{\dfn}{\mathrel{\mathop:}=}
@@ -39,6 +56,8 @@
 \newcommand{\iHom}{\underline{\Hom}}
 \newcommand{\RHom}{R\!\Hom}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage{tikz-cd}
 \usetikzlibrary{arrows}
 \usetikzlibrary{calc}
@@ -46,6 +65,8 @@
 
 \newcommand{\tikzpb}{\ar[phantom,pos=0.2]{dr}{\text{\large$\lrcorner$}}}
 \newcommand{\tikzpbur}{\ar[phantom,pos=0.2]{dl}{\text{\large$\llcorner$}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[numbers]{natbib}
 
@@ -58,22 +79,50 @@
     urlcolor={blue!80!black}
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage{amsthm}
 
+\newtheoremstyle{myplain}
+{\topsep}   % ABOVESPACE
+{\topsep}   % BELOWSPACE
+{\itshape}  % BODYFONT
+{0pt}       % INDENT (empty value is the same as 0pt)
+{\bfseries} % HEADFONT
+{.}         % HEADPUNCT
+{5pt plus 1pt minus 1pt} % HEADSPACE
+{\thmnumber{#2}. \thmname{#1}\thmnote{ (#3)}}   % CUSTOM-HEAD-SPEC
+
+\newtheoremstyle{mydefinition}
+{\topsep}   % ABOVESPACE
+{\topsep}   % BELOWSPACE
+{\normalfont}  % BODYFONT
+{0pt}       % INDENT (empty value is the same as 0pt)
+{\bfseries} % HEADFONT
+{.}         % HEADPUNCT
+{5pt plus 1pt minus 1pt} % HEADSPACE
+{\thmnumber{#2}. \thmname{#1}\thmnote{ (#3)}}   % CUSTOM-HEAD-SPEC
+
+\theoremstyle{plain}
+\newtheorem{maintheorem}{Theorem}
+\renewcommand*{\themaintheorem}{\Roman{maintheorem}}
+
+\theoremstyle{myplain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 
-\newtheorem{maintheorem}{Theorem}
-\renewcommand*{\themaintheorem}{\Roman{maintheorem}}
-
 \theoremstyle{definition}
+\newtheorem*{conjecture*}{Conjecture}
+
+\theoremstyle{mydefinition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{conjecture}[theorem]{Conjecture}
-\newtheorem*{conjecture*}{Conjecture}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{example}[theorem]{Example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[perpage,symbol]{footmisc}
 \renewcommand{\thefootnote}{\ifcase\value{footnote}\or{*}\or{**}\or{***}\or{****}\fi}
