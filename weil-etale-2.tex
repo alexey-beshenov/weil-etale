@@ -47,7 +47,8 @@
 Let $X$ be an \textbf{arithmetic scheme}, by which we will mean throughout this
 paper that it is a separated scheme of finite type over $\Spec \ZZ$. Then the
 corresponding zeta function is defined by
-$$\zeta (X,s) = \prod_{\substack{x \in X \\ \text{closed pt.}}} \frac{1}{1 - \#\kappa (x)^{-s}},$$
+\[ \zeta (X,s) = \prod_{\substack{x \in X \\ \text{closed pt.}}}
+  \frac{1}{1 - \#\kappa (x)^{-s}}, \]
 where $\kappa (x) = \mathcal{O}_{X,x}/\mathfrak{m}_{X,x}$ denotes the residue
 field of a point. The above product converges for $\Re s > \dim X$, and
 conjecturally admits a meromorphic continuation to the whole complex plane.
@@ -124,7 +125,8 @@ Specifically, we make the following conjectures.
     H_\Wc^i (X, \RR (n)) \xrightarrow{\smile\theta}
     H_\Wc^{i+1} (X, \RR (n)) \to \cdots \]
   Here
-  $H_\Wc^i (X, \RR (n)) = H_\Wc^i (X, \ZZ (n)) \otimes_\ZZ \RR = H^i (R\Gamma_\Wc (X, \ZZ (n)) \otimes_\ZZ \RR)$.
+  $H_\Wc^i (X, \RR (n)) = H_\Wc^i (X, \ZZ (n)) \otimes_\ZZ \RR =
+  H^i (R\Gamma_\Wc (X, \ZZ (n)) \otimes_\ZZ \RR)$.
 
   It follows that there is a canonical isomorphism
   \[ \lambda = \lambda_{X,n}\colon \RR \xrightarrow{\cong}
@@ -197,13 +199,19 @@ We denote by $R\Gamma_\fg (X, \ZZ (n))$ and $R\Gamma_\Wc (X, \ZZ (n))$ the
 complexes constructed in \cite{Beshenov-Weil-etale-1}, assuming the conjecture
 $\mathbf{L}^c (X_\et,n)$ stated above. For $\QQ$-coefficients, we put
 \begin{align*}
-  R\Gamma_\fg (X, \QQ (n)) & \dfn R\Gamma_\fg (X, \ZZ (n)) \otimes_\ZZ^\mathbf{L} \QQ = R\Gamma_\fg (X, \ZZ (n)) \otimes_\ZZ \QQ, \\
-  R\Gamma_\Wc (X, \QQ (n)) & \dfn R\Gamma_\Wc (X, \ZZ (n)) \otimes_\ZZ^\mathbf{L} \QQ = R\Gamma_\Wc (X, \ZZ (n)) \otimes_\ZZ \QQ.
+  R\Gamma_\fg (X, \QQ (n)) & \dfn
+  R\Gamma_\fg (X, \ZZ (n)) \otimes_\ZZ^\mathbf{L} \QQ =
+  R\Gamma_\fg (X, \ZZ (n)) \otimes_\ZZ \QQ, \\
+  R\Gamma_\Wc (X, \QQ (n)) & \dfn
+  R\Gamma_\Wc (X, \ZZ (n)) \otimes_\ZZ^\mathbf{L} \QQ =
+  R\Gamma_\Wc (X, \ZZ (n)) \otimes_\ZZ \QQ.
 \end{align*}
 Accordingly,
 \begin{align*}
-  H^i_\fg (X, \QQ (n)) & \dfn H^i (R\Gamma_\fg (X, \QQ (n))) = H^i_\fg (X, \ZZ (n)) \otimes_\ZZ \QQ, \\
-  H^i_\Wc (X, \QQ (n)) & \dfn H^i (R\Gamma_\Wc (X, \QQ (n))) = H^i_\Wc (X, \ZZ (n)) \otimes_\ZZ \QQ.
+  H^i_\fg (X, \QQ (n)) & \dfn
+  H^i (R\Gamma_\fg (X, \QQ (n))) = H^i_\fg (X, \ZZ (n)) \otimes_\ZZ \QQ, \\
+  H^i_\Wc (X, \QQ (n)) & \dfn
+  H^i (R\Gamma_\Wc (X, \QQ (n))) = H^i_\Wc (X, \ZZ (n)) \otimes_\ZZ \QQ.
 \end{align*}
 Similarly, we define the corresponding complexes and cohomology with
 $\RR$-coefficients.
@@ -217,15 +225,18 @@ $G_\RR$-equivariant sheaf on $X (\CC)$.
 We denote by $R\Gamma_c (X (\CC), A (n))$
 (resp. $R\Gamma_c (G_\RR, X (\CC), A (n))$) the cohomology with compact
 support (resp. $G_\RR$-equivariant cohomology with compact support) of $X$ with
-$A (n)$-coefficients. For more details on $G_\RR$-equivariant cohomology, see \cite{Beshenov-Weil-etale-1}. With real coefficients,
+$A (n)$-coefficients. For more details on $G_\RR$-equivariant cohomology,
+see \cite{Beshenov-Weil-etale-1}. With real coefficients,
 $H_c^i (G_\RR, X (\CC), \RR (n)) = H^i_c (X (\CC), \RR (n))^{G_\RR}$,
 where the $G_\RR$-action on $H^i_c (X (\CC), \RR (n))$ naturally comes from the
 corresponding action on $X (\CC)$ and $\RR (n)$.
 The \textbf{Borel--Moore homology} is defined as dual to the cohomology with
 compact support. In particular, we will be interested in
 \begin{align*}
-  R\Gamma_\BM (X (\CC), \RR (n)) & \dfn \RHom (R\Gamma_c (X (\CC), \RR (n)), \RR), \\
-  R\Gamma_\BM (G_\RR, X (\CC), \RR (n)) & \dfn \RHom (R\Gamma_c (G_\RR, X (\CC), \RR (n)), \RR).
+  R\Gamma_\BM (X (\CC), \RR (n)) & \dfn
+  \RHom (R\Gamma_c (X (\CC), \RR (n)), \RR), \\
+  R\Gamma_\BM (G_\RR, X (\CC), \RR (n)) & \dfn
+  \RHom (R\Gamma_c (G_\RR, X (\CC), \RR (n)), \RR).
 \end{align*}
 
 \subsection*{Acknowledgments}
@@ -431,8 +442,8 @@ morphism
   $d_\CC = d - 1$. With this renumbering, the morphism
   \eqref{eqn:KLM-morphism-6} becomes
   $$R\Gamma (X_\et, \RR (d-n)) [2d] \to R\Gamma (X_{\CC,\et}, \RR (d-n)) [2d].$$
-  This probably looks more natural, but we do not impose extra assumptions on $X$
-  and work exclusively with complexes $A^c (\bullet)$ defined in terms of
+  This probably looks more natural, but we do not impose extra assumptions on
+  $X$ and work exclusively with complexes $A^c (\bullet)$ defined in terms of
   dimension of algebraic cycles, instead of $A (\bullet)$ defined in terms of
   codimension.
 \end{remark}
@@ -450,7 +461,8 @@ morphism
   \end{multline*}
   Further, we take $G_\RR$-invariants, which gives us the
   \textbf{(étale) regulator}
-  $$Reg_{X,n}\colon R\Gamma (X_\et, \RR^c (n)) \to R\Gamma_\BM (G_\RR, X(\CC), \RR (n)) [1].$$
+  \[ Reg_{X,n}\colon R\Gamma (X_\et, \RR^c (n)) \to
+    R\Gamma_\BM (G_\RR, X(\CC), \RR (n)) [1]. \]
 \end{definition}
 
 Now we state our conjecture about the regulator, which will play an important
@@ -541,9 +553,9 @@ $R\Gamma (X_\et, \ZZ^c (n)) [1]$.
   $\mathbf{VO} (X,n)$ is equivalent to
   \begin{align*}
     \ord_{s=n} \zeta (X,s) & = \chi (R\Gamma_c (G_\RR, X(\CC), \RR (n))
-                             = \sum_{i \in \ZZ} (-1)^i \dim_\RR H^i_c (X(\CC), \RR (n))^{G_\RR} \\
+    = \sum_{i \in \ZZ} (-1)^i \dim_\RR H^i_c (X(\CC), \RR (n))^{G_\RR} \\
                            & = -\chi (R\Gamma (X_\et, \ZZ^c (n)))
-                             = \sum_{i \in \ZZ} (-1)^{i+1} \rk_\ZZ H^i (X_\et, \ZZ^c (n)).
+    = \sum_{i \in \ZZ} (-1)^{i+1} \rk_\ZZ H^i (X_\et, \ZZ^c (n)).
   \end{align*}
   Further, we have
   $$\chi (R\Gamma_\Wc (X, \ZZ(n))) = 0.$$
@@ -585,7 +597,8 @@ $R\Gamma (X_\et, \ZZ^c (n)) [1]$.
   The conjecture $\mathbf{VO} (X,n)$ is related to a conjecture of Soulé
   \cite[Conjecture~2.2]{Soule-1984-ICM}, which originally reads in terms of
   $K'$-theory
-  $$\ord_{s=n} \zeta (X,s) = \sum_{i \in \ZZ} (-1)^{i+1} \, \dim_\QQ K'_i (X)_{(n)}.$$
+  \[ \ord_{s=n} \zeta (X,s) =
+    \sum_{i \in \ZZ} (-1)^{i+1} \, \dim_\QQ K'_i (X)_{(n)}. \]
   Then, as explained in \cite[Remark~43]{Kahn-2005}, this may be rewritten in
   terms of Borel--Moore motivic homology as
   $$\sum_{i \in \ZZ} (-1)^{i+1} \, \dim_\QQ H_i^{BM} (X, \QQ (n)).$$
@@ -620,7 +633,8 @@ $R\Gamma (X_\et, \ZZ^c (n)) [1]$.
   It is expected that the completed zeta function
   $$\zeta (\overline{X}, s) = \zeta (X, s)\,\zeta (X_\infty, s),$$
   satisfies a functional equation of the form
-  $$A^{\frac{d-s}{2}}\,\zeta (\overline{X},d-s) = A^{\frac{s}{2}}\,\zeta (\overline{X},s).$$
+  \[ A^{\frac{d-s}{2}}\,\zeta (\overline{X},d-s) =
+    A^{\frac{s}{2}}\,\zeta (\overline{X},s). \]
   Here
   \begin{gather*}
     \zeta (X_\infty, s) = \prod_{i\in \ZZ} L_\infty (H^i (X),s)^{(-1)^i}, \\
@@ -630,7 +644,7 @@ $R\Gamma (X_\et, \ZZ^c (n)) [1]$.
     \Gamma_\RR (s) = \pi^{-s/2} \, \Gamma (s/2), \quad
     \Gamma_\CC (s) = (2\pi)^{-s} \, \Gamma (s).
   \end{gather*}
-  
+
   Therefore, the expected vanishing order at $s = n < 0$ is
   \begin{multline*}
     \ord_{s=n} \zeta (X,s) = -\ord_{s=n} \zeta (X_\infty,s)
@@ -963,7 +977,8 @@ value of $\zeta (X,s)$ at $s = n$.
   negative integer. Assuming $\mathbf{L}^c (X_\et, n)$, $\mathbf{B} (X,n)$, and
   meromorphic continuation of $\zeta (X,s)$ around $s = n < 0$, the
   corresponding special value is determined up to sign by
-  $$\lambda (\zeta^* (X,n)^{-1}) \cdot \ZZ = \det_\ZZ R\Gamma_\Wc (X, \ZZ (n)),$$
+  \[ \lambda (\zeta^* (X,n)^{-1}) \cdot \ZZ =
+    \det_\ZZ R\Gamma_\Wc (X, \ZZ (n)), \]
   where $\lambda$ is the canonical isomorphism \eqref{eqn:morphism-lambda}.
 \end{conjecture}
 
@@ -1057,7 +1072,8 @@ resolution of singularities.
 
   \begin{proof}
     Proposition \ref{prop:C(X,n)-over-finite-fields} gives
-    $$\zeta^* (X,n) = \pm \prod_{i \in \ZZ} |H_i^c (X_\ar, \ZZ (n))|^{(-1)^{i+1}}.$$
+    \[ \zeta^* (X,n) =
+      \pm \prod_{i \in \ZZ} |H_i^c (X_\ar, \ZZ (n))|^{(-1)^{i+1}}. \]
 
     Under $\mathbf{L}^c (X_\et,n)$, the groups
     $H_i^c (X_\ar, \ZZ(n)) \cong H^{1-i} (X_\et, \ZZ^c (n))$, are finitely
@@ -1316,7 +1332,10 @@ that this is indeed the case.
       \end{tikzcd} \]
 
     Similarly in part 2), we may consider the distinguished triangle
-    \[ R\Gamma_c (G_\RR, U (\CC), \RR (n)) \to R\Gamma_c (G_\RR, X (\CC), \RR (n)) \to R\Gamma_c (G_\RR, Z (\CC), \RR (n)) \to R\Gamma_c (G_\RR, U (\CC), \RR (n)) [1] \]
+    \[ R\Gamma_c (G_\RR, U (\CC), \RR (n)) \to
+      R\Gamma_c (G_\RR, X (\CC), \RR (n)) \to
+      R\Gamma_c (G_\RR, Z (\CC), \RR (n)) \to
+      R\Gamma_c (G_\RR, U (\CC), \RR (n)) [1] \]
     and the additivity of Euler characteristic gives
     \[ \begin{tikzcd}[column sep=4em]
         \ord_{s=n} \zeta (X,s) \ar[equals]{r}{\mathbf{VO} (X,n)}\ar[equals]{d} & \chi (R\Gamma_c (G_\RR, X(\CC), \RR (n))) \ar[equals]{d} \\
@@ -1475,8 +1494,9 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
     $(\alpha_{U,n}, \alpha_{X,n}, \alpha_{Z,n})$, and then take the respective
     cones $R\Gamma_\fg (-, \ZZ(n))$. In fact, by
     \cite[Proposition~5.5]{Beshenov-Weil-etale-1}, these cones are well-defined
-    up to a \emph{unique} isomorphism in the derived category $\mathbf{D} (\ZZ)$,
-    and the same argument shows that the induced morphisms of complexes
+    up to a \emph{unique} isomorphism in the derived category
+    $\mathbf{D} (\ZZ)$, and the same argument shows that the induced morphisms
+    of complexes
     \begin{equation}
       \label{eqn:triangle-RGamma-fg}
       R\Gamma_\fg (U, \ZZ(n)) \to
@@ -1553,8 +1573,10 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
       R\Gamma_\fg (U, \ZZ(n))^\wedge_p [1]. \]
     On the level of cohomology, there are natural isomorphisms
     \cite[Tag~0A06]{Stacks-project}
-    $$H^i (R\Gamma_\fg (-, \ZZ(n))^\wedge_p) \cong H^i_\fg (-, \ZZ(n)) \otimes_\ZZ \ZZ_p.$$
-    In particular, for each $p$ there is a long exact sequence of cohomology groups
+    \[ H^i (R\Gamma_\fg (-, \ZZ(n))^\wedge_p) \cong
+      H^i_\fg (-, \ZZ(n)) \otimes_\ZZ \ZZ_p. \]
+    In particular, for each $p$ there is a long exact sequence of cohomology
+    groups
     \[ \cdots \to H^i_\fg (U, \ZZ(n)) \otimes_\ZZ \ZZ_p \to
       H^i_\fg (X, \ZZ(n)) \otimes_\ZZ \ZZ_p \to
       H^i_\fg (Z, \ZZ(n)) \otimes_\ZZ \ZZ_p \to
@@ -1646,7 +1668,8 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
         & & R\Gamma_c (G_\RR, U (\CC), \ZZ (n)) [1] \ar[<-,near end,crossing over]{uu} \\
       \end{tikzcd} \]
 
-    \caption{Diagram induced by a closed-open decomposition $Z \not\hookrightarrow X \hookleftarrow U$}
+    \caption{Diagram induced by a closed-open decomposition
+      $Z \not\hookrightarrow X \hookleftarrow U$}
     \label{fig:RGamma-Wc-and-closed-open-decompositions}
   \end{figure}
 \end{landscape}
@@ -1665,7 +1688,8 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
         & & R\Gamma_c (G_\RR, U (\CC), \QQ (n)) [1] \ar[<-,near end,crossing over]{uu} \\
       \end{tikzcd} \]
 
-    \caption{Diagram induced by a closed-open decomposition $Z \not\hookrightarrow X \hookleftarrow U$, tensored with $\QQ$}
+    \caption{Diagram induced by a closed-open decomposition
+      $Z \not\hookrightarrow X \hookleftarrow U$, tensored with $\QQ$}
     \label{fig:RGamma-Wc-and-closed-open-decompositions-otimes-Q}
   \end{figure}
 \end{landscape}
@@ -1730,7 +1754,9 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
         & & R\Gamma_c (G_\RR, X (\CC), \QQ (n-r)) [-2r] \ar[<-,near end,crossing over]{uu}[swap]{p_*}{\cong}
       \end{tikzcd} \]
 
-    \caption{Isomorphism $R\Gamma_\Wc (\AA^r_X, \ZZ (n)) \cong R\Gamma_\Wc (X, \ZZ (n-r)) [-2r]$ and its splitting after tensoring with $\QQ$}
+    \caption{Isomorphism
+      $R\Gamma_\Wc (\AA^r_X, \ZZ (n)) \cong R\Gamma_\Wc (X, \ZZ (n-r)) [-2r]$
+      and its splitting after tensoring with $\QQ$}
     \label{fig:RGamma-Wc-and-affine-bundles}
   \end{figure}
 \end{landscape}
@@ -1855,7 +1881,8 @@ This category is equipped with tensor products
 $$(L,r) \otimes_R (M,s) = (L\otimes_R M, r + s)$$
 with commutativity isomorphisms
 \begin{align*}
-  \psi\colon (L,r) \otimes_R (M,s) & \xrightarrow{\cong} (M,s) \otimes_R (L,r), \\
+  \psi\colon (L,r) \otimes_R (M,s) & \xrightarrow{\cong}
+                                     (M,s) \otimes_R (L,r), \\
   \ell \otimes m & \mapsto (-1)^{r\,s}\,m\otimes \ell
 \end{align*}
 for $\ell \in L$, $m \in M$.
@@ -1977,7 +2004,8 @@ morphisms are quasi-isomorphisms of complexes.
     \ref{dfn:determinant-of-projective-fg-module}.
 
   \item[2)] If the cohomology modules $H^i (A^\bullet)$ are perfect, then
-    $$\det_R A^\bullet \cong \bigotimes_{i\in \ZZ} (\det_R H^i (A^\bullet))^{(-1)^i}.$$
+    \[ \det_R A^\bullet \cong
+      \bigotimes_{i\in \ZZ} (\det_R H^i (A^\bullet))^{(-1)^i}. \]
   \end{enumerate}
 \end{remark}
 
@@ -2037,7 +2065,8 @@ means.
     part 1) it would be enough to consider the case of a cyclic group
     $A = \ZZ/m\ZZ$. Then we have a quasi-isomorphism of complexes
     \[ \ZZ/m\ZZ [0] \cong \Bigl[
-      \mathop{m\ZZ}_{\text{deg.\,}-1} \hookrightarrow \mathop{\ZZ}_{\text{deg.\,}0}
+      \mathop{m\ZZ}_{\text{deg.\,}-1} \hookrightarrow
+      \mathop{\ZZ}_{\text{deg.\,}0}
       \Bigr]. \]
     Therefore,
     $$\det_\ZZ (\ZZ/m\ZZ) \cong \ZZ \otimes_\ZZ (m\ZZ)^{-1} \cong (m\ZZ)^{-1},$$
