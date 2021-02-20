@@ -858,8 +858,15 @@ is well-defined.
     \textbf{almost perfect}). On the other hand, the determinants are only
     defined for perfect complexes. Luckily, $H^i (i_\infty^*)$ is an isomorphism
     for $i \gg 0$, so that for $m$ big enough we may take the corresponding
-    canonical truncations $\tau_{\le m}$, and these give us (rotating the
-    triangles for convenience)
+    canonical truncations $\tau_{\le m}$:
+    \[ \begin{tikzcd}[row sep=1.5em, column sep=1em]
+        \tau_{\le m} R\Gamma_\Wc (X, \ZZ(n)) \ar{r}\ar{d}{\cong} & \tau_{\le m} R\Gamma_\fg (X,\ZZ(n)) \ar{r}\ar{d} & \tau_{\le m} R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \ar{r}\ar{d} & \tau_{\le m} R\Gamma_\Wc (X, \ZZ (n)) [1]\ar{d}{\cong} \\
+        R\Gamma_\Wc (X, \ZZ(n)) \ar{r}\ar{d} & R\Gamma_\fg (X,\ZZ(n)) \ar{r}{i_\infty}\ar{d} & R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \ar{r}\ar{d} & R\Gamma_\Wc (X, \ZZ (n)) [1]\ar{d} \\
+        0 \ar{r}\ar{d} & \tau_{\ge m+1} R\Gamma_\fg (X,\ZZ(n)) \ar{r}{\cong}\ar{d} & \tau_{\ge m+1} R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \ar{r}\ar{d} & 0\ar{d} \\
+        \tau_{\le m} R\Gamma_\Wc (X, \ZZ(n)) [1] \ar{r} & \tau_{\le m} R\Gamma_\fg (X,\ZZ(n)) [1] \ar{r} & \tau_{\le m} R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) [1] \ar{r} & \tau_{\le m} R\Gamma_\Wc (X, \ZZ (n)) [2]
+      \end{tikzcd} \]
+
+    The truncations give us (rotating the triangles for convenience)
     \[ \begin{tikzcd}[column sep=1em]
         \tau_{\le m} R\Gamma_c (G_\RR, X (\CC), \ZZ (n))[-1] \ar{r}\ar{d}{id} & R\Gamma_\Wc (X, \ZZ (n))\ar{d}{f}[swap]{\cong}\ar{r} & \tau_{\le m} R\Gamma_\fg (X,\ZZ(n)) \ar{d}{id}\ar{r} & \tau_{\le m} R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \ar{d}{id} \\
         \tau_{\le m} R\Gamma_c (G_\RR, X (\CC), \ZZ (n))[-1] \ar{r} & R\Gamma_\Wc (X, \ZZ (n))' \ar{r} & \tau_{\le m} R\Gamma_\fg (X,\ZZ(n)) \ar{r} & \tau_{\le m} R\Gamma_c (G_\RR, X (\CC), \ZZ (n))
