@@ -151,11 +151,25 @@ $X$ is proper and regular, one novelty of this work is that we prove the
 compatibility of the above conjectures with operations on schemes, in particular
 closed-open decompositions $Z \not\hookrightarrow X \hookleftarrow U$, where
 $Z \subset X$ is a closed subscheme and $U = X\setminus Z$ is the open
-complement, and affine bundles $\AA_X^r = \AA_\ZZ^r \times X$.
-(See proposition~\ref{prop:compatibility-of-VO(X,n)} and
+complement, and affine bundles $\AA_X^r = \AA_\ZZ^r \times X$.  (See
+proposition~\ref{prop:compatibility-of-VO(X,n)} and
 theorem~\ref{thm:compatibility-of-C(X,n)}.) This gives a machinery that allows
 one to start from the particular instances of schemes for which the conjectures
 are known, and construct new schemes for which the conjectures hold as well.
+As an application, we prove in \S\ref{sec:unconditional-results} the following
+result.
+
+\begin{maintheorem*}
+  The conjecture $\mathbf{C} (X,n)$ holds for any $B$-cellular arithmetic scheme
+  $X$ and all $n < 0$, where
+  \begin{enumerate}
+  \item[a)] $B = \Spec \mathcal{O}$ for
+    $\mathcal{O} \subseteq \mathcal{O}_{F,S}$ an $S$-order in an abelian number
+    field $F/\QQ$,
+
+  \item[b)] $B = C$ for a curve over a finite field $C/\FF_q$.
+  \end{enumerate}
+\end{maintheorem*}
 
 \subsection*{Outline of the paper}
 
@@ -180,10 +194,12 @@ In particular, it holds for any smooth $X/\FF_q$, assuming that the groups
 $H^i (X_\et, \ZZ (n))$ are finite for all $i$. This also generalizes to
 non-smooth $X/\FF_q$ if we assume the resolution of singularities over $\FF_q$.
 
-Finally, we prove in \S\ref{sec:compatibility-with-operations} that the
-conjectures $\mathbf{VO} (X,n)$ and $\mathbf{C} (X,n)$ are compatible with basic
-operations on schemes: disjoint unions, closed-open decompositions, and affine
-bundles.
+Then we prove in \S\ref{sec:compatibility-with-operations} that the conjectures
+$\mathbf{VO} (X,n)$ and $\mathbf{C} (X,n)$ are compatible with basic operations
+on schemes: disjoint unions, closed-open decompositions, and affine
+bundles. Using these results, we conclude in \S\ref{sec:unconditional-results}
+with a class of schemes for which the special value conjecture holds
+unconditionally.
 
 For convenience of the reader, the appendix \ref{app:determinants} briefly
 reviews basic definitions and facts related to the determinants of complexes
@@ -497,7 +513,7 @@ Lichtenbaum's conjectures about étale motivic cohomology.
   \begin{proof}
     Since $X (\CC) = \emptyset$, we note that $\mathbf{B} (X,n)$ implies that
     $H^i (X_\et, \ZZ^c (n))$ are torsion for all $i$, hence finite, if we
-    further assume $\mathbf{L}^c (X,n)$.
+    further assume $\mathbf{L}^c (X_\et,n)$.
   \end{proof}
 \end{lemma}
 
@@ -528,8 +544,8 @@ $s = n$.
 \end{conjecture}
 
 We note that the right hand side makes sense assuming the conjecture
-$\mathbf{L}^c (X,n)$, under which $H^i_\Wc (X, \ZZ (n))$ are finitely generated
-groups, trivial for $|i| \gg 0$
+$\mathbf{L}^c (X_\et,n)$, under which $H^i_\Wc (X, \ZZ (n))$ are finitely
+generated groups, trivial for $|i| \gg 0$
 (see \cite[Proposition~7.7]{Beshenov-Weil-etale-1}).
 
 \begin{remark}
@@ -537,9 +553,9 @@ groups, trivial for $|i| \gg 0$
   \textbf{secondary Euler characteristic} of the Weil-étale complex
   $R\Gamma_\Wc (X, \ZZ (n))$.  The easy calculations below show that the usual
   Euler characteristic of $R\Gamma_\Wc (X, \ZZ (n))$ vanishes, assuming
-  conjectures $\mathbf{L}^c (X,n)$ and $\mathbf{B} (X,n)$. See
-  \cite{Ramachandran-2016} for more details about secondary Euler characteristic
-  and its appearances in nature.
+  conjectures $\mathbf{L}^c (X_\et,n)$ and $\mathbf{B} (X,n)$.
+  See \cite{Ramachandran-2016} for more details about secondary Euler
+  characteristic and its appearances in nature.
 \end{remark}
 
 Under the regulator conjecture, our conjectural vanishing order formula takes
@@ -1068,6 +1084,7 @@ resolution of singularities.
 \end{conjecture}
 
 \begin{theorem}
+  \label{thm:C(X,n)-over-finite-fields}
   Let $X$ be a smooth projective variety $X/\FF_q$. Assuming
   $\mathbf{L}_\fin^c (X/\FF_q,n)$, the special value conjecture
   $\mathbf{C} (X,n)$ holds.
@@ -1114,6 +1131,7 @@ nontrivial. Therefore, for the moment we give a couple of toy examples over
 finite fields.
 
 \begin{example}
+  \label{example:C(X,n)-for-Spec-Fq}
   If $X = \Spec \FF_q$, then $\zeta (X,s) = \frac{1}{1 - q^{-s}}$. In this case
   for $n < 0$ we obtain
   \begin{equation}
@@ -1233,7 +1251,7 @@ that this is indeed the case.
     $Z \not\hookrightarrow X \hookleftarrow U$, if two out of three conjectures
     \[ \mathbf{L}^c (X_\et,n), \quad
       \mathbf{L}^c (Z_\et,n), \quad
-      \mathbf{L}^c (U,n) \]
+      \mathbf{L}^c (U_\et, n) \]
     hold, then the third holds as well.
 
   \item[3)] For an arithmetic scheme $X$ and any $r \ge 0$, one has
@@ -1412,7 +1430,7 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
 \begin{lemma}
   \label{lemma:lambda-and-disjoint-unions}
   Let $n < 0$ and let $X = \coprod_{1 \le i \le r} X_i$ be a finite disjoint
-  union of arithmetic schemes. Assume $\mathbf{L}^c (X,n)$ and
+  union of arithmetic schemes. Assume $\mathbf{L}^c (X_\et,n)$ and
   $\mathbf{B} (X,n)$. Then there is a quasi-isomorphism of complexes
   \[ \bigoplus_{1 \le i \le r} R\Gamma_\Wc (X_i, \ZZ(n)) \cong
     R\Gamma_\Wc (X, \ZZ(n)), \]
@@ -1663,50 +1681,10 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
   \end{proof}
 \end{lemma}
 
-\begin{landscape}
-  \begin{figure}
-    \[ \begin{tikzcd}[font=\small]
-        &[2em] &[-2.5em] &[-2.5em] &[-2.5em] R\Gamma_\Wc (U, \ZZ (n))\ar{dl} &[-2.5em] \\
-        {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}{\alpha_{U,n}}\ar{dd} & R\Gamma_c (U_\et, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd} \ar{rr} & & R\Gamma_\fg (U, \ZZ (n))\ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\exists!} \ar[crossing over]{rr} & & {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
-        & & R\Gamma_c (G_\RR, U (\CC), \ZZ (n)) & & R\Gamma_\Wc (X, \ZZ (n))\ar{dl} \\
-        {[R\Gamma (X_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}{\alpha_{X,n}}\ar{dd} & R\Gamma_c (X_\et, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd} \ar{rr} & & R\Gamma_\fg (X, \ZZ (n)) \ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\exists!} \ar[crossing over]{rr} & & {[R\Gamma (X_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
-        & & R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (Z, \ZZ (n))\ar{dl} \\
-        {[R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}{\alpha_{Z,n}}\ar{dd} & R\Gamma_c (Z_\et, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd} \ar{rr} & & R\Gamma_\fg (Z, \ZZ (n)) \ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\exists!} \ar[crossing over]{rr} & & {[R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
-        & & R\Gamma_c (G_\RR, Z (\CC), \ZZ (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (U, \ZZ (n)) [1]\ar{dl} \\
-        {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]]} \ar{r}{\alpha_{U,n} [1]} & R\Gamma_c (U_\et, \ZZ (n)) [1] \ar{dr}{u_\infty} \ar{rr} & & R\Gamma_\fg (U, \ZZ (n)) [1] \ar{dl}[swap]{i_\infty [1]} \ar{rr} & & {[R\Gamma (U_\et, \ZZ^c (n)), \QQ]} \\
-        & & R\Gamma_c (G_\RR, U (\CC), \ZZ (n)) [1] \ar[<-,near end,crossing over]{uu} \\
-      \end{tikzcd} \]
-
-    \caption{Diagram induced by a closed-open decomposition
-      $Z \not\hookrightarrow X \hookleftarrow U$}
-    \label{fig:RGamma-Wc-and-closed-open-decompositions}
-  \end{figure}
-\end{landscape}
-
-\begin{landscape}
-  \begin{figure}
-    \[ \begin{tikzcd}[font=\small]
-        &[2em] &[-2.5em] &[-2.5em] &[-2.5em] R\Gamma_\Wc (U, \QQ (n))\ar{dl}\ar{dd} &[-2.5em] \\
-        {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}\ar{dd} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (U, \QQ (n))\ar{dl}[swap]{0} \ar[dashed]{dd}{\exists!} \ar[crossing over,near start]{rr}{\cong} & & {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
-        & & R\Gamma_c (G_\RR, U (\CC), \QQ (n)) & & R\Gamma_\Wc (X, \QQ (n))\ar{dl}\ar{dd} \\
-        {[R\Gamma (X_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}\ar{dd} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (X, \QQ (n)) \ar{dl}[swap]{0} \ar[dashed]{dd}{\exists!} \ar[crossing over,near start]{rr}{\cong} & & {[R\Gamma (X_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
-        & & R\Gamma_c (G_\RR, X (\CC), \QQ (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (Z, \QQ (n))\ar{dl}\ar{dd} \\
-        {[R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}\ar{dd} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (Z, \QQ (n)) \ar{dl}[swap]{0} \ar[dashed]{dd}{\exists!} \ar[crossing over,near start]{rr}{\cong} & & {[R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
-        & & R\Gamma_c (G_\RR, Z (\CC), \QQ (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (U, \QQ (n)) [1]\ar{dl} \\
-        {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]]} \ar{r} & 0 \ar{dr} \ar{rr} & & R\Gamma_\fg (U, \QQ (n)) [1] \ar{dl}[swap]{0} \ar{rr}{\cong} & & {[R\Gamma (U_\et, \ZZ^c (n)), \QQ]} \\
-        & & R\Gamma_c (G_\RR, U (\CC), \QQ (n)) [1] \ar[<-,near end,crossing over]{uu} \\
-      \end{tikzcd} \]
-
-    \caption{Diagram induced by a closed-open decomposition
-      $Z \not\hookrightarrow X \hookleftarrow U$, tensored with $\QQ$}
-    \label{fig:RGamma-Wc-and-closed-open-decompositions-otimes-Q}
-  \end{figure}
-\end{landscape}
-
 \begin{lemma}
   \label{lemma:lambda-and-affine-bundles}
   For $n < 0$ and $r \ge 0$, let $X$ be an arithmetic scheme satisfying
-  $\mathbf{L}^c (X,n-r)$ and $\mathbf{B} (X,n-r)$. Then there is a natural
+  $\mathbf{L}^c (X_\et,n-r)$ and $\mathbf{B} (X,n-r)$. Then there is a natural
   quasi-isomorphism of complexes
   \begin{equation}
     \label{eqn:RGamma-Wc-and-affine-bundles}
@@ -1746,29 +1724,6 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
     \eqref{eqn:lambda-and-affine-bundles}.
   \end{proof}
 \end{lemma}
-
-\begin{landscape}
-  \begin{figure}
-    \[ \begin{tikzcd}[font=\small]
-        &[2em] &[-2.5em] &[-2.5em] &[-2.5em] R\Gamma_\Wc (\AA^r_X, \ZZ (n))\ar{dl}\ar[dashed,near start]{dd}{\cong} &[-2.5em] \\
-        {[R\Gamma (\AA^r_{X,\et}, \ZZ^c (n)), \QQ[-2]]} \ar{r}{\alpha_{\AA^r_X,n}}\ar{dd}{(p^*)^\vee}[swap]{\cong} & R\Gamma_c (\AA^r_{X,\et}, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd}{p_*}[swap]{\cong} \ar{rr} & & R\Gamma_\fg (\AA^r_X, \ZZ (n))\ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\cong} \ar[crossing over]{rr} & & {[+1]} \ar{dd}{\cong} \\
-        & & R\Gamma_c (G_\RR, \AA^r_X (\CC), \ZZ (n)) & & R\Gamma_\Wc (X, \ZZ (n-r)) [-2r]\ar{dl} \\
-        {[R\Gamma (X_\et, \ZZ^c (n-r)) [2r], \QQ[-2]]} \ar{r}{\alpha_{X,n-r} [-2r]} & R\Gamma_c (X_\et, \ZZ (n-r)) [-2r] \ar{dr}{u_\infty} \ar{rr} & & R\Gamma_\fg (X, \ZZ (n-r)) [-2r] \ar{dl}[swap]{i_\infty} \ar{rr} & & {[+1]} \\
-        & & R\Gamma_c (G_\RR, X (\CC), \ZZ (n-r)) [-2r] \ar[<-,near end,crossing over]{uu}[swap]{p_*}{\cong}\\
-        & & \otimes_\ZZ \QQ = \\
-        & & & & R\Gamma_\Wc (\AA^r_X, \QQ (n))\ar{dl}\ar[dashed,near start]{dd}{\cong} & \\
-        {[R\Gamma (\AA^r_{X,\et}, \ZZ^c (n)), \QQ[-2]]} \ar{r}\ar{dd}{(p^*)^\vee}[swap]{\cong} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (\AA^r_X, \QQ (n))\ar{dl}[swap]{0} \ar[dashed]{dd}{\cong} \ar[crossing over]{rr} & & {[+1]} \ar{dd}{\cong} \\
-        & & R\Gamma_c (G_\RR, \AA^r_X (\CC), \QQ (n)) & & R\Gamma_\Wc (X, \QQ (n-r)) [-2r]\ar{dl} \\
-        {[R\Gamma (X_\et, \ZZ^c (n-r)) [2r], \QQ[-2]]} \ar{r} & 0 \ar{dr} \ar{rr} & & R\Gamma_\fg (X, \QQ (n-r)) [-2r] \ar{dl}[swap]{0} \ar{rr} & & {[+1]} \\
-        & & R\Gamma_c (G_\RR, X (\CC), \QQ (n-r)) [-2r] \ar[<-,near end,crossing over]{uu}[swap]{p_*}{\cong}
-      \end{tikzcd} \]
-
-    \caption{Isomorphism
-      $R\Gamma_\Wc (\AA^r_X, \ZZ (n)) \cong R\Gamma_\Wc (X, \ZZ (n-r)) [-2r]$
-      and its splitting after tensoring with $\QQ$}
-    \label{fig:RGamma-Wc-and-affine-bundles}
-  \end{figure}
-\end{landscape}
 
 \begin{theorem}
   \label{thm:compatibility-of-C(X,n)}
@@ -1840,7 +1795,7 @@ we have a formula for the zeta function
 
 \begin{corollary}[projective bundles]
   Let $X$ be an arithmetic scheme, $n < 0$, and $r \ge 0$.
-  For $i = 0,\ldots,r$ assume the conjectures $\mathbf{L}^c (X,n-i)$,
+  For $i = 0,\ldots,r$ assume the conjectures $\mathbf{L}^c (X_\et,n-i)$,
   $\mathbf{B} (X,n-i)$, and meromorphic continuation of $\zeta (X,s)$ around
   $s = n-i$. Then
   \[ \mathbf{C} (X,n-i)\text{ for }i = 0,\ldots,r \Longrightarrow
@@ -1861,6 +1816,166 @@ we have a formula for the zeta function
     \eqref{eqn:zeta-function-for-affine-space}.)
     \end{proof}
 \end{corollary}
+
+\begin{landscape}
+  \begin{figure}
+    \[ \begin{tikzcd}[font=\small]
+        &[2em] &[-2.5em] &[-2.5em] &[-2.5em] R\Gamma_\Wc (U, \ZZ (n))\ar{dl} &[-2.5em] \\
+        {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}{\alpha_{U,n}}\ar{dd} & R\Gamma_c (U_\et, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd} \ar{rr} & & R\Gamma_\fg (U, \ZZ (n))\ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\exists!} \ar[crossing over]{rr} & & {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
+        & & R\Gamma_c (G_\RR, U (\CC), \ZZ (n)) & & R\Gamma_\Wc (X, \ZZ (n))\ar{dl} \\
+        {[R\Gamma (X_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}{\alpha_{X,n}}\ar{dd} & R\Gamma_c (X_\et, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd} \ar{rr} & & R\Gamma_\fg (X, \ZZ (n)) \ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\exists!} \ar[crossing over]{rr} & & {[R\Gamma (X_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
+        & & R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (Z, \ZZ (n))\ar{dl} \\
+        {[R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}{\alpha_{Z,n}}\ar{dd} & R\Gamma_c (Z_\et, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd} \ar{rr} & & R\Gamma_\fg (Z, \ZZ (n)) \ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\exists!} \ar[crossing over]{rr} & & {[R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
+        & & R\Gamma_c (G_\RR, Z (\CC), \ZZ (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (U, \ZZ (n)) [1]\ar{dl} \\
+        {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]]} \ar{r}{\alpha_{U,n} [1]} & R\Gamma_c (U_\et, \ZZ (n)) [1] \ar{dr}{u_\infty} \ar{rr} & & R\Gamma_\fg (U, \ZZ (n)) [1] \ar{dl}[swap]{i_\infty [1]} \ar{rr} & & {[R\Gamma (U_\et, \ZZ^c (n)), \QQ]} \\
+        & & R\Gamma_c (G_\RR, U (\CC), \ZZ (n)) [1] \ar[<-,near end,crossing over]{uu} \\
+      \end{tikzcd} \]
+
+    \caption{Diagram induced by a closed-open decomposition
+      $Z \not\hookrightarrow X \hookleftarrow U$}
+    \label{fig:RGamma-Wc-and-closed-open-decompositions}
+  \end{figure}
+\end{landscape}
+
+\begin{landscape}
+  \begin{figure}
+    \[ \begin{tikzcd}[font=\small]
+        &[2em] &[-2.5em] &[-2.5em] &[-2.5em] R\Gamma_\Wc (U, \QQ (n))\ar{dl}\ar{dd} &[-2.5em] \\
+        {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}\ar{dd} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (U, \QQ (n))\ar{dl}[swap]{0} \ar[dashed]{dd}{\exists!} \ar[crossing over,near start]{rr}{\cong} & & {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
+        & & R\Gamma_c (G_\RR, U (\CC), \QQ (n)) & & R\Gamma_\Wc (X, \QQ (n))\ar{dl}\ar{dd} \\
+        {[R\Gamma (X_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}\ar{dd} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (X, \QQ (n)) \ar{dl}[swap]{0} \ar[dashed]{dd}{\exists!} \ar[crossing over,near start]{rr}{\cong} & & {[R\Gamma (X_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
+        & & R\Gamma_c (G_\RR, X (\CC), \QQ (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (Z, \QQ (n))\ar{dl}\ar{dd} \\
+        {[R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}\ar{dd} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (Z, \QQ (n)) \ar{dl}[swap]{0} \ar[dashed]{dd}{\exists!} \ar[crossing over,near start]{rr}{\cong} & & {[R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
+        & & R\Gamma_c (G_\RR, Z (\CC), \QQ (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (U, \QQ (n)) [1]\ar{dl} \\
+        {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]]} \ar{r} & 0 \ar{dr} \ar{rr} & & R\Gamma_\fg (U, \QQ (n)) [1] \ar{dl}[swap]{0} \ar{rr}{\cong} & & {[R\Gamma (U_\et, \ZZ^c (n)), \QQ]} \\
+        & & R\Gamma_c (G_\RR, U (\CC), \QQ (n)) [1] \ar[<-,near end,crossing over]{uu} \\
+      \end{tikzcd} \]
+
+    \caption{Diagram induced by a closed-open decomposition
+      $Z \not\hookrightarrow X \hookleftarrow U$, tensored with $\QQ$}
+    \label{fig:RGamma-Wc-and-closed-open-decompositions-otimes-Q}
+  \end{figure}
+\end{landscape}
+
+\begin{landscape}
+  \begin{figure}
+    \[ \begin{tikzcd}[font=\small]
+        &[2em] &[-2.5em] &[-2.5em] &[-2.5em] R\Gamma_\Wc (\AA^r_X, \ZZ (n))\ar{dl}\ar[dashed,near start]{dd}{\cong} &[-2.5em] \\
+        {[R\Gamma (\AA^r_{X,\et}, \ZZ^c (n)), \QQ[-2]]} \ar{r}{\alpha_{\AA^r_X,n}}\ar{dd}{(p^*)^\vee}[swap]{\cong} & R\Gamma_c (\AA^r_{X,\et}, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd}{p_*}[swap]{\cong} \ar{rr} & & R\Gamma_\fg (\AA^r_X, \ZZ (n))\ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\cong} \ar[crossing over]{rr} & & {[+1]} \ar{dd}{\cong} \\
+        & & R\Gamma_c (G_\RR, \AA^r_X (\CC), \ZZ (n)) & & R\Gamma_\Wc (X, \ZZ (n-r)) [-2r]\ar{dl} \\
+        {[R\Gamma (X_\et, \ZZ^c (n-r)) [2r], \QQ[-2]]} \ar{r}{\alpha_{X,n-r} [-2r]} & R\Gamma_c (X_\et, \ZZ (n-r)) [-2r] \ar{dr}{u_\infty} \ar{rr} & & R\Gamma_\fg (X, \ZZ (n-r)) [-2r] \ar{dl}[swap]{i_\infty} \ar{rr} & & {[+1]} \\
+        & & R\Gamma_c (G_\RR, X (\CC), \ZZ (n-r)) [-2r] \ar[<-,near end,crossing over]{uu}[swap]{p_*}{\cong}\\
+        & & \otimes_\ZZ \QQ = \\
+        & & & & R\Gamma_\Wc (\AA^r_X, \QQ (n))\ar{dl}\ar[dashed,near start]{dd}{\cong} & \\
+        {[R\Gamma (\AA^r_{X,\et}, \ZZ^c (n)), \QQ[-2]]} \ar{r}\ar{dd}{(p^*)^\vee}[swap]{\cong} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (\AA^r_X, \QQ (n))\ar{dl}[swap]{0} \ar[dashed]{dd}{\cong} \ar[crossing over]{rr} & & {[+1]} \ar{dd}{\cong} \\
+        & & R\Gamma_c (G_\RR, \AA^r_X (\CC), \QQ (n)) & & R\Gamma_\Wc (X, \QQ (n-r)) [-2r]\ar{dl} \\
+        {[R\Gamma (X_\et, \ZZ^c (n-r)) [2r], \QQ[-2]]} \ar{r} & 0 \ar{dr} \ar{rr} & & R\Gamma_\fg (X, \QQ (n-r)) [-2r] \ar{dl}[swap]{0} \ar{rr} & & {[+1]} \\
+        & & R\Gamma_c (G_\RR, X (\CC), \QQ (n-r)) [-2r] \ar[<-,near end,crossing over]{uu}[swap]{p_*}{\cong}
+      \end{tikzcd} \]
+
+    \caption{Isomorphism
+      $R\Gamma_\Wc (\AA^r_X, \ZZ (n)) \cong R\Gamma_\Wc (X, \ZZ (n-r)) [-2r]$
+      and its splitting after tensoring with $\QQ$}
+    \label{fig:RGamma-Wc-and-affine-bundles}
+  \end{figure}
+\end{landscape}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Unconditional results (proof of the main theorem)}
+\label{sec:unconditional-results}
+
+Now we apply theorem~\ref{thm:compatibility-of-C(X,n)} from the previous section
+in order to prove the main theorem stated in the introduction: the validity of
+$\mathbf{C} (X,n)$ for all $n < 0$ for cellular schemes over certain
+$1$-dimensional bases.
+
+\begin{lemma}
+  \label{lemma:particular-cases-Spec-O}
+  The conjecture $\mathbf{C} (X,n)$ holds for $X = \Spec \mathcal{O}$ and all
+  $n < 0$, where $\mathcal{O} \subseteq \mathcal{O}_{F,S}$ is an $S$-order
+  (= subring of finite index in the ring of $S$-integers) of an abelian number
+  field $F/\QQ$.
+
+  \begin{proof}
+    First, the conjecture $\mathbf{C} (\Spec \mathcal{O}_F,n)$ is equivalent to
+    \cite[Conjecture 5.11]{Flach-Morin-2018}, which holds unconditionally in
+    this particular case, via reduction to the Tamagawa number conjecture; see
+    \cite[\S 5.8.3]{Flach-Morin-2018}, in particular [ibid., Proposition~5.35].
+    By compatibility with closed-open decompositions
+    (theorem~\ref{thm:compatibility-of-C(X,n)}), we also have
+    $\mathbf{C} (X', n)$ for $X' = \Spec \mathcal{O}_{F,S}$.
+    Now denoting by $i\colon Z \hookrightarrow X$ the non-regular locus, we have
+    \[ \begin{tikzcd}
+        Z' \ar[right hook->]{r}{i'}\tikzpb\ar{d}{f'} & X' \ar{d}{f} \\
+        Z \ar[right hook->]{r}{i} & X
+      \end{tikzcd} \]
+    Here $f$ induces an isomorphism $X \setminus Z \cong X'\setminus Z'$, where
+    $Z$ and $Z'$ are finite unions of points, which satisfy the special value
+    conjecture (see example~\ref{example:C(X,n)-for-Spec-Fq}). Again by
+    theorem~\ref{thm:compatibility-of-C(X,n)}, we have
+    \[ \mathbf{C} (X',n) \text{ and } \mathbf{C} (Z',n) \Longrightarrow
+      \mathbf{C} (X'\setminus Z',n) \Longrightarrow \mathbf{C} (X\setminus Z,n). \]
+    Finally, $\mathbf{C} (X\setminus Z,n)$ and $\mathbf{C} (Z,n)$ imply
+    $\mathbf{C} (X,n)$.
+  \end{proof}
+\end{lemma}
+
+\begin{lemma}
+  \label{lemma:particular-cases-C/Fq}
+  The conjecture $\mathbf{C} (X,n)$ holds for any curve over a finite field
+  $X/\FF_q$ and any $n < 0$.
+
+  \begin{proof}
+    The conjecture $\mathbf{L}^c_\fin (X/\FF_q,n)$ is true for any $n < 0$: in
+    the smooth case, we have according to \cite[Proposition~4.3]{Geisser-2017}
+    that $H^i (X_\et, \ZZ^c (n)) = H^{i+2} (X_\et, \ZZ (1-n))$ is finite, except
+    for $i = -2n, -2n + 2$, when it is possibly finitely generated or of
+    cofinite type. On the other hand, Artin--Verdier duality
+    \cite[Theorem~I]{Beshenov-Weil-etale-1} shows that these two ``exceptional''
+    groups are at most finite $2$-torsion. The non-smooth case follows by
+    resolution of singularities for curves, since
+    $\mathbf{L}^c_\fin (Z/\FF_q,n)$ holds if $Z$ is a finite union of points
+    (see example~\ref{example:C(X,n)-for-Spec-Fq}).
+
+    Therefore, theorem~\ref{thm:C(X,n)-over-finite-fields} applies.
+  \end{proof}
+\end{lemma}
+
+\begin{definition}
+  \label{dfn:B-cellular-scheme}
+  Let $X \to B$ be a $B$-scheme. We say that $X$ is \textbf{$B$-cellular} if it
+  admits a filtration by closed subschemes
+  $$X = X_N \subseteq X_{N-1} \subseteq \cdots \subseteq X_1 \subseteq X_{-1} = \emptyset$$
+  such that $Y_i\setminus Y_{i-1} \cong \coprod_j \AA^{r_{i_j}}_B$ is a finite
+  union of affine $B$-spaces.
+\end{definition}
+
+For instance, projective spaces $\PP^r_X$ and in general Grassmannians
+$\Gr (k,\ell)_X$ are cellular.
+
+\begin{theorem}
+  The conjecture $\mathbf{C} (X,n)$ holds for any $B$-cellular arithmetic scheme
+  $X$ and all $n < 0$, where
+  \begin{enumerate}
+  \item[a)] $B = \Spec \mathcal{O}$ for
+    $\mathcal{O} \subseteq \mathcal{O}_{F,S}$ an $S$-order in an abelian number
+    field $F/\QQ$,
+
+  \item[b)] $B = C$ for a curve over a finite field $C/\FF_q$.
+  \end{enumerate}
+
+  \begin{proof}
+    We note that if $X$ is $B$-cellular, then the conjecture $\mathbf{C} (B,n)$
+    for all $n < 0$ implies the conjecture $\mathbf{C} (X,n)$ for all $n < 0$.
+    This follows by induction on the length of a cellular decomposition, using
+    compatibility of $\mathbf{C} (-,n)$ with closed-open decompositions, affine
+    bundles, and disjoint unions (theorem~\ref{thm:compatibility-of-C(X,n)}).
+
+    Now the result follows from lemmas \ref{lemma:particular-cases-Spec-O} and
+    \ref{lemma:particular-cases-C/Fq} above.
+  \end{proof}
+\end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
