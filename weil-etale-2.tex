@@ -23,6 +23,9 @@
 
 \numberwithin{equation}{section}
 
+% remove later
+\usepackage{soul}
+
 \begin{document}
 
 \maketitle
@@ -33,9 +36,8 @@
   special value of the zeta function $\zeta (X,s)$ at $s = n < 0$, where $X$ is
   a separated scheme of finite type over $\Spec \ZZ$. We prove that the
   conjecture is compatible with closed-open decompositions of schemes and affine
-  bundles, and as a consequence, that it holds if $X$ is a cellular scheme over
-  a base which is a curve over a finite field $C/\FF_q$ or the spectrum of an
-  $S$-order in an abelian number field $F/\QQ$.
+  bundles, and as a consequence, that it holds for cellular schemes over certain
+  $1$-dimensional bases.
 
   This is a continuation of author's preprint \cite{Beshenov-Weil-etale-1},
   which gives a construction of Weil-étale cohomology for $n<0$ under the
@@ -155,24 +157,25 @@ $X$ is proper and regular, one novelty of this work is that we prove the
 compatibility of the above conjectures with operations on schemes, in particular
 closed-open decompositions $Z \not\hookrightarrow X \hookleftarrow U$, where
 $Z \subset X$ is a closed subscheme and $U = X\setminus Z$ is the open
-complement, and affine bundles $\AA_X^r = \AA_\ZZ^r \times X$.  (See
-proposition~\ref{prop:compatibility-of-VO(X,n)} and
+complement, and affine bundles $\AA_X^r = \AA_\ZZ^r \times X$.
+(See proposition~\ref{prop:compatibility-of-VO(X,n)} and
 theorem~\ref{thm:compatibility-of-C(X,n)}.) This gives a machinery that allows
 one to start from the particular instances of schemes for which the conjectures
-are known, and construct new schemes for which the conjectures hold as well.
-As an application, we prove in \S\ref{sec:unconditional-results} the following
+are known, and construct new schemes for which the conjectures hold as well.  As
+an application, we prove in \S\ref{sec:unconditional-results} the following
 result.
 
 \begin{maintheorem*}
-  The conjecture $\mathbf{C} (X,n)$ holds for any $B$-cellular arithmetic scheme
-  $X$ and all $n < 0$, where
+  Let $B$ be an affine arithmetic scheme of pure dimension $1$, such that each
+  of the generic points $\eta \in X$ satisfies one of the following properties:
   \begin{enumerate}
-  \item[a)] $B = \Spec \mathcal{O}$ for
-    $\mathcal{O} \subseteq \mathcal{O}_{F,S}$ an $S$-order in an abelian number
-    field $F/\QQ$,
+  \item[a)] $\fchar \kappa (\eta) = p > 0$;
 
-  \item[b)] $B = C$ for a curve over a finite field $C/\FF_q$.
+  \item[b)] $\fchar \kappa (\eta) = 0$, and $\kappa (\eta)/\QQ$ is an abelian
+    number field.
   \end{enumerate}
+  If $X$ is a $B$-cellular arithmetic scheme $X$ with smooth quasi-projective
+  fiber $X_\CC$, then $\mathbf{C} (X,n)$ holds unconditionally for any $n < 0$.
 \end{maintheorem*}
 
 \subsection*{Outline of the paper}
@@ -524,6 +527,7 @@ Lichtenbaum's conjectures about étale motivic cohomology.
 \end{lemma}
 
 \begin{remark}
+  \label{rmk:regulator-is-defined-for-XC-smooth-quasi-proj}
   We reiterate that our construction of $Reg_{X,n}$ works for $X_\CC$ smooth
   quasi-projective. In everything that follows, whenever the regulator morphism
   or the conjecture $\mathbf{B} (X,n)$ is brought, we will tacitly assume this.
@@ -1896,64 +1900,80 @@ in order to prove the main theorem stated in the introduction: the validity of
 $\mathbf{C} (X,n)$ for all $n < 0$ for cellular schemes over certain
 $1$-dimensional bases.
 
-\begin{lemma}
-  \label{lemma:particular-cases-Spec-O}
-  The conjecture $\mathbf{C} (X,n)$ holds for $X = \Spec \mathcal{O}$ and all
-  $n < 0$, where $\mathcal{O} \subseteq \mathcal{O}_{F,S}$ is an $S$-order
-  (= subring of finite index in the ring of $S$-integers) of an abelian number
-  field $F/\QQ$.
+\begin{proposition}
+  \label{prop:particular-cases-1-dim-base}
+  Let $B$ be an affine arithmetic scheme of dimension $1$. Assume that each of
+  the generic points $\eta \in B$ satisfies one of the following properties:
+  \begin{enumerate}
+  \item[a)] $\fchar \kappa (\eta) = p > 0$;
+
+  \item[b)] $\fchar \kappa (\eta) = 0$, and $\kappa (\eta)/\QQ$ is an abelian
+    number field.
+  \end{enumerate}
+  Then the conjecture $\mathbf{C} (B,n)$ holds for any $n < 0$.
 
   \begin{proof}
-    First, the conjecture $\mathbf{C} (\Spec \mathcal{O}_F,n)$ is equivalent to
+    Passing from $B$ to $B^\mathrm{red}$ does not affect the zeta function
+    $\zeta (B,s)$, motivic cohomology $H^i (B_\et, \ZZ^c (n))$, or Weil-étale
+    cohomology $H^i_\Wc (B, \ZZ(n))$, so we may assume that $B$ is reduced.
+
+    Consider the normalization $f\colon B' \to B$. Since we are in dimension
+    $1$, the scheme $B'$ is regular, and we have a cartesian square
+    \[ \begin{tikzcd}
+        Z' \ar[right hook->]{r}{i'}\tikzpb\ar{d}{f'} & B' \ar{d}{f} \\
+        Z \ar[right hook->]{r}{i} & B
+      \end{tikzcd} \]
+    where $Z \subset B$ is the finite non-regular locus, $Z' \subset B'$ is
+    finite as well, and $f$ induces an isomorphism
+    $B\setminus Z \cong B'\setminus Z'$.
+
+    The special value conjecture is true for $0$-dimensional schemes
+    (see example~\ref{example:C(X,n)-for-Spec-Fq}), so $\mathbf{C} (Z,n)$ and
+    $\mathbf{C} (Z',n)$ hold. Now if we establish $\mathbf{C} (B',n)$, then
+    $\mathbf{C} (B,n)$ would follow by compatibility with closed-open
+    decompositions (theorem~\ref{thm:compatibility-of-C(X,n)}):
+    \begin{align*}
+      \mathbf{C} (B',n) + \mathbf{C} (Z',n) & \Longrightarrow \mathbf{C} (B'\setminus Z', n) \iff \mathbf{C} (B\setminus Z, n),\\
+      \mathbf{C} (B\setminus Z, n) + \mathbf{C} (Z,n) & \Longrightarrow \mathbf{C} (B,n).
+    \end{align*}
+
+    The special value conjecture is also compatible with disjoint unions of
+    schemes, so we may assume that $B' = \Spec \mathcal{O}_{F,S}$, where $F$ is
+    a global field, and $\mathcal{O}_{F,S}$ is the ring of $S$-integers
+    (see e.g. \cite[\S\S 3,4]{Jordan-Poonen-2020}). Here
+    $\Spec \mathcal{O}_{F,S} = \Spec \mathcal{O}_F \setminus S$, where $S$ is
+    finite, so again, thanks to the compatibility with closed-open
+    decompositions, it will be enough to consider the case of
+    $B' = \Spec \mathcal{O}_F$.
+
+    If $\fchar F = p > 0$, then $\mathbf{C} (B',n)$ holds for any $n < 0$ thanks
+    to theorem~\ref{thm:C(X,n)-over-finite-fields}. The only detail to verify is
+    that the cohomology groups $H^i (B'_\et, \ZZ^c (n))$ are finite. This
+    essentially goes back to Soulé;
+    see e.g. \cite[Proposition~4.3]{Geisser-2017}\footnote{The quoted result
+      states that $H^i (B_\et, \ZZ^c (n)) = H^{i+2} (B_\et, \ZZ (1-n))$ is
+      finite, except for $i = -2n, -2n + 2$, when it is possibly finitely
+      generated or of cofinite type. However, Artin--Verdier duality
+      \cite[Theorem~I]{Beshenov-Weil-etale-1} shows that these two
+      ``exceptional'' groups are at most finite $2$-torsion.}.
+
+    Now if $\fchar F = 0$, then by our assumption, $F/\QQ$ is an abelian number
+    field. In this case the conjecture $\mathbf{C} (B',n)$ is equivalent to
     \cite[Conjecture 5.11]{Flach-Morin-2018}, which holds unconditionally in
     this particular case, via reduction to the Tamagawa number conjecture; see
     \cite[\S 5.8.3]{Flach-Morin-2018}, in particular [ibid., Proposition~5.35].
-    By compatibility with closed-open decompositions
-    (theorem~\ref{thm:compatibility-of-C(X,n)}), we also have
-    $\mathbf{C} (X', n)$ for $X' = \Spec \mathcal{O}_{F,S}$.
-    Now denoting by $i\colon Z \hookrightarrow X$ the non-regular locus, we have
-    \[ \begin{tikzcd}
-        Z' \ar[right hook->]{r}{i'}\tikzpb\ar{d}{f'} & X' \ar{d}{f} \\
-        Z \ar[right hook->]{r}{i} & X
-      \end{tikzcd} \]
-    Here $f$ induces an isomorphism $X \setminus Z \cong X'\setminus Z'$, where
-    $Z$ and $Z'$ are finite unions of points, which satisfy the special value
-    conjecture (see example~\ref{example:C(X,n)-for-Spec-Fq}). Again by
-    theorem~\ref{thm:compatibility-of-C(X,n)}, we have
-    \[ \mathbf{C} (X',n) \text{ and } \mathbf{C} (Z',n) \Longrightarrow
-      \mathbf{C} (X'\setminus Z',n) \Longrightarrow \mathbf{C} (X\setminus Z,n). \]
-    Finally, $\mathbf{C} (X\setminus Z,n)$ and $\mathbf{C} (Z,n)$ imply
-    $\mathbf{C} (X,n)$.
   \end{proof}
-\end{lemma}
-
-\begin{lemma}
-  \label{lemma:particular-cases-C/Fq}
-  The conjecture $\mathbf{C} (X,n)$ holds for any curve over a finite field
-  $X/\FF_q$ and any $n < 0$.
-
-  \begin{proof}
-    The conjecture $\mathbf{L}^c_\fin (X/\FF_q,n)$ is true for any $n < 0$: in
-    the smooth case, we have according to \cite[Proposition~4.3]{Geisser-2017}
-    that $H^i (X_\et, \ZZ^c (n)) = H^{i+2} (X_\et, \ZZ (1-n))$ is finite, except
-    for $i = -2n, -2n + 2$, when it is possibly finitely generated or of
-    cofinite type. On the other hand, Artin--Verdier duality
-    \cite[Theorem~I]{Beshenov-Weil-etale-1} shows that these two ``exceptional''
-    groups are at most finite $2$-torsion. The non-smooth case follows by
-    resolution of singularities for curves, since
-    $\mathbf{L}^c_\fin (Z/\FF_q,n)$ holds if $Z$ is a finite union of points
-    (see example~\ref{example:C(X,n)-for-Spec-Fq}).
-
-    Therefore, theorem~\ref{thm:C(X,n)-over-finite-fields} applies.
-  \end{proof}
-\end{lemma}
+\end{proposition}
 
 \begin{definition}
   \label{dfn:B-cellular-scheme}
   Let $X \to B$ be a $B$-scheme. We say that $X$ is \textbf{$B$-cellular} if it
   admits a filtration by closed subschemes
-  $$X = X_N \subseteq X_{N-1} \subseteq \cdots \subseteq X_1 \subseteq X_{-1} = \emptyset$$
-  such that $Y_i\setminus Y_{i-1} \cong \coprod_j \AA^{r_{i_j}}_B$ is a finite
+  \begin{equation}
+    \label{eqn:cellular-decomposition}
+    X = X_N \supseteq X_{N-1} \supseteq \cdots \supseteq X_0 \supseteq X_{-1} = \emptyset
+  \end{equation}
+  such that $Z_i\setminus Z_{i-1} \cong \coprod_j \AA^{r_{i_j}}_B$ is a finite
   union of affine $B$-spaces.
 \end{definition}
 
@@ -1961,36 +1981,36 @@ For instance, projective spaces $\PP^r_B$ and in general Grassmannians
 $\Gr (k,\ell)_B$ are cellular.
 
 \begin{theorem}
-  The conjecture $\mathbf{C} (X,n)$ holds for any $B$-cellular arithmetic scheme
-  $X$ and all $n < 0$, where
-  \begin{enumerate}
-  \item[a)] $B = \Spec \mathcal{O}$ for
-    $\mathcal{O} \subseteq \mathcal{O}_{F,S}$ an $S$-order in an abelian number
-    field $F/\QQ$,
-
-  \item[b)] $B = C$ for a curve over a finite field $C/\FF_q$.
-  \end{enumerate}
+  Let $B$ be an affine $1$-dimensional arithmetic scheme satisfying the
+  assumptions of proposition~\ref{prop:particular-cases-1-dim-base}.
+  If $X$ is a $B$-cellular arithmetic scheme $X$ with smooth and
+  quasi-projective fiber $X_\CC$, then the special value $\mathbf{C} (X,n)$
+  holds unconditionally for any $n < 0$.
 
   \begin{proof}
-    We note that if $X$ is $B$-cellular, then the conjecture $\mathbf{C} (B,n)$
-    for all $n < 0$ implies the conjecture $\mathbf{C} (X,n)$ for all $n < 0$.
-    This follows by induction on the length of a cellular decomposition, using
-    compatibility of $\mathbf{C} (-,n)$ with closed-open decompositions, affine
-    bundles, and disjoint unions (theorem~\ref{thm:compatibility-of-C(X,n)}).
+    The conjecture $\mathbf{C} (X,n)$ makes sense only if the regulator map is
+    defined, for which we need to assume that $X_\CC$ is smooth and
+    quasi-projective
+    (see remark~\ref{rmk:regulator-is-defined-for-XC-smooth-quasi-proj}).
+    Now looking at the corresponding cellular decomposition
+    \eqref{eqn:cellular-decomposition}, we better pass to open complements
+    $U_i = X\setminus Z_i$, to obtain a filtration
+    $$X = U_{-1} \supseteq U_1 \supseteq \cdots \supseteq U_{N-1} \supseteq U_N = \emptyset,$$
+    with $U_{i,\CC}$ smooth and quasi-projective, being \emph{open}
+    subvarieties in $X_\CC$. Now we have closed-open decompositions
+    $\coprod_j \AA^{r_{i,j}}_B \not\hookrightarrow U_i \hookleftarrow U_{i+1}$,
+    and the regulator morphisms make sense. Using lemma
+    \ref{lemma:compatibility-of-B(X,n)}, we deduce $\mathbf{B} (X,n)$
+    by induction on the length of the cellular decomposition.
 
-    Now the result follows from lemmas \ref{lemma:particular-cases-Spec-O} and
-    \ref{lemma:particular-cases-C/Fq} above.
+    By a similar inductive argument, we deduce $\mathbf{L}^c (X_\et, n)$.
+    Finally, the conjecture $\mathbf{C} (B,n)$ holds for all $n < 0$ thanks to
+    proposition~\ref{prop:particular-cases-1-dim-base}, so the induction implies
+    $\mathbf{C} (X,n)$ for all $n < 0$, using compatibility of
+    $\mathbf{C} (-,n)$ with closed-open decompositions, affine bundles, and
+    disjoint unions (theorem~\ref{thm:compatibility-of-C(X,n)}).
   \end{proof}
 \end{theorem}
-
-We note that if $B$ is a reduced affine scheme of pure dimension $1$, then it is
-a finite union of $\Spec \mathcal{O}_i$, where
-$\mathcal{O}_i \subseteq \mathcal{O}_{F_i,S_i}$ is an $S_i$-order in a global
-field $F_i$ (see for instance \cite[Proposition~4.2]{Jordan-Poonen-2020}).
-Therefore, we have the conjecture $\mathbf{C} (X,n)$ for cellular schemes over
-such $B$, whenever the generic points of $B$ have residue fields of
-characteristic $p$, or \emph{abelian} number fields $F_i/\QQ$. The non-abelian
-case would be just as difficult as the corresponding Tamagawa number conjecture.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
