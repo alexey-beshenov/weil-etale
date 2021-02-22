@@ -1155,6 +1155,10 @@ finite fields.
   (see for instance \cite[Example~4.2]{Geisser-2017}).
   Therefore, the formula \eqref{eqn:special-value-for-X/Fq} indeed recovers
   $\zeta (X,n)$ up to sign.
+
+  Similarly, replacing $\Spec \FF_q$ with $\Spec \FF_{q^m}$, viewed as a variety
+  over $\FF_q$, we have $\zeta (\Spec \FF_{q^m},s) = \zeta (\Spec \FF_q, ms)$,
+  and \eqref{eqn:motivic-cohomology-of-Fq} also changes accordingly.
 \end{example}
 
 \begin{example}
@@ -1927,11 +1931,10 @@ $1$-dimensional bases.
 
   \begin{proof}
     Passing from $B$ to $B^\mathrm{red}$ does not affect the zeta function
-    $\zeta (B,s)$, motivic cohomology $H^i (B_\et, \ZZ^c (n))$, or Weil-étale
-    cohomology $H^i_\Wc (B, \ZZ(n))$, so we may assume that $B$ is reduced.
-
-    Consider the normalization $f\colon B' \to B$. Since we are in dimension
-    $1$, the scheme $B'$ is regular, and we have a cartesian square
+    $\zeta (B,s)$ or Weil-étale cohomology $H^i_\Wc (B, \ZZ(n))$, so we may
+    assume that $B$ is reduced. We furter consider the normalization
+    $f\colon B' \to B$. Since we are in dimension $1$, the scheme $B'$ is
+    regular, and we have a cartesian square
     \[ \begin{tikzcd}
         Z' \ar[right hook->]{r}{i'}\tikzpb\ar{d}{f'} & B' \ar{d}{f} \\
         Z \ar[right hook->]{r}{i} & B
@@ -1977,6 +1980,12 @@ $1$-dimensional bases.
     \cite[\S 5.8.3]{Flach-Morin-2018}, in particular [ibid., Proposition~5.35].
   \end{proof}
 \end{proposition}
+
+\begin{remark}
+  The schemes as above were considered in \cite{Jordan-Poonen-2020}, where the
+  authors write down a special value formula at $s = 1$, generalizing the
+  classical class number formula.
+\end{remark}
 
 \begin{definition}
   \label{dfn:B-cellular-scheme}
