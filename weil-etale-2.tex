@@ -1770,6 +1770,19 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
 \end{theorem}
 
 \begin{remark}
+  As a formal consequence of compatibility with closed-open decompositions, if
+  we apply it to the canonical closed embedding $X^{red} \hookrightarrow X$,
+  then we conclude that
+  $R\Gamma_\Wc (X, \ZZ(n)) \cong R\Gamma_\Wc (X^{red}, \ZZ(n))$. This is not
+  surprising, because Weil-étale complexes are constructed from a variant of
+  cycle complexes / higher Chow groups, and these do not distinguish $X$ from
+  $X^{red}$ (unlike, for instance, algebraic $K$-groups).
+
+  This is actually the desired behavior for us, since neither the zeta function
+  does: $\zeta (X,s) = \zeta (X^{red},s)$.
+\end{remark}
+
+\begin{remark}
   If $X/\FF_q$ is a variety over a finite field, then the proof of
   theorem~\ref{thm:compatibility-of-C(X,n)} simplifies drastically: we can work
   with the formula \eqref{eqn:special-value-for-X/Fq}, and the following
