@@ -2,6 +2,8 @@ Weil-étale part I, version 2.
 
 Minor additions:
 
+* fixed a couple of typos;
+
 * explicitly stated comparison with l-adic cohomology in Corollary 5.7;
 
 * comparison with Geisser's arithmetic homology in Proposition 7.9;
