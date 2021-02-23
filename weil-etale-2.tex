@@ -2003,6 +2003,15 @@ is needed to ensure that the regulator morphism exists
   \end{proof}
 \end{proposition}
 
+\begin{lemma}
+  Any $0$-dimensional arithmetic scheme $X$ lies in $\mathcal{C} (\ZZ)$.
+
+  \begin{proof}
+    Thanks to $\mathcal{C}0)$, we may assume that $X$ is reduced. In this case
+    $X$ is a disjoint union of $\Spec \FF_q$ for finite fields.
+  \end{proof}
+\end{lemma}
+
 \begin{proposition}
   \label{prop:particular-cases-1-dim-base}
   Let $B$ be a $1$-dimensional arithmetic scheme. Assume that each of the
@@ -2022,11 +2031,11 @@ is needed to ensure that the regulator morphism exists
     in the definition of $\mathcal{C} (\ZZ)$.
 
     Thanks to $\mathcal{C}0)$, we may assume without loss of generality that $B$
-    is reduced. $B$ is a finite union of its irreducible components, so thanks
-    to $\mathcal{C}1)$ we may also assume that $B$ is irreducible. Further, if
-    $U \subset B$ is an affine neighborhood of the generic point, then
-    $B \setminus U$ is finite, so it lies in $\mathcal{C} (\ZZ)$. Using the
-    operation $\mathcal{C}2)$, we see that it is enough to prove that
+    is reduced. $B$ has finitely many irreducible components, corresponding to
+    generic points $\eta_1,\ldots,\eta_m$. Let $U_1,\ldots,U_m$ be disjoint open
+    affines containing these points. Then $B\setminus U$ for $U = \bigcup_i U_i$
+    has dimension $0$, so it lies in $\mathcal{C} (\ZZ)$. Using the operation
+    $\mathcal{C}2)$, we see that it is enough to prove that
     $U \in \mathcal{C} (\ZZ)$, i.e. we may also assume that $B$ itself is
     affine.
 
@@ -2036,16 +2045,19 @@ is needed to ensure that the regulator morphism exists
         Z' \ar[right hook->]{r}{i'}\ar{d}{f'} & B' \ar{d}{f} \\
         Z \ar[right hook->]{r}{i} & B
       \end{tikzcd} \]
-    where $Z \subset B$ is the finite non-regular locus, $Z' \subset B'$ is
-    finite as well, and $f$ induces an isomorphism
-    $B\setminus Z \cong B'\setminus Z'$.
-    Since finite fields and their unions are in $\mathcal{C} (\ZZ)$, we have
-    $Z, Z' \in \mathcal{C} (\ZZ)$. It will be enough to see that
-    $B' \in \mathcal{C} (\ZZ)$, and then
+    where $Z \subset B$ is the $0$-dimensional non-regular locus,
+    $Z' \subset B'$ is $0$-dimensional as well, so that
+    $Z, Z' \in \mathcal{C} (\ZZ)$. Now $f$ induces an isomorphism
+    $B\setminus Z \cong B'\setminus Z'$, and it will
+    be enough to see that $B' \in \mathcal{C} (\ZZ)$, and then
     \begin{align*}
       B', Z' \in \mathcal{C} (\ZZ) & \Longrightarrow B'\setminus Z' \in \mathcal{C} (\ZZ) \iff B\setminus Z \in \mathcal{C} (\ZZ),\\
       B\setminus Z, \, Z \in \mathcal{C} (\ZZ) & \Longrightarrow B \in \mathcal{C} (\ZZ).
     \end{align*}
+
+    If $C_i \subset B$ are the irreducible components of $B$, then
+    $B' = \coprod_i C_i'$ is the disjoint union of normalizations, so we may
+    assume that $B'$ is irreducible thanks to $\mathcal{C}1)$.
 
     Now there are two cases. If the image of $B' \to \Spec \ZZ$ is a closed
     point, then $B'$ is a curve over $\FF_p$, so that
@@ -2055,9 +2067,10 @@ is needed to ensure that the regulator morphism exists
     assumptions. We have $B' = \Spec \mathcal{O}$, where
     $\mathcal{O}_F \subseteq \mathcal{O} = \mathcal{O}_{F,S}$ for some finite
     set $S$, since $\mathcal{O}$ is an integrally closed finitely generated
-    domain. Now $B' = \Spec \mathcal{O}_F \setminus S$, where $S$ is finite, so
-    again, everything reduces to the case of $B' = \Spec \mathcal{O}_F$, which
-    lies in $\mathcal{C} (\ZZ)$ by the definition.
+    domain. Now $B' = \Spec \mathcal{O}_F \setminus S$ and
+    $S \in \mathcal{C} (\ZZ)$, so again, everything reduces to the case of
+    $B' = \Spec \mathcal{O}_F$, which lies in $\mathcal{C} (\ZZ)$ by the
+    definition.
   \end{proof}
 \end{proposition}
 
