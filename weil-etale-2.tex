@@ -135,7 +135,7 @@ Specifically, we make the following conjectures.
   H^i (R\Gamma_\Wc (X, \ZZ (n)) \otimes_\ZZ \RR)$.
 
   It follows that there is a canonical isomorphism
-  \[ \lambda = \lambda_{X,n}\colon \RR \xrightarrow{\cong}
+  \[ \lambda\colon \RR \xrightarrow{\cong}
     (\det_\ZZ R\Gamma_\Wc (X, \ZZ (n))) \otimes \RR. \]
   Here $\det_\ZZ R\Gamma_\Wc (X, \ZZ (n))$ is the determinant of the
   perfect complex of abelian groups $R\Gamma_\Wc (X, \ZZ (n))$, in the sense of
@@ -150,7 +150,7 @@ Specifically, we make the following conjectures.
     \det_\ZZ R\Gamma_\Wc (X, \ZZ (n)). \]
 \end{enumerate}
 
-In particular, if $X$ is proper and regular, then our construction of
+If $X$ is proper and regular, then our construction of
 $R\Gamma_\Wc (X, \ZZ (n))$ and the above conjectures agree with those of Flach
 and Morin from \cite{Flach-Morin-2018}. Apart from removing the assumption that
 $X$ is proper and regular, one novelty of this work is that we prove the
@@ -166,8 +166,8 @@ an application, we prove in \S\ref{sec:unconditional-results} the following
 result.
 
 \begin{maintheorem*}
-  Let $B$ be an affine arithmetic scheme of pure dimension $1$, such that each
-  of the generic points $\eta \in X$ satisfies one of the following properties:
+  Let $B$ be a $1$-dimensional arithmetic scheme, such that each of the generic
+  points $\eta \in B$ satisfies one of the following properties:
   \begin{enumerate}
   \item[a)] $\fchar \kappa (\eta) = p > 0$;
 
@@ -175,8 +175,8 @@ result.
     number field.
   \end{enumerate}
   If $X$ is a $B$-cellular arithmetic scheme $X$ with smooth quasi-projective
-  fiber $X_\CC$, then the conjectures $\mathbf{VO} (X,n)$ and $\mathbf{C} (X,n)$
-  hold unconditionally for any $n < 0$.
+  fiber $X_{\red,\CC}$, then the conjectures $\mathbf{VO} (X,n)$ and
+  $\mathbf{C} (X,n)$ hold unconditionally for any $n < 0$.
 \end{maintheorem*}
 
 In fact, this result will be established for a bigger class of arithmetic
@@ -198,13 +198,14 @@ functional equation
 In \S\ref{sec:special-value-conjecture} we state the special value conjecture
 $\mathbf{C} (X,n)$.
 
-We explain in \S\ref{sec:finite-fields} that for $X/\FF_q$ a variety
-over a finite field, the special value conjecture $\mathbf{C} (X,n)$ is
-consistent with the conjectures considered by Geisser in
-\cite{Geisser-2004,Geisser-2006,Geisser-2010-arithmetic-homology}.
-In particular, it holds for any smooth $X/\FF_q$, assuming that the groups
-$H^i (X_\et, \ZZ (n))$ are finite for all $i$. This also generalizes to
-non-smooth $X/\FF_q$ if we assume the resolution of singularities over $\FF_q$.
+We explain in \S\ref{sec:finite-fields} that for $X/\FF_q$ a variety over a
+finite field, the special value conjecture $\mathbf{C} (X,n)$ is consistent with
+the conjectures considered by Geisser in
+\cite{Geisser-2004,Geisser-2006,Geisser-2010-arithmetic-homology}.  In
+particular, it holds for any smooth projective $X/\FF_q$, assuming that the
+groups $H^i (X_\et, \ZZ (n))$ are finite for all $i$. This also generalizes to
+all varieties $X/\FF_q$ if we assume the resolution of singularities over
+$\FF_q$.
 
 Then we prove in \S\ref{sec:compatibility-with-operations} that the conjectures
 $\mathbf{VO} (X,n)$ and $\mathbf{C} (X,n)$ are compatible with basic operations
@@ -279,11 +280,9 @@ many useful comments and suggestions. Finally, I thank Pedro Luis del Ángel,
 José Jaime Hernández Castillo, Diosel López Cruz, and Maxim Mornev for various
 fruitful conversations.
 
-\iffalse
 This paper was edited while I was visiting Center for Research in Mathematics
 (CIMAT), Guanajuato. I am grateful personally to Pedro Luis del Ángel and Xavier
 Gómez Mont for their hospitality.
-\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -296,11 +295,13 @@ It was introduced by Bloch in \cite{Bloch-1986-Lefschetz}, and here we are going
 to use the construction of Kerr, Lewis, and Müller-Stach from
 \cite{Kerr-Lewis-Muller-Stach-2006}, which works on the level of complexes.
 We will simply call it ``the KLM morphism''. It works under assumption that
-$X_\CC$ is a smooth quasi-projective variety.
+$X_{\red,\CC}$ is a smooth quasi-projective variety.
 
-For simplicity we will assume in this section that $X_\CC$ is connected of
-dimension $d_\CC$ (otherwise, the arguments below may be applied to each
-connected component). We fix a compactification by a normal crossing divisor
+For simplicity we will assume in this section that $X$ is reduced (the motivic
+cohomology does not distinguish between $X$ and $X_\red$), and that $X_\CC$ is
+connected of dimension $d_\CC$ (otherwise, the arguments below may be applied to
+each connected component). We fix a compactification by a normal crossing
+divisor
 \[ \begin{tikzcd}
     X_\CC \ar[right hook->]{r}{j} & \overline{X}_\CC & D \ar[left hook->]{l}
   \end{tikzcd} \]
@@ -533,13 +534,14 @@ Lichtenbaum's conjectures about étale motivic cohomology.
 
 \begin{remark}
   \label{rmk:regulator-is-defined-for-XC-smooth-quasi-proj}
-  We reiterate that our construction of $Reg_{X,n}$ works for $X_\CC$ smooth
-  quasi-projective. In everything that follows, whenever the regulator morphism
-  or the conjecture $\mathbf{B} (X,n)$ is brought, we will tacitly assume this.
-  This is quite unfortunate, because the Weil-étale complexes
+  We reiterate that our construction of $Reg_{X,n}$ works for $X_{\red,\CC}$
+  smooth quasi-projective. In everything that follows, whenever the regulator
+  morphism or the conjecture $\mathbf{B} (X,n)$ is brought, we will tacitly
+  assume this.  This is quite unfortunate, because the Weil-étale complexes
   $R\Gamma_\Wc (X, \ZZ(n))$ were constructed in \cite{Beshenov-Weil-etale-1} for
   any arithmetic scheme, assuming only $\mathbf{L}^c (X_\et,n)$. Defining the
-  regulator for singular $X_\CC$ is an interesting project for further work.
+  regulator for singular $X_{\red,\CC}$ is an interesting project for further
+  work.
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -683,8 +685,8 @@ $R\Gamma (X_\et, \ZZ^c (n)) [1]$.
     = \sum_{i\in \ZZ} (-1)^i \Bigl(\sum_{p = i/2} h^{p,(-1)^{n-p}} +
     \sum_{\substack{p + q = i \\ p < q}} h^{p,q}\Bigr).
   \end{multline*}
-  Here the last equality comes from the fact that $\Gamma (s)$ has simple poles
-  at all $s = n \le 0$. We have
+  The last equality comes from the fact that $\Gamma (s)$ has simple poles at
+  all $s = n \le 0$. We have
   \begin{multline*}
     \dim_\RR H^i (X (\CC), \RR (n))^{G_\RR} =
     \dim_\RR H^i (X (\CC), \RR)^{\sigma = (-1)^n} =
@@ -749,8 +751,8 @@ $\zeta (X,s)$ is known.
   (see e.g. \cite[Proposition~4.14]{Geisser-2017}), given $n < 0$, the groups
   $H^i_\et (X, \ZZ^c (n)) = H^{i+2}_\et (X, \ZZ (1-n))$ are finite, except for
   $i = -1$, where
-  \[ \rk H^{-1}_\et (X, \ZZ^c (n)) =
-    \rk H^1_\et (X, \ZZ (1-n)) = \begin{cases}
+  \[ \rk_\ZZ H^{-1}_\et (X, \ZZ^c (n)) =
+    \rk_\ZZ H^1_\et (X, \ZZ (1-n)) = \begin{cases}
       r_2, & n \text{ odd},\\
       r_1 + r_2, & n \text{ even}.
     \end{cases} \]
@@ -880,7 +882,7 @@ is well-defined.
         R\Gamma_\Wc (X, \ZZ(n)) \ar{r}\ar{d}{f}[swap]{\cong} & R\Gamma_\fg (X,\ZZ(n)) \ar{r}{i_\infty}\ar{d}{id} & R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \ar{r}\ar{d}{id} & R\Gamma_\Wc (X, \ZZ (n)) [1]\ar{d}{f}[swap]{\cong} \\
         R\Gamma_\Wc (X, \ZZ(n))' \ar{r} & R\Gamma_\fg (X,\ZZ(n)) \ar{r}{i_\infty} & R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \ar{r} & R\Gamma_\Wc (X, \ZZ (n))' [1]
       \end{tikzcd} \]
-    Now the idea is to use functoriality of determinants with respect to
+    Now the idea is to use the functoriality of determinants with respect to
     isomorphisms of distinguished triangles
     (see \ref{prop:det-and-isos-of-triangles}). The only technical issue is that
     whenever $X (\RR) \ne \emptyset$, the complexes $R\Gamma_\fg (X,\ZZ(n))$ and
@@ -988,7 +990,7 @@ is well-defined.
   \eqref{eqn:definition-of-lambda} induces a canonical isomorphism
   \begin{equation}
     \label{eqn:morphism-lambda}
-    \lambda\colon \RR \xrightarrow{\cong}
+    \lambda = \lambda_{X,n}\colon \RR \xrightarrow{\cong}
     (\det_\ZZ R\Gamma_\Wc (X, \ZZ (n))) \otimes_\ZZ \RR.
   \end{equation}
 \end{definition}
@@ -1009,7 +1011,7 @@ $\det_\ZZ R\Gamma_\Wc (X, \ZZ (n)))$ is a free $\ZZ$-module of rank $1$ (which
 does not sound very interesting), but the whole point of the determinant
 business is that the isomorphism \eqref{eqn:morphism-lambda} embeds it
 canonically into $\RR$. We conjecture that this embedding gives the special
-value of $\zeta (X,s)$ at $s = n$.
+value of $\zeta (X,s)$ at $s = n$ in the following sense.
 
 \begin{conjecture}
   $\mathbf{C} (X,n)$: let $X$ be an arithmetic scheme and $n < 0$ a strictly
@@ -1085,8 +1087,8 @@ To deal with singular varieties, we recall the following strong conjecture on
 resolution of singularities.
 
 \begin{conjecture}
-  $\mathbf{R} (k,d)$. For a field $k$ and $d \in \NN \cup \{ \infty \}$, for
-  varieties $X/k$ of dimension $\le d$ the following conditions hold.
+  $\mathbf{R} (k,d)$. For a field $k$ and $d \in \NN$, for varieties $X/k$ of
+  dimension $\le d$ the following conditions hold.
   \begin{itemize}
   \item For any integral variety $X/k$ of dimension $\le d$ there is a proper,
     birational map $f\colon Y \to X$ with $Y$ smooth.
@@ -1132,7 +1134,9 @@ resolution of singularities.
   To generalize to all varieties of dimension $\le d$ under assumption of
   $\mathbf{R} (\FF_q,d)$, one uses the dévissage lemma
   \cite[Lemma~2.7]{Geisser-2006} and compatibility of the special value
-  conjecture with closed-open decompositions of schemes.
+  conjecture with closed-open decompositions of schemes. In the next section
+  this will be verified in full generality (for any arithmetic scheme $X$, not
+  necessarily $X/\FF_q$) for the conjecture $\mathbf{C} (X,n)$.
 \end{remark}
 
 Let us consider a couple of particular examples to see how the special value
@@ -1142,7 +1146,7 @@ Weil-étale cohomology $H^i_\Wc (X, \ZZ(n))$) is by no means a trivial task. The
 finite generation of $H^i (X_\et, \ZZ^c (n))$ is only known for particular cases
 (see \cite[\S 8]{Beshenov-Weil-etale-1}), and calculating the torsion part,
 which bears the arithmetic information, is even more difficult. Similarly, an
-explicit calculation of the regulator map $Reg_{X,n}^\vee$ is highly
+explicit calculation of the regulator map $Reg_{X,n}$ is highly
 nontrivial. Therefore, for the moment we give a couple of toy examples over
 finite fields.
 
@@ -1178,13 +1182,13 @@ finite fields.
   This is similar to \cite[\S 8, Example~2]{Geisser-2006}. Geisser uses
   eh-topology and long exact sequences associated to abstract blowup squares
   \cite[Proposition~3.2]{Geisser-2006}. In our case, the same works, since
-  according to \cite[Theorem~I]{Beshenov-Weil-etale-1},
+  according to \cite[Theorem~I]{Beshenov-Weil-etale-1}, one has
   $H^i (X_\et, \ZZ^c (n)) \cong \Hom (H^{2-i}_c (X_\et, \ZZ (n)),\QQ/\ZZ)$,
   where $\ZZ (n) = \varinjlim_{p\nmid m} \mu_m^{\otimes n} [-1]$, and
   for such sheaves étale cohomology and eh-cohomology agree by
   \cite[Theorem~3.6]{Geisser-2006}.
 
-  Using projective bundle formula, we calculate from
+  Using the projective bundle formula, we calculate from
   \eqref{eqn:motivic-cohomology-of-Fq}
   \[ H^i (\PP^1_{\FF_q,\et}, \ZZ^c (n)) = \begin{cases}
       \ZZ/(q^{1-n} - 1), & i = -1, \\
@@ -1230,7 +1234,7 @@ easily.
 \item[2)] \textbf{Closed-open decompositions}: if $Z \subset X$ is a closed
   subscheme and $U = X\setminus Z$ is its open complement, then we will say that
   we have a \textbf{closed-open decomposition} and write
-  $Z \not\hookrightarrow X \hookleftarrow U$
+  $Z \not\hookrightarrow X \hookleftarrow U$. In this case
   \begin{equation}
     \label{eqn:zeta-function-for-closed-open-decompositions}
     \zeta (X,s) = \zeta (Z,s) \cdot \zeta (U,s).
@@ -1333,7 +1337,7 @@ that this is indeed the case.
     pullback along $U \hookrightarrow X$ (see \cite[Corollary~7.2]{Geisser-2010}
     and \cite[\S 3]{Bloch-1986}). Similarly, the quasi-isomorphism
     $R\Gamma (X_\et, \RR^c (n-r)) [2r] \cong R\Gamma (\AA^r_{X,\et}, \RR^c (n))$
-    comes from the proper pushforward along $p\colon \AA^r_X \to X$.
+    comes from the flat pullback along $p\colon \AA^r_X \to X$.
   \end{proof}
 \end{lemma}
 
@@ -1360,7 +1364,7 @@ that this is indeed the case.
   \end{enumerate}
 
   \begin{proof}
-    We already noted in proposition~\ref{prop:VO(X,n)-assuming-B(X,n)} above
+    We already observed in proposition~\ref{prop:VO(X,n)-assuming-B(X,n)} above
     that under the conjecture $\mathbf{B} (X,n)$ we can rewrite
     $\mathbf{VO} (X,n)$ as
     $$\ord_{s=n} \zeta (X,s) = \chi (R\Gamma_c (G_\RR, X(\CC), \RR (n))).$$
@@ -1438,7 +1442,7 @@ We will split the proof into three technical lemmas
 \ref{lemma:lambda-and-affine-bundles},
 each for the corresponding compatibility. We briefly recall the construction of
 our Weil-étale complex. It fits in the following diagram in the derived
-category $\mathbf{D} (\ZZ)$ with distinguished rows and columns:
+category $\mathbf{D} (\ZZ)$ with distinguished triangles:
 \[ \begin{tikzcd}[column sep=1.5em]
     & & R\Gamma_\Wc (X, \ZZ (n)) \ar{d} \\
     \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]) \ar{r}{\alpha_{X,n}}\ar{d} & R\Gamma_c (X_\et, \ZZ (n)) \ar{r}\ar{d}{u_\infty^*} & R\Gamma_\fg (X, \ZZ(n)) \ar{r}\ar[dashed]{d}{i_\infty^*} & \cdots \ar{d} \\
@@ -1466,7 +1470,7 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
 
   \begin{proof}
     From the construction of $R\Gamma_\Wc (X, \ZZ(n))$ it is clear that for
-    $X = \coprod_{1 \le i \le r} X_i$ all cohomologies involved decompose into
+    $X = \coprod_{1 \le i \le r} X_i$ all involved cohomologies decompose into
     the corresponding direct sum over $i = 1,\ldots,r$, and at the end after
     tensoring with $\RR$ one obtains a commutative diagram
 
@@ -1507,10 +1511,13 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
 
   \begin{proof}
     Morally, we expect in this situation a distinguished triangle of the form
-    \[ R\Gamma_\Wc (U, \ZZ(n)) \to
+    \begin{equation}
+      \label{eqn:U-X-Z-triangle-for-RGamma-Wc}
+      R\Gamma_\Wc (U, \ZZ(n)) \to
       R\Gamma_\Wc (X, \ZZ(n)) \to
       R\Gamma_\Wc (Z, \ZZ(n)) \to
-      R\Gamma_\Wc (U, \ZZ(n)) [1]. \]
+      R\Gamma_\Wc (U, \ZZ(n)) [1].
+    \end{equation}
     However, even the complex $R\Gamma_\Wc (X, \ZZ(n))$ was constructed in
     \cite{Beshenov-Weil-etale-1} up to a non-canonical isomorphism in
     the derived category $\mathbf{D} (\ZZ)$, so this is problematic. In the
@@ -1552,9 +1559,9 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
       R\Gamma_\fg (U, \ZZ(n)) [1]
     \end{equation}
     are also uniquely defined
-    (see \cite[Corollary~A.3]{Beshenov-Weil-etale-1}). It does not have to be a
-    distinguished triangle\footnote{Taking naively a ``cone of a morphism of
-      distinguished triangles''
+    (see \cite[Corollary~A.3]{Beshenov-Weil-etale-1}). A priori, it does not
+    have to be a distinguished triangle\footnote{Taking naively a ``cone of a
+      morphism of distinguished triangles''
       $$\begin{tikzpicture}[ampersand replacement=\&]
         \matrix(m)[matrix of math nodes, row sep=1.5em, column sep=1.5em,
         text height=1.5ex, text depth=0.25ex]{
@@ -1599,7 +1606,7 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
       normally \emph{does not} give a distinguished triangle
       $X'' \to Y'' \to Z'' \to X'' [1]$,
       as discussed in \cite{Neeman-1991}. Here we are dealing with notorious
-      issues associated to working with the classical derived categories.},
+      issues associated to working with the classical derived (1-)categories.},
     but we claim that it induces a long exact sequence in cohomology.
 
     For this note that tensoring the diagram with $\ZZ/m\ZZ$ gives us an
@@ -1648,7 +1655,7 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
         \tau_{\le m} R\Gamma_c (G_\RR, U (\CC), \ZZ (n)) \ar{r} & R\Gamma_\Wc (U, \ZZ (n)) [1] \ar{r} & \tau_{\le m} R\Gamma_\fg (U,\ZZ(n)) [1] \ar{r} & \tau_{\le m} R\Gamma_c (G_\RR, U (\CC), \ZZ (n)) [1]
       \end{tikzcd} \]
     Here we took truncations for $m$ big enough similarly to the proof of
-    lemma~\ref{lemma:determinant-of-RGamma-Wc-well-defined}. Now there are
+    lemma~\ref{lemma:determinant-of-RGamma-Wc-well-defined}. There are
     canonical isomorphisms
     \begin{align*}
       \notag \det_\ZZ R\Gamma_\Wc (U, \ZZ(n)) & \cong \det_\ZZ (\tau_{\le m} R\Gamma_c (G_\RR, U (\CC), \ZZ (n)) [-1]) \otimes_\ZZ \det_\ZZ (\tau_{\le m} R\Gamma_\fg (U, \ZZ(n))), \\
@@ -1690,13 +1697,9 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
     obtain \eqref{eqn:lambda-and-closed-open-decompositions}, using the
     compatibility of determinants with distinguished triangles. We note that we
     did not construct an integral distinguished triangle
-    \[ R\Gamma_\Wc (U, \ZZ (n)) \to
-      R\Gamma_\Wc (X, \ZZ (n)) \to
-      R\Gamma_\Wc (Z, \ZZ (n)) \to
-      R\Gamma_\Wc (U, \ZZ (n)) [1], \]
-    instead we only have that the bottom arrow in
-    \eqref{eqn:lambda-and-closed-open-decompositions} is induced by the ad hoc
-    isomorphism of determinants
+    \eqref{eqn:U-X-Z-triangle-for-RGamma-Wc}; instead we only have that the
+    bottom arrow in \eqref{eqn:lambda-and-closed-open-decompositions} is induced
+    by the ad hoc isomorphism of determinants
     \eqref{eqn:isomorphism-of-det-RGamma-Wc-for-closed-open-decompositions}.
   \end{proof}
 \end{lemma}
@@ -1781,15 +1784,15 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
 
 \begin{remark}
   As a formal consequence of compatibility with closed-open decompositions, if
-  we apply it to the canonical closed embedding $X^{red} \hookrightarrow X$,
+  we apply it to the canonical closed embedding $X_\red \hookrightarrow X$,
   then we conclude that
-  $R\Gamma_\Wc (X, \ZZ(n)) \cong R\Gamma_\Wc (X^{red}, \ZZ(n))$. This is not
+  $R\Gamma_\Wc (X, \ZZ(n)) \cong R\Gamma_\Wc (X_\red, \ZZ(n))$. This is not
   surprising, because Weil-étale complexes are constructed from a variant of
-  cycle complexes / higher Chow groups, and these do not distinguish $X$ from
-  $X^{red}$ (unlike, for instance, algebraic $K$-groups).
+  cycle complexes / higher Chow groups, and these fail to distinguish $X$ from
+  $X_\red$ (unlike, for instance, algebraic $K$-groups).
 
   This is actually the desired behavior for us, since neither the zeta function
-  does: $\zeta (X,s) = \zeta (X^{red},s)$.
+  does: $\zeta (X,s) = \zeta (X_\red,s)$.
 \end{remark}
 
 \begin{remark}
@@ -1936,12 +1939,16 @@ This approach is motivated by \cite[\S 5]{Morin-2014}.
   \end{itemize}
   and the following operations.
   \begin{enumerate}
+  \item[$\mathcal{C}0)$] $X$ lies in $\mathcal{C} (\ZZ)$ if and only if $X_\red$
+    lies in $\mathcal{C} (\ZZ)$.
+
   \item[$\mathcal{C}1)$] A finite disjoint union $\coprod_{1 \le i \le r} X_i$
     lies in $\mathcal{C} (\ZZ)$ if and only if each $X_i$ lies in
     $\mathcal{C} (\ZZ)$.
 
   \item[$\mathcal{C}2)$] Let $Z \not\hookrightarrow X \hookleftarrow U$ be a
-    closed-open decomposition such that $Z_\CC, X_\CC, U_\CC$ are smooth and
+    closed-open decomposition such that
+    $Z_{\red,\CC}$, $X_{\red,\CC}$, $U_{\red,\CC}$ are smooth and
     quasi-projective. Then if two out of three schemes $Z,X,U$ lie in
     $\mathcal{C} (\ZZ)$, then the third lies as well.
 
@@ -1950,11 +1957,9 @@ This approach is motivated by \cite[\S 5]{Morin-2014}.
   \end{enumerate}
 \end{definition}
 
-We recall that the condition that $X_\CC$ is smooth and quasi-projective is
-needed to ensure that the regulator morphism exists
+We recall that the condition that $X_{\red,\CC}$ is smooth and quasi-projective
+is needed to ensure that the regulator morphism exists
 (see remark~\ref{rmk:regulator-is-defined-for-XC-smooth-quasi-proj}).
-Also note that it is a formal consequence of $\mathcal{C}2)$ that
-$X \in \mathcal{C} (\ZZ)$ if and only if $X^{red} \in \mathcal{C} (\ZZ)$.
 
 \begin{proposition}
   \label{prop:C(X,n)-holds-for-C(Z)}
@@ -1989,7 +1994,7 @@ $X \in \mathcal{C} (\ZZ)$ if and only if $X^{red} \in \mathcal{C} (\ZZ)$.
 
     Then the fact that the conjectures $\mathbf{L}^c (X_\et,n)$,
     $\mathbf{B} (X,n)$, $\mathbf{VO} (X,n)$, $\mathbf{C} (X,n)$ are closed under
-    the operations $\mathcal{C}1)$, $\mathcal{C}2)$, $\mathcal{C}3)$ is
+    the operations $\mathcal{C}1)$--$\mathcal{C}3)$ is
     lemma~\ref{lemma:compatibility-of-Lc(X,n)},
     lemma~\ref{lemma:compatibility-of-B(X,n)},
     proposition~\ref{prop:compatibility-of-VO(X,n)},
@@ -2000,8 +2005,8 @@ $X \in \mathcal{C} (\ZZ)$ if and only if $X^{red} \in \mathcal{C} (\ZZ)$.
 
 \begin{proposition}
   \label{prop:particular-cases-1-dim-base}
-  Let $B$ be an affine arithmetic scheme of dimension $1$. Assume that each of
-  the generic points $\eta \in B$ satisfies one of the following properties:
+  Let $B$ be a $1$-dimensional arithmetic scheme. Assume that each of the
+  generic points $\eta \in B$ satisfies one of the following properties:
   \begin{enumerate}
   \item[a)] $\fchar \kappa (\eta) = p > 0$;
 
@@ -2011,14 +2016,22 @@ $X \in \mathcal{C} (\ZZ)$ if and only if $X^{red} \in \mathcal{C} (\ZZ)$.
   Then $B \in \mathcal{C} (\ZZ)$.
 
   \begin{proof}
-    We will see that such a scheme may me obtained from $\Spec \mathcal{O}_F$
+    We will see that such a scheme can be obtained from $\Spec \mathcal{O}_F$
     for an abelian number field $F/\QQ$, or a curve over a finite field
-    $C/\FF_q$, using the operations $\mathcal{C}1)$--$\mathcal{C}3)$ that appear
+    $C/\FF_q$, using the operations $\mathcal{C}0)$--$\mathcal{C}3)$ that appear
     in the definition of $\mathcal{C} (\ZZ)$.
 
-    We may pass from $B$ to $B^\mathrm{red}$. We further consider the
-    normalization $f\colon B' \to B$. Since we are in dimension $1$, the scheme
-    $B'$ is regular, and we have a Cartesian square
+    Thanks to $\mathcal{C}0)$, we may assume without loss of generality that $B$
+    is reduced. $B$ is a finite union of its irreducible components, so thanks
+    to $\mathcal{C}1)$ we may also assume that $B$ is irreducible. Further, if
+    $U \subset B$ is an affine neighborhood of the generic point, then
+    $B \setminus U$ is finite, so it lies in $\mathcal{C} (\ZZ)$. Using the
+    operation $\mathcal{C}2)$, we see that it is enough to prove that
+    $U \in \mathcal{C} (\ZZ)$, i.e. we may also assume that $B$ itself is
+    affine.
+
+    Consider the normalization $f\colon B' \to B$. Since we are in dimension
+    $1$, the scheme $B'$ is regular, and we have a Cartesian square
     \[ \begin{tikzcd}
         Z' \ar[right hook->]{r}{i'}\ar{d}{f'} & B' \ar{d}{f} \\
         Z \ar[right hook->]{r}{i} & B
@@ -2034,22 +2047,26 @@ $X \in \mathcal{C} (\ZZ)$ if and only if $X^{red} \in \mathcal{C} (\ZZ)$.
       B\setminus Z, \, Z \in \mathcal{C} (\ZZ) & \Longrightarrow B \in \mathcal{C} (\ZZ).
     \end{align*}
 
-    Since $\mathcal{C} (\ZZ)$ is closed under disjoint unions of schemes, we may
-    assume that $B' = \Spec \mathcal{O}_{F,S}$, where $F$ is a global field, and
-    $\mathcal{O}_{F,S}$ is the ring of $S$-integers
-    (see e.g. \cite[\S\S 3,4]{Jordan-Poonen-2020}).
-    Here $\Spec \mathcal{O}_{F,S} = \Spec \mathcal{O}_F \setminus S$, where $S$
-    is finite, so it will be enough to consider the case of
-    $B' = \Spec \mathcal{O}_F$. By our assumptions on $B$, this is either an
-    affine curve over a finite field, or spectrum of the ring of integers of an
-    abelian number field, and these lie in $\mathcal{C} (\ZZ)$ by the definition.
+    Now there are two cases. If the image of $B' \to \Spec \ZZ$ is a closed
+    point, then $B'$ is a curve over $\FF_p$, so that
+    $B' \in \mathcal{C} (\ZZ)$.  On the other hand, if $B' \to \Spec \ZZ$ is a
+    dominant morphism, then for the generic point $\eta \in B'$ the residue
+    field $F = \kappa (\eta)$ is a finite abelian extension of $\QQ$ by our
+    assumptions. We have $B' = \Spec \mathcal{O}$, where
+    $\mathcal{O}_F \subseteq \mathcal{O} = \mathcal{O}_{F,S}$ for some finite
+    set $S$, since $\mathcal{O}$ is an integrally closed finitely generated
+    domain. Now $B' = \Spec \mathcal{O}_F \setminus S$, where $S$ is finite, so
+    again, everything reduces to the case of $B' = \Spec \mathcal{O}_F$, which
+    lies in $\mathcal{C} (\ZZ)$ by the definition.
   \end{proof}
 \end{proposition}
 
 \begin{remark}
-  The schemes as above were considered in \cite{Jordan-Poonen-2020}, where the
-  authors write down a special value formula at $s = 1$, generalizing the
-  classical class number formula.
+  Schemes as above were considered by Jordan and Poonen in
+  \cite{Jordan-Poonen-2020}, where the authors write down a special value
+  formula at $s = 1$, generalizing the classical class number formula.  They
+  consider the case of $B$ reduced and affine, albeit without requiring
+  $\kappa (\eta)/\QQ$ to be abelian.
 \end{remark}
 
 \begin{definition}
@@ -2065,12 +2082,15 @@ $X \in \mathcal{C} (\ZZ)$ if and only if $X^{red} \in \mathcal{C} (\ZZ)$.
 \end{definition}
 
 For instance, projective spaces $\PP^r_B$ and in general Grassmannians
-$\Gr (k,\ell)_B$ are cellular.
+$\Gr (k,\ell)_B$ are cellular. Many interesting examples of cellular schemes as
+above arise from actions of algebraic groups on varieties and Białynicki-Birula
+theorem; for this see \cite{Wendt-2010} and \cite{Brosnan-2005}.
 
 \begin{proposition}
   \label{prop:cellular-schemes-in-C(Z)}
   Let $X$ be a $B$-cellular arithmetic scheme, where $B \in \mathcal{C} (\ZZ)$,
-  and $X_\CC$ is smooth and quasi-projective. Then $X \in \mathcal{C} (\ZZ)$.
+  and $X_{\red,\CC}$ is smooth and quasi-projective. Then
+  $X \in \mathcal{C} (\ZZ)$.
 
   \begin{proof}
     Looking at the corresponding cellular decomposition
@@ -2090,11 +2110,11 @@ As a corollary of the above, we obtain the following result, stated in the
 introduction.
 
 \begin{theorem}
-  Let $B$ be an affine $1$-dimensional arithmetic scheme satisfying the
-  assumptions of proposition~\ref{prop:particular-cases-1-dim-base}.
-  If $X$ is a $B$-cellular arithmetic scheme $X$ with smooth and
-  quasi-projective fiber $X_\CC$, then the conjectures $\mathbf{VO} (X,n)$ and
-  $\mathbf{C} (X,n)$ hold unconditionally for any $n < 0$.
+  Let $B$ be a $1$-dimensional arithmetic scheme satisfying the assumptions of
+  proposition~\ref{prop:particular-cases-1-dim-base}. If $X$ is a $B$-cellular
+  arithmetic scheme with smooth and quasi-projective fiber $X_{\red,\CC}$, then
+  the conjectures $\mathbf{VO} (X,n)$ and $\mathbf{C} (X,n)$ hold
+  unconditionally for any $n < 0$.
 
   \begin{proof}
     Follows from propositions
