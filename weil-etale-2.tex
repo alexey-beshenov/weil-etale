@@ -174,8 +174,8 @@ result.
   \item[b)] $\fchar \kappa (\eta) = 0$, and $\kappa (\eta)/\QQ$ is an abelian
     number field.
   \end{enumerate}
-  If $X$ is a $B$-cellular arithmetic scheme $X$ with smooth quasi-projective
-  fiber $X_{\red,\CC}$, then the conjectures $\mathbf{VO} (X,n)$ and
+  If $X$ is a $B$-cellular arithmetic scheme with smooth quasi-projective fiber
+  $X_{\red,\CC}$, then the conjectures $\mathbf{VO} (X,n)$ and
   $\mathbf{C} (X,n)$ hold unconditionally for any $n < 0$.
 \end{maintheorem*}
 
@@ -504,7 +504,7 @@ role in everything that follows.
   quasi-projective $X_\CC$ and $n < 0$, the regulator morphism $Reg_{X,n}$
   induces a quasi-isomorphism of complexes of real vector spaces
   \[ Reg_{X,n}^\vee\colon R\Gamma_c (G_\RR, X (\CC), \RR (n)) [-1] \to
-    \RHom (R\Gamma_c (G_\RR, X_\et, \ZZ^c (n)), \RR). \]
+    \RHom (R\Gamma (X_\et, \ZZ^c (n)), \RR). \]
 \end{conjecture}
 
 If $X/\FF_q$ is a variety over a finite field, then $X (\CC) = \emptyset$,
@@ -1066,7 +1066,7 @@ the conjectures studied by Geisser in \cite{Geisser-2004}, \cite{Geisser-2006},
     \cite[Proposition~7.9]{Beshenov-Weil-etale-1} we have
     \[ H^i_\Wc (X, \ZZ (n)) \cong
       \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ/\ZZ) \cong
-      \Hom (H_{i-1} (X_\ar, \ZZ (n)), \QQ/\ZZ). \]
+      \Hom (H_{i-1}^c (X_\ar, \ZZ (n)), \QQ/\ZZ). \]
     The involved cohomology groups are finite, and therefore by
     \ref{lemma:determinant-for-torsion-cohomology}, the determinant is given by
     \[ \begin{tikzcd}[row sep=0.75em, column sep=0pt]
@@ -1332,7 +1332,7 @@ that this is indeed the case.
     directly from the KLM formula. For closed-open decompositions,
     the distinguished triangle
     \[ R\Gamma (Z_\et, \RR^c (n)) \to R\Gamma (X_\et, \RR^c (n)) \to
-      R\Gamma (U_\et, \RR^c (n)) \to R\Gamma (Z_\et, \RR^c (n)) [+1] \]
+      R\Gamma (U_\et, \RR^c (n)) \to R\Gamma (Z_\et, \RR^c (n)) [1] \]
     comes precisely from proper pushforward along $Z \hookrightarrow X$ and flat
     pullback along $U \hookrightarrow X$ (see \cite[Corollary~7.2]{Geisser-2010}
     and \cite[\S 3]{Bloch-1986}). Similarly, the quasi-isomorphism
@@ -2007,8 +2007,12 @@ is needed to ensure that the regulator morphism exists
   Any $0$-dimensional arithmetic scheme $X$ lies in $\mathcal{C} (\ZZ)$.
 
   \begin{proof}
-    Thanks to $\mathcal{C}0)$, we may assume that $X$ is reduced. In this case
-    $X$ is a disjoint union of $\Spec \FF_q$ for finite fields.
+    Since $X$ is a noetherian scheme of dimension $0$, it is a disjoint union of
+    $\Spec A_i$ for some artinian local rings $A_i$. Thanks to $\mathcal{C}1)$,
+    we may assume that $X = \Spec A$, and thanks to $\mathcal{C}0)$, we may
+    assume that $X$ is reduced. But then $A = k$ is a field. Since $X$ is a
+    scheme of finite type over $\Spec \ZZ$, we conclude that
+    $X = \Spec \FF_q \in \mathcal{C} (\ZZ)$.
   \end{proof}
 \end{lemma}
 
@@ -2027,58 +2031,50 @@ is needed to ensure that the regulator morphism exists
   \begin{proof}
     We will see that such a scheme can be obtained from $\Spec \mathcal{O}_F$
     for an abelian number field $F/\QQ$, or a curve over a finite field
-    $C/\FF_q$, using the operations $\mathcal{C}0)$--$\mathcal{C}3)$ that appear
-    in the definition of $\mathcal{C} (\ZZ)$.
+    $C/\FF_q$, using the operations $\mathcal{C}0)$, $\mathcal{C}1)$,
+    $\mathcal{C}2)$ that appear in the definition of $\mathcal{C} (\ZZ)$.
 
-    Thanks to $\mathcal{C}0)$, we may assume without loss of generality that $B$
-    is reduced. $B$ has finitely many irreducible components, corresponding to
-    generic points $\eta_1,\ldots,\eta_m$. Let $U_1,\ldots,U_m$ be disjoint open
-    affines containing these points. Then $B\setminus U$ for $U = \bigcup_i U_i$
-    has dimension $0$, so it lies in $\mathcal{C} (\ZZ)$. Using the operation
-    $\mathcal{C}2)$, we see that it is enough to prove that
-    $U \in \mathcal{C} (\ZZ)$, i.e. we may also assume that $B$ itself is
-    affine.
+    Thanks to $\mathcal{C}0)$, we may assume that $B$ is reduced. Consider the
+    normalization $\nu\colon B' \to B$. This is a birational morphism, and there
+    exist open dense subsets $U' \subseteq B'$ and $U \subseteq B$ such that
+    $\left.\nu\right|_{U'}\colon U' \xrightarrow{\cong} U$. Now $B\setminus U$
+    is $0$-dimensional, and therefore $B\setminus U \in \mathcal{C} (\ZZ)$ by
+    the previous lemma. Thanks to $\mathcal{C}2)$, it is enough to check that
+    $U' \in \mathcal{C} (\ZZ)$, and this would imply $B \in \mathcal{C} (\ZZ)$.
 
-    Consider the normalization $f\colon B' \to B$. Since we are in dimension
-    $1$, the scheme $B'$ is regular, and we have a Cartesian square
-    \[ \begin{tikzcd}
-        Z' \ar[right hook->]{r}{i'}\ar{d}{f'} & B' \ar{d}{f} \\
-        Z \ar[right hook->]{r}{i} & B
-      \end{tikzcd} \]
-    where $Z \subset B$ is the $0$-dimensional non-regular locus,
-    $Z' \subset B'$ is $0$-dimensional as well, so that
-    $Z, Z' \in \mathcal{C} (\ZZ)$. Now $f$ induces an isomorphism
-    $B\setminus Z \cong B'\setminus Z'$, and it will
-    be enough to see that $B' \in \mathcal{C} (\ZZ)$, and then
-    \begin{align*}
-      B', Z' \in \mathcal{C} (\ZZ) & \Longrightarrow B'\setminus Z' \in \mathcal{C} (\ZZ) \iff B\setminus Z \in \mathcal{C} (\ZZ),\\
-      B\setminus Z, \, Z \in \mathcal{C} (\ZZ) & \Longrightarrow B \in \mathcal{C} (\ZZ).
-    \end{align*}
+    Now $U'$ is a finite disjoint union of normal integral schemes, so by
+    $\mathcal{C}1)$ we may assume that $U'$ is integral. Consider the generic
+    point $\eta \in U'$ and the residue field $F = \kappa (\eta)$. There are two
+    distinct cases to consider.
 
-    If $C_i \subset B$ are the irreducible components of $B$, then
-    $B' = \coprod_i C_i'$ is the disjoint union of normalizations, so we may
-    assume that $B'$ is irreducible thanks to $\mathcal{C}1)$.
+    \begin{enumerate}
+    \item[a)] If $\fchar F = p > 0$, then $U'$ is a curve over a finite field,
+      so it lies in $\mathcal{C} (\ZZ)$ by the definition.
 
-    Now there are two cases. If the image of $B' \to \Spec \ZZ$ is a closed
-    point, then $B'$ is a curve over $\FF_p$, so that
-    $B' \in \mathcal{C} (\ZZ)$.  On the other hand, if $B' \to \Spec \ZZ$ is a
-    dominant morphism, then for the generic point $\eta \in B'$ the residue
-    field $F = \kappa (\eta)$ is a finite abelian extension of $\QQ$ by our
-    assumptions. We have $B' = \Spec \mathcal{O}$, where
-    $\mathcal{O}_F \subseteq \mathcal{O} = \mathcal{O}_{F,S}$ for some finite
-    set $S$, since $\mathcal{O}$ is an integrally closed finitely generated
-    domain. Now $B' = \Spec \mathcal{O}_F \setminus S$ and
-    $S \in \mathcal{C} (\ZZ)$, so again, everything reduces to the case of
-    $B' = \Spec \mathcal{O}_F$, which lies in $\mathcal{C} (\ZZ)$ by the
-    definition.
+    \item[b)] If $\fchar F = 0$, then by our assumptions, $F/\QQ$ is an abelian
+      number field.
+
+      We note that if $V' \subseteq U'$ is an affine open neighborhood of
+      $\eta$, then $U'\setminus V' \in \mathcal{C} (\ZZ)$ by the previous
+      lemma. Therefore, we can assume without loss of generality that $U'$ is
+      affine.
+
+      We have $U' = \Spec \mathcal{O}$, where $\mathcal{O}$ is a finitely
+      generated integrally closed domain. All this means that
+      $\mathcal{O}_F \subseteq \mathcal{O} = \mathcal{O}_{F,S}$ for some finite
+      set $S$. Now $U' = \Spec \mathcal{O}_F \setminus S$, and
+      $S \in \mathcal{C} (\ZZ)$, so again, everything reduces to the case of
+      $U' = \Spec \mathcal{O}_F$, which lies in $\mathcal{C} (\ZZ)$ by the
+      definition. \qedhere
+    \end{enumerate}
   \end{proof}
 \end{proposition}
 
 \begin{remark}
   Schemes as above were considered by Jordan and Poonen in
   \cite{Jordan-Poonen-2020}, where the authors write down a special value
-  formula at $s = 1$, generalizing the classical class number formula.  They
-  consider the case of $B$ reduced and affine, albeit without requiring
+  formula at $s = 1$, generalizing the classical class number formula. Namely,
+  they consider the case of $B$ reduced and affine, albeit without requiring
   $\kappa (\eta)/\QQ$ to be abelian.
 \end{remark}
 
