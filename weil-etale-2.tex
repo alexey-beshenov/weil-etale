@@ -1144,8 +1144,8 @@ finite generation of $H^i (X_\et, \ZZ^c (n))$ is only known for particular cases
 (see \cite[\S 8]{Beshenov-Weil-etale-1}), and calculating the torsion part,
 which bears the arithmetic information, is even more difficult. Similarly, an
 explicit calculation of the regulator map $Reg_{X,n}$ is highly
-nontrivial. Therefore, for the moment we give a couple of toy examples over
-finite fields.
+nontrivial. Therefore, for the moment we give some toy examples over finite
+fields.
 
 \begin{example}
   \label{example:C(X,n)-for-Spec-Fq}
@@ -1205,6 +1205,22 @@ finite fields.
     \end{cases} \]
   The formula \eqref{eqn:special-value-for-X/Fq} recovers the correct value
   $\zeta (X,n)$.
+\end{example}
+
+\begin{example}
+  In general, if $X/\FF_q$ is a curve, then the conjectures
+  $\mathbf{L}_\fin^c (X/\FF_q,n)$ and $\mathbf{R} (\FF_q,1)$ hold.
+  Further, by duality
+  (see for instance \cite[Theorem~1]{Beshenov-Weil-etale-1})
+  $$H^i_c (X_\et, \ZZ(n)) \cong \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ/\ZZ),$$
+  where
+  $\ZZ (n) = \varinjlim_{p\nmid m} \mu_m^{\otimes n} [-1]$,
+  we see that $H^i (X_\et, \ZZ^c (n)) = 0$ for $i \ge 2$. Further,
+  $H^i (X_\et, \ZZ^c(n)) = 0$ for $i < -2$ by
+  \cite[Lemma~4.1]{Beshenov-Weil-etale-1}. Therefore, the cohomology is
+  concentrated in degrees $-1, 0, +1$, and the special value formula reads
+  \[ \zeta^* (X,n) =
+    \frac{|H^0 (X_\et, \ZZ^c (n))|}{|H^{-1} (X_\et, \ZZ^c (n))|\cdot |H^1 (X_\et, \ZZ^c (n))|}. \]
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
