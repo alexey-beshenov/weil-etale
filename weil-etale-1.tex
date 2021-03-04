@@ -284,7 +284,10 @@ $$i_\infty^*\colon R\Gamma_\fg (X, \ZZ (n)) \to R\Gamma_c (G_\RR, X (\CC), \ZZ(n
 (see the diagram below). We pick a mapping fiber of $i_\infty^*$ and call it
 $R\Gamma_\Wc (X, \ZZ (n))$, which turns out to be a perfect complex.
 Finally, in \S\ref{sec:known-cases-of-Lc-Xet-n} we consider the cases of $X$ for
-which the conjecture $\mathbf{L}^c (X_\et, n)$ is known, and hence our results hold unconditionally.
+which the conjecture $\mathbf{L}^c (X_\et, n)$ is known, and hence our results
+hold unconditionally, and in \S\ref{sec:comparison-with-FM} we verify that
+whenever $X$ is proper and regular, our complex $R\Gamma_\Wc (X, \ZZ (n))$ is
+isomorphic to that constructed in \cite{Flach-Morin-2018}.
 
 There are two appendices to this paper: Appendix~\ref{app:homological-algebra}
 collects some lemmas from homological algebra, and
@@ -1044,6 +1047,7 @@ complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded from below.
 \end{definition}
 
 \begin{remark}
+  \label{rmk:alpha-X-n-determined-by-cohomology}
   Assuming the conjecture $\mathbf{L}^c (X_\et, n)$, the groups
   $H^i_c (X_\et, \ZZ (n))$ are of cofinite type by theorem~\ref{theorem-I},
   while $\RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2])$ is a complex of
@@ -1577,6 +1581,7 @@ $R\Gamma_\Wc (X, \ZZ(n))$.
 \end{lemma}
 
 \begin{definition}
+  \label{dfn:i-infty}
   We let
   $i_\infty^*\colon R\Gamma_\fg (X, \ZZ (n)) \to R\Gamma_c (G_\RR, X (\CC), \ZZ (n))$
   be a morphism in $\mathbf{D} (\ZZ)$ that gives a morphism of distinguished
@@ -1747,8 +1752,8 @@ following auxiliary result.
   \end{proof}
 \end{lemma}
 
-\begin{theorem}
-  \label{thm:RGammaWc-perfect}
+\begin{proposition}
+  \label{prop:RGammaWc-perfect}
   The conjecture $\mathbf{L}^c (X_\et,n)$ implies that $R\Gamma_\Wc (X, \ZZ(n))$ is
   a perfect complex. Specifically,
   \begin{enumerate}
@@ -1788,7 +1793,6 @@ following auxiliary result.
     For $i < 0$ this implies that $H^i_\fg (X, \ZZ(n)) = 0$.
     For $i = 0$, this also gives $H^i_\fg (X, \ZZ(n)) = 0$
     if $H^1 (X_\et, \ZZ^c (n))$ is finite.
-
     Similarly, the triangle defining $R\Gamma_\Wc (X, \ZZ(n))$ gives
     \[ H^{i-1}_c (G_\RR, X (\CC), \ZZ (n)) \to
       H^i_\Wc (X, \ZZ(n)) \to
@@ -1815,14 +1819,13 @@ following auxiliary result.
     \[ 0 \to \coker H^{i-1} (i_\infty^*) \to
       H^i_\Wc (X, \ZZ(n)) \to
       \ker H^i (i_\infty^*) \to 0 \]
-
     By lemma~\ref{lemma:u-infty-iso-in-higher-degrees}, the map
     $H^i (i_\infty^*)$ is an isomorphism for $i > 2d+2$, and
     $H^{2d+2} (i_\infty^*)$ is surjective. Looking at the above short exact
     sequence, we conclude that $H^i_\Wc (X, \ZZ(n)) = 0$ for $i > 2d + 2$. This
     also holds for $i = 2d + 2$, if we assume $H^{-2d} (X_\et, \ZZ^c(n)) = 0$.
   \end{proof}
-\end{theorem}
+\end{proposition}
 
 \begin{proposition}
   There is a non-canonical splitting
@@ -1919,7 +1922,7 @@ cohomology of $X/\FF_q$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Known cases of the conjectutre \texorpdfstring{$\mathbf{L}^c (X_\et,n)$}{L\textasciicircum c (X\_ét, n)}}
+\section{Known cases of the conjecture \texorpdfstring{$\mathbf{L}^c (X_\et,n)$}{L\textasciicircum c (X\_ét, n)}}
 \label{sec:known-cases-of-Lc-Xet-n}
 
 Since the main constructions of this paper assume the conjecture
@@ -2203,7 +2206,7 @@ Finally, as in \cite[\S 5.4]{Morin-2014}, we consider cellular schemes.
     $\Spec k' \in \mathcal{L} (\ZZ)$ and operation $\mathcal{L}$3). Now by
     induction, using $\mathcal{L}$1), we conclude that
     $(Y_{k'})^{red} \in \mathcal{L} (\ZZ)$. Similarly, $\mathcal{L}$1) implies
-    that $Y_{k'} \in \mathcal{L} (\ZZ)$. Aplying $\mathcal{L}$4) to the finite
+    that $Y_{k'} \in \mathcal{L} (\ZZ)$. Applying $\mathcal{L}$4) to the finite
     étale Galois cover $Y_{k'} \to Y$, we conclude that
     $Y \in \mathcal{L} (\ZZ)$.
   \end{proof}
@@ -2260,6 +2263,188 @@ holds for such $X$.
   \end{proof}
 \end{proposition}
 \fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Comparison with Weil-étale complex of Flach and Morin}
+\label{sec:comparison-with-FM}
+
+This paper is based on the ideas of Flach and Morin \cite{Flach-Morin-2018}, who
+gave a similar construction for a \emph{proper and regular} arithmetic scheme
+$X$, and for \emph{any integer} $n \in \ZZ$. In this section we will go through
+the definitions of \cite{Flach-Morin-2018}, in order to verify the following
+claim.
+
+\begin{proposition}
+  \label{prop:comparison-with-FM}
+  Let $X$ be a proper, regular arithmetic scheme, and $n < 0$. Assume the
+  conjecture $\mathbf{L}^c (X_\et, n)$. Then the Weil-étale complex
+  $R\Gamma_\Wc (X, \ZZ(n))$ defined in this paper is isomorphic to the
+  corresponding complex defined in \cite{Flach-Morin-2018}.
+\end{proposition}
+
+From now on we will tacitly assume the conjecture $\mathbf{L}^c (X_\et, n)$,
+which is also equivalent to the assumptions on motivic cohomology in
+\cite{Flach-Morin-2018} (see \S\ref{sec:known-cases-of-Lc-Xet-n} above). Flach
+and Morin consider the case of proper and regular arithmetic scheme $X$ of equal
+dimension $d$. In this case we have $\ZZ^c (n) = \ZZ (d-n) [2d]$, where the
+right hand side denotes the usual Bloch's cycle complex. We will rewrite their
+constructions with $\ZZ^c (n)$ in place of $\ZZ (d-n) [2d]$.
+
+Further, they work with Artin--Verdier étale topos $\overline{X}_\et$, whose
+definition and basic properties can be found in \cite[\S 6]{Flach-Morin-2018}.
+They consider a morphism
+\[ \overline{\alpha}_{X,n}\colon \RHom (R\Gamma (X, \ZZ^c (n)), \QQ [-2]) \to
+  R\Gamma (\overline{X}_\et, \ZZ (n)), \]
+which is defined in a similar way to our morphism $\alpha_{X,n}$
+(definition~\ref{def:RGamma-fg}) using a duality similar to our
+theorem~\ref{theorem-I}.
+
+The notation in \cite{Flach-Morin-2018} and in this paper is deliberately the
+same for various objects and morphisms. However, in this section we will write,
+for instance, $\overline{\alpha}_{X,n}$ to denote the morphism of Flach and
+Morin, in order to distinguish it from our $\alpha_{X,n}$, etc. An overline
+indicates that the corresponding thing comes from \cite{Flach-Morin-2018}
+(meaning that it has something to do with Artin--Verdier étale topos).
+
+\begin{lemma}
+  The square
+  \[ \begin{tikzcd}
+      \RHom (R\Gamma (X, \ZZ^c (n)), \QQ [-2]) \ar{r}{\overline{\alpha}_{X,n}}\ar{d}{id} & R\Gamma (\overline{X}_\et, \ZZ(n))\ar{d} \\
+      \RHom (R\Gamma (X, \ZZ^c (n)), \QQ [-2]) \ar{r}{\alpha_{X,n}} & R\Gamma (X_\et, \ZZ(n))
+    \end{tikzcd} \]
+  commutes.
+
+  \begin{proof}
+    We recall from remark~\ref{rmk:alpha-X-n-determined-by-cohomology} that
+    $\alpha_{X,n}$ is determined by the maps on the level of cohomology
+    $H^i (\alpha_{X,n})$. The same is true for $\overline{\alpha}_{X,n}$, for
+    exactly the same reasons. Now \cite[Theorem~3.5]{Flach-Morin-2018} defines
+    \begin{multline*}
+      H^i (\overline{\alpha}_{X,n})\colon
+      \Hom (H^{2-i} (X, \ZZ^c (n)), \QQ) \xrightarrow{\cong}
+      \Hom (H^{2-i} (\overline{X}_\et, \ZZ^c (n)), \QQ) \to \\
+      \Hom (H^{2-i} (\overline{X}_\et, \ZZ^c (n)), \QQ/\ZZ) \xleftarrow{\cong}
+      H^i (\overline{X}_\et, \ZZ (n)),
+    \end{multline*}
+    where the last isomorphism is the duality
+    \cite[Corollary~6.26]{Flach-Morin-2018}. Similarly, our morphism
+    $\alpha_{X,n}$ gives
+    \begin{multline*}
+      H^i (\alpha_{X,n})\colon
+      \Hom (H^{2-i} (X, \ZZ^c (n)), \QQ) \xrightarrow{\cong}
+      \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ) \to \\
+      \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ/\ZZ) \xleftarrow{\cong}
+      \widehat{H}^i_c (X_\et, \ZZ (n)) \to
+      H^i (X_\et, \ZZ (n)).
+    \end{multline*}
+
+    The groups $\widehat{H}^i_c (X_\et, \ZZ (n))$ and
+    $H^i (\overline{X}_\et, \ZZ (n))$ are different, but the duality in terms of
+    $H^i (\overline{X}_\et, \ZZ (n))$ is induced precisely from the duality in
+    terms of $\widehat{H}^i_c (X_\et, \ZZ (n))$
+    (see \cite[Theorem~6.24]{Flach-Morin-2018}): we have a commutative diagram
+    \[ \begin{tikzcd}
+        R\widehat{\Gamma}_c (X_\et, \ZZ/m\ZZ(n)) \ar{d}\ar{r}{\cong} & \RHom (R\Gamma (X_\et, \ZZ/m\ZZ^c (n)), \QQ/\ZZ [-2])\ar{d} \\
+        R\Gamma (\overline{X}_\et, \ZZ/m\ZZ(n)) \ar{r}{\cong} & \RHom (R\Gamma (\overline{X}_\et, \ZZ/m\ZZ^c (n)), \QQ/\ZZ [-2])
+      \end{tikzcd} \]
+    and the diagram
+    \[ \begin{tikzcd}
+        R\widehat{\Gamma}_c (X_\et, \ZZ(n)) \ar{r}\ar{d} & R\Gamma (X_\et, \ZZ(n)) \\
+        R\Gamma (\overline{X}_\et, \ZZ(n) \ar{ur}
+      \end{tikzcd} \]
+    commutes as well. We see that the diagram we are interested in commutes:
+    \[ \begin{tikzcd}[column sep=1.25em]
+        \Hom (H^{2-i} (X, \ZZ^c (n)), \QQ) \ar{r}\ar{d}{id} \ar[bend left=15]{rrr}{H^i (\overline{\alpha}_{X,n})} & \Hom (H^{2-i} (\overline{X}_\et, \ZZ^c (n)), \QQ/\ZZ) & & H^i (\overline{X}_\et, \ZZ(n))\ar{d} \ar{ll}[swap]{\cong} \\
+        \Hom (H^{2-i} (X, \ZZ^c (n)), \QQ) \ar{r} \ar[bend right=15]{rrr}[swap]{H^i (\alpha_{X,n})} & \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ/\ZZ) \ar[dashed]{u} & \widehat{H}^i_c (X_\et, \ZZ(n)) \ar{l}[swap]{\cong}\ar{r}\ar[dashed]{ur} & H^i (X_\et, \ZZ(n))
+    \end{tikzcd} \]
+  \end{proof}
+\end{lemma}
+
+Taking the cones of $\overline{\alpha}_{X,n}$ and $\alpha_{X,n}$, we obtain
+respectively the complex $R\Gamma_W (\overline{X}, \ZZ (n))$ of Flach and Morin
+(\cite[Definition~3.6]{Flach-Morin-2018}) and our complex
+$R\Gamma_\fg (X, \ZZ(n))$ (definition~\ref{def:RGamma-fg} above). We obtain the
+following diagram with distinguished rows and columns\footnote{See for instance
+  \cite[Proposition~1.4.6]{Neeman-2001} for this particular formulation.}:
+\begin{equation}
+  \label{eqn:cones-of-alphas}
+  \begin{tikzcd}[column sep=1.25em,font=\small]
+    {[R\Gamma (X, \ZZ^c (n)), \QQ [-2]]} \ar{r}{\overline{\alpha}_{X,n}}\ar{d}{id} & R\Gamma (\overline{X}_\et, \ZZ(n))\ar{d}\ar{r}{f} & R\Gamma_W (\overline{X}, \ZZ(n)) \ar{r}\ar[dashed]{d} & {[R\Gamma (X, \ZZ^c (n)), \QQ [-1]]}\ar{d}{id} \\
+    {[R\Gamma (X, \ZZ^c (n)), \QQ [-2]]} \ar{r}{\alpha_{X,n}}\ar{d} & R\Gamma (X_\et, \ZZ(n)) \ar{r}{g}\ar{d} & R\Gamma_\fg (X, \ZZ(n)) \ar{r}\ar{d} & {[R\Gamma (X, \ZZ^c (n)), \QQ [-1]]}\ar{d} \\
+    0\ar{r}\ar{d} & R\Gamma (X (\RR), \tau_{\ge n+1} R \widehat{\pi}_* \ZZ (n)) \ar{r}{id}\ar{d} & R\Gamma (X (\RR), \tau_{\ge n+1} R \widehat{\pi}_* \ZZ (n)) \ar{r}\ar{d} & 0\ar{d} \\
+    {[R\Gamma (X, \ZZ^c (n)), \QQ [-1]]} \ar{r} & R\Gamma (\overline{X}_\et, \ZZ(n))[1]\ar{r}{f[1]} & R\Gamma_W (\overline{X}, \ZZ(n))[1] \ar{r} & {[R\Gamma (X, \ZZ^c (n)), \QQ]}
+  \end{tikzcd}
+\end{equation}
+
+The complex $R\Gamma_W (\overline{X}, \ZZ(n))$ is perfect by
+\cite[Proposition~3.8]{Flach-Morin-2018}, unlike our $R\Gamma_\fg (X, \ZZ(n))$,
+which may have finite $2$-torsion in arbitrarily high degrees if
+$X (\RR) \ne \emptyset$. This is the price we pay for not working with
+Artin--Verdier étale topos.
+
+Then \cite[Definition~3.23]{Flach-Morin-2018} considers a morphism
+$\overline{u}^*_\infty$ defined via
+\begin{equation}
+  \label{eqn:definition-of-u-bar-infty}
+  \begin{tikzcd}[column sep=1em]
+    R\Gamma (\overline{X}_\et, \ZZ(n)) \ar{r}\ar[dashed]{d}[swap]{\exists}{\overline{u}_\infty^*} & R\Gamma (X_\et, \ZZ(n)) \ar{r}\ar{d}{u_\infty^*} & R\Gamma (X(\RR), \tau_{\ge n+1} R \widehat{\pi}_* \ZZ (n)) \ar{r}\ar{d}{id} & R\Gamma (\overline{X}_\et, \ZZ(n)) [1] \ar[dashed]{d}{\overline{u}_\infty^* [1]} \\
+    R\Gamma_W (X_\infty, \ZZ (n)) \ar{r} & R\Gamma (G_\RR, X (\CC), \ZZ (n)) \ar{r} & R\Gamma (X(\RR), \tau_{\ge n+1} R \widehat{\pi}_* \ZZ (n)) \ar{r} & R\Gamma_W (X_\infty, \ZZ (n)) [1]
+  \end{tikzcd}
+\end{equation}
+Here the complex $R\Gamma_W (X_\infty, \ZZ(n))$ is \emph{defined} via the bottom
+triangle.
+
+Then \cite[Proposition~3.24]{Flach-Morin-2018} and our
+proposition~\ref{prop:uniqueness-of-i-infty} above establish the existence and
+uniqueness of morphisms $\overline{\iota}_\infty^*$ and $i_\infty^*$ that render
+the triangles below commutative, and then the Weil-étale complexes are defined
+as mapping fibers of $\overline{\iota}_\infty^*$ and $i_\infty^*$:
+
+\[ \begin{tikzcd}
+    R\Gamma_\Wc (\overline{X}, \ZZ (n))\ar{d} & & R\Gamma_\Wc (X, \ZZ (n))\ar{d} \\
+    R\Gamma_W (\overline{X}, \ZZ(n)) \ar[dashed]{d}{\overline{\iota}_\infty^*} & R\Gamma (\overline{X}_\et, \ZZ(n)) \ar{dl}{\overline{u}_\infty^*}\ar{l}[swap]{f} & R\Gamma_\fg (X, \ZZ(n))  \ar[dashed]{d}{\iota_\infty^*} & R\Gamma (X_\et, \ZZ(n)) \ar{dl}{u_\infty^*}\ar{l}[swap]{g} \\
+    R\Gamma_W (X_\infty, \ZZ (n))\ar{d} & & R\Gamma (G_\RR, X (\CC), \ZZ (n))\ar{d} \\
+    R\Gamma_\Wc (\overline{X}, \ZZ (n))[1] & & R\Gamma_\Wc (X, \ZZ (n))[1] \\
+  \end{tikzcd} \]
+
+To be able to compare the two resulting complexes, we note that
+$\overline{u}_\infty^*$ is only defined via
+\eqref{eqn:definition-of-u-bar-infty}, so in the diagram below from
+figure~\ref{fig:comparison-with-FM}, we may first pick
+$\overline{\iota}_\infty^*$ such that the front face gives a morphism of
+triangles. Then we may \emph{declare} $\overline{u}_\infty^*$ to be the
+composition $\overline{\iota}_\infty^* \circ f$. This way everything will
+commute, and we see that
+$R\Gamma_\Wc (\overline{X}, \ZZ(n)) \cong R\Gamma_\Wc (X, \ZZ(n))$.
+
+\vspace{1em}
+
+This concludes the proof of proposition~\ref{prop:comparison-with-FM}. \qed
+
+\begin{landscape}
+  \begin{figure}
+    \[ \begin{tikzcd}[column sep=0.5em, row sep=3em]
+        R\Gamma_\Wc (\overline{X}, \ZZ(n)) \ar{dd}\ar[dashed]{rr}{\cong} &[-1.5em] &[-1.5em] R\Gamma_\Wc (X, \ZZ(n))\ar{rr} &[-1.5em] &[-1.5em] 0 \ar{rr} &[-2.5em] &[-2.5em] R\Gamma_\Wc (\overline{X}, \ZZ(n)) [1] \\
+        & R\Gamma (\overline{X}_\et, \ZZ(n)) \ar{rr}\ar[near end]{dddl}{\overline{u}_\infty^*}\ar{dl}[swap]{f} & & R\Gamma (X_\et, \ZZ(n)) \ar[near end]{dddl}{u_\infty^*}\ar{dl}[swap]{g}\ar{rr} && R\Gamma (X (\RR), \tau_{\ge n+1} R\widehat{\pi}_* \ZZ (n))\ar{dl}[swap]{id}\ar[near end]{dddl}{id}\ar{rr} && {[+1]}\ar{dddl}{\overline{u}_\infty^* [1]} \ar{dl}[swap]{f[1]} \\
+        R\Gamma_W (\overline{X}, \ZZ(n)) \ar[dashed]{dd}[swap]{\overline{\iota}_\infty^*}\ar[crossing over]{rr} & & R\Gamma_\fg (X, \ZZ(n)) \ar{dd}[swap]{i_\infty^*}\ar[crossing over]{rr}\ar[<-,crossing over]{uu} && R\Gamma (X (\RR), \tau_{\ge n+1} R\widehat{\pi}_* \ZZ (n)) \ar{dd}[swap]{id}\ar[<-,crossing over]{uu} \ar[crossing over]{rr} && {[+1]}\ar[<-,crossing over]{uu}\ar[dashed]{dd}[swap]{\overline{\iota}_\infty^* [1]} \\
+        \\
+        R\Gamma_W (X_\infty, \ZZ (n)) \ar{rr}\ar{dd} & & R\Gamma (G_\RR, X (\CC), \ZZ (n)) \ar{rr}\ar{dd} && R\Gamma (X (\RR), \tau_{\ge n+1} R\widehat{\pi}_* \ZZ (n)) \ar{rr}\ar{dd} && {[+1]}\ar{dd} \\
+        \\
+        R\Gamma_\Wc (\overline{X}, \ZZ(n))[1] \ar[dashed]{rr}{\cong} && R\Gamma_\Wc (X, \ZZ(n))[1]\ar{rr} && 0 \ar{rr} && R\Gamma_\Wc (\overline{X}, \ZZ(n)) [2]      
+      \end{tikzcd} \]
+
+    \caption{Comparison of Weil-étale complexes from \cite{Flach-Morin-2018} and
+      this paper, denoted by $R\Gamma_\Wc (\overline{X}, \ZZ(n))$ and
+      $R\Gamma_\Wc (X, \ZZ(n))$ respectively. The top face of the prism comes
+      from \eqref{eqn:cones-of-alphas}. The arrow $\overline{\iota}_\infty^*$ is
+      chosen to render the front face commutative. Then set
+      $\overline{u}_\infty^* = \overline{\iota}_\infty^* \circ f$ to render the
+      back face commutative and correspond to
+      \eqref{eqn:definition-of-u-bar-infty}.}
+    \label{fig:comparison-with-FM}
+  \end{figure}
+\end{landscape}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
