@@ -886,7 +886,9 @@ complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded from below.
   \label{lemma:RGamma(Xet,Zc(n))-bounded-from-below}
   Assuming the conjecture $\mathbf{L}^c (X_\et, n)$, the complex
   $R\Gamma (X_\et, \ZZ^c (n))$ is bounded from below:
-  one has $H^i (X_\et, \ZZ^c (n)) = 0$ for $i < -2\dim X$.
+  one has $H^i (X_\et, \ZZ^c (n)) = 0$ for $i < -2\dim X$. If $X/\FF_q$ is a
+  variety over a finite field, then $H^i (X_\et, \ZZ^c (n)) = 0$ for
+  $i = -2\dim X$.
 
   \begin{proof}
     Since the complex of sheaves $\ZZ^c (n)$ is flat, the short exact sequence of
@@ -901,9 +903,10 @@ complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded from below.
     R\Gamma (X_\et, \QQ/\ZZ^c (n)) \to
     R\Gamma (X_\et, \ZZ^c (n)) [1] \]
     Now according to \cite[Lemma~5.12]{Morin-2014} (note that the proof there
-    also uses Geisser's duality theorem), we have
-    $$H^i (X_\et, \QQ/\ZZ^c (n)) = 0 \quad\text{for }i < -2\,\dim X,$$
-    and the above triangle implies that
+    also uses duality theorem), we have
+    $$H^i (X_\et, \QQ/\ZZ^c (n)) = 0 \quad\text{for }i < -2\,\dim X.$$
+    Similarly, if $X/\FF_q$ is a variety over a finite field, then this holds
+    for $i = -2\,\dim X$. The above triangle implies that
     \[ H^i (X_\et, \QQ^c (n)) \cong
     H^i (X_\et, \ZZ^c (n)) \quad\text{for }i < -2\,\dim X. \]
     However, $H^i (X_\et, \QQ^c (n))$ is a $\QQ$-vector space, and
@@ -997,10 +1000,22 @@ complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded from below.
 
   We define the complex $R\Gamma_\fg (X, \ZZ(n))$ as a cone of $\alpha_{X,n}$:
   \[ \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]) \xrightarrow{\alpha_{X,n}}
-  R\Gamma_c (X_\et, \ZZ (n)) \to
-  R\Gamma_\fg (X, \ZZ(n)) \to
-  \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-1]) \]
+    R\Gamma_c (X_\et, \ZZ (n)) \to
+    R\Gamma_\fg (X, \ZZ(n)) \to
+    \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-1]) \]
 \end{definition}
+
+\begin{remark}
+  Assuming the conjecture $\mathbf{L}^c (X_\et, n)$, the groups
+  $H^i_c (X_\et, \ZZ (n))$ are of cofinite type by theorem~\ref{theorem-I},
+  while $\RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2])$ is a complex of
+  $\QQ$-vector spaces. Therefore, the morphism $\alpha_{X,n}$ is determined by
+  the maps between cohomology groups
+  \[ H^i (\alpha_{X,n})\colon
+    \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ) \to
+    H^i_c (X_\et, \ZZ (n)) \]
+  ---see lemma~\ref{lemma:morphisms-in-DAb-between-cplx-of-Q-vs-and-almost-cofinite-type-cplx}.
+\end{remark}
 
 \begin{remark}
   We note that our $R\Gamma_\fg (X, \ZZ (n))$ plays the same role as
@@ -1690,7 +1705,10 @@ to be $\QQ/\ZZ$-dual to the arithmetic homology groups studied by Geisser in
   Moreover, assuming that the groups $H^i (X_\et, \ZZ^c (n))$ are torsion
   for all $i \in \ZZ$ (hence finite torsion by $\mathbf{L}^c (X,n)$),
   there is an isomorphism of finite groups
-  $$H^i_{W,c} (X, \ZZ (n)) \cong \Hom (H_{i-1}^c (X_\ar, \ZZ (n)), \QQ/\ZZ),$$
+  \[ H^i_{W,c} (X, \ZZ (n)) \cong
+    \Hom (H^{2-i} (X_\et, \ZZ^c (n)) \cong
+    H^i (X_\et, \ZZ(n)) \cong
+    \Hom (H_{i-1}^c (X_\ar, \ZZ (n)), \QQ/\ZZ), \]
   where $H_\bullet^c (X_\ar, \ZZ (n))$ are the arithmetic homology groups
   defined in \cite[\S 3]{Geisser-2010-arithmetic-homology}.
   % In particular,
