@@ -922,20 +922,14 @@ complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded from below.
   \label{lemma:RGamma(Xet,Zc(n))-bounded-from-below}
   Assuming the conjecture $\mathbf{L}^c (X_\et, n)$, the complex
   $R\Gamma (X_\et, \ZZ^c (n))$ is bounded from below:
-  one has $H^i (X_\et, \ZZ^c (n)) = 0$ for $i < -2\dim X$. If $X/\FF_q$ is a
-  variety over a finite field, then $H^i (X_\et, \ZZ^c (n)) = 0$ for
-  $i = -2\dim X$.
+  one has $H^i (X_\et, \ZZ^c (n)) = 0$ for $i < -2\dim X$.
 
-  \begin{proof}[Proof ($\approx${\cite[Lemma~5.12]{Morin-2014}})]
-    We note that the result would follow from
-    \begin{equation}
-      \label{eqn:vanishing-of-Q/Z-cohomology}
-      H^i (X_\et, \QQ/\ZZ^c (n)) = 0 \quad\text{for }i < -2\,\dim X.
-    \end{equation}
-    Similarly, if $X/\FF_q$ is a variety over a finite field, then we will prove
-    this also for $i = -2\,\dim X$.
+  \begin{proof}
+    According to \cite[Lemma~5.12]{Morin-2014} (note that the proof there also
+    uses arithmetic duality), we have
+    $$H^i (X_\et, \QQ/\ZZ^c (n)) = 0 \quad\text{for }i < -2\,\dim X.$$
 
-    Indeed, then the distinguished triangle
+    Then the distinguished triangle
     \[ R\Gamma (X_\et, \ZZ^c (n)) \to
       R\Gamma (X_\et, \QQ^c (n)) \to
       R\Gamma (X_\et, \QQ/\ZZ^c (n)) \to
@@ -947,10 +941,6 @@ complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded from below.
     according to the conjecture $\mathbf{L}^c (X_\et, n)$, the groups
     $H^i (X_\et, \ZZ^c (n))$ are finitely generated over $\ZZ$. This
     means that for $i < -2\,\dim X$ these groups are trivial.
-
-    Now we proceed to prove \eqref{eqn:vanishing-of-Q/Z-cohomology}.
-
-    **TODO**
   \end{proof}
 \end{lemma}
 
@@ -961,7 +951,7 @@ complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded from below.
   (see for instance \cite[\S 4.3.4]{Kahn-2005}). Therefore, we just proved that
   this is true for $i < -2d$ under the finite generation conjecture
   $\mathbf{L}^c (X_\et, n)$. We could not strengthen the above argument to
-  include the case of $i = -2d$, unless $X$ is a variety over a finite field.
+  include the case of $i = -2d$.
 \end{remark}
 
 \begin{lemma}
