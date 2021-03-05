@@ -925,7 +925,7 @@ complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded from below.
   \label{lemma:RGamma(Xet,Zc(n))-bounded-from-below}
   Assuming the conjecture $\mathbf{L}^c (X_\et, n)$, the complex
   $R\Gamma (X_\et, \ZZ^c (n))$ is bounded from below:
-  one has $H^i (X_\et, \ZZ^c (n)) = 0$ for $i < -2\dim X$.
+  one has $H^i (X_\et, \ZZ^c (n)) = 0$ for $i < -2\,\dim X$.
 
   \begin{proof}
     According to \cite[Lemma~5.12]{Morin-2014} (note that the proof there also
@@ -1210,21 +1210,19 @@ integral model for $\ell$-adic cohomology in the following sense
 (see also \cite[\S 8]{Geisser-2004}).
 
 \begin{corollary}
-  Let $X/\FF_q$ be a variety over a finite field $\FF_q$ of characteristic $p$.
-  Under the conjecture $\mathbf{L}^c (X_\et, n)$, for every prime $\ell \ne p$
-  holds
-  $$H_\fg^i (X, \ZZ (n)) \otimes \ZZ_\ell \cong H^i_c (X_\et, \ZZ_\ell (n)),$$
+  Let $X$ be an arithmetic scheme satisfying the conjecture
+  $\mathbf{L}^c (X_\et, n)$ for $n < 0$. Then
+  $$H_\fg^i (X, \ZZ (n)) \otimes \ZZ_\ell \cong H^i_c (X [1/\ell]_\et, \ZZ_\ell (n)),$$
   where the right hand side denotes the $\ell$-adic cohomology with compact
   support.
 
   \begin{proof}
-    We have by the definition
-    $$\ZZ (n) = \QQ/\ZZ (n) [-1] = \varinjlim_{p\nmid m} \mu_m^{\otimes n} [-1].$$
-    Now if $\ell \ne p$, then $\ZZ/\ell^r (n) = \mu_{\ell^r}^{\otimes n} [0]$,
-    and by part 3) of the previous proposition,
+    We have $\ZZ (n)/\ell^r \cong j_{\ell!} \mu_m^{\otimes n}$.
+    Now by part 3) of the previous proposition,
     \[ H_\fg^i (X, \ZZ (n)) \otimes \ZZ_\ell \cong
-      \varprojlim_r H_c^i (X_\et, \mu_{\ell^r}^{\otimes n})
-      \stackrel{\text{dfn}}{=} H_c^i (X_\et, \ZZ_\ell (n)). \qedhere \]
+      \varprojlim_r H_c^i (X_\et, j_{\ell!} \mu_{\ell^r}^{\otimes n}) \cong
+      \varprojlim_r H_c^i (X [1/\ell]_\et, \mu_{\ell^r}^{\otimes n})
+      \stackrel{\text{dfn}}{=} H_c^i (X [1/\ell]_\et, \ZZ_\ell (n)). \qedhere \]
   \end{proof}
 \end{corollary}
 
@@ -1757,34 +1755,34 @@ following auxiliary result.
 
   \begin{enumerate}
     \item[1)] The morphism of complexes
-      $u_\infty^*\colon R\Gamma_c (X_\et, \ZZ(n)) \to
-      R\Gamma_c (G_\RR, X (\CC), \ZZ(n))$
-      induces isomorphisms $H^i (u_\infty^*)$ for $i > 2d+2$.
-      Further, $H^{2d+2} (u_\infty^*)$ is surjective.
+    $u_\infty^*\colon R\Gamma_c (X_\et, \ZZ(n)) \to
+    R\Gamma_c (G_\RR, X (\CC), \ZZ(n))$
+    induces isomorphisms $H^i (u_\infty^*)$ for $i > 2d+2$.
+    Further, $H^{2d+2} (u_\infty^*)$ is surjective.
 
-      If we assume that $H^{-2d} (X_\et, \ZZ^c(n)) = 0$, then
-      $H^{2d+2} (u_\infty^*)$ is an isomorphism, and $H^{2d+1} (u_\infty^*)$ is
-      surjective.
+    If we assume that $H^{-2d} (X_\et, \ZZ^c(n)) = 0$, then
+    $H^{2d+2} (u_\infty^*)$ is an isomorphism, and $H^{2d+1} (u_\infty^*)$ is
+    surjective.
 
-    \item[2)] The morphism of complexes
-      $R\Gamma_c (X_\et, \ZZ(n)) \to R\Gamma_\fg (X,\ZZ(n))$ induces
-      isomorphisms
-      $H^i_c (X_\et, \ZZ(n)) \xrightarrow{\cong} H^i_\fg (X, \ZZ(n))$ for
-      $i > 2d + 2$.
+  \item[2)] The morphism of complexes
+    $R\Gamma_c (X_\et, \ZZ(n)) \to R\Gamma_\fg (X,\ZZ(n))$ induces
+    isomorphisms
+    $H^i_c (X_\et, \ZZ(n)) \xrightarrow{\cong} H^i_\fg (X, \ZZ(n))$ for
+    $i > 2d + 2$.
 
-      If we further assume that $H^{-2d} (X_\et, \ZZ^c(n)) = 0$, then this is
-      true for $i = 2d+2$ as well.
+    If we further assume that $H^{-2d} (X_\et, \ZZ^c(n)) = 0$, then this is
+    true for $i = 2d+2$ as well.
 
-    \item[3)] The morphism of complexes
-      $i_\infty^*\colon R\Gamma_\fg (X_\et, \ZZ(n)) \to
-      R\Gamma_c (G_\RR, X (\CC), \ZZ(n))$
-      induces isomorphisms $H^i (i_\infty^*)$ for $i > 2d+2$.
-      Further, $H^{2d+2} (i_\infty^*)$ is surjective.
+  \item[3)] The morphism of complexes
+    $i_\infty^*\colon R\Gamma_\fg (X_\et, \ZZ(n)) \to
+    R\Gamma_c (G_\RR, X (\CC), \ZZ(n))$
+    induces isomorphisms $H^i (i_\infty^*)$ for $i > 2d+2$.
+    Further, $H^{2d+2} (i_\infty^*)$ is surjective.
 
-      If we further assume that $H^{-2d} (X_\et, \ZZ^c(n)) = 0$, then
-      $H^{2d+2} (i_\infty^*)$ is an isomorphism, and $H^{2d+1} (i_\infty^*)$ is
-      surjective.
-    \end{enumerate}
+    If we further assume that $H^{-2d} (X_\et, \ZZ^c(n)) = 0$, then
+    $H^{2d+2} (i_\infty^*)$ is an isomorphism, and $H^{2d+1} (i_\infty^*)$ is
+    surjective.
+  \end{enumerate}
 
   \begin{proof}
     In part 1), by \cite[Lemma~6.14]{Flach-Morin-2018}, there is a triangle
@@ -1900,20 +1898,6 @@ following auxiliary result.
     also holds for $i = 2d + 2$, if we assume $H^{-2d} (X_\et, \ZZ^c(n)) = 0$.
   \end{proof}
 \end{proposition}
-
-\begin{remark}
-  The extra assumptions in 2) and 3) of the previous proposition can be seen
-  already for varieties over finite fields $X/\FF_q$. As always assuming
-  $\mathbf{L}^c (X_\et,n)$, the spectral sequence
-  \eqref{eqn:RGamma-Wc-over-finite-fields-ss} shows that in this case
-  \begin{align*}
-    H^0_\Wc (X, \ZZ(n)) = 0 & \iff H^1 (X_\et, \ZZ^c (n))\text{ is finite}, \\
-    H^{2d+2}_\Wc (X, \ZZ(n)) = 0 & \iff H^{-2d} (X_\et, \ZZ^c (n)) = 0.
-  \end{align*}
-  (For $X/\FF_q$ and $n < 0$, we in fact \emph{expect} $H^i (X_\et, \ZZ^c (n))$
-  to be finite for all $i \in \ZZ$, at least for smooth proper $X$---see
-  proposition~\ref{prop:Lc-Xet-n-over-finite-fields} below.)
-\end{remark}
 
 \subsection*{Rational coefficients}
 
