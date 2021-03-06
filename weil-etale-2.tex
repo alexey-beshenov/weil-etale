@@ -198,11 +198,10 @@ $\mathbf{C} (X,n)$.
 We explain in \S\ref{sec:finite-fields} that for $X/\FF_q$ a variety over a
 finite field, the special value conjecture $\mathbf{C} (X,n)$ is consistent with
 the conjectures considered by Geisser in
-\cite{Geisser-2004,Geisser-2006,Geisser-2010-arithmetic-homology}.  In
-particular, it holds for any smooth projective $X/\FF_q$, assuming that the
-groups $H^i (X_\et, \ZZ (n))$ are finite for all $i$. This also generalizes to
-all varieties $X/\FF_q$ if we assume the resolution of singularities over
-$\FF_q$.
+\cite{Geisser-2004,Geisser-2006,Geisser-2010-arithmetic-homology}.
+In particular, it holds for any smooth projective $X/\FF_q$, assuming the
+conjecture $\mathbf{L}^c (X_\et,n)$. This also generalizes to all varieties
+$X/\FF_q$ if we assume the resolution of singularities over $\FF_q$.
 
 Then we prove in \S\ref{sec:compatibility-with-operations} that the conjectures
 $\mathbf{VO} (X,n)$ and $\mathbf{C} (X,n)$ are compatible with basic operations
@@ -504,30 +503,15 @@ role in everything that follows.
     \RHom (R\Gamma (X_\et, \ZZ^c (n)), \RR). \]
 \end{conjecture}
 
-If $X/\FF_q$ is a variety over a finite field, then $X (\CC) = \emptyset$,
-so the regulator map in not interesting. Indeed, its purpose is to take care
-of the archimedian places of $X$. It will be more convenient to formulate the
-following conjecture.
-
-\begin{conjecture}
-  $\mathbf{L}_\fin^c (X/\FF_q,n)$: given a variety $X/\FF_q$ and $n < 0$,
-  the cohomology groups $H^i (X_\et, \ZZ^c (n))$ are finite for all $i \in \ZZ$.
-\end{conjecture}
-
-As explained in \cite[\S 8]{Beshenov-Weil-etale-1}, this is consistent with
-Lichtenbaum's conjectures about étale motivic cohomology.
-
-\begin{lemma}
-  For a variety over a finite field $X/\FF_q$ one has
-  \[ \mathbf{L}^c (X,n) \text{ and } \mathbf{B} (X,n)
-    \Longrightarrow \mathbf{L}_\fin^c (X/\FF_q,n). \]
-
-  \begin{proof}
-    Since $X (\CC) = \emptyset$, we note that $\mathbf{B} (X,n)$ implies that
-    $H^i (X_\et, \ZZ^c (n))$ are torsion for all $i$, hence finite, if we
-    further assume $\mathbf{L}^c (X_\et,n)$.
-  \end{proof}
-\end{lemma}
+\begin{remark}
+  If $X/\FF_q$ is a variety over a finite field, then $X (\CC) = \emptyset$,
+  so the regulator map in not interesting. Indeed, in our setting, its purpose
+  is to take care of the archimedian places of $X$. In this case
+  $\mathbf{B} (X,n)$ implies that $H^i (X_\et, \ZZ^c (n))$ are torsion groups.
+  However, by \cite[Proposition~4.1]{Beshenov-Weil-etale-1}, the finite
+  generation conjecture $\mathbf{L}^c (X_\et, n)$ already implies that
+  $H^i (X_\et, \ZZ^c (n))$ are finite groups.
+\end{remark}
 
 \begin{remark}
   \label{rmk:regulator-is-defined-for-XC-smooth-quasi-proj}
@@ -768,9 +752,11 @@ $\zeta (X,s)$ is known.
   \[ \ord_{s=n} \zeta (X,s) =
     \sum_{i \in \ZZ} (-1)^i \dim_\RR H^i_c (X(\CC), \RR (n))^{G_\RR} =
     \sum_{i \in \ZZ} (-1)^{i+1} \rk_\ZZ H^i (X_\et, \ZZ^c (n)) = 0, \]
-  since $X (\CC) = \emptyset$, and also because $\mathbf{B} (X,n)$ implies
-  $\rk_\ZZ H^i (X_\et, \ZZ^c (n)) = 0$. Therefore, the conjecture simply asserts
-  that $\zeta (X,s)$ does not have zeros or poles at $s = n < 0$.
+  since $X (\CC) = \emptyset$, and also because $\mathbf{L}^c (X_\et, n)$
+  implies $\rk_\ZZ H^i (X_\et, \ZZ^c (n)) = 0$ in case of varieties over finite
+  fields \cite[Proposition~4.1]{Beshenov-Weil-etale-1}. Therefore, the
+  conjecture simply asserts that $\zeta (X,s)$ does not have zeros or poles at
+  $s = n < 0$.
 
   This is indeed the case. We have $\zeta (X,s) = Z (X,q^{-s})$, where
   $$Z (X,t) = \exp \Bigl(\sum_{k\ge 1} \frac{\# X (\FF_{q^k})}{k}\,t^k\Bigr)$$
@@ -1054,7 +1040,7 @@ the conjectures studied by Geisser in \cite{Geisser-2004}, \cite{Geisser-2006},
 \begin{proposition}
   \label{prop:C(X,n)-over-finite-fields}
   If $X/\FF_q$ is a variety over a finite field, then assuming
-  $\mathbf{L}_\fin^c (X/\FF_q,n)$, the special value conjecture
+  $\mathbf{L}^c (X/\FF_q,n)$, the special value conjecture
   $\mathbf{C} (X,n)$ is equivalent to
   \begin{equation}
     \label{eqn:special-value-for-X/Fq}
@@ -1066,12 +1052,13 @@ the conjectures studied by Geisser in \cite{Geisser-2004}, \cite{Geisser-2006},
   defined in \cite{Geisser-2010-arithmetic-homology}.
 
   \begin{proof}
-    Assuming $\mathbf{L}_\fin^c (X/\FF_q,n)$, thanks to
+    Assuming $\mathbf{L}^c (X/\FF_q,n)$, thanks to
     \cite[Proposition~7.9]{Beshenov-Weil-etale-1} we have
     \[ H^i_\Wc (X, \ZZ (n)) \cong
       \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ/\ZZ) \cong
       \Hom (H_{i-1}^c (X_\ar, \ZZ (n)), \QQ/\ZZ). \]
-    The involved cohomology groups are finite, and therefore by
+    The involved cohomology groups are finite and vanish for $|i| \gg 0$
+    (see \cite[Proposition~4.1]{Beshenov-Weil-etale-1}), and therefore by
     \ref{lemma:determinant-for-torsion-cohomology}, the determinant is given by
     \[ \begin{tikzcd}[row sep=0.75em, column sep=0pt]
         \det_\ZZ R\Gamma_\Wc (X, \ZZ (n)) \ar[equals]{d} & \subset & \det_\ZZ R\Gamma_\Wc (X, \ZZ (n)) \otimes_\ZZ \QQ \ar[equals]{d} \\
@@ -1108,11 +1095,11 @@ resolution of singularities.
 \begin{theorem}
   \label{thm:C(X,n)-over-finite-fields}
   Let $X$ be a smooth projective variety $X/\FF_q$. Assuming
-  $\mathbf{L}_\fin^c (X/\FF_q,n)$, the special value conjecture
+  $\mathbf{L}^c (X/\FF_q,n)$, the special value conjecture
   $\mathbf{C} (X,n)$ holds.
 
   Moreover, assuming the resolution of singularities $\mathbf{R} (\FF_q,d)$ and
-  $\mathbf{L}_\fin^c (X/\FF_q,n)$ for any smooth projective variety $X/\FF_q$ of
+  $\mathbf{L}^c (X/\FF_q,n)$ for any smooth projective variety $X/\FF_q$ of
   dimension $\le d$, the conjecture $\mathbf{C} (X,n)$ holds for any variety
   $X/\FF_q$ of dimension $\le d$.
 
@@ -1122,12 +1109,11 @@ resolution of singularities.
       \pm \prod_{i \in \ZZ} |H_i^c (X_\ar, \ZZ (n))|^{(-1)^{i+1}}. \]
 
     Under $\mathbf{L}^c (X_\et,n)$, the groups
-    $H_i^c (X_\ar, \ZZ(n)) \cong H^{1-i} (X_\et, \ZZ^c (n))$, are finitely
-    generated, hence the conjecture $\mathbf{P}_0 (X)$ from
+    $H_i^c (X_\ar, \ZZ(n)) \cong H^{1-i} (X_\et, \ZZ^c (n))$, are finite, hence
+    the conjecture $\mathbf{P}_0 (X)$ from
     \cite[\S 4]{Geisser-2010-arithmetic-homology} holds, using
-    \cite[Proposition~4.1]{Geisser-2010-arithmetic-homology}.
-    Then the statement is precisely
-    \cite[Theorem~4.5]{Geisser-2010-arithmetic-homology}.
+    \cite[Proposition~4.1]{Geisser-2010-arithmetic-homology}.  Then the
+    statement is precisely \cite[Theorem~4.5]{Geisser-2010-arithmetic-homology}.
   \end{proof}
 \end{theorem}
 
@@ -1216,7 +1202,7 @@ fields.
 
 \begin{example}
   In general, if $X/\FF_q$ is a curve, then the conjectures
-  $\mathbf{L}_\fin^c (X/\FF_q,n)$ and $\mathbf{R} (\FF_q,1)$ hold.
+  $\mathbf{L}^c (X/\FF_q,n)$ and $\mathbf{R} (\FF_q,1)$ hold.
   The cohomology $H^i (X_\et, \ZZ^c(n))$ is concentrated in degrees $-1, 0, +1$,
   and the special value formula reads
   \[ \zeta^* (X,n) =
@@ -1994,16 +1980,9 @@ is needed to ensure that the regulator morphism exists
     If $X = C/\FF_q$ is a curve over a finite field, then $\mathbf{C} (X,n)$
     holds thanks to theorem~\ref{thm:C(X,n)-over-finite-fields}. The conjecture
     $\mathbf{R} (\FF_q,d)$ that appears in the statement is true for
-    $d = 1$. Similarly, $\mathbf{L}_\fin^c (X/\FF_q,n)$ is well-known for curves
+    $d = 1$. Similarly, $\mathbf{L}^c (X/\FF_q,n)$ is well-known for curves
     and essentially goes back to Soulé; see for instance
-    \cite[Proposition~4.3]{Geisser-2017}\footnote{Assuming $X$ is smooth,
-      the quoted result states that
-      $H^i (X_\et, \ZZ^c (n)) = H^{i+2} (X_\et, \ZZ (1-n))$ is finite, except
-      for $i = -2n, -2n + 2$, when it is possibly finitely generated or of
-      cofinite type. However, Artin--Verdier duality
-      \cite[Theorem~I]{Beshenov-Weil-etale-1} shows that these two
-      ``exceptional'' groups are trivial. If $X$ is not
-      smooth, the statement follows by resolution of singularities.}.
+    \cite[Proposition~4.3]{Geisser-2017}.
 
     Then the fact that the conjectures $\mathbf{L}^c (X_\et,n)$,
     $\mathbf{B} (X,n)$, $\mathbf{VO} (X,n)$, $\mathbf{C} (X,n)$ are closed under

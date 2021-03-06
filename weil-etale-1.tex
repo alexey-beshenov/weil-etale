@@ -918,8 +918,28 @@ Similarly for $\QQ/\ZZ$-coefficients, we have the following observation.
 \section{Some consequences of Theorem~I}
 \label{sec:consequences-of-theorem-I}
 
-We note that the conjecture $\mathbf{L}^c (X_\et, n)$ actually implies that the
-complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded from below.
+We first note that for varieties over finite fields, the finite generation
+conjecture $\mathbf{L}^c (X_\et,n)$ implies \emph{finiteness} of motivic
+cohomology.
+
+\begin{proposition}
+  \label{prop:finite-motivic-cohomology-for-X/Fq}
+  Let $X/\FF_q$ be a variety over a finite field. Then $\mathbf{L}^c (X_\et,n)$
+  for $n < 0$ implies that the groups $H^i (X_\et, \ZZ^c(n))$ are finite for all
+  $i \in \ZZ$, and $H^i (X_\et, \ZZ^c (n)) = 0$ for $i > 1$ or $i < -2d$.
+
+  \begin{proof}
+    Our duality theorem~\ref{theorem-I} gives
+    $$\Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ/\ZZ) \cong H^i_c (X_\et, \ZZ (n)),$$
+    and the cohomology groups on the right hand side are finite by
+    \cite[Theorem~3]{Kahn-2003}. We have $H^i_c (X_\et, \ZZ (n)) = 0$ for
+    $i < 1$ by the definition of $\ZZ (n)$, and $H^i_c (X_\et, \ZZ (n)) = 0$ for
+    $i > 2\dim X + 2$ because of the cohomological dimension.
+  \end{proof}
+\end{proposition}
+
+Similar boundedness of $H^i (X_\et, \ZZ^c (n))$ can be deduced for a general
+arithmetic scheme.
 
 \begin{lemma}
   \label{lemma:RGamma(Xet,Zc(n))-bounded-from-below}
@@ -1205,9 +1225,8 @@ it simplifies if $X$ has no real places.
   \end{proof}
 \end{proposition}
 
-For varieties over finite fields, the groups $H_\fg^i (X, \ZZ (n))$ provide an
-integral model for $\ell$-adic cohomology in the following sense
-(see also \cite[\S 8]{Geisser-2004}).
+The groups $H_\fg^i (X, \ZZ (n))$ provide an integral model for $\ell$-adic
+cohomology in the following sense (see also \cite[\S 8]{Geisser-2004}).
 
 \begin{corollary}
   Let $X$ be an arithmetic scheme satisfying the conjecture
@@ -1675,72 +1694,61 @@ Now we are ready to define Weil-étale complexes.
 \subsection*{Case of varieties over finite fields}
 
 For varieties over finite fields, our Weil-étale cohomology has a simple
-description, and it is expected to be $\QQ/\ZZ$-dual to the arithmetic homology
-studied by Geisser in \cite{Geisser-2010-arithmetic-homology}.
+description, and it is $\QQ/\ZZ$-dual to the arithmetic homology studied by
+Geisser in \cite{Geisser-2010-arithmetic-homology}.
 
 \begin{proposition}
   If $X$ is a variety over a finite field $\FF_q$, then assuming
-  $\mathbf{L}^c (X,n)$, there is an isomorphism
+  $\mathbf{L}^c (X,n)$, there is an isomorphism of complexes
   \begin{equation}
     \label{eqn:RGamma-Wc-over-finite-fields}
-    R\Gamma_\Wc (X,\ZZ(n)) \cong \RHom (R\Gamma (X_\et, \ZZ^c (n)), \ZZ [-1]).
+    R\Gamma_\Wc (X,\ZZ(n)) \cong \RHom (R\Gamma (X_\et, \ZZ^c (n)), \ZZ [-1]),
   \end{equation}
-
-  Moreover, assuming that the groups $H^i (X_\et, \ZZ^c (n))$ are torsion
-  for all $i \in \ZZ$ (hence finite torsion by $\mathbf{L}^c (X,n)$),
-  there is an isomorphism of finite groups
+  and an isomorphism of finite groups
   \[ H^i_{W,c} (X, \ZZ (n)) \cong
     \Hom (H^{2-i} (X_\et, \ZZ^c (n)) \cong
     H^i (X_\et, \ZZ(n)) \cong
     \Hom (H_{i-1}^c (X_\ar, \ZZ (n)), \QQ/\ZZ), \]
   where $H_\bullet^c (X_\ar, \ZZ (n))$ are the arithmetic homology groups
   defined in \cite[\S 3]{Geisser-2010-arithmetic-homology}.
-  % In particular,
-  % $$\# H^i_{W,c} (X, \ZZ (n)) = \# H_{i-1}^c (X_\ar, \ZZ (n)).$$
+
+  \begin{proof}
+    Under our assumptions, $X (\CC) = X (\RR) = \emptyset$, and therefore
+    $R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) = 0$, so that
+    $R\Gamma_\Wc (X,\ZZ(n)) \cong R\Gamma_\fg (X, \ZZ (n))$.
+    Finally, according to \ref{prop:RGamma-fg-for-X(R)-empty}, we have
+    an isomorphism
+    $R\Gamma_\fg (X, \ZZ (n)) \cong \RHom (R\Gamma (X_\et, \ZZ^c (n)), \ZZ [-1])$.
+    We recall from proposition~\ref{prop:finite-motivic-cohomology-for-X/Fq} that
+    the groups $H^i (X_\et, \ZZ^c(n))$ are finite under our assumption.
+
+    To relate this to Geisser's arithmetic homology, according to
+    \cite[Theorem~3.1]{Geisser-2010-arithmetic-homology}, there is a long exact
+    sequence
+    \[ \cdots \to H_{i-1}^c (X_\et, \ZZ (n)) \to
+      H_i^c (X_\ar, \ZZ (n)) \to CH_n (X, i-2n)_\QQ \to
+      H_{i-2}^c (X_\et, \ZZ (n)) \to \cdots \]
+    Here the homological notation means that
+    $H_i^c (X_\et, \ZZ (n)) = H^{-i} (X_\et, \ZZ^c (n))$,
+    and $CH_n (X, i-2n)_\QQ = H_i^c (X_\et, \QQ (n)) = 0$, and therefore
+    $$H_i^c (X_\ar, \ZZ (n)) \cong H^{1-i} (X_\et, \ZZ^c (n)).$$
+
+    Now \eqref{eqn:RGamma-Wc-over-finite-fields} gives
+    \begin{equation}
+      \label{eqn:RGamma-Wc-over-finite-fields-ss}
+      E_2^{p,q} = \Ext_\ZZ^p (H^{1-q} (X_\et, \ZZ^c (n)), \ZZ) \Longrightarrow
+      H^{p+q}_{W,c} (X, \ZZ (n)),
+    \end{equation}
+    and again, by finiteness of $H^{1-q} (X_\et, \ZZ^c (n))$, this spectral
+    sequence is concentrated in $p = 1$, where the interesting terms are
+    \[ \Ext_\ZZ^1 (H^{1-q} (X_\et, \ZZ^c (n)), \ZZ) \cong
+      \Hom (H^{1-q} (X_\et, \ZZ^c (n)), \QQ/\ZZ), \]
+    so that the spectral sequence gives
+    \[ H^{1+i}_{W,c} (X, \ZZ (n)) \cong
+      \Hom (H^{1-i} (X_\et, \ZZ^c (n)), \QQ/\ZZ) \cong
+      \Hom (H_i^c (X_\ar, \ZZ (n)), \QQ/\ZZ). \qedhere \]
+  \end{proof}
 \end{proposition}
-
-As explained below in proposition~\ref{prop:Lc-Xet-n-over-finite-fields}, the
-assumption that the groups $H^i (X_\et, \ZZ^c(n))$ are finite for all $n < 0$
-and $i \in \ZZ$ is consistent with Lichtenbaum's conjectures on étale motivic
-cohomology of $X/\FF_q$.
-
-\begin{proof}
-  Under our assumptions, $X (\CC) = X (\RR) = \emptyset$, and therefore
-  $R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) = 0$, so that
-  $R\Gamma_\Wc (X,\ZZ(n)) \cong R\Gamma_\fg (X, \ZZ (n))$.
-  Finally, according to \ref{prop:RGamma-fg-for-X(R)-empty}, we have
-  an isomorphism
-  $R\Gamma_\fg (X, \ZZ (n)) \cong \RHom (R\Gamma (X_\et, \ZZ^c (n)), \ZZ [-1])$.
-
-  Now to relate this to Geisser's arithmetic homology, according to
-  \cite[Theorem~3.1]{Geisser-2010-arithmetic-homology}, there is a long exact
-  sequence
-  \[ \cdots \to H_{i-1}^c (X_\et, \ZZ (n)) \to
-    H_i^c (X_\ar, \ZZ (n)) \to CH_n (X, i-2n)_\QQ \to
-    H_{i-2}^c (X_\et, \ZZ (n)) \to \cdots \]
-  Here the homological notation means that
-  $H_i^c (X_\et, \ZZ (n)) = H^{-i} (X_\et, \ZZ^c (n))$,
-  and $CH_n (X, i-2n)_\QQ = H_i^c (X_\et, \QQ (n))$. By our assumption that
-  $H^i (X_\et, \ZZ^c (n))$ is torsion for all $i \in \ZZ$, we have
-  $CH_n (X, i-2n)_\QQ = 0$, and therefore
-  $$H_i^c (X_\ar, \ZZ (n)) \cong H^{1-i} (X_\et, \ZZ^c (n)).$$
-
-  Now \eqref{eqn:RGamma-Wc-over-finite-fields} gives
-  \begin{equation}
-    \label{eqn:RGamma-Wc-over-finite-fields-ss}
-    E_2^{p,q} = \Ext_\ZZ^p (H^{1-q} (X_\et, \ZZ^c (n)), \ZZ) \Longrightarrow
-    H^{p+q}_{W,c} (X, \ZZ (n)),
-  \end{equation}
-  and again, by the assumption that $H^{1-q} (X_\et, \ZZ^c (n))$ are finite
-  groups, this spectral sequence is concentrated in $p = 1$, where the
-  interesting terms are
-  \[ \Ext_\ZZ^1 (H^{1-q} (X_\et, \ZZ^c (n)), \ZZ) \cong
-    \Hom (H^{1-q} (X_\et, \ZZ^c (n)), \QQ/\ZZ), \]
-  so that the spectral sequence gives
-  \[ H^{1+i}_{W,c} (X, \ZZ (n)) \cong
-    \Hom (H^{1-i} (X_\et, \ZZ^c (n)), \QQ/\ZZ) \cong
-    \Hom (H_i^c (X_\ar, \ZZ (n)), \QQ/\ZZ). \qedhere \]
-\end{proof}
 
 \subsection*{Perfectness of the complex}
 
@@ -1993,32 +2001,32 @@ A more precise description of the structure of étale motivic cohomology is
   \end{proof}
 \end{proposition}
 
-For varieties over finite fields, Lichtenbaum gives the following conjecture in
-\cite[\S 7]{Lichtenbaum-1984} (see also \cite[\S 4]{Geisser-2017}).
+% For varieties over finite fields, Lichtenbaum gives the following conjecture in
+% \cite[\S 7]{Lichtenbaum-1984} (see also \cite[\S 4]{Geisser-2017}).
 
-\begin{conjecture}
-  $\mathbf{L}_{/\FF_q} (X_\et, m)$: given a variety over a finite field
-  $X/\FF_q$, one has
-  \[ H^i (X_\et, \ZZ (m)) = \begin{cases}
-      \text{finite}, & i \ne 2m, 2m+2, \\
-      \text{finitely generated}, & i = 2m, \\
-      \text{cofinite type}, & i = 2m + 2.
-    \end{cases} \]
-\end{conjecture}
+% \begin{conjecture}
+%   $\mathbf{L}_{/\FF_q} (X_\et, m)$: given a variety over a finite field
+%   $X/\FF_q$, one has
+%   \[ H^i (X_\et, \ZZ (m)) = \begin{cases}
+%       \text{finite}, & i \ne 2m, 2m+2, \\
+%       \text{finitely generated}, & i = 2m, \\
+%       \text{cofinite type}, & i = 2m + 2.
+%     \end{cases} \]
+% \end{conjecture}
 
-\begin{proposition}
-  \label{prop:Lc-Xet-n-over-finite-fields}
-  For smooth proper $X/\FF_q$ of dimension $d$ and $n < 0$, the conjectures
-  $\mathbf{L}^c (X_\et, n)$ and $\mathbf{L}_{/\FF_q} (X_\et, d-n)$ imply that
-  $H^i (X_\et, \ZZ^c (n))$ are finite groups for all $i \in \ZZ$.
+% \begin{proposition}
+%   \label{prop:Lc-Xet-n-over-finite-fields}
+%   For smooth proper $X/\FF_q$ of dimension $d$ and $n < 0$, the conjectures
+%   $\mathbf{L}^c (X_\et, n)$ and $\mathbf{L}_{/\FF_q} (X_\et, d-n)$ imply that
+%   $H^i (X_\et, \ZZ^c (n))$ are finite groups for all $i \in \ZZ$.
 
-  \begin{proof}
-    The conjecture $\mathbf{L}_{/\FF_q} (X_\et, d-n)$ gives finiteness of
-    $H^i (X_\et, \ZZ^c (n)) = H^{2d + i} (X_\et, \ZZ (d-n))$ for all $i$, except
-    for possibly $i = -2n, -2n + 2$. However, the previous proposition shows
-    that these groups are finite if we assume $\mathbf{L}^c (X_\et, n)$.
-  \end{proof}
-\end{proposition}
+%   \begin{proof}
+%     The conjecture $\mathbf{L}_{/\FF_q} (X_\et, d-n)$ gives finiteness of
+%     $H^i (X_\et, \ZZ^c (n)) = H^{2d + i} (X_\et, \ZZ (d-n))$ for all $i$, except
+%     for possibly $i = -2n, -2n + 2$. However, the previous proposition shows
+%     that these groups are finite if we assume $\mathbf{L}^c (X_\et, n)$.
+%   \end{proof}
+% \end{proposition}
 
 Now we list some particular cases when the conjecture $\mathbf{L}^c (X_\et,n)$
 is known to hold, and therefore gives unconditional results. We follow
