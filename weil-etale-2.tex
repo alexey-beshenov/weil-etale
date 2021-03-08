@@ -544,7 +544,7 @@ $s = n$.
 We note that the right hand side makes sense assuming the conjecture
 $\mathbf{L}^c (X_\et,n)$, under which $H^i_\Wc (X, \ZZ (n))$ are finitely
 generated groups, trivial for $|i| \gg 0$
-(see \cite[Proposition~7.9]{Beshenov-Weil-etale-1}).
+(see \cite[Proposition~7.12]{Beshenov-Weil-etale-1}).
 
 \begin{remark}
   The conjecture $\mathbf{VO} (X,n)$ is similar to
@@ -582,7 +582,7 @@ $R\Gamma (X_\et, \ZZ^c (n)) [1]$.
   $$\chi (R\Gamma_\Wc (X, \ZZ(n))) = 0.$$
 
   \begin{proof}
-    Thanks to \cite[Proposition~7.10]{Beshenov-Weil-etale-1}, the Weil-étale
+    Thanks to \cite[Proposition~7.14]{Beshenov-Weil-etale-1}, the Weil-étale
     complex tensored with $\RR$ splits as
     \[ R\Gamma_\Wc (X,\RR (n)) \cong
       \RHom (R\Gamma (X_\et, \ZZ^c (n)), \RR) [-1] \oplus
@@ -1443,11 +1443,11 @@ each for the corresponding compatibility. We briefly recall the construction of
 our Weil-étale complex. It fits in the following diagram in the derived
 category $\mathbf{D} (\ZZ)$ with distinguished triangles:
 \[ \begin{tikzcd}[column sep=1.5em]
-    & & R\Gamma_\Wc (X, \ZZ (n)) \ar{d} \\
-    \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]) \ar{r}{\alpha_{X,n}}\ar{d} & R\Gamma_c (X_\et, \ZZ (n)) \ar{r}\ar{d}{u_\infty^*} & R\Gamma_\fg (X, \ZZ(n)) \ar{r}\ar[dashed]{d}{i_\infty^*} & \cdots \ar{d} \\
-    0 \ar{r} & R\Gamma_c (G_\RR, X (\CC), \ZZ(n)) \ar{r}{\mathrm{id}} & R\Gamma_c (G_\RR, X (\CC), \ZZ(n)) \ar{r}\ar{d} & 0 \\
-    & & R\Gamma_\Wc (X, \ZZ (n)) [1]
-  \end{tikzcd} \]
+    &[-3em] \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]) \ar{d}{\alpha_{X,n}} \ar{r} &[-2.5em] 0 \ar{d} \\
+    & R\Gamma_c (X_\et, \ZZ(n)) \ar{d}\ar{r}{u_\infty^*} & R\Gamma_c (G_\RR, X (\CC), \ZZ(n))\ar{d}{id} \\
+    R\Gamma_\Wc (X, \ZZ (n)) \ar{r} & R\Gamma_\fg (X, \ZZ(n)) \ar[dashed]{r}{i_\infty^*}\ar{d} & R\Gamma_c (G_\RR, X (\CC), \ZZ(n)) \ar{r} \ar{d} & R\Gamma_\Wc (X, \ZZ (n)) [1] \\
+    & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-1]) \ar{r} & 0
+\end{tikzcd} \]
 For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
 
 \begin{lemma}
