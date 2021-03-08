@@ -1195,7 +1195,7 @@ it simplifies if $X$ has no real places.
        R\Gamma_\fg (X, \ZZ (n))\otimes_\ZZ^\mathbf{L} \ZZ/m\ZZ \]
     
   \item[3)] For any prime $\ell$ the morphism $f$ induces an isomorphism
-    $$\varprojlim_r H_c^i (X_\et, \ZZ/\ell^r (n)) \cong H_\fg^i (X, \ZZ (n)) \otimes \ZZ_\ell.$$
+    $$\varprojlim_r H_c^i (X_\et, \ZZ/\ell^r (n)) \cong H_\fg^i (X, \ZZ (n)) \otimes_\ZZ \ZZ_\ell.$$
   \end{enumerate}
   
   \begin{proof}
@@ -1210,7 +1210,7 @@ it simplifies if $X$ has no real places.
     \[ \varprojlim_r H_c^i (X_\et, \ZZ/\ell^r (n)) \stackrel{\text{2)}}{\cong}
       \varprojlim_r H_\fg^i (X, \ZZ/\ell^r (n)) \cong
       \varprojlim_r H_\fg^i (X, \ZZ (n))/\ell^r \cong
-      H_\fg^i (X, \ZZ (n)) \otimes \ZZ_\ell. \qedhere \]
+      H_\fg^i (X, \ZZ (n)) \otimes_\ZZ \ZZ_\ell. \qedhere \]
   \end{proof}
 \end{proposition}
 
@@ -1221,13 +1221,13 @@ cohomology in the following sense (see also \cite[\S 8]{Geisser-2004}).
   \label{cor:RGamma-fg-model-for-l-adic-cohomology}
   Let $X$ be an arithmetic scheme satisfying the conjecture
   $\mathbf{L}^c (X_\et, n)$ for $n < 0$. Then
-  $$H_\fg^i (X, \ZZ (n)) \otimes \ZZ_\ell \cong H^i_c (X [1/\ell]_\et, \ZZ_\ell (n)),$$
+  $$H_\fg^i (X, \ZZ (n)) \otimes_\ZZ \ZZ_\ell \cong H^i_c (X [1/\ell]_\et, \ZZ_\ell (n)),$$
   where the right hand side denotes $\ell$-adic cohomology with compact support.
 
   \begin{proof}
     We have $\ZZ (n)/\ell^r \cong j_{\ell!} \mu_m^{\otimes n}$.
     Now by part 3) of the previous proposition,
-    \[ H_\fg^i (X, \ZZ (n)) \otimes \ZZ_\ell \cong
+    \[ H_\fg^i (X, \ZZ (n)) \otimes_\ZZ \ZZ_\ell \cong
       \varprojlim_r H_c^i (X_\et, j_{\ell!} \mu_{\ell^r}^{\otimes n}) \cong
       \varprojlim_r H_c^i (X [1/\ell]_\et, \mu_{\ell^r}^{\otimes n})
       \stackrel{\text{dfn}}{=} H_c^i (X [1/\ell]_\et, \ZZ_\ell (n)). \qedhere \]
@@ -1794,7 +1794,7 @@ $\mathbf{L}^c (X_\et,n)$.
 For the vanishing of $H^i_\Wc (X, \ZZ(n))$ for $i \gg 0$, we first establish the
 following auxiliary result.
 
-\begin{lemma}
+\begin{lemma}[{cf. corollary~\ref{cor:RGamma-fg-model-for-l-adic-cohomology}}]
   Let $d = \dim X$. For each prime $\ell$ and $i \ge 2d$ one has
   \begin{equation}
     \label{eqn:l-adic-completion-of-H-Wc}
