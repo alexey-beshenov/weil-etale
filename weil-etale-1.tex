@@ -902,8 +902,9 @@ Similarly for $\QQ/\ZZ$-coefficients, we have the following observation.
     \begin{center}
       \begin{tikzpicture}[x=0.75cm,y=0.75cm]
         \fill[black!20] (-6,0) -- (-6,3) -- (6,3) -- (6,0) -- cycle;
+        \fill[pattern=north east lines] (0,0) -- (0,3) -- (6,3) -- (6,0) -- cycle;
 
-        \draw[->] (-6,0) -- (6,0) node[right] {$p$};
+        \draw[->] (-6.25,0) -- (6.25,0) node[right] {$p$};
         \draw[->] (0,-1) -- (0,4.5) node[above] {$q$};
 
         \draw [decorate,decoration={brace,amplitude=10pt}] (-6,0) -- (-6,3) node [black,midway,xshift=-1cm] {$2d - 2$};
@@ -1909,7 +1910,7 @@ Putting together the above observations, we obtain the following result.
     \ker H^i (i_\infty^*) \to 0 \]
   and the above shows that $H^i_\Wc (X, \ZZ(n)) = 0$ for $i > 2d+2$.
   However, the vanishing for $i = 2d+2$ seems to be a bit more delicate
-  (cf. \cite[p.\,991]{Kahn-2003-equivalences} and proof of
+  (cf. \cite[p.\,991]{Kahn-2003-equivalences} and the proof of
   \cite[Theorem~7.3]{Geisser-2004}).
 \end{remark}
 
