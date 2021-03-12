@@ -1822,29 +1822,30 @@ following auxiliary result.
   \begin{proof}
     Consider the commutative diagram
     \[ \begin{tikzcd}[row sep=3em, column sep=3em]
-        R\Gamma_c (X_\et, \ZZ (n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r \ar{r}\ar{d}\ar{dr}{u_\infty^* \otimes \ZZ/\ell^r} & R\widehat{\Gamma}_c (G_\RR, X(\CC), \ZZ(n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r\ar{d} \\
-        R\Gamma_\fg (X, \ZZ(n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r \ar{r}{i_\infty^* \otimes \ZZ/\ell^r} & R\Gamma_c (G_\RR, X(\CC), \ZZ(n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r
+        R\Gamma_\fg (X, \ZZ(n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r \ar{r}{i_\infty^* \otimes \ZZ/\ell^r}\ar{d}[swap]{\cong} & R\Gamma_c (G_\RR, X(\CC), \ZZ(n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r\ar{d} \\
+        R\Gamma_c (X_\et, \ZZ (n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r \ar{r}\ar{ur}{u_\infty^* \otimes \ZZ/\ell^r} & R\widehat{\Gamma}_c (G_\RR, X(\CC), \ZZ(n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r
       \end{tikzcd} \]
-    The mapping fiber of the top horizontal arrow is the modified étale
-    cohomology with compact support
+
+    The left vertical arrow is the inverse of the canonical morphism
+    $R\Gamma_c (X_\et, \ZZ(n)) \to R\Gamma_\fg (X, \ZZ(n))$, which becomes a
+    quasi-isomorphism after tensoring with $\ZZ/\ell^r\ZZ$
+    (see proposition~\ref{prop:tensoring-RGammafg-with-Z/m-and-Q}).
+    The mapping fiber of the top horizontal arrow is
+    $R\Gamma_\Wc (X, \ZZ (n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r$, while the
+    mapping fiber of the bottom horizontal arrow is modified étale cohomology
+    with compact support
     $R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r$
-    (see e.g. \cite[Lemma~6.14]{Flach-Morin-2018}), while the mapping fiber of
-    the bottom horizontal arrow is
-    $R\Gamma_\Wc (X, \ZZ (n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r$. Therefore, we
-    have a comparison morphism
+    (see e.g. \cite[Lemma~6.14]{Flach-Morin-2018}). Therefore, we have a
+    comparison morphism
     \begin{equation}
       \label{eqn:comparison-of-H-Wc-mod-lr}
-      R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r \to
-      R\Gamma_\Wc (X, \ZZ (n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r.
+      R\Gamma_\Wc (X, \ZZ (n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r \to
+      R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r.
     \end{equation}
-    We recall from proposition~\ref{prop:tensoring-RGammafg-with-Z/m-and-Q} that
-    $R\Gamma_c (X_\et, \ZZ (n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r \to
-    R\Gamma_\fg (X, \ZZ(n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r$ is an
-    isomorphism. Similarly, the arrow
-    $R\widehat{\Gamma}_c (G_\RR, X(\CC), \ZZ(n)) \to
-    R\Gamma_c (G_\RR, X(\CC), \ZZ(n))$ induces isomorphisms in cohomology $H^i$
-    for $i \ge 2d-1$ (see lemma~\ref{lemma:Tate-vs-normal-cohomology-of-X(C)}).
-
+    We recall that the arrow
+    $R\Gamma_c (G_\RR, X(\CC), \ZZ(n)) \to R\widehat{\Gamma}_c (G_\RR, X(\CC), \ZZ(n))$
+    induces isomorphisms in cohomology $H^i$ for $i \ge 2d-1$
+    (see lemma~\ref{lemma:Tate-vs-normal-cohomology-of-X(C)}).
     Taking the limits $\varprojlim_r$ and applying the $5$-lemma,
     we see that \eqref{eqn:comparison-of-H-Wc-mod-lr} induces the isomorphism
     \eqref{eqn:l-adic-completion-of-H-Wc} for $i \ge 2d$.
