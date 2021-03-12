@@ -129,6 +129,7 @@ ENTRY
     volume
     year
     url
+    doi
   }
   {}
   { label extra.label sort.label bysame }
@@ -328,6 +329,17 @@ FUNCTION {output.nonempty.mrnumber}
   if$
 }
 
+FUNCTION {output.nonempty.doi}
+{ duplicate$ missing$
+    { pop$ "" }
+    'skip$
+  if$
+  duplicate$ empty$
+    'pop$
+    { " \DOIhref{" swap$ * "}" * write$ }
+  if$
+}
+
 FUNCTION {output.nonempty.url}
 { duplicate$ missing$
     { pop$ "" }
@@ -343,6 +355,7 @@ FUNCTION {fin.entry}
 { add.period$
   write$
   mrnumber output.nonempty.mrnumber
+  doi output.nonempty.doi
   url output.nonempty.url
   newline$
 }
@@ -1406,9 +1419,11 @@ FUNCTION {begin.bib}
     write$ newline$
   "\providecommand{\MRhref}[1]{%"
     write$ newline$
-  "  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{MR#1}"
+  "  \href{https://www.ams.org/mathscinet-getitem?mr=#1}{MR#1}"
     write$ newline$
   "}"
+    write$ newline$
+  "\providecommand{\DOIhref}[1]{\href{https://doi.org/#1}{DOI:\detokenize{#1}}}"
     write$ newline$
   "\providecommand{\href}[2]{#2}"
     write$ newline$
