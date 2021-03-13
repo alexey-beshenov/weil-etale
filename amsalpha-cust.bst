@@ -130,6 +130,7 @@ ENTRY
     year
     url
     doi
+    arxiv
   }
   {}
   { label extra.label sort.label bysame }
@@ -340,6 +341,17 @@ FUNCTION {output.nonempty.doi}
   if$
 }
 
+FUNCTION {output.nonempty.arxiv}
+{ duplicate$ missing$
+    { pop$ "" }
+    'skip$
+  if$
+  duplicate$ empty$
+    'pop$
+    { " \arxivhref{" swap$ * "}" * write$ }
+  if$
+}
+
 FUNCTION {output.nonempty.url}
 { duplicate$ missing$
     { pop$ "" }
@@ -356,6 +368,7 @@ FUNCTION {fin.entry}
   write$
   mrnumber output.nonempty.mrnumber
   doi output.nonempty.doi
+  arxiv output.nonempty.arxiv
   url output.nonempty.url
   newline$
 }
@@ -1424,6 +1437,8 @@ FUNCTION {begin.bib}
   "}"
     write$ newline$
   "\providecommand{\DOIhref}[1]{\href{https://doi.org/#1}{DOI:\nolinkurl{#1}}}"
+    write$ newline$
+  "\providecommand{\arxivhref}[1]{\href{https://arxiv.org/abs/#1}{arXiv:\nolinkurl{#1}}}"
     write$ newline$
   "\providecommand{\href}[2]{#2}"
     write$ newline$
