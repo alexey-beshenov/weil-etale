@@ -1423,7 +1423,7 @@ FUNCTION {begin.bib}
     write$ newline$
   "}"
     write$ newline$
-  "\providecommand{\DOIhref}[1]{\href{https://doi.org/#1}{DOI:\detokenize{#1}}}"
+  "\providecommand{\DOIhref}[1]{\href{https://doi.org/#1}{DOI:\nolinkurl{#1}}}"
     write$ newline$
   "\providecommand{\href}[2]{#2}"
     write$ newline$
