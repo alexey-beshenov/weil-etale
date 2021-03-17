@@ -1354,7 +1354,7 @@ following result about $\ell$-adic cohomology.
   \label{prop:l-adic-cohomology-key-lemma}
   Let $f\colon X\to \Spec \ZZ$ be an arithmetic scheme (that is, with $f$
   separated, of finite type) and $n < 0$. Then for any prime $\ell$ we have
-  $$(H^i_c (X_{\overline{\QQ},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))^{G_\QQ})_{div} = 0.$$
+  $$(H^i_c (X_{\overline{\QQ},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))^{G_\QQ})_\div = 0.$$
 
   \begin{proof}
     Let us recall some facts about $\ell$-adic cohomology. We refer to
@@ -1485,9 +1485,9 @@ following result about $\ell$-adic cohomology.
     H^i_c (X_{\overline{\QQ}, \text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))^{G_{\QQ_p}/I_p}
     \cong H^i_c (X_{\overline{\FF_p}, \text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))^{G_{\FF_p}}, \]
     so in order to prove that
-    $$(H^i_c (X_{\overline{\QQ},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))^{G_\QQ})_{div} = 0,$$
+    $$(H^i_c (X_{\overline{\QQ},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))^{G_\QQ})_\div = 0,$$
     it will be enough to show that
-    $$(H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))^{G_{\FF_p}})_{div} = 0.$$
+    $$(H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))^{G_{\FF_p}})_\div = 0.$$
     From now on we move to the characteristic $p$ and consider the fixed points
     of $G_{\FF_p}$ acting on the $\ZZ_\ell$-module
     $H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))$.
@@ -1497,20 +1497,20 @@ following result about $\ell$-adic cohomology.
       \ker \phi & = H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \ZZ_\ell (n))_{tor},\\
       \ker \psi & = \im \phi \cong H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \ZZ_\ell (n)) / \ker \phi \\
       & \quad\quad\quad = \frac{H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \ZZ_\ell (n))}{H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \ZZ_\ell (n))_{tor}} \rdfn H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \ZZ_\ell (n))_{cotor},\\
-      \im \psi & = H_c^i (X_{\overline{\FF_p},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))_{div}.
+      \im \psi & = H_c^i (X_{\overline{\FF_p},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))_\div.
     \end{align*}
 
     This gives us a short exact sequence
     \[ 0 \to H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \ZZ_\ell (n))_{cotor} \to
     H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \QQ_\ell (n)) \to
-    H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))_{div} \to 0 \]
+    H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))_\div \to 0 \]
     After taking the $G_{\FF_p}$-invariants, we obtain a long exact sequence
     of cohomology groups
     \begin{multline}
       \label{eqn:cohomology-long-exact-sequence-with-GFp}
       0 \to (H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \ZZ_\ell (n))_{cotor})^{G_{\FF_p}} \to
       H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \QQ_\ell (n))^{G_{\FF_p}} \\
-      \to (H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))_{div})^{G_{\FF_p}} \to
+      \to (H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))_\div)^{G_{\FF_p}} \to
       H^1 (G_{\FF_p}, H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \ZZ_\ell (n))_{cotor}) \to \cdots
     \end{multline}
 
@@ -1530,19 +1530,19 @@ following result about $\ell$-adic cohomology.
     Now \eqref{eqn:SGA-7-expose-XXI-5-5-3} and the long exact sequence
     \eqref{eqn:cohomology-long-exact-sequence-with-GFp} imply that there is a
     monomorphism
-    \[ (H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))_{div})^{G_{\FF_p}} \rightarrowtail
+    \[ (H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))_\div)^{G_{\FF_p}} \rightarrowtail
     H^1 (G_{\FF_p}, H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \ZZ_\ell (n))_{cotor}), \]
     which restricts to a monomorphism between the maximal divisible subgroups
-    \[ ((H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))_{div})^{G_{\FF_p}})_{div} \rightarrowtail
-    H^1 (G_{\FF_p}, H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \ZZ_\ell (n))_{cotor})_{div}. \]
+    \[ ((H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))_\div)^{G_{\FF_p}})_\div \rightarrowtail
+    H^1 (G_{\FF_p}, H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \ZZ_\ell (n))_{cotor})_\div. \]
     However,
     $H^1 (G_{\FF_p}, H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \ZZ_\ell (n))_{cotor})$
     is a finitely generated $\ZZ_\ell$-module, and therefore its
     maximal divisible subgroup is trivial. We have therefore
-    \[ (H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))^{G_{\FF_p}})_{div} =
-    ((H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))_{div})^{G_{\FF_p}})_{div} = 0. \]
+    \[ (H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))^{G_{\FF_p}})_\div =
+    ((H^i_c (X_{\overline{\FF_p},\text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))_\div)^{G_{\FF_p}})_\div = 0. \]
     (For the first equality, note that for any $G$-module $A$ one has
-    $((A_{div})^G)_{div} = (A^G)_{div}$.)
+    $((A_\div)^G)_\div = (A^G)_\div$.)
   \end{proof}
 \end{proposition}
 
@@ -1557,21 +1557,21 @@ following result about $\ell$-adic cohomology.
   $v^*_\infty\colon R\Gamma_c (X_\et, \QQ/\ZZ (n)) \to R\Gamma_c (G_\RR, X
   (\CC), \QQ/\ZZ (n))$ is torsion in $\mathbf{D} (\ZZ)$, it is enough to show
   that the corresponding morphisms on the maximal divisible subgroups
-  \[ H^i_c (v^*_\infty)_{div}\colon H^i_c (X_\et, \QQ/\ZZ (n))_{div} \to
-     H^i_c (G_\RR, X (\CC), \QQ/\ZZ (n))_{div} \]
+  \[ H^i_c (v^*_\infty)_\div\colon H^i_c (X_\et, \QQ/\ZZ (n))_\div \to
+     H^i_c (G_\RR, X (\CC), \QQ/\ZZ (n))_\div \]
   are all trivial. The morphism $H^i_c (v^*_\infty)$ factors through
   $H^i_c (X_{\overline{\QQ}, \text{\it ét}}, \mu^{\otimes n})^{G_\QQ}$, where
   $\mu^{\otimes n}$ is the sheaf of all roots of unity on
   $X_{\overline{\QQ}, \text{\it ét}}$ twisted by $n$.
   We have therefore
   \[ \begin{tikzcd}[column sep=0pt]
-    H^i_c (X_\et, \QQ/\ZZ (n))_{div}\ar{rr}{H^i_c (v^*_\infty)_{div}}\ar[dashed]{dr} && H^i_c (G_\RR, X (\CC), \QQ/\ZZ (n))_{div}\\
-    & \left(H^i_c (X_{\overline{\QQ}, \text{\it ét}}, \mu^{\otimes n})^{G_\QQ}\right)_{div}\ar[dashed]{ur}
+    H^i_c (X_\et, \QQ/\ZZ (n))_\div\ar{rr}{H^i_c (v^*_\infty)_\div}\ar[dashed]{dr} && H^i_c (G_\RR, X (\CC), \QQ/\ZZ (n))_\div\\
+    & \left(H^i_c (X_{\overline{\QQ}, \text{\it ét}}, \mu^{\otimes n})^{G_\QQ}\right)_\div\ar[dashed]{ur}
   \end{tikzcd} \]
   Now
-  \[ \left(H^i_c (X_{\overline{\QQ}, \text{\it ét}}, \mu^{\otimes n})^{G_\QQ}\right)_{div} \cong
-  \left(\bigoplus_\ell H^i_c (X_{\overline{\QQ}, \text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))^{G_\QQ}\right)_{div} \cong
-  \bigoplus_\ell \left(H^i_c (X_{\overline{\QQ}, \text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))^{G_\QQ}\right)_{div}, \]
+  \[ \left(H^i_c (X_{\overline{\QQ}, \text{\it ét}}, \mu^{\otimes n})^{G_\QQ}\right)_\div \cong
+  \left(\bigoplus_\ell H^i_c (X_{\overline{\QQ}, \text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))^{G_\QQ}\right)_\div \cong
+  \bigoplus_\ell \left(H^i_c (X_{\overline{\QQ}, \text{\it ét}}, \QQ_\ell/\ZZ_\ell (n))^{G_\QQ}\right)_\div, \]
   where all summands are trivial according to
   \ref{prop:l-adic-cohomology-key-lemma}.
 \end{proof}
@@ -2681,7 +2681,7 @@ Here is a particular case that we are going to use.
   $f\otimes \mathbb{Q} = 0$) if and only if the morphisms
   $H^i (f)\colon H^i (A^\bullet) \to H^i (B^\bullet)$
   are torsion; that is, they are trivial on the maximal divisible subgroups:
-  $$(H^i (f)_{div}\colon H^i (A^\bullet)_{div} \to H^i (B^\bullet)_{div}) = 0.$$
+  $$(H^i (f)_\div\colon H^i (A^\bullet)_\div \to H^i (B^\bullet)_\div) = 0.$$
 
   \begin{proof}
     In the formula \eqref{eqn:morphisms-in-D(Z)} the groups $H^i (A^\bullet)$
