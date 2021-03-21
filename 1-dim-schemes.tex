@@ -131,11 +131,12 @@ will be convenient to put it as
   \zeta_F^* (n) = \pm\frac{|H^0 (X_\et, \ZZ^c (n))|}{|H^{-1} (X_\et, \ZZ^c (n))_\tors|}\,R_{F,n}
   \quad \text{for }n \le 0.
 \end{equation}
-The definitions of groups $H^i (X_\et, \ZZ^c (n))$ and the regulator
-$R_{F,n} = R_{\Spec \mathcal{O}_F,n}$ will be given below. According to
-\cite[Proposition~5.35]{Flach-Morin-2018}, the above formula holds
-unconditionally for abelian number fields $F/\QQ$, via reduction to the Tamagawa
-number conjecture of Bloch--Kato--Fontaine--Perrin-Riou.
+The definition of groups $H^i (X_\et, \ZZ^c (n))$ is reviewed below, and the
+regulator $R_{F,n} = R_{\Spec \mathcal{O}_F,n}$ is defined in
+\S\ref{sec:regulators}. According to \cite[Proposition~5.35]{Flach-Morin-2018},
+the above formula holds unconditionally for abelian number fields $F/\QQ$, via
+reduction to the Tamagawa number conjecture of
+Bloch--Kato--Fontaine--Perrin-Riou.
 
 In particular, if we take $n = 0$, then $\ZZ^c (0) \cong \mathbb{G}_m [1]$, and
 $R_{F,0}$ is the usual regulator of Dirichlet, so that the formula becomes
@@ -189,8 +190,8 @@ abelian. The goal is to prove the following result.
     \end{equation}
     and $r_1 = |X (\RR)|$ is the number of real places of $X$,
 
-  \item $R_{X,n}$ is a positive real number, defined below via Beilinson's
-    regulator map.
+  \item $R_{X,n}$ is a positive real number, defined in \S\ref{sec:regulators}
+    via Beilinson's regulator map.
   \end{itemize}
 \end{theorem}
 
@@ -200,8 +201,8 @@ non-abelian number fields.
 
 \vspace{1em}
 
-We will give two proofs of \eqref{eqn:flach-morin-zeta-F-formula}. The first
-proof can be found in \S\ref{sec:special-value-formula} after some preliminary
+We will give two proofs of \eqref{eqn:special-value-formula}. The first proof
+can be found in \S\ref{sec:special-value-formula} after some preliminary
 calculations of motivic and Weil-étale cohomology. We observe that the special
 value formula is the same as conjecture $\mathbf{C} (X,n)$ that was stated in
 \cite{Beshenov-Weil-etale-2}, specialized to $\dim X = 1$ and written out more
@@ -335,40 +336,6 @@ There is no coincidence that this notation coincides with
 \eqref{eqn:vanishing-order}; we will prove this
 in proposition~\ref{prop:vanishing-order-equals-dn} below.
 
-\paragraph{Regulators.}
-Now we explain what will be intended by the regulator in our setting.
-
-\begin{definition}
-  \label{dfn:regulator}
-  For a one-dimensional arithmetic scheme $X$, we define the \textbf{regulator}
-  via
-  $$R_{X,n} \dfn \vol (\coker \varrho^B_n),$$
-  where
-  \[ \varrho^B_n\colon
-    H^{-1} (X_\et, \ZZ^c (n)) \to H^0_\BM (G_\RR, X(\CC), \RR(n)). \]
-  is Beilinson's regulator map.
-\end{definition}
-
-The right hand side is Borel--Moore cohomology, defined via
-\[ H^0_\BM (G_\RR, X(\CC), \RR(n)) \cong
-  \Hom (H^0_c (G_\RR, X(\CC), \RR(n)), \RR). \]
-In general, the regulator takes values in Deligne--Beilinson cohomology, but the
-target simplifies in case of $n < 0$, as explained in
-\cite[\S 2]{Beshenov-Weil-etale-2}.
-We note that in particular, if $X = \Spec \mathcal{O}_F$, then
-$\varrho^B_n$ identifies with the map
-$H^1 (X_\et, \ZZ (1-n)) \to H^1_\BM (G_\RR, X(\CC), \RR(1-n))$
-that appears in the special value conjecture in
-\cite[\S 5.8.3]{Flach-Morin-2018}.
-
-Tensored with $\RR$, the regulator becomes an isomorphism. In particular, as
-will be explained below, we have
-\[ \rk_\ZZ H^{-1} (X_\et, \ZZ^c (n)) =
-  \rk_\ZZ H^0_c (G_\RR, X(\CC), \ZZ(n)) = d_n. \]
-
-If $X (\CC) = \emptyset$, or $n$ is odd and $r_2 = 0$, then
-$H^0_\BM (G_\RR, X(\CC), \RR (n)) = 0$, and we set $R_{X,n} = 1$.
-
 \paragraph{Abelian groups.}
 We will say that an abelian group $A$ is of \textbf{cofinite type} if
 $A \cong \Hom (B, \QQ/\ZZ)$ for some finitely generated abelian group $B$.  If
@@ -392,9 +359,10 @@ $H^i (X_\et, \ZZ^c(n))$ for one-dimensional arithmetic schemes.
 The following \S\ref{sec:Weil-etale-cohomology-of-X} is dedicated to an explicit
 description of Weil-étale cohomology groups $H^i_\Wc (X, \ZZ(n))$ that were
 defined in \cite{Beshenov-Weil-etale-1}, again for the particular case of
-one-dimensional $X$. In \S\ref{sec:special-value-formula} these calculations are
-used to write down an explicit conjectural formula for the special value
-$\zeta^* (X,n)$, which corresponds to the conjecture $\mathbf{C} (X,n)$ from
+one-dimensional $X$. In \S\ref{sec:regulators} we define the regulator, and in
+\S\ref{sec:special-value-formula} the calculations of Weil-étale cohomology are
+used to write down an explicit formula for the special value $\zeta^* (X,n)$,
+which corresponds to the conjecture $\mathbf{C} (X,n)$ from
 \cite{Beshenov-Weil-etale-2}. The main theorem is then deduced from the results
 of \cite{Beshenov-Weil-etale-2}.
 
@@ -475,7 +443,7 @@ repeatedly in everything that follows.
       is equivalent to $\mathcal{P} (U)$, so it will be enough to prove the
       claim for $U$. We have $U = \Spec \mathcal{O}_{F,S}$ for some number field
       $F/\QQ$ and a finite set of places $S$, hence everything again reduces to
-      the same claim for $\Spec \mathcal{O}_F$. \qedhere
+      $\mathcal{P} (\Spec \mathcal{O}_F)$. \qedhere
     \end{itemize}
   \end{proof}
 \end{lemma}
@@ -1145,12 +1113,162 @@ and vanish for $i \notin [0,2d+1]$. Here we calculate these for one-dimensional 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Regulators}
+\label{sec:regulators}
+
+Now we explain what will be intended by the regulator in our setting.
+
+\begin{definition}
+  We let the \textbf{regulator morphism} be
+  \[ \varrho_{X,n}\colon
+    H^{-1} (X_\et, \ZZ^c (n)) \to
+    H^{-1} (X_\et, \ZZ^c (n)) \otimes \RR \xrightarrow{Reg_{X,n}}
+    H^0_\BM (G_\RR, X(\CC), \RR(n)), \]
+  where the map $Reg_{X,n}$ is defined in \cite[\S 2]{Beshenov-Weil-etale-2}.
+\end{definition}
+
+The right hand side is Borel--Moore cohomology, defined via
+\[ H^0_\BM (G_\RR, X(\CC), \RR(n)) \dfn
+  \Hom (H^0_c (G_\RR, X(\CC), \RR(n)), \RR). \]
+In general, the regulator takes values in Deligne--Beilinson cohomology, but the
+target simplifies in case of $n < 0$, as explained in
+\cite[\S 2]{Beshenov-Weil-etale-2}.
+
+\begin{remark}
+  If $X = \Spec \mathcal{O}_F$, then $\varrho_{X,n}$ is the usual Beilinson
+  regulator map
+  \[ H^1 (X_\et, \ZZ (1-n)) \to H^1_\BM (G_\RR, X(\CC), \RR(1-n)) \]
+  that also appears in the special value conjecture in
+  \cite[\S 5.8.3]{Flach-Morin-2018}.
+\end{remark}
+
+\begin{lemma}
+  \label{lemma:regulator-isomorphism}
+  For any $1$-dimensional scheme $X$ and $n < 0$, the $\RR$-dual to the
+  regulator
+  \[ Reg_{X,n}^\vee\colon H^0_c (G_\RR, X(\CC), \RR(n)) \to
+    \Hom (H^{-1} (X_\et, \ZZ^c (n)), \RR) \]
+  is an isomorphism.
+
+  \begin{proof}
+    If $X/\FF_q$, then the claim is trivial. For $X = \Spec \mathcal{O}_F$, this
+    is a well-known property of Beilinson's regulator. To apply dévissage
+    lemma~\ref{lemma:devissage}, we need to check the compatibility with
+    disjoint unions and taking a dense open subset $U \subset X$. For disjoint
+    unions, this is clear. For a dense open subset $U \subset X$, the closed
+    complement $Z = X\setminus U$ has dimension $0$, and the localization exact
+    sequence \eqref{eqn:localization-les} with the long exact sequence for
+    cohomology with compact support give integral isomorphisms
+    \begin{align*}
+      H^{-1} (X_\et, \ZZ^c (n)) & \xrightarrow{\cong} H^{-1} (U_\et, \ZZ^c (n)), \\
+      H^0_c (G_\RR, U(\CC), \ZZ(n)) & \xrightarrow{\cong} H^0_c (G_\RR, Z(\CC), \ZZ(n)).
+    \end{align*}
+
+    We now have a commutative diagram
+    \[ \begin{tikzcd}
+        H^0_c (G_\RR, U(\CC), \RR(n)) \ar{r}{Reg_{U,n}^\vee} \ar{d}{\cong} &
+        \Hom (H^{-1} (U_\et, \ZZ^c (n)), \RR) \ar{d}{\cong} \\
+        H^0_c (G_\RR, X(\CC), \RR(n)) \ar{r}{Reg_{X,n}^\vee} &
+        \Hom (H^{-1} (X_\et, \ZZ^c (n)), \RR)
+      \end{tikzcd} \]
+    The top arrow is an isomorphism if and only if the bottom arrow is.
+  \end{proof}
+\end{lemma}
+
+\begin{definition}
+  \label{dfn:regulator}
+  For a one-dimensional arithmetic scheme $X$, we define the \textbf{regulator}
+  as a positive real number
+  \[ R_{X,n} \dfn \vol \Bigl(\coker \bigl(
+    H^{-1} (X_\et, \ZZ^c (n)) \xrightarrow{\varrho_{X,n}}
+    H^0_\BM (G_\RR, X(\CC), \RR(n))
+    \bigr)\Bigr) \]
+  where the volume is taken with respect to the canonical integral structure.
+\end{definition}
+
+If $X (\CC) = \emptyset$, or $n$ is odd and $r_2 = 0$, then
+$H^0_\BM (G_\RR, X(\CC), \RR (n)) = 0$, and we set $R_{X,n} = 1$.
+
+\begin{lemma}
+  \label{lemma:regulator-dense-open-subset}
+  Let $X$ be a one-dimensional scheme and $n < 0$. For any dense open subset
+  $U \subset X$, one has $R_{X,n} = R_{U,n}$.
+
+  \begin{proof}
+    Follows from the proof of lemma~\ref{lemma:regulator-isomorphism}.
+  \end{proof}
+\end{lemma}
+
+\begin{proposition}
+  \label{prop:trivialization-of-free-part}
+  Given an arithmetic scheme $X$ and $n < 0$, consider the two-term acyclic
+  complex of real vector spaces
+  \[ C^\bullet\colon
+    0 \to
+    \underbrace{H^0_c (G_\RR, X(\CC), \RR(n))}_{\deg 0}
+    \xrightarrow{Reg_{X,n}^\vee}
+    \underbrace{\Hom (H^{-1} (X_\et, \ZZ^c (n)), \RR)}_{\deg 1}
+    \to 0 \]
+  Then taking the determinant $\det_\RR (C^\bullet)$ in the sense of
+  \cite{Knudsen-Mumford-1976}, the image of the canonical map
+  \begin{multline*}
+    \det_\ZZ H^0_c (G_\RR, X(\CC), \ZZ(n)) \otimes_\ZZ
+    \det_\ZZ \Hom (H^{-1} (X_\et, \ZZ^c (n)), \ZZ)^{-1} \to \\
+    \det_\RR H^0_c (G_\RR, X(\CC), \RR (n)) \otimes_\RR
+    \det_\RR \Hom (H^{-1} (X_\et, \ZZ^c (n)), \RR)^{-1}
+    \xrightarrow{\cong} \RR
+  \end{multline*}
+  corresponds to $R_{X,n}\,\ZZ \subset \RR$.
+
+  \begin{proof}
+    In general, if $F$ and $F'$ are free groups of finite rank $d$, and
+    $$C^\bullet\colon 0 \to F\otimes_\ZZ \RR \xrightarrow{\phi} F'\otimes_\ZZ \RR \to 0$$
+    is a two-term acyclic complex of real vector spaces, then the image of
+    \[ \ZZ \cong \det_\ZZ F \otimes_\ZZ (\det_\ZZ F')^{-1} \to
+      \det_\RR (F\otimes_\ZZ \RR) \otimes_\RR \det_\RR (F' \otimes_\ZZ \RR)^{-1}
+      = \det_\RR (C^\bullet) \xrightarrow{\cong} \RR \]
+    corresponds to $D\ZZ \subset \RR$, where $D$ is the determinant of $\phi$ with
+    respect to the bases induced by $\ZZ$-bases of $F$ and $F'$.
+    This follows from the explicit description of the isomorphism
+    $\det_\RR (C^\bullet) \xrightarrow{\cong} \RR$ from
+    \cite[p.\,33]{Knudsen-Mumford-1976}: it is
+    \[ \det_\RR (F \otimes_\ZZ \RR) \otimes_\RR
+      \det_\RR (F'\otimes_\ZZ \RR)^{-1} \xrightarrow{\det_\RR (\phi)}
+      \det_\RR (F' \otimes_\ZZ \RR) \otimes_\RR
+      \det_\RR (F' \otimes_\ZZ \RR)^{-1} \xrightarrow{\cong} \RR \]
+    where the last arrow is the canonical pairing.
+
+    Therefore, in our situation, the image of
+    \[ \det_\ZZ H^0_c (G_\RR, X(\CC), \ZZ(n)) \otimes_\ZZ
+      \det_\ZZ \Hom (H^{-1} (X_\et, \ZZ^c (n)), \ZZ)^{-1} \]
+    is $D \ZZ \subset \RR$, where $D$ is the determinant of $Reg_{X,n}^\vee$
+    considered with respect to bases induced by $\ZZ$-bases of
+    $H^0_c (G_\RR, X(\CC), \ZZ(n))$ and
+    $\Hom (H^{-1} (X_\et, \ZZ^c (n)), \ZZ)$. Dually, $D = R_{X,n}$.
+  \end{proof}
+\end{proposition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
 \section{The special value formula}
 \label{sec:special-value-formula}
 
 Now we write down explicitly the special value conjecture $\mathbf{C} (X,n)$
-stated in \cite[\S 4]{Beshenov-Weil-etale-2}. We are interested in the
-determinant of Weil-étale complex
+stated in \cite[\S 4]{Beshenov-Weil-etale-2}. For this one considers the
+canonical isomorphism
+\begin{multline*}
+  \lambda\colon \RR \xrightarrow{\cong}
+  \bigotimes_{i\in \ZZ} (\det_\RR H^i_\Wc (X, \RR (n)))^{(-1)^i} \xrightarrow{\cong}
+  \Bigl(\bigotimes_{i\in \ZZ} (\det_\ZZ H^i_\Wc (X, \ZZ (n)))^{(-1)^i}\Bigr) \otimes_\ZZ \RR \\
+  \xrightarrow{\cong} (\det_\ZZ R\Gamma_\Wc (X, \ZZ (n))) \otimes_\ZZ \RR,
+\end{multline*}
+where the first isomorphism
+$\RR \cong \bigotimes_{i\in \ZZ} (\det_\RR H^i_\Wc (X, \RR (n)))^{(-1)^i}$
+comes from the regulator, as will be explained below.
+
+\vspace{1em}
+
+In our case, we are interested in the determinant of Weil-étale complex
 \begin{multline*}
   \det_\ZZ R\Gamma_\Wc (X, \ZZ(n)) \cong
   \bigotimes_{i \in \ZZ} \det_\ZZ H^i_\Wc (X, \ZZ(n))^{(-1)^i} \\
@@ -1173,37 +1291,40 @@ terms)
   \det_\ZZ \Hom (H^{-1} (X_\et, \ZZ^c(n)), \ZZ) \otimes_\ZZ \\
   \det_\ZZ (T_1)^{-1} \det_\ZZ  \det_\ZZ (T_2) \otimes_\ZZ \det_\ZZ H^3_\Wc (X, \ZZ(n))^{-1}.
 \end{multline*}
-Recall that $T_1$, $T_2$, $H^3_\Wc (X, \ZZ(n))^{-1}$ are finite groups, and
-$H^0_c (G_\RR, X (\CC), \ZZ(n))^{-1}$ and $\Hom (H^{-1} (X_\et, \ZZ^c(n)), \ZZ)$
+Recall that $T_1$, $T_2$, $H^3_\Wc (X, \ZZ(n))$ are finite groups, and
+$H^0_c (G_\RR, X (\CC), \ZZ(n))$, $\Hom (H^{-1} (X_\et, \ZZ^c(n)), \ZZ)$
 are free of rank $d_n$. Now we consider the canonical trivialization
 \[ (\det_\ZZ R\Gamma_\Wc (X, \ZZ(n))) \otimes_\ZZ \RR \cong
   \bigotimes_{i\in \ZZ} \det_\RR (H^i_\Wc (X, \ZZ(n))\otimes_\ZZ \RR)
   \cong \RR \]
 via the regulator morphism
 \[ \begin{tikzcd}[column sep=3em]
-    H^1_\Wc (X, \ZZ(n)) \otimes \RR\ar{d}{\cong} & H^2_\Wc (X, \ZZ(n)) \otimes \RR\ar{d}{\cong} \\
     H^0_c (G_\RR, X (\CC), \ZZ(n)) \otimes \RR\ar{d}{\cong} & \Hom (H^{-1} (X_\et, \ZZ^c (n)), \ZZ) \otimes \RR\ar{d}{\cong} \\
     H^0_c (G_\RR, X (\CC), \RR (n)) \ar{r}{Reg^\vee_{X,n}}[swap]{\cong} & \Hom (H^{-1} (X_\et, \ZZ^c (n)), \RR)
   \end{tikzcd} \]
 
-Some linear algebra\footnote{Namely, \cite[Lemma~A.6]{Beshenov-Weil-etale-2} for
-  finite groups $T_1$, $T_2$, $H^3_\Wc (X, \ZZ(n))^{-1}$. Further, the explicit
-  description of trivialization from \cite[p.\,33]{Knudsen-Mumford-1976} shows
-  that if $F$ and $F'$ are free groups of finite rank $d$, and
-  $$C^\bullet\colon 0 \to F\otimes_\ZZ \RR \xrightarrow{\phi} F'\otimes_\ZZ \RR \to 0$$
-  is a two-term acyclic complex of real vector spaces, then
-  $\det_\ZZ F \otimes_\ZZ (\det_\ZZ F')^{-1} \subset \det_\RR (C^\bullet) \cong \RR$
-  corresponds to $D\ZZ \subset \RR$, where $D$ is the determinant of $\phi$ with
-  respect to the bases induced by $\ZZ$-bases of $F$ and $F'$.}  shows that
-under this trivialization, $\det_\ZZ R\Gamma_\Wc (X, \ZZ(n)) \subset \RR$
-corresponds to $\frac{1}{m}\,\ZZ \subset \RR$, where
-\[ m = \frac{|T_2|}{|T_1| \cdot |R\Gamma_\Wc (X, \ZZ(n))|}\,R_{X,n}
-  = 2^\delta\,\frac{|H^0 (X_\et, \ZZ^c (n))|}{|H^{-1} (X_\et, \ZZ^c(n))_\tors|\cdot |H^1 (X_\et, \ZZ^c(n))|}\,R_{X,n}, \]
-the number $\delta$ is given by \eqref{eqn:delta}, and $R_{X,n}$ is
-the regulator from definition~\ref{dfn:regulator}.
+\begin{proposition}
+  Under the above trivialization, $\det_\ZZ R\Gamma_\Wc (X, \ZZ(n)) \subset \RR$
+  corresponds to $\alpha^{-1}\,\ZZ \subset \RR$, where
+  \[ \alpha = \frac{|T_2|}{|T_1| \cdot |R\Gamma_\Wc (X, \ZZ(n))|}\,R_{X,n}
+    = 2^\delta\,\frac{|H^0 (X_\et, \ZZ^c (n))|}{|H^{-1} (X_\et, \ZZ^c(n))_\tors|\cdot |H^1 (X_\et, \ZZ^c(n))|}\,R_{X,n}, \]
+  the number $\delta$ is given by \eqref{eqn:delta}, and $R_{X,n}$ is
+  the regulator from definition~\ref{dfn:regulator}.
 
-We recall that conjecture $\mathbf{C} (X,n)$ from \cite{Beshenov-Weil-etale-2}
-asserts that $\det_\ZZ R\Gamma_\Wc (X, \ZZ(n)) \subset \RR$ corresponds to
+  \begin{proof}
+    For finite groups $T_1$, $T_2$, $H^3_\Wc (X, \ZZ(n))$, this is
+    \cite[Lemma~A.6]{Beshenov-Weil-etale-2}. On the other hand, for free groups
+    $H^0_c (G_\RR, X (\CC), \ZZ(n))$ and
+    $\Hom (H^{-1} (X_\et, \ZZ^c (n)), \ZZ)$, this is
+    proposition~\ref{prop:trivialization-of-free-part}
+    (the corresponding groups sit in degrees $1$ and $2$ in this case, so the
+    determinant gets inverted).
+  \end{proof}
+\end{proposition}
+
+We recall that conjecture $\mathbf{C} (X,n)$ from
+\cite[\S 4]{Beshenov-Weil-etale-2} asserts that
+$\det_\ZZ R\Gamma_\Wc (X, \ZZ(n)) \subset \RR$ corresponds to
 $\zeta^* (X,n)^{-1}\,\ZZ \subset \RR$. This leads to the following conclusion.
 
 \begin{proposition}
@@ -1219,16 +1340,16 @@ introduction.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Demystification of the formula}
+\section{Direct proof of the formula}
 \label{sec:demystification}
 
 The derivation of the special value formula from our Weil-étale machinery might
 look rather contrived. In this section we explain how to prove it directly,
 combining via localization the known special value formulas for
-$X = \Spec \mathcal{O}_F$ and curves over finite fields $X/\FF_q$. This in a
-sense will demystify our result, but the two previous sections also serve their
-purpose: these explain how we came up with the formula
-\eqref{eqn:special-value-formula} in the first place.
+$X = \Spec \mathcal{O}_F$ and curves over finite fields $X/\FF_q$. This will
+establish our result, but the two previous sections also serve their purpose:
+these show how we came up with the formula \eqref{eqn:special-value-formula}
+in the first place.
 
 \begin{lemma}
   \label{lemma:elementary-proof-1}
@@ -1307,13 +1428,8 @@ purpose: these explain how we came up with the formula
       \label{eqn:special-value-for-U} \zeta (U,n) & \stackrel{?}{=} \pm 2^\delta\,\frac{|H^0 (U_\et, \ZZ^c (n)|}{|H^{-1} (U_\et, \ZZ^c (n))_\tors| \cdot |H^1 (U_\et, \ZZ^c (n))|}\,R, \\
       \notag \zeta (Z,n) & = \pm\frac{1}{|H^1 (Z_\et, \ZZ^c (n))|}.
     \end{align}
-    Here $\delta = \delta_{X,n} = \delta_{U,n}$, and $R = R_{X,n} = R_{U,n}$.
-    For the last claim, note that $X (\CC) = U (\CC)$, and from the long exact
-    sequence \eqref{eqn:localization-les}, we have
-    $H^{-1} (X_\et, \ZZ^c (n)) \cong H^{-1} (U_\et, \ZZ^c (n))$, which means
-    that the change in the integral structure is irrelevant for the volume.
-
-    We note that
+    Here $\delta = \delta_{X,n} = \delta_{U,n}$, and $R = R_{X,n} = R_{U,n}$
+    (see lemma~\ref{lemma:regulator-dense-open-subset}). We note that
     $|H^{-1} (X_\et, \ZZ^c (n))_\tors| = |H^{-1} (U_\et, \ZZ^c (n))_\tors|$.
     On the other hand, the exact sequence of finite groups
     \[ 0 \to H^0 (X_\et, \ZZ^c (n)) \to
