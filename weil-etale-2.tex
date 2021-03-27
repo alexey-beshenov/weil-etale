@@ -1074,6 +1074,76 @@ the conjectures studied by Geisser in \cite{Geisser-2004}, \cite{Geisser-2006},
   time ago by Lichtenbaum in \cite{Lichtenbaum-1984}.
 \end{remark}
 
+\begin{theorem}
+  Let $X/\FF_q$ be a variety over a finite field satisfying
+  $\mathbf{L}^c (X_\et, n)$ for $n < 0$. Then the conjecture $\mathbf{C} (X,n)$
+  holds.
+\end{theorem}
+
+We note that \eqref{prop:C(X,n)-over-finite-fields} is equivalent to the special
+value formula that appears in
+\cite[Theorem~4.5]{Geisser-2010-arithmetic-homology}. The conjecture
+$\mathbf{P}_0 (X)$ in the statement of
+\cite[Theorem~4.5]{Geisser-2010-arithmetic-homology} is implied by our
+conjecture $\mathbf{L}^c (X_\et,n)$ thanks to
+\cite[Proposition~4.1]{Geisser-2010-arithmetic-homology}. Geisser's proof
+eventually reduces to \cite{Milne-1986}, but for our case of $s = n < 0$, the
+situation is easier, and we can give a more direct explanation, using earlier
+results from \cite{Bayer-Neukirch-1978} regarding Grothendieck's trace formula.
+
+\begin{proof}
+  In this case the conjecture reduces to
+  $$\zeta (X,n) = \prod_{i \in \ZZ} |H^i (X_\et, \ZZ^c (n))|^{(-1)^i}.$$
+
+  By duality \cite[Theorem~I]{Beshenov-Weil-etale-1}, we have
+  $$|H^{2-i} (X_\et, \ZZ^c (n))| = |H^i_c (X_\et, \ZZ (n))|,$$
+  where
+  \[ \ZZ (n) \dfn
+    \bigoplus_{\ell \ne p} \QQ_\ell/\ZZ_\ell (n) [-1] \dfn
+    \bigoplus_{\ell \ne p} \mu_{\ell^\infty}^{\otimes n} [-1] \dfn
+    \bigoplus_{\ell \ne p} \varinjlim_r \mu_{\ell^r}^{\otimes n} [-1]. \]
+  Now $H^i_c (X_\et, \QQ_\ell (n)) = 0$ for $n < 0$, and therefore
+  $H^i_c (X_\et, \ZZ_\ell (n)) \cong
+  H^{i-1}_c (X_\et, \QQ_\ell/\ZZ_\ell (n))$.
+  This means that our conjectural formula may be written as
+  \[ \zeta (X,n) =
+    \prod_{\ell \ne p} \prod_{i \in \ZZ} |H^i_c (X_\et, \ZZ_\ell (n))|^{(-1)^i}. \]
+
+  Recall that Grothendieck's trace formula
+  (see \cite{Grothendieck-FL} or \cite[Rapport]{SGA4-1-2}) reads
+  \[ Z (X,t) =
+    \prod_{i \in \ZZ} \det \bigl(1 - tF \bigm| H^i_c (\overline{X}, \QQ_\ell)\bigr)^{(-1)^{i+1}}. \]
+  Here $\overline{X} \dfn X \times_{\Spec \FF_q} \overline{\FF}_q$, and $F$
+  is the Frobenius acting on $H^i_c (\overline{X}, \QQ_\ell)$. Substituting
+  $t = q^{-n}$,
+  \[ \zeta (X,n) =
+    \prod_{i \in \ZZ} \det \bigl(1 - q^{-n} F \bigm| H^i_c (\overline{X}, \QQ_\ell)\bigr)^{(-1)^{i+1}}. \]
+  Then following the proof of \cite[Theorem~(3.1)]{Bayer-Neukirch-1978}, we
+  obtain for each $\ell \ne p$
+  \begin{equation}
+    \label{eqn:bayer-neukirch}
+    |\zeta (X,n)|_\ell =
+    \prod_{i \in \ZZ} |H^i_c (X, \ZZ_\ell (n))|^{(-1)^{i+1}}.
+  \end{equation}
+
+  On the other hand, for $n < 0$ we have $|\zeta (X,n)|_p = 1$. This fact may
+  be justified, without assuming that $X$ is smooth or projective,
+  for instance, using the trace formula for rigid cohomology
+  \cite[p.\,1446]{Kedlaya-2006}, which gives
+  $Z (X,t) = \prod_i P_i (t)^{(-1)^{i+1}}$, where $P_i (t) \in \ZZ[t]$ and
+  $P_i (0) = 1$. In particular, $P_i (q^{-n}) \equiv 1 \pmod{p}$.
+  We conclude that the product formula gives from \eqref{eqn:bayer-neukirch}
+  \[ \zeta (X,n) =
+    \prod_{\ell \ne p} \prod_{i \in \ZZ} |H^i_c (X, \ZZ_\ell (n))|^{(-1)^i}, \]
+  which is precisely our special value formula.
+\end{proof}
+
+\begin{remark}
+  The fact that $|\zeta (X,n)|_p = 1$ observed in the above argument explains
+  why Weil-étale cohomology ignores the $p$-primary part in a sense.
+\end{remark}
+
+\iffalse
 To deal with singular varieties, we recall the following strong conjecture on
 resolution of singularities.
 
@@ -1128,6 +1198,7 @@ resolution of singularities.
   this will be verified in full generality (for any arithmetic scheme $X$, not
   necessarily $X/\FF_q$) for the conjecture $\mathbf{C} (X,n)$.
 \end{remark}
+\fi
 
 Let us consider a couple of particular examples to see how the special value
 conjecture works. It is to be noted that for a general arithmetic scheme $X$,
@@ -1201,10 +1272,9 @@ fields.
 \end{example}
 
 \begin{example}
-  In general, if $X/\FF_q$ is a curve, then the conjectures
-  $\mathbf{L}^c (X_\et,n)$ and $\mathbf{R} (\FF_q,1)$ hold.
-  The cohomology $H^i (X_\et, \ZZ^c(n))$ is concentrated in degrees $-1, 0, +1$,
-  and the special value formula reads
+  In general, if $X/\FF_q$ is a curve, then the conjecture
+  $\mathbf{L}^c (X_\et,n)$ holds. The cohomology $H^i (X_\et, \ZZ^c(n))$ is
+  concentrated in degrees $-1, 0, +1$, and the special value formula reads
   \[ \zeta^* (X,n) =
     \pm \frac{|H^0 (X_\et, \ZZ^c (n))|}{|H^{-1} (X_\et, \ZZ^c (n))|\cdot |H^1 (X_\et, \ZZ^c (n))|}. \]
 \end{example}
@@ -1979,10 +2049,8 @@ is needed to ensure that the regulator morphism exists
 
     If $X = C/\FF_q$ is a curve over a finite field, then $\mathbf{C} (X,n)$
     holds thanks to theorem~\ref{thm:C(X,n)-over-finite-fields}. The conjecture
-    $\mathbf{R} (\FF_q,d)$ that appears in the statement is true for
-    $d = 1$. Similarly, $\mathbf{L}^c (X_\et,n)$ is well-known for curves
-    and essentially goes back to Soulé; see for instance
-    \cite[Proposition~4.3]{Geisser-2017}.
+    $\mathbf{L}^c (X_\et,n)$ is well-known for curves and essentially goes back
+    to Soulé; see for instance \cite[Proposition~4.3]{Geisser-2017}.
 
     Then the fact that the conjectures $\mathbf{L}^c (X_\et,n)$,
     $\mathbf{B} (X,n)$, $\mathbf{VO} (X,n)$, $\mathbf{C} (X,n)$ are closed under
