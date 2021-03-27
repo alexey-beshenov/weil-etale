@@ -13,7 +13,7 @@
   arXiv link: https://arxiv.org/abs/2102.12114
 
 * `1-dim-schemes.tex`:
-  Zeta-values of one-dimensional arithmetic schemes at n < 0.
+  Zeta-values of one-dimensional arithmetic schemes at n < 0
 
 
 ## Compiling LaTeX sources
