@@ -1,6 +1,6 @@
 # Changelog
 
-## Weil-étale part I, version 2.
+## Weil-étale part I, version 2
 
 Minor additions:
 
@@ -15,7 +15,7 @@ Minor additions:
   cohomology at the beginning of section 8.
 
 
-## Weil-étale part I, version 3.
+## Weil-étale part I, version 3
 
 Minor additions:
 
@@ -27,7 +27,7 @@ Minor additions:
 * comparison with the construction of Flach and Morin in section 8.
 
 
-## Weil-étale part II, version 2.
+## Weil-étale part II, version 2
 
 Minor additions:
 
