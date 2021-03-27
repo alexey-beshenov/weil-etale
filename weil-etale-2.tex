@@ -550,7 +550,25 @@ generated groups, trivial for $|i| \gg 0$
   The conjecture $\mathbf{VO} (X,n)$ is similar to
   \cite[Conjecture~5.11]{Flach-Morin-2018}. When $X$ is proper and regular, then
   $\mathbf{VO} (X,n)$ is the same as the vanishing order conjecture of Flach and
-  Morin.
+  Morin. Namely, the latter takes form
+  \begin{equation}
+    \label{eqn:FM-vanishing-order}
+    \ord_{s = n} \zeta (X,s) =
+    \sum_{i\in \ZZ} (-1)^i \cdot i \cdot \dim_\RR H^i_{\ar,c} (X, \widetilde{\RR}(n)),
+  \end{equation}
+  where by definition,
+  \[ R\Gamma_{\ar,c} (X, \widetilde{\RR}(n)) \dfn
+    R\Gamma_c (X, \RR(n)) \oplus R\Gamma_c (X, \RR(n)) [-1]. \]
+  Moreover, \cite[Proposition 4.14]{Flach-Morin-2018}, gives a distinguished
+  triangle
+  \[ R\Gamma_\dR (X_\RR/\RR) / \Fil^n [-2] \to
+    R\Gamma_{\ar,c} (X, \widetilde{\RR}(n)) \to
+    R\Gamma_\Wc (X, \ZZ(n)) \otimes \RR \to
+    R\Gamma_\dR (X_\RR/\RR) / \Fil^n [-1] \]
+  Therefore, in case of $n < 0$, we have
+  $R\Gamma_{\ar,c} (X, \widetilde{\RR}(n)) \cong
+  R\Gamma_\Wc (X, \ZZ(n)) \otimes \RR$, and
+  \eqref{eqn:FM-vanishing-order} is exactly our conjecture $\mathbf{VO} (X,n)$.
 \end{remark}
 
 \begin{remark}
@@ -1016,9 +1034,32 @@ value of $\zeta (X,s)$ at $s = n$ in the following sense.
 \begin{remark}
   This conjecture is similar to \cite[Conjecture~5.12]{Flach-Morin-2018}.
   When $X$ is proper and regular, the above conjecture is the same as the
-  special value conjecture of Flach and Morin. They prove that their conjecture
-  is consistent with the Tamagawa number conjecture of
-  Bloch--Kato--Fontaine--Perrin-Riou \cite{Fontaine-Perrin-Riou-1994}.
+  special value conjecture of Flach and Morin, which for $n \in \ZZ$ reads
+  \begin{equation}
+    \label{eqn:FM-special-value}
+    \lambda_\infty \Bigl(\zeta^* (X,n)^{-1} \cdot C (X,n) \cdot \ZZ\Bigr) =
+    \Delta (X/\ZZ, n).
+  \end{equation}
+  Here the fundamental line $\Delta (X/\ZZ,n)$ is defined via
+  \[ \Delta (X/\ZZ,n) \dfn
+    \det_\ZZ R\Gamma_\Wc (X, \ZZ(n)) \otimes_\ZZ
+    \det_\ZZ R\Gamma_\dR (X/\ZZ)/\Fil^n. \]
+  If $n < 0$, then
+  $\Delta (X/\ZZ,n) = \det_\ZZ R\Gamma_\Wc (X, \ZZ(n))$. Moreover, $C (X,n)$ is
+  some rational number, defined via $\prod_p |c_p (X,n)|_p$.
+  Here $c_p (X,n) \in \QQ_p^\times/\ZZ_p^\times$ are the ``local factors''
+  described in \cite[\S 5.4]{Flach-Morin-2018}, but
+  \cite[Proposition~5.8]{Flach-Morin-2018} says that if $n \le 0$, then
+  $c_p (X,n) \equiv 1 \pmod{\ZZ_p^\times}$ for all $p$. Therefore, $C (X,n) = 1$
+  in our situation. Finally, the trivialization isomorphism ``$\lambda_\infty$''
+  is defined precisely the same way as our $\lambda$. Therefore,
+  \eqref{eqn:FM-special-value} coincides with our conjecture $\mathbf{C} (X,n)$
+  for $n < 0$.
+
+  Flach and Morin prove that their conjecture is consistent with the Tamagawa
+  number conjecture of Bloch--Kato--Fontaine--Perrin-Riou
+  \cite{Fontaine-Perrin-Riou-1994}; see \cite[\S 5.6]{Flach-Morin-2018} for the
+  details.
 \end{remark}
 
 \begin{remark}
@@ -1075,6 +1116,7 @@ the conjectures studied by Geisser in \cite{Geisser-2004}, \cite{Geisser-2006},
 \end{remark}
 
 \begin{theorem}
+  \label{thm:C(X,n)-over-finite-fields}
   Let $X/\FF_q$ be a variety over a finite field satisfying
   $\mathbf{L}^c (X_\et, n)$ for $n < 0$. Then the conjecture $\mathbf{C} (X,n)$
   holds.
@@ -1273,8 +1315,10 @@ fields.
 
 \begin{example}
   In general, if $X/\FF_q$ is a curve, then the conjecture
-  $\mathbf{L}^c (X_\et,n)$ holds. The cohomology $H^i (X_\et, \ZZ^c(n))$ is
-  concentrated in degrees $-1, 0, +1$, and the special value formula reads
+  $\mathbf{L}^c (X_\et,n)$ holds; see for instance
+  \cite[Proposition~4.3]{Geisser-2017}. The cohomology $H^i (X_\et, \ZZ^c(n))$
+  is concentrated in degrees $-1, 0, +1$ by duality and the reasons of
+  cohomological dimension, and the special value formula reads
   \[ \zeta^* (X,n) =
     \pm \frac{|H^0 (X_\et, \ZZ^c (n))|}{|H^{-1} (X_\et, \ZZ^c (n))|\cdot |H^1 (X_\et, \ZZ^c (n))|}. \]
 \end{example}
