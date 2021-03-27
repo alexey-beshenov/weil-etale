@@ -16,12 +16,12 @@
   Zeta-values of one-dimensional arithmetic schemes at n < 0.
 
 
-# Compiling LaTeX sources
+## Compiling LaTeX sources
 
 Running `make` should be enough, assuming `pdflatex`, `bibtex`, and the required
 LaTeX packages are present in the system.
 
 
-# Feedback
+## Feedback
 
 Alexey Beshenov &lt;cadadr@gmail.com&gt;
