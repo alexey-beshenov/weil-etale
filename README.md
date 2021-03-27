@@ -24,4 +24,4 @@ LaTeX packages are present in the system.
 
 # Feedback
 
-Alexey Beshenov <cadadr@gmail.com>
+Alexey Beshenov &lt;cadadr@gmail.com&gt;
