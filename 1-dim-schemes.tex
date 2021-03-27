@@ -843,7 +843,11 @@ Here we calculate $H^i_\Wc (X, \ZZ(n))$ for one-dimensional $X$.
   \item[0)] $H^i_\Wc (X, \ZZ(n)) = 0$, unless $i = 1,2,3$.
 
   \item[1)] There is a short exact sequence
-    \[ 0 \to \underbrace{H^0_c (G_\RR, X(\CC), \ZZ(n))}_{\cong \ZZ^{\oplus d_n}} \to H^1_\Wc (X, \ZZ(n)) \to T_1 \to 0 \]
+    \begin{equation}
+      \label{eqn:H1Wc-ses}
+      0 \to \underbrace{H^0_c (G_\RR, X(\CC), \ZZ(n))}_{\cong \ZZ^{\oplus d_n}} \to
+      H^1_\Wc (X, \ZZ(n)) \to T_1 \to 0
+    \end{equation}
     where $T_1$ sits in a short exact sequence of finite groups
     \[ 0 \to \widehat{H}^0_c (G_\RR, X(\CC), \ZZ(n)) \to
       \widehat{H}^1_c (X_\et, \ZZ(n)) \to
@@ -1005,6 +1009,12 @@ Here we calculate $H^i_\Wc (X, \ZZ(n))$ for one-dimensional $X$.
     \end{align*}
   \end{proof}
 \end{proposition}
+
+\begin{remark}
+  A priori, the short exact sequence \eqref{eqn:H1Wc-ses} does not have to
+  split. This will not bother us for the determinant calculations in
+  \S\ref{sec:special-value-formula} below.
+\end{remark}
 
 \begin{remark}
   Part 0) of the above proposition is a consequence of general results on
