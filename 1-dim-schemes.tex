@@ -87,9 +87,10 @@ $F$, and $R_F$ is the regulator, which is a positive real number;
 see for instance \cite[\S VII.5]{Neukirch-1999}.
 
 It is natural to ask whether such formulas exist for $s = n \in \ZZ$ other than
-$0$ and $1$. For this one has to find a suitable generalization for the numbers
-$h_F$ and $\omega_F$ and the regulator $R_F$. Many special value conjectures, of
-varying generality, originate from this question.
+$s = 0$ (or $s = 1$, which is related via the functional equation to $s = 0$).
+For this one has to find a suitable generalization for the
+numbers $h_F$ and $\omega_F$ and the regulator $R_F$. Many special value
+conjectures, of varying generality, originate from this question.
 
 Lichtenbaum proposed in his pioneering work \cite{Lichtenbaum-1973} formulas in
 terms of algebraic $K$-theory. Later this was also restated in terms of
@@ -112,7 +113,7 @@ consult lecture notes \cite{Kolster-2004} and surveys
 
 \vspace{1em}
 
-Lichtenbaum suggested a more recent research program, known as
+Lichtenbaum has envisioned a more recent research program, known as
 \textbf{Weil-étale cohomology}; see e.g.
 \cite{Lichtenbaum-2005,Lichtenbaum-2009-number-rings,Lichtenbaum-2009-Euler-char}.
 It suggests that for an arithmetic scheme $X$ the special value of $\zeta (X,s)$
@@ -139,7 +140,8 @@ reduction to the Tamagawa number conjecture of
 Bloch--Kato--Fontaine--Perrin-Riou.
 
 In particular, if we take $n = 0$, then $\ZZ^c (0) \cong \mathbb{G}_m [1]$, and
-$R_{F,0}$ is the usual regulator of Dirichlet, so that the formula becomes
+$R_{F,0}$ is the usual regulator of Dirichlet, so that
+\eqref{eqn:flach-morin-zeta-F-formula} becomes
 \[ \zeta_F^* (0) =
   \pm \frac{|H^1 (\Spec \mathcal{O}_{F,\et}, \mathbb{G}_m)|}{|H^0 (\Spec \mathcal{O}_{F,\et}, \mathbb{G}_m)_\tors|}\,R_F =
   \pm \frac{|\Pic (\mathcal{O}_F)|}{|(\mathcal{O}_F)^\times_\tors|}\,R_F, \]
@@ -246,8 +248,8 @@ algebraic cycles $Z \subset X \times \Delta^i$ of dimension $n+i$. Then for
 $n < 0$ we let $\ZZ^c (n)$ be the complex of étale sheaves
 $U \rightsquigarrow z_n (U, -\bullet) [2n]$. The corresponding (hyper)cohomology
 $H^i (X_\et, \ZZ^c (n))$ is what we will call motivic cohomology throughout this
-note. For a proper regular arithmetic scheme $X$ of dimension $d$ we have
-$\ZZ^c (n) = \ZZ (d-n) [2d]$, where $\ZZ (n)$ is the other motivic complex that
+text. For a proper regular arithmetic scheme $X$ of dimension $d$ we have
+$\ZZ^c (n) = \ZZ (d-n) [2d]$, where $\ZZ (m)$ is the other motivic complex that
 usually appears in the literature.
 
 We recall from \cite[Corollary~7.2]{Geisser-2010} that our motivic cohomology
@@ -277,8 +279,8 @@ arithmetic schemes $X$; see \S\ref{sec:motivic-cohomology-structure} below.
 
 \paragraph{Real and complex places.}
 Consider the finite discrete space of complex points
-$X (\CC) = \Hom (\Spec \CC, X)$. There is a canonical action of complex
-conjugation $G_\RR \dfn \Gal (\CC/\RR)$ on $X (\CC)$. The fixed points of this
+$X(\CC) = \Hom (\Spec \CC, X)$. There is a canonical action of complex
+conjugation $G_\RR \dfn \Gal (\CC/\RR)$ on $X(\CC)$. The fixed points of this
 action correspond to the real points $X (\RR)$. We will denote
 $r_1 = |X (\RR)|$. The non-real points come in conjugate pairs, and we will
 denote their number by $2 r_2$.
@@ -312,8 +314,8 @@ complex embeddings $F \hookrightarrow \CC$. Then $r_1 (F) = r_1$ and
 $r_2 (F) = r_2$ for $X = \Spec \mathcal{O}_F$. In general, for a one-dimensional
 arithmetic scheme $X$ we have
 \begin{align*}
-  r_1 & = \sum_{\fchar (\kappa (\eta)) = 0} r_1 (\kappa (\eta)), \\
-  r_2 & = \sum_{\fchar (\kappa (\eta)) = 0} r_2 (\kappa (\eta)),
+  r_1 & = \sum_{\fchar \kappa (\eta) = 0} r_1 (\kappa (\eta)), \\
+  r_2 & = \sum_{\fchar \kappa (\eta) = 0} r_2 (\kappa (\eta)),
 \end{align*}
 where the sums are over generic points $\eta \in X$ with residue field
 $\kappa (\eta)$ of characteristic $0$.
@@ -400,7 +402,7 @@ repeatedly in everything that follows.
     $\mathcal{P} (X)$ is equivalent to the conjunction of $\mathcal{P} (X_i)$ for
     all $i$.
 
-  \item[c)] If $U \subset X$ is a dense open subscheme, then $\mathcal{P} (X)$
+  \item[c)] If $U \subset X$ is a dense open subset, then $\mathcal{P} (X)$
     is equivalent to $\mathcal{P} (U)$.
   \end{enumerate}
   Suppose that
@@ -469,12 +471,11 @@ meaning.
   We have $d_n = \ord_{s = n} \zeta (X,s)$.
 
   \begin{proof}
-    For $X = \Spec \mathcal{O}_F$ the claim is a well-known consequence of the
-    functional equation for the Dedekind zeta function
-    \cite[\S VII.5]{Neukirch-1999}. It is also true for $X/\FF_q$ since in this
-    case $\zeta (X,s)$ has no zeros or poles at $s = n < 0$
-    \cite[pp.\,26--27]{Katz-1994}. We proceed with dévissage
-    lemma~\ref{lemma:devissage}.
+    For $X = \Spec \mathcal{O}_F$ the claim is a consequence of the functional
+    equation for the Dedekind zeta function \cite[\S VII.5]{Neukirch-1999}.
+    It is also true for $X/\FF_q$ since in this case $\zeta (X,s)$ has no zeros
+    or poles at $s = n < 0$ \cite[pp.\,26--27]{Katz-1994}. We proceed with
+    dévissage lemma~\ref{lemma:devissage}.
 
     We have $\zeta (X,s) = \zeta (X_\red,s)$ and
     $r_{1,2} (X) = r_{1,2} (X_\red)$.
@@ -483,55 +484,55 @@ meaning.
       \quad
       r_{1,2} (X) = \sum_i r_{1,2} (X_i), \]
     so that the property is compatible with disjoint unions. Finally, if
-    $U \subset X$ is a dense open subscheme, then $Z = X\setminus U$ is
+    $U \subset X$ is a dense open subset, then $Z = X\setminus U$ is
     a zero-dimensional scheme, and
     \[ \ord_{s = n} \zeta (X,s) = \ord_{s = n} \zeta (U,s),
       \quad
       r_{1,2} (X) = r_{1,2} (U), \]
-    so that the property is compatible with taking dense open subschemes.
+    so that the property is compatible with taking dense open subsets.
     We conclude that lemma~\ref{lemma:devissage} applies.
   \end{proof}
 \end{proposition}
 
-\subsection*{$G_\RR$-equivariant cohomology of $X (\CC)$}
+\subsection*{$G_\RR$-equivariant cohomology of $X(\CC)$}
 
 Viewing $\ZZ (n) = (2\pi i)^n\,\ZZ$ as a constant $G_\RR$-equivariant sheaf on
-$X (\CC)$, we consider the $G_\RR$-equivariant cohomology groups (resp. Tate
+$X(\CC)$, we consider the $G_\RR$-equivariant cohomology groups (resp. Tate
 cohomology)
 \begin{align*}
-  H^i_c (G_\RR, X (\CC), \ZZ(n)) & \dfn H^i \Bigl(R\Gamma (G_\RR, R\Gamma_c (X (\CC), \ZZ(n)))\Bigr), \\
-  \widehat{H}^i_c (G_\RR, X (\CC), \ZZ(n)) & \dfn H^i \Bigl(R\widehat{\Gamma} (G_\RR, R\Gamma_c (X (\CC), \ZZ(n)))\Bigr).
+  H^i_c (G_\RR, X(\CC), \ZZ(n)) & \dfn H^i \Bigl(R\Gamma (G_\RR, R\Gamma_c (X(\CC), \ZZ(n)))\Bigr), \\
+  \widehat{H}^i_c (G_\RR, X(\CC), \ZZ(n)) & \dfn H^i \Bigl(R\widehat{\Gamma} (G_\RR, R\Gamma_c (X(\CC), \ZZ(n)))\Bigr).
 \end{align*}
-Of course, $X (\CC)$ is just a finite discrete space, so that there is no need
+Of course, $X(\CC)$ is just a finite discrete space, so that there is no need
 to use cohomology with compact support $H^i_c$ and $\widehat{H}^i_c$, but we
 will use this notation for consistency with the general case, treated in
-\cite{Beshenov-Weil-etale-1}. Since $\dim X (\CC) = 0$, we have
+\cite{Beshenov-Weil-etale-1}. Since $\dim X(\CC) = 0$, we have
 \begin{align*}
-  H^i_c (G_\RR, X (\CC), \ZZ(n)) & \cong H^i (G_\RR, H^0 (X (\CC), \ZZ(n))), \\
-  \widehat{H}^i_c (G_\RR, X (\CC), \ZZ(n)) & \cong \widehat{H}^i (G_\RR, H^0 (X (\CC), \ZZ(n))).
+  H^i_c (G_\RR, X(\CC), \ZZ(n)) & \cong H^i (G_\RR, H^0_c (X(\CC), \ZZ(n))), \\
+  \widehat{H}^i_c (G_\RR, X(\CC), \ZZ(n)) & \cong \widehat{H}^i (G_\RR, H^0_c (X(\CC), \ZZ(n))).
 \end{align*}
 
 \begin{proposition}
   Let $X$ be a one-dimensional arithmetic scheme with $r_1$ real and $2r_2$
-  complex places. Then the $G_\RR$-equivariant cohomology of $X (\CC)$ is given
+  complex places. Then the $G_\RR$-equivariant cohomology of $X(\CC)$ is given
   by
   \begin{align*}
-    \widehat{H}^i (G_\RR, X (\CC), \ZZ (n)) & \cong
+    \widehat{H}^i_c (G_\RR, X(\CC), \ZZ (n)) & \cong
                                               \begin{cases}
                                                 (\ZZ/2\ZZ)^{\oplus r_1}, & i \equiv n ~ (2), \\
                                                 0, & i \not\equiv n ~ (2);
                                               \end{cases} \\
-    H^i (G_\RR, X (\CC), \ZZ (n)) & \cong
+    H^i_c (G_\RR, X(\CC), \ZZ (n)) & \cong
                                     \begin{cases}
                                       0, & i < 0, \\
-                                      \ZZ^{\oplus d_n}, & i = 0, ~ n\text{ even}, \\
-                                      \widehat{H}^i (G_\RR, X (\CC), \ZZ (n)), & i \ge 1.
+                                      \ZZ^{\oplus d_n}, & i = 0, \\
+                                      \widehat{H}^i_c (G_\RR, X(\CC), \ZZ (n)), & i \ge 1.
                                     \end{cases}
   \end{align*}
 
   \begin{proof}
     We have
-    \[ H^0 (X (\CC), \ZZ(n)) \cong
+    \[ H^0_c (X(\CC), \ZZ(n)) \cong
       \ZZ (n)^{\oplus r_1} \oplus (\ZZ (n) \oplus \ZZ (n))^{\oplus r_2}, \]
     and the $G_\RR$-action on the two summands is given by
     $x \mapsto \overline{x}$ and $(x,y) \mapsto (\overline{y}, \overline{x})$
@@ -580,10 +581,11 @@ will use this notation for consistency with the general case, treated in
     \end{enumerate}
 
     Putting together these two calculations, we obtain Tate cohomology groups
-    $\widehat{H}^i (G_\RR, X (\CC), \ZZ (n))$. For the usual cohomology, we have
+    $\widehat{H}^i_c (G_\RR, X(\CC), \ZZ (n))$. For the usual cohomology, we
+    have
     \begin{align*}
-      H^0 (G_\RR, X (\CC), \ZZ (n)) & \cong H^0 (X (\CC), \ZZ (n))^{G_\RR}, \\
-      H^i (G_\RR, X (\CC), \ZZ (n)) & \cong \widehat{H}^i (G_\RR, X (\CC), \ZZ (n)) \quad \text{for }i \ge 1. \qedhere
+      H^0_c (G_\RR, X(\CC), \ZZ (n)) & \cong H^0_c (X(\CC), \ZZ (n))^{G_\RR}, \\
+      H^i_c (G_\RR, X(\CC), \ZZ (n)) & \cong \widehat{H}^i_c (G_\RR, X(\CC), \ZZ (n)) \quad \text{for }i \ge 1. \qedhere
     \end{align*}
   \end{proof}
 \end{proposition}
@@ -601,7 +603,7 @@ one-dimensional arithmetic schemes.
     H^i (X_\et, \ZZ^c (n)) \cong
     \begin{cases}
       0, & i < -1, \\
-      \text{finitely generated of rk } d_n, & i = -1, ~ n\text{ even}, \\
+      \text{finitely generated of rk } d_n, & i = -1, \\
       \text{finite}, & i = 0,1, \\
       (\ZZ/2\ZZ)^{\oplus r_1}, & i \ge 2, ~ i\not\equiv n ~ (2), \\
       0, & i \ge 2, ~ i\equiv n ~ (2).
@@ -618,9 +620,6 @@ one-dimensional arithmetic schemes.
     \end{cases}
   \end{equation}
 \end{proposition}
-
-In particular, this explains why the only relevant group for the regulator is
-$H^{-1} (X_\et, \ZZ^c (n))$.
 
 An important ingredient of the proof, and other arguments below, will be an
 arithmetic duality \cite[Theorem~I]{Beshenov-Weil-etale-1}, which states that if
@@ -679,7 +678,7 @@ deduced in \cite{Beshenov-Weil-etale-1} from Geisser's work \cite{Geisser-2010}.
   $H^i (X_\et, \ZZ^c (n)) \cong \bigoplus_i H^i (X_{i,\et}, \ZZ^c (n))$,
   so that the property $\mathcal{P}$ is compatible with disjoint unions.
 
-  Similarly, if $U \subset X$ is a dense open subscheme, and $Z = X\setminus U$
+  Similarly, if $U \subset X$ is a dense open subset, and $Z = X\setminus U$
   its closed complement, then $\dim Z = 0$. We consider the long exact sequence
   \eqref{eqn:localization-les}. Since cohomology of $Z$ is concentrated in
   $i = 1$, we have $H^i (X_\et, \ZZ^c (n)) \cong H^i (U_\et, \ZZ^c (n))$ for
@@ -723,13 +722,16 @@ deduced in \cite{Beshenov-Weil-etale-1} from Geisser's work \cite{Geisser-2010}.
   Now we identify the finite $2$-torsion in $H^i (X_\et, \ZZ^c (n))$ for
   $i \ge 2$. By \cite[Lemma~6.14]{Flach-Morin-2018}, there is an exact
   sequence
-  \[ \cdots \to H^{i-1}_c (X_\et, \ZZ (n)) \to
-    \widehat{H}^{i-1} (G_\RR, X (\CC), \ZZ (n)) \to
+  \begin{equation}
+    \label{eqn:les-Hc-vs-H-hat-c}
+    \cdots \to H^{i-1}_c (X_\et, \ZZ (n)) \to
+    \widehat{H}^{i-1} (G_\RR, X(\CC), \ZZ (n)) \to
     \widehat{H}^i_c (X_\et, \ZZ (n)) \to
-    H^i_c (X_\et, \ZZ (n)) \to \cdots \]
+    H^i_c (X_\et, \ZZ (n)) \to \cdots
+  \end{equation}
   For $i \le 0$ we have $H^i_c (X_\et, \ZZ (n)) = 0$, and therefore
   \[ \widehat{H}^i_c (X_\et, \ZZ (n)) \cong
-    \widehat{H}^{i-1} (G_\RR, X (\CC), \ZZ (n)) \cong
+    \widehat{H}^{i-1} (G_\RR, X(\CC), \ZZ (n)) \cong
     \begin{cases}
       (\ZZ/2\ZZ)^{\oplus r_1}, & i\not\equiv n ~ (2), \\
       0, & i\equiv n ~ (2).
@@ -782,181 +784,56 @@ deduced in \cite{Beshenov-Weil-etale-1} from Geisser's work \cite{Geisser-2010}.
 \section{Calculations of Weil-étale cohomology}
 \label{sec:Weil-etale-cohomology-of-X}
 
-In this section we calculate Weil-étale cohomology groups $H^i_\Wc (X, \ZZ(n))$,
-as defined in \cite{Beshenov-Weil-etale-1}. We briefly recall the
-construction. It is performed in two steps: first we define cohomology groups
-$H^i_\fg (X, \ZZ(n))$, and then these are modified to give Weil-étale cohomology
-with compact support $H^i_\Wc (X, \ZZ(n))$.
+In this section we calculate Weil-étale cohomology groups $H^i_\Wc (X, \ZZ(n))$
+for $n < 0$, as defined in \cite{Beshenov-Weil-etale-1}. We briefly recall the
+construction. Let $X$ be an arithmetic scheme with finitely generated motivic
+cohomology $H^i (X_\et, \ZZ^c(n))$. The construction is performed in two steps.
 
-We consider the morphism of complexes
-\[ \alpha_{X,n}\colon \RHom (R\Gamma (X_\et, \ZZ^c(n)), \QQ [-2]) \to
-  R\Gamma_c (X_\et, \ZZ(n)) \]
-determined on the level of cohomology, using the arithmetic
-duality \eqref{eqn:arithmetic-duality}, via
-\begin{multline*}
-  H^i (\alpha_{X,n})\colon \Hom (H^{2-i} (X_\et, \ZZ^c(n)), \QQ)
-  \xrightarrow{\QQ \twoheadrightarrow \QQ/\ZZ}
-  \Hom (H^{2-i} (X_\et, \ZZ^c(n)), \QQ/\ZZ)\\
-  \xleftarrow{\cong} \widehat{H}^i_c (X_\et, \ZZ(n)) \to H^i_c (X_\et, \ZZ(n)).
-\end{multline*}
-We note that
-\begin{multline*}
-  \ker H^i (\alpha_{X,n}) \cong
-  \Hom (H^{i-2} (X_\et, \ZZ^c(n)), \ZZ) \cong \\
-  \ker \Bigl(\Hom (H^{i-2} (X_\et, \ZZ^c(n)), \QQ) \to
-  \Hom (H^{i-2} (X_\et, \ZZ^c(n)), \QQ/\ZZ)\Bigr).
-\end{multline*}
-We note that
-\begin{align*}
-  \ker H^i (\alpha_{X,n}) & \cong \Hom (H^{2-i} (X_\et, \ZZ^c(n)), \ZZ), \\
-  \coker H^i (\alpha_{X,n}) & \cong H^i_c (X_\et, \ZZ(n))_\codiv.
-\end{align*}
-For the last isomorphism, note that the image of $H^i (\alpha_{X,n})$
-corresponds to the maximal divisible subgroup of $H^i_c (X_\et, \ZZ(n))$,
-i.e. $\QQ/\ZZ$-dual of the free part of $H^{2-i} (X_\et, \ZZ^c(n))$.
+\begin{itemize}
+\item \textbf{Step 1}. Consider the morphism of complexes
+  \[ \alpha_{X,n}\colon \RHom (R\Gamma (X_\et, \ZZ^c(n)), \QQ [-2]) \to
+    R\Gamma_c (X_\et, \ZZ(n)) \]
+  determined on the level of cohomology, using the arithmetic duality
+  \eqref{eqn:arithmetic-duality}, via
+  \begin{multline*}
+    H^i (\alpha_{X,n})\colon \Hom (H^{2-i} (X_\et, \ZZ^c(n)), \QQ)
+    \xrightarrow{\QQ \twoheadrightarrow \QQ/\ZZ}
+    \Hom (H^{2-i} (X_\et, \ZZ^c(n)), \QQ/\ZZ)\\
+    \xleftarrow{\cong} \widehat{H}^i_c (X_\et, \ZZ(n)) \to
+    H^i_c (X_\et, \ZZ(n)).
+  \end{multline*}
+  The complex $R\Gamma_\fg (X, \ZZ(n))$ is defined as a cone of
+  $\alpha_{X,n}$:
+  \begin{multline*}
+    \RHom (R\Gamma (X_\et, \ZZ^c(n)), \QQ [-2]) \xrightarrow{\alpha_{X,n}}
+    R\Gamma_c (X_\et, \ZZ(n)) \to
+    R\Gamma_\fg (X_\et, \ZZ(n)) \to \\
+    \RHom (R\Gamma (X_\et, \ZZ^c(n)), \QQ [-1])
+  \end{multline*}
+  The groups $H^i_\fg (X, \ZZ(n)) \dfn H^i (R\Gamma_\fg (X, \ZZ(n)))$ are
+  finitely generated for all $i \in \ZZ$, vanish for $i \ll 0$, and finite
+  $2$-torsion for $i \gg 0$.  We refer to \cite[\S 5]{Beshenov-Weil-etale-1} for
+  the details.
 
-The complex $R\Gamma_\fg (X, \ZZ(n))$ is defined as a cone of
-$\alpha_{X,n}$:
-\[ \RHom (R\Gamma (X_\et, \ZZ^c(n)), \QQ [-2]) \xrightarrow{\alpha_{X,n}}
-  R\Gamma_c (X_\et, \ZZ(n)) \to
-  R\Gamma_\fg (X_\et, \ZZ(n)) \to
-  \RHom (R\Gamma (X_\et, \ZZ^c(n)), \QQ [-1]) \]
-For a general arithmetic scheme $X$ with finitely generated motivic cohomology
-$H^i (X_\et, \ZZ^c(n))$, the groups
-$H^i_\fg (X, \ZZ(n)) \dfn H^i (R\Gamma_\fg (X, \ZZ(n)))$ are finitely generated
-for all $i \in \ZZ$, vanish for $i \ll 0$, and finite $2$-torsion for $i \gg 0$.
-We refer to \cite[\S 5]{Beshenov-Weil-etale-1} for the details.
+\item \textbf{Step 2}. One considers a canonical morphism in the derived
+  category $i^*_\infty$ that is torsion and gives a commutative diagram
+  \[ \begin{tikzcd}
+      R\Gamma_c (X_\et, \ZZ(n)) \ar{r}\ar{d}[swap]{u^*_\infty} & R\Gamma_\fg (X, \ZZ(n)) \ar{dl}{i^*_\infty} \\
+      R\Gamma_c (G_\RR, X(\CC), \ZZ(n))
+    \end{tikzcd} \]
+  ---see \cite[\S\S 6,7]{Beshenov-Weil-etale-1} for further details.
+  Weil-étale cohomology with compact support is defined as a mapping fiber of
+  $i^*_\infty$:
+  \[ R\Gamma_\Wc (X, \ZZ(n)) \to
+    R\Gamma_\fg (X, \ZZ(n)) \xrightarrow{i^*_\infty}
+    R\Gamma_c (G_\RR, X(\CC), \ZZ(n)) \to
+    R\Gamma_\Wc (X, \ZZ(n)) [1] \]
+  The resulting groups $H^i_\Wc (X, \ZZ(n)) \dfn H^i (R\Gamma_\Wc (X, \ZZ(n)))$
+  are finitely generated and vanish for $i \notin [0,2d+1]$. We refer to
+  \cite[\S 7]{Beshenov-Weil-etale-1} for the general properies.
+\end{itemize}
 
-\begin{proposition}
-  \label{prop:calculation-of-H-fg}
-  For a one-dimensional arithmetic scheme $X$ and $n < 0$,
-
-  \begin{enumerate}
-  \item[0)] $H^i_\fg (X, \ZZ(n)) = 0$ for $i \le 0$,
-
-  \item[1)] there is an isomorphism of finite groups
-    $H^1_c (X_\et, \ZZ(n)) \xrightarrow{\cong} H^1_\fg (X, \ZZ(n))$,
-
-  \item[2)] there is an isomorphism of finitely generated groups
-    \[ H^2_\fg (X, \ZZ(n)) \cong
-      \underbrace{\Hom (H^{-1} (X_\et, \ZZ^c(n)), \ZZ)}_{\cong \ZZ^{\oplus d_n}}
-      \oplus
-      \underbrace{H^2 (X_\et, \ZZ(n))}_{\text{finite}}, \]
-    and under this identification,
-    $H^2_c (X_\et, \ZZ(n)) \to H^2_\fg (X, \ZZ(n))$ is the natural inclusion.
-
-  \item[3)] there is an isomorphism of finite groups
-    $H^3_\fg (X, \ZZ(n)) \cong H^3_c (X_\et, \ZZ(n))_\codiv$,
-    and under this identification,
-    $H^3_c (X_\et, \ZZ(n)) \to H^3_\fg (X, \ZZ(n))$ is the natural projection.
-
-  \item[4)] there is an isomorphism of finite $2$-torsion groups
-    $H^i_c (X_\et, \ZZ(n)) \xrightarrow{\cong} H^i_\fg (X, \ZZ(n))$
-    for $i \ge 4$.
-  \end{enumerate}
-
-  \begin{proof}
-    Consider the exact sequence
-    \[ \cdots \to \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ) \to
-      H^i_c (X_\et, \ZZ(n)) \to
-      H^i_\fg (X, \ZZ(n)) \to
-      \Hom (H^{1-i} (X_\et, \ZZ^c (n)), \QQ) \to \cdots \]
-    Here we have $\Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ) = 0$ for all
-    $i \ne 3$, and $H^i_c (X_\et, \ZZ(n))$ for $i \le 0$. From this 0), 1), 4)
-    readily follow. For 2) and 3), consider the exact sequence
-    \begin{multline*}
-      0 \to \underbrace{H^2_c (X_\et, \ZZ(n))}_{\text{finite}} \to
-      \underbrace{H^2_\fg (X, \ZZ(n))}_{\text{finitely generated}} \to
-      \underbrace{\Hom (H^{-1} (X_\et, \ZZ^c (n)), \QQ)}_{\text{finite dimension}} \xrightarrow{H^3 (\alpha_{X,n})} \\
-      \underbrace{H^3_c (X_\et, \ZZ(n))}_{\text{cofinite}} \to
-      \underbrace{H^3_\fg (X, \ZZ(n))}_{\text{finite}} \to 0
-    \end{multline*}
-    We have a split short exact sequence
-    \[ 0 \to H^2_c (X_\et, \ZZ(n)) \to
-      H^2_\fg (X, \ZZ(n)) \to
-      \ker H^3 (\alpha_{X,n}) \to 0 \]
-    where
-    $\ker H^3 (\alpha_{X,n}) \cong \Hom (H^{-1} (X_\et, \ZZ^c(n)), \ZZ)$
-    is a free group. Moreover,
-    $H^3_\fg (X, \ZZ(n)) \cong \coker H^3 (\alpha_{X,n}) \cong
-    H^3_c (X_\et, \ZZ(n))_\codiv$.
-  \end{proof}
-\end{proposition}
-
-Then one defines a canonical morphism in the derived category $i^*_\infty$ that
-is torsion and gives a commutative diagram
-\[ \begin{tikzcd}
-    R\Gamma_c (X_\et, \ZZ(n)) \ar{r}\ar{d}[swap]{u^*_\infty} & R\Gamma_\fg (X, \ZZ(n)) \ar{dl}{i^*_\infty} \\
-    R\Gamma_c (G_\RR, X(\CC), \ZZ(n))
-  \end{tikzcd} \]
----see \cite[\S\S 6,7]{Beshenov-Weil-etale-1} for further details.
-
-\begin{lemma}
-  \label{lemma:i-infty}
-  For a one-dimensional arithmetic scheme $X$ and $n < 0$,
-
-  \begin{enumerate}
-  \item[0)] $H^i (i^*_\infty) = 0$ for $i \le 0$.
-
-  \item[1)] $H^1 (i^*_\infty) = H^1 (u^*_\infty)$ under the identification
-    $H^1_c (X_\et, \ZZ(n)) \cong H^1_\fg (X, \ZZ(n))$:
-    \[ \begin{tikzcd}
-        H^1_c (X_\et, \ZZ(n)) \ar{r}{\cong}\ar{d}[swap]{H^1 (u^*_\infty)} & H^1_\fg (X, \ZZ(n)) \ar{dl}{H^1 (i^*_\infty)} \\
-        H^1_c (G_\RR, X(\CC), \ZZ(n))
-      \end{tikzcd} \]
-
-  \item[2)] $H^2 (i^*_\infty)$ is trivial on the torsion free part of
-    $H^2_\fg (X, \ZZ(n))$, and it coincides with $H^2 (u^*_\infty)$ on
-    $H^2_\fg (X, \ZZ(n))_\tors \cong H^2_c (X_\et, \ZZ(n))$:
-    \[ \begin{tikzcd}
-        H^2_c (X_\et, \ZZ(n)) \ar[right hook->]{r}\ar{d}[swap]{H^2 (u^*_\infty)} &
-        \begin{array}{c}
-          \Hom (H^{-1} (X_\et, \ZZ^c(n)), \ZZ) \\
-          \oplus \\
-          H^2_c (X_\et, \ZZ(n))
-        \end{array} \ar{dl}{H^2 (i^*_\infty)} \\
-        H^2_c (G_\RR, X(\CC), \ZZ(n))
-      \end{tikzcd} \]
-
-  \item[3)] $H^3 (i^*_\infty) = H^3 (u^*_\infty)_\codiv$, and this morphism is
-    surjective:
-    \[ \begin{tikzcd}
-        H^3_c (X_\et, \ZZ(n)) \ar[->>]{r}\ar[->>]{d}[swap]{H^3 (u^*_\infty)} &
-        H^3_c (X_\et, \ZZ(n))_\codiv \ar{dl}{H^3 (i^*_\infty)} \\
-        H^3_c (G_\RR, X(\CC), \ZZ(n))
-      \end{tikzcd} \]
-    where
-    $H^3_c (X_\et, \ZZ(n)) \cong H^3_c (X_\et, \ZZ(n))_\div \oplus H^3_c (X_\et, \ZZ(n))_\codiv$,
-
-    \item[4)] for $i \ge 4$ there is a commutative diagram with isomorphisms of
-    finite $2$-torsion groups
-    \[ \begin{tikzcd}
-        H^i_c (X_\et, \ZZ(n)) \ar{r}{\cong}\ar{d}{\cong}[swap]{H^i (u^*_\infty)} &
-        H^i_\fg (X, \ZZ(n)) \ar{dl}{H^i (i^*_\infty)} \\
-        H^i_c (G_\RR, X(\CC), \ZZ(n))
-      \end{tikzcd} \]
-  \end{enumerate}
-
-  \begin{proof}
-    Clear from the above calculations of $H^i_\fg (X, \ZZ(n))$, and the fact
-    that $i^*_\infty$ is torsion. Surjectivity in part 3) follows from the exact
-    sequence
-    \[ \widehat{H}^3_c (X_\et, \ZZ(n)) \to
-      H^3_c (X_\et, \ZZ(n)) \xrightarrow{H^3 (u^*_\infty)}
-      H^3_c (G_\RR, X(\CC), \ZZ(n)) \to
-      \underbrace{\widehat{H}^4_c (X_\et, \ZZ(n))}_{= 0} \qedhere \]
-  \end{proof}
-\end{lemma}
-
-Weil-étale cohomology is defined as a mapping fiber of $i^*_\infty$:
-\[ R\Gamma_\Wc (X, \ZZ(n)) \to
-  R\Gamma_\fg (X, \ZZ(n)) \xrightarrow{i^*_\infty}
-  R\Gamma_c (G_\RR, X(\CC), \ZZ(n)) \to
-  R\Gamma_\Wc (X, \ZZ(n)) [1] \]
-For a general arithmetic scheme $X$ with finitely generated motivic cohomology
-$H^i (X_\et, \ZZ^c(n))$, the resulting groups
-$H^i_\Wc (X, \ZZ(n)) \dfn H^i (R\Gamma_\Wc (X, \ZZ(n)))$ are finitely generated
-and vanish for $i \notin [0,2d+1]$. Here we calculate these for one-dimensional $X$.
+Here we calculate $H^i_\Wc (X, \ZZ(n))$ for one-dimensional $X$.
 
 \begin{proposition}
   \label{prop:calculation-of-H-Wc}
@@ -966,7 +843,7 @@ and vanish for $i \notin [0,2d+1]$. Here we calculate these for one-dimensional 
   \item[0)] $H^i_\Wc (X, \ZZ(n)) = 0$, unless $i = 1,2,3$.
 
   \item[1)] There is a short exact sequence
-    \[ 0 \to \underbrace{H^0_c (G_\RR, X (\CC), \ZZ(n))}_{\cong \ZZ^{\oplus d_n}} \to H^1_\Wc (X, \ZZ(n)) \to T_1 \to 0 \]
+    \[ 0 \to \underbrace{H^0_c (G_\RR, X(\CC), \ZZ(n))}_{\cong \ZZ^{\oplus d_n}} \to H^1_\Wc (X, \ZZ(n)) \to T_1 \to 0 \]
     where $T_1$ sits in a short exact sequence of finite groups
     \[ 0 \to \widehat{H}^0_c (G_\RR, X(\CC), \ZZ(n)) \to
       \widehat{H}^1_c (X_\et, \ZZ(n)) \to
@@ -980,70 +857,152 @@ and vanish for $i \notin [0,2d+1]$. Here we calculate these for one-dimensional 
     \[ H^2_\Wc (X, \ZZ(n)) \cong
       \underbrace{\Hom (H^{-1} (X_\et, \ZZ^c(n)), \ZZ)}_{\cong \ZZ^{\oplus d_n}}
       \oplus
-      T_2, \]
-    where $|T_2| = |H^0 (X_\et, \ZZ^c(n))|$.
+      \Hom (\underbrace{H^0 (X_\et, \ZZ^c(n))}_{\text{finite}}, \QQ/\ZZ). \]
 
-  \item[3)] $H^3_\Wc (X, \ZZ(n))$ is a finite group of order
-    $|H^{-1} (X_\et, \ZZ^c(n))_\tors|$.
+  \item[3)] There is an isomorphism of finite groups
+    $$H^3_\Wc (X, \ZZ(n)) \cong \Hom (H^{-1} (X_\et, \ZZ^c(n))_\tors, \QQ/\ZZ).$$
   \end{enumerate}
 
   \begin{proof}
-    Note that since $H^i_\fg (X,\ZZ(n)) = 0$ for $i \le 0$ and
-    $H^i_c (G_\RR, X(\CC), \ZZ(n)) = 0$ for $i < 0$, we see from the exact
+    From the definition of $R\Gamma_\fg (X, \ZZ(n))$, we have a long exact
     sequence
-    \[ \cdots \to H^i_\Wc (X, \ZZ(n)) \to
+    \begin{multline}
+      \label{eqn:fg-les}
+      \cdots \to \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ) \xrightarrow{H^i (\alpha_{X,n})} \\
+      H^i_c (X_\et, \ZZ(n)) \to
+      H^i_\fg (X, \ZZ(n)) \to
+      \Hom (H^{1-i} (X_\et, \ZZ^c (n)), \QQ) \to \cdots
+    \end{multline}
+    We have $\Hom (H^i (X_\et, \ZZ^c (n)), \QQ) = 0$, unless $i = -1$, and
+    $H^i_c (X_\et, \ZZ(n)) = 0$ for $i \le 0$. This implies that
+    $H^i_\fg (X, \ZZ(n)) = 0$ for $i \le 0$.
+    As $H^i_c (G_\RR, X(\CC), \ZZ(n)) = 0$ for $i < 0$, we see from the exact
+    sequence
+    \begin{equation}
+      \label{eqn:Wc-les}
+      \cdots \to H^i_\Wc (X, \ZZ(n)) \to
       H^i_\fg (X,\ZZ(n)) \xrightarrow{H^i (i^*_\infty)}
       H^i_c (G_\RR, X(\CC), \ZZ(n)) \to
-      H^{i+1}_\Wc (X, \ZZ(n)) \]
+      H^{i+1}_\Wc (X, \ZZ(n)) \to \cdots
+    \end{equation}
     that $H^i_\Wc (X, \ZZ(n)) = 0$ for $i \le 0$.
 
     \vspace{1em}
 
-    For $i = 1$, we consider short exact sequences
+    For $i = 1$, the exact sequence \eqref{eqn:fg-les} shows that
+    $H^1_c (X_\et, \ZZ(n)) \to H^1_\fg (X_\et, \ZZ(n))$ is an isomorphism.
+    Consequently, we see that
+    $\ker H^1 (i^*_\infty) \cong \ker H^1 (u_\infty^*)$:
+    \[ \begin{tikzcd}
+        H^1_c (X_\et, \ZZ(n)) \ar{r}{\cong}\ar{d}[swap]{H^1 (u^*_\infty)} & H^1_\fg (X, \ZZ(n)) \ar{dl}{H^1 (i^*_\infty)} \\
+        H^1_c (G_\RR, X(\CC), \ZZ(n))
+      \end{tikzcd} \]
+    From long exact sequences \eqref{eqn:Wc-les} and
+    \eqref{eqn:les-Hc-vs-H-hat-c}, we obtain short exact sequences
     \[ \begin{tikzcd}[column sep=1em,row sep=0pt]
         0 \ar{r} & H^0_c (G_\RR, X(\CC), \ZZ(n)) \ar{r} & H^1_\Wc (X, \ZZ(n)) \ar{r} & \ker H^1 (i^*_\infty) \ar{r} & 0 \\
         0 \ar{r} & \widehat{H}^0_c (G_\RR, X(\CC), \ZZ(n)) \ar{r} & \widehat{H}^1_c (X_\et, \ZZ(n)) \ar{r} & \ker H^1 (u_\infty^*) \ar{r} & 0
       \end{tikzcd} \]
-    and use the identification $H^1 (u^*_\infty) = H^1 (i^*_\infty)$.
-
-    The calculation of $H^i_\Wc (X, \ZZ(n))$ for $i = 2,3$ follows from the
-    above calculations of $H^i_\fg (X, \ZZ(n))$ and $H^i (i^*_\infty)$, and long
-    exact sequences
-    \[ \begin{tikzcd}[column sep=1em,row sep=0pt]
-        \cdots \ar{r} & H^i_\Wc (X, \ZZ(n)) \ar{r} & H^i_\fg (X, \ZZ(n)) \ar{r}{H^i (i^*_\infty)} &[2em] H^i_c (G_\RR, X(\CC), \ZZ(n)) \ar{r} & H^{i+1}_\Wc (X, \ZZ(n)) \ar{r} & \cdots \\
-        \cdots \ar{r} & \widehat{H}^i_c (X, \ZZ(n)) \ar{r} & H^i_c (X_\et, \ZZ(n)) \ar{r}{H^i (u^*_\infty)} & \widehat{H}^i_c (G_\RR, X(\CC), \ZZ(n)) \ar{r} & \widehat{H}^{i+1}_c (X, \ZZ(n)) \ar{r} & \cdots
-      \end{tikzcd} \]
-    Namely, we have from lemma~\ref{lemma:i-infty}
-    \begin{align*}
-      \ker H^2 (i^*_\infty) & \cong \Hom (H^{-1} (X_\et, \ZZ^c(n)), \ZZ) \oplus \ker H^2 (u^*_\infty), \\
-      \coker H^2 (i^*_\infty) & \cong \coker H^2 (u^*_\infty), \\
-      \ker H^3 (i^*_\infty) & \cong \ker H^3 (u^*_\infty)_\codiv, \\
-      \coker H^3 (i^*_\infty) & = 0.
-    \end{align*}
-
-    For $i = 2$ we consider extensions
-    \[ \begin{tikzcd}[column sep=1em]
-        0 \ar{r} & \coker H^1 (i^*_\infty) \ar{r}\ar{d}{\cong} & H^2_\Wc (X, \ZZ(n)) \ar{r} & \ker H^2 (i^*_\infty) \ar{r}\ar{d}{\cong} & 0 \\
-        0 \ar{r} & \coker H^1 (u_\infty^*) \ar{r} & \widehat{H}^2 (X_\et, \ZZ(n)) \ar{r} & \ker H^2 (u_\infty^*) \ar{r} & 0 \\[-2em]
-        & \oplus & \oplus & \oplus \\[-2em]
-        0 \ar{r} & 0 \ar{r} & \Hom (H^{-1} (X_\et, \ZZ^c(n)), \ZZ) \ar{r} & \Hom (H^{-1} (X_\et, \ZZ^c(n)), \ZZ) \ar{r} & 0
-      \end{tikzcd} \]
-    Here
-    $\widehat{H}^2 (X_\et, \ZZ(n)) \cong \Hom (H^0 (X_\et, \ZZ^c(n)), \QQ/\ZZ)$
-    by duality. Similarly for $i = 3$,
-    \[ \begin{tikzcd}[column sep=1em]
-        0 \ar{r} & \coker H^2 (i^*_\infty) \ar{r}\ar{d}{\cong} & H^3_\Wc (X, \ZZ(n)) \ar{r} & \ker H^3 (i^*_\infty) \ar{r}\ar{d}{\cong} & 0 \\
-        0 \ar{r} & \coker H^2 (u_\infty^*) \ar{r} & \widehat{H}^3 (X_\et, \ZZ(n))_\codiv \ar{r} & \ker H^3 (u_\infty^*)_\codiv \ar{r} & 0
-      \end{tikzcd} \]
-    where
-    $\widehat{H}^3 (X_\et, \ZZ(n))_\codiv \cong \Hom (H^{-1} (X_\et, \ZZ^c(n))_\tors, \QQ/\ZZ)$.
+    As $\ker H^1 (i^*_\infty) \cong \ker H^1 (u_\infty^*)$,
+    this is part 1) of the proposition.
 
     \vspace{1em}
 
-    Finally, for $i \ge 4$ we have
-    $\ker H^i (i^*_\infty) = \coker H^i (i^*_\infty) = 0$. Together with the
-    fact that $\coker H^3 (i^*_\infty) = 0$, this implies that
-    $H^i_\Wc (X, \ZZ(n)) = 0$ for $i \ge 4$.
+    We proceed with calculation of $H^i_\Wc (X, \ZZ(n))$ for $i \ge 2$. It is
+    more convenient to do that without passing through $H^i_\fg (X, \ZZ(n))$
+    explicitly. Consider the morphism of complexes
+    \[ \widehat{\alpha}_{X,n}\colon
+      \RHom (R\Gamma (X_\et, \ZZ^c(n)), \QQ[-2]) \to
+      R\widehat{\Gamma}_c (X_\et, \ZZ(n)), \]
+    defined in the same way as $\alpha_{X,n}$, only without taking the
+    projection
+    $R\widehat{\Gamma}_c (X_\et, \ZZ(n)) \to R\Gamma_c (X_\et, \ZZ(n))$:
+    \[ H^i (\widehat{\alpha}_{X,n})\colon \Hom (H^{2-i} (X_\et, \ZZ^c(n)), \QQ)
+      \xrightarrow{\QQ \twoheadrightarrow \QQ/\ZZ}
+      \Hom (H^{2-i} (X_\et, \ZZ^c(n)), \QQ/\ZZ)
+      \xleftarrow{\cong} \widehat{H}^i_c (X_\et, \ZZ(n)). \]
+    The relation between $\widehat{\alpha}_{X,n}$ and $\alpha_{X,n}$
+    is given by
+    \[ \begin{tikzcd}
+        \RHom (R\Gamma (X_\et, \ZZ^c(n)), \QQ[-2]) \ar{r}{\widehat{\alpha}_{X,n}}\ar{dr}[swap]{\alpha_{X,n}} & R\widehat{\Gamma}_c (X_\et, \ZZ(n)) \ar{d} \\
+        & R\Gamma_c (X_\et, \ZZ(n))
+      \end{tikzcd} \]
+    Here the vertical arrow comes from the definition of modified étale
+    cohomology with compact support, and it sits in an exact triangle
+    \[ R\widehat{\Gamma}_c (X_\et, \ZZ(n)) \to
+      R\Gamma_c (X_\et, \ZZ(n)) \xrightarrow{\widehat{u}^*_\infty}
+      R\widehat{\Gamma}_c (G_\RR, X(\CC), \ZZ(n)) \to
+      R\widehat{\Gamma}_c (X_\et, \ZZ(n)) [1] \]
+    ---see \cite[Lemma~6.14]{Flach-Morin-2018}.
+
+    From the definition of $\widehat{\alpha}_{X,n}$, we calculate
+    \begin{align*}
+      \ker H^i (\widehat{\alpha}_{X,n}) & = \Hom (H^{2-i} (X_\et, \ZZ^c(n)), \ZZ), \\
+      \coker H^i (\widehat{\alpha}_{X,n}) & \cong \widehat{H}^i_c (X_\et, \ZZ(n))_\codiv.
+    \end{align*}
+    We denote a cone of $\widehat{\alpha}_{X,n}$ by
+    $R\widehat{\Gamma}_\fg (X, \ZZ(n))$, and put
+    $\widehat{H}^i_\fg (X, \ZZ(n)) = H^i (R\widehat{\Gamma}_\fg (X, \ZZ(n)))$,
+    so that there is a long exact sequence
+    \begin{multline*}
+      \cdots \to \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ) \xrightarrow{H^i (\widehat{\alpha}_{X,n})} \\
+      \widehat{H}^i_c (X_\et, \ZZ(n)) \to
+      \widehat{H}^i_\fg (X, \ZZ(n)) \to
+      \Hom (H^{1-i} (X_\et, \ZZ^c (n)), \QQ) \to \cdots
+    \end{multline*}
+    The corresponding short exact sequences
+    \[ 0 \to \coker H^i (\widehat{\alpha}_{X,n}) \to
+      \widehat{H}^i_\fg (X, \ZZ(n)) \to
+      \ker H^{i+1} (\widehat{\alpha}_{X,n}) \to 0 \]
+    are split, since $\ker H^{i+1} (\widehat{\alpha}_{X,n})$ is a free
+    group. Therefore, we have
+    \begin{equation}
+      \label{eqn:hat-fg-cohomology-calculation}
+      \widehat{H}^i_\fg (X, \ZZ(n)) \cong
+      \Hom (H^{1-i} (X_\et, \ZZ^c(n)), \ZZ)
+      \oplus
+      \widehat{H}^i_c (X_\et, \ZZ(n))_\codiv.
+    \end{equation}
+
+    There is a commutative diagram with distinguished rows and columns
+    \[ \begin{tikzcd}
+        \RHom (R\Gamma (X_\et, \ZZ^c(n)), \QQ[-2]) \ar{r}{\widehat{\alpha}_{X,n}} \ar{d}{id} & R\widehat{\Gamma}_c (X_\et, \ZZ(n)) \ar{d} \ar{r} & R\widehat{\Gamma}_\fg (X, \ZZ(n)) \ar{r}\ar{d} & {[+1]} \ar{d}{id} \\
+        \RHom (R\Gamma (X_\et, \ZZ^c(n)), \QQ[-2]) \ar{r}{\alpha_{X,n}} \ar{d} & R\Gamma_c (X_\et, \ZZ(n)) \ar{r} \ar{d}{\widehat{u}^*_\infty} & R\Gamma_\fg (X, \ZZ(n)) \ar{r} \ar{d}{\widehat{i}^*_\infty} & {[+1]} \ar{d} \\
+        0 \ar{r}\ar{d} & R\widehat{\Gamma}_c (G_\RR, X(\CC), \ZZ(n)) \ar{r}{id} \ar{d} & R\widehat{\Gamma}_c (G_\RR, X(\CC), \ZZ(n)) \ar{r} \ar{d} & 0 \ar{d} \\
+        \RHom (R\Gamma (X_\et, \ZZ^c(n)), \QQ[-1]) \ar{r}{\widehat{\alpha}_{X,n} [1]} & R\widehat{\Gamma}_c (X_\et, \ZZ(n)) [1] \ar{r} & R\widehat{\Gamma}_\fg (X, \ZZ(n)) [1] \ar{r} & {[+2]}
+      \end{tikzcd} \]
+    Here $\widehat{u}^*_\infty$ (resp. $\widehat{i}^*_\infty$)
+    is defined as the composition of the canonical morphism $u^*_\infty$
+    (resp. $i^*_\infty$) with the projection to Tate cohomology
+    $\pi\colon R\Gamma_c (G_\RR, X(\CC), \ZZ(n)) \to
+    R\widehat{\Gamma}_c (G_\RR, X(\CC), \ZZ(n))$.
+
+    In our particular case of $\dim X = 1$, we know that $H^i (\pi)$
+    is an isomorphism for $i \ge 1$. Therefore, the five-lemma applied to
+    \[ \begin{tikzcd}
+        R\Gamma_\Wc (X, \ZZ(n)) \ar{r}\ar{d}{f} & R\Gamma_\fg (X, \ZZ(n)) \ar{r}{i^*_\infty}\ar{d}{id} & R\Gamma_c (G_\RR, X(\CC), \ZZ(n)) \ar{r}\ar{d}{\pi} & R\Gamma_\Wc (X, \ZZ(n)) [1]\ar{d}{f [1]} \\
+        R\widehat{\Gamma}_\fg (X, \ZZ(n)) \ar{r} & R\Gamma_\fg (X, \ZZ(n)) \ar{r}{\widehat{i}^*_\infty} & R\widehat{\Gamma}_c (G_\RR, X(\CC), \ZZ(n)) \ar{r} & R\widehat{\Gamma}_\fg (X, \ZZ(n)) [1]
+      \end{tikzcd} \]
+    shows that for $i \ge 2$ holds
+    \begin{align*}
+      H^i_\Wc (X, \ZZ(n)) & \cong \widehat{H}^i_\fg (X, \ZZ(n)) \\
+      \tag{by \eqref{eqn:hat-fg-cohomology-calculation}}
+                          & \cong \Hom (H^{1-i} (X_\et, \ZZ^c(n)), \ZZ)
+                            \oplus
+                            \widehat{H}^i_c (X_\et, \ZZ(n))_\codiv \\
+      \tag{by duality \eqref{eqn:arithmetic-duality}}
+                          & \cong \Hom (H^{1-i} (X_\et, \ZZ^c(n)), \ZZ)
+                            \oplus
+                            \Hom (H^{2-i} (X_\et, \ZZ^c (n))_\tors, \QQ/\ZZ).
+    \end{align*}
+    Our calculations of motivic cohomology show that $H^i_\Wc (X, \ZZ(n)) = 0$
+    for $i \ge 4$, and
+    \begin{align*}
+      H^2_\Wc (X, \ZZ(n)) & \cong \Hom (H^{-1} (X_\et, \ZZ^c(n)), \ZZ)
+                            \oplus
+                            \Hom (H^0 (X_\et, \ZZ^c (n)), \QQ/\ZZ), \\
+      H^3_\Wc (X, \ZZ(n)) & \cong \Hom (H^{-1} (X_\et, \ZZ^c (n))_\tors, \QQ/\ZZ). \qedhere
+    \end{align*}
   \end{proof}
 \end{proposition}
 
@@ -1091,15 +1050,10 @@ and vanish for $i \notin [0,2d+1]$. Here we calculate these for one-dimensional 
 \begin{remark}
   For a curve over a finite field $X/\FF_q$, all groups $H^i (X_\et, \ZZ^c(n))$
   are finite, and our calculation gives
-  \begin{align*}
-    H^1_\Wc (X, \ZZ(n)) & \cong \Hom (H^1 (X_\et, \ZZ^c(n)), \QQ/\ZZ), \\
-    H^2_\Wc (X, \ZZ(n)) & \cong \Hom (H^0 (X_\et, \ZZ^c(n)), \QQ/\ZZ), \\
-    H^3_\Wc (X, \ZZ(n)) & \cong \Hom (H^{-1} (X_\et, \ZZ^c(n)), \QQ/\ZZ).
-  \end{align*}
-  In general, for any variety over a finite field $X/\FF_q$, assuming finite
-  generation of motivic cohomology $H^i (X_\et, \ZZ^c(n))$, one has
-  $H^i_\Wc (X, \ZZ(n)) \cong \Hom (H^{2-i} (X_\et, \ZZ^c(n)), \QQ/\ZZ)$; see
-  \cite[Proposition~7.7]{Beshenov-Weil-etale-1}.
+  $H^i_\Wc (X, \ZZ(n)) \cong \Hom (H^{2-i} (X_\et, \ZZ^c(n)), \QQ/\ZZ)$.  This
+  holds for any variety over a finite field $X/\FF_q$, assuming finite
+  generation of motivic cohomology $H^i (X_\et, \ZZ^c(n))$;
+  see \cite[Proposition~7.7]{Beshenov-Weil-etale-1}.
 \end{remark}
 
 \begin{remark}
@@ -1133,6 +1087,12 @@ The right hand side is Borel--Moore cohomology, defined via
 In general, the regulator takes values in Deligne--Beilinson cohomology, but the
 target simplifies in case of $n < 0$, as explained in
 \cite[\S 2]{Beshenov-Weil-etale-2}.
+
+\begin{remark}
+  The only relevant group for the regulator is $H^{-1} (X_\et, \ZZ^c (n))$,
+  since cohomology in other degrees is finite
+  (see proposition~\ref{prop:structure-of-motivic-cohomology}).
+\end{remark}
 
 \begin{remark}
   If $X = \Spec \mathcal{O}_F$, then $\varrho_{X,n}$ is the usual Beilinson
@@ -1186,7 +1146,7 @@ target simplifies in case of $n < 0$, as explained in
   where the volume is taken with respect to the canonical integral structure.
 \end{definition}
 
-If $X (\CC) = \emptyset$, or $n$ is odd and $r_2 = 0$, then
+If $X(\CC) = \emptyset$, or $n$ is odd and $r_2 = 0$, then
 $H^0_\BM (G_\RR, X(\CC), \RR (n)) = 0$, and we set $R_{X,n} = 1$.
 
 \begin{lemma}
@@ -1279,45 +1239,48 @@ In our case, we are interested in the determinant of Weil-étale complex
 \end{multline*}
 Using calculations from proposition~\ref{prop:calculation-of-H-Wc}, we have
 \begin{align*}
-  \det_\ZZ H^1_\Wc (X, \ZZ(n)) & \cong \det_\ZZ H^0_c (G_\RR, X (\CC), \ZZ(n)) \otimes_\ZZ \det_\ZZ T_1, \\
-  \det_\ZZ H^2_\Wc (X, \ZZ(n)) & \cong \det_\ZZ \Hom (H^{-1} (X_\et, \ZZ^c(n)), \ZZ) \otimes_\ZZ \det_\ZZ T_2.
+  \det_\ZZ H^1_\Wc (X, \ZZ(n)) & \cong \det_\ZZ H^0_c (G_\RR, X(\CC), \ZZ(n)) \otimes_\ZZ \det_\ZZ T_1, \\
+  \det_\ZZ H^2_\Wc (X, \ZZ(n)) & \cong \det_\ZZ \Hom (H^{-1} (X_\et, \ZZ^c(n)), \ZZ) \otimes_\ZZ \det_\ZZ \Hom (H^0 (X_\et, \ZZ^c(n)), \QQ/\ZZ).
 \end{align*}
 Therefore, we have an isomorphism (up to sign $\pm 1$, after rearranging the
 terms)
 \begin{multline*}
   \det_\ZZ R\Gamma_\Wc (X, \ZZ(n)) \cong \\
   =
-  \det_\ZZ H^0_c (G_\RR, X (\CC), \ZZ(n))^{-1} \otimes_\ZZ
+  \det_\ZZ H^0_c (G_\RR, X(\CC), \ZZ(n))^{-1} \otimes_\ZZ
   \det_\ZZ \Hom (H^{-1} (X_\et, \ZZ^c(n)), \ZZ) \otimes_\ZZ \\
-  \det_\ZZ (T_1)^{-1} \det_\ZZ  \det_\ZZ (T_2) \otimes_\ZZ \det_\ZZ H^3_\Wc (X, \ZZ(n))^{-1}.
+  \det_\ZZ (T_1)^{-1} \det_\ZZ  \det_\ZZ \Hom (H^0 (X_\et, \ZZ^c(n)), \QQ/\ZZ) \otimes_\ZZ \det_\ZZ H^3_\Wc (X, \ZZ(n))^{-1}.
 \end{multline*}
-Recall that $T_1$, $T_2$, $H^3_\Wc (X, \ZZ(n))$ are finite groups, and
-$H^0_c (G_\RR, X (\CC), \ZZ(n))$, $\Hom (H^{-1} (X_\et, \ZZ^c(n)), \ZZ)$
-are free of rank $d_n$. Now we consider the canonical trivialization
+Recall that $T_1$, $\Hom (H^0 (X_\et, \ZZ^c(n)), \QQ/\ZZ)$,
+$H^3_\Wc (X, \ZZ(n))$ are finite groups, while the groups
+$H^0_c (G_\RR, X(\CC), \ZZ(n))$ and $\Hom (H^{-1} (X_\et, \ZZ^c(n)), \ZZ)$ are free
+of rank $d_n$. Now we consider the canonical trivialization
 \[ (\det_\ZZ R\Gamma_\Wc (X, \ZZ(n))) \otimes_\ZZ \RR \cong
   \bigotimes_{i\in \ZZ} \det_\RR (H^i_\Wc (X, \ZZ(n))\otimes_\ZZ \RR)
   \cong \RR \]
 via the regulator morphism
 \[ \begin{tikzcd}[column sep=3em]
-    H^0_c (G_\RR, X (\CC), \ZZ(n)) \otimes \RR\ar{d}{\cong} & \Hom (H^{-1} (X_\et, \ZZ^c (n)), \ZZ) \otimes \RR\ar{d}{\cong} \\
-    H^0_c (G_\RR, X (\CC), \RR (n)) \ar{r}{Reg^\vee_{X,n}}[swap]{\cong} & \Hom (H^{-1} (X_\et, \ZZ^c (n)), \RR)
+    H^0_c (G_\RR, X(\CC), \ZZ(n)) \otimes \RR\ar{d}{\cong} & \Hom (H^{-1} (X_\et, \ZZ^c (n)), \ZZ) \otimes \RR\ar{d}{\cong} \\
+    H^0_c (G_\RR, X(\CC), \RR (n)) \ar{r}{Reg^\vee_{X,n}}[swap]{\cong} & \Hom (H^{-1} (X_\et, \ZZ^c (n)), \RR)
   \end{tikzcd} \]
 
 \begin{proposition}
   Under the above trivialization, $\det_\ZZ R\Gamma_\Wc (X, \ZZ(n)) \subset \RR$
   corresponds to $\alpha^{-1}\,\ZZ \subset \RR$, where
-  \[ \alpha = \frac{|T_2|}{|T_1| \cdot |R\Gamma_\Wc (X, \ZZ(n))|}\,R_{X,n}
-    = 2^\delta\,\frac{|H^0 (X_\et, \ZZ^c (n))|}{|H^{-1} (X_\et, \ZZ^c(n))_\tors|\cdot |H^1 (X_\et, \ZZ^c(n))|}\,R_{X,n}, \]
+  \begin{align*}
+    \alpha & = \frac{|\Hom (H^0 (X_\et, \ZZ^c(n)), \QQ/\ZZ)|}{|T_1| \cdot |\Hom (H^{-1} (X_\et, \ZZ^c(n))_\tors, \QQ/\ZZ)|}\,R_{X,n} \\
+           & = 2^\delta\,\frac{|H^0 (X_\et, \ZZ^c (n))|}{|H^{-1} (X_\et, \ZZ^c(n))_\tors|\cdot |H^1 (X_\et, \ZZ^c(n))|}\,R_{X,n},
+  \end{align*}
   the number $\delta$ is given by \eqref{eqn:delta}, and $R_{X,n}$ is
   the regulator from definition~\ref{dfn:regulator}.
 
   \begin{proof}
-    For finite groups $T_1$, $T_2$, $H^3_\Wc (X, \ZZ(n))$, this is
+    For finite groups $T_1$, $\Hom (H^0 (X_\et, \ZZ^c(n)), \QQ/\ZZ)$,
+    $\Hom (H^{-1} (X_\et, \ZZ^c(n))_\tors, \QQ/\ZZ)$, this is
     \cite[Lemma~A.6]{Beshenov-Weil-etale-2}. On the other hand, for free groups
-    $H^0_c (G_\RR, X (\CC), \ZZ(n))$ and
-    $\Hom (H^{-1} (X_\et, \ZZ^c (n)), \ZZ)$, this is
-    proposition~\ref{prop:trivialization-of-free-part}
-    (the corresponding groups sit in degrees $1$ and $2$ in this case, so the
+    $H^0_c (G_\RR, X(\CC), \ZZ(n))$ and $\Hom (H^{-1} (X_\et, \ZZ^c (n)), \ZZ)$,
+    this is proposition~\ref{prop:trivialization-of-free-part} (the
+    corresponding groups sit in degrees $1$ and $2$ in this case, so the
     determinant gets inverted).
   \end{proof}
 \end{proposition}
@@ -1347,9 +1310,9 @@ The derivation of the special value formula from our Weil-étale machinery might
 look rather contrived. In this section we explain how to prove it directly,
 combining via localization the known special value formulas for
 $X = \Spec \mathcal{O}_F$ and curves over finite fields $X/\FF_q$. This will
-establish our result, but the two previous sections also serve their purpose:
-these show how we came up with the formula \eqref{eqn:special-value-formula}
-in the first place.
+establish our result, but sections \S\ref{sec:Weil-etale-cohomology-of-X} and
+\S\ref{sec:special-value-formula} also serve their purpose: these show how we
+came up with the formula \eqref{eqn:special-value-formula} in the first place.
 
 \begin{lemma}
   \label{lemma:elementary-proof-1}
