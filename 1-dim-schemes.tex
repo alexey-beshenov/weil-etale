@@ -304,6 +304,9 @@ denote their number by $2 r_2$.
     \draw[->] (m-3-7) edge[bend left] (m-1-7);
     \draw[->] (m-3-9) edge[bend left] (m-1-9);
 
+    \draw [decorate,decoration={brace,amplitude=5pt,mirror}] ($(m-3-1)+(-0.5em,-0.5em)$) -- ($(m-3-4)+(0.5em,-0.5em)$);
+    \draw [decorate,decoration={brace,amplitude=5pt,mirror}] ($(m-3-6)+(-0.5em,-0.5em)$) -- ($(m-3-9)+(0.5em,-0.5em)$);
+
     \draw ($(m-3-1)!.5!(m-3-4)$) node[yshift=-2em,anchor=base] {$r_1$ points};
     \draw ($(m-3-6)!.5!(m-3-9)$) node[yshift=-2em,anchor=base] {$2 r_2$ points};
   \end{tikzpicture} \]
@@ -1061,7 +1064,7 @@ $A^D \dfn \Hom (A, \QQ/\ZZ)$ and $A^* \dfn \Hom (A, \ZZ)$.
     H^i_\Wc (\Spec \mathcal{O}_F, \ZZ(n)) \cong
     \begin{cases}
       \ZZ^{\oplus d_n}, & i = 1, \\
-      H^{-1} (X_\et, \ZZ^c (n))^* \oplus H^0 (X_\et, \ZZ^c (n)^D, & i = 2, \\
+      H^{-1} (X_\et, \ZZ^c (n))^* \oplus H^0 (X_\et, \ZZ^c (n))^D, & i = 2, \\
       (H^{-1} (X_\et, \ZZ^c (n))_\tors)^D, & i = 3, \\
       0, & i \ne 1,2,3.
     \end{cases}
