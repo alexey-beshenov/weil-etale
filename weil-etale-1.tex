@@ -348,16 +348,18 @@ be treated in the second part of this article.
 
 This text is based on the results of my PhD thesis, prepared in Université de
 Bordeaux and Universiteit Leiden under supervision of Baptiste Morin and Bas
-Edixhoven. I am deeply grateful for their support during working on this
-project. I am also indebted to Matthias Flach, since the ideas of this work come
-from \cite{Flach-Morin-2018}. I thank Stephen Lichtenbaum and Niranjan
-Ramachandran who kindly accepted to be the referees for my thesis and provided
-many useful comments and suggestions. Finally, I thank Maxim Mornev for various
-fruitful conversations.
-
-This paper was edited while I was visiting Center for Research in Mathematics
-(CIMAT), Guanajuato. I am grateful personally to Pedro Luis del Ángel and Xavier
-Gómez Mont for their hospitality.
+Edixhoven, and I am deeply grateful for their support during working on this
+project. I thank Stephen Lichtenbaum and Niranjan Ramachandran who kindly
+accepted to be the referees for my thesis and provided many useful comments and
+suggestions. I am also indebted to Matthias Flach, since the ideas of this work
+come from \cite{Flach-Morin-2018}. Moreover, the work of Thomas Geisser on
+arithmetic duality \cite{Geisser-2010} is also crucial for this paper, and his
+work on Weil-étale cohomology for varieties over finite fields
+\cite{Geisser-2004,Geisser-2006,Geisser-2010-arithmetic-homology} has been of
+great influence for me. Finally, I thank Maxim Mornev for various fruitful
+conversations. This paper was edited while I was visiting Center for Research
+in Mathematics (CIMAT), Guanajuato, Mexico. I am grateful personally to Pedro Luis del
+Ángel and Xavier Gómez Mont for their hospitality.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1065,6 +1067,8 @@ Similarly for $\QQ/\ZZ$-coefficients, we have the following observation.
     R\Gamma_c (X_\et, \ZZ (n)) \to
     R\Gamma_\fg (X, \ZZ(n)) \to
     \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-1]) \]
+  Further, we denote
+  $$H^i_\fg (X, \ZZ (n)) \dfn H^i (R\Gamma_\fg (X, \ZZ (n))).$$
 \end{definition}
 
 \begin{remark}
@@ -1096,7 +1100,7 @@ it simplifies if $X$ has no real places.
   \label{prop:RGamma-fg-for-X(R)-empty}
   If $X (\RR) = \emptyset$, then
   \[ R\Gamma_\fg (X, \ZZ (n)) \cong
-  \RHom (R\Gamma (X_\et, \ZZ^c (n)), \ZZ [-1]). \]
+    \RHom (R\Gamma (X_\et, \ZZ^c (n)), \ZZ [-1]). \]
 
   \begin{proof}
     In this case
@@ -1120,9 +1124,8 @@ it simplifies if $X$ has no real places.
   Assuming the conjecture $\mathbf{L}^c (X_\et, n)$,
   the complex $R\Gamma_\fg (X, \ZZ (n))$ is almost perfect in the
   sense of \ref{dfn:almost-of-(co)finite-type}, i.e. its cohomology groups
-  $H^i_\fg (X, \ZZ (n)) \dfn H^i (R\Gamma_\fg (X, \ZZ (n)))$
-  are finitely generated, trivial for $i \ll 0$, and only have $2$-torsion for
-  $i \gg 0$.
+  $H^i_\fg (X, \ZZ (n))$ are finitely generated, trivial for $i \ll 0$, and only
+  have $2$-torsion for $i \gg 0$.
 
   \begin{proof}
     By the definition of $R\Gamma_\fg (X, \ZZ (n))$, we have a long exact
@@ -1271,12 +1274,12 @@ $\QQ/\ZZ (n) \dfn \frac{(2\pi i)^n\,\QQ}{(2\pi i)^n\,\ZZ}$ on $X (\CC)$.
 
 \begin{proposition}
   \label{propn:image-of-Q/Zn-under-alpha}
-  Consider the comparison morphism
-  $\alpha^*\colon \mathbf{Sh} (X_\et) \to \mathbf{Sh} (G_\RR, X (\CC))$,
-  as described in
-  Appendix~\ref{app:modified-cohomology-with-compact-support}. For the sheaf
-  $\QQ/\ZZ (n)$ on $X_\et$ (see Definition~\ref{dfn:sheaf-Z(n)}) we have an
-  isomorphism of $G_\RR$-equivariant constant sheaves on $X (\CC)$
+  % Consider the comparison morphism
+  % $\alpha^*\colon \mathbf{Sh} (X_\et) \to \mathbf{Sh} (G_\RR, X (\CC))$,
+  % as described in
+  % Appendix~\ref{app:modified-cohomology-with-compact-support}.
+  For the sheaf $\QQ/\ZZ (n)$ on $X_\et$ we have an isomorphism of
+  $G_\RR$-equivariant constant sheaves on $X (\CC)$
   $$\alpha^* \QQ/\ZZ (n) \cong \QQ/\ZZ (n).$$
 
   \begin{proof}
