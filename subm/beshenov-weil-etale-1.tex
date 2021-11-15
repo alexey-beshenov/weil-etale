@@ -5,6 +5,10 @@
 \setlength{\evensidemargin}{0cm}
 \setlength{\topmargin}{0cm}
 
+
+\usepackage{hyperref}
+
+
 \usepackage{amsmath,amssymb}
 \usepackage{amsthm}
 
@@ -41,11 +45,11 @@
 %%%%% Proof %%%%%
 \renewcommand{\proofname}{\indent\sc Proof.}
 
-\pagestyle{myheadings}
-\markright{Weil-\'{e}tale cohomology for $n < 0$. Part I: Construction}
+\pagestyle{myheadings} \markright{Weil-\'{e}tale cohomology and duality for
+  arithmetic schemes in negative weights}
 
-\title{\uppercase{Weil-\'{e}tale cohomology for arbitrary arithmetic schemes and $n < 0$.
-  Part I: Construction of Weil-\'{e}tale complexes}}
+\title{\uppercase{Weil-\'{e}tale cohomology and duality for arithmetic schemes
+    in negative weights}}
 
 \author{\textsc{Alexey Beshenov}}
 \date{}
@@ -62,6 +66,7 @@
 \DeclareMathOperator{\Ext}{Ext}
 \DeclareMathOperator{\Tot}{Tot}
 \DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\rk}{rk}
 
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\FF}{\mathbb{F}}
@@ -72,6 +77,8 @@
 
 \renewcommand{\AA}{\mathbb{A}}
 \renewcommand{\div}{\text{\it div}}
+\newcommand{\tor}{\text{\it tor}}
+\newcommand{\cotor}{\text{\it cotor}}
 
 \newcommand{\dfn}{\mathrel{\mathop:}=}
 \newcommand{\rdfn}{=\mathrel{\mathop:}}
@@ -83,6 +90,8 @@
 
 \newcommand{\iHom}{\underline{\Hom}}
 \newcommand{\RHom}{R\!\Hom}
+
+\newcommand{\DZ}{{\mathbf{D} (\ZZ)}}
 
 \usepackage{tikz-cd}
 \usetikzlibrary{arrows}
@@ -106,65 +115,76 @@
 Primary 14F20; Secondary 14F42.}
 \footnote{ %key words and phrases
   \textit{Key words and phrases}.
-  Motivic cohomology, étale cohomology, Weil-\'{e}tale cohomology.}
+  Motivic cohomology, \'{e}tale cohomology, Weil-\'{e}tale cohomology.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{abstract}
   Flach and Morin constructed in \cite{Flach-Morin-2018} Weil-\'{e}tale
-  cohomology $H^i_\Wc (X, \ZZ(n))$ for a proper, regular arithmetic
-  scheme $X$ (that is, separated and of finite type over $\Spec \ZZ$) and
-  $n \in \ZZ$. In the case when $n < 0$, we generalize their construction to an
-  arbitrary arithmetic scheme $X$, thus removing the proper and regular
-  assumption. The construction assumes finite generation of suitable \'{e}tale
-  motivic cohomology groups.
-
-  This is the first part in a series of two papers. In the present text we
-  consider the definition and basic properties of Weil-\'{e}tale cohomology.
-  The second part will deal with the relation of $H^i_\Wc (X, \ZZ(n))$ to the
-  special value of zeta function $\zeta (X,s)$ at $s = n < 0$.
+  cohomology $H^i_\Wc (X, \ZZ(n))$ for a proper, regular arithmetic scheme $X$
+  (that is, separated and of finite type over $\Spec \ZZ$) and $n \in \ZZ$.
+  In the case when $n < 0$, we generalize their construction to an arbitrary
+  arithmetic scheme $X$, thus removing the proper and regular assumption.
+  The construction assumes finite generation of suitable \'{e}tale motivic
+  cohomology groups.
 \end{abstract}
 
 \section{Introduction}
+\label{sec:introduction}
 
-To a scheme $X$ of finite type over $\Spec \ZZ$ one can attach its
-\textbf{zeta function}
-$$\zeta (X,s) = \prod_{\substack{x \in X \\ \text{closed pt.}}} \frac{1}{1 - \#\kappa (x)^{-s}}$$
-(see e.g. \cite{Serre-1965}). Lichtenbaum envisioned a cohomology theory, known
-as \textbf{Weil-\'{e}tale cohomology}, that captures information about the special
-value of $\zeta (X,s)$ at $s = n$, namely the vanishing order and corresponding
-residue
-\cite{Lichtenbaum-2005,Lichtenbaum-2009-number-rings,Lichtenbaum-2009-Euler-char}.
-For varieties over finite fields $X/\FF_q$, it was further studied by Geisser
-\cite{Geisser-2004,Geisser-2006,Geisser-2010-arithmetic-homology}.
-Morin gave in \cite{Morin-2014} a construction for $X \to \Spec\ZZ$ separated,
-of finite type, proper, regular, and $n = 0$. This construction was further
-generalized by Flach and Morin in \cite{Flach-Morin-2018} to any $n \in \ZZ$,
-under the same assumptions on $X$.
+Stephen Lichtenbaum envisioned in a series of papers
+\cite{Lichtenbaum-2005,Lichtenbaum-2009-Euler-char,Lichtenbaum-2009-number-rings}
+a new cohomology theory for schemes, known as
+\textbf{Weil-\'{e}tale cohomology}. The case of varieties over finite fields
+$X/\FF_q$ was further studied by Geisser
+\cite{Geisser-2004,Geisser-2006,Geisser-2010-arithmetic-homology}. Morin defined
+in \cite{Morin-2014} the Weil-\'{e}tale cohomology with compact support
+$H^i_\Wc (X, \ZZ)$ for $X \to \Spec\ZZ$ separated, of finite type, proper, and
+regular. This construction was further generalized by Flach and Morin in
+\cite{Flach-Morin-2018} to groups $H^i_\Wc (X, \ZZ(n))$ with arbitrary weights
+$n \in \ZZ$, under the same assumptions on $X$.
 
-The goal of this work is to remove the assumption that $X$ is proper and
-regular, and following the ideas from \cite{Flach-Morin-2018}, construct
-Weil-\'{e}tale cohomology for any $X$ separated and of finite type over $\Spec\ZZ$
-for the case of $n < 0$.
+The goal of this paper is to remove the assumption that $X$ is proper and
+regular, and following the ideas from \cite{Flach-Morin-2018}, construct the
+groups $H^i_\Wc (X, \ZZ(n))$ for any $X$ separated and of finite type over
+$\Spec\ZZ$ for the case of strictly negative weights $n < 0$.
 
 As Flach and Morin already suggest in \cite[Remark 3.11]{Flach-Morin-2018},
 we rework all their constructions in terms of cycle complexes $\ZZ^c (n)$,
 considered by Geisser in \cite{Geisser-2010} in the context of arithmetic
 duality theorems.
 
-For the reader's convenience, this work is split into two parts. The present
-Part~I is devoted to the construction of Weil-\'{e}tale complexes
-$R\Gamma_\Wc (X, \ZZ (n))$. Their relation to the special value of $\zeta (X,s)$
-at $s = n$ will be treated in the forthcoming Part~II.
+In a forthcoming paper we apply the results of this text to relate the
+cohomology groups $H_\Wc^i (X, \ZZ(n))$ to the special value of the zeta
+function $\zeta (X, s)$ at $s = n < 0$.
 
 \subsection*{Notation and conventions}
 
+\paragraph{Arithmetic schemes.}
+For this paper, an \textbf{arithmetic scheme} is a scheme $X$ that is separated
+and of finite type over $\Spec \ZZ$.
+
+\paragraph{Abelian groups.}
+Let $A$ be an abelian group. For $m \ge 1$, we denote by ${}_m A$ its
+$m$-torsion subgroup, and by $A_m$ the quotient $A/mA$:
+$$0 \to {}_m A \to A \xrightarrow{\times m} A \to A_m \to 0$$
+We will denote by
+$A_\div$ (resp. $A_\tor$) the maximal divisible subgroup (resp. maximal torsion
+subgroup), and by $A_\cotor$ the quotient $A/A_\tor$.
+
+% For brevity, we will write $\Hom (A,B)$ for $\Hom_\ZZ (A,B)$, $\Ext (A,B)$ for
+% $\Ext_\ZZ^1 (A,B)$, $A\otimes B$ for $A\otimes_\ZZ B$, and so on.
+
+We will say that $A$ is of \textbf{cofinite type} if it is $\QQ/\ZZ$-dual to a
+finitely generated abelian group: $A = \Hom (B,\QQ/\ZZ)$ for a finitely
+generated $B$.
+
 \paragraph{Complexes.}
 All our constructions will take place in the derived category of abelian groups
-$\mathbf{D} (\ZZ)$. For our needs, we introduce the following terminology.
-First recall that a complex of abelian groups $A^\bullet$ is \textbf{perfect} if
-it is bounded (i.e. $H^i (A^\bullet) = 0$ for $|i| \gg 0$), and $H^i (A^\bullet)$
-are finitely generated abelian groups.
+$\DZ$. For our needs, we introduce the following terminology.  First recall that
+a complex of abelian groups $A^\bullet$ is \textbf{perfect} if it is bounded
+(i.e. $H^i (A^\bullet) = 0$ for $|i| \gg 0$), and $H^i (A^\bullet)$ are finitely
+generated abelian groups.
 
 \begin{definition}
   \label{dfn:almost-of-(co)finite-type}
@@ -173,9 +193,6 @@ are finitely generated abelian groups.
   bounded, except for possible finite $2$-torsion in arbitrarily high degree.
   That is, $H^i (A^\bullet) = 0$ for $i \ll 0$ and $H^i (A^\bullet)$ is finite
   $2$-torsion for $i \gg 0$.
-
-  An abelian group $A$ is of \textbf{cofinite type} if it is $\QQ/\ZZ$-dual to
-  a finitely generated abelian group.
 
   A complex of abelian groups $A^\bullet$ is of \textbf{cofinite type} if the
   cohomology groups $H^i (A^\bullet)$ are of cofinite type and bounded.
@@ -189,12 +206,13 @@ are finitely generated abelian groups.
 This terminology is ad hoc and was invented for this text, as such complexes
 will appear frequently. Some basic observations about almost perfect and almost
 cofinite type complexes are collected in
-appendix~\ref{app:homological-algebra}. We note that this finite $2$-torsion
-in arbitrarily high degrees could be removed by working with Artin--Verdier
-topology $\overline{X}_\et$ instead of the usual \'{e}tale topology $X_\et$;
-see \cite[Appendix~A]{Flach-Morin-2018} for more details. We will not use
-Artin--Verdier topology to simplify the exposition, at the cost of some
-technical hurdles with $2$-torsion.
+Appendix~\ref{app:homological-algebra}. We note that this finite $2$-torsion in
+arbitrarily high degrees could be removed by working with the Artin--Verdier
+topology $\overline{X}_\et$ instead of the usual \'{e}tale topology $X_\et$.
+The general construction and basic properties of $\overline{X}_\et$ are treated
+in \cite[Appendix~A]{Flach-Morin-2018}, but only for a \emph{proper and regular}
+arithmetic scheme $X$. Our methods circumvent this restriction at the cost of
+some technical hurdles with $2$-torsion.
 
 \paragraph{\'{E}tale cohomology.}
 For an arithmetic scheme $X$ and a complex of \'{e}tale sheaves
@@ -203,82 +221,112 @@ $\mathcal{F}^\bullet$, we denote by
 \text{(resp. }R\Gamma_c (X_\et, \mathcal{F}^\bullet), ~
 R\widehat{\Gamma}_c (X_\et, \mathcal{F}^\bullet)\text{)} \]
 the complex that calculates the corresponding cohomology, resp. cohomology with
-compact support, and modified cohomology with compact support. For convenience
-of the reader, the definitions are reviewed in
-appendix~\ref{app:modified-cohomology-with-compact-support}. The purpose of
+compact support, and modified cohomology with compact support.
+For the convenience of the reader, the definitions are reviewed in
+Appendix~\ref{app:modified-cohomology-with-compact-support}. The purpose of
 $R\widehat{\Gamma}_c (X_\et, \mathcal{F}^\bullet)$ is to take care of real
 places of $X$. There is a canonical projection
-$R\widehat{\Gamma}_c (X_\et, \mathcal{F}^\bullet) \to R\Gamma_c (X_\et, \mathcal{F}^\bullet)$,
-which is an isomorphism whenever $X (\RR) = \emptyset$.
+$R\widehat{\Gamma}_c (X_\et, \mathcal{F}^\bullet) \to R\Gamma_c (X_\et,
+\mathcal{F}^\bullet)$, which is an isomorphism whenever $X (\RR) = \emptyset$.
 
-\paragraph{Equivariant cohomology.}
-We denote by $X (\CC)$ the set of complex points of $X$ equipped with the
-analytic topology. It carries the natural action of the Galois group
-$G_\RR \dfn \Gal (\CC/\RR)$. For a subring $A \subseteq \RR$ we denote by
-$A (n)$ the constant $G_\RR$-equivariant sheaf $(2\pi i)^n \, A$ on
-$X (\CC)$. In what follows, we will be interested in $A = \ZZ$, $\QQ$, $\RR$.
-For $A = \QQ/\ZZ$ we also consider $\QQ/\ZZ (n) = \QQ (n)/\ZZ (n)$.
+\paragraph{$G$-Equivariant sheaves and their cohomology.}
+Let $\mathcal{X}$ be a topological space. A $G$-equivariant sheaf $\mathcal{F}$
+on $\mathcal{X}$ can be defined as an espace \'{e}tal\'{e}
+$\pi\colon E\to \mathcal{X}$ with a $G$-action on $E$ such that the projection
+$\pi$ is $G$-equivariant
+(see e.g. \cite[\S II.6 + pp.\,594]{MacLane-Moerdijk}). We will denote by
+$\mathbf{Sh} (G, \mathcal{X})$ the corresponding category.
 
-In general, a $G$-equivariant sheaf $\mathcal{F}$ on $X (\CC)$ can be defined as
-an espace \'{e}tal\'{e} $\pi\colon E\to X (\CC)$ with a $G$-action on $E$ such that the
-projection $\pi$ is $G$-equivariant. The equivariant global sections are defined
-by $\Gamma (G,X,\mathcal{F}) = \mathcal{F} (X)^G$, with $G$ acting on
-$\mathcal{F} (X) = \{ s\colon X\to E \mid \pi\circ s = id_X \}$ via
+The equivariant global sections are defined by
+$\Gamma (G,\mathcal{X},\mathcal{F}) = \mathcal{F} (\mathcal{X})^G$, with $G$ acting on
+$\mathcal{F} (\mathcal{X}) = \{ s\colon \mathcal{X}\to E \mid \pi\circ s = id_\mathcal{X} \}$ via
 $(g\cdot s) (x) = g\cdot s (g^{-1}\cdot x)$. Then by definition, the equivariant
-cohomology is given by the right derived functors of $\Gamma (G,X,-)$. More
-details on $G$-equivariant sheaves can be found in
-\cite[Chapitre~2]{Morin-these}. For our modest purposes, it is enough to know
-that any $G$-module $A$ gives rise to the corresponding abelian $G$-equivariant
-constant sheaf. The latter corresponds to the espace \'{e}tal\'{e}
-$X (\CC)\times A \to X (\CC)$, with $A$ equipped with the discrete topology.
+cohomology is given by the right derived functors of $\Gamma (G,\mathcal{X},-)$.
+More details on $G$-equivariant sheaves can be found in
+\cite[Chapitre~2]{Morin-these}.
 
-There is also a complex of sheaves $\ZZ (n)$ on $X_\et$, defined below in
-\ref{dfn:sheaf-Z(n)}. It is not the same as the sheaf
-$\ZZ (n) = (2\pi i)^n\,\ZZ$ on $X (\CC)$, but there is no possible confusion,
-since these two live in very different topologies. The notation is deliberate,
-as we will actually see that the comparison between the \'{e}tale topology on $X$
-and analytic topology on $X (\CC)$ relates them
-(see proposition~\ref{propn:image-of-Q/Zn-under-alpha}).
+For our modest purposes, it will be enough to know that any $G$-module $A$ gives
+rise to the corresponding abelian $G$-equivariant constant sheaf. The latter
+corresponds to the espace \'{e}tal\'{e} $\mathcal{X}\times A \to \mathcal{X}$,
+with $A$ equipped with the discrete topology.
+
+\paragraph{$G_\RR$-equivariant cohomology of $X (\CC)$.}
+Given an arithmetic scheme $X$, we denote by $X (\CC)$ the set of complex points
+of $X$ equipped with the analytic topology. It carries the natural action of the
+Galois group $G_\RR \dfn \Gal (\CC/\RR)$.
+
+We consider the $G_\RR$-modules
+\[ \ZZ (n) \dfn (2\pi i)^n\,\ZZ, \quad
+  \QQ (n) \dfn (2\pi i)^n\,\QQ, \quad
+  \QQ/\ZZ (n) \dfn \QQ (n) / \ZZ (n) \]
+as constant $G_\RR$-equivariant sheaves on $X (\CC)$.
+
+Then $R\Gamma_c (X (\CC), A (n))$ for $A = \ZZ, \QQ, \QQ/\ZZ$ (the complex that
+calculates singular cohomology with compact support of $X (\CC)$ with
+coefficients in $A (n)$) is a complex of $G_\RR$-modules, and we may further
+take group cohomology (resp. Tate cohomology), which leads to the complexes
+\begin{align*}
+  R\Gamma_c (G_\RR, X (\CC), A (n)) & \dfn R\Gamma (G_\RR, R\Gamma_c (X (\CC), A (n))),\\
+  R\widehat{\Gamma}_c (G_\RR, X (\CC), A (n)) & \dfn R\widehat{\Gamma} (G_\RR, R\Gamma_c (X (\CC), A (n))).
+\end{align*}
+By definition, this is the $G_\RR$-equivariant cohomology (resp. Tate
+cohomology) with compact support of $X (\CC)$ with coefficients in $A (n)$.
 
 \subsection*{Assumptions}
 
-For the purposes of this article, we will call an \textbf{arithmetic scheme} an
-arbitrary scheme $X$ that is separated and of finite type over $\Spec \ZZ$.
-By $n$ we will always denote a strictly negative integer.
+\paragraph{Weights.}
+Throughout this paper, $n < 0$ will always denote a strictly negative integer,
+which will be the weight in cohomology groups $H^i_\Wc (X, \ZZ(n))$.
 
-Our construction rests on motivic cohomology, defined in terms of complexes
-of \'{e}tale sheaves $\ZZ^c (n)$. These come from Bloch's cycle complexes
-\cite{Bloch-1986}, and the reader may also consult Geisser's survey
-\cite{Geisser-2005} and \cite{Geisser-2004-Dedekind} for definitions over
-$\Spec \ZZ$. Namely, for $i \ge 0$ we consider the algebraic simplex
-$\Delta^i = \Spec \ZZ[t_0,\ldots,t_i]/(\sum_i t_i - 1)$, and let $z_n (X,i)$ be
-the free abelian group generated by closed integral subschemes
-$Z \subset X \times \Delta^i$ of dimension $n + i$ which intersect the faces
-properly. Then $z_n (X, \bullet)$ is a (homological) complex of abelian groups,
-with differentials given by the alternating sum of intersections with faces.
-By definition, $\ZZ^c (n)$ is the (cohomological) complex of \'{e}tale sheaves
-$z_n (\text{\textvisiblespace}, -\bullet) [2n]$. For additional details about
-$\ZZ^c (n)$, we refer to \cite[\S 2]{Geisser-2010}. To avoid any confusion,
-we will use cohomological numbering for all complexes in this paper, and in
-particular, we set $H^i (X_\et, \ZZ^c(n)) \dfn H^i (R\Gamma (X_\et, \ZZ^c(n))$.
+\paragraph{Motivic cohomology $H^i (X_\et, \ZZ^c (n))$.}
+Our construction rests on motivic cohomology, defined in terms of complexes of
+sheaves $\ZZ^c (n)$ on $X_\et$. We follow the notation of \cite{Geisser-2010}.
 
-\vspace{1em}
+Briefly, for $i \ge 0$ we consider the algebraic simplex
+$$\Delta^i = \Spec \ZZ[t_0,\ldots,t_i]/(\sum_i t_i - 1).$$
+We fix a negative weight $n < 0$. Let $z_n (X,i)$ be the free abelian group
+generated by closed integral subschemes $Z \subset X \times \Delta^i$ of
+dimension $n + i$ that intersect the faces properly. Then $z_n (X, \bullet)$ is
+a (homological) complex of abelian groups, with differentials given by the
+alternating sum of intersections with faces. By definition, $\ZZ^c (n)$ is the
+(cohomological) complex of \'{e}tale sheaves
+$z_n (\text{\textvisiblespace}, -\bullet) [2n]$.
 
-Now given $X$ and $n$ as above, we state the following conjecture.
+In general, boundedness from below of the complex $\ZZ^c(n)$ is not known; it is
+a variation of the Beilinson--Soul\'{e} vanishing conjecture. In order to
+unconditionally work with derived functors, we will use $K$-injective
+resolutions \cite{Spaltenstein-1988,Serpe-2003} (respectively $K$-flat
+resolutions for the derived tensor products).
+
+To avoid any confusion, we will use cohomological numbering for all complexes in
+this paper, and in particular, we set
+$$H^i (X_\et, \ZZ^c(n)) \dfn H^i (R\Gamma (X_\et, \ZZ^c(n)).$$
+
+If $X$ is \emph{proper, regular, of pure dimension $d$}, then for $n \le 0$
+there is an isomorphism
+\begin{equation}
+  \label{eqn:Zc(n)-vs-Z(d-n)}
+  H^i (X_\et, \ZZ^c(n)) \cong H^{2d+i} (X_\et, \ZZ (d-n)),
+\end{equation}
+where the right hand side is the ``usual'' motivic cohomology, which is defined
+for positive weights; see the original Bloch's paper \cite{Bloch-1986} for the
+case of varieties, and also \cite{Geisser-2004-Dedekind,Geisser-2005} for the
+definitions and properties over $\Spec \ZZ$.
+
+\paragraph{Finite generation conjecture.}
+Our construction of the Weil-\'{e}tale cohomology groups $H^i_\Wc (X,\ZZ(n))$
+will use the following assumption.
 
 \begin{conjecture}
-  $\mathbf{L}^c (X_\et,n)$: the cohomology groups $H^i (X_\et, \ZZ^c (n))$ are
-  finitely generated for all $i \in \ZZ$.
+  $\mathbf{L}^c (X_\et,n)$: for an arithmetic scheme $X$ and $n < 0$,
+  the cohomology groups $H^i (X_\et, \ZZ^c (n))$ are finitely generated for all
+  $i \in \ZZ$.
 \end{conjecture}
 
-The conjecture $\mathbf{L}^c (X_\et,n)$ appears in
-\cite[Definition~5.8]{Morin-2014}, and it is analogous to the conjecture
-$\mathbf{L} (X_\et,d-n)$ in \cite[\S 3.2]{Flach-Morin-2018}. See proposition
-\ref{prop:Lc-Xet-n-vs-L-Xet-d-n} for the precise relation of
+See Proposition~\ref{prop:Lc-Xet-n-vs-L-Xet-d-n} for the precise relation of
 $\mathbf{L}^c (X_\et,n)$ to other conjectures that appear in the literature.
-Our construction of Weil-\'{e}tale complexes $R\Gamma_\Wc (X,\ZZ(n))$ will assume
-$\mathbf{L}^c (X_\et,n)$. We refer to \S\ref{sec:known-cases-of-Lc-Xet-n} for
-the particular cases when the conjecture is known.
+We refer to \S\ref{sec:known-cases-of-Lc-Xet-n} for the particular cases when
+the conjecture is known.
 
 \subsection*{Main results}
 
@@ -320,13 +368,13 @@ complexes.
 \begin{definition}
   \label{dfn:u-infty}
   We define
-  $v_\infty^*\colon R\Gamma_c (X_\et, \QQ/\ZZ (n)) \to R\Gamma_c (G_\RR, X (\CC), \QQ/\ZZ (n))$
-  as the morphism in the derived category $\mathbf{D} (\ZZ)$ induced by the
-  comparison of \'{e}tale and analytic topology
+  $v_\infty^*\colon R\Gamma_c (X_\et, \QQ/\ZZ (n)) \to R\Gamma_c (G_\RR, X
+  (\CC), \QQ/\ZZ (n))$ as the morphism in the derived category $\DZ$ induced by
+  the comparison of \'{e}tale and analytic topology
   \[ \Gamma_c (X_\et, \QQ/\ZZ (n)) \to
   \Gamma_c (G_\RR, X (\CC), \alpha^* \QQ/\ZZ (n)) \cong
   \Gamma_c (G_\RR, X (\CC), \QQ/\ZZ (n)) \]
-  (see proposition~\ref{prop:inverse-image-gamma} and
+  (see Proposition~\ref{prop:inverse-image-gamma} and
   \ref{propn:image-of-Q/Zn-under-alpha}). Then we let
   $u_\infty^*\colon R\Gamma_c (X_\et, \ZZ(n)) \to R\Gamma_c (G_\RR, X (\CC), \ZZ (n))$
   be the composition
@@ -344,28 +392,27 @@ Then \S\ref{sec:theorem-II} is devoted to the following result.
 
 \begin{maintheorem}
   \label{theorem-II}
-  The morphism $u_\infty^*$ is torsion, i.e. it is a torsion element in the
-  abelian group
-  $$\Hom_{\mathbf{D} (\ZZ)} (R\Gamma_c (X_\et, \ZZ(n)), R\Gamma_c (G_\RR, X (\CC), \ZZ(n))).$$
+  The morphism $u_\infty^*$ is torsion, i.e. there exists a non-zero integer $m$
+  such that $mu^*_\infty = 0$
 \end{maintheorem}
 
 \subsection*{Outline of the construction of Weil-\'{e}tale cohomology}
 
-Here we outline the structure of this paper, as well as our construction of
+Here we outline the structure of this paper, as well as our construction of the
 Weil-\'{e}tale complexes $R\Gamma_\Wc (X, \ZZ (n))$.
 
 First, \S\ref{sec:arithmetic-duality-theorem} is devoted to a proof of
-theorem~\ref{theorem-I}. Some of its consequences are deduced in
+Theorem~\ref{theorem-I}. Some of its consequences are deduced in
 \S\ref{sec:consequences-of-theorem-I}. Namely, if we assume the conjecture
 $\mathbf{L}^c (X_\et, n)$, then $R\Gamma (X_\et, \ZZ^c (n))$ is an almost
 perfect complex, while $R\Gamma_c (X_\et, \ZZ (n))$ is almost of cofinite type
-in the sense of definition~\ref{dfn:almost-of-(co)finite-type}. For this we
+in the sense of Definition~\ref{dfn:almost-of-(co)finite-type}. For this we
 first make a little digression in \S\ref{sec:GR-equivariant-cohomology} to
 analyze what kind of complexes we obtain for $G_\RR$-equivariant cohomology on
 $X (\CC)$.
 
 Theorem~\ref{theorem-I} is used in \S\ref{sec:RGamma-fg} to define a morphism
-$\alpha_{X,n}$ in the derived category (see definition~\ref{def:RGamma-fg}),
+$\alpha_{X,n}$ in the derived category (see Definition~\ref{def:RGamma-fg}),
 and declare $R\Gamma_\fg (X, \ZZ(n))$ to be its cone:
 \begin{multline*}
   \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]) \xrightarrow{\alpha_{X,n}}
@@ -375,43 +422,45 @@ and declare $R\Gamma_\fg (X, \ZZ(n))$ to be its cone:
 \end{multline*}
 The notation \emph{fg} comes from the fact that the complex
 $R\Gamma_\fg (X, \ZZ(n))$ is almost perfect in the sense of
-definition~\ref{dfn:almost-of-(co)finite-type}. Thanks to specific properties
+Definition~\ref{dfn:almost-of-(co)finite-type}. Thanks to specific properties
 of the involved complexes, it turns out that $R\Gamma_\fg (X, \ZZ(n))$ is
 defined up to a \emph{unique} isomorphism in the derived category (something one
 usually does not expect from a cone).
 
-Then in \S\ref{sec:theorem-II} we establish theorem~\ref{theorem-II}, and it is
+Then in \S\ref{sec:theorem-II} we establish Theorem~\ref{theorem-II}, and it is
 used in \S\ref{sec:RGamma-Wc} to define Weil-\'{e}tale complexes
-$R\Gamma_\Wc (X, \ZZ(n))$. For this we deduce from theorem~\ref{theorem-II} that
+$R\Gamma_\Wc (X, \ZZ(n))$. For this we deduce from Theorem~\ref{theorem-II} that
 $u_\infty^* \circ \alpha_{X,n} = 0$, which implies that there exists a morphism
 in the derived category
 $$i_\infty^*\colon R\Gamma_\fg (X, \ZZ (n)) \to R\Gamma_c (G_\RR, X (\CC), \ZZ(n))$$
-(see the diagram below). We pick a mapping fiber of $i_\infty^*$ and call it
-$R\Gamma_\Wc (X, \ZZ (n))$, which turns out to be a perfect complex.
-Finally, in \S\ref{sec:known-cases-of-Lc-Xet-n} we consider the cases of $X$ for
-which the conjecture $\mathbf{L}^c (X_\et, n)$ is known, and hence our results
-hold unconditionally, and in \S\ref{sec:comparison-with-FM} we verify that
-whenever $X$ is proper and regular, our complex $R\Gamma_\Wc (X, \ZZ (n))$ is
-isomorphic to that constructed in \cite{Flach-Morin-2018} by Flach and Morin.
+---see \eqref{eqn:diagram-defining-everything} below. We pick a mapping fiber of
+$i_\infty^*$ and call it $R\Gamma_\Wc (X, \ZZ (n))$, which turns out to be a
+perfect complex.  Finally, in \S\ref{sec:known-cases-of-Lc-Xet-n} we consider
+the cases of $X$ for which the conjecture $\mathbf{L}^c (X_\et, n)$ is known,
+and hence our results hold unconditionally, and in
+\S\ref{sec:comparison-with-FM} we verify that whenever $X$ is proper and
+regular, our complex $R\Gamma_\Wc (X, \ZZ (n))$ is isomorphic to that
+constructed in \cite{Flach-Morin-2018} by Flach and Morin.
 
-There are two appendices to this paper: appendix~\ref{app:homological-algebra}
+There are two appendices to this paper: Appendix~\ref{app:homological-algebra}
 collects some lemmas from homological algebra, and
-appendix~\ref{app:modified-cohomology-with-compact-support} reviews the
+Appendix~\ref{app:modified-cohomology-with-compact-support} reviews the
 definitions of \'{e}tale cohomology with compact support $R\Gamma_c (X_\et, -)$
 and its modified version $R\widehat{\Gamma}_c (X_\et, -)$.
 
 \vspace{1em}
 
 The definition of $R\Gamma_\Wc (X,\ZZ(n))$ fits in the following commutative
-diagram involving distinguished triangles in the derived category
-$\mathbf{D} (\ZZ)$:
-
-\[ \begin{tikzcd}[column sep=1em]
-    &[-3em] \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]) \ar{d}{\alpha_{X,n}}[swap]{\text{dfn.~\ref{def:RGamma-fg}}} \ar{r} &[-2.5em] 0 \ar{d} \\
+diagram involving distinguished triangles in the derived category $\DZ$:
+\begin{equation}
+  \label{eqn:diagram-defining-everything}
+  \begin{tikzcd}[column sep=1em,font=\small]
+    &[-3em] \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]) \ar{d}{\alpha_{X,n}}[swap]{\text{Dfn.~\ref{def:RGamma-fg}}} \ar{r} &[-2.5em] 0 \ar{d} \\
     & R\Gamma_c (X_\et, \ZZ(n)) \ar{d}\ar{r}{u_\infty^*} & R\Gamma_c (G_\RR, X (\CC), \ZZ(n))\ar{d}{id} \\
     R\Gamma_\Wc (X, \ZZ (n)) \ar{r} & R\Gamma_\fg (X, \ZZ(n)) \ar[dashed]{r}{i_\infty^*}\ar{d} & R\Gamma_c (G_\RR, X (\CC), \ZZ(n)) \ar{r} \ar{d} & R\Gamma_\Wc (X, \ZZ (n)) [1] \\
     & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-1]) \ar{r} & 0
-\end{tikzcd} \]
+  \end{tikzcd}
+\end{equation}
 
 Our construction follows \cite{Flach-Morin-2018}, and in particular,
 the resulting complex is the same whenever $X$ is proper and regular, which is
@@ -424,24 +473,24 @@ the notation.
     \hline
     \textbf{this paper} & \textbf{Flach--Morin} \\
     \hline
-    \begin{tabular}{c} cycle complexes \\ $\ZZ^c (n)$ \end{tabular} & \begin{tabular}{c} cycle complexes \\ $\ZZ (d-n)[2d]$, $d = \dim X$ \end{tabular} \\
+    {\renewcommand{\arraystretch}{1}\begin{tabular}{c} $X\to\Spec\ZZ$ \\ separated, of finite type \\ ~ \end{tabular}} & {\renewcommand{\arraystretch}{1}\begin{tabular}{c} $X\to\Spec\ZZ$ \\ separated, of finite type \\ proper, regular, equidimensional\end{tabular}} \\
     \hline
-    $R\Gamma_\fg (X, \ZZ(n))$ & \begin{tabular}{c} $R\Gamma_W (\overline{X}, \ZZ(n))$, \\ up to finite $2$-torsion \end{tabular} \\
+    $n < 0$ & $n \in \ZZ$ \\
+    \hline
+    {\renewcommand{\arraystretch}{1}\begin{tabular}{c} cycle complexes \\ $\ZZ^c (n)$ \end{tabular}} & {\renewcommand{\arraystretch}{1}\begin{tabular}{c} cycle complexes \\ $\ZZ (d-n)[2d]$, $d = \dim X$ \end{tabular}} \\
+    \hline
+    $R\Gamma_\fg (X, \ZZ(n))$ & {\renewcommand{\arraystretch}{1}\begin{tabular}{c} $R\Gamma_W (\overline{X}, \ZZ(n))$, \\ up to finite $2$-torsion \end{tabular}} \\
     \hline
     $R\Gamma_\Wc (X,\ZZ(n))$ & $R\Gamma_\Wc (X, \ZZ(n))$ \\
     \hline
   \end{tabular}
 \end{center}
 
-Further properties of $R\Gamma_\Wc (X, \ZZ (n))$ that are needed to establish
-its conjectural relation to the special value of $\zeta (X,s)$ at $s = n$ will
-be treated in the second part of this article.
-
 \subsection*{Acknowledgments}
 
-This text is based on the results of my PhD thesis, prepared in Universit\'{e} de
-Bordeaux and Universiteit Leiden under supervision of Baptiste Morin and Bas
-Edixhoven, and I am deeply grateful for their support during working on this
+This text is based on the results of my PhD thesis, prepared in Universit\'{e}
+de Bordeaux and Universiteit Leiden under supervision of Baptiste Morin and
+Bas Edixhoven, and I am deeply grateful for their support during working on this
 project. I thank Stephen Lichtenbaum and Niranjan Ramachandran who kindly
 accepted to be the referees for my thesis and provided many useful comments and
 suggestions. I am also indebted to Matthias Flach, since the ideas of this paper
@@ -450,9 +499,12 @@ arithmetic duality \cite{Geisser-2010} is also crucial for this paper, and his
 work on Weil-\'{e}tale cohomology for varieties over finite fields
 \cite{Geisser-2004,Geisser-2006,Geisser-2010-arithmetic-homology} has been of
 great influence for me. Finally, I thank Maxim Mornev for various fruitful
-conversations. This paper was edited while I was visiting Center for Research
-in Mathematics (CIMAT), Guanajuato, Mexico. I am grateful personally to Pedro Luis del
-\'{A}ngel and Xavier G\'{o}mez Mont for their hospitality.
+conversations. This paper was edited while I was visiting Center for Research in
+Mathematics (CIMAT), Guanajuato, Mexico. I am grateful personally to Pedro Luis
+del \'{A}ngel and Xavier G\'{o}mez Mont for their hospitality.
+
+Last but not least, I am indebted to the anonymous referee whose sharp and
+insightful comments on an earlier draft helped to improve the exposition.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -461,20 +513,20 @@ in Mathematics (CIMAT), Guanajuato, Mexico. I am grateful personally to Pedro Lu
 
 At the heart of our constructions is a certain arithmetic duality theorem for
 cycle complexes obtained by Thomas Geisser in \cite{Geisser-2010}. The goal of
-this section is to deduce theorem~\ref{theorem-I} from Geisser's duality.
+this section is to deduce Theorem~\ref{theorem-I} from Geisser's duality.
 We would like to establish a quasi-isomorphism of complexes
 \[ R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \xrightarrow{\cong}
 \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ/\ZZ [-2]). \]
 
 Here $R\widehat{\Gamma}_c (X_\et, \ZZ (n))$ denotes the modified \'{e}tale
-cohomology with compact support, which is reviewed in the appendix
-\ref{app:modified-cohomology-with-compact-support}. We note that
+cohomology with compact support, which is reviewed in the
+Appendix~\ref{app:modified-cohomology-with-compact-support}. We note that
 \cite{Geisser-2010} uses the notation ``$R\Gamma_c$'' for our
 ``$R\widehat{\Gamma}_c$'', but we take extra care to distinguish the two things,
 as we will also need the usual \'{e}tale cohomology with compact support
 $R\Gamma_c (X_\et, \ZZ (n))$.
 
-We split our proof of theorem~\ref{theorem-I} in two propositions.
+We split our proof of Theorem~\ref{theorem-I} in two propositions.
 
 \begin{proposition}
   For any $n < 0$ we have a quasi-isomorphism of complexes
@@ -498,10 +550,10 @@ We split our proof of theorem~\ref{theorem-I} in two propositions.
     \RHom (R\Gamma (X_\et, \ZZ^c/p^r (n)), \QQ/\ZZ [-2]), \]
     and then pass to the corresponding filtered colimits.
 
-    As in the definition~\ref{dfn:sheaf-Z(n)}, here $j_p$ denotes the canonical
-    open immersion $j_p\colon X[1/p] \hookrightarrow X$. We further denote by
-    $f$ the structure morphism $X\to \Spec \ZZ$ and by $f_p$ the structure
-    morphism $X [1/p] \to \Spec \ZZ [1/p]$:
+    As in Definition~\ref{dfn:sheaf-Z(n)}, here $j_p$ denotes the canonical open
+    immersion $j_p\colon X[1/p] \hookrightarrow X$. We further denote by $f$ the
+    structure morphism $X\to \Spec \ZZ$ and by $f_p$ the structure morphism
+    $X [1/p] \to \Spec \ZZ [1/p]$:
 
     \[ \begin{tikzcd}
       X [1/p]\ar[hookrightarrow]{r}{j_p}\ar{d}[swap]{f_p} & X\ar{d}{f} \\
@@ -513,76 +565,35 @@ We split our proof of theorem~\ref{theorem-I} in two propositions.
     internal $\Hom$. Instead of $\Hom_{\Spec R}$, we will simply write
     $\Hom_R$.
 
-    By \cite[Proposition~7.10~(c)]{Geisser-2010}, we have the following
-    exchange formulas. If we work with complexes of constructible sheaves on the
-    \'{e}tale site of schemes over the spectrum of a number ring
-    $\Spec\mathcal{O}$, then for a morphism $\phi$ of such schemes we have
-    \begin{align}
-      \label{eqn:exchange-formula-1} R \phi_* \mathcal{D} (\mathcal{F}) & \cong \mathcal{D} (R \phi_! \mathcal{F}),\\
-      \label{eqn:exchange-formula-2} R \phi^! \mathcal{D} (\mathcal{G}) & \cong \mathcal{D} (\phi^* \mathcal{G}),
-    \end{align}
-    where the dualization is given by
-    \[ \mathcal{D} (\mathcal{F}^\bullet) \dfn
-    R\iHom_X (\mathcal{F}^\bullet, \ZZ^c (0)). \]
+    Applying various results from \cite{Geisser-2004} and \cite{Geisser-2010},
+    we get a quasi-isomorphism of complexes of sheaves
+    \[ R\iHom_X (j_{p!} \mu_{p^r}^{\otimes n} [-1], \ZZ^c_X (0)) \cong \hspace{4cm} \]
+    \begin{align*}
+      \hspace{2cm} & \cong R j_{p*} R\iHom_{X [1/p]} (\mu_{p^r}^{\otimes n} [-1], \ZZ^c_{X [1/p]} (0)) && \text{by \cite[Prop. 7.10~(c)]{Geisser-2010}} \\
+      & \cong R j_{p*} R\iHom_{X[1/p]} (f_p^* \mu_{p^r}^{\otimes n} [-1], \ZZ^c_{X [1/p]} (0)) \\
+      & \cong R j_{p*} R f^!_p R\iHom_{\ZZ [1/p]} (\mu_{p^r}^{\otimes n} [-1], \ZZ^c_{\ZZ [1/p]} (0)) && \text{by \cite[Prop. 7.10~(c)]{Geisser-2010}} \\
+                                                                & \cong R j_{p*} R f^!_p R\iHom_{\ZZ [1/p]} (\mu_{p^r}^{\otimes n} [-1], \mathbb{G}_\mathrm{m} [1]) && \text{by \cite[Lemma~7.4]{Geisser-2010}} \\
+      & \cong R j_{p*} R f^!_p R\iHom_{\ZZ [1/p]} (\mu_{p^r}^{\otimes n}, \mathbb{G}_\mathrm{m}) [2] \\
+                                                                & \cong R j_{p*} R f^!_p \, \mu_{p^r}^{\otimes (1-n)} [2] \\
+      & \cong R j_{p*} R f^!_p \, \Bigl(\ZZ_{\ZZ [1/p]}/p^r (1-n)\Bigr) [2] && \text{by \cite[Thm.~1.2]{Geisser-2004}} \\
+                                                                & \cong R j_{p*} R f^!_p \, \ZZ^c_{\ZZ [1/p]}/p^r (n) && \text{by \eqref{eqn:Zc(n)-vs-Z(d-n)}} \\
+                                                                & \cong R j_{p*} \ZZ^c_{X [1/p]} / p^r (n) && \text{by \cite[Prop.~7.10~(a)]{Geisser-2010}} \\
+                                                                & \cong R j_{p*} j_p^*\ZZ^c_X/p^r (n) \cong \ZZ^c_X/p^r (n) && \text{by \cite[Thm.~7.2~(a), Prop.~2.3]{Geisser-2010}}
+    \end{align*}
 
-    Applying the exchange formula \eqref{eqn:exchange-formula-1} to our
-    situation, we get
-    \begin{equation}
-      R\iHom_X (j_{p!} \mu_{p^r}^{\otimes n} [-1], \ZZ^c_X (0)) \cong
-      R j_{p*} R\iHom_{X [1/p]} (\mu_{p^r}^{\otimes n} [-1], \ZZ^c_{X [1/p]} (0)).
-    \end{equation}
-
-    Using the other exchange formula \eqref{eqn:exchange-formula-2}, we may
-    identify
-    \begin{align}
-      \label{eqn:inverse-image-of-mu} R\iHom_{X [1/p]} (\mu_{p^r}^{\otimes n} [-1], \ZZ^c_{X [1/p]} (0)) & \cong R\iHom_{X[1/p]} (f_p^* \mu_{p^r}^{\otimes n} [-1], \ZZ^c_{X [1/p]} (0)) \\
-      \label{eqn:exchange-formula-applied} & \cong R f^!_p R\iHom_{\ZZ [1/p]} (\mu_{p^r}^{\otimes n} [-1], \ZZ^c_{\ZZ [1/p]} (0)) \\
-      \label{eqn:identification-of-Zc0-with-Gm} & \cong R f^!_p R\iHom_{\ZZ [1/p]} (\mu_{p^r}^{\otimes n} [-1], \mathbb{G}_\mathrm{m} [1]) \\
-      & \cong R f^!_p R\iHom_{\ZZ [1/p]} (\mu_{p^r}^{\otimes n}, \mathbb{G}_\mathrm{m}) [2] \\
-      & \cong R f^!_p \mu_{p^r}^{\otimes (1-n)} [2]
-    \end{align}
-
-    Here \eqref{eqn:inverse-image-of-mu} simply means that the sheaf
-    $\mu_{p^r}^{\otimes n}$ on $X[1/p]$ is the same as the inverse image of the
-    corresponding sheaf on $\Spec \ZZ [1/p]$. The quasi-isomorphism
-    \eqref{eqn:exchange-formula-applied} is the first exchange formula. Then,
-    \eqref{eqn:identification-of-Zc0-with-Gm} is the fact that the complex
-    $\ZZ^c_{\ZZ [1/p]} (0)$ is quasi-isomorphic to $\mathbb{G}_\mathrm{m} [1]$
-    according to \cite[Lemma~7.4]{Geisser-2010}. Thanks to
-    \cite[Theorem~1.2]{Geisser-2004}, we may identify the sheaf
-    $\mu_{p^r}^{\otimes (1-n)}$:
-    \begin{equation}
-      \mu_{p^r}^{\otimes (1-n)} \cong \ZZ_{\ZZ [1/p]}/p^r (1-n) =
-      \ZZ^c_{\ZZ [1/p]}/p^r (n) [-2].
-    \end{equation}
-
-    Then \cite[Corollary~7.9]{Geisser-2010} tells us that
-    \begin{equation}
-      R f^!_p \ZZ^c_{\ZZ [1/p]} / p^r (n) \cong \ZZ^c_{X [1/p]} / p^r (n).
-    \end{equation}
-
-    Finally, thanks to \cite[Theorem~7.2~(a)]{Geisser-2010} and
-    \cite[Proposition~2.3]{Geisser-2010}, we have an isomorphism
-    $\ZZ^c_{X [1/p]}/p^r (n) \cong j_p^*\ZZ^c_X/p^r (n)$, and all the above
-    gives
-    \begin{equation}
-      R\iHom_X (j_{p!} \mu_{p^r}^{\otimes n} [-1], \ZZ^c_X (0)) \cong
-      R j_{p*} j_p^* \ZZ^c_X/p^r (n) \cong \ZZ^c_X/p^r (n).
-    \end{equation}
 
     After applying $R\Gamma (X_\et, -)$, we get a quasi-isomorphism of
     complexes of abelian groups
-    \begin{equation}
+    \[
       \RHom (j_{p!} \mu_{p^r}^{\otimes n} [-1], \ZZ^c_X (0)) \cong
       R\Gamma (X_\et, \ZZ^c_X/p^r (n)).
-    \end{equation}
+    \]
 
-    Now according to the duality theorem \cite[Theorem~7.8]{Geisser-2010},
-    we have
-    \begin{equation}
+    Now according to the duality \cite[Theorem~7.8]{Geisser-2010},
+    \[
       \RHom (j_{p !} \mu_{p^r}^{\otimes n} [-1], \ZZ^c (0)) \cong
       \RHom (R\widehat{\Gamma}_c (X_\et, j_{p !} \mu_{p^r}^{\otimes n} [-1]), \QQ/\ZZ [-2]).
-    \end{equation}
+    \]
 
     What we obtain at the end is a quasi-isomorphism
     \[ R\Gamma (X_\et, \ZZ^c/p^r (n)) \cong
@@ -599,9 +610,9 @@ We split our proof of theorem~\ref{theorem-I} in two propositions.
   \end{proof}
 \end{proposition}
 
-Now to conclude the proof of theorem~\ref{theorem-I}, we identify the complex
-on the right hand side of \eqref{eqn:duality-quasi-isomorphism-1}. For this we
-will need the conjecture $\mathbf{L}^c (X_\et, n)$.
+Now to conclude the proof of Theorem~\ref{theorem-I}, we identify the complex on
+the right hand side of \eqref{eqn:duality-quasi-isomorphism-1}. For this we will
+need the conjecture $\mathbf{L}^c (X_\et, n)$.
 
 \begin{proposition}
   \label{prop:a-quasi-isomorphism-with-dirlim}
@@ -611,40 +622,10 @@ will need the conjecture $\mathbf{L}^c (X_\et, n)$.
   \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ/\ZZ [-2]). \]
 
   \begin{proof}
-    As $\ZZ^c (n)$ is a complex of flat sheaves, the short exact sequence of
-    abelian groups
-    $$0 \to \ZZ \xrightarrow{\times m} \ZZ \to \ZZ/m\ZZ \to 0$$
-    induces a short exact sequence of sheaves
-    \begin{equation}
-      \label{short-exact-sequence-with-Z/m}
-      0 \to \ZZ^c (n) \xrightarrow{\times m} \ZZ^c (n) \to \ZZ/m\ZZ^c (n) \to 0
-    \end{equation}
-
-    The morphism $\ZZ^c (n) \to \ZZ/m\ZZ^c (n)$ induces certain morphisms in
-    cohomology
-    $$H^i (X_\et, \ZZ^c (n)) \to H^i (X_\et, \ZZ/m\ZZ^c (n)).$$
-    We claim that if we pass to the duals $\Hom (-, \QQ/\ZZ)$ and then to the
-    filtered colimits $\varinjlim_m$, then we obtain an isomorphism.
-    (Note that both $\Hom (-, \QQ/\ZZ)$ and $\varinjlim_m$ are exact.)
-
-    The short exact sequence \eqref{short-exact-sequence-with-Z/m} induces
-    a long exact sequence in cohomology
-    \[ \begin{tikzcd}[column sep=1em,font=\small]
-      \cdots\ar{r} & H^i (X_\et, \ZZ^c (n)) \ar{r}{\times m} & H^i (X_\et, \ZZ^c (n))\ar{r} \ar[draw=none]{d}[name=X, anchor=center]{} & H^i (X_\et, \ZZ/m\ZZ^c (n)) \ar[rounded corners,to path={ -- ([xshift=2ex]\tikztostart.east) |- (X.center) \tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget)}]{dll}[at end]{\delta^i} \\
-      & H^{i+1} (X_\et, \ZZ^c (n)) \ar{r}{\times m} & H^{i+1} (X_\et, \ZZ^c (n))\ar{r} & H^{i+1} (X_\et, \ZZ/m\ZZ^c (n)) \ar{r} & \cdots
-    \end{tikzcd} \]
-
-    We further have exact sequences
-    \[ \begin{tikzcd}[row sep=0.8em,column sep=1em,font=\small]
-      & & & \ker \delta^i\ar[equal]{d} \\
-      & H^i (X_\et, \ZZ^c (n)) \ar{r}{\times m} & H^i (X_\et, \ZZ^c (n))\ar{r} & H^i (X_\et, \ZZ^c (n))_m \ar{r} & 0 \\
-      0\ar{r} & {}_m H^{i+1} (X_\et, \ZZ^c (n)) \ar{r} & H^{i+1} (X_\et, \ZZ^c (n))\ar{r}{\times m} & H^{i+1} (X_\et, \ZZ^c (n)) \\
-      & \im \delta^i\ar[equal]{u}
-    \end{tikzcd} \]
-    that give us
+    Consider short exact sequences
     \[ 0 \to H^i (X_\et, \ZZ^c (n))_m \to
-    H^i (X_\et, \ZZ/m\ZZ^c (n)) \to
-    {}_m H^{i+1} (X_\et, \ZZ^c (n)) \to 0 \]
+      H^i (X_\et, \ZZ/m\ZZ^c (n)) \to
+      {}_m H^{i+1} (X_\et, \ZZ^c (n)) \to 0 \]
     Now if we take $\Hom (-,\QQ/\ZZ)$ and filtered colimits $\varinjlim_m$,
     we get
     \begin{multline}
@@ -660,12 +641,19 @@ will need the conjecture $\mathbf{L}^c (X_\et, n)$.
     \eqref{eqn:short-exact-sequence-with-dirlim} vanishes, and we obtain
     isomorphisms
     \[ \varinjlim_m \Hom (H^i (X_\et, \ZZ^c (n))_m, \QQ/\ZZ) \xrightarrow{\cong}
-    \varinjlim_m \Hom (H^i (X_\et, \ZZ/m\ZZ^c (n)), \QQ/\ZZ). \]
-    It remains to note that the first $\varinjlim_m$ above is canonically
-    isomorphic to the complex
-    $\Hom (H^i (X_\et, \ZZ^c (n)), \QQ/\ZZ)$, again,
-    thanks to finite generation of $H^i (X_\et, \ZZ^c (n))$,
-    assuming the conjecture $\mathbf{L}^c (X_\et, n)$.
+      \varinjlim_m \Hom (H^i (X_\et, \ZZ/m\ZZ^c (n)), \QQ/\ZZ). \]
+    It remains to note that the left hand side is canonically isomorphic to
+    $\Hom (H^i (X_\et, \ZZ^c (n)), \QQ/\ZZ)$, again, thanks to finite generation
+    of $H^i (X_\et, \ZZ^c (n))$, assuming the conjecture
+    $\mathbf{L}^c (X_\et, n)$.
+
+    To see this, note that if $A$ is a finitely generated abelian group, then
+    there is a canonical isomorphism
+    $$\varinjlim_m \Hom (A_m, \QQ/\ZZ) \cong \Hom (A, \QQ/\ZZ)$$
+    induced by $A \to A/m A$, and then applying the functor $\Hom (-, \QQ/\ZZ)$
+    and $\varinjlim_m$. Since $\QQ/\ZZ$ is a torsion group, any homomorphism
+    $A\to \QQ/\ZZ$ is killed by some $m$, hence factors through
+    $A/mA \to \QQ/\ZZ$.
   \end{proof}
 \end{proposition}
 
@@ -674,321 +662,125 @@ will need the conjecture $\mathbf{L}^c (X_\et, n)$.
 \section{$G_\RR$-equivariant cohomology of $X (\CC)$}
 \label{sec:GR-equivariant-cohomology}
 
-Given an arithmetic scheme $X$, we consider its complex points $X (\CC)$ equipped
-with the usual analytic topology. It carries a natural action of
-$G_\RR = \Gal (\CC/\RR)$. We consider $G_\RR$-modules
-\[ \ZZ (n) \dfn (2\pi i)^n\,\ZZ, \quad
-\QQ (n) \dfn (2\pi i)^n\,\QQ, \quad
-\QQ/\ZZ (n) \dfn \QQ (n) / \ZZ (n) \]
-as constant $G_\RR$-equivariant sheaves on $X (\CC)$. Then
-$R\Gamma_c (X (\CC), A (n))$ (the complex that calculates singular cohomology
-with compact support of $X (\CC)$ with coefficients in $A (n)$) is a complex of
-$G_\RR$-modules, and we may further take group cohomology (resp. Tate
-cohomology), which leads to complexes
-\begin{align*}
-  R\Gamma_c (G_\RR, X (\CC), A (n)) & \dfn R\Gamma_c (G_\RR, R\Gamma_c (X (\CC), A (n))),\\
-  R\widehat{\Gamma}_c (G_\RR, X (\CC), A (n)) & \dfn R\widehat{\Gamma}_c (G_\RR, R\Gamma (X (\CC), A (n))).
-\end{align*}
-By definition, this is the $G_\RR$-equivariant cohomology (resp. Tate
-cohomology) with compact support of $X (\CC)$ with coefficients in $A (n)$.
-
-In this section we analyze what kind of complexes we obtain. All subsequent
-lemmas are summarized in the below table.
-
-\begin{center}
-  \renewcommand{\arraystretch}{1.5}
-  \begin{tabular}{cc}
-    \hline
-    \textbf{complex} & \textbf{type} \\
-    \hline
-    $R\Gamma_c (X (\CC), \ZZ (n))$ & perfect \\
-    $R\Gamma_c (G_\RR, X (\CC), \ZZ (n))$ & almost perfect \\
-    $R\widehat{\Gamma}_c (G_\RR, X (\CC), \ZZ (n))$ & finite $2$-torsion cohomology \\
-    \hline
-    $R\Gamma_c (X (\CC), \QQ (n))$ & perfect of $\QQ$-vector spaces \\
-    $R\widehat{\Gamma}_c (G_\RR, X (\CC), \QQ (n))$ & quasi-isomorphic to $0$ \\
-    \hline
-    $R\Gamma_c (X (\CC), \QQ/\ZZ (n))$ & cofinite type \\
-    $R\Gamma_c (G_\RR, X (\CC), \QQ/\ZZ (n))$ & almost cofinite type \\
-    $R\widehat{\Gamma}_c (G_\RR, X (\CC), \QQ/\ZZ (n))$ & finite $2$-torsion cohomology \\
-    \hline
-  \end{tabular}
-\end{center}
-
-First we consider the usual, non-equivariant cohomology. As is well-known, the
-complexes $R\Gamma_c (X (\CC), \ZZ)$ are perfect, i.e. the cohomology groups
-$H^i_c (X (\CC), \ZZ)$ are finitely generated and zero for $|i| \gg 0$.  The
-same is true for $H^i_c (X (\CC), \ZZ (n))$ (here the twist in $\ZZ (n)$ only
-changes the $G_\RR$-module structure). For $\QQ/\ZZ$ coefficients, the following
-result will be useful.
+We begin with some elementary homological algebra.
 
 \begin{lemma}
-  \label{lemma:extensions-of-cofinite-type-groups}
-  Given an extension of abelian groups
-  $0 \to A \to B \to C \to 0$,
-  if $A$ and $C$ are of cofinite type, then $B$ is of cofinite type as well.
-
-  \begin{proof}
-    For a finitely generated abelian group $G$, denote
-    $G^D \dfn \Hom (G, \QQ/\ZZ)$.  We claim that if $G'$ and $G''$ are finitely
-    generated abelian groups, then every extension
-    $$0 \to G'^D \to E \to G''^D \to 0$$
-    is equivalent to the $\QQ/\ZZ$-dual of an extension
-    $$0 \to G'' \to G \to G' \to 0$$
-    where $G$ is a finitely generated abelian group. In other words,
-    we want to show that
-    \begin{align*}
-      E (G',G'') & \to E (G''^D,G'^D),\\
-      [G'' \rightarrowtail G \twoheadrightarrow G'] & \mapsto
-      [G'^D \rightarrowtail G^D \twoheadrightarrow G''^D]
-    \end{align*}
-    is an isomorphism of Yoneda Exts.
-
-    For this we first note that there are isomorphisms of finite groups
-    \[ E (G',G'') \cong \Ext_\ZZ^1 (G',G'')
-      \quad\text{and}\quad
-      E (G''^D, G'^D) \cong \Ext_\ZZ^1 (G''^D, G'^D), \]
-    e.g. by considering separately the cases $G', G'' = \ZZ, \ZZ/m\ZZ$ and using
-    additivity of $\Ext$. For finitely generated abelian groups, the functor
-    $G \rightsquigarrow (G^D)^D$ is the same as profinite completion
-    $G \rightsquigarrow \widehat{G} = G\otimes_\ZZ \widehat{\ZZ}$. Therefore,
-    the composition
-    \[ E (G',G'') \xrightarrow{D}
-    E (G''^D,G'^D) \xrightarrow{D}
-    E (\widehat{G'},\widehat{G''}) \]
-    is an isomorphism.
-  \end{proof}
-\end{lemma}
-
-\begin{lemma}
-  The complex $R\Gamma_c (X (\CC), \QQ/\ZZ (n))$ is of cofinite type.
-
-  \begin{proof}
-    The statement follows from the distinguished triangle
-    \[ R\Gamma_c (X (\CC), \ZZ) \to
-    R\Gamma_c (X (\CC), \ZZ)\otimes_\ZZ \QQ \to
-    R\Gamma_c (X (\CC), \QQ/\ZZ) \to
-    R\Gamma_c (X (\CC), \ZZ) [1] \]
-    Indeed, the associated long exact sequence in cohomology
-    \begin{multline*}
-      \cdots \to H^i_c (X (\CC), \ZZ) \to
-      H^i_c (X (\CC), \ZZ)\otimes_\ZZ \QQ \to
-      H^i_c (X (\CC), \QQ/\ZZ) \to\\
-      H^{i+1}_c (X (\CC), \ZZ) \to
-      H^{i+1}_c (X (\CC), \ZZ)\otimes_\ZZ \QQ \to \cdots
-    \end{multline*}
-    shows that $H^i_c (X (\CC), \QQ/\ZZ)$ is an extension of a finite group by a
-    group of cofinite type:
-    \begin{multline*}
-      0 \to \coker \Bigl(H^i_c (X (\CC), \ZZ) \to
-      H^i_c (X (\CC), \ZZ)\otimes_\ZZ \QQ\Bigr) \to\\
-      H^i_c (X (\CC), \QQ/\ZZ) \to\\
-      \ker \Bigl(H^{i+1}_c (X (\CC), \ZZ) \to
-      H^{i+1}_c (X (\CC), \ZZ)\otimes_\ZZ \QQ\Bigr) \to 0
-    \end{multline*}
-    Then according to lemma~\ref{lemma:extensions-of-cofinite-type-groups},
-    $H^i_c (X (\CC), \QQ/\ZZ)$ is of cofinite type.
-
-    Finally, $H^i_c (X (\CC), \QQ/\ZZ)$ vanishes for $|i| \gg 0$, because
-    $H^i_c (X (\CC), \ZZ)$ does.
-  \end{proof}
-\end{lemma}
-
-Now we turn to $G_\RR$-equivariant cohomology. In this case we make use of
-spectral sequences
-\begin{align*}
-  E_2^{pq} = H^p (G_\RR, H_c^q (X (\CC), A (n))) & \Longrightarrow H_c^{p+q} (G_\RR, X (\CC), A (n)), \\
-  E_2^{pq} = \widehat{H}^p (G_\RR, H_c^q (X (\CC), A (n))) & \Longrightarrow \widehat{H}_c^{p+q} (G_\RR, X (\CC), A (n)).
-\end{align*}
-
-Here $H_c^q (X (\CC), A (n)) = 0$ for $q < 0$ and $q \gg 0$. We recall that the
-cohomology groups $H^p (G_\RR, H_c^q (X (\CC), A (n)))$ are killed by
-$2 = \# G_\RR$ for all $p > 0$; for this see e.g.
-\cite[Theorem~6.5.8]{Weibel-1994}. For Tate cohomology, the same argument shows
-that $\widehat{H}^p (G_\RR, H_c^q (X (\CC), A (n)))$ are $2$-torsion for all
-$p$, including $p = 0$.
-
-\begin{lemma}
-  For $A = \QQ$ we have the following.
+  Let $A^\bullet$ be a perfect complex of $\ZZ G_\RR$-modules.
 
   \begin{enumerate}
-  \item[$1)$] $H^p (G_\RR, H_c^q (X (\CC), \QQ (n))) = 0$ for all $p > 0$,
+  \item[1)] The complex $A^\bullet \otimes^\mathbf{L} \QQ/\ZZ$ is of cofinite
+    type.
 
-  \item[$2)$] $\widehat{H}^p (G_\RR, H_c^q (X (\CC), \QQ (n))) = 0$ for all $p$,
+  \item[2)]
+    $R\Gamma (G_\RR, A^\bullet \otimes \QQ) \cong (A^\bullet \otimes
+    \QQ)^{G_\RR}$ is a perfect complex of $\QQ$-vector spaces, and the complex
+    $R\widehat{\Gamma} (G_\RR, A^\bullet \otimes \QQ)$ is quasi-isomorphic to
+    $0$.
 
-  \item[$3)$] $\widehat{H}^i_c (G_\RR, X (\CC), \QQ (n))) = 0$ for all $i$.
+  \item[3)]
+    $R\widehat{\Gamma} (G_\RR, A^\bullet \otimes^\mathbf{L} \QQ/\ZZ) \cong
+    R\widehat{\Gamma} (G_\RR, A^\bullet [+1])$, and these complexes have finite
+    $2$-torsion cohomology.
+
+  \item[4)] $R\Gamma (G_\RR, A^\bullet)$ is almost perfect, and
+    $R\Gamma (G_\RR, A^\bullet \otimes^\mathbf{L} \QQ/\ZZ)$ is almost of
+    cofinite type.
   \end{enumerate}
 
   \begin{proof}
-    The cohomology groups in 1) and 2) are $2$-torsion $\QQ$-vector spaces,
-    hence trivial. Part 3) follows from the spectral sequence
-    \[ E_2^{pq} = \widehat{H}^p (G_\RR, H^q_c (X (\CC), \QQ (n)))
-    \Longrightarrow
-    \widehat{H}^{p+q}_c (G_\RR, X (\CC), \QQ (n)). \qedhere \]
-  \end{proof}
-\end{lemma}
+    The universal coefficient theorem gives us short exact sequences
+    $$0 \to H^i (A^\bullet)_m \to H^i (A^\bullet \otimes^\mathbf{L} \ZZ/m\ZZ) \to {}_m H^{i+1} (A^\bullet) \to 0$$
+    The colimit of these over $m$ is a short exact sequence
+    $$0 \to H^i (A^\bullet) \otimes \QQ/\ZZ \to H^i (A^\bullet \otimes^\mathbf{L} \QQ/\ZZ) \to H^{i+1} (A^\bullet)_\tor \to 0$$
+    Here $H^i (A^\bullet) \otimes \QQ/\ZZ$ is injective, hence the short exact
+    sequence splits. We see that $H^i (A^\bullet \otimes^\mathbf{L} \QQ/\ZZ)$ is
+    of cofinite type and vanishes for $|i| \gg 0$, i.e. that
+    $A^\bullet \otimes^\mathbf{L} \QQ/\ZZ$ is of cofinite type.
 
-\begin{lemma}
-  We have a quasi-isomorphism of complexes
-  \[ R\widehat{\Gamma}_c (G_\RR, X (\CC), \QQ/\ZZ (n) [-1]) \cong
-  R\widehat{\Gamma}_c (G_\RR, X (\CC), \ZZ (n)).\]
+    Now consider the spectral sequences
+    \begin{align}
+      \label{eqn:homological-lemma-ss-1} E_2^{pq} & = H^p (G_\RR, H^q (A^\bullet \otimes \QQ)) \Longrightarrow H^{p+q} (G_\RR, A^\bullet \otimes \QQ), \\
+      \label{eqn:homological-lemma-ss-2} E_2^{pq} & = \widehat{H}^p (G_\RR, H^q (A^\bullet \otimes \QQ)) \Longrightarrow \widehat{H}^{p+q} (G_\RR, A^\bullet \otimes \QQ).
+    \end{align}
+    We recall that $H^p (G_\RR, -)$ are $2$-torsion groups for $p > 0$. Since
+    $H^q (A^\bullet \otimes \QQ)$ are $\QQ$-vector spaces, it follows that
+    $E_2^{pq} = 0$ for $p > 0$ in \eqref{eqn:homological-lemma-ss-1}, and the
+    spectral sequence degenerates. Similarly, the Tate cohomology groups
+    $\widehat{H}^p (G_\RR, H^q (A^\bullet \otimes \QQ)$ are trivial for
+    \emph{all} $p$ for the same reasons, so that
+    \eqref{eqn:homological-lemma-ss-2} is trivial. This establishes part 2).
 
-  \begin{proof}
-    The short exact sequence of $G_\RR$-equivariant sheaves on $X (\CC)$
-    $$0 \to \ZZ (n) \to \QQ (n) \to \QQ/\ZZ (n) \to 0$$
-    gives a distinguished triangle
-    \begin{multline*}
-      R\widehat{\Gamma}_c (G_\RR, X (\CC), \ZZ (n)) \to
-      R\widehat{\Gamma}_c (G_\RR, X (\CC), \QQ (n)) \to
-      R\widehat{\Gamma}_c (G_\RR, X (\CC), \QQ/\ZZ (n)) \\
-      \to R\widehat{\Gamma}_c (G_\RR, X (\CC), \ZZ (n)) [1]
-    \end{multline*}
-    By the previous lemma, here
-    $R\widehat{\Gamma}_c (G_\RR, X (\CC), \QQ (n)) \cong 0$.
-  \end{proof}
-\end{lemma}
+    Part 3) now follows from the distinguished triangle
+    \[ R\widehat{\Gamma} (G_\RR, A^\bullet) \to
+      R\widehat{\Gamma} (G_\RR, A^\bullet \otimes \QQ) \to
+      R\widehat{\Gamma} (G_\RR, A^\bullet \otimes^\mathbf{L} \QQ/\ZZ) \to
+      R\widehat{\Gamma} (G_\RR, A^\bullet) [1] \]
 
-\begin{lemma}
-  \label{lemma:H-hat-c-GR-X(C)-Z(n)-finite-2-torsion}
-  The groups
-  \[ \widehat{H}_c^i (G_\RR, X (\CC), \ZZ (n)) \cong
-  \widehat{H}_c^{i-1} (G_\RR, X (\CC), \QQ/\ZZ (n)) \]
-  are finite $2$-torsion.
-
-  \begin{proof}
-    As we already recalled, $\widehat{H}_c^i (G_\RR, X (\CC), \ZZ (n))$
-    are $2$-torsion. To see that the torsion is finite, consider the spectral
-    sequence
-    \[ E_2^{pq} = \widehat{H}^p (G_\RR, H^q_c (X (\CC), \ZZ (n)))
-    \Longrightarrow
-    \widehat{H}^{p+q}_c (G_\RR, X (\CC), \ZZ (n)). \]
-    The groups $H^q_c (X (\CC), \ZZ (n))$ are finitely generated and vanish for
-    $q \gg 0$ and $q < 0$. This means that the second page of the spectral
-    sequence looks like
-
-    \begin{center}
-      \begin{tikzpicture}[x=0.5cm, y=0.5cm]
-        \draw[dashed] (-3,7) -- (5,-1);
-        \draw[dashed] (-2,7) -- (6,-1);
-        \draw[dashed] (-1,7) -- (7,-1);
-
-        \draw[->] (0,-1) -- (0,7) node[above] {$q$};
-        \draw[->] (-9,0) -- (9,0) node[right] {$p$};
-
-        \foreach \p in {-8, ..., 8}
-        \foreach \q in {5, ..., 6}
-        \draw (\p,\q) node {$0$};
-
-        \foreach \p in {-8, ..., 8}
-        \foreach \q in {0, ..., 4}
-        \draw (\p,\q) node[circle,fill,inner sep=1.5pt] {};
-      \end{tikzpicture}
-    \end{center}
-
-    \noindent where all objects are \emph{finite} $2$-torsion.
-  \end{proof}
-\end{lemma}
-
-\begin{lemma}
-  \label{lemma:RGammac(GR,X(C),Z(n))-almost-perfect}
-  The complex $R\Gamma_c (G_\RR, X (\CC), \ZZ (n))$
-  is almost perfect.
-
-  \begin{proof}
-    Similarly, we consider the spectral sequence
-    \[ E_2^{pq} = H^p (G_\RR, H^q_c (X (\CC), \ZZ (n)))
-    \Longrightarrow
-    H^{p+q}_c (G_\RR, X (\CC), \ZZ (n)). \]
-
-    Here $H^p (G_\RR, H^q_c (X (\CC), \ZZ (n)))$ is not necessarily $2$-torsion
-    for $p = 0$, and the second page looks like
-    \begin{center}
-      \begin{tikzpicture}[x=0.5cm, y=0.5cm]
-        \fill[lightgray] (0.5,-0.5) -- (0.5,4.5) -- (8.5,4.5) -- (8.5,-0.5) -- cycle;
-
-        \draw[dashed] (-1,5) -- (5,-1);
-        \draw[dashed] (-1,6) -- (6,-1);
-        \draw[dashed] (-1,7) -- (7,-1);
-
-        \draw[->] (0,-1) -- (0,7) node[above] {$q$};
-        \draw[->] (-1,0) -- (9,0) node[right] {$p$};
-
-        \foreach \p in {0, ..., 8}
-        \foreach \q in {5, ..., 6}
-        \draw (\p,\q) node {$0$};
-
-        \foreach \p in {0, ..., 8}
-        \foreach \q in {0, ..., 4}
-        \draw (\p,\q) node[circle,fill,inner sep=1.5pt] {};
-      \end{tikzpicture}
-    \end{center}
-    where the shaded part $E_2^{pq}$, $p > 0$ consists of finitely generated
-    $2$-torsion groups, the line $E_2^{0q}$ consists of finitely generated
-    groups, and the objects $E_2^{pq}$ are zero for $q \gg 0$. It follows that
-    the groups $H^i_c (G_\RR, X (\CC), \ZZ (n))$ are all finitely generated as
-    well, and they are torsion for $i \gg 0$. This is in fact $2$-torsion, and
-    we may see this as follows. If $P_\bullet \twoheadrightarrow \ZZ$ is the
-    bar-resolution of $\ZZ$ by free $\ZZ G_\RR$-modules, then the morphism of
-    complexes
+    Next, examining the spectral sequence
+    $$E_2^{pq} = H^p (G_\RR, H^q (A^\bullet)) \Longrightarrow H^{p+q} (G_\RR, A^\bullet),$$
+    we see that the groups $H^i (G_\RR, A^\bullet)$ are finitely generated, zero
+    for $i \ll 0$, and torsion for $i \gg 0$. The latter is in fact
+    $2$-torsion. In order to see that, let $P_\bullet \twoheadrightarrow \ZZ$ be
+    the bar-resolution of $\ZZ$ by free $\ZZ G_\RR$-modules. Consider the
+    morphism of complexes
     \[ \begin{tikzcd}
-      \cdots\ar{r} & P_3\ar{r}\ar{d}{2} & P_2\ar{r}\ar{d}{2} & P_1\ar{r}\ar{d}{2} & P_0\ar{r}\ar{d}{2-N} & 0 \\
-      \cdots\ar{r} & P_3\ar{r} & P_2\ar{r} & P_1\ar{r} & P_0\ar{r} & 0
-    \end{tikzcd} \]
-    %% \begin{align*}
-    %%   \text{``}2\text{''}\colon P_\bullet & \to P_\bullet,\\
-    %%   (2-N)\colon P_0 & \to P_0,\\
-    %%   2\colon P_i & \to P_i \quad\text{for }i > 1,
-    %% \end{align*}
-    which induces multiplication by $2$ on $H^i (G,-)$ for $i > 0$
-    is null-homotopic \cite[Theorem~6.5.8]{Weibel-1994}. It is not
-    multiplication by $2$ in degree $0$, but as the complex
-    $R\Gamma_c (G_\RR, X (\CC), \ZZ (n))$ is bounded, we see that it induces
-    multiplication by $2$ on $H^i_c (G_\RR, X (\CC), \ZZ (n))$ for $i \gg 0$.
-  \end{proof}
+        \cdots\ar{r} & P_3\ar{r}\ar{d}{2} & P_2\ar{r}\ar{d}{2} & P_1\ar{r}\ar{d}{2} & P_0\ar{r}\ar{d}{2-N} & 0 \\
+        \cdots\ar{r} & P_3\ar{r} & P_2\ar{r} & P_1\ar{r} & P_0\ar{r} & 0
+      \end{tikzcd} \]
+    where $N$ denotes the norm map. The proof of
+    \cite[Theorem~6.5.8]{Weibel-1994} shows that the above morphism induces
+    multiplication by $2$ on $H^i (G_\RR,-)$ for $i > 0$, and it is
+    null-homotopic. Since $A^\bullet$ is bounded, we see that the above morphism
+    induces multiplication by $2$ on $H^i (G_\RR, A^\bullet)$ for $i \gg 0$.
+
+  In a similar way, analyzing
+  $$E_2^{pq} = H^p (G_\RR, H^q (A^\bullet \otimes^\mathbf{L} \QQ/\ZZ)) \Longrightarrow H^{p+q} (G_\RR, A^\bullet \otimes^\mathbf{L} \QQ/\ZZ).$$
+  we see that $H^i (G_\RR, A^\bullet \otimes^\mathbf{L} \QQ/\ZZ)$ are groups of
+  cofinite type. To see that these are finite $2$-torsion for $i \gg 0$,
+  consider the triangle
+  \[ R\Gamma (G_\RR, A^\bullet) \to
+    R\Gamma (G_\RR, A^\bullet \otimes \QQ) \to
+    R\Gamma (G_\RR, A^\bullet \otimes^\mathbf{L} \QQ/\ZZ) \to
+    R\Gamma (G_\RR, A^\bullet) [1] \]
+  Here $R\Gamma (G_\RR, A^\bullet \otimes \QQ)$ is bounded, and therefore
+  $H^i (G_\RR, A^\bullet \otimes^\mathbf{L} \QQ/\ZZ) \cong H^{i+1} (G_\RR,
+  A^\bullet)$ for $i \gg 0$.
+\end{proof}
 \end{lemma}
 
-Similarly for $\QQ/\ZZ$-coefficients, we have the following observation.
+\begin{proposition}
+  \label{prop:equivariant-coho-of-X(C)}
+  Let $X$ be an arithmetic scheme. Then $X (\CC)$ has the following kinds of
+  complexes as its cohomology:
 
-\begin{lemma}
-  \label{lemma:RGammac(GR,X(C),Q/Z(n))-almost-cofinite-type}
-  The complex $R\Gamma_c (G_\RR, X (\CC), \QQ/\ZZ (n))$
-  is almost of cofinite type.
+  \begin{center}
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|c|c|c|c|}
+      \hline
+      & $A=\ZZ$ & $A=\QQ$ & $A=\QQ/\ZZ$ \\
+      \hline
+      $R\Gamma_c (X (\CC), A(n))$ & perfect${}_{/\ZZ}$ & perfect${}_{/\QQ}$ & cofinite type \\
+      \hline
+      $R\Gamma_c (G_\RR, X (\CC), A (n))$ & {\renewcommand{\arraystretch}{0.75}\begin{tabular}{c} almost \\ perfect \end{tabular}} & perfect${}_{/\QQ}$ & {\renewcommand{\arraystretch}{0.75}\begin{tabular}{c} almost \\ cofinite type \end{tabular}} \\
+      \hline
+      $R\widehat{\Gamma}_c (G_\RR, X (\CC), A (n))$ & {\renewcommand{\arraystretch}{0.75}\begin{tabular}{c} finite \\ $2$-torsion \end{tabular}} & $\cong 0$ & {\renewcommand{\arraystretch}{0.75}\begin{tabular}{c} finite \\ $2$-torsion \end{tabular}} \\
+      \hline
+    \end{tabular}
+  \end{center}
 
   \begin{proof}
-    Consider the spectral sequence
-    \[ E_2^{pq} = H^p (G_\RR, H^q_c (X (\CC), \QQ/\ZZ (n)))
-    \Longrightarrow
-    H^{p+q}_c (G_\RR, X (\CC), \QQ/\ZZ (n)). \]
+    The perfectness of $R\Gamma_c (X (\CC), \ZZ (n))$ follows from the fact that
+    $X (\CC)$ has homotopy type of a finite CW-complex. This result is
+    originally due to van der Waerden \cite{van-der-Waerden-30}; more recent
+    expositions (of more general results) may be found e.g. in
+    \cite{Lojasiewicz-1964} and \cite{Hironaka-1974}.
 
-    The second page will have groups of cofinite type on the line $E_2^{0q}$ and
-    finite $2$-torsion groups $E_2^{pq}$ for $p > 0$. We have filtrations
-    \begin{equation}
-      \label{eqn:ss-filtrations}
-      H^{p+q} = F^0 (H^{p+q}) \supseteq
-      F^1 (H^{p+q}) \supseteq
-      F^2 (H^{p+q}) \supseteq \cdots \supseteq
-      F^{p+q} (H^{p+q}) \supset F^{p+q+1} (H^{p+q}) = 0
-    \end{equation}
-    where
-    $$0 \to F^{p+1} (H^{p+q}) \to F^p (H^{p+q}) \to E_\infty^{pq} \to 0$$
-    Note that $E^{0q}_\infty$ will be groups of cofinite type, and
-    $E^{pq}_\infty$ will be finite $2$-torsion groups for $p > 0$, as we are
-    going to have
-    $$0 \to E_{r+1}^{0q} \to E_r^{0q} \to T \to 0$$
-    where $T$ is finite $2$-torsion, and similarly,
-    $$E_{r+1}^{pq} \cong \ker d_r^{pq} / \im d_r^{p-r,q+r-1}$$
-
-    \[ E_r^{p-r,q+r-1} \xrightarrow{d_r^{p-r,q+r-1}}
-    E_r^{pq} \xrightarrow{d_r^{pq}} E_r^{p+r,q-r+1} \]
-    where $E_r^{pq}$ is finite $2$-torsion for $p > 0$. It follows by induction
-    that all terms of the filtration \eqref{eqn:ss-filtrations} are finite
-    groups, except for $F^0 (H^{p+q}) = H^{p+q}$ itself, which is of cofinite
-    type, being an extension of a group of cofinite type $E_\infty^{0q}$ by a
-    finite group $F^1 (H^{p+q})$
-    (see lemma~\ref{lemma:extensions-of-cofinite-type-groups}). We also see that
-    $H^{p+q}$ is $2$-torsion for $p+q \gg 0$.
+    The rest is an application of the previous lemma to
+    $R\Gamma_c (X(\CC), \ZZ(n))$.
   \end{proof}
-\end{lemma}
+\end{proposition}
+
+Here is a comparison between the usual and Tate cohomology.
 
 \begin{lemma}
   \label{lemma:Tate-vs-normal-cohomology-of-X(C)}
@@ -999,32 +791,14 @@ Similarly for $\QQ/\ZZ$-coefficients, we have the following observation.
   \begin{proof}
     Consider the spectral sequences
     \begin{align*}
-      E^{pq}_2 = \widehat{H}^p (G_\RR, H^q_c (X (\CC), \ZZ(n))) & \Longrightarrow
+      \widehat{E}^{pq}_2 = \widehat{H}^p (G_\RR, H^q_c (X (\CC), \ZZ(n))) & \Longrightarrow
       \widehat{H}^i_c (G_\RR, X (\CC), \ZZ(n)), \\
       E^{pq}_2 = H^p (G_\RR, H^q_c (X (\CC), \ZZ(n))) & \Longrightarrow
       H^i_c (G_\RR, X (\CC), \ZZ(n)).
     \end{align*}
-    Recall that for Tate cohomology one has
-    \[ \widehat{H}^p (G_\RR, H^q_c (X (\CC), \ZZ(n))) \cong
-      H^p (G_\RR, H^q_c (X (\CC), \ZZ(n)))
-      \quad\text{for }p \ge 1. \]
-    Further, $H^q_c (X (\CC), \ZZ(n)) = 0$
-    for $q \ge 2d-1$, since $X (\CC)$ has topological dimension $\le 2d - 2$
-    (assuming $d > 0$, since in case $d = 0$ we have $X (\CC) = \emptyset$, and
-    the statement becomes obvious).  Therefore, the spectral sequences look like
-    \begin{center}
-      \begin{tikzpicture}[x=0.75cm,y=0.75cm]
-        \fill[black!20] (-6,0) -- (-6,3) -- (6,3) -- (6,0) -- cycle;
-        \fill[pattern=north east lines] (0,0) -- (0,3) -- (6,3) -- (6,0) -- cycle;
-
-        \draw[->] (-6.25,0) -- (6.25,0) node[right] {$p$};
-        \draw[->] (0,-1) -- (0,4.5) node[above] {$q$};
-
-        \draw [decorate,decoration={brace,amplitude=10pt}] (-6,0) -- (-6,3) node [black,midway,xshift=-1cm] {$2d - 2$};
-
-        \draw (-1,4.5) -- (4.5,-1) node[below] {$p+q = 2d-1$};
-      \end{tikzpicture}
-    \end{center}
+    Here $\widehat{H}^p (G_\RR, -) \cong H^p (G_\RR, -)$ for
+    $p \ge 1$. Moreover, $H^q_c (X (\CC), \ZZ(n)) = 0$ for $q \ge 2d-1$, for the
+    reasons of the topological dimension of $X (\CC)$.
   \end{proof}
 \end{lemma}
 
@@ -1033,7 +807,7 @@ Similarly for $\QQ/\ZZ$-coefficients, we have the following observation.
 \section{Some consequences of theorem~I}
 \label{sec:consequences-of-theorem-I}
 
-Now we deduce some consequences of the duality theorem~\ref{theorem-I}.
+Now we deduce some consequences of the duality Theorem~\ref{theorem-I}.
 
 \begin{lemma}
   \label{lemma:morphism-hat-Hc(Xet,Z(n))->Hc(Xet,Z(n))}
@@ -1067,7 +841,7 @@ Now we deduce some consequences of the duality theorem~\ref{theorem-I}.
     $X (\RR) = \emptyset$.
 
     The fact that $\widehat{H}^i_c (G_\RR, X (\CC), \ZZ (n))$ are finite
-    $2$-torsion is our lemma~\ref{lemma:H-hat-c-GR-X(C)-Z(n)-finite-2-torsion}.
+    $2$-torsion is a part of Proposition~\ref{prop:equivariant-coho-of-X(C)}.
   \end{proof}
 \end{lemma}
 
@@ -1090,22 +864,24 @@ Now we deduce some consequences of the duality theorem~\ref{theorem-I}.
   In general, we have the following cohomology:
   \begin{center}
     \renewcommand{\arraystretch}{1.5}
-    \begin{tabular}{ccclcl}
+    \begin{tabular}{|c|c|cl|cl|}
       \hline
-      \textbf{groups} & \textbf{type} & $i \ll 0$ & & $i \gg 0$ \\
+      \textbf{groups} & \textbf{type} & \multicolumn{2}{c|}{$i \ll 0$} & \multicolumn{2}{c|}{$i \gg 0$} \\
       \hline
-      $H^i (X_\et, \ZZ^c (n))$ & f.g. & $0$ & for $i < -2d$ & $2$-torsion & for $i > 1$ \\
-      $\widehat{H}^i_c (X_\et, \ZZ (n))$ & cofinite & $2$-torsion & for $i < 1$ & $0$ & for $i > 2d + 2$ \\
-      $H^i_c (X_\et, \ZZ (n))$ & cofinite & $0$ & for $i < 1$ & $2$-torsion & for $i > 2d + 2$ \\
+      $H^i (X_\et, \ZZ^c (n))$ & {\renewcommand{\arraystretch}{0.75}\begin{tabular}{c} finitely \\ generated \end{tabular}} & $0$ & for $i < -2d$ & {\renewcommand{\arraystretch}{0.75}\begin{tabular}{c} finite \\ $2$-torsion \end{tabular}} & for $i > 1$ \\
+      \hline
+      $\widehat{H}^i_c (X_\et, \ZZ (n))$ & cofinite & {\renewcommand{\arraystretch}{0.75}\begin{tabular}{c} finite \\ $2$-torsion \end{tabular}} & for $i < 1$ & $0$ & for $i > 2d + 2$ \\
+      \hline
+      $H^i_c (X_\et, \ZZ (n))$ & cofinite & $0$ & for $i < 1$ & {\renewcommand{\arraystretch}{0.75}\begin{tabular}{c} finite \\ $2$-torsion \end{tabular}} & for $i > 2d + 2$ \\
       \hline
     \end{tabular}
   \end{center}
   In particular, $R\Gamma (X_\et, \ZZ^c (n))$ is an almost perfect complex,
   while $R\Gamma_c (X_\et, \ZZ (n))$ is almost of cofinite type in the sense of
-  definition~{\rm\ref{dfn:almost-of-(co)finite-type}}.
+  Definition~{\rm\ref{dfn:almost-of-(co)finite-type}}.
 
   \begin{proof}
-    If $X (\RR) = \emptyset$, then our duality theorem~\ref{theorem-I} gives
+    If $X (\RR) = \emptyset$, then our duality Theorem~\ref{theorem-I} gives
     \[ \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ/\ZZ) \cong
       \widehat{H}^i_c (X_\et, \ZZ (n)) \stackrel{X(\RR)=\emptyset}{\cong}
       H^i_c (X_\et, \ZZ (n)). \]
@@ -1116,17 +892,11 @@ Now we deduce some consequences of the duality theorem~\ref{theorem-I}.
 
     In part 2), the group $H^i (X_\et, \ZZ^c (n))$ is finite $2$-torsion for
     $i > 1$, thanks to part 1) and
-    lemma~\ref{lemma:morphism-hat-Hc(Xet,Z(n))->Hc(Xet,Z(n))}. The fact that
-    $H^i (X_\et, \ZZ^c (n)) = 0$ for $i < -2d$ reduces to the case of
-    $X (\RR) = \emptyset$ as follows. Consider a finite \'{e}tale covering family
-    $\{ U_i \to X \}$, where each $U_i$ is defined over
-    $\Spec \mathcal{O}_{F_i}$ for a totally imaginary number field $F_i$.
-    We have the Cartan--Leray spectral sequence
-    \[ E_1^{p,q} = \bigoplus_{(i_0,\ldots,i_p) \in I^{p+1}} H^q (U_{i_0,\ldots,i_p, \et}, \ZZ^c (n))
-      \Longrightarrow H^{p+q} (X_\et, \ZZ^c (n)), \]
-    where $U_{i_0,\ldots,i_p} \dfn U_{i_0} \times_X \cdots \times_X U_{i_p}$, and
-    $H^q (U_{i_0,\ldots,i_p, \et}, \ZZ^c (n)) = 0$ for $q < -2d$ by part 1).
-    It follows that $H^i (X_\et, \ZZ^c (n))$ for $i < -2d$.
+    Lemma~\ref{lemma:morphism-hat-Hc(Xet,Z(n))->Hc(Xet,Z(n))}. Further, we have
+    $H^i (X_\et, \ZZ^c (n)) \cong H^i (X_\et, \QQ^c (n))$ for $i < -2d$
+    according to \cite[Lemma~5.12]{Morin-2014}. The conjecture $L^c (X_\et, n)$
+    implies that these groups are $\QQ$-vector spaces that are finitely
+    generated over $\ZZ$, hence these are trivial.
 
     In part 3), the cohomology groups
     $H^i (X_\et, \ZZ (n)) = H^{i-1} (X_\et, \QQ/\ZZ (n))$ are finite for $n < 0$
@@ -1135,10 +905,10 @@ Now we deduce some consequences of the duality theorem~\ref{theorem-I}.
 \end{proposition}
 
 \begin{remark}
-  If $X$ is proper and regular of dimension $d$, then Beilinson--Soul\'{e}
-  vanishing conjecture predicts that
-  $H^i (X_\et, \ZZ^c (n)) = H^{i+2d} (X_\et, \ZZ (d-n)) = 0$ for $i < -2d$
-  (see for instance \cite[\S 4.3.4]{Kahn-2005}). Therefore, we just proved that
+  If $X$ is proper and regular of dimension $d$, then using
+  \eqref{eqn:Zc(n)-vs-Z(d-n)}, we note that the Beilinson--Soul\'{e} vanishing
+  conjecture (see for instance \cite[\S 4.3.4]{Kahn-2005}) predicts that
+  $H^i (X_\et, \ZZ^c (n)) = 0$ for $i < -2d$. Therefore, we just proved that
   this is true under the finite generation conjecture $\mathbf{L}^c (X_\et, n)$.
 \end{remark}
 
@@ -1149,23 +919,23 @@ Now we deduce some consequences of the duality theorem~\ref{theorem-I}.
 
 The goal of this section is to define certain complexes
 $R\Gamma_\fg (X, \ZZ(n))$, which will be used below in the construction of
-Weil-étale cohomology.
+Weil-\'{e}tale cohomology.
 
 \begin{definition}
   \label{def:RGamma-fg}
   Assuming the conjecture $\mathbf{L}^c (X_\et,n)$, consider a morphism
-  $\alpha_{X,n}$ in the derived category $\mathbf{D} (\ZZ)$ given by the
+  $\alpha_{X,n}$ in the derived category $\DZ$ given by the
   composition
   \[ \begin{tikzcd}[column sep=4em]
     \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ[-2]) \ar{r}{\QQ \twoheadrightarrow \QQ/\ZZ}\ar{ddr}[swap]{\alpha_{X,n}} & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ/\ZZ[-2]) \\
-    & R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \ar{u}{\text{Theorem \ref{theorem-I}}}[swap]{\cong} \ar{d}{\text{proj.}} \\
+    & R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \ar{u}{\text{Theorem~\ref{theorem-I}}}[swap]{\cong} \ar{d}{\text{proj.}} \\
     & R\Gamma_c (X_\et, \ZZ (n))
   \end{tikzcd} \]
 
   Here the first arrow is induced by the canonical projection $\QQ \to \QQ/\ZZ$,
   and the last arrow is the canonical projection from the modified cohomology
   with compact support to the usual cohomology with compact support
-  (see appendix~\ref{app:modified-cohomology-with-compact-support}).
+  (see Appendix~\ref{app:modified-cohomology-with-compact-support}).
 
   We define the complex $R\Gamma_\fg (X, \ZZ(n))$ as a cone of $\alpha_{X,n}$:
   \begin{multline*}
@@ -1181,23 +951,23 @@ Weil-étale cohomology.
 \begin{remark}
   \label{rmk:alpha-X-n-determined-by-cohomology}
   Assuming the conjecture $\mathbf{L}^c (X_\et, n)$, the groups
-  $H^i_c (X_\et, \ZZ (n))$ are of cofinite type by theorem~\ref{theorem-I},
+  $H^i_c (X_\et, \ZZ (n))$ are of cofinite type by Theorem~\ref{theorem-I},
   while $\RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2])$ is a complex of
   $\QQ$-vector spaces. Therefore, the morphism $\alpha_{X,n}$ is completely
   determined by the maps between cohomology groups
   \[ H^i (\alpha_{X,n})\colon
     \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ) \to
     H^i_c (X_\et, \ZZ (n)) \]
-  ---see lemma~\ref{lemma:morphisms-in-DAb-between-cplx-of-Q-vs-and-almost-cofinite-type-cplx}.
+  ---see Lemma~\ref{lemma:morphisms-in-DAb-between-cplx-of-Q-vs-and-almost-cofinite-type-cplx}.
 \end{remark}
 
 \begin{remark}
   We note that our $R\Gamma_\fg (X, \ZZ (n))$ plays the same role as
   $R\Gamma_W (\overline{X}_\et, \ZZ (n))$ that appears in
   \cite[Definition~3.6]{Flach-Morin-2018}. We use a different notation, since
-  Flach and Morin work with Artin--Verdier topology, and their complex
-  $R\Gamma_W (\overline{X}_\et, \ZZ (n))$ is perfect, while for our complex
-  $H^i_\fg (X, \ZZ (n))$ may be finite $2$-torsion in arbitrarily high degree.
+  Flach and Morin work with the Artin--Verdier topology, and their complex
+  $R\Gamma_W (\overline{X}_\et, \ZZ (n))$ is perfect, while our complex may have
+  finite $2$-torsion in arbitrarily high degree.
 \end{remark}
 
 We first note that although the definition might seem complicated at first,
@@ -1235,71 +1005,65 @@ it simplifies if $X$ has no real places.
   and $2$-torsion for $i \gg 0$.
 
   \begin{proof}
-    By the definition of $R\Gamma_\fg (X, \ZZ (n))$, we have a long exact
-    sequence
-    \[ \begin{tikzcd}[column sep=1.75em]
-      \cdots\ar{r} & \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ) \ar{r}{H^i (\alpha_{X,n})} &[2em] H^i_c (X_\et, \ZZ (n))\ar{r}\ar[draw=none]{d}[name=X, anchor=center]{} & H^i_\fg (X, \ZZ (n)) \ar[rounded corners,to path={ -- ([xshift=2ex]\tikztostart.east) |- (X.center) \tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget)}]{dll}[at end]{\delta^i} \\
-      & \Hom (H^{1-i} (X_\et, \ZZ^c (n)), \QQ)\ar{r}{H^{i+1} (\alpha_{X,n})} & H^{i+1}_c (X_\et, \ZZ (n))\ar{r} & \cdots
-    \end{tikzcd} \]
+    By the definition of $R\Gamma_\fg (X, \ZZ (n))$, there are short exact
+    sequences
+    \[ 0 \to \coker H^i (\alpha_{X,n}) \to
+      H^i_\fg (X, \ZZ (n)) \to
+      \ker H^{i+1} (\alpha_{X,n}) \to 0 \]
 
-    First we observe what happens for $|i| \gg 0$.
+    The morphism $\alpha_{X,n}$ is given on the level of cohomology by
+    \begin{multline}
+      \label{eqn:H(alpha-X-n)}
+      H^i (\alpha_{X,n})\colon
+      \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ) \xrightarrow{\psi^i}
+      \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ/\ZZ) \xrightarrow{\cong} \\
+      \widehat{H}^i_c (X_\et, \ZZ (n)) \xrightarrow{\phi^i} H^i_c (X_\et, \ZZ (n))
+    \end{multline}
+    where $H^{2-i} (X_\et, \ZZ^c (n))$ is a finitely generated abelian group
+    according to $\mathbf{L}^c (X_\et, n)$.
+
+    Here $\phi^i$ has finite $2$-torsion kernel by
+    Lemma~\ref{lemma:morphism-hat-Hc(Xet,Z(n))->Hc(Xet,Z(n))}, and we observe
+    that if $A$ is a finitely generated abelian group, then for a finite
+    subgroup $T \subset \Hom (A, \QQ/\ZZ)$ the preimage under
+    $\Hom (A, \QQ) \to \Hom (A, \QQ/\ZZ)$ is finitely generated. This
+    establishes finite generation of $\ker H^i (\alpha_{X,n})$ for all
+    $i \in \ZZ$.
+
+    Now for the morphism $\psi^i$ we have
+    \begin{align*}
+      \ker \psi^i & \cong \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \ZZ), \\
+      \coker \psi^i & \cong \Hom (H^{2-i} (X_\et, \ZZ^c (n))_\tor, \QQ/\ZZ),
+    \end{align*}
+    and these groups are finitely generated by $\mathbf{L}^c (X_\et, n)$. The
+    composition of morphisms \eqref{eqn:H(alpha-X-n)} gives an exact sequence
+    (ignoring the isomorphism in the middle)
+    \[
+      0 \to \ker\psi^i \to \ker (\phi^i\circ\psi^i) \to \ker\psi^i \to
+      \coker\psi^i \to \coker (\phi^i\circ \psi^i) \to \coker\psi^i \to 0
+    \]
+
     For $i \ll 0$ we have $H^i_c (X_\et, \ZZ (n)) = 0$, and therefore
     $$H^i_\fg (X, \ZZ (n)) \cong \Hom (H^{1-i} (X_\et, \ZZ^c (n)), \QQ) = 0,$$
-    since the group $H^{1-i} (X_\et, \ZZ^c (n))$ is torsion by
-    proposition~\ref{prop:motivic-cohomology-duality-consequences}.
-    Similarly, the complex $R\Gamma (X_\et, \ZZ^c (n))$ is bounded from below by
-    proposition~\ref{prop:motivic-cohomology-duality-consequences}, and therefore
-    for $i \gg 0$ we have
-    $\Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ) = 0$, so that
+    since the group $H^{1-i} (X_\et, \ZZ^c (n))$ is finite $2$-torsion for
+    $i \ll 0$ by Proposition~\ref{prop:motivic-cohomology-duality-consequences}.
+
+    For $i \gg 0$ we have $\Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ) = 0$, so that
     $H^i_\fg (X, \ZZ (n)) \cong H^i_c (X_\et, \ZZ (n))$, which is finite
-    $2$-torsion by proposition~\ref{prop:motivic-cohomology-duality-consequences}.
-
-    Now we consider short exact sequences
-    \[ \begin{tikzcd}[row sep=0.5em]
-      0 \ar{r} & \ker \delta^i \ar{r}\ar[equals]{d} & H^i_\fg (X, \ZZ (n)) \ar{r} & \im \delta^i \ar{r}\ar[equals]{d} & 0\\
-      & \coker H^i (\alpha_{X,n}) & & \ker H^{i+1} (\alpha_{X,n})
-    \end{tikzcd} \]
-
-    By the definition of $\alpha_{X,n}$, the morphism $H^i (\alpha_{X,n})$ factors as
-    \begin{multline*}
-      \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ) \to
-      \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ/\ZZ) \xrightarrow{\cong}
-      \widehat{H}^i_c (X_\et, \ZZ (n))\\
-      \to H^i_c (X_\et, \ZZ (n))
-    \end{multline*}
-
-    We recall from lemma~\ref{lemma:morphism-hat-Hc(Xet,Z(n))->Hc(Xet,Z(n))}
-    that the morphism
-    $\widehat{H}^i_c (X_\et, \ZZ (n)) \to H^i_c (X_\et, \ZZ (n))$ has finite
-    $2$-torsion kernel and cokernel.
-
-    The group $H^{2-i} (X_\et, \ZZ^c (n))$ is finitely generated
-    according to the conjecture $\mathbf{L}^c (X_\et, n)$. If this
-    group is of the form $\ZZ^{\oplus r}\oplus T$, the morphism
-    $H^i (\alpha_{X,n})$ is given by
-    \[ \QQ^{\oplus r} \twoheadrightarrow
-      (\QQ/\ZZ)^{\oplus r} \rightarrowtail
-      \widehat{H}^i_c (X_\et, \ZZ (n)) \to
-      H^i_c (X_\et, \ZZ (n)) \]
-    where
-    $(\QQ/\ZZ)^{\oplus r} \rightarrowtail \widehat{H}^i_c (X_\et, \ZZ (n))$ is
-    the inclusion of the maximal divisible subgroup in the group of cofinite
-    type
-    $$\widehat{H}^i_c (X_\et, \ZZ (n)) \cong \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ/\ZZ).$$
-    Both kernel and cokernel of the above map are finitely generated, hence
-    $H^i_\fg (X, \ZZ (n))$ is finitely generated.
+    $2$-torsion by
+    Proposition~\ref{prop:motivic-cohomology-duality-consequences}.
   \end{proof}
 \end{proposition}
 
 \begin{proposition}
-  \label{prop:RGamma-fg-uniquely-defined}
+  \label{prop:RGamma-fg-well-defined}
   The complex $R\Gamma_\fg (X, \ZZ (n))$ is defined up to a unique isomorphism
-  in the derived category $\mathbf{D} (\ZZ)$.
+  in the derived category $\DZ$.
 
   \begin{proof}
     The complex $\RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2])$ consists of
     $\QQ$-vector spaces, and $R\Gamma_\fg (X, \ZZ (n))$ is almost perfect, so we
-    are in the situation of corollary~\ref{cor:TR3-TR1-with-uniqueness}.
+    are in the situation of Corollary~\ref{cor:TR3-TR1-with-uniqueness}.
   \end{proof}
 \end{proposition}
 
@@ -1316,21 +1080,22 @@ it simplifies if $X$ has no real places.
 
   \begin{enumerate}
   \item[$1)$] The morphism $g$ induces an isomorphism
-    \[ g\otimes \QQ\colon R\Gamma_\fg (X, \ZZ (n)) \otimes_\ZZ \QQ \xrightarrow{\cong}
+    \[ g\otimes \QQ\colon R\Gamma_\fg (X, \ZZ (n)) \otimes \QQ \xrightarrow{\cong}
       \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-1]).\]
 
-  \item[$2)$] For each $m = 1,2,3$ the morphism $f$ induces an isomorphism
+  \item[$2)$] For each $m \ge 1$ the morphism $f$ induces an
+    isomorphism
     \[ f\otimes \ZZ/m\ZZ\colon
-      R\Gamma_c (X_\et, \ZZ (n))\otimes_\ZZ^\mathbf{L} \ZZ/m\ZZ \xrightarrow{\cong}
-      R\Gamma_\fg (X, \ZZ (n))\otimes_\ZZ^\mathbf{L} \ZZ/m\ZZ \]
+      R\Gamma_c (X_\et, \ZZ (n))\otimes^\mathbf{L} \ZZ/m\ZZ \xrightarrow{\cong}
+      R\Gamma_\fg (X, \ZZ (n))\otimes^\mathbf{L} \ZZ/m\ZZ \]
     
   \item[$3)$] For any prime $\ell$ the morphism $f$ induces an isomorphism
-    $$\varprojlim_r H_c^i (X_\et, \ZZ/\ell^r (n)) \cong H_\fg^i (X, \ZZ (n)) \otimes_\ZZ \ZZ_\ell.$$
+    $$\varprojlim_r H_c^i (X_\et, \ZZ/\ell^r (n)) \cong H_\fg^i (X, \ZZ (n)) \otimes \ZZ_\ell.$$
   \end{enumerate}
   
   \begin{proof}
     The cohomology groups $H_c^i (X_\et, \ZZ (n))$ are all torsion, and
-    therefore one has $R\Gamma_c (X_\et, \ZZ (n)) \otimes_\ZZ \QQ \cong 0$ in
+    therefore one has $R\Gamma_c (X_\et, \ZZ (n)) \otimes \QQ \cong 0$ in
     the derived category. Similarly, the complexes of $\QQ$-vector spaces
     $\RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [\cdots])$ are killed by tensoring
     with $\ZZ/m\ZZ$.  This proves 1) and 2).
@@ -1339,7 +1104,7 @@ it simplifies if $X$ has no real places.
     \[ \varprojlim_r H_c^i (X_\et, \ZZ/\ell^r (n)) \stackrel{\text{2)}}{\cong}
       \varprojlim_r H_\fg^i (X, \ZZ/\ell^r (n)) \cong
       \varprojlim_r H_\fg^i (X, \ZZ (n))/\ell^r \cong
-      H_\fg^i (X, \ZZ (n)) \otimes_\ZZ \ZZ_\ell. \qedhere \]
+      H_\fg^i (X, \ZZ (n)) \otimes \ZZ_\ell. \qedhere \]
   \end{proof}
 \end{proposition}
 
@@ -1350,13 +1115,13 @@ cohomology in the following sense (see also \cite[\S 8]{Geisser-2004}).
   \label{cor:RGamma-fg-model-for-l-adic-cohomology}
   Let $X$ be an arithmetic scheme satisfying the conjecture
   $\mathbf{L}^c (X_\et, n)$ for $n < 0$. Then
-  $$H_\fg^i (X, \ZZ (n)) \otimes_\ZZ \ZZ_\ell \cong H^i_c (X [1/\ell]_\et, \ZZ_\ell (n)),$$
+  $$H_\fg^i (X, \ZZ (n)) \otimes \ZZ_\ell \cong H^i_c (X [1/\ell]_\et, \ZZ_\ell (n)),$$
   where the right hand side denotes $\ell$-adic cohomology with compact support.
 
   \begin{proof}
     We have $\ZZ (n)/\ell^r \cong j_{\ell!} \mu_m^{\otimes n}$.
     Now by part 3) of the previous proposition,
-    \[ H_\fg^i (X, \ZZ (n)) \otimes_\ZZ \ZZ_\ell \cong
+    \[ H_\fg^i (X, \ZZ (n)) \otimes \ZZ_\ell \cong
       \varprojlim_r H_c^i (X_\et, j_{\ell!} \mu_{\ell^r}^{\otimes n}) \cong
       \varprojlim_r H_c^i (X [1/\ell]_\et, \mu_{\ell^r}^{\otimes n})
       \stackrel{\text{dfn}}{=} H_c^i (X [1/\ell]_\et, \ZZ_\ell (n)). \qedhere \]
@@ -1368,7 +1133,7 @@ cohomology in the following sense (see also \cite[\S 8]{Geisser-2004}).
 \section{Proof of theorem~II}
 \label{sec:theorem-II}
 
-The goal of this section is to prove theorem~\ref{theorem-II}. We recall that it
+The goal of this section is to prove Theorem~\ref{theorem-II}. We recall that it
 states that the morphism of complexes $u_\infty^*$, defined as the composition
 \[ \begin{tikzcd}
   R\Gamma_c (X_\et, \ZZ(n)) \ar[equals]{d}\ar[dashed]{r}{u_\infty^*} & R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \\
@@ -1378,9 +1143,9 @@ is torsion. Here the morphism
 $v_\infty^*\colon R\Gamma_c (X_\et, \QQ/\ZZ (n)) \to R\Gamma_c (G_\RR, X (\CC), \QQ/\ZZ (n))$
 is induced by the comparison functor
 $\alpha^*\colon \mathbf{Sh} (X_\et) \to \mathbf{Sh} (G_\RR, X (\CC))$, as
-explained in proposition~\ref{prop:inverse-image-gamma}. We first make sure that
+explained in Proposition~\ref{prop:inverse-image-gamma}. We first make sure that
 $\alpha^*$ identifies the sheaf $\QQ/\ZZ (n)$ on $X_\et$ from
-definition~\ref{dfn:sheaf-Z(n)} with the $G_\RR$-equivariant sheaf
+Definition~\ref{dfn:sheaf-Z(n)} with the $G_\RR$-equivariant sheaf
 $\QQ/\ZZ (n) \dfn \frac{(2\pi i)^n\,\QQ}{(2\pi i)^n\,\ZZ}$ on $X (\CC)$.
 
 \begin{proposition}
@@ -1390,287 +1155,116 @@ $\QQ/\ZZ (n) \dfn \frac{(2\pi i)^n\,\QQ}{(2\pi i)^n\,\ZZ}$ on $X (\CC)$.
   $$\alpha^* \QQ/\ZZ (n) \cong \QQ/\ZZ (n).$$
 
   \begin{proof}
-    First of all, since $\alpha^*$ is the composition of certain inverse image
-    functors $\gamma^*$ and $\epsilon^*$ (which are left adjoint) and an
-    equivalence of categories $\delta_*$, the functor $\alpha^*$ preserves
-    colimits, and in particular
-    \begin{equation}
-      \label{eqn:alpha-star-commutes-with-colimits}
-      \alpha^* \QQ/\ZZ (n) \cong \bigoplus_p \varinjlim_r \alpha^* j_{p!} \mu_{p^r}^{\otimes n}.
-    \end{equation}
+    We first calculate that the functor $\alpha^*$ sends the sheaf
+    $\mu_m^{\otimes n}$ on $X_\et$ to the constant $G_\RR$-equivariant sheaf
+    $\frac{(2\pi i)^n\,\ZZ}{m\,(2\pi i)^n\,\ZZ}$ on $X(\CC)$:
+    \begin{align*}
+      \alpha^* \mu_m^{\otimes n} & \cong \mu_m (\CC)^{\otimes n} \dfn \iHom (\mu_m (\CC)^{\otimes (-n)}, \ZZ/m\ZZ) \\
+                                 & \cong \frac{(2\pi i)^n\,\ZZ}{m\,(2\pi i)^n\,\ZZ}
+    \end{align*}
+    ---here the first isomorphism comes from the definition of $\alpha^*$ given
+    in Appendix~\ref{app:modified-cohomology-with-compact-support}, and the
+    second isomorphism comes from the corresponding isomorphism of
+    $G_\RR$-modules.
 
-    Another formal observation is that the base change from $\Spec \ZZ$ to
-    $\Spec \CC$ factors through the base change to $\Spec \ZZ [1/p]$, and then
-    $j_p^* \circ j_{p!} = id_{\mathbf{Sh} (X [1/p]_\et)}$:
-    \[ \begin{tikzcd}
-      \mathbf{Sh} (X [1/p]_\et) \ar{r}{j_{p!}}\ar{drr}[swap]{id} & \mathbf{Sh} (X_\et) \ar{rr}{\gamma^*}\ar{dr}{j_p^*} & & \mathbf{Sh} (X_{\CC,\text{\it \'{e}t}}) \\
-      & & \mathbf{Sh} (X [1/p]_\et)\ar[dashed]{ur}
-    \end{tikzcd} \]
-    which means that we may safely erase ``$j_{p!}$'' in
-    \eqref{eqn:alpha-star-commutes-with-colimits}, and everything boils down to
-    calculating the sheaves
-    $$\alpha^* \mu_{p^r}^{\otimes n} = \alpha^* \iHom_{X [1/p]} (\mu_{p^r}^{\otimes (-n)}, \ZZ/p^r \ZZ).$$
-    As we base change to $\Spec \CC$, the \'{e}tale sheaf $\mu_{p^r}$ simply becomes
-    the constant sheaf $\mu_{p^r} (\CC)$ on $X (\CC)$, and
-    $$\alpha^* \mu_{p^r}^{\otimes n} = \iHom_{X (\CC)} (\mu_{p^r}^{\otimes (-n)} (\CC), \ZZ/p^r \ZZ).$$
-
-    Here the twist is given by
-    $$\mu_m (\CC)^{\otimes (-n)} \dfn \underbrace{\mu_m (\CC)\otimes\cdots\otimes\mu_m (\CC)}_{-n},$$
-    with the $G_\RR$-action on tensor products $A\otimes B$ defined as usual
-    by $g\cdot (a\otimes b) = g\cdot a\otimes g\cdot b$, and the
-    $G_\RR$-action on $\iHom (A,B)$ being
-    $(g\cdot f) (a) \dfn g\cdot f (g^{-1}\cdot a)$.
-
-    What follows are well-known calculations, and we just need to take care of
-    the actions of $G_\RR$ and make sure that everything is equivariant. First
-    we see that there is a canonical isomorphism of $G_\RR$-modules
-    \begin{equation}
-      \label{eqn:roots-of-unity-iso-1}
-      \mu_m (\CC) \cong \frac{(2\pi i) \, \ZZ}{m\,(2\pi i)\,\ZZ}, \quad
-      e^{2\pi i k/m} \mapsto 2\pi i k.
-    \end{equation}
-    Now there is a $G_\RR$-isomorphism
-    \begin{align}
-      \label{eqn:roots-of-unity-iso-2}
-      \underbrace{(2\pi i)\,\ZZ\otimes\cdots\otimes (2\pi i)\,\ZZ}_{-n} & \xrightarrow{\cong} (2\pi i)^{-n}\,\ZZ,\\
-      \notag (2\pi i)\,a_1\otimes\cdots\otimes (2\pi i)\,a_{-n} & \mapsto (2\pi i)^{-n}\,a_1\cdots a_{-n},
-    \end{align}
-    and combining \eqref{eqn:roots-of-unity-iso-1}
-    and \eqref{eqn:roots-of-unity-iso-2}, we obtain
-    $$\mu_m (\CC)^{(-n)} \cong \frac{(2\pi i)^{-n} \, \ZZ}{m\,(2\pi i)^{-n}\,\ZZ}.$$
-    Finally, we have $G_\RR$-isomorphisms
-    \begin{multline*}
-      \iHom (\mu_m (\CC)^{(-n)}, \ZZ/m\ZZ) \cong
-      \iHom \Bigl(\frac{(2\pi i)^{-n} \, \ZZ}{m\,(2\pi i)^{-n}\,\ZZ}, \ZZ/m\ZZ\Bigr) \\
-      \cong
-      \iHom ((2\pi i)^{-n}\,\ZZ, \ZZ/m\ZZ) \cong
-      \frac{(2\pi i)^n\,\ZZ}{m\,(2\pi i)^n\,\ZZ},
-    \end{multline*}
-    where the last isomorphism is given by
-    $f \mapsto (2\pi i)^n \, f ((2\pi i)^{-n}\cdot 1)$.
-    Now
-    \[ \alpha^* \ZZ (n) \cong
-    \bigoplus_p \varinjlim_r \mu_{p^r} (\CC)^{\otimes n} \cong
-    \bigoplus_p \varinjlim_r \frac{(2\pi i)^n\,\ZZ}{p^r\,(2\pi i)^n\,\ZZ} \cong
-    \frac{(2\pi i)^n\,\QQ}{(2\pi i)^n\,\ZZ}. \]
-    This is a colimit of $G_\RR$-modules, since the transition morphisms are
-    $G_\RR$-equivariant.
+    Since $\alpha^*$ preserves colimits
+    (Lemma~\ref{lemma:alpha-preserves-colimits}), we have
+    \[
+      \alpha^* \QQ/\ZZ (n)
+      = \alpha^* \Bigl(\bigoplus_p \varinjlim_r j_{p!} \mu_{p^r}^{\otimes n}\Bigr)
+      \cong \varinjlim_m \alpha^* \mu_m^{\otimes n}
+      \cong \varinjlim_m \frac{(2\pi i)^n\,\ZZ}{m\,(2\pi i)^n\,\ZZ}
+      \cong \frac{(2\pi i)^n\,\QQ}{(2\pi i)^n\,\ZZ}.
+      \qedhere
+    \]
   \end{proof}
 \end{proposition}
 
-We proceed with our proof of theorem~\ref{theorem-II}. This seems to be rather
+We proceed with our proof of Theorem~\ref{theorem-II}. This seems to be rather
 nontrivial; our argument (motivated by \cite{Flach-Morin-2018} where it is given
 under the assumption that $X$ is proper and regular) will be based on the
 following result about $\ell$-adic cohomology.
 
 \begin{proposition}
   \label{prop:l-adic-cohomology-key-lemma}
-  Let $f\colon X\to \Spec \ZZ$ be an arithmetic scheme (that is, with $f$
-  separated, of finite type) and $n < 0$. Then for any prime $\ell$ we have
+  Let $X$ be an arithmetic scheme and $n < 0$. Then for any prime $\ell$ we have
   $$(H^i_c (X_{\overline{\QQ},\text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n))^{G_\QQ})_\div = 0.$$
 
   \begin{proof}
-    Let us recall some facts about $\ell$-adic cohomology. We refer to
-    \cite[Expos\'{e}~VI]{SGA5} for the details. First consider the sheaf
-    $\ZZ_\ell (n)$. It is a
-    \textbf{constructible $\ZZ_\ell$-sheaf} (or simply
-      \textbf{$\ZZ_\ell$-sheaf} in the terminology of \cite[Rapport]{SGA4-1-2})
-    on $X$ in the sense of \cite[Expos\'{e}~VI, 1.1.1]{SGA5}. We would like to
-    compare the cohomology of $\ZZ_\ell (n)$ on
-    $X_{\overline{\QQ},\text{\it \'{e}t}}$ and $X_{\overline{\FF_p},\text{\it \'{e}t}}$,
-    where $p$ is some prime different from $\ell$, to be determined later.
-    For this we fix some algebraic closures $\overline{\QQ}/\QQ$ and
-    $\overline{\FF_p}/\FF_p$ and consider the corresponding morphisms
-    \[ \overline{\eta}\colon \Spec \overline{\QQ} \to \Spec \ZZ, \quad
-    \overline{x}\colon \Spec \overline{\FF_p} \to \Spec \ZZ. \]
-    Let $X_{\overline{\QQ},\text{\it \'{e}t}}$ and
-    $X_{\overline{\FF_p},\text{\it \'{e}t}}$ be the pullbacks of $X$ along the above
-    morphisms:
-    \[ \begin{tikzcd}
-      X_{\overline{\QQ}} \ar{r}\tikzpb\ar{d}[swap]{f_{\overline{\QQ}}} & X \ar{d}{f} & X_{\overline{\FF_p}} \ar{l}\ar{d}{f_{\overline{\FF_p}}}\tikzpbur \\
-      \Spec \overline{\QQ} \ar{r}[swap]{\overline{\eta}} & \Spec \ZZ & \Spec \overline{\FF_p} \ar{l}{\overline{x}}
-    \end{tikzcd} \]
-
-    According to \cite[Expos\'{e}~VI, 2.2.3]{SGA5}, the proper base change theorem
-    holds for constructible $\ZZ_\ell$-sheaves. It gives us isomorphisms
-    \[ H^i_c (X_{\overline{\QQ}, \text{\it \'{e}t}}, \ZZ_\ell (n)) \cong (R^i f_! \ZZ_\ell (n))_{\overline{\eta}}, \quad
-    H^i_c (X_{\overline{\FF_p}, \text{\it \'{e}t}}, \ZZ_\ell (n)) \cong (R^i f_! \ZZ_\ell (n))_{\overline{x}}, \]
-    where $R^i f_! \ZZ_\ell (n)$ is the same sheaf on $\Spec \ZZ$, and we take
-    its different stalks to get cohomology with compact support on different
-    fibers. The construction of higher direct images with proper support
-    $R^i f_! \mathcal{F}$ for $\ell$-adic sheaves is given in
-    \cite[Expos\'{e}~VI, \S 2.2]{SGA5}. The key nontrivial fact that we need is that
-    for every morphism (of locally noetherian schemes) $f\colon X\to Y$,
-    separated of finite type, if $\mathcal{F}$ is a constructible
-    $\ZZ_\ell$-sheaf on $X$, then $R^i f_! \mathcal{F}$ is a constructible
-    $\ZZ_\ell$-sheaf on $Y$.
-
-    According to \cite[Expos\'{e}~VI, 1.2.6]{SGA5}, for a projective system of
-    abelian sheaves $\mathcal{F} = (\mathcal{F}_n)_{n\in\NN}$ on $X_\et$, the
-    following are equivalent:
-    \begin{enumerate}
-    \item[1)] $\mathcal{F}$ is a constructible $\ZZ_\ell$-sheaf,
-
-    \item[2)] every open subscheme $U\subset X$ is a finite union of locally
-      closed pieces $Z_i$ where $\left.\mathcal{F}\right|_{Z_i}$ is a
-      \textbf{twisted constant constructible $\ZZ_\ell$-sheaf}
-      (or \textbf{faisceau lisse} in the terminology of
-      \cite[Rapport]{SGA4-1-2}).
-    \end{enumerate}
-
-    Being ``twisted constant'' means that each sheaf $\mathcal{F}_n$ in the
-    projective system $(\mathcal{F}_n)_{n\in\NN}$ is locally constant. The
-    importance of twisted constant sheaves is explained by the following
-    property \cite[Expos\'{e}~VI, 1.2.4, 1.2.5]{SGA5}: for a connected locally
-    noetherian scheme $X$, the category of twisted constant
-    $\ZZ_\ell$-constructible sheaves on $X$ is equivalent to the category of
-    finitely generated $\ZZ_\ell$-modules with a continuous action of the \'{e}tale
-    fundamental group $\pi_1^\text{\it \'{e}t} (X)$.
-
-    In our setting, all this means that there exists an open subscheme
-    $$U = \Spec \ZZ_S \subset \Spec \ZZ,$$
-    where $\ZZ_S$ denotes the localization of $\ZZ$ at a finite set of primes
-    $S$, such that the sheaves $R^i f_! \ZZ_\ell (n)$ are twisted constant on
-    $U$. By removing the necessary bad primes, we can make sure this holds
-    for all $i$.
-
-    Now there exists some prime $p \notin S$ (that is, $(p) \in U$), for which
-    we may consider the following picture:
-    \[ \begin{tikzcd}
-      X_{\overline{\QQ}} \ar{r}\tikzpb\ar{d}[swap]{f_{\overline{\QQ}}} & X_U \ar{d}{f_U} & X_{\overline{\FF_p}} \ar{l}\ar{d}{f_{\overline{\FF_p}}}\tikzpbur \\
-      \Spec \overline{\QQ} \ar{r}[swap]{\overline{\eta}} & U & \Spec \overline{\FF_p} \ar{l}{\overline{x}}
-    \end{tikzcd} \]
-
-    It follows that we have isomorphisms
+    According to the basic results on $\ell$-adic cohomology
+    \cite[Expos\'{e}~VI]{SGA5}, there exists a prime $p \ne \ell$ such that
     \begin{equation}
       \label{eqn:iso-pbc-Zl-Gal(QS/Q)}
-      H^i_c (X_{\overline{\QQ}, \text{\it \'{e}t}}, \ZZ_\ell (n)) \cong (R^i f_{U,!} \ZZ_\ell (n))_{\overline{\eta}} \cong (R^i f_{U,!} \ZZ_\ell (n))_{\overline{x}} \cong H^i_c (X_{\overline{\FF_p}, \text{\it \'{e}t}}, \ZZ_\ell (n)),
+      H^i_c (X_{\overline{\QQ}, \text{\it \'{e}t}}, \ZZ_\ell (n)) \cong H^i_c (X_{\overline{\FF_p}, \text{\it \'{e}t}}, \ZZ_\ell (n)).
     \end{equation}
-    of finitely generated $\ZZ_\ell$-modules with continuous action of
-    $$\pi_1^\text{\it \'{e}t} (U) \cong \Gal (\QQ_S/\QQ),$$
-    where $\QQ_S/\QQ$ denotes a maximal extension of $\QQ$ unramified outside of
-    $S$. We note that $(R^i f_{U,!} \ZZ_\ell (n))_{\overline{\eta}}$ naturally
-    carries an action of $\pi_1^\text{\it \'{e}t} (U, \overline{\eta})$, while
-    $(R^i f_{U,!} \ZZ_\ell (n))_{\overline{x}}$ carries an action of
-    $\pi_1^\text{\it \'{e}t} (U, \overline{x})$, and the isomorphism in the middle
-    of \eqref{eqn:iso-pbc-Zl-Gal(QS/Q)} sweeps under the rug an identification
-    of $\pi_1^\text{\it \'{e}t} (U, \overline{\eta})$ with
-    $\pi_1^\text{\it \'{e}t} (U, \overline{x})$.
 
-    To state this more accurately, note that the $\ZZ_\ell$-module
-    $H^i_c (X_{\overline{\QQ}, \text{\it \'{e}t}}, \ZZ_\ell (n))$ carries a natural
-    action of $G_\QQ$, while
-    $H^i_c (X_{\overline{\FF_p}, \text{\it \'{e}t}}, \ZZ_\ell (n))$ carries a
-    natural action of $G_{\FF_p}$. After making the necessary choices, we have
-    $G_{\QQ_p} \subset G_\QQ$ and a short exact sequence
+    We denote by $I_p$ the inertia subgroup of the absolute Galois group
+    $G_{\QQ_p}$:
     $$1 \to I_p \to G_{\QQ_p} \to G_{\FF_p} \to 1$$
-    where $I_p$ is the inertia subgroup, acting trivially on
-    $H^i_c (X_{\overline{\QQ}, \text{\it \'{e}t}}, \ZZ_\ell (n))$. We have thus
-    isomorphisms of finitely generated $\ZZ_\ell$-modules
-    \[ H^i_c (X_{\overline{\QQ}, \text{\it \'{e}t}}, \ZZ_\ell (n)) \cong
-    H^i_c (X_{\overline{\FF_p}, \text{\it \'{e}t}}, \ZZ_\ell (n)), \]
-    equivariant under the action of $G_{\QQ_p}/I_p$ on the left hand side and of
-    $G_{\FF_p}$ on the right hand side. To relate all this to $\QQ_\ell (n)$ and
-    $\QQ_\ell/\ZZ_\ell (n)$-coefficients, note that we have the following
-    isomorphic long exact sequences in cohomology.
 
-    \begin{equation}
-      \label{eqn:Zl-Ql-Ql/Zl-les}
-      \begin{tikzcd}[column sep=small, font=\small]
-        \vdots \ar{d} & \vdots \ar{d} \\
-        H_c^{i-1} (X_{\overline{\QQ},\text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n)) \ar{d}{\delta}\ar{r}{\cong} & H_c^{i-1} (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n))  \ar{d}{\delta} \\
-        H_c^i (X_{\overline{\QQ},\text{\it \'{e}t}}, \ZZ_\ell (n)) \ar{d}{\phi}\ar{r}{\cong} & H_c^i (X_{\overline{\FF_p},\text{\it \'{e}t}}, \ZZ_\ell (n)) \ar{d}{\phi} \\
-        H_c^i (X_{\overline{\QQ},\text{\it \'{e}t}}, \QQ_\ell (n)) \ar{d}{\psi}\ar{r}{\cong} & H_c^i (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell (n)) \ar{d}{\psi} \\
-        H_c^i (X_{\overline{\QQ},\text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n)) \ar{r}\ar{d}{\cong} & H_c^i (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n)) \ar{d} \\
-        \vdots & \vdots \\
-      \end{tikzcd}
-\end{equation}
-
-    Here
-    \begin{align*}
-      H_c^i (X_{\overline{\QQ},\text{\it \'{e}t}}, \QQ_\ell (n)) & = H_c^i (X_{\overline{\QQ},\text{\it \'{e}t}}, \ZZ_\ell (n))\otimes_{\ZZ_\ell} \QQ_\ell,\\
-      H_c^i (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell (n)) & = H_c^i (X_{\overline{\FF_p},\text{\it \'{e}t}}, \ZZ_\ell (n))\otimes_{\ZZ_\ell} \QQ_\ell,
-    \end{align*}
-    and the arrows $\phi$ above are canonical localization morphisms.
-    The horizontal arrows are equivariant isomorphisms in the above sense. Note
-    that we have
+    The isomorphism \eqref{eqn:iso-pbc-Zl-Gal(QS/Q)} is equivariant under the
+    $G_{\QQ_p}$-action on the left hand side and $G_{\FF_p}$-action on the right
+    hand side. We have
     \[ H^i_c (X_{\overline{\QQ}, \text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n))^{G_\QQ} \rightarrowtail
     H^i_c (X_{\overline{\QQ}, \text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n))^{G_{\QQ_p}/I_p}
     \cong H^i_c (X_{\overline{\FF_p}, \text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n))^{G_{\FF_p}}, \]
-    so in order to prove that
-    $$(H^i_c (X_{\overline{\QQ},\text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n))^{G_\QQ})_\div = 0,$$
-    it will be enough to show that
+    so it will be enough to show that
     $$(H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n))^{G_{\FF_p}})_\div = 0.$$
-    From now on we move to the characteristic $p$ and consider the fixed points
-    of $G_{\FF_p}$ acting on the $\ZZ_\ell$-module
-    $H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n))$.
-    In the long exact sequence \eqref{eqn:Zl-Ql-Ql/Zl-les}, we have (keeping in
-    mind that $\phi$ is merely the localization morphism):
-    \begin{align*}
-      \ker \phi & = H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \ZZ_\ell (n))_{tor},\\
-      \ker \psi & = \im \phi \cong H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \ZZ_\ell (n)) / \ker \phi \\
-      & \quad\quad\quad = \frac{H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \ZZ_\ell (n))}{H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \ZZ_\ell (n))_{tor}} \rdfn H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \ZZ_\ell (n))_{cotor},\\
-      \im \psi & = H_c^i (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n))_\div.
-    \end{align*}
 
-    This gives us a short exact sequence
-    \[ 0 \to H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \ZZ_\ell (n))_{cotor} \to
-    H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell (n)) \to
-    H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n))_\div \to 0 \]
-    After taking the $G_{\FF_p}$-invariants, we obtain a long exact sequence
-    of cohomology groups
-    \begin{multline}
-      \label{eqn:cohomology-long-exact-sequence-with-GFp}
-      0 \to (H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \ZZ_\ell (n))_{cotor})^{G_{\FF_p}} \to
-      H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell (n))^{G_{\FF_p}} \\
-      \to (H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n))_\div)^{G_{\FF_p}} \to
-      H^1 (G_{\FF_p}, H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \ZZ_\ell (n))_{cotor}) \to \cdots
-    \end{multline}
-
-    We claim that
+    The long exact sequence of $G_{\FF_p}$-modules
+    \begin{multline*}
+      \cdots \to
+      H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \ZZ_\ell (n)) \to
+      H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell (n)) \to
+      H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n)) \\
+      \to H^{i+1}_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \ZZ_\ell (n)) \to
+      \cdots
+    \end{multline*}
+    induces short exact sequences
     \begin{equation}
-      \label{eqn:SGA-7-expose-XXI-5-5-3}
-      H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell (n))^{G_{\FF_p}} = 0.
+      \label{eqn:Zl-Ql-Ql/Zl-ses}
+      0 \to H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \ZZ_\ell (n))_\cotor \to
+      H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell (n)) \to
+      H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n))_\div \to 0
     \end{equation}
 
-    Indeed, according to \cite[Expos\'{e}~XXI, 5.5.3]{SGA7}, the eigenvalues of the
+    According to \cite[Expos\'{e}~XXI, 5.5.3]{SGA7}, the eigenvalues of the
     geometric Frobenius acting on
     $H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell)$ are algebraic
-    integers. We are twisting $\QQ_\ell$ by $n$, so the eigenvalues of Frobenius
-    lie in $p^{-n}\,\overline{\ZZ}$. Since $n < 0$ by our assumption, this
-    implies that $1$ does not occur as an eigenvalue.
-
-    Now \eqref{eqn:SGA-7-expose-XXI-5-5-3} and the long exact sequence
-    \eqref{eqn:cohomology-long-exact-sequence-with-GFp} imply that there is a
-    monomorphism
-    \[ (H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n))_\div)^{G_{\FF_p}} \rightarrowtail
-    H^1 (G_{\FF_p}, H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \ZZ_\ell (n))_{cotor}), \]
-    which restricts to a monomorphism between the maximal divisible subgroups
+    integers. After twisting $\QQ_\ell$ by $n$, the eigenvalues will lie in
+    $p^{-n}\,\overline{\ZZ}$. Since $n < 0$ by our assumption, this implies
+    that $1$ does not occur as an eigenvalue, and therefore
+    $$H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell (n))^{G_{\FF_p}} = 0.$$
+    Hence after taking the $G_{\FF_p}$-invariants in
+    \eqref{eqn:Zl-Ql-Ql/Zl-ses}, we obtain
+    \[
+      0 \to (H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n))_\div)^{G_{\FF_p}} \to
+      H^1 (G_{\FF_p}, H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \ZZ_\ell (n))_\cotor) \to \cdots
+    \]
+    This gives a monomorphism between the maximal divisible subgroups
     \[ ((H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n))_\div)^{G_{\FF_p}})_\div \rightarrowtail
-    H^1 (G_{\FF_p}, H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \ZZ_\ell (n))_{cotor})_\div. \]
+    H^1 (G_{\FF_p}, H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \ZZ_\ell (n))_\cotor)_\div. \]
     However,
-    $H^1 (G_{\FF_p}, H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \ZZ_\ell (n))_{cotor})$
+    $H^1 (G_{\FF_p}, H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \ZZ_\ell (n))_\cotor)$
     is a finitely generated $\ZZ_\ell$-module, and therefore its
-    maximal divisible subgroup is trivial. We have therefore
+    maximal divisible subgroup is trivial. We conclude that
     \[ (H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n))^{G_{\FF_p}})_\div =
-    ((H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n))_\div)^{G_{\FF_p}})_\div = 0. \]
-    (For the first equality, note that for any $G$-module $A$ one has
-    $((A_\div)^G)_\div = (A^G)_\div$.)
+      ((H^i_c (X_{\overline{\FF_p},\text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n))_\div)^{G_{\FF_p}})_\div = 0. \qedhere \]
   \end{proof}
 \end{proposition}
 
-\begin{proof}[Proof of theorem~\ref{theorem-II}]
-  By definition~\ref{dfn:u-infty}, this amounts to showing that the morphism
+\begin{proof}[Proof of Theorem~\ref{theorem-II}]
+  By Definition~\ref{dfn:u-infty}, this amounts to showing that the morphism
   $$v_\infty^*\colon R\Gamma_c (X_\et, \QQ/\ZZ (n)) \to R\Gamma_c (G_\RR, X (\CC), \QQ/\ZZ (n))$$
   is torsion. The complexes $R\Gamma_c (X_\et, \QQ/\ZZ (n))$ and
   $R\Gamma_c (G_\RR, X (\CC), \QQ/\ZZ (n))$ are almost of cofinite type by
-  proposition~\ref{prop:motivic-cohomology-duality-consequences} and
-  lemma~\ref{lemma:RGammac(GR,X(C),Q/Z(n))-almost-cofinite-type} respectively.
-  Therefore, according to lemma~\ref{lemma:torsion-morphisms-in-D(Z)}, to show
+  Proposition~\ref{prop:motivic-cohomology-duality-consequences} and
+  Proposition~\ref{prop:equivariant-coho-of-X(C)} respectively.
+  Therefore, according to Lemma~\ref{lemma:torsion-morphisms-in-D(Z)}, to show
   that
   $v^*_\infty\colon R\Gamma_c (X_\et, \QQ/\ZZ (n)) \to R\Gamma_c (G_\RR, X
-  (\CC), \QQ/\ZZ (n))$ is torsion in $\mathbf{D} (\ZZ)$, it is enough to show
-  that the corresponding morphisms on the maximal divisible subgroups
+  (\CC), \QQ/\ZZ (n))$ is torsion in $\DZ$, it is enough to show that the
+  corresponding morphisms on the maximal divisible subgroups
   \[ H^i_c (v^*_\infty)_\div\colon H^i_c (X_\et, \QQ/\ZZ (n))_\div \to
      H^i_c (G_\RR, X (\CC), \QQ/\ZZ (n))_\div \]
   are all trivial. The morphism $H^i_c (v^*_\infty)$ factors through
@@ -1690,7 +1284,7 @@ following result about $\ell$-adic cohomology.
                                                                                                \bigoplus_\ell \left(H^i_c (X_{\overline{\QQ}, \text{\it \'{e}t}}, \QQ_\ell/\ZZ_\ell (n))^{G_\QQ}\right)_\div,
   \end{align*}
   where all summands are trivial according to
-  \ref{prop:l-adic-cohomology-key-lemma}.
+  Proposition~\ref{prop:l-adic-cohomology-key-lemma}.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1698,7 +1292,7 @@ following result about $\ell$-adic cohomology.
 \section{Weil-\'{e}tale complexes $R\Gamma_\Wc (X, \ZZ(n))$}
 \label{sec:RGamma-Wc}
 
-The goal of this section is to construct Weil-\'{e}tale cohomology complexes
+The goal of this section is to construct the Weil-\'{e}tale cohomology complexes
 $R\Gamma_\Wc (X, \ZZ(n))$.
 
 \begin{lemma}
@@ -1713,7 +1307,7 @@ $R\Gamma_\Wc (X, \ZZ(n))$.
 
   \begin{proof}
     The morphism $\alpha_{X,n}$ is defined on a complex of $\QQ$-vector spaces,
-    and $u_\infty^*$ is torsion by theorem~\ref{theorem-II}.
+    and $u_\infty^*$ is torsion by Theorem~\ref{theorem-II}.
   \end{proof}
 \end{lemma}
 
@@ -1721,8 +1315,7 @@ $R\Gamma_\Wc (X, \ZZ(n))$.
   \label{dfn:i-infty}
   We let
   $i_\infty^*\colon R\Gamma_\fg (X, \ZZ (n)) \to R\Gamma_c (G_\RR, X (\CC), \ZZ (n))$
-  be a morphism in $\mathbf{D} (\ZZ)$ that gives a morphism of distinguished
-  triangles
+  be a morphism in $\DZ$ that gives a morphism of distinguished triangles
   \begin{equation}
     \label{eqn:triangle-defining-i-infty}
     \begin{tikzcd}
@@ -1734,19 +1327,22 @@ $R\Gamma_\Wc (X, \ZZ(n))$.
   \end{equation}
 \end{definition}
 
+This indeed makes $i_\infty^*$ independent of any choices.
+
 \begin{proposition}
   \label{prop:uniqueness-of-i-infty}
-  The morphism $i_\infty^*$ is uniquely defined.
+  There is a unique morphism $i_\infty^*$ that fits in the
+  diagram \eqref{eqn:triangle-defining-i-infty}.
 
   \begin{proof}
-    We may apply corollary~\ref{cor:TR3-TR1-with-uniqueness}, since
+    We may apply Corollary~\ref{cor:TR3-TR1-with-uniqueness}, since
     $\RHom (R\Gamma (X, \ZZ^c (n)), \QQ [-2])$ is a complex of $\QQ$-vector
     spaces, and both
     $R\Gamma_\fg (X, \ZZ (n))$ and
     $R\Gamma_c (G_\RR, X (\CC), \ZZ (n))$
     are almost perfect complexes by
-    proposition~\ref{prop:RGammafg-almost-perfect} and
-    lemma~\ref{lemma:RGammac(GR,X(C),Z(n))-almost-perfect}.
+    Proposition~\ref{prop:RGammafg-almost-perfect} and
+    Proposition~\ref{prop:equivariant-coho-of-X(C)}.
   \end{proof}
 \end{proposition}
 
@@ -1764,31 +1360,31 @@ $R\Gamma_\Wc (X, \ZZ(n))$.
       R\Gamma_c (G_\RR, X (\CC), \ZZ (n))
     \end{tikzcd} \]
 
-    According to \ref{cor:TR3-TR1-with-uniqueness}, the morphism
+    According to Corollary~\ref{cor:TR3-TR1-with-uniqueness}, the morphism
     \begin{multline*}
-      \Hom_{\mathbf{D} (\ZZ)} (R\Gamma_\fg (X,\ZZ (n)), R\Gamma_c (G_\RR, X (\CC), \ZZ (n))) \\
+      \Hom_\DZ (R\Gamma_\fg (X,\ZZ (n)), R\Gamma_c (G_\RR, X (\CC), \ZZ (n))) \\
       \to
-      \Hom_{\mathbf{D} (\ZZ)} (R\Gamma_c (X_\et, \ZZ (n)), R\Gamma_c (G_\RR, X (\CC), \ZZ (n)))
+      \Hom_\DZ (R\Gamma_c (X_\et, \ZZ (n)), R\Gamma_c (G_\RR, X (\CC), \ZZ (n)))
     \end{multline*}
     induced by the composition with
     $R\Gamma_c (X_\et, \ZZ (n)) \to R\Gamma_\fg (X,\ZZ (n))$, is mono, and
     therefore
     \begin{multline*}
-      \Hom_{\mathbf{D} (\ZZ)} (R\Gamma_\fg (X,\ZZ (n)), R\Gamma_c (G_\RR, X (\CC), \ZZ (n)))\otimes_\ZZ \QQ \to\\
-      \Hom_{\mathbf{D} (\ZZ)} (R\Gamma_c (X_\et, \ZZ (n)), R\Gamma_c (G_\RR, X (\CC), \ZZ (n)))\otimes_\ZZ \QQ
+      \Hom_\DZ (R\Gamma_\fg (X,\ZZ (n)), R\Gamma_c (G_\RR, X (\CC), \ZZ (n)))\otimes \QQ \to\\
+      \Hom_\DZ (R\Gamma_c (X_\et, \ZZ (n)), R\Gamma_c (G_\RR, X (\CC), \ZZ (n)))\otimes \QQ
     \end{multline*}
     is mono as well. However, $u_\infty^*\otimes \QQ = 0$ by
-    theorem~\ref{theorem-II}, and this implies that $i_\infty^*\otimes \QQ = 0$.
+    Theorem~\ref{theorem-II}, and this implies that $i_\infty^*\otimes \QQ = 0$.
   \end{proof}
 \end{proposition}
 
-Now we are ready to define Weil-\'{e}tale complexes.
+Now we are ready to define the Weil-\'{e}tale complexes.
 
 \begin{definition}
   \label{dfn:RGammaWc}
   We let
   $R\Gamma_\Wc (X,\ZZ(n))$ be an object in the derived category
-  $\mathbf{D} (\ZZ)$ which is a mapping fiber of $i_\infty^*$:
+  $\DZ$ which is a mapping fiber of $i_\infty^*$:
   \[ R\Gamma_\Wc (X,\ZZ(n)) \to
   R\Gamma_\fg (X, \ZZ (n)) \xrightarrow{i_\infty^*}
   R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \to
@@ -1799,18 +1395,18 @@ Now we are ready to define Weil-\'{e}tale complexes.
 
 \begin{remark}
   Note that this defines $R\Gamma_\Wc (X,\ZZ(n))$ up to a non-unique isomorphism
-  in $\mathbf{D} (\ZZ)$, and the groups $H_\Wc^i (X, \ZZ (n))$ are also defined
+  in $\DZ$, and the groups $H_\Wc^i (X, \ZZ (n))$ are also defined
   up to a non-unique isomorphism. In a continuation of this paper we will make
   use of the determinant $\det\nolimits_\ZZ R\Gamma_\Wc (X,\ZZ(n))$ in the
   sense of \cite{Knudsen-Mumford-1976}, which will be defined up to a canonical
   isomorphism.
 
-  Nevertheless, we recall from proposition~\ref{prop:RGamma-fg-uniquely-defined}
+  Nevertheless, we recall from Proposition~\ref{prop:RGamma-fg-well-defined}
   that $R\Gamma_\fg (X, \ZZ (n))$ is defined up to a unique isomorphism in the
-  derived category $\mathbf{D} (\ZZ)$. If we could define
+  derived category $\DZ$. If we could define
   $i_\infty^*\colon R\Gamma_\fg (X, \ZZ(n)) \to R\Gamma_c (G_\RR, X(\CC), \ZZ(n))$
   as an explicit, genuine morphism of complexes (not merely a morphism in the
-  derived category $\mathbf{D} (\ZZ)$), this would give us a canonical and
+  derived category $\DZ$), this would give us a canonical and
   functorial definition for $R\Gamma_\Wc (X, \ZZ(n))$.
 \end{remark}
 
@@ -1841,12 +1437,12 @@ Geisser in \cite{Geisser-2010-arithmetic-homology}.
 
   \begin{proof}
     Under our assumptions, $X (\CC) = X (\RR) = \emptyset$, and therefore
-    \[ R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) = 0, \]
-    so that $R\Gamma_\Wc (X,\ZZ(n)) \cong R\Gamma_\fg (X, \ZZ (n))$. Finally,
-    according to \ref{prop:RGamma-fg-for-X(R)-empty}, we have an isomorphism
+    \[ R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) = 0, \] so that
+    $R\Gamma_\Wc (X,\ZZ(n)) \cong R\Gamma_\fg (X, \ZZ (n))$. Finally, according
+    to Proposition~\ref{prop:RGamma-fg-for-X(R)-empty}, we have an isomorphism
     $R\Gamma_\fg (X, \ZZ (n)) \cong \RHom (R\Gamma (X_\et, \ZZ^c (n)), \ZZ
     [-1])$.  We recall from
-    proposition~\ref{prop:motivic-cohomology-duality-consequences} that the
+    Proposition~\ref{prop:motivic-cohomology-duality-consequences} that the
     groups $H^i (X_\et, \ZZ^c(n))$ are finite under our assumption.
 
     To relate this to Geisser's arithmetic homology, according to
@@ -1899,19 +1495,21 @@ $\mathbf{L}^c (X_\et,n)$.
       H^i_c (G_\RR, X (\CC), \ZZ (n)) \to \cdots
     \end{multline*}
     The groups $H^i_c (G_\RR, X (\CC), \ZZ (n))$ and $H^i_\fg (X, \ZZ(n))$ are
-    finitely generated by lemma~\ref{lemma:RGammac(GR,X(C),Z(n))-almost-perfect},
-    and proposition~\ref{prop:RGammafg-almost-perfect} respectively.
-    This implies finite generation of $H^i_\Wc (X, \ZZ(n))$.
+    finitely generated by
+    Proposition~\ref{prop:equivariant-coho-of-X(C)}, and
+    Proposition~\ref{prop:RGammafg-almost-perfect} respectively.  This implies
+    finite generation of $H^i_\Wc (X, \ZZ(n))$.
   \end{proof}
 \end{lemma}
 
 \begin{lemma}
-  One has $H^i_\Wc (X,\ZZ(n)) = 0$ for $i < 0$. If we further assume that
-  $H^1 (X_\et, \ZZ^c(n))$ is a finite group, then $H^0_\Wc (X,\ZZ(n)) = 0$.
+  One has $H^i_\Wc (X,\ZZ(n)) = 0$ for $i < 0$.
+  % If we further assume that $H^1 (X_\et, \ZZ^c(n))$ is a finite group, then
+  % $H^0_\Wc (X,\ZZ(n)) = 0$.
 
   \begin{proof}
     We have $H^i_c (X_\et, \ZZ(n)) = 0$ for $i \le 0$. Also, from the duality
-    theorem~\ref{theorem-I}, we see that $H^{2-i} (X_\et, \ZZ^c (n))$ is finite
+    Theorem~\ref{theorem-I}, we see that $H^{2-i} (X_\et, \ZZ^c (n))$ is finite
     $2$-torsion, and therefore $\Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ) = 0$ for
     $i \le 0$. Assuming that $H^1 (X_\et, \ZZ^c (n))$ is finite, we also have
     $\Hom (H^1 (X_\et, \ZZ^c (n)), \QQ) = 0$. The triangle defining
@@ -1930,62 +1528,88 @@ $\mathbf{L}^c (X_\et,n)$.
       H^i_c (G_\RR, X (\CC), \ZZ (n)) \]
     If $i < 0$, this implies that
     $H^i_\Wc (X, \ZZ(n)) = H^i_\fg (X, \ZZ(n)) = 0$.
-    If $H^1 (X_\et, \ZZ^c (n))$ is finite, then we can also conclude that
-    $H^0_\Wc (X, \ZZ(n)) = H^0_\fg (X, \ZZ(n)) = 0$.
+    % If $H^1 (X_\et, \ZZ^c (n))$ is finite, then we can also conclude that
+    % $H^0_\Wc (X, \ZZ(n)) = H^0_\fg (X, \ZZ(n)) = 0$.
   \end{proof}
 \end{lemma}
 
 For the vanishing of $H^i_\Wc (X, \ZZ(n))$ for $i \gg 0$, we first establish the
 following auxiliary result.
 
-\begin{lemma}[{cf. corollary~\ref{cor:RGamma-fg-model-for-l-adic-cohomology}}]
+\begin{lemma}
   Let $d = \dim X$. For each prime $\ell$ and $i \ge 2d$ one has
   \begin{equation}
     \label{eqn:l-adic-completion-of-H-Wc}
-    H^i_\Wc (X, \ZZ (n)) \otimes_\ZZ \ZZ_\ell =
+    H^i_\Wc (X, \ZZ (n)) \otimes \ZZ_\ell =
     \widehat{H}_c^i (X [1/\ell]_\et, \ZZ_\ell (n)),
   \end{equation}
   where the right hand side is defined via
   $\varprojlim_r \widehat{H}_c^i (X [1/\ell]_\et, \mu_{\ell^r}^{\otimes n})$.
 
   \begin{proof}
-    Consider the commutative diagram
-    \[ \begin{tikzcd}[row sep=3em, column sep=3em]
-        R\Gamma_\fg (X, \ZZ(n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r \ar{r}{i_\infty^* \otimes \ZZ/\ell^r}\ar{d}[swap]{\cong} & R\Gamma_c (G_\RR, X(\CC), \ZZ(n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r\ar{d} \\
-        R\Gamma_c (X_\et, \ZZ (n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r \ar{r}\ar{ur}{u_\infty^* \otimes \ZZ/\ell^r} & R\widehat{\Gamma}_c (G_\RR, X(\CC), \ZZ(n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r
+    Consider the commutative diagram with distinguished rows and columns
+    \[ \begin{tikzcd}[font=\footnotesize]
+        {[R\Gamma (X_\et, \ZZ^c(n)), \QQ[-2]]} \ar{r}{\widehat{\alpha}_{X,n}} \ar{d}{id} & R\widehat{\Gamma}_c (X_\et, \ZZ(n)) \ar{d} \ar{r} & R\widehat{\Gamma}_\fg (X, \ZZ(n)) \ar{r}\ar{d} & {[+1]} \ar{d}{id} \\
+        {[R\Gamma (X_\et, \ZZ^c(n)), \QQ[-2]]} \ar{r}{\alpha_{X,n}} \ar{d} & R\Gamma_c (X_\et, \ZZ(n)) \ar{r} \ar{d}{\widehat{u}^*_\infty} & R\Gamma_\fg (X, \ZZ(n)) \ar{r} \ar{d}{\widehat{i}^*_\infty} & {[+1]} \ar{d} \\
+        0 \ar{r}\ar{d} & R\widehat{\Gamma}_c (G_\RR, X(\CC), \ZZ(n)) \ar{r}{id} \ar{d} & R\widehat{\Gamma}_c (G_\RR, X(\CC), \ZZ(n)) \ar{r} \ar{d} & 0 \ar{d} \\
+        {[R\Gamma (X_\et, \ZZ^c(n)), \QQ[-1]]} \ar{r}{\widehat{\alpha}_{X,n} [1]} & R\widehat{\Gamma}_c (X_\et, \ZZ(n)) [1] \ar{r} & R\widehat{\Gamma}_\fg (X, \ZZ(n)) [1] \ar{r} & {[+2]}
       \end{tikzcd} \]
-
-    The left vertical arrow is the inverse of the canonical morphism
-    $R\Gamma_c (X_\et, \ZZ(n)) \to R\Gamma_\fg (X, \ZZ(n))$, which becomes a
-    quasi-isomorphism after tensoring with $\ZZ/\ell^r\ZZ$
-    (see proposition~\ref{prop:tensoring-RGammafg-with-Z/m-and-Q}).
-    The mapping fiber of the top horizontal arrow is
-    $R\Gamma_\Wc (X, \ZZ (n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r$, while the
-    mapping fiber of the bottom horizontal arrow is modified \'{e}tale cohomology
-    with compact support
-    $R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r$
-    (see e.g. \cite[Lemma~6.14]{Flach-Morin-2018}). Therefore, we have a
-    comparison morphism
-    \begin{equation}
-      \label{eqn:comparison-of-H-Wc-mod-lr}
-      R\Gamma_\Wc (X, \ZZ (n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r \to
-      R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \otimes_\ZZ^\mathbf{L} \ZZ/\ell^r.
-    \end{equation}
-    We recall that the arrow
-    $R\Gamma_c (G_\RR, X(\CC), \ZZ(n)) \to R\widehat{\Gamma}_c (G_\RR, X(\CC), \ZZ(n))$
-    induces isomorphisms in cohomology $H^i$ for $i \ge 2d-1$
-    (see lemma~\ref{lemma:Tate-vs-normal-cohomology-of-X(C)}).
-    Taking the limits $\varprojlim_r$ and applying the $5$-lemma,
-    we see that \eqref{eqn:comparison-of-H-Wc-mod-lr} induces the isomorphism
-    \eqref{eqn:l-adic-completion-of-H-Wc} for $i \ge 2d$.
+    Here $\widehat{u}^*_\infty$ (resp. $\widehat{i}^*_\infty$) is defined as the
+    composition of the canonical morphism $u^*_\infty$ (resp. $i^*_\infty$) with
+    the projection to Tate cohomology
+    \[ \pi\colon R\Gamma_c (G_\RR, X(\CC), \ZZ(n)) \to
+      R\widehat{\Gamma}_c (G_\RR, X(\CC), \ZZ(n)). \]
+    By Lemma~\ref{lemma:Tate-vs-normal-cohomology-of-X(C)}, $H^i (\pi)$ is an
+    isomorphism for $i \ge 2d-1$. Therefore, the five-lemma applied to
+    \[ \begin{tikzcd}
+        R\Gamma_\Wc (X, \ZZ(n)) \ar{r}\ar{d}{f} & R\Gamma_\fg (X, \ZZ(n)) \ar{r}{i^*_\infty}\ar{d}{id} & R\Gamma_c (G_\RR, X(\CC), \ZZ(n)) \ar{r}\ar{d}{\pi} & {[+1]}\ar{d}{f [1]} \\
+        R\widehat{\Gamma}_\fg (X, \ZZ(n)) \ar{r} & R\Gamma_\fg (X, \ZZ(n)) \ar{r}{\widehat{i}^*_\infty} & R\widehat{\Gamma}_c (G_\RR, X(\CC), \ZZ(n)) \ar{r} & {[+1]}
+      \end{tikzcd} \]
+    shows that for $i \ge 2d$ holds
+    \[ H^i_\Wc (X, \ZZ(n)) \cong \widehat{H}^i_\fg (X, \ZZ(n)). \]
+    As in Corollary~\ref{cor:RGamma-fg-model-for-l-adic-cohomology}, we have for a
+    prime $\ell$
+    \[ \widehat{H}^i_\fg (X, \ZZ(n)) \otimes \ZZ_\ell \cong \widehat{H}^i_c (X[1/\ell]_\et, \ZZ_\ell (n)). \qedhere \]
   \end{proof}
 \end{lemma}
+
+% \begin{proof}
+%   Consider the commutative diagram
+%   \[ \begin{tikzcd}[row sep=3em, column sep=3em]
+%       R\Gamma_\Wc (X, \ZZ (n)) \otimes^\mathbf{L} \ZZ/\ell^r \ar{r} & R\Gamma_\fg (X, \ZZ(n)) \otimes^\mathbf{L} \ZZ/\ell^r \ar{r}{i_\infty^* \otimes \ZZ/\ell^r}\ar{d}[swap]{\cong} & R\Gamma_c (G_\RR, X(\CC), \ZZ(n)) \otimes^\mathbf{L} \ZZ/\ell^r\ar{d} \\
+%       R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \otimes^\mathbf{L} \ZZ/\ell^r \ar{r} & R\Gamma_c (X_\et, \ZZ (n)) \otimes^\mathbf{L} \ZZ/\ell^r \ar{r}\ar{ur}{u_\infty^* \otimes \ZZ/\ell^r} & R\widehat{\Gamma}_c (G_\RR, X(\CC), \ZZ(n)) \otimes^\mathbf{L} \ZZ/\ell^r
+%     \end{tikzcd} \]
+
+%   The left vertical arrow is the inverse of the canonical morphism
+%   $R\Gamma_c (X_\et, \ZZ(n)) \to R\Gamma_\fg (X, \ZZ(n))$, which becomes a
+%   quasi-isomorphism after tensoring with $\ZZ/\ell^r\ZZ$
+%   (see Proposition~\ref{prop:tensoring-RGammafg-with-Z/m-and-Q}).
+%   The mapping fiber of the top horizontal arrow is
+%   $R\Gamma_\Wc (X, \ZZ (n)) \otimes^\mathbf{L} \ZZ/\ell^r$, while the
+%   mapping fiber of the bottom horizontal arrow is modified \'{e}tale cohomology
+%   with compact support
+%   $R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \otimes^\mathbf{L} \ZZ/\ell^r$
+%   by \cite[Lemma~6.14]{Flach-Morin-2018}. Therefore, we have a comparison
+%   morphism
+%   \begin{equation}
+%     \label{eqn:comparison-of-H-Wc-mod-lr}
+%     R\Gamma_\Wc (X, \ZZ (n)) \otimes^\mathbf{L} \ZZ/\ell^r \to
+%     R\widehat{\Gamma}_c (X_\et, \ZZ (n)) \otimes^\mathbf{L} \ZZ/\ell^r.
+%   \end{equation}
+%   We recall that the arrow
+%   $R\Gamma_c (G_\RR, X(\CC), \ZZ(n)) \to R\widehat{\Gamma}_c (G_\RR, X(\CC), \ZZ(n))$
+%   induces isomorphisms in cohomology $H^i$ for $i \ge 2d-1$
+%   (see Lemma~\ref{lemma:Tate-vs-normal-cohomology-of-X(C)}).
+%   Taking the limits $\varprojlim_r$ and applying the $5$-lemma,
+%   we see that \eqref{eqn:comparison-of-H-Wc-mod-lr} induces the isomorphism
+%   \eqref{eqn:l-adic-completion-of-H-Wc} for $i \ge 2d$.
+% \end{proof}
 
 \begin{corollary}
   One has $H^i_\Wc (X, \ZZ(n)) = 0$ for $i > 2d+1$.
 
   \begin{proof}
-    It is enough to verify that $H^i_\Wc (X, \ZZ(n)) \otimes_\ZZ \ZZ_\ell = 0$
+    It is enough to verify that $H^i_\Wc (X, \ZZ(n)) \otimes \ZZ_\ell = 0$
     for each prime $\ell$. Thanks to the isomorphism
     \eqref{eqn:l-adic-completion-of-H-Wc}, this reduces to
     $\widehat{H}_c^i (X [1/\ell]_\et, \ZZ_\ell (n)) = 0$ for $i > 2d+1$,
@@ -2011,62 +1635,11 @@ Putting together the above observations, we obtain the following result.
   $i \notin [0, 2\dim X + 1]$.
 \end{proposition}
 
-\begin{remark}
-  The $\ell$-adic argument that gives vanishing of $H^i_\Wc (X, \ZZ(n))$ for
-  $i > 2d+1$ may seem rather contrived. Here is a more pedestrian explanation.
-
-  \begin{enumerate}
-  \item[1)] Consider the exact sequence
-    (identifying the cohomology groups
-    $\widehat{H}^i_c (G_\RR, X (\CC), \ZZ (n))$ with
-    $H^i_c (G_\RR, X (\CC), \ZZ (n))$
-    thanks to lemma~\ref{lemma:Tate-vs-normal-cohomology-of-X(C)})
-    \[ \widehat{H}^i_c (X_\et, \ZZ(n)) \to H^i_c (X_\et, \ZZ(n))
-      \xrightarrow{H^i (u_\infty^*)} H^i_c (G_\RR, X (\CC), \ZZ (n)) \to
-      \widehat{H}^{i+1}_c (X_\et, \ZZ(n)) \]
-    Here $\widehat{H}^i_c (X_\et, \ZZ(n)) = 0$ for $i > 2d+2$
-    by proposition~\ref{prop:motivic-cohomology-duality-consequences},
-    and hence $H^i (u_\infty^*)$ is an isomorphism.
-    For $i = 2d+2$ the above exact sequence shows that $H^{2d+2} (u_\infty^*)$
-    is surjective.
-
-  \item[2)] The triangle defining $R\Gamma_\fg (X, \ZZ(n))$ gives an exact sequence
-    \begin{multline*}
-      \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ) \to
-      H^i_c (X_\et, \ZZ(n)) \to
-      H^i_\fg (X_\et, \ZZ(n)) \\
-      \to \Hom (H^{1-i} (X_\et, \ZZ^c (n)), \QQ)
-    \end{multline*}
-    If $i > 2d + 2$, then $\Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ) = 0$ by
-    proposition~\ref{prop:motivic-cohomology-duality-consequences}, and
-    therefore we obtain isomorphisms
-    $H^i_\fg (X_\et, \ZZ(n)) \xrightarrow{\cong} H^i_c (X_\et, \ZZ(n))$.
-
-  \item[3)] Considering the commutative diagram
-    \[ \begin{tikzcd}
-        H^i_c (X_\et, \ZZ(n)) \ar{r}\ar{d}[swap]{H^i (u_\infty^*)} & H^i_\fg (X, \ZZ(n))\ar{dl}{H^i (i_\infty^*)} \\
-        H^i_c (G_\RR, X (\CC), \ZZ (n))
-      \end{tikzcd} \]
-    we conclude from 2) and 3) that $H^i (i_\infty^*)$ is an isomorphism for
-    $i > 2d+2$ and $H^{2d+2} (i_\infty^*)$ is surjective.
-  \end{enumerate}
-
-  Now from the definition of $R\Gamma_\Wc (X, \ZZ(n))$, we have short exact
-  sequences
-  \[ 0 \to \coker H^{i-1} (i_\infty^*) \to
-    H^i_\Wc (X, \ZZ(n)) \to
-    \ker H^i (i_\infty^*) \to 0 \]
-  and the above shows that $H^i_\Wc (X, \ZZ(n)) = 0$ for $i > 2d+2$.
-  However, the vanishing for $i = 2d+2$ seems to be a bit more delicate
-  (cf. \cite[p.\,991]{Kahn-2003-equivalences} and the proof of
-  \cite[Theorem~7.3]{Geisser-2004}).
-\end{remark}
-
 \subsection*{Rational coefficients}
 
 \begin{proposition}
   There is a non-canonical splitting
-  \[ R\Gamma_\Wc (X, \ZZ(n)) \otimes_\ZZ \QQ \cong
+  \[ R\Gamma_\Wc (X, \ZZ(n)) \otimes \QQ \cong
     \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-1] \oplus
     R\Gamma_c (G_\RR, X (\CC), \QQ (n)) [-1]. \]
 
@@ -2078,19 +1651,19 @@ Putting together the above observations, we obtain the following result.
       R\Gamma_\Wc (X, \ZZ (n)) [1] \]
     after tensoring with $\QQ$ becomes
     \begin{multline*}
-      R\Gamma_\Wc (X, \ZZ (n))\otimes_\ZZ \QQ \to
-      R\Gamma_\fg (X, \ZZ(n))\otimes_\ZZ \QQ \xrightarrow{i_\infty^*\otimes\QQ = 0}
-      R\Gamma_c (G_\RR, X (\CC), \ZZ(n))\otimes_\ZZ \QQ \\
-      \to R\Gamma_\Wc (X, \ZZ (n))\otimes_\ZZ \QQ [1]
+      R\Gamma_\Wc (X, \ZZ (n))\otimes \QQ \to
+      R\Gamma_\fg (X, \ZZ(n))\otimes \QQ \xrightarrow{i_\infty^*\otimes\QQ = 0}
+      R\Gamma_c (G_\RR, X (\CC), \ZZ(n))\otimes \QQ \\
+      \to R\Gamma_\Wc (X, \ZZ (n))\otimes \QQ [1]
     \end{multline*}
     which gives us a non-canonical splitting \cite[Chapitre~II,
     Corollaire~1.2.6]{Verdier-thesis}
-    \[ R\Gamma_\Wc (X, \ZZ (n))\otimes_\ZZ \QQ \cong
-      R\Gamma_\fg (X, \ZZ(n))\otimes_\ZZ \QQ \oplus
-      R\Gamma_c (G_\RR, X (\CC), \ZZ(n)) [-1]\otimes_\ZZ \QQ, \]
+    \[ R\Gamma_\Wc (X, \ZZ (n))\otimes \QQ \cong
+      R\Gamma_\fg (X, \ZZ(n))\otimes \QQ \oplus
+      R\Gamma_c (G_\RR, X (\CC), \ZZ(n)) [-1]\otimes \QQ, \]
     and we already noticed in
-    proposition~\ref{prop:tensoring-RGammafg-with-Z/m-and-Q} that
-    \[ R\Gamma_\fg (X, \ZZ (n)) \otimes_\ZZ \QQ \cong
+    Proposition~\ref{prop:tensoring-RGammafg-with-Z/m-and-Q} that
+    \[ R\Gamma_\fg (X, \ZZ (n)) \otimes \QQ \cong
       \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-1]. \qedhere \]
   \end{proof}
 \end{proposition}
@@ -2102,29 +1675,33 @@ Putting together the above observations, we obtain the following result.
 
 Since the main constructions of this paper assume the conjecture
 $\mathbf{L}^c (X_\et,n)$, here we relate it to other known conjectures about
-finite generation of \'{e}tale motivic cohomology, and also describe certain schemes
-$X$ for which $\mathbf{L}^c (X_\et,n)$ is known.
+finite generation of \'{e}tale motivic cohomology, and also describe certain
+schemes $X$ for which $\mathbf{L}^c (X_\et,n)$ holds unconditionally.
 
 \vspace{1em}
 
-Flach and Morin in \cite{Flach-Morin-2018} make use of the following conjecture
-for $m \in \ZZ$ and proper and regular arithmetic $X$.
+Flach and Morin state in \cite{Flach-Morin-2018} a slightly different conjecture
+$\mathbf{L} (X_\et, -)$ instead of our $\mathbf{L}^c (X_\et,-)$. Keeping in mind
+the relation \eqref{eqn:Zc(n)-vs-Z(d-n)} for regular schemes, we may restate
+their conjecture as follows.
 
-\begin{conjecture}
-  $\mathbf{L} (X_\et, m)$: the groups $H^i (X_\et, \ZZ (m))$ are finitely
-  generated for $i \le 2m+1$. Here $\ZZ (m)$ for $m \ge 0$ denotes Bloch's cycle
-  complex.
+\begin{conjecture}[{\cite[Conjecture~3.2; Lemma~3.3]{Flach-Morin-2018}}]
+  $\mathbf{L} (X_\et, d-n)$: for a proper regular arithmetic scheme $X$ and
+  $n < 0$, the groups $H^i (X_\et, \ZZ^c (n))$ are finitely generated for
+  $i \le -2n+1$.
 \end{conjecture}
 
-A more precise description of the structure of \'{e}tale motivic cohomology is
-\cite[Conjecture~4.12]{Geisser-2017}, which reads as follows.
+A more precise conjectural description of the structure of \'{e}tale motivic
+cohomology is \cite[Conjecture~4.12]{Geisser-2017}, which may be written as
+follows, again using the identification \eqref{eqn:Zc(n)-vs-Z(d-n)}:
 
 \begin{conjecture}
-  $\mathbf{L}' (X_\et, m)$: one has
-  \[ H^i (X_\et, \ZZ (m)) = \begin{cases}
-      \text{finitely generated}, & i \le 2m, \\
-      \text{finite}, & i = 2m + 1, \\
-      \text{cofinite type}, & i \ge 2m + 2.
+  $\mathbf{L}' (X_\et, d-n)$: for a proper regular arithmetic scheme $X$ and
+  $n < 0$, one has
+  \[ H^i (X_\et, \ZZ^c (n)) = \begin{cases}
+      \text{finitely generated}, & i \le -2n, \\
+      \text{finite}, & i = -2n + 1, \\
+      \text{cofinite type}, & i \ge -2n + 2.
     \end{cases} \]
 \end{conjecture}
 
@@ -2137,26 +1714,23 @@ A more precise description of the structure of \'{e}tale motivic cohomology is
     \mathbf{L}' (X_\et, d-n). \]
 
   \begin{proof}
-    Under our assumptions, one has $\ZZ^c (n) = \ZZ (d-n) [2d]$. The trivial
-    implications are
-    \[ \mathbf{L}^c (X_\et, n) \Longrightarrow \mathbf{L} (X_\et, d-n), \quad
-      \mathbf{L}' (X_\et, d-n) \Longrightarrow \mathbf{L} (X_\et, d-n). \]
+    The nontrivial implications are
+    \[
+      \mathbf{L} (X_\et, d-n) \Longrightarrow \mathbf{L}^c (X_\et, n),
+      \quad
+      \mathbf{L} (X_\et, d-n) \Longrightarrow \mathbf{L}' (X_\et, d-n).
+    \]
 
-    We also note that $\mathbf{L} (X_\et, n)$ holds trivially for $n < 0$, since
-    $H^i (X_\et, \ZZ (n)) = 0$ for $i < 1$.
-    Now assume $\mathbf{L} (X_\et, d-n)$. This gives finite generation of
-    $H^i (X_\et, \ZZ^c (n)) = H^{2d+i} (X_\et, \ZZ (d-n))$ for $i \le -2n + 1$.
-    Then from \cite[Proposition~3.4]{Flach-Morin-2018} we have Artin--Verdier
-    duality, which up to finite $2$-torsion reads
-    $$H^i (X_\et, \ZZ (n)) \cong \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ/\ZZ).$$
-    It follows that up to finite $2$-torsion, one has
-    $H^i (X_\et, \ZZ^c (n)) = 0$ for $i \ge 2$, and in particular for
-    $i > -2n + 1$. This proves the implication
-    $\mathbf{L} (X_\et, d-n) \Longrightarrow \mathbf{L}^c (X_\et, n)$.
+    For the first implication, we note that by
+    \cite[Proposition~3.4]{Flach-Morin-2018}, $\mathbf{L} (X_\et, d-n)$ implies
+    the Artin--Verdier duality
+    \[ H^i (X_\et, \ZZ (n)) \cong \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ/\ZZ)
+      \text{ up to finite }2\text{-torsion}. \]
+    Hence $H^i (X_\et, \ZZ^c (n))$ is finite $2$-torsion for $i \ge 2$, and in
+    particular for $i > -2n + 1$.
 
-    Finally, the remaining nontrivial implication
-    $\mathbf{L} (X_\et, d-n) \Longrightarrow \mathbf{L}' (X_\et, d-n)$ is
-    established in \cite[Proposition~3.4]{Flach-Morin-2018}.
+    The second implication is also established in
+    \cite[Proposition~3.4]{Flach-Morin-2018}.
   \end{proof}
 \end{proposition}
 
@@ -2171,13 +1745,12 @@ all $n < 0$.
   finitely generated for all $i \in \ZZ$ and $n < 0$.
 \end{conjecture}
 
-We note that this is similar to the conjecture
-\cite[Definition~5.8]{Morin-2014}, the only difference being that Morin also
-requires finite generation of $H^i (X_\et, \ZZ^c (0))$ for $i \le 0$.
-
-The conjecture $\mathbf{L}^c (X_\et)$ is known for number rings, and also for
-certain varieties over finite fields. As in \cite{Soule-1984},
-\cite{Geisser-2004}, and \cite{Morin-2014}, we consider the following class.
+We note that this is similar to \cite[Definition~5.8]{Morin-2014}, the only
+difference being that Morin also requires finite generation of
+$H^i (X_\et, \ZZ^c (0))$ for $i \le 0$.  The conjecture $\mathbf{L}^c (X_\et)$
+is known for number rings, and also for certain varieties over finite fields. As
+in \cite{Soule-1984}, \cite{Geisser-2004}, and \cite{Morin-2014}, we consider
+the following class.
 
 \begin{definition}
   Let $A (\FF_q)$ be the full subcategory of the category of smooth projective
@@ -2198,87 +1771,7 @@ certain varieties over finite fields. As in \cite{Soule-1984},
   \end{enumerate}
 \end{definition}
 
-\begin{lemma}
-  \label{lemma:Lc(Xet)-holds-for-OF-and-A(Fq)}
-  The conjecture $\mathbf{L}^c (X_\et)$ holds in the following cases.
-
-  \begin{enumerate}
-  \item[$1)$] $X = \Spec \mathcal{O}_F$ for a number field $F$.
-
-  \item[$2)$] $X$ is a variety over a finite field that belongs to $A (\FF_q)$.
-  \end{enumerate}
-
-  \begin{proof}
-    For part 1), by \cite[Theorem~5.1~(b)]{Morin-2014}, the groups
-    $H^i (X_\et, \ZZ(n))$ are finitely generated for all $i \in \ZZ$ and
-    $n \ge 2$, where $\ZZ (n)$ denotes Bloch's cycle complex. If
-    $X \to \Spec \ZZ$ is proper of pure dimension $d$, then
-    $\ZZ (n) = \ZZ^c (d-n) [-2d]$. In this particular case $d = 1$ and $n < 0$.
-
-    Part 2) is proved in \cite[Proposition~5.7]{Morin-2014}.
-  \end{proof}
-\end{lemma}
-
-\begin{lemma}
-  \label{lemma:Lc(Xet)-operations}
-  As always, let $n < 0$ be a strictly negative integer.
-
-  \begin{enumerate}
-  \item[$1)$] Let $X$ be an arithmetic scheme, $Z \subset X$ a closed subscheme
-    and $U \dfn X\setminus Z$ its open complement. If the conjecture
-    $\mathbf{L}^c (Y_\et,n)$ holds for two schemes among $Y = X,Z,U$, then it
-    holds for the third.
-
-  \item[$2)$] For a finite disjoint union of arithmetic schemes
-    $X = \coprod_{1 \le j \le p} X_j$, the conjecture $\mathbf{L}^c (X_\et,n)$
-    is equivalent to the conjunction of $\mathbf{L}^c (X_{j,\et},n)$ for all
-    $1 \le j \le p$.
-
-  \item[$3)$] For the relative affine space $\AA^r_X = \AA^r \times_{\Spec \ZZ} X$
-    the conjectures $\mathbf{L}^c (\AA^r_{X,\et},n)$ and
-    $\mathbf{L}^c (X_\et,n-r)$ are equivalent.
-
-  \item[$4)$] Let $\{ U_i \to X \}_{i \in I}$ be a finite surjective family of
-    \'{e}tale morphisms. For $(i_0,\ldots,i_p) \in I^{p+1}$ denote
-    $U_{i_0,\ldots,i_p} \dfn U_{i_0} \times_X \cdots \times_X U_{i_p}$.
-    If the conjecture $\mathbf{L}^c (U_{i_0,\ldots,i_p, \et},n)$ holds for all
-    $(i_0,\ldots,i_p)$, then $\mathbf{L}^c (X_\et,n)$ holds as well.
-  \end{enumerate}
-
-  \begin{proof}
-    For part 1), according to \cite[Corollary~7.2]{Geisser-2010}, there is a
-    distinguished triangle
-    \[ R\Gamma (Z_\et, \ZZ^c (n)) \to
-       R\Gamma (X_\et, \ZZ^c (n)) \to
-       R\Gamma (U_\et, \ZZ^c (n)) \to
-       R\Gamma (Z_\et, \ZZ^c (n)) [1] \]
-    and the claim follows from the corresponding long exact sequence
-    \[ \cdots \to H^i (Z_\et, \ZZ^c (n)) \to
-       H^i (X_\et, \ZZ^c (n)) \to
-       H^i (U_\et, \ZZ^c (n)) \to
-       H^{i+1} (Z_\et, \ZZ^c (n)) \to \cdots \]
-
-    Part 2) is immediate from
-    $H^i (X_\et, \ZZ^c (n)) \cong \bigoplus_{1 \le j \le p} H^i (X_{j,\et}, \ZZ^c (n))$.
-
-    Part 3) is a consequence of the isomorphism
-    $H^i (\AA^r_{X,\et}, \ZZ^c (n)) \cong H^{i+2r} (X_\et, \ZZ^c (n-r))$
-    proved in \cite[Lemma~5.11]{Morin-2014}.
-
-    Finally, for part 4), thanks to the Cartan--Leray spectral sequence
-    \[ E_1^{p,q} = \bigoplus_{(i_0,\ldots,i_p) \in I^{p+1}} H^q (U_{i_0,\ldots,i_p, \et}, \ZZ^c (n))
-      \Longrightarrow H^{p+q} (X_\et, \ZZ^c (n)), \]
-    if the groups $H^q (U_{i_0,\ldots,i_p, \et}, \ZZ^c (n))$ are finitely
-    generated, then $H^i (X_\et, \ZZ^c (n))$ are finitely generated for all
-    $i\in \ZZ$.
-    (We recall from
-    proposition~\ref{prop:motivic-cohomology-duality-consequences} that assuming
-    finite generation, one has $H^q (U_{i_0,\ldots,i_p, \et}, \ZZ^c (n)) = 0$
-    for $q \ll 0$.)
-  \end{proof}
-\end{lemma}
-
-Now following \cite{Morin-2014}, we consider the following class of schemes.
+The following definition is similar to \cite[Definition~5.9]{Morin-2014}.
 
 \begin{definition}
   Let $\mathcal{L} (\ZZ)$ be the full subcategory of arithmetic schemes
@@ -2308,18 +1801,12 @@ Now following \cite{Morin-2014}, we consider the following class of schemes.
   \end{enumerate}
 \end{definition}
 
-This is similar to the class $\mathcal{L} (\ZZ)$ from
-\cite[Definition~5.9]{Morin-2014}, with the only difference that Morin requires
-in $\mathcal{L}$1) that $Z$ is proper and regular.
-
 \begin{proposition}
   The conjecture $\mathbf{L}^c (X_\et)$ holds for any arithmetic scheme
   $X \in \mathcal{L} (\ZZ)$.
 
   \begin{proof}
-    Follows from lemmas~\ref{lemma:Lc(Xet)-holds-for-OF-and-A(Fq)} and
-    \ref{lemma:Lc(Xet)-operations} (that in fact motivate the definition of
-    $\mathcal{L} (\ZZ)$).
+    See the argument in \cite[Proposition~5.10]{Morin-2014}.
   \end{proof}
 \end{proposition}
 
@@ -2348,72 +1835,13 @@ Finally, as in \cite[\S 5.4]{Morin-2014}, we consider cellular schemes.
   If $Y$ is geometrically cellular, then $X \in \mathcal{L} (\ZZ)$,
   and in particular the conjecture $\mathbf{L}^c (Y_\et)$ holds.
 
-  \begin{proof}
-    Let $k = \FF_q$. By the assumption, there exists a finite extension $k'/k$
-    that gives a cellular decomposition
-    $$(Y_{k'})^{red} = Y_N \supseteq Y_{N-1} \supseteq \cdots \supseteq Y_{-1} = \emptyset,$$
-    where $Y_i \setminus Y_{i-1} \cong \AA^{r_i}_{k'}$. Affine spaces
-    $\AA^{r_i}_{k'}$ lie in $\mathcal{L} (\ZZ)$, as follows from
-    $\Spec k' \in \mathcal{L} (\ZZ)$ and operation $\mathcal{L}$3). Now by
-    induction, using $\mathcal{L}$1), we conclude that
-    $(Y_{k'})^{red} \in \mathcal{L} (\ZZ)$. Similarly, $\mathcal{L}$1) implies
-    that $Y_{k'} \in \mathcal{L} (\ZZ)$. Applying $\mathcal{L}$4) to the finite
-    \'{e}tale Galois cover $Y_{k'} \to Y$, we conclude that
-    $Y \in \mathcal{L} (\ZZ)$.
-  \end{proof}
+  If $X \to \Spec \mathcal{O}_F$ is a flat, separated scheme of finite type over
+  the ring of integers of a number field, and $X$ is geometrically cellular,
+  then $X \in \mathcal{L} (\ZZ)$, and in particular $\mathbf{L}^c (X_\et)$
+  holds.
 \end{proposition}
 
-Finally, it is proved in \cite[Proposition~5.14]{Morin-2014} that if
-$X \to \Spec \mathcal{O}_F$ is a flat, separated scheme of finite type over the
-ring of integers of a number field, and $X$ is geometrically cellular, then
-$X \in \mathcal{L} (\ZZ)$. In particular, the conjecture $\mathbf{L}^c (X_\et)$
-holds for such $X$.
-
-\iffalse
-\begin{proposition}[{\cite[Proposition~5.14]{Morin-2014}}]
-  Let $X \to \Spec \mathcal{O}_F$ be a separated scheme of finite type.
-  If $X$ is geometrically cellular, then $X \in \mathcal{L} (\ZZ)$,
-  and in particular the conjecture $\mathbf{L}^c (X_\et)$ holds.
-
-  \begin{proof}
-    Since $X$ is geometrically cellular, in particular $X_F$ is geometrically
-    cellular, meaning that there exists a finite Galois extension $K/F$ such
-    that there is a cellular decomposition
-    $$(X \times_{\Spec \mathcal{O}_F} \Spec K)^{red} = Y_n \supseteq Y_{N-1} \supseteq \cdots \supseteq Y_{-1} = \emptyset,$$
-    where $Y_i\setminus Y_{i-1} \cong \AA^{r_i}_K$. Denote by $\overline{Y_i}$
-    the closure of $Y_i$ in $X\times_{\Spec \mathcal{O}_F} \Spec \mathcal{O}_K$ endowed with
-    the reduced closed subscheme structure. Then
-    $$(\overline{Y_i}\setminus \overline{Y_{i-1}}) \times_{\Spec \mathcal{O}_K} \Spec K \cong Y_i \setminus Y_{i-1} \cong \AA^{r_i}_K.$$
-    This implies that there exists an open subscheme
-    $\Spec \mathcal{O}_{K,S_i} \subseteq \Spec \mathcal{O}_K$ and an isomorphism
-    of $\Spec \mathcal{O}_{K,S_i}$-schemes
-    $$(\overline{Y_i}\setminus \overline{Y_{i-1}}) \times_{\Spec \mathcal{O}_K} \Spec \mathcal{O}_{K,S_i} \cong \AA^{r_i}_{\mathcal{O}_{K,S_i}}.$$
-    We let $S$ be a finite set of primes in $\mathcal{O}_K$ that contains all
-    $S_i$ such that $\Spec \mathcal{O}_{K,S} \to \Spec \mathcal{O}_{F,S}$ is an
-    \'{e}tale Galois cover. Now denoting
-    $\mathcal{Y}_i = \overline{Y_i} \times_{\Spec \mathcal{O}_K} \Spec \mathcal{O}_{K,S}$,
-    there exists a cellular decomposition
-    $$(X \times_{\Spec \mathcal{O}_F} \mathcal{O}_{K,S})^{red} = \mathcal{Y}_N \supseteq \mathcal{Y}_{N-1} \supseteq \cdots \supseteq \mathcal{Y}_{-1} = \emptyset,$$
-    where
-    $\mathcal{Y}_i \setminus \mathcal{Y}_{i-1} \cong \AA^{r_i}_{\mathcal{O}_{K,S}}$.
-    Here $\AA^{r_i}_{\mathcal{O}_{K,S}} \in \mathcal{L} (\ZZ)$ by
-    $\mathcal{L}$1) and $\mathcal{L}$3). It follows by induction and
-    $\mathcal{L}$1) that
-    $(X \times_{\Spec \mathcal{O}_F} \mathcal{O}_{K,S})^{red} \in \mathcal{L} (\ZZ)$,
-    and therefore $X \times_{\Spec \mathcal{O}_F} \mathcal{O}_{K,S} \in \mathcal{L} (\ZZ)$.
-    Applying $\mathcal{L}$4) to the finite Galois cover
-    $$X \times_{\Spec \mathcal{O}_F} \mathcal{O}_{K,S} \to X \times_{\Spec \mathcal{O}_F} \mathcal{O}_{F,S},$$
-    we conclude that
-    $X \times_{\Spec \mathcal{O}_F} \mathcal{O}_{F,S} \in \mathcal{L} (\ZZ)$.
-    Finally, by our assumption on $X$, the fiber $X_\mathfrak{p}$ is
-    geometrically cellular for each finite place
-    $\mathfrak{p} \subset \mathcal{O}_F$, and therefore
-    $X_\mathfrak{p} \in \mathcal{L} (\ZZ)$ by the previous proposition.
-    Applying $\mathcal{L}$1) and $\mathcal{L}$2), we conclude that
-    $X \in \mathcal{L} (\ZZ)$.
-  \end{proof}
-\end{proposition}
-\fi
+For a proof, we refer to \cite[Proposition~5.14]{Morin-2014}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2421,7 +1849,7 @@ holds for such $X$.
 \label{sec:comparison-with-FM}
 
 This paper is based on the ideas of Flach and Morin \cite{Flach-Morin-2018}, who
-gave a similar construction of Weil-étale cohomology for a
+gave a similar construction of Weil-\'{e}tale cohomology for a
 \emph{proper and regular} arithmetic scheme $X$, and for \emph{any integer}
 $n \in \ZZ$. In this section we will go through the definitions of
 \cite{Flach-Morin-2018}, in order to verify the following claim.
@@ -2436,27 +1864,26 @@ $n \in \ZZ$. In this section we will go through the definitions of
 
 From now on we will tacitly assume the conjecture $\mathbf{L}^c (X_\et, n)$,
 which is also equivalent to the assumptions on motivic cohomology in
-\cite{Flach-Morin-2018} (see \S\ref{sec:known-cases-of-Lc-Xet-n} above). Flach
-and Morin consider the case of proper and regular arithmetic scheme $X$ of equal
-dimension $d$. In this case we have $\ZZ^c (n) = \ZZ (d-n) [2d]$, where the
-right hand side denotes the usual Bloch's cycle complex. We will rewrite their
-constructions with $\ZZ^c (n)$ in place of $\ZZ (d-n) [2d]$.
+\cite{Flach-Morin-2018} (see
+Proposition~\ref{prop:Lc-Xet-n-vs-L-Xet-d-n}). Flach and Morin consider the case
+of a proper and regular arithmetic scheme $X$ of equal dimension $d$. In this
+case we may use the isomorphism \eqref{eqn:Zc(n)-vs-Z(d-n)} to restate their
+constructions in terms of the complexes $\ZZ^c (n)$.
 
-Further, they work with Artin--Verdier \'{e}tale topos $\overline{X}_\et$, whose
-definition and basic properties can be found in \cite[\S 6]{Flach-Morin-2018}.
-They consider a morphism
+Further, they work with the Artin--Verdier \'{e}tale topos $\overline{X}_\et$,
+whose definition and basic properties can be found in \cite[\S
+6]{Flach-Morin-2018}.  They consider a morphism
 \[ \overline{\alpha}_{X,n}\colon \RHom (R\Gamma (X, \ZZ^c (n)), \QQ [-2]) \to
   R\Gamma (\overline{X}_\et, \ZZ (n)), \]
 which is defined in a similar way to our morphism $\alpha_{X,n}$
-(definition~\ref{def:RGamma-fg}) using a duality similar to our
-theorem~\ref{theorem-I}.
+(Definition~\ref{def:RGamma-fg}) using a duality similar to our
+Theorem~\ref{theorem-I}.
 
 The notation in \cite{Flach-Morin-2018} and in this paper is deliberately the
 same for various objects and morphisms. However, in this section we will write,
 for instance, $\overline{\alpha}_{X,n}$ to denote the morphism of Flach and
 Morin, in order to distinguish it from our $\alpha_{X,n}$, etc. An overline
-indicates that the corresponding thing comes from \cite{Flach-Morin-2018}
-(meaning that it has something to do with Artin--Verdier \'{e}tale topos).
+indicates that the corresponding thing comes from \cite{Flach-Morin-2018} and has something to do with the Artin--Verdier \'{e}tale topos.
 
 \begin{lemma}
   The square
@@ -2467,7 +1894,7 @@ indicates that the corresponding thing comes from \cite{Flach-Morin-2018}
   commutes.
 
   \begin{proof}
-    We recall from remark~\ref{rmk:alpha-X-n-determined-by-cohomology} that
+    We recall from Remark~\ref{rmk:alpha-X-n-determined-by-cohomology} that
     $\alpha_{X,n}$ is determined by the maps on the level of cohomology
     $H^i (\alpha_{X,n})$. The same is true for $\overline{\alpha}_{X,n}$, for
     exactly the same reasons. Now \cite[Theorem~3.5]{Flach-Morin-2018} defines
@@ -2516,7 +1943,7 @@ indicates that the corresponding thing comes from \cite{Flach-Morin-2018}
 Taking the cones of $\overline{\alpha}_{X,n}$ and $\alpha_{X,n}$, we obtain
 respectively the complex $R\Gamma_W (\overline{X}, \ZZ (n))$ of Flach and Morin
 \cite[Definition~3.6]{Flach-Morin-2018} and our complex
-$R\Gamma_\fg (X, \ZZ(n))$ (definition~\ref{def:RGamma-fg} above). We obtain the
+$R\Gamma_\fg (X, \ZZ(n))$ (Definition~\ref{def:RGamma-fg} above). We obtain the
 following diagram with distinguished rows and columns
 (see \cite[Proposition~1.4.6]{Neeman-2001} for this particular formulation):
 \begin{equation}
@@ -2534,7 +1961,7 @@ The complex $R\Gamma_W (\overline{X}, \ZZ(n))$ is perfect by
 $R\Gamma_\fg (X, \ZZ(n))$,
 which may have finite $2$-torsion in arbitrarily high degrees if
 $X (\RR) \ne \emptyset$. This is the price we pay for not working with
-Artin--Verdier \'{e}tale topos.
+the Artin--Verdier \'{e}tale topos.
 
 Then \cite[Definition~3.23]{Flach-Morin-2018} considers a morphism
 $\overline{u}^*_\infty$ defined via
@@ -2549,7 +1976,7 @@ Here the complex $R\Gamma_W (X_\infty, \ZZ(n))$ is \emph{defined} via the bottom
 triangle.
 
 Then \cite[Proposition~3.24]{Flach-Morin-2018} and our
-proposition~\ref{prop:uniqueness-of-i-infty} above establish the existence and
+Proposition~\ref{prop:uniqueness-of-i-infty} above establish the existence and
 uniqueness of morphisms $\overline{\iota}_\infty^*$ and $i_\infty^*$ that render
 the triangles below commutative, and then the Weil-\'{e}tale complexes are defined
 as mapping fibers of $\overline{\iota}_\infty^*$ and $i_\infty^*$:
@@ -2564,7 +1991,7 @@ as mapping fibers of $\overline{\iota}_\infty^*$ and $i_\infty^*$:
 To be able to compare the two resulting complexes, we note that
 $\overline{u}_\infty^*$ is only defined via
 \eqref{eqn:definition-of-u-bar-infty}, so in the diagram below from
-figure~\ref{fig:comparison-with-FM}, we may first pick
+Figure~\ref{fig:comparison-with-FM}, we may first pick
 $\overline{\iota}_\infty^*$ such that the front face gives a morphism of
 triangles. Then we may \emph{declare} $\overline{u}_\infty^*$ to be the
 composition $\overline{\iota}_\infty^* \circ f$. This way everything will
@@ -2573,7 +2000,7 @@ $R\Gamma_\Wc (\overline{X}, \ZZ(n)) \cong R\Gamma_\Wc (X, \ZZ(n))$.
 
 \vspace{1em}
 
-This concludes the proof of proposition~\ref{prop:comparison-with-FM}. \qed
+This concludes the proof of Proposition~\ref{prop:comparison-with-FM}. \qed
 
 \begin{landscape}
   \begin{figure}
@@ -2607,41 +2034,28 @@ This concludes the proof of proposition~\ref{prop:comparison-with-FM}. \qed
 \label{app:homological-algebra}
 
 This appendix collects some basic results about the derived category of abelian
-groups $\mathbf{D} (\ZZ)$ that are used throughout the text. The lemmas below
+groups $\DZ$ that are used throughout the text. The lemmas below
 are essentially isolated from \cite{Flach-Morin-2018}, with some modifications
 to deal with $2$-torsion.
 
-First we recall that every complex of abelian groups $A^\bullet$ is
-quasi-isomorphic to its cohomology:
+First we recall that every complex of abelian groups $A^\bullet$ (not
+necessarily bounded) is quasi-isomorphic to its cohomology:
 \begin{multline*}
-  A^\bullet \cong \bigoplus_{i\in \ZZ} H^i (A^\bullet) [-i] \cong
+  A^\bullet \cong \coprod_{i\in \ZZ} H^i (A^\bullet) [-i] \cong
   \prod_{i\in \ZZ} H^i (A^\bullet) [-i] \\
   = \Bigl(\cdots \to H^{i-1} (A^\bullet) \xrightarrow{0} H^i (A^\bullet)
   \xrightarrow{0} H^{i+1} (A^\bullet) \to \cdots\Bigr).
 \end{multline*}
-
-This gives us a useful expression for morphisms in the derived category.
-Since
-\[ \Hom_{\mathbf{D} (\ZZ)} (A,B [i]) = \begin{cases}
-\Hom_\ZZ (A,B), & i = 0,\\
-\Ext_\ZZ^1 (A,B), & i = 1,\\
-0, & \text{otherwise},
-\end{cases} \]
-we obtain
-\begin{align*}
-  \Hom_{\mathbf{D} (\ZZ)} (A^\bullet, B^\bullet) & \cong
-  \Hom_{\mathbf{D} (\ZZ)} (\bigoplus_{i\in\ZZ} H^i (A^\bullet) [-i], \prod_{j\in\ZZ} H^j (B^\bullet) [-j]) \\
-  & \cong \prod_{i\in \ZZ} \prod_{j\in \ZZ} \Hom_{\mathbf{D} (\ZZ)} (H^i (A^\bullet), H^j (B^\bullet) [i-j]) \\
-  & \cong \prod_{i\in \ZZ} \left(\Hom_\ZZ (H^i (A^\bullet), H^i (B^\bullet)) \oplus \Ext_\ZZ^1 (H^i (A^\bullet), H^{i-1} (B^\bullet))\right).
-\end{align*}
-
-Let us write down this formula for further reference:
-\begin{equation}
-  \label{eqn:morphisms-in-D(Z)}
-  \Hom_{\mathbf{D} (\ZZ)} (A^\bullet, B^\bullet) \cong
-  \prod_{i\in \ZZ} \Hom_\ZZ (H^i (A^\bullet), H^i (B^\bullet)) \oplus
-  \prod_{i\in \ZZ} \Ext_\ZZ^1 (H^i (A^\bullet), H^{i-1} (B^\bullet)).
-\end{equation}
+Here $\coprod$ and $\prod$ denote the coproduct and product in the category of
+complexes, which coincide in this case. This gives us a useful expression for
+morphisms in the derived category: since
+$\Hom_\DZ (A,B [i]) \cong \Ext_\ZZ^i (A,B)$, and $\Ext_\ZZ^i (A,B) = 0$ for $i > 1$, we obtain
+\begin{align}
+  \notag \Hom_\DZ (A^\bullet, B^\bullet) & \cong \Hom_\DZ (\coprod_{i\in\ZZ} H^i (A^\bullet) [-i], \prod_{j\in\ZZ} H^j (B^\bullet) [-j]) \\
+  \notag & \cong \prod_{i\in \ZZ} \prod_{j\in \ZZ} \Hom_\DZ (H^i (A^\bullet), H^j (B^\bullet) [i-j]) \\
+  \notag & \cong \prod_{i\in \ZZ} \left(\Hom (H^i (A^\bullet), H^i (B^\bullet)) \oplus \Ext (H^i (A^\bullet), H^{i-1} (B^\bullet))\right) \\
+           \label{eqn:morphisms-in-D(Z)} & \cong \prod_{i\in \ZZ} \Hom (H^i (A^\bullet), H^i (B^\bullet)) \oplus \prod_{i\in \ZZ} \Ext (H^i (A^\bullet), H^{i-1} (B^\bullet)).
+\end{align}
 
 \begin{lemma}
   \label{lemma:morphisms-inDAb-not-divisible}
@@ -2649,35 +2063,35 @@ Let us write down this formula for further reference:
 
   \begin{enumerate}
   \item[$1)$] If $C^\bullet$ and $C'^\bullet$ are almost perfect in the sense of
-    definition~{\rm\ref{dfn:almost-of-(co)finite-type}}, then the group
-    $\Hom_{\mathbf{D} (\ZZ)} (C^\bullet, C'^\bullet)$ has no nontrivial
+    Definition~{\rm\ref{dfn:almost-of-(co)finite-type}}, then the group
+    $\Hom_\DZ (C^\bullet, C'^\bullet)$ has no nontrivial
     divisible subgroups.
 
   \item[$2)$] If $A^\bullet$ is a complex such that $H^i (A^\bullet)$ are finite
     dimensional $\QQ$-vector spaces and $C^\bullet$ is a complex such that
     $H^i (C^\bullet)$ are finitely generated abelian groups, then the group
-    $\Hom_{\mathbf{D} (\ZZ)} (A^\bullet, C^\bullet)$ is divisible.
+    $\Hom_\DZ (A^\bullet, C^\bullet)$ is divisible.
   \end{enumerate}
 
   \begin{proof}
     In 1), we consider the decomposition \eqref{eqn:morphisms-in-D(Z)} for
-    $\Hom_{\mathbf{D} (\ZZ)} (C^\bullet, C'^\bullet)$, and observe that under
+    $\Hom_\DZ (C^\bullet, C'^\bullet)$, and observe that under
     our assumptions, both groups
-    \[ \prod_{i\in\ZZ} \Hom_\ZZ (H^i (C^\bullet), H^i (C'^\bullet))
+    \[ \prod_{i\in\ZZ} \Hom (H^i (C^\bullet), H^i (C'^\bullet))
       \quad\text{and}\quad
-      \prod_{i\in\ZZ} \Ext_\ZZ^1 (H^i (C^\bullet), H^{i-1} (C'^\bullet))\]
+      \prod_{i\in\ZZ} \Ext (H^i (C^\bullet), H^{i-1} (C'^\bullet))\]
     will be of the form $G \oplus T$, where $G$ is a finitely generated abelian
     group and $T$ is $2$-torsion. From this we see that if
-    $x \in \Hom_{\mathbf{D} (\ZZ)} (C^\bullet, C'^\bullet)$ is divisible by all
+    $x \in \Hom_\DZ (C^\bullet, C'^\bullet)$ is divisible by all
     powers of $2$, then $x = 0$.
 
     Similarly, in part 2), we consider the decomposition
     \eqref{eqn:morphisms-in-D(Z)} for
-    $\Hom_{\mathbf{D} (\ZZ)} (A^\bullet, C^\bullet)$. By our assumptions
-    $\Hom_\ZZ (H^i (A^\bullet), H^i (C^\bullet)) = 0$ for all $i$, and each
-    $\Ext_\ZZ^1 (H^i (A^\bullet), H^{i-1} (C^\bullet))$ is a direct sum of
-    finitely many groups isomorphic to $\Ext_\ZZ^1 (\QQ,\ZZ)$, which is
-    divisible. Therefore, $\Hom_{\mathbf{D} (\ZZ)} (A^\bullet, C^\bullet)$ is
+    $\Hom_\DZ (A^\bullet, C^\bullet)$. By our assumptions
+    $\Hom (H^i (A^\bullet), H^i (C^\bullet)) = 0$ for all $i$, and each
+    $\Ext (H^i (A^\bullet), H^{i-1} (C^\bullet))$ is a direct sum of
+    finitely many groups isomorphic to $\Ext (\QQ,\ZZ)$, which is
+    divisible. Therefore, $\Hom_\DZ (A^\bullet, C^\bullet)$ is
     a direct product of divisible groups, hence divisible.
   \end{proof}
 \end{lemma}
@@ -2707,9 +2121,10 @@ distinguished triangles
 The cone $C^\bullet$ in (TR1) and the morphism $h$ in (TR3) are neither unique
 nor canonical. Two different cones of the same morphism are necessarily
 isomorphic, but the isomorphism between them is not unique, because it is
-provided by (TR3). This is a notorious issue with the derived category
-formalism. Let us recall a useful standard argument which shows that at least in
-some special cases, things are uniquely defined. The following is basically
+provided by (TR3).
+% This is a notorious issue with the derived category formalism.
+Let us recall a useful standard argument which shows that at least in some
+special cases, things are well-defined. The following is basically
 \cite[Proposition~1.1.9, Corollaire~1.1.10]{Beilinson-Bernstein-Deligne}.
 
 \begin{lemma}
@@ -2756,16 +2171,16 @@ Here is a particular case that we are going to use.
 
 \begin{corollary}
   \label{cor:TR3-TR1-with-uniqueness}
-  Consider the derived category $\mathbf{D} (\ZZ)$.
+  Consider the derived category $\DZ$.
 
   \begin{enumerate}
   \item[$1)$] Suppose we have a commutative diagram with distinguished rows
     \eqref{eqn:TR3-input}, where $A^\bullet$ is a complex such that
     $H^i (A^\bullet)$ are finite dimensional $\QQ$-vector spaces and
     $C^\bullet$, $C'^\bullet$ are almost perfect complexes in the sense of
-    definition~{\rm\ref{dfn:almost-of-(co)finite-type}}. Then there exists a unique
-    morphism ${h\colon C^\bullet \to C'^\bullet}$ giving a morphism of triangles
-    \eqref{eqn:TR3-output}.
+    Definition~{\rm\ref{dfn:almost-of-(co)finite-type}}. Then there exists a
+    unique morphism ${h\colon C^\bullet \to C'^\bullet}$ giving a morphism of
+    triangles \eqref{eqn:TR3-output}.
 
   \item[$2)$] For a distinguished triangle
     $$A^\bullet \xrightarrow{u} B^\bullet \xrightarrow{v} C^\bullet \xrightarrow{w} A^\bullet[1]$$
@@ -2775,55 +2190,54 @@ Here is a particular case that we are going to use.
   \end{enumerate}
 
   \begin{proof}
-    In this situation, according to \ref{lemma:morphisms-inDAb-not-divisible},
-    the group $\Hom_{\mathbf{D} (\ZZ)} (C^\bullet, C'^\bullet)$ has no
-    nontrivial divisible subgroups, and
-    $\Hom_{\mathbf{D} (\ZZ)} (A^\bullet [1], C'^\bullet)$ is divisible. This
+    In this situation, according to
+    Lemma~\ref{lemma:morphisms-inDAb-not-divisible}, the group
+    $\Hom_\DZ (C^\bullet, C'^\bullet)$ has no nontrivial
+    divisible subgroups, and
+    $\Hom_\DZ (A^\bullet [1], C'^\bullet)$ is divisible. This
     means that there are no nontrivial homomorphisms
-    $\Hom_{\mathbf{D} (\ZZ)} (A^\bullet [1], C'^\bullet) \to \Hom_{\mathbf{D} (\ZZ)} (C^\bullet, C'^\bullet)$,
-    and we may apply \ref{lemma:TR3-TR1-with-uniqueness-general-statement}.
+    $\Hom_\DZ (A^\bullet [1], C'^\bullet) \to \Hom_\DZ (C^\bullet, C'^\bullet)$,
+    and we may apply
+    Lemma~\ref{lemma:TR3-TR1-with-uniqueness-general-statement}.
   \end{proof}
 \end{corollary}
 
 \begin{lemma}
   \label{lemma:torsion-morphisms-in-D(Z)}
   Suppose that $A^\bullet$ and $B^\bullet$ are almost of cofinite type in the
-  sense of definition~{\rm\ref{dfn:almost-of-(co)finite-type}}. Then a morphism
-  $f\colon A^\bullet\to B^\bullet$ is torsion in $\mathbf{D} (\ZZ)$
+  sense of Definition~{\rm\ref{dfn:almost-of-(co)finite-type}}. Then a morphism
+  $f\colon A^\bullet\to B^\bullet$ is torsion in $\DZ$
   (i.e. a torsion element in the group
-  $\Hom_{\mathbf{D} (\ZZ)} (A^\bullet, B^\bullet)$, i.e.
+  $\Hom_\DZ (A^\bullet, B^\bullet)$, i.e.
   $f\otimes \mathbb{Q} = 0$) if and only if the morphisms
   $H^i (f)\colon H^i (A^\bullet) \to H^i (B^\bullet)$
   are torsion; that is, they are trivial on the maximal divisible subgroups:
   $$(H^i (f)_\div\colon H^i (A^\bullet)_\div \to H^i (B^\bullet)_\div) = 0.$$
 
   \begin{proof}
-    In the formula \eqref{eqn:morphisms-in-D(Z)} the groups $H^i (A^\bullet)$
-    and $H^{i-1} (B^\bullet)$ are of the form
-    \[ (\mathbb{Q}/\mathbb{Z})^{\oplus r} \oplus T,
-      \quad T\text{ finite}, \]
-    and we calculate that
-    \[ \Ext_\ZZ^1 ((\QQ/\ZZ)^{\oplus r} \oplus T, (\QQ/\ZZ)^{\oplus r'} \oplus T') \cong
-    T'^{\oplus r} \oplus \Ext_\ZZ^1 (T, T') \]
-    are finite groups.
+    Under our assumptions, the groups $H^i (A^\bullet)$ and
+    $H^{i-1} (B^\bullet)$ that appear in \eqref{eqn:morphisms-in-D(Z)} are of
+    cofinite type. We calculate that in this case
+    $\Ext (H^i (A^\bullet), H^{i-1} (B^\bullet))$ is finite.
 
     For $i \gg 0$, the groups $H^i (A^\bullet)$ and $H^{i-1} (B^\bullet)$ will
     be finite $2$-torsion, and therefore
-    $\Ext_\ZZ^1 (H^i (A^\bullet), H^{i-1} (B^\bullet))$ will be finite
+    $\Ext (H^i (A^\bullet), H^{i-1} (B^\bullet))$ will be finite
     $2$-torsion as well. It follows that the whole product
-    $\prod_{i\in \mathbb{Z}} \Ext_\ZZ^1 (H^i (A^\bullet), H^{i-1} (B^\bullet))$
+    $\prod_{i\in \mathbb{Z}} \Ext (H^i (A^\bullet), H^{i-1} (B^\bullet))$
     is of the form $G \oplus T$, where $G$ is finite and $T$ is
     (possibly infinite) $2$-torsion. We have therefore
-    $(G \oplus T)\otimes_\ZZ \QQ = 0$.
+    $(G \oplus T)\otimes \QQ = 0$.
 
     Similarly, the group
-    $\prod_{i\in\ZZ} \Hom_\ZZ (H^i (A^\bullet), H^i (B^\bullet))$ will consist
-    of some part of the form $\widehat{\ZZ}^{\oplus r} \oplus G$, where $G$
-    is finite, and some $2$-torsion part, which is killed by tensoring with
-    $\QQ$. It follows that there is an isomorphism
+    $\prod_{i\in\ZZ} \Hom (H^i (A^\bullet), H^i (B^\bullet))$ will consist of
+    some part of the form $\widehat{\ZZ}^{\oplus r} \oplus G$, where $G$ is
+    finite, and some possibly infinite $2$-torsion part, which is killed by tensoring with
+    $\QQ$. It follows from \eqref{eqn:morphisms-in-D(Z)} that there is an
+    isomorphism
     \begin{align*}
-      \Hom_{\mathbf{D} (\ZZ)} (A^\bullet, B^\bullet)\otimes_\ZZ \mathbb{Q} & \cong
-      \prod_{i\in \mathbb{Z}} \Hom_\ZZ (H^i (A^\bullet), H^i (B^\bullet)) \otimes_\ZZ \mathbb{Q}, \\
+      \Hom_\DZ (A^\bullet, B^\bullet)\otimes \mathbb{Q} & \cong
+      \prod_{i\in \mathbb{Z}} \Hom (H^i (A^\bullet), H^i (B^\bullet)) \otimes \mathbb{Q}, \\
       f\otimes\QQ & \mapsto (H^i (f) \otimes \QQ)_{i\in\ZZ}. \qedhere
     \end{align*}
   \end{proof}
@@ -2833,19 +2247,18 @@ Here is a particular case that we are going to use.
   \label{lemma:morphisms-in-DAb-between-cplx-of-Q-vs-and-almost-cofinite-type-cplx}
   If $A^\bullet$ is a complex of $\QQ$-vector spaces and $B^\bullet$ is a
   complex almost of cofinite type in the sense of
-  definition~{\rm\ref{dfn:almost-of-(co)finite-type}}, then there is an isomorphism
-  of abelian groups
+  Definition~{\rm\ref{dfn:almost-of-(co)finite-type}}, then there is an
+  isomorphism of abelian groups
   \begin{align*}
-    \Hom_{\mathbf{D} (\ZZ)} (A^\bullet, B^\bullet) & \xrightarrow{\cong}
-    \prod_{i\in \ZZ} \Hom_\ZZ (H^i (A^\bullet), H^i (B^\bullet)),\\
+    \Hom_\DZ (A^\bullet, B^\bullet) & \xrightarrow{\cong}
+    \prod_{i\in \ZZ} \Hom (H^i (A^\bullet), H^i (B^\bullet)),\\
     f & \mapsto (H^i (f))_{i\in \ZZ}.
   \end{align*}
 
   \begin{proof}
     In the formula \eqref{eqn:morphisms-in-D(Z)}, if $H^i (A^\bullet)$ are
-    $\QQ$-vector spaces and $H^{i-1} (B^\bullet)$ have form
-    $(\QQ/\ZZ)^{\oplus r} \oplus T$ with $T$ finite, we see that the summand with
-    $\Ext_\ZZ^1 (H^i (A^\bullet), H^{i-1} (B^\bullet))$ vanishes.
+    $\QQ$-vector spaces and $H^{i-1} (B^\bullet)$ are groups of cofinite type,
+    then the term $\Ext (H^i (A^\bullet), H^{i-1} (B^\bullet))$ vanishes.
   \end{proof}
 \end{lemma}
 
@@ -2854,17 +2267,15 @@ Here is a particular case that we are going to use.
 \section{Cohomology with compact support}
 \label{app:modified-cohomology-with-compact-support}
 
-Let us first recall the definition of \'{e}tale cohomology with compact support.
-For any arithmetic scheme $f\colon X\to \Spec \ZZ$ (separated, of finite type)
-there exists a \textbf{Nagata compactification}
+For any arithmetic scheme $f\colon X\to \Spec \ZZ$ there exists a
+\textbf{Nagata compactification}
+\cite{Conrad-Deligne-Nagata,Conrad-Deligne-Nagata-erratum}
+(see also \cite[Expos\'{e}~XVII]{SGA4})
 \[ \begin{tikzcd}
 X \ar[hookrightarrow]{rr}{j}\ar{dr}[swap]{f} & & \mathfrak{X} \ar{dl}{g} \\
  & \Spec \ZZ
 \end{tikzcd} \]
-where $j$ is an open immersion and $g$ is a proper morphism. This is a result of
-Nagata, and a modern exposition (following Deligne) may be found in
-\cite{Conrad-Deligne-Nagata,Conrad-Deligne-Nagata-erratum}. See also
-\cite[Expos\'{e}~XVII]{SGA4}.
+where $j$ is an open immersion and $g$ is a proper morphism.
 
 \begin{definition}
   Let $X$ be an arithmetic scheme and let $\mathcal{F}$ be an abelian torsion
@@ -2896,54 +2307,75 @@ the singular cohomology with compact support on $X (\CC)$.
   \Gamma (G_\RR, \mathfrak{X} (\CC), j (\CC)_! \mathcal{F}). \]
 \end{definition}
 
-The canonical reference for comparison between \'{e}tale and singular cohomology is
-\cite[Expos\'{e}~XI, \S 4]{SGA4}, so let us to borrow some definitions and notation
-from there. Let $X$ be an arithmetic scheme (separated, of finite type over
-$\Spec \ZZ$).
+The canonical reference for comparison between \'{e}tale and singular cohomology
+is \cite[Expos\'{e}~XI, \S 4]{SGA4}, so let us to borrow some definitions and
+notation from there. Let $X$ be an arithmetic scheme.
 
 \begin{enumerate}
 \item The base change from $\Spec \ZZ$ to $\Spec \CC$ gives us a morphism of
   sites
-  $\gamma\colon X_{\CC,\text{\it \'{e}t}} \to X_\et$.
+  \begin{equation}
+    \label{eqn:comparison-functor-gamma}
+    \gamma\colon X_{\CC,\text{\it \'{e}t}} \to X_\et.
+  \end{equation}
 
-\item As always, we denote by $X (\CC)$ the set of complex points of $X$
-  equipped with the usual analytic topology.
+\item Let $X_\text{\it cl}$ be the site of \'{e}tale maps
+  $f\colon U\to X (\CC)$. A covering family in $X_\text{\it cl}$ is a family of
+  maps $\{ U_i \to U \}$ such that $U$ is the union of images of $U_i$.
 
-  Let $X_\text{\it cl}$ be the site of \'{e}tale maps $f\colon U\to X (\CC)$. A
-  covering family in $X_\text{\it cl}$ is a family of maps $\{ U_i \to U \}$
-  such that $U$ is the union of images of $U_i$.
+  (We recall that in the analytic topology, $f\colon U\to X (\CC)$ is \textbf{\'{e}tale}
+  if it is a \emph{local on the source homeomorphism}: for each $u \in U$ there
+  exists an open neighborhood $u \ni V$ such that
+  $\left.f\right|_V\colon V\to f(V)$ is a homeomorphism.)
 
-  As the inclusion of an open subset $U \subset X (\CC)$ is trivially an \'{e}tale
-  map, we have a fully faithful functor $X (\CC) \subset X_\text{\it cl}$, and
-  the topology on $X (\CC)$ is induced by the topology on
-  $X_\text{\it cl}$. This gives us a morphism of sites
-  $\delta\colon X_\text{\it cl} \to X (\CC)$,
-  which by the well-known ``comparison lemma''
-  \cite[Expos\'{e}~III, Th\'{e}or\`{e}me~4.1]{SGA4} induces an equivalence of the
-  corresponding categories of sheaves
-  $\delta_*\colon \mathbf{Sh} (X_\text{\it cl}) \to \mathbf{Sh} (X (\CC))$.
+  As the inclusion of an open subset $U \subset X (\CC)$ is an \'{e}tale map,
+  we have a fully faithful functor $X (\CC) \subset X_\text{\it cl}$, and the
+  topology on $X (\CC)$ is induced by the topology on $X_\text{\it cl}$. This
+  gives us a morphism of sites $\delta\colon X_\text{\it cl} \to X (\CC)$, which
+  by the comparison lemma \cite[Expos\'{e}~III, Th\'{e}or\`{e}me~4.1]{SGA4}
+  induces an equivalence of the corresponding categories of sheaves
+  \begin{equation}
+    \label{eqn:comparison-functor-delta}
+    \delta_*\colon \mathbf{Sh} (X_\text{\it cl}) \to \mathbf{Sh} (X (\CC)).
+  \end{equation}
 
-\item A morphism of schemes $f\colon X'_\CC \to X_\CC$ over $\Spec \CC$ is \'{e}tale
-  if and only if the map $f (\CC)\colon X' (\CC) \to X (\CC)$ is \'{e}tale in the
-  topological sense \cite[Expos\'{e}~XII, Proposition~3.1]{SGA1}, and therefore the
+\item A morphism of schemes $f\colon X'_\CC \to X_\CC$ over $\Spec \CC$ is
+  \'{e}tale if and only if the map $f (\CC)\colon X' (\CC) \to X (\CC)$ is
+  \'{e}tale \cite[Expos\'{e}~XII, Proposition~3.1]{SGA1}, and therefore the
   functor $X'_\CC \rightsquigarrow X' (\CC)$ gives us a morphism of sites
-  $\epsilon\colon X_\text{\it cl} \to X_{\CC,\text{\it \'{e}t}}$.
+  \begin{equation}
+    \label{eqn:comparison-functor-epsilon}
+    \epsilon\colon X_\text{\it cl} \to X_{\CC,\text{\it \'{e}t}}.
+  \end{equation}
 \end{enumerate}
 
-We may now consider the composite functor
-\[ \begin{tikzcd}
-  \mathbf{Sh} (X_\et) \ar{r}{\gamma^*} &
-  \mathbf{Sh} (X_{\CC,\text{\it \'{e}t}}) \ar{r}{\epsilon^*} &
-  \mathbf{Sh} (X_\text{\it cl}) \ar{r}{\delta_*}[swap]{\simeq} &
-  \mathbf{Sh} (X (\CC))
-\end{tikzcd} \]
-where $\gamma^*$ is given by the base change from $\Spec \ZZ$ to $\Spec \CC$,
-the functor $\epsilon^*$ is the comparison, and $\delta_*$ is an equivalence of
-categories. As we start from a scheme over $\Spec \ZZ$ and base change to
-$\Spec \CC$, the resulting sheaf on $X (\CC)$ is in fact equivariant with
-respect to the complex conjugation, and the above composition gives us an
-``inverse image'' functor
-$$\alpha^*\colon \mathbf{Sh} (X_\et) \to \mathbf{Sh} (G_\RR, X (\CC)).$$
+\begin{definition}
+  We define the functor
+  $$\alpha^*\colon \mathbf{Sh} (X_\et) \to \mathbf{Sh} (G_\RR, X (\CC))$$
+  via the composition of \eqref{eqn:comparison-functor-gamma},
+  \eqref{eqn:comparison-functor-epsilon}, \eqref{eqn:comparison-functor-delta}:
+  \[ \begin{tikzcd}
+      \mathbf{Sh} (X_\et) \ar{r}{\gamma^*} &
+      \mathbf{Sh} (X_{\CC,\text{\it \'{e}t}}) \ar{r}{\epsilon^*} &
+      \mathbf{Sh} (X_\text{\it cl}) \ar{r}{\delta_*}[swap]{\simeq} &
+      \mathbf{Sh} (X (\CC))
+    \end{tikzcd} \]
+\end{definition}
+
+As we start from a scheme over $\Spec \ZZ$ and base change to $\Spec \CC$, the
+resulting sheaf on $X (\CC)$ is in fact equivariant with respect to the complex
+conjugation, hence an object in $\mathbf{Sh} (G_\RR, X (\CC))$. We refer to the
+introduction for the definition of equivariant sheaves.
+
+\begin{lemma}
+  \label{lemma:alpha-preserves-colimits}
+  $\alpha^*$ preserves colimits.
+
+  \begin{proof}
+    $\alpha^*$ is the composition of the inverse image functors $\gamma^*$ and
+    $\epsilon^*$ (which are left adjoint) and an equivalence $\delta_*$.
+  \end{proof}
+\end{lemma}
 
 \begin{proposition}
   \label{prop:inverse-image-gamma}
@@ -2953,29 +2385,26 @@ $$\alpha^*\colon \mathbf{Sh} (X_\et) \to \mathbf{Sh} (G_\RR, X (\CC)).$$
   $$\Gamma_c (X_\et, \mathcal{F}) \to \Gamma_c (G_\RR, X (\CC), \alpha^* \mathcal{F}).$$
 
   \begin{proof}
-    This is standard and follows from the functoriality of $\alpha^*$.
-    As for cohomology with compact support, if
-    $j\colon X \hookrightarrow \mathfrak{X}$ is a Nagata compactification,
-    we have the corresponding compactification
+    If $j\colon X \hookrightarrow \mathfrak{X}$ is a Nagata compactification, we
+    have the corresponding compactification
     $j (\CC)\colon X (\CC) \hookrightarrow \mathfrak{X} (\CC)$. The extension by
     zero morphism
     $j (\CC)_!\colon \mathbf{Sh} (X (\CC)) \to \mathbf{Sh} (\mathfrak{X} (\CC))$
-    restricts to the subcategory of $G_\RR$-equivariant sheaves:
-    if $\mathcal{F}$ is a $G_\RR$-equivariant sheaf on $X (\CC)$, then
+    restricts to the subcategory of $G_\RR$-equivariant sheaves: if
+    $\mathcal{F}$ is a $G_\RR$-equivariant sheaf on $X (\CC)$, then
     $j (\CC)_!  \mathcal{F}$ is a $G_\RR$-equivariant sheaf on
-    $\mathfrak{X} (\CC)$ (this is evident from the definition of equivariant
-    sheaves as equivariant espaces \'{e}tal\'{e}s). It should be clear from the
-    definition of $\alpha^*$ that there is a commutative diagram
+    $\mathfrak{X} (\CC)$. From the definition of $\alpha^*$, we see that that
+    there is a commutative diagram
     \[ \begin{tikzcd}
-      \mathbf{Sh} (X_\et) \ar{r}{\alpha^*}\ar{d}[swap]{j_!} & \mathbf{Sh} (G_\RR, X (\CC)) \ar{d}{j (\CC)_!} \\
-      \mathbf{Sh} (\mathfrak{X}_\et) \ar{r}[swap]{\alpha^*_\mathfrak{X}} & \mathbf{Sh} (G_\RR, \mathfrak{X} (\CC))
-    \end{tikzcd} \]
-    (For instance, note that this diagram commutes for representable \'{e}tale
-    sheaves, and then every \'{e}tale sheaf is a colimit of representable sheaves,
-    and $\alpha^*$, $j_!$, $\alpha^*_\mathfrak{X}$, $j (\CC)_!$ preserve
-    colimits, as left adjoints.)
+        \mathbf{Sh} (X_\et) \ar{r}{\alpha^*}\ar{d}[swap]{j_!} & \mathbf{Sh} (G_\RR, X (\CC)) \ar{d}{j (\CC)_!} \\
+        \mathbf{Sh} (\mathfrak{X}_\et) \ar{r}[swap]{\alpha^*_\mathfrak{X}} & \mathbf{Sh} (G_\RR, \mathfrak{X} (\CC))
+      \end{tikzcd} \]
+    ---this diagram commutes for representable \'{e}tale sheaves, and then every
+    \'{e}tale sheaf is a colimit of representable sheaves, and $\alpha^*$,
+    $j_!$, $\alpha^*_\mathfrak{X}$, $j (\CC)_!$ preserve colimits, as left
+    adjoints.
 
-    Now the morphism in question is given by
+    The morphism in question is given by
     \begin{multline*}
       \Gamma_c (X_\et, \mathcal{F}) \dfn \Gamma (\mathfrak{X}_\et, j_! \mathcal{F}) \to
       \Gamma (G_\RR, \mathfrak{X} (\CC), \alpha^*_\mathfrak{X} j_! \mathcal{F}) \\
@@ -3011,10 +2440,6 @@ we have
   \text{where } Rf_! \mathcal{F} \dfn R g_* j_! \mathcal{F}.
 \end{equation}
 
-The formulas \eqref{eqn:RGammac-via-extension-by-zero} and
-\eqref{eqn:RGammac-via-derived-lower-shriek} give two equivalent definitions of
-cohomology with compact support.
-
 First we recall that for a finite group $G$ and a $G$-module $A$ the
 corresponding group cohomology $H^i (G,A)$ (resp. Tate cohomology
 $\widehat{H}^i (G,A)$) may be defined in terms of resolutions $P_\bullet$
@@ -3045,26 +2470,17 @@ $R\widehat{\Gamma} (G_\RR, v^* \mathcal{F})$ denotes the corresponding Tate
 cohomology.
 
 In general, given an arithmetic scheme $X \to \Spec \ZZ$ and a torsion abelian
-sheaf $\mathcal{F}$ on $X_\et$, we pick a Nagata compactification
-\[ \begin{tikzcd}
-  X \ar[hookrightarrow]{rr}{j}\ar{dr}[swap]{f} & & \mathfrak{X} \ar{dl}{g} \\
-  & \Spec \ZZ
-\end{tikzcd} \]
-and set
+sheaf $\mathcal{F}$ on $X_\et$, we pick a Nagata compactification as above and
+set
 \[ R\widehat{\Gamma}_c (X_\et, \mathcal{F}) \dfn
-R\widehat{\Gamma}_c ((\Spec \ZZ)_\et, R f_! \mathcal{F}). \]
+  R\widehat{\Gamma}_c ((\Spec \ZZ)_\et, R f_! \mathcal{F}). \]
 We have a natural morphism
 $$R\widehat{\Gamma}_c (X_\et, \mathcal{F}) \to R\Gamma_c (X_\et, \mathcal{F}),$$
-which is an isomorphism if $X (\RR) = \emptyset$. In general, there is an
-exact sequence
-\[ \cdots \to \widehat{H}^{i-1} (G_\RR, (v^* Rf_! \mathcal{F})) \to
-\widehat{H}^i_c (X_\et, \mathcal{F}) \to
-H^i_c (X_\et, \mathcal{F}) \to
-\widehat{H}^i (G_\RR, (v^* Rf_! \mathcal{F})) \to \cdots \]
-where the groups $\widehat{H}^i (G_\RR, (v^* Rf_! \mathcal{F}))$ are annihilated
-by multiplication by $2 = \# G_\RR$, which means that
-$\widehat{H}^i_c (X_\et,\mathcal{F}) \to H^i_c (X_\et,\mathcal{F})$
-has $2$-torsion kernel and cokernel.
+which is an isomorphism if $X (\RR) = \emptyset$. In general, Tate cohomology
+$\widehat{H}^i (G_\RR, -)$ is annihilated by multiplication by $2 = \# G_\RR$,
+and therefore
+$\widehat{H}^i_c (X_\et,\mathcal{F}) \to H^i_c (X_\et,\mathcal{F})$ has
+$2$-torsion kernel and cokernel.
 
 For canonicity and functoriality, I refer to \cite[\S 2]{Geisser-Schmidt-2018}.
 
@@ -3074,182 +2490,197 @@ For canonicity and functoriality, I refer to \cite[\S 2]{Geisser-Schmidt-2018}.
 
 \providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
 
-\bibitem{Artin-Verdier-1964}
-\textsc{Michael Artin and Jean-Louis Verdier}, Seminar on \'{e}tale cohomology of
-  number fields, Lecture notes prepared in connection with the seminars held
-  at the summer institute on algebraic geometry. Whitney estate, {W}oods
-  {H}ole, {M}assachusetts. July 6 -- {J}uly 31, 1964, Amer. Math. Soc.,
-  Providence, RI,
-  1964.
-
-\bibitem{Beilinson-Bernstein-Deligne}
-\textsc{A.~A. Beilinson, J.~Bernstein, and P.~Deligne}, Faisceaux pervers,
-  Analysis and topology on singular spaces, {I} ({L}uminy, 1981),
-  Ast\'{e}risque, vol. 100, Soc. Math. France, Paris, 1982, pp.~5--171.
-
-\bibitem{Bloch-1986}
-\textsc{Spencer Bloch}, Algebraic cycles and higher {$K$}-theory, Adv. in Math.
-  \textbf{61} (1986), no.~3, 267--304.
-
-\bibitem{Brown-1994}
-\textsc{Kenneth~S. Brown}, Cohomology of groups, Graduate Texts in Mathematics,
-  vol.~87, Springer-Verlag, New York, 1994, Corrected reprint of the 1982
-  original.
-
-\bibitem{Conrad-Deligne-Nagata}
-\textsc{Brian Conrad}, Deligne's notes on {N}agata compactifications, J.
-  Ramanujan Math. Soc. \textbf{22} (2007), no.~3, 205--257.
-
-\bibitem{Conrad-Deligne-Nagata-erratum}
-\bysame, Erratum for ``{D}eligne's notes on {N}agata
-  compactifications'', J. Ramanujan Math. Soc. \textbf{24} (2009), no.~4,
-  427--428.
-
-\bibitem{Flach-Morin-2018}
-\textsc{Matthias Flach and Baptiste Morin}, Weil-\'{e}tale cohomology and
-  zeta-values of proper regular arithmetic schemes, Doc. Math. \textbf{23}
-  (2018), 1425--1560.
-
-\bibitem{Geisser-2004-Dedekind}
-\textsc{Thomas Geisser}, Motivic cohomology over {D}edekind rings, Math. Z.
-  \textbf{248} (2004), no.~4, 773--794.
-
-\bibitem{Geisser-2004}
-\bysame, Weil-\'{e}tale cohomology over finite fields, Math. Ann.
-  \textbf{330} (2004), no.~4, 665--692.
-
-\bibitem{Geisser-2005}
-\bysame, Motivic cohomology, {$K$}-theory and topological cyclic
-  homology, Handbook of {$K$}-theory. {V}ol. 1, 2, Springer, Berlin, 2005,
-  pp.~193--234.
-
-\bibitem{Geisser-2006}
-\bysame, Arithmetic cohomology over finite fields and special values of
-  {$\zeta$}-functions, Duke Math. J. \textbf{133} (2006), no.~1, 27--57.
-
-\bibitem{Geisser-2010-arithmetic-homology}
-\bysame, Arithmetic homology and an integral version of {K}ato's
-  conjecture, J. Reine Angew. Math. \textbf{644} (2010), 1--22.
-
-\bibitem{Geisser-2010}
-\bysame, Duality via cycle complexes, Ann. of Math. (2) \textbf{172}
-  (2010), no.~2, 1095--1126.
-
-\bibitem{Geisser-2017}
-\bysame, On the structure of \'{e}tale motivic cohomology, J. Pure Appl.
-  Algebra \textbf{221} (2017), no.~7, 1614--1628.
-
-\bibitem{Geisser-Schmidt-2018}
-\textsc{Thomas Geisser and Alexander Schmidt}, Poitou-{T}ate duality for
-  arithmetic schemes, Compos. Math. \textbf{154} (2018), no.~9, 2020--2044.
-
-\bibitem{Haberland-1978}
-\textsc{Klaus Haberland}, Galois cohomology of algebraic number fields, VEB
-  Deutscher Verlag der Wissenschaften, Berlin, 1978, With two appendices by
-  Helmut Koch and Thomas Zink.
-
-\bibitem{Kahn-2003-equivalences}
-\textsc{Bruno Kahn}, \'{E}quivalences rationnelle et num\'{e}rique sur certaines
-  vari\'{e}t\'{e}s de type ab\'{e}lien sur un corps fini, Ann. Sci. \'{E}cole
-  Norm. Sup. (4) \textbf{36} (2003), no.~6, 977--1002 (2004).
-
-\bibitem{Kahn-2003}
-\bysame, Some finiteness results for \'{e}tale cohomology, J. Number
-  Theory \textbf{99} (2003), no.~1, 57--73.
-
-\bibitem{Kahn-2005}
-\bysame, Algebraic {$K$}-theory, algebraic cycles and arithmetic
-  geometry, Handbook of {$K$}-theory. {V}ol. 1, 2, Springer, Berlin, 2005,
-  pp.~351--428.
-
-\bibitem{Knudsen-Mumford-1976}
-\textsc{Finn~Faye Knudsen and David Mumford}, The projectivity of the moduli space
-  of stable curves. {I}. {P}reliminaries on ``det'' and ``{D}iv'', Math.
-  Scand. \textbf{39} (1976), no.~1, 19--55.
-
-\bibitem{Lichtenbaum-2005}
-\textsc{Stephen Lichtenbaum}, The {W}eil-\'{e}tale topology on schemes over finite
-  fields, Compos. Math. \textbf{141} (2005), no.~3, 689--702.
-
-\bibitem{Lichtenbaum-2009-Euler-char}
-\bysame, Euler characteristics and special values of zeta-functions,
-  Motives and algebraic cycles, Fields Inst. Commun., vol.~56, Amer. Math.
-  Soc., Providence, RI, 2009, pp.~249--255.
-
-\bibitem{Lichtenbaum-2009-number-rings}
-\bysame, The {W}eil-\'{e}tale topology for number rings, Ann. of Math.
-  (2) \textbf{170} (2009), no.~2, 657--683.
-
-\bibitem{Mazur-1973}
-\textsc{Barry Mazur}, Notes on \'{e}tale cohomology of number fields, Ann. Sci.
-  \'{E}cole Norm. Sup. (4) \textbf{6} (1973), 521--552 (1974).
-
-\bibitem{Milne-ADT}
-\textsc{J.~S. Milne}, Arithmetic duality theorems, second ed., BookSurge, LLC,
-  Charleston, SC, 2006.
-
-\bibitem{Morin-these}
-\textsc{Baptiste Morin}, Sur le topos weil-\'{e}tale d'un corps de nombres, 2008,
-  {PhD} thesis, {U}niversit\'{e} {B}ordeaux {I}.
-
-\bibitem{Morin-2014}
-\bysame, Zeta functions of regular arithmetic schemes at {$s=0$}, Duke
-  Math. J. \textbf{163} (2014), no.~7, 1263--1336.
-
-\bibitem{Neeman-2001}
-\textsc{Amnon Neeman}, Triangulated categories, Annals of Mathematics Studies,
-  vol. 148, Princeton University Press, Princeton, NJ, 2001.
-
-\bibitem{Serre-1965}
-\textsc{Jean-Pierre Serre}, Zeta and {$L$} functions, Arithmetical {A}lgebraic
-  {G}eometry ({P}roc. {C}onf. {P}urdue, Harper \& Row, New York, 1965,
-  pp.~82--92.
-
-\bibitem{SGA1}
-\textsc{Alexander Grothendieck and Mich\`ele Raynaud} (eds.), S{\'e}minaire de
-  g{\'e}om{\'e}trie alg{\'e}brique du {B}ois-{M}arie 1960--61 ({SGA}~4):
-  Rev\^etements \'etales et groupe fondamental, Lecture Notes in Mathematics,
-  Vol. 224, Springer-Verlag, Berlin-New York, 1971.
-
 \bibitem{SGA4}
-\textsc{Michael Artin, Alexander Grothendieck, and Jean-Louis Verdier} (eds.),
+  \textsc{Michael Artin, Alexander Grothendieck, and Jean-Louis Verdier} (eds.),
   S{\'e}minaire de g{\'e}om{\'e}trie alg{\'e}brique du {B}ois-{M}arie
   1963--1964 ({SGA}~4): {T}h\'eorie des topos et cohomologie \'etale des
   sch\'emas, Lecture Notes in Mathematics, Vol. 269, 270, 305,
   Springer-Verlag, Berlin-New York, 1972--73, Avec la collaboration de
   {N}.~{B}ourbaki, {P}.~{D}eligne et {B}.~{S}aint-{D}onat.
 
+\bibitem{Artin-Verdier-1964}
+  \textsc{Michael Artin and Jean-Louis Verdier}, Seminar on \'{e}tale cohomology
+  of number fields, Lecture notes prepared in connection with the seminars held
+  at the summer institute on algebraic geometry. Whitney estate, {W}oods {H}ole,
+  {M}assachusetts. July 6 -- {J}uly 31, 1964, Amer. Math. Soc., Providence, RI,
+  1964.
+
+\bibitem{Beilinson-Bernstein-Deligne}
+  \textsc{A.~A. Beilinson, J.~Bernstein, and P.~Deligne}, Faisceaux pervers,
+  Analysis and topology on singular spaces, {I} ({L}uminy, 1981),
+  Ast\'{e}risque, vol. 100, Soc. Math. France, Paris, 1982, pp.~5--171.
+
+\bibitem{Bloch-1986}
+  \textsc{Spencer Bloch}, Algebraic cycles and higher {$K$}-theory, Adv. in
+  Math. \textbf{61} (1986), no.~3, 267--304.
+
+\bibitem{Brown-1994}
+  \textsc{Kenneth~S. Brown}, Cohomology of groups, Graduate Texts in
+  Mathematics, vol.~87, Springer-Verlag, New York, 1994, Corrected reprint of
+  the 1982 original.
+
+\bibitem{Conrad-Deligne-Nagata}
+  \textsc{Brian Conrad}, Deligne's notes on {N}agata compactifications,
+  J. Ramanujan Math. Soc. \textbf{22} (2007), no.~3, 205--257.
+
+\bibitem{Conrad-Deligne-Nagata-erratum}
+  \bysame, Erratum for ``{D}eligne's notes on {N}agata compactifications'',
+  J. Ramanujan Math. Soc. \textbf{24} (2009), no.~4, 427--428.
+
 \bibitem{SGA4-1-2}
-\textsc{Pierre Deligne}, Cohomologie \'etale, Lecture Notes in Mathematics, Vol.
+  \textsc{Pierre Deligne}, Cohomologie \'etale, Lecture Notes in Mathematics, Vol.
   569, Springer-Verlag, Berlin-New York, 1977, S{\'e}minaire de
   G{\'e}om{\'e}trie Alg{\'e}brique du {B}ois-{M}arie {SGA}~4$\frac{1}{2}$, Avec
   la collaboration de {J}.~{F}.~{B}outot, {A}.~{G}rothendieck, {L}.~Illusie et
   {J}.~{L}.~{V}erdier.
 
+\bibitem{Flach-Morin-2018}
+  \textsc{Matthias Flach and Baptiste Morin}, Weil-\'{e}tale cohomology and
+  zeta-values of proper regular arithmetic schemes, Doc. Math. \textbf{23}
+  (2018), 1425--1560.
+
+\bibitem{Geisser-2004-Dedekind}
+  \textsc{Thomas Geisser}, Motivic cohomology over {D}edekind rings, Math. Z.
+  \textbf{248} (2004), no.~4, 773--794.
+
+\bibitem{Geisser-2004}
+  \bysame, Weil-\'{e}tale cohomology over finite fields, Math. Ann.
+  \textbf{330} (2004), no.~4, 665--692.
+
+\bibitem{Geisser-2005}
+  \bysame, Motivic cohomology, {$K$}-theory and topological cyclic
+  homology, Handbook of {$K$}-theory. {V}ol. 1, 2, Springer, Berlin, 2005,
+  pp.~193--234.
+
+\bibitem{Geisser-2006}
+  \bysame, Arithmetic cohomology over finite fields and special values of
+  {$\zeta$}-functions, Duke Math. J. \textbf{133} (2006), no.~1, 27--57.
+
+\bibitem{Geisser-2010-arithmetic-homology}
+  \bysame, Arithmetic homology and an integral version of {K}ato's
+  conjecture, J. Reine Angew. Math. \textbf{644} (2010), 1--22.
+
+\bibitem{Geisser-2010}
+  \bysame, Duality via cycle complexes, Ann. of Math. (2) \textbf{172}
+  (2010), no.~2, 1095--1126.
+
+\bibitem{Geisser-2017}
+  \bysame, On the structure of \'{e}tale motivic cohomology, J. Pure Appl.
+  Algebra \textbf{221} (2017), no.~7, 1614--1628.
+
+\bibitem{Geisser-Schmidt-2018}
+  \textsc{Thomas Geisser and Alexander Schmidt}, Poitou-{T}ate duality for
+  arithmetic schemes, Compos. Math. \textbf{154} (2018), no.~9, 2020--2044.
+
 \bibitem{SGA5}
-\textsc{Alexander Grothendieck} (ed.), S{\'e}minaire de g{\'e}om{\'e}trie
+  \textsc{Alexander Grothendieck} (ed.), S{\'e}minaire de g{\'e}om{\'e}trie
   alg{\'e}brique du {B}ois-{M}arie 1965--66 ({SGA}~5): {C}ohomologie
   $\ell$-adique et fonctions {$L$}, Lecture Notes in Mathematics, Vol. 589,
   Springer-Verlag, Berlin-New York, 1977, Avec la collaboration de I.~Bucur,
   C.~Houzel, L.~Illusie, J.-P.~Jouanolou et J.-P.~Serre.
 
 \bibitem{SGA7}
-\textsc{Alexander Grothendieck, Pierre Deligne, and Nicholas Katz} (eds.),
+  \textsc{Alexander Grothendieck, Pierre Deligne, and Nicholas Katz} (eds.),
   S{\'e}minaire de g{\'e}om{\'e}trie alg{\'e}brique du {B}ois-{M}arie
   1967--69 ({SGA}~7): Groupes de monodromie en g\'eom\'etrie alg\'ebrique,
   Lecture Notes in Mathematics, Vol. 288, 340, Springer-Verlag, Berlin-New
   York, 1972--73, Avec la collaboration de {M}.~{R}aynaud et {D}.{S}.~{R}im.
 
+\bibitem{SGA1}
+  \textsc{Alexander Grothendieck and Mich\`ele Raynaud} (eds.), S{\'e}minaire de
+  g{\'e}om{\'e}trie alg{\'e}brique du {B}ois-{M}arie 1960--61 ({SGA}~4):
+  Rev\^etements \'etales et groupe fondamental, Lecture Notes in Mathematics,
+  Vol. 224, Springer-Verlag, Berlin-New York, 1971.
+
+\bibitem{Haberland-1978}
+  \textsc{Klaus Haberland}, Galois cohomology of algebraic number fields, VEB
+  Deutscher Verlag der Wissenschaften, Berlin, 1978, With two appendices by
+  Helmut Koch and Thomas Zink.
+
+\bibitem{Hironaka-1974}
+  \textsc{Heisuke Hironaka}, Triangulations of algebraic sets. Algebraic
+  geometry (Proc. Sympos. Pure Math., Vol. 29, Humboldt State Univ., Arcata,
+  Calif., 1974), pp. 165--185. Amer. Math. Soc., Providence, R.I., 1975.
+
+\bibitem{Kahn-2003}
+  \textsc{Bruno Kahn}, Some finiteness results for \'{e}tale cohomology,
+  J. Number Theory \textbf{99} (2003), no.~1, 57--73.
+
+\bibitem{Kahn-2005}
+  \bysame, Algebraic {$K$}-theory, algebraic cycles and arithmetic
+  geometry, Handbook of {$K$}-theory. {V}ol. 1, 2, Springer, Berlin, 2005,
+  pp.~351--428.
+
+\bibitem{Knudsen-Mumford-1976}
+  \textsc{Finn~Faye Knudsen and David Mumford}, The projectivity of the moduli space
+  of stable curves. {I}. {P}reliminaries on ``det'' and ``{D}iv'', Math.
+  Scand. \textbf{39} (1976), no.~1, 19--55.
+
+\bibitem{Lichtenbaum-2005}
+  \textsc{Stephen Lichtenbaum}, The {W}eil-\'{e}tale topology on schemes over finite
+  fields, Compos. Math. \textbf{141} (2005), no.~3, 689--702.
+
+\bibitem{Lichtenbaum-2009-Euler-char}
+  \bysame, Euler characteristics and special values of zeta-functions,
+  Motives and algebraic cycles, Fields Inst. Commun., vol.~56, Amer. Math.
+  Soc., Providence, RI, 2009, pp.~249--255.
+
+\bibitem{Lichtenbaum-2009-number-rings}
+  \bysame, The {W}eil-\'{e}tale topology for number rings, Ann. of Math.
+  (2) \textbf{170} (2009), no.~2, 657--683.
+
+\bibitem{Lojasiewicz-1964}
+  \textsc{Stanis\l{}aw \L{}ojasiewicz}, Triangulation of semi-analytic sets. Annali della Scuola Normale Superiore di Pisa - Classe di Scienze, S\'{e}rie 3, Tome 18 (1964) no. 4, pp. 449--474.
+
+\bibitem{MacLane-Moerdijk}
+  \textsc{Saunders Mac Lane and Ieke Moerdijk},
+  Sheaves in Geometry and Logic: A~first introduction to topos theory,
+  Universitext, Springer-Verlag, New York, 1994,
+  Corrected reprint of the 1992 edition.
+
+\bibitem{Mazur-1973}
+\textsc{Barry Mazur}, Notes on \'{e}tale cohomology of number fields, Ann. Sci.
+  \'{E}cole Norm. Sup. (4) \textbf{6} (1973), 521--552 (1974).
+
+\bibitem{Milne-ADT}
+  \textsc{J.~S. Milne}, Arithmetic duality theorems, second ed., BookSurge, LLC,
+  Charleston, SC, 2006.
+
+\bibitem{Morin-these}
+  \textsc{Baptiste Morin}, Sur le topos weil-\'{e}tale d'un corps de nombres, 2008,
+  {PhD} thesis, {U}niversit\'{e} {B}ordeaux {I}.
+
+\bibitem{Morin-2014}
+  \bysame, Zeta functions of regular arithmetic schemes at {$s=0$}, Duke
+  Math. J. \textbf{163} (2014), no.~7, 1263--1336.
+
+\bibitem{Neeman-2001}
+  \textsc{Amnon Neeman}, Triangulated categories, Annals of Mathematics Studies,
+  vol. 148, Princeton University Press, Princeton, NJ, 2001.
+
+\bibitem{Serpe-2003}
+  \textsc{Christian Serp\'{e}}, Resolution of unbounded complexes in
+  Grothendieck categories, J. Pure Appl. Algebra 177 (2003), no. 1, 103--112.
+
 \bibitem{Soule-1984}
-\textsc{Christophe Soul\'{e}}, Groupes de {C}how et {$K$}-th\'{e}orie de
+  \textsc{Christophe Soul\'{e}}, Groupes de {C}how et {$K$}-th\'{e}orie de
   vari\'{e}t\'{e}s sur un corps fini, Math. Ann. \textbf{268} (1984), no.~3,
   317--345.
 
+\bibitem{Spaltenstein-1988}
+  \textsc{Nicolas Spaltenstein}, Resolutions of unbounded complexes,
+  Compositio Math. 65 (1988), no. 2, 121--154.
+
 \bibitem{Verdier-thesis}
-\textsc{Jean-Louis Verdier}, Des cat\'{e}gories d\'{e}riv\'{e}es des
+  \textsc{Jean-Louis Verdier}, Des cat\'{e}gories d\'{e}riv\'{e}es des
   cat\'{e}gories ab\'{e}liennes, Ast\'{e}risque (1996), no.~239, xii+253 pp.
   (1997), With a preface by Luc Illusie, Edited and with a note by Georges
   Maltsiniotis.
+
+\bibitem{van-der-Waerden-30}
+  \textsc{Bartel~L. van~der Waerden}, Topologische {B}egr\"undung des
+  {K}alk\"uls der abz\"ahlenden {G}eometrie, Math. Ann. \textbf{102} (1930),
+  no.~1, 337--362.
 
 \bibitem{Weibel-1994}
   \textsc{Charles~A. Weibel}, An introduction to homological algebra, Cambridge
