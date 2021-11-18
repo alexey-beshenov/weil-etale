@@ -1,9 +1,6 @@
 \documentclass[10pt,a4paper,oneside,draft]{article}
 
 \usepackage[titletoc]{appendix}
-\usepackage[russian,english]{babel}
-
-\usepackage[OT2,T1]{fontenc}
 
 \usepackage{amsmath,amssymb}
 
@@ -59,7 +56,7 @@
 \newcommand{\ar}{\text{\it ar}}
 \newcommand{\BM}{\text{\it BM}}
 \newcommand{\codiv}{\text{\it codiv}}
-\newcommand{\DB}{{\mathcal{D}\text{-\foreignlanguage{russian}{B}}}}
+\newcommand{\DB}{{\mathcal{D}\text{-}\mathcal{B}}}
 \renewcommand{\div}{\text{\it div}}
 \newcommand{\dR}{\text{\it dR}}
 \newcommand{\et}{\text{\it \'{e}t}}
@@ -144,9 +141,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[perpage,symbol]{footmisc}
-\renewcommand{\thefootnote}{\ifcase\value{footnote}\or{*}\or{**}\or{***}\or{****}\fi}
-
 \title{Weil-\'{e}tale cohomology and zeta-values of arithmetic schemes at
   negative integers}
 \author{Alexey Beshenov}
@@ -189,82 +183,85 @@
 
 \section{Introduction}
 
-Let $X$ be an \textbf{arithmetic scheme}, by which we will mean throughout this
-paper that it is a separated scheme of finite type over $\Spec \ZZ$. Then the
-corresponding zeta function is defined by
+Let $X$ be an \textbf{arithmetic scheme}, by which we mean in this paper that it
+is a separated scheme of finite type $X \to \Spec \ZZ$. Then the corresponding
+\textbf{zeta function} is defined by
 \[ \zeta (X,s) = \prod_{\substack{x \in X \\ \text{closed pt.}}}
-  \frac{1}{1 - \#\kappa (x)^{-s}}, \]
-where $\kappa (x) = \mathcal{O}_{X,x}/\mathfrak{m}_{X,x}$ denotes the residue
-field of a point. The above product converges for $\Re s > \dim X$, and
-conjecturally admits a meromorphic continuation to the whole complex plane.
-For basic facts and conjectures about zeta functions of schemes, see Serre's
-survey \cite{Serre-1965}.
+  \frac{1}{1 - N (x)^{-s}}. \]
+Here, for a closed point $x \in X$, the norm
+$$N (x) = |\kappa (x)| = |\mathcal{O}_{X,x}/\mathfrak{m}_{X,x}|$$
+is the size of the corresponding residue field. The product converges for
+$\Re s > \dim X$, and conjecturally admits a meromorphic continuation to the
+whole complex plane. Basic facts and conjectures about zeta functions of schemes
+can be found in \cite{Serre-1965}.
 
 Of particular interest are the so-called special values of $\zeta (X,s)$ at
-integers $s = n \in \ZZ$. To define these, assume that $\zeta (X,s)$ admits a
-meromorphic continuation around $s = n$. We will denote by
-$d_n = \ord_{s=n} \zeta (X,s)$ the \textbf{vanishing order} of $\zeta (X,s)$ at
-$s = n$. That is, $d_n > 0$ (resp. $d_n < 0$) if $\zeta (X,s)$ has a zero
-(resp. pole) of order $d_n$ at $s = n$. The corresponding \textbf{special value}
-of $\zeta (X,s)$ at $s = n$ is defined to be the leading nonzero coefficient of
-the Taylor expansion:
+integers $s = n \in \ZZ$. To define these, we assume that $\zeta (X,s)$ admits a
+meromorphic continuation around $s = n$. We denote by
+$$d_n = \ord_{s=n} \zeta (X,s)$$
+the \textbf{vanishing order} of $\zeta (X,s)$ at $s = n$. That is, $d_n > 0$
+(resp. $d_n < 0$) if $\zeta (X,s)$ has a zero (resp. pole) of order $d_n$ at
+$s = n$.
+
+The \textbf{special value} of $\zeta (X,s)$ at $s = n$ is defined as the leading
+nonzero coefficient of the Taylor expansion:
 $$\zeta^* (X,n) = \lim_{s \to n} (s - n)^{-d_n}\,\zeta (X,s).$$
 
-Early on Stephen Lichtenbaum conjectured that both numbers
-$\ord_{s = n} \zeta (X,s)$ and $\zeta^* (X,n)$ should have a cohomological
-interpretation, related to \'{e}tale motivic cohomology of $X$
-(see e.g. \cite{Lichtenbaum-1984} for varieties over finite fields).
-This is made more precise in Lichtenbaum's \textbf{Weil-\'{e}tale program}.
-In particular it suggests the existence of a cohomology theory
-$H^i_\Wc (X, \ZZ (n))$, \textbf{Weil-\'{e}tale cohomology} with compact support,
-which encodes the information about the vanishing order and special value of
+Early on, Lichtenbaum conjectured that both numbers $\ord_{s = n} \zeta (X,s)$
+and $\zeta^* (X,n)$ should have a cohomological interpretation related to the
+\'{e}tale motivic cohomology of $X$ (see e.g. \cite{Lichtenbaum-1984} for
+varieties over finite fields). This is made precise in Lichtenbaum's
+Weil-\'{e}tale program. It suggests the existence of \textbf{Weil-\'{e}tale
+  cohomology}, which is a suitable modification of the motivic cohomology that
+encodes information about the vanishing order and the special value of
 $\zeta (X,n)$ at $s = n$.
 
-For Lichtenbaum's recent work on the topic, we refer to his papers
-\cite{Lichtenbaum-2005,Lichtenbaum-2009-number-rings,Lichtenbaum-2009-Euler-char,Lichtenbaum-2021}.
-The case of varieties over finite fields $X/\FF_q$ was further studied by
-Thomas Geisser
-\cite{Geisser-2004,Geisser-2006,Geisser-2010-arithmetic-homology},
-and it is rather well understood now.
+For Lichtenbaum's work on this topic, we refer the reader to
+\cite{Lichtenbaum-2005,Lichtenbaum-2009-Euler-char,Lichtenbaum-2009-number-rings,Lichtenbaum-2021}.
 
-Matthias Flach and Baptiste Morin considered the case of proper, regular
-arithmetic schemes $X$. In \cite{Flach-Morin-2012} they defined and studied the
-corresponding Weil-\'{e}tale topos. Later, Morin gave in \cite{Morin-2014} an
-explicit construction of Weil-\'{e}tale cohomology groups $H^i_\Wc (X, \ZZ (n))$ for
-$n = 0$, and $X$ a proper, regular arithmetic scheme, under assumptions on
-finite generation of suitable \'{e}tale motivic cohomology groups. This construction
-was further generalized by Flach and Morin in \cite{Flach-Morin-2018} to any
-$n \in \ZZ$, again for proper and regular $X$.
+The case of varieties over finite fields $X/\FF_q$ is now well understood thanks
+to the work of Geisser
+\cite{Geisser-2004,Geisser-2006,Geisser-2010-arithmetic-homology}.
 
-Motivated by the work of Flach and Morin, the author constructed in
-\cite{Beshenov-Weil-etale-1} the Weil-\'{e}tale cohomology groups
-$H^i_\Wc (X, \ZZ (n))$ for any arithmetic scheme $X$ (thus removing the
-assumptions that $X$ is proper or regular) and $n < 0$ (which apparently
-simplifies certain aspects of the theory). The construction relies on the
-following assumption (see \cite[\S 8]{Beshenov-Weil-etale-1} for the known
-cases).
+Flach and Morin considered the case of proper, regular arithmetic schemes
+$X$. In \cite{Flach-Morin-2012} they defined and studied the corresponding
+Weil-\'{e}tale topos. Later, in \cite{Morin-2014} Morin gave an explicit
+construction of Weil-\'{e}tale cohomology groups $H^i_\Wc (X, \ZZ)$ for a proper
+and regular arithmetic scheme $X$. This construction was further generalized by
+Flach and Morin in \cite{Flach-Morin-2018} to groups $H^i_\Wc (X, \ZZ(n))$ with
+weights $n \in \ZZ$, again for proper and regular $X$.
+
+Motivated by the work of Flach and Morin, the author in
+\cite{Beshenov-Weil-etale-1} constructed Weil-\'{e}tale cohomology groups
+$H^i_\Wc (X, \ZZ (n))$ for any arithmetic scheme $X$ (removing the assumptions
+that $X$ is proper or regular) and strictly negative weights $n < 0$.
+The construction is based on the following assumption
+(see \cite[\S 8]{Beshenov-Weil-etale-1} for the known cases).
 
 \begin{conjecture*}
   $\mathbf{L}^c (X_\et,n)$: the cohomology groups $H^i (X_\et, \ZZ^c (n))$ are
   finitely generated for all $i \in \ZZ$.
 \end{conjecture*}
 
-Namely, assuming $\mathbf{L}^c (X_\et,n)$, we defined in
-\cite{Beshenov-Weil-etale-1} perfect complexes of abelian groups
-$R\Gamma_\Wc (X, \ZZ(n))$. This text is a continuation of
-\cite{Beshenov-Weil-etale-1} and it explores the conjectural relation of our
-Weil-\'{e}tale cohomology to the special value of $\zeta (X,s)$ at $s = n < 0$.
-Specifically, we make the following conjectures.
+Under this conjecture, we defined in \cite[\S 7]{Beshenov-Weil-etale-1} perfect
+complexes of abelian groups $R\Gamma_\Wc (X, \ZZ(n))$ and the corresponding
+cohomology groups
+$$H^i_\Wc (X, \ZZ(n)) \dfn H^i (R\Gamma_\Wc (X, \ZZ(n))).$$
+
+This text is a continuation of \cite{Beshenov-Weil-etale-1} and investigates the
+conjectural relation of our Weil-\'{e}tale cohomology to the special value of
+$\zeta (X,s)$ at $s = n < 0$.  Specifically, we make the following conjectures.
 
 \begin{enumerate}
-\item[1)] \textbf{Conjecture}~$\mathbf{VO} (X,n)$:
+\item[1)] \textbf{Conjecture}~$\mathbf{VO} (X,n)$
+  (see \S\ref{sec:vanishing-order-conjecture}):
   \emph{the vanishing order is given by}
   \[ \ord_{s=n} \zeta (X,s) =
     \sum_{i\in \ZZ} (-1)^i \cdot i \cdot \rk_\ZZ H_\Wc^i (X, \ZZ(n)). \]
 
 \item[2)] A consequence of \textbf{Conjecture}~$\mathbf{B} (X,n)$
   (see \S\ref{sec:regulator}):
-  \emph{after tensoring with $\RR$, one obtains a long exact sequence of finite
+  \emph{after tensoring with $\RR$, we obtain a long exact sequence of finite
     dimensional real vector spaces}
   \[ \cdots \to H_\Wc^{i-1} (X, \RR (n)) \xrightarrow{\smile\theta}
     H_\Wc^i (X, \RR (n)) \xrightarrow{\smile\theta}
@@ -280,10 +277,11 @@ Specifically, we make the following conjectures.
   perfect complex of abelian groups $R\Gamma_\Wc (X, \ZZ (n))$, in the sense of
   Knudsen and Mumford \cite{Knudsen-Mumford-1976}. In particular,
   $\det_\ZZ R\Gamma_\Wc (X, \ZZ (n))$ is a free $\ZZ$-module of rank
-  $1$. For the reader's convenience, we include a brief overview of determinants
-  in appendix~\ref{app:determinants}.
+  $1$. For the convenience of the reader, we give a brief overview of
+  determinants in Appendix~\ref{app:determinants}.
 
-\item[3)] \textbf{Conjecture}~$\mathbf{C} (X,n)$:
+\item[3)] \textbf{Conjecture}~$\mathbf{C} (X,n)$
+  (see \S\ref{sec:special-value-conjecture}):
   \emph{the special value is determined up to sign by}
   \[ \lambda (\zeta^* (X, n)^{-1}) \cdot \ZZ =
     \det_\ZZ R\Gamma_\Wc (X, \ZZ (n)). \]
@@ -292,15 +290,15 @@ Specifically, we make the following conjectures.
 If $X$ is proper and regular, then our construction of
 $R\Gamma_\Wc (X, \ZZ (n))$ and the above conjectures agree with those of Flach
 and Morin from \cite{Flach-Morin-2018}. Apart from removing the assumption that
-$X$ is proper and regular, one novelty of this work is that we prove the
+$X$ is proper and regular, a novelty of this work is that we prove the
 compatibility of the conjectures with operations on schemes, in particular
 closed-open decompositions $Z \not\hookrightarrow X \hookleftarrow U$, where
 $Z \subset X$ is a closed subscheme and $U = X\setminus Z$ is the open
-complement, and affine bundles $\AA_X^r = \AA_\ZZ^r \times X$.
-(See Proposition~\ref{prop:compatibility-of-VO(X,n)} and
-Theorem~\ref{thm:compatibility-of-C(X,n)}.) This gives a machinery that allows
-one to start from the particular instances of schemes for which the conjectures
-are known, and construct new schemes for which the conjectures hold as well.
+complement, and affine bundles $\AA_X^r = \AA_\ZZ^r \times X$
+(see Proposition~\ref{prop:compatibility-of-VO(X,n)} and
+Theorem~\ref{thm:compatibility-of-C(X,n)}). This gives a machinery for starting
+from the particular cases of schemes for which the conjectures are known, and
+constructing new schemes for which the conjectures also hold.
 As an application, we prove in \S\ref{sec:unconditional-results} the following
 result.
 
@@ -314,36 +312,34 @@ result.
     number field.
   \end{enumerate}
   If $X$ is a $B$-cellular arithmetic scheme with smooth quasi-projective fiber
-  $X_{\red,\CC}$, then Conjecture~$\mathbf{VO} (X,n)$ and
+  $X_{\red,\CC}$, then Conjectures~$\mathbf{VO} (X,n)$ and
   $\mathbf{C} (X,n)$ hold unconditionally for any $n < 0$.
 \end{maintheorem*}
 
-In fact, this result will be established for a bigger class of arithmetic
-schemes $\mathcal{C} (\ZZ)$; we refer to \S\ref{sec:unconditional-results} for
-further details.
+In fact, this result is established for a larger class of arithmetic schemes
+$\mathcal{C} (\ZZ)$; we refer to \S\ref{sec:unconditional-results} for more
+details.
 
 \subsection*{Outline of the paper}
 
 In \S\ref{sec:regulator} we define the regulator morphism, based on the
 construction of Kerr, Lewis, and M\"{u}ller-Stach
-\cite{Kerr-Lewis-Muller-Stach-2006}, and state Conjecture~$\mathbf{B} (X,n)$
-related to it.
+\cite{Kerr-Lewis-Muller-Stach-2006}, and state the associated
+Conjecture~$\mathbf{B} (X,n)$.
 
 Then \S\ref{sec:vanishing-order-conjecture} is devoted to
-Conjecture~$\mathbf{VO} (X,n)$ about the vanishing order. We also explain why it
-is consistent with a conjecture of Soul\'{e} and the vanishing orders that come
-from the expected functional equation
+Conjecture~$\mathbf{VO} (X,n)$ about vanishing order. We also explain why it is
+consistent with a conjecture of Soul\'{e} and the vanishing order arising from
+the expected functional equation.
 
 In \S\ref{sec:special-value-conjecture} we state Conjecture~$\mathbf{C} (X,n)$
 about the special value.
 
-We explain in \S\ref{sec:finite-fields} that for $X/\FF_q$ a variety over a
-finite field, Conjecture~$\mathbf{C} (X,n)$ is consistent with the conjectures
+We explain in \S\ref{sec:finite-fields} that if $X$ is a variety over a finite
+field, then Conjecture~$\mathbf{C} (X,n)$ is consistent with the conjectures
 considered by Geisser in
-\cite{Geisser-2004,Geisser-2006,Geisser-2010-arithmetic-homology}.
-In particular, it holds for any smooth projective $X/\FF_q$, assuming
-Conjecture~$\mathbf{L}^c (X_\et,n)$. This also generalizes to all varieties
-$X/\FF_q$ if we assume the resolution of singularities over $\FF_q$.
+\cite{Geisser-2004,Geisser-2006,Geisser-2010-arithmetic-homology}, and it
+follows from Conjecture~$\mathbf{L}^c (X_\et,n)$.
 
 Then we prove in \S\ref{sec:compatibility-with-operations} that Conjectures
 $\mathbf{VO} (X,n)$ and $\mathbf{C} (X,n)$ are compatible with basic operations
@@ -351,53 +347,53 @@ on schemes: disjoint unions, closed-open decompositions, and affine
 bundles. Using these results, we conclude in \S\ref{sec:unconditional-results}
 with a class of schemes for which the conjectures hold unconditionally.
 
-For convenience of the reader, the appendix \ref{app:determinants} briefly
-reviews basic definitions and facts related to the determinants of complexes
-that are relevant to this text.
+For the convenience of the reader, Appendix~\ref{app:determinants} gives a brief
+overview of basic definitions and facts related to determinants of complexes.
 
 \subsection*{Notation}
 
-In this paper, $X$ will always denote an \textbf{arithmetic scheme} (separated,
-of finite type over $\Spec \ZZ$), and $n$ will always be a strictly negative
-integer.
+In this paper, $X$ always denotes an \textbf{arithmetic scheme} (separated, of
+finite type over $\Spec \ZZ$), and $n$ is always a strictly negative integer.
 
-We denote by $R\Gamma_\fg (X, \ZZ (n))$ and $R\Gamma_\Wc (X, \ZZ (n))$ the
-complexes constructed in \cite{Beshenov-Weil-etale-1}, assuming
-Conjecture~$\mathbf{L}^c (X_\et,n)$ stated above. For $\QQ$-coefficients, we put
+We denote by
+\[
+  R\Gamma_\fg (X, \ZZ (n))
+  \quad\text{and}\quad
+  R\Gamma_\Wc (X, \ZZ (n))
+\]
+the complexes of abelian groups constructed in \cite{Beshenov-Weil-etale-1}
+under Conjecture~$\mathbf{L}^c (X_\et,n)$.
+
+For the rational coefficients, we set
 \begin{align*}
-  R\Gamma_\fg (X, \QQ (n)) & \dfn
-  R\Gamma_\fg (X, \ZZ (n)) \otimes^\mathbf{L} \QQ =
-  R\Gamma_\fg (X, \ZZ (n)) \otimes \QQ, \\
-  R\Gamma_\Wc (X, \QQ (n)) & \dfn
-  R\Gamma_\Wc (X, \ZZ (n)) \otimes^\mathbf{L} \QQ =
-  R\Gamma_\Wc (X, \ZZ (n)) \otimes \QQ.
+  R\Gamma_\fg (X, \QQ (n)) & \dfn R\Gamma_\fg (X, \ZZ (n)) \otimes \QQ, \\
+  R\Gamma_\Wc (X, \QQ (n)) & \dfn R\Gamma_\Wc (X, \ZZ (n)) \otimes \QQ.
 \end{align*}
 Accordingly,
 \begin{align*}
-  H^i_\fg (X, \QQ (n)) & \dfn
-  H^i (R\Gamma_\fg (X, \QQ (n))) = H^i_\fg (X, \ZZ (n)) \otimes \QQ, \\
-  H^i_\Wc (X, \QQ (n)) & \dfn
-  H^i (R\Gamma_\Wc (X, \QQ (n))) = H^i_\Wc (X, \ZZ (n)) \otimes \QQ.
+  H^i_\fg (X, \QQ (n)) & \dfn H^i (R\Gamma_\fg (X, \QQ (n))) = H^i_\fg (X, \ZZ (n)) \otimes \QQ, \\
+  H^i_\Wc (X, \QQ (n)) & \dfn H^i (R\Gamma_\Wc (X, \QQ (n))) = H^i_\Wc (X, \ZZ (n)) \otimes \QQ.
 \end{align*}
 Similarly, we define the corresponding complexes and cohomology with
-$\RR$-coefficients.
+real coefficients $\RR (n)$.
 
 By $X (\CC)$ we denote the space of complex points of $X$ with the usual
 analytic topology. It carries a natural action of $G_\RR = \Gal (\CC/\RR)$ via
-complex conjugation. For a subring $A \subseteq \RR$ we denote by $A (n)$ the
-$G_\RR$-module $(2\pi i)^n\,A$, and also the corresponding constant
+the complex conjugation. For a subring $A \subseteq \RR$ we denote by $A (n)$
+the $G_\RR$-module $(2\pi i)^n\,A$, and also the corresponding constant
 $G_\RR$-equivariant sheaf on $X (\CC)$.
 
 We denote by $R\Gamma_c (X (\CC), A (n))$
 (resp. $R\Gamma_c (G_\RR, X (\CC), A (n))$) the cohomology with compact
 support (resp. $G_\RR$-equivariant cohomology with compact support) of $X$ with
 $A (n)$-coefficients. For more details on $G_\RR$-equivariant cohomology,
-see \cite{Beshenov-Weil-etale-1}. With real coefficients,
-$H_c^i (G_\RR, X (\CC), \RR (n)) = H^i_c (X (\CC), \RR (n))^{G_\RR}$,
+see \cite[\S 1]{Beshenov-Weil-etale-1}. With real coefficients, we have
+$$H_c^i (G_\RR, X (\CC), \RR (n)) = H^i_c (X (\CC), \RR (n))^{G_\RR},$$
 where the $G_\RR$-action on $H^i_c (X (\CC), \RR (n))$ naturally comes from the
 corresponding action on $X (\CC)$ and $\RR (n)$.
-The \textbf{Borel--Moore homology} is defined as dual to the cohomology with
-compact support. In particular, we will be interested in
+
+\textbf{Borel--Moore homology} is defined as the dual to cohomology with compact
+support. In particular, we are interested in
 \begin{align*}
   R\Gamma_\BM (X (\CC), \RR (n)) & \dfn
   \RHom (R\Gamma_c (X (\CC), \RR (n)), \RR), \\
@@ -407,42 +403,42 @@ compact support. In particular, we will be interested in
 
 \subsection*{Acknowledgments}
 
-Parts of this work are based on the results of my PhD thesis, prepared in
-Universit\'{e} de Bordeaux and Universiteit Leiden under supervision of Baptiste
-Morin and Bas Edixhoven. I am deeply grateful for their support during working
-on this project. I am also indebted to Matthias Flach, since the ideas of this
-work come from \cite{Flach-Morin-2018}. I thank Stephen Lichtenbaum and Niranjan
-Ramachandran who kindly accepted to be the referees for my thesis and provided
-many useful comments and suggestions. Finally, I thank
-Jos\'{e} Jaime Hern\'{a}ndez Castillo, Diosel L\'{o}pez Cruz, and Maxim Mornev
-for various fruitful conversations.
+Parts of this work are based on the results of my doctoral thesis, which I wrote
+at the Université de Bordeaux and the Universiteit Leiden under the supervision
+of Baptiste Morin and Bas Edixhoven. I am very grateful to them for their
+support in working on this project. I am also indebted to Matthias Flach, as the
+ideas for this work came from \cite{Flach-Morin-2018}. I thank Stephen
+Lichtenbaum and Niranjan Ramachandran who kindly agreed to act as reviewers for
+my thesis and provided me with many useful comments and suggestions. Finally,
+I thank Jos\'{e} Jaime Hern\'{a}ndez Castillo, Diosel L\'{o}pez Cruz, and Maxim
+Mornev for several fruitful discussions.
 
-This paper was edited while I was visiting Center for Research in Mathematics
-(CIMAT), Guanajuato. I am grateful personally to Pedro Luis del \'{A}ngel and
+This paper was edited while I visited the Center for Research in Mathematics
+(CIMAT), Guanajuato. I personally thank Pedro Luis del \'{A}ngel and
 Xavier G\'{o}mez Mont for their hospitality.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Regulator morphism and Conjecture~$\mathbf{B} (X,n)$}
+\section{Regulator morphism and conjecture~$\mathbf{B} (X,n)$}
 \label{sec:regulator}
 
-To state the special value conjecture, we need to define the regulator morphism
-from motivic cohomology to Deligne-Beilinson (co)homology.
-It was introduced by Bloch in \cite{Bloch-1986-Lefschetz}, and here we are going
-to use the construction of Kerr, Lewis, and M\"{u}ller-Stach from
-\cite{Kerr-Lewis-Muller-Stach-2006}, which works on the level of complexes.
-We will simply call it ``the KLM morphism''. It works under assumption that
+In order to formulate the special value conjecture, we need a regulator morphism
+from motivic cohomology to Deligne--Beilinson (co)homology. Such regulators were
+originally introduced by Bloch in \cite{Bloch-1986-Lefschetz}, and here we use
+the construction of Kerr, Lewis, and M\"{u}ller-Stach
+\cite{Kerr-Lewis-Muller-Stach-2006}, which works at the level of complexes.
+We will simply call it ``the KLM morphism.'' It works under the assumption that
 $X_{\red,\CC}$ is a smooth quasi-projective variety.
 
-For simplicity we will assume in this section that $X$ is reduced (the motivic
+For simplicity, in this section we assume that $X$ is reduced (motivic
 cohomology does not distinguish between $X$ and $X_\red$), and that $X_\CC$ is
-connected of dimension $d_\CC$ (otherwise, the arguments below may be applied to
+connected of dimension $d_\CC$ (otherwise, the arguments below can be applied to
 each connected component). We fix a compactification by a normal crossing
 divisor
 \[ \begin{tikzcd}
     X_\CC \ar[right hook->]{r}{j} & \overline{X}_\CC & D \ar[left hook->]{l}
   \end{tikzcd} \]
-The KLM regulator takes form of a morphism in the derived category
+The KLM regulator has the form of a morphism in the derived category
 \begin{equation}
   \label{eqn:KLM-morphism-1}
   z^p (X_\CC, -\bullet) \otimes \QQ \to
@@ -450,19 +446,20 @@ The KLM regulator takes form of a morphism in the derived category
 \end{equation}
 
 Here $z^p (X_\CC, -\bullet)$ denotes the Bloch's cycle complex
-\cite{Bloch-1986}. We recall that by the definition, $z^p (X_\CC, i)$ is freely
-generated by algebraic cycles $Z \subset X_\CC \times_{\Spec \CC} \Delta_\CC^i$
-of codimension $p$ that intersect properly the faces of the algebraic simplex
-$\Delta_\CC^i = \Spec \CC [t_0,\ldots,t_i]/(1 - \sum_j t_j)$. For us it will be
-more convenient to pass to
+\cite{Bloch-1986}. We recall that, according to the definition, $z^p (X_\CC, i)$
+is freely generated by algebraic cycles
+$Z \subset X_\CC \times_{\Spec \CC} \Delta_\CC^i$ of codimension $p$ which
+intersect properly the faces of the algebraic simplex
+$\Delta_\CC^i = \Spec \CC [t_0,\ldots,t_i]/(1 - \sum_j t_j)$. It is more
+convenient for us to work with
 $$z_{d_\CC - p} (X_\CC, i) = z^p (X_\CC, i),$$
 generated by cycles $Z \subset X_\CC \times_{\Spec \CC} \Delta_\CC^i$ of
 dimension $p+i$.
 
 The complex ${}' C_\mathcal{D}^{\bullet} (\overline{X}_\CC, D, \QQ (k))$ on the
-right hand side of \eqref{eqn:KLM-morphism-1} computes Deligne(--Beilinson)
-homology, as defined by Jannsen \cite{Jannsen-1988}. In particular, taking
-$p = d_\CC + 1 - n$, tensoring with $\RR$, and shifting by $2n$, we obtain
+right-hand side of \eqref{eqn:KLM-morphism-1} computes Deligne(--Beilinson)
+homology, as defined in \cite{Jannsen-1988}. In particular, if we take
+$p = d_\CC + 1 - n$, tensor it with $\RR$ and shift it by $2n$, we obtain
 \begin{equation}
   \label{eqn:KLM-morphism-2}
   z_{n-1} (X_\CC, -\bullet) \otimes \RR [2n] \to
@@ -475,27 +472,27 @@ $p = d_\CC + 1 - n$, tensoring with $\RR$, and shifting by $2n$, we obtain
   \begin{enumerate}
   \item Originally, the KLM morphism is defined using a cubical version of cycle
     complexes, but these are quasi-isomorphic to the usual simplicial cycle
-    complexes (see \cite{Levine-1994}), so we do not make a distinction here.
-    For a simplicial version, see also \cite{Kerr-Lewis-Lopatto-2018}.
+    complexes (see \cite{Levine-1994}), so we make no distinction here.
+    For a simplicial version, see \cite{Kerr-Lewis-Lopatto-2018}.
 
-  \item The KLM morphism is defined as a genuine morphism of complexes (not just
-    a morphism in the derived category) on a certain subcomplex
-    $z^r_\RR (X_\CC, \bullet) \subset z^r (X_\CC, \bullet)$. This inclusion is a
-    quasi-isomorphism, if we pass rational coefficients. This is stated without
-    tensoring with $\QQ$ in the original paper
-    \cite{Kerr-Lewis-Muller-Stach-2006}, but the omission is acknowledged later
-    in \cite{Kerr-Lewis-2007}. For our particular purposes, it will be enough to
-    have a regulator with coefficients in $\QQ$, or in fact in $\RR$.
+  \item The KLM morphism is defined as a true morphism of complexes (not just a
+    morphism in the derived category) on a subcomplex
+    $z^r_\RR (X_\CC, \bullet) \subset z^r (X_\CC, \bullet)$. This inclusion
+    becomes a quasi-isomorphism if we pass to rational coefficients. In the
+    original paper \cite{Kerr-Lewis-Muller-Stach-2006} this is stated without
+    tensoring with $\QQ$ , but the omission is acknowledged later in
+    \cite{Kerr-Lewis-2007}. For our purposes, it suffices to have a
+    regulator with coefficients in $\QQ$, or even in $\RR$.
 
-  \item The case of smooth quasi-projective $X_\CC$, where one has to consider a
+  \item The case of a smooth quasi-projective $X_\CC$, where one must consider a
     compactification by a normal crossing divisor as above, is treated in
     \cite[\S 5.9]{Kerr-Lewis-Muller-Stach-2006}.
   \end{enumerate}
 \end{remark}
 
-Now we make a little digression to identify the right hand side of
-\eqref{eqn:KLM-morphism-2}. Under our assumption that $n < 0$, the Deligne
-homology corresponds to Borel--Moore homology.
+Now we make a small digression to identify the right-hand side of
+\eqref{eqn:KLM-morphism-2}. Under our assumption that $n < 0$, Deligne
+homology is equivalent to Borel--Moore homology.
 
 \begin{lemma}
   For any $n < 0$ there is a quasi-isomorphism
@@ -504,7 +501,7 @@ homology corresponds to Borel--Moore homology.
     R\Gamma_\BM (X (\CC), \RR (n)) [-1] \\
     \dfn \RHom (R\Gamma_c (X (\CC), \RR (n)), \RR) [-1].
   \end{multline*}
-  Further, this respects the natural actions of $G_\RR$ on both complexes.
+  Moreover, it respects the natural actions of $G_\RR$ on both complexes.
 
   \begin{proof}
     From the proof of \cite[Theorem~1.15]{Jannsen-1988}, for any $k \in \ZZ$ we
@@ -524,8 +521,8 @@ homology corresponds to Borel--Moore homology.
       \xrightarrow{\epsilon - \iota}
       R j_* \Omega_{X (\CC)}^\bullet \right) [-1] \]
     is the sheaf whose hypercohomology on $\overline{X} (\CC)$ gives
-    Deligne-Beilinson cohomology (see \cite{Esnault-Viehweg-1988} for
-    further details).
+    Deligne--Beilinson cohomology (see \cite{Esnault-Viehweg-1988} for
+    more details).
 
     Here $\Omega^\bullet_{\overline{X} (\CC)}$ denotes the usual de Rham complex
     of holomorphic differential forms, and
@@ -541,9 +538,9 @@ homology corresponds to Borel--Moore homology.
     \Omega_{X (\CC)}^\bullet = R j_* \Omega_{X (\CC)}^\bullet$, which is a
     quasi-isomorphism of filtered complexes.
 
-    We will be interested in the case of $k > 0$, when the part
-    $\Omega^{\geqslant k + d_\CC}_{\overline{X} (\CC)} (\log D)$ disappears,
-    and we obtain
+    We are interested in the case of $k > 0$ when the part
+    $\Omega^{\geqslant k + d_\CC}_{\overline{X} (\CC)} (\log D)$ vanishes, and
+    we obtain
     \begin{align}
       \notag \RR (k + d_\CC)_{\DB, (\overline{X}_\CC,X_\CC)} & \cong
                                      R j_* \Cone \Bigl(\RR (k + d_\CC)
@@ -555,22 +552,21 @@ homology corresponds to Borel--Moore homology.
       \label{eqn:deligne-homology-2} & \cong R j_* \RR (k + d_\CC - 1) [-1]
     \end{align}
     Here \eqref{eqn:deligne-homology-1} comes from the Poincar\'{e} lemma
-    $\CC \cong \Omega_{X (\CC)}^\bullet$, and \eqref{eqn:deligne-homology-2}
-    comes from the short exact sequence of $G_\RR$-modules
+    $\CC \cong \Omega_{X (\CC)}^\bullet$ and \eqref{eqn:deligne-homology-2}
+    from the short exact sequence of $G_\RR$-modules
     $\RR (k + d_\CC) \rightarrowtail \CC \twoheadrightarrow \RR (k + d_\CC - 1)$.
 
-    Coming back to \eqref{eqn:Jannsen-Theorem-1.15} for $k = 1-n$,
-    we conclude that
+    Returning to \eqref{eqn:Jannsen-Theorem-1.15} for $k = 1-n$, we find that
     \begin{align*}
       {}' C^\bullet_\mathcal{D} (\overline{X_\CC}, D, \RR (1-n)) & \cong
       R\Gamma (X (\CC), \RR (d_\CC - n)) [2d_\CC-1] \\
       & \cong \RHom (R\Gamma_c (X (\CC), \RR (n)), \RR) [-1].
     \end{align*}
-    Here the last isomorphism is Poincar\'{e} duality.
+    Here the final isomorphism is Poincar\'{e} duality.
   \end{proof}
 \end{lemma}
 
-Now coming back to \eqref{eqn:KLM-morphism-2}, the above lemma allows us to
+Returning now to \eqref{eqn:KLM-morphism-2}, the above lemma allows us to
 reinterpret the KLM morphism as
 \begin{equation}
   \label{eqn:KLM-morphism-3}
@@ -578,7 +574,7 @@ reinterpret the KLM morphism as
   R\Gamma_\BM (X (\CC), \RR (n)), \RR) [1].
 \end{equation}
 
-By the definition, we have
+By definition, we have
 \begin{equation}
   \label{eqn:KLM-morphism-4}
   z_{n-1} (X_\CC, -\bullet) \otimes \RR [2n] =
@@ -608,21 +604,21 @@ morphism
 \end{equation}
 
 \begin{remark}
-  Assuming that $X$ is flat of pure Krull dimension $d$, we have
+  Assuming that $X$ is flat and has pure Krull dimension $d$, we have
   $\RR^c (n)^X = \RR (d-n)^X [2d]$, where $\RR (\bullet)$ is the usual cycle
   complex defined by $z^n (\text{\textvisiblespace}, -\bullet) [-2n]$.
   Similarly, $\RR^c (n)^{X_\CC} = \RR (d_\CC-n)^{X_\CC} [2d_\CC]$, with
   $d_\CC = d - 1$. With this renumbering, the morphism
   \eqref{eqn:KLM-morphism-6} becomes
   $$R\Gamma (X_\et, \RR (d-n)) [2d] \to R\Gamma (X_{\CC,\et}, \RR (d-n)) [2d].$$
-  This probably looks more natural, but we do not impose extra assumptions on
+  This probably looks more natural, but we make no additional assumptions about
   $X$ and work exclusively with complexes $A^c (\bullet)$ defined in terms of
-  dimension of algebraic cycles, instead of $A (\bullet)$ defined in terms of
+  dimension of algebraic cycles, rather than $A (\bullet)$ defined in terms of
   codimension.
 \end{remark}
 
 \begin{definition}
-  Given an arithmetic scheme $X$ with smooth quasi-projective $X_\CC$, and
+  Given an arithmetic scheme $X$ with smooth quasi-projective $X_\CC$ and
   $n < 0$, consider the composition of morphisms
   \begin{multline*}
     R\Gamma (X_\et, \RR^c (n)) \xrightarrow{\text{\eqref{eqn:KLM-morphism-6}}}
@@ -632,7 +628,7 @@ morphism
     z_{n-1} (X_\CC, -\bullet)_\RR [2n] \xrightarrow{\text{\eqref{eqn:KLM-morphism-3}}}
     R\Gamma_\BM (X (\CC), \RR (n)), \RR) [1].
   \end{multline*}
-  Further, we take $G_\RR$-invariants, which gives us the
+  Moreover, we take the $G_\RR$-invariants, which gives us the
   \textbf{(\'{e}tale) regulator}
   \[ Reg_{X,n}\colon R\Gamma (X_\et, \RR^c (n)) \to
     R\Gamma_\BM (G_\RR, X(\CC), \RR (n)) [1]. \]
@@ -651,7 +647,7 @@ role in everything that follows.
 
 \begin{remark}
   If $X/\FF_q$ is a variety over a finite field, then $X (\CC) = \emptyset$,
-  so the regulator map in not interesting. Indeed, in our setting, its purpose
+  so the regulator map is not interesting. Indeed, in our setting, its purpose
   is to take care of the archimedian places of $X$. In this case
   $\mathbf{B} (X,n)$ implies that $H^i (X_\et, \ZZ^c (n))$ are torsion groups.
   However, by \cite[Proposition~4.2]{Beshenov-Weil-etale-1},
@@ -663,20 +659,21 @@ role in everything that follows.
   \label{rmk:regulator-is-defined-for-XC-smooth-quasi-proj}
   We reiterate that our construction of $Reg_{X,n}$ works for $X_{\red,\CC}$
   smooth quasi-projective. In everything that follows, whenever the regulator
-  morphism or Conjecture~$\mathbf{B} (X,n)$ is brought, we will tacitly assume
-  this. This is quite unfortunate, because Weil-\'{e}tale cohomology was
+  morphism or Conjecture~$\mathbf{B} (X,n)$ is brought, we tacitly assume this
+  restriction. This is rather unfortunate, since Weil-\'{e}tale cohomology was
   constructed in \cite{Beshenov-Weil-etale-1} for any arithmetic scheme,
-  assuming only Conjecture~$\mathbf{L}^c (X_\et,n)$. Defining the regulator for
-  singular $X_{\red,\CC}$ is an interesting project for further work.
+  assuming only Conjecture~$\mathbf{L}^c (X_\et,n)$. The definition of the
+  regulator for singular $X_{\red,\CC}$ is an interesting project for future
+  work.
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Conjecture $\mathbf{VO} (X,n)$ (vanishing order)}
+\section{Vanishing order conjecture $\mathbf{VO} (X,n)$}
 \label{sec:vanishing-order-conjecture}
 
 Assuming that $\zeta (X,s)$ admits a meromorphic continuation around
-$s = n < 0$, we state the following conjecture for the vanishing order at
+$s = n < 0$, we make the following conjecture for the vanishing order at
 $s = n$.
 
 \begin{conjecture}
@@ -686,22 +683,22 @@ $s = n$.
     \sum_{i \in \ZZ} (-1)^i \cdot i \cdot \rk_\ZZ H^i_\Wc (X, \ZZ (n)). \]
 \end{conjecture}
 
-We note that the right hand side makes sense assuming
-Conjecture~$\mathbf{L}^c (X_\et,n)$, under which $H^i_\Wc (X, \ZZ (n))$ are
-finitely generated groups, trivial for $|i| \gg 0$
+We note that the right-hand side makes sense assuming
+Conjecture~$\mathbf{L}^c (X_\et,n)$, according to which $H^i_\Wc (X, \ZZ (n))$
+are finitely generated groups, trivial for $|i| \gg 0$
 (see \cite[Proposition~7.12]{Beshenov-Weil-etale-1}).
 
 \begin{remark}
   Conjecture~$\mathbf{VO} (X,n)$ is similar to
-  \cite[Conjecture~5.11]{Flach-Morin-2018}. When $X$ is proper and regular, then
-  $\mathbf{VO} (X,n)$ is the same as the vanishing order conjecture of Flach and
-  Morin. Namely, the latter takes form
+  \cite[Conjecture~5.11]{Flach-Morin-2018}. If $X$ is proper and regular, then
+  $\mathbf{VO} (X,n)$ is the same as Flach and Morin's vanishing order
+  conjecture. Indeed, the latter is
   \begin{equation}
     \label{eqn:FM-vanishing-order}
     \ord_{s = n} \zeta (X,s) =
     \sum_{i\in \ZZ} (-1)^i \cdot i \cdot \dim_\RR H^i_{\ar,c} (X, \widetilde{\RR}(n)),
   \end{equation}
-  where by definition,
+  where, by definition,
   \[ R\Gamma_{\ar,c} (X, \widetilde{\RR}(n)) \dfn
     R\Gamma_c (X, \RR(n)) \oplus R\Gamma_c (X, \RR(n)) [-1]. \]
   Moreover, \cite[Proposition 4.14]{Flach-Morin-2018}, gives a distinguished
@@ -712,24 +709,23 @@ finitely generated groups, trivial for $|i| \gg 0$
     R\Gamma_\Wc (X, \ZZ(n)) \otimes \RR \\
     \to R\Gamma_\dR (X_\RR/\RR) / \Fil^n [-1]
   \end{multline*}
-  Therefore, in case of $n < 0$, we have
+  So, in case of $n < 0$ we have
   $R\Gamma_{\ar,c} (X, \widetilde{\RR}(n)) \cong
-  R\Gamma_\Wc (X, \ZZ(n)) \otimes \RR$, and
+  R\Gamma_\Wc (X, \ZZ(n)) \otimes \RR$ and
   \eqref{eqn:FM-vanishing-order} is exactly Conjecture~$\mathbf{VO} (X,n)$.
 \end{remark}
 
 \begin{remark}
   The alternating sum in the formula is the so-called
-  \textbf{secondary Euler characteristic} of the Weil-\'{e}tale complex
-  $R\Gamma_\Wc (X, \ZZ (n))$.  The easy calculations below show that the usual
-  Euler characteristic of $R\Gamma_\Wc (X, \ZZ (n))$ vanishes, assuming
+  \textbf{secondary Euler characteristic}. The calculations below show that the
+  usual Euler characteristic of $R\Gamma_\Wc (X, \ZZ (n))$ vanishes, assuming
   Conjectures~$\mathbf{L}^c (X_\et,n)$ and $\mathbf{B} (X,n)$.
-  See \cite{Ramachandran-2016} for more details about secondary Euler
-  characteristic and its appearances in nature.
+  See \cite{Ramachandran-2016} for more details on the secondary Euler
+  characteristic and its occurrences in nature.
 \end{remark}
 
-Under the regulator conjecture, our vanishing order formula takes form of the
-usual Euler characteristic of the equivariant cohomology
+Under the regulator conjecture, our vanishing order formula takes the form of
+the usual Euler characteristic of equivariant cohomology
 $R\Gamma_c (G_\RR, X(\CC), \RR (n))$ or motivic cohomology
 $R\Gamma (X_\et, \ZZ^c (n)) [1]$.
 
@@ -743,7 +739,7 @@ $R\Gamma (X_\et, \ZZ^c (n)) [1]$.
                            & = -\chi (R\Gamma (X_\et, \ZZ^c (n)))
     = \sum_{i \in \ZZ} (-1)^{i+1} \rk_\ZZ H^i (X_\et, \ZZ^c (n)).
   \end{align*}
-  Further, we have
+  Moreover, we have
   $$\chi (R\Gamma_\Wc (X, \ZZ(n))) = 0.$$
 
   \begin{proof}
@@ -759,7 +755,7 @@ $R\Gamma (X_\et, \ZZ^c (n)) [1]$.
     \[ \dim_\RR H^i_\Wc (X,\RR(n)) =
       \dim_\RR H^{i-1}_c (X (\CC), \RR (n))^{G_\RR} +
       \dim_\RR H^{i-2}_c (X (\CC), \RR (n))^{G_\RR}. \]
-    Using this, we may rewrite the sum
+    Thus, we can rewrite the sum
     \begin{align*}
       \sum_{i \in \ZZ} (-1)^i \cdot i \cdot \rk_\ZZ H^i_\Wc (X, \ZZ (n)) & = \sum_{i \in \ZZ} (-1)^i \cdot i \cdot \dim_\RR H^i_\Wc (X, \RR (n)) \\
                                                                          & = \sum_{i \in \ZZ} (-1)^i \cdot i \cdot
@@ -784,7 +780,7 @@ $R\Gamma (X_\et, \ZZ^c (n)) [1]$.
   $K'$-theory
   \[ \ord_{s=n} \zeta (X,s) =
     \sum_{i \in \ZZ} (-1)^{i+1} \, \dim_\QQ K'_i (X)_{(n)}. \]
-  Then, as explained in \cite[Remark~43]{Kahn-2005}, this may be rewritten in
+  As explained in \cite[Remark~43]{Kahn-2005}, this can be rewritten in
   terms of Borel--Moore motivic homology as
   $$\sum_{i \in \ZZ} (-1)^{i+1} \, \dim_\QQ H_i^{BM} (X, \QQ (n)).$$
   In our setting, $R\Gamma (X_\et, \ZZ^c (n))$ plays the role of Borel--Moore
@@ -798,26 +794,26 @@ $R\Gamma (X_\et, \ZZ^c (n)) [1]$.
   As for the formula
   \[ \ord_{s=n} \zeta (X,s) =
     \sum_{i \in \ZZ} (-1)^i \dim_\RR H^i_c (X(\CC), \RR (n))^{G_\RR}, \]
-  it basically means that the the vanishing order at $s = n < 0$ comes from the
-  archimedian $\Gamma$-factor that appears in the (hypothetical) functional
+  it essentially means that the vanishing order at $s = n < 0$ comes from the
+  archimedian $\Gamma$-factor appearing in the (hypothetical) functional
   equation, as explained in \cite[\S\S 3,4]{Serre-1970}
   (see also \cite[\S 4]{Flach-Morin-2020}).
 
-  Namely, assuming that $X_\CC$ is a smooth projective variety, we consider the
-  Hodge decomposition
+  Indeed, under the assumption that $X_\CC$ is a smooth projective variety, we
+  consider the Hodge decomposition
   \[ H^i (X (\CC), \CC) = \bigoplus_{p+q = i} H^{p,q}, \]
   which carries an action of $G_\RR = \{ id, \sigma \}$ such that
   $\sigma (H^{p,q}) = H^{q,p}$. We set $h^{p,q} = \dim_\CC H^{p,q}$.
-  For $p = i/2$ consider the eigenspace decomposition
+  For $p = i/2$ we consider the eigenspace decomposition
   $H^{p,p} = H^{p,+} \oplus H^{p,-}$, where
   \begin{align*}
     H^{p,+} & = \{ x \in H^{p,p} \mid \sigma (x) = (-1)^p\,x \},\\
     H^{p,-} & = \{ x \in H^{p,p} \mid \sigma (x) = (-1)^{p+1}\,x \},
   \end{align*}
-  and set accordingly $h^{p,\pm} = \dim_\CC H^{p,\pm}$.
-  It is expected that the completed zeta function
-  $$\zeta (\overline{X}, s) = \zeta (X, s)\,\zeta (X_\infty, s),$$
-  satisfies a functional equation of the form
+  and set $h^{p,\pm} = \dim_\CC H^{p,\pm}$ accordingly.
+  The completed zeta function
+  $$\zeta (\overline{X}, s) = \zeta (X, s)\,\zeta (X_\infty, s)$$
+  is expected to satisfy a functional equation of the form
   \[ A^{\frac{d-s}{2}}\,\zeta (\overline{X},d-s) =
     A^{\frac{s}{2}}\,\zeta (\overline{X},s). \]
   Here
@@ -837,7 +833,7 @@ $R\Gamma (X_\et, \ZZ^c (n)) [1]$.
                            & = \sum_{i\in \ZZ} (-1)^i \Bigl(\sum_{p = i/2} h^{p,(-1)^{n-p}} +
     \sum_{\substack{p + q = i \\ p < q}} h^{p,q}\Bigr).
   \end{align*}
-  The last equality comes from the fact that $\Gamma (s)$ has simple poles at
+  The last equality follows from the fact that $\Gamma (s)$ has simple poles at
   all $s = n \le 0$. We have
   \begin{align*}
     \dim_\RR H^i (X (\CC), \RR (n))^{G_\RR} & = \dim_\RR H^i (X (\CC), \RR)^{\sigma = (-1)^n} \\
@@ -849,17 +845,16 @@ $R\Gamma (X_\et, \ZZ^c (n)) [1]$.
   We see that our conjectural formula gives the expected vanishing orders.
 \end{remark}
 
-Let us see some particular examples when the meromorphic continuation for
+Let us look at some particular examples when the meromorphic continuation for
 $\zeta (X,s)$ is known.
 
 \begin{example}
   \label{example:VO(X,n)-for-number-rings}
   Suppose that $X = \Spec \mathcal{O}_F$ is the spectrum of the ring of integers
   of a number field $F/\QQ$. Let $r_1$ be the number of real embeddings
-  $F \hookrightarrow \RR$ and $r_2$ the number of conjugate pairs of complex
+  $F \hookrightarrow \RR$ and $r_2$ be the number of conjugate pairs of complex
   embeddings $F \hookrightarrow \CC$. The space $X (\CC)$ with the action of
-  complex conjugation may be pictured as follows:
-
+  complex conjugation can be visualized as follows:
   \[ \begin{tikzpicture}
     \matrix(m)[matrix of math nodes, row sep=1em, column sep=1em,
     text height=1ex, text depth=0.2ex]{
@@ -898,15 +893,15 @@ $\zeta (X,s)$ is known.
       r_2, & n \text{ odd},\\
       r_1 + r_2, & n \text{ even},\\
     \end{cases} \]
-  which indeed agrees with the vanishing order of the Dedekind zeta function
+  which indeed coincides with the vanishing order of the Dedekind zeta function
   $\zeta (X,s) = \zeta_F (s)$ at $s = n < 0$.
 
-  On the side of motivic cohomology
-  (see e.g. \cite[Proposition~4.14]{Geisser-2017}), given $n < 0$, the groups
-  $H^i_\et (X, \ZZ^c (n)) = H^{i+2}_\et (X, \ZZ (1-n))$ are finite, except for
+  On the motivic cohomology side
+  (see e.g. \cite[Proposition~4.14]{Geisser-2017}), for $n < 0$ the groups
+  $H^i (X_\et, \ZZ^c (n)) = H^{i+2} (X_\et, \ZZ (1-n))$ are finite, except for
   $i = -1$, where
-  \[ \rk_\ZZ H^{-1}_\et (X, \ZZ^c (n)) =
-    \rk_\ZZ H^1_\et (X, \ZZ (1-n)) = \begin{cases}
+  \[ \rk_\ZZ H^{-1} (X_\et, \ZZ^c (n)) =
+    \rk_\ZZ H^1 (X_\et, \ZZ (1-n)) = \begin{cases}
       r_2, & n \text{ odd},\\
       r_1 + r_2, & n \text{ even}.
     \end{cases} \]
@@ -914,39 +909,41 @@ $\zeta (X,s)$ is known.
 
 \begin{example}
   Suppose that $X$ is a variety over a finite field $\FF_q$. Then the vanishing
-  order conjecture is not very interesting, as the formula gives
+  order conjecture is not very interesting, because the formula yields
   \begin{align*}
     \ord_{s=n} \zeta (X,s) & = \sum_{i \in \ZZ} (-1)^i \dim_\RR H^i_c (X(\CC), \RR (n))^{G_\RR} \\
                            & = \sum_{i \in \ZZ} (-1)^{i+1} \rk_\ZZ H^i (X_\et, \ZZ^c (n)) = 0,
   \end{align*}
   since $X (\CC) = \emptyset$, and also because $\mathbf{L}^c (X_\et, n)$
-  implies $\rk_\ZZ H^i (X_\et, \ZZ^c (n)) = 0$ in case of varieties over finite
+
+  implies $\rk_\ZZ H^i (X_\et, \ZZ^c (n)) = 0$ in the case of varieties over finite
   fields \cite[Proposition~4.2]{Beshenov-Weil-etale-1}. Therefore, the
-  conjecture simply asserts that $\zeta (X,s)$ does not have zeros or poles at
+  conjecture simply asserts that $\zeta (X,s)$ has no zeros or poles at
   $s = n < 0$.
 
   This is indeed the case. We have $\zeta (X,s) = Z (X,q^{-s})$, where
   $$Z (X,t) = \exp \Bigl(\sum_{k\ge 1} \frac{\# X (\FF_{q^k})}{k}\,t^k\Bigr)$$
-  is the Hasse--Weil zeta function. By Deligne's work on Weil's conjectures
-  \cite{Deligne-Weil-II}, the zeros and poles of $Z (X,s)$ satisfy
+  is the Hasse--Weil zeta function. According to Deligne's work on Weil's
+  conjectures \cite{Deligne-Weil-II}, the zeros and poles of $Z (X,s)$ satisfy
   $|s| = q^{-w/2}$, where $0 \le w \le 2 \dim X$ (see
   e.g. \cite[pp.\,26--27]{Katz-1994}). In particular, $q^{-s}$ for $s = n < 0$
-  is not a zero or pole of $Z (X,s)$.
+  is neither a zero nor a pole of $Z (X,s)$.
 
-  We also note that our definition of $H^i_\Wc (X, \ZZ(n))$, and pretty much all
-  the above, makes sense only for $n < 0$. Already for $n = 0$, for instance,
-  the zeta function of a smooth projective curve $X/\FF_q$ has a simple pole
-  at $s = 0$.
+  We also note that our definition of $H^i_\Wc (X, \ZZ(n))$, and pretty much
+  everything said above only makes sense for $n < 0$. Already for $n = 0$, for
+  example, the zeta function of a smooth projective curve $X/\FF_q$ has a simple
+  pole at $s = 0$.
 \end{example}
 
 \begin{example}
-  Let $X = E$ be an integral model of an elliptic curve over $\QQ$. Then as a
-  consequence of the modularity theorem (Wiles--Breuil--Conrad--Diamond--Taylor)
-  it is known that $\zeta (E,s)$ admits a meromorphic continuation, which
-  satisfies the functional equation with the $\Gamma$-factors discussed in
-  \ref{rmk:archimedian-euler-factor}. In this particular case
-  $\ord_{s=n} \zeta (E,s) = 0$ for all $n < 0$. This is consistent with the fact
-  that $\chi (R\Gamma_c (G_\RR, E (\CC), \RR (n))) = 0$.
+  Let $X = E$ be an integral model of an elliptic curve over $\QQ$. Then, as a
+  consequence of the modularity theorem
+  (Wiles--Breuil--Conrad--Diamond--Taylor), it is known that $\zeta (E,s)$
+  admits a meromorphic continuation satisfying the functional equation with the
+  $\Gamma$-factors discussed in Remark~\ref{rmk:archimedian-euler-factor}.
+  In this particular case $\ord_{s=n} \zeta (E,s) = 0$ for all $n < 0$. This is
+  consistent with the fact that
+  $\chi (R\Gamma_c (G_\RR, E (\CC), \RR (n))) = 0$.
 
   Indeed, the equivariant cohomology groups $H^i_c (E (\CC), \RR (n))^{G_\RR}$
   are the following:
@@ -961,19 +958,19 @@ $\zeta (X,s)$ is known.
       \hline
     \end{tabular}
   \end{center}
-  ---see for instance the calculation in \cite[Lemma~A.6]{Siebel-2019}.
+  ---see, for example, the calculation in \cite[Lemma~A.6]{Siebel-2019}.
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Conjecture~$\mathbf{C} (X,n)$ (special value)}
+\section{Special value conjecture~$\mathbf{C} (X,n)$}
 \label{sec:special-value-conjecture}
 
 \begin{definition}
-  Define a morphism of complexes
+  We define a morphism of complexes
   \[ \smile\theta\colon R\Gamma_\Wc (X,\ZZ(n)) \otimes \RR \to
     R\Gamma_\Wc (X,\ZZ(n)) [1] \otimes \RR \]
-  using the splitting
+  using the splitting \cite[Proposition~7.13]{Beshenov-Weil-etale-1}
   \[ R\Gamma_\Wc (X, \RR (n)) \cong
     \RHom (R\Gamma (X_\et, \ZZ^c (n)), \RR) [-1] \oplus
     R\Gamma_c (G_\RR, X (\CC), \RR (n)) [-1] \]
@@ -1010,7 +1007,7 @@ $\zeta (X,s)$ is known.
   \end{proof}
 \end{lemma}
 
-We recall that the Weil-\'{e}tale complex $R\Gamma_\Wc (X, \ZZ(n))$ was defined in
+We recall that the Weil-\'{e}tale complex $R\Gamma_\Wc (X, \ZZ(n))$ is defined in
 \cite{Beshenov-Weil-etale-1} up to a \emph{non-unique} isomorphism in the
 derived category $\mathbf{D} (\ZZ)$ via a distinguished triangle
 \begin{equation}
@@ -1018,17 +1015,16 @@ derived category $\mathbf{D} (\ZZ)$ via a distinguished triangle
   R\Gamma_\Wc (X, \ZZ(n)) \to R\Gamma_\fg (X,\ZZ(n)) \xrightarrow{i_\infty}
   R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \to [1]
 \end{equation}
-
 This is quite unpleasant, and there ought to be a better, more canonical
 construction of $R\Gamma_\Wc (X, \ZZ(n))$. However, this is not a big issue for
 the moment, since the special value conjecture will be formulated not in terms
 of $R\Gamma_\Wc (X, \ZZ (n))$, but in terms of its determinant
-$\det_\ZZ R\Gamma_\Wc (X, \ZZ(n))$ (see appendix~\ref{app:determinants}), which
+$\det_\ZZ R\Gamma_\Wc (X, \ZZ(n))$ (see Appendix~\ref{app:determinants}), which
 is well-defined.
 
 \begin{lemma}
   \label{lemma:determinant-of-RGamma-Wc-well-defined}
-  The determinant $\det_\ZZ R\Gamma_\Wc (X, \ZZ(n))$ is well-defined up to a
+  The determinant $\det_\ZZ R\Gamma_\Wc (X, \ZZ(n))$ is defined up to a
   canonical isomorphism.
 
   \begin{proof}
@@ -1048,7 +1044,7 @@ is well-defined.
     \cite{Beshenov-Weil-etale-1} we called such complexes
     \textbf{almost perfect}). On the other hand, the determinants are only
     defined for perfect complexes. Luckily, $H^i (i_\infty^*)$ is an isomorphism
-    for $i \gg 0$, so that for $m$ big enough we may take the corresponding
+    for $i \gg 0$, so that for $m$ big enough we can take the corresponding
     canonical truncations $\tau_{\le m}$:
     \[ \begin{tikzcd}[row sep=1.5em, column sep=0.75em, font=\small]
         \tau_{\le m} R\Gamma_\Wc (X, \ZZ(n)) \ar{r}\ar{d}{\cong} & \tau_{\le m} R\Gamma_\fg (X,\ZZ(n)) \ar{r}\ar{d} & \tau_{\le m} R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \ar{r}\ar{d} & {[1]}\ar{d}{\cong} \\
@@ -1221,7 +1217,7 @@ value of $\zeta (X,s)$ at $s = n$ in the following sense.
 \begin{remark}
   Some canonical isomorphisms of determinants involve multiplication by $\pm 1$,
   so there is no surprise that the resulting conjecture is stated up to sign
-  $\pm 1$. However, this is not a big issue, since the sign may be recovered
+  $\pm 1$. However, this is not a big issue, since the sign can be recovered
   from the (conjectural) functional equation.
 \end{remark}
 
@@ -1303,7 +1299,7 @@ results from \cite{Bayer-Neukirch-1978} regarding Grothendieck's trace formula.
   Now $H^i_c (X_\et, \QQ_\ell (n)) = 0$ for $n < 0$, and therefore
   $H^i_c (X_\et, \ZZ_\ell (n)) \cong
   H^{i-1}_c (X_\et, \QQ_\ell/\ZZ_\ell (n))$.
-  This means that our conjectural formula may be written as
+  This means that our conjectural formula can be written as
   \[ \zeta (X,n) =
     \prod_{\ell \ne p} \prod_{i \in \ZZ} |H^i_c (X_\et, \ZZ_\ell (n))|^{(-1)^i}. \]
 
@@ -1324,7 +1320,7 @@ results from \cite{Bayer-Neukirch-1978} regarding Grothendieck's trace formula.
     \prod_{i \in \ZZ} |H^i_c (X, \ZZ_\ell (n))|^{(-1)^{i+1}}.
   \end{equation}
 
-  On the other hand, for $n < 0$ we have $|\zeta (X,n)|_p = 1$. This fact may
+  On the other hand, for $n < 0$ we have $|\zeta (X,n)|_p = 1$. This fact can
   be justified, without assuming that $X$ is smooth or projective,
   for instance, using the trace formula for rigid cohomology
   \cite[p.\,1446]{Kedlaya-2006}, which gives
@@ -1375,7 +1371,7 @@ fields.
 
 \begin{example}
   Consider $X = \PP^1_{\FF_q}/(0\sim 1)$, or equivalently, a nodal cubic.
-  The zeta function is $\zeta (X,s) = \frac{1}{1 - q^{1-s}}$.  We may calculate
+  The zeta function is $\zeta (X,s) = \frac{1}{1 - q^{1-s}}$.  We can calculate
   the groups $H^i (X_\et, \ZZ^c (n))$ using the blowup square
   \[ \begin{tikzcd}
       \Spec \FF_q \sqcup \Spec \FF_q \ar{r}\ar{d}\tikzpb & \PP^1_{\FF_q} \ar{d} \\
@@ -1544,7 +1540,7 @@ this is indeed the case.
     Parts 2) and 3) boil down to the corresponding functoriality properties
     for the KLM morphism \eqref{eqn:KLM-morphism-1}, namely that it commutes
     with proper pushforwards and flat pullbacks. For this we refer to
-    \cite[Lemma~3, Lemma~4]{Weisschuh-2017}, and it may be also verified
+    \cite[Lemma~3, Lemma~4]{Weisschuh-2017}, and it can be also verified
     directly from the KLM formula. For closed-open decompositions,
     the distinguished triangle
     \[ R\Gamma (Z_\et, \RR^c (n)) \to R\Gamma (X_\et, \RR^c (n)) \to
@@ -1596,7 +1592,7 @@ this is indeed the case.
         \sum\limits_{1 \le i \le r} \ord_{s=n} \zeta (X_i,s) \ar[equals]{r}{\forall i \mathbf{VO} (X_i,n)} & \sum\limits_{1 \le i \le r} \chi (R\Gamma_c (G_\RR, X_i (\CC), \RR (n)))
       \end{tikzcd} \]
 
-    Similarly in part 2), we may consider the distinguished triangle
+    Similarly in part 2), we can consider the distinguished triangle
     \begin{multline*}
       R\Gamma_c (G_\RR, U (\CC), \RR (n)) \to
       R\Gamma_c (G_\RR, X (\CC), \RR (n)) \to
@@ -1670,7 +1666,7 @@ $\mathbf{D} (\ZZ)$ with distinguished triangles:
     R\Gamma_\Wc (X, \ZZ (n)) \ar{r} & R\Gamma_\fg (X, \ZZ(n)) \ar[dashed]{r}{i_\infty^*}\ar{d} & R\Gamma_c (G_\RR, X (\CC), \ZZ(n)) \ar{r} \ar{d} & {[1]} \\
     & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-1]) \ar{r} & 0
 \end{tikzcd} \]
-For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
+For more details, see \cite{Beshenov-Weil-etale-1}.
 
 \begin{lemma}
   \label{lemma:lambda-and-disjoint-unions}
@@ -1768,10 +1764,9 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
     In this diagram, we start from the morphism of triangles
     $(\alpha_{U,n}, \alpha_{X,n}, \alpha_{Z,n})$, and then take the respective
     cones $R\Gamma_\fg (-, \ZZ(n))$. In fact, by
-    \cite[Proposition~5.6]{Beshenov-Weil-etale-1}, these cones are well-defined
-    up to a \emph{unique} isomorphism in the derived category
-    $\mathbf{D} (\ZZ)$, and the same argument shows that the induced morphisms
-    of complexes
+    \cite[Proposition~5.6]{Beshenov-Weil-etale-1}, these cones are defined up to
+    a \emph{unique} isomorphism in the derived category $\mathbf{D} (\ZZ)$, and
+    the same argument shows that the induced morphisms of complexes
     \begin{equation}
       \label{eqn:triangle-RGamma-fg}
       R\Gamma_\fg (U, \ZZ(n)) \to
@@ -1779,7 +1774,7 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
       R\Gamma_\fg (Z, \ZZ(n)) \to
       R\Gamma_\fg (U, \ZZ(n)) [1]
     \end{equation}
-    are also uniquely defined
+    are also well-defined
     (see \cite[Corollary~A.3]{Beshenov-Weil-etale-1}). A priori, it does not
     have to be a distinguished triangle, but we claim that it induces a long
     exact sequence in cohomology.
@@ -1790,7 +1785,7 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
         R\Gamma_c (U_\et, \ZZ/m\ZZ (n)) \ar{r}\ar{d}{\cong} & R\Gamma_c (X_\et, \ZZ/m\ZZ (n)) \ar{r}\ar{d}{\cong} & R\Gamma_c (Z_\et, \ZZ/m\ZZ (n)) \ar{r}\ar{d}{\cong} & {[1]}\ar{d}{\cong} \\
         \begin{array}{c} R\Gamma_\fg (U, \ZZ (n)) \\ \otimes^\mathbf{L} \\ \ZZ/m\ZZ \end{array} \ar{r} & \begin{array}{c} R\Gamma_\fg (X, \ZZ (n)) \\ \otimes^\mathbf{L} \\ \ZZ/m\ZZ \end{array} \ar{r} & \begin{array}{c} R\Gamma_\fg (Z, \ZZ (n)) \\ \otimes^\mathbf{L} \\ \ZZ/m\ZZ \end{array} \ar{r} & {[1]}
       \end{tikzcd} \]
-    More generally, for each prime $p$ we may take the corresponding derived
+    More generally, for each prime $p$ we can take the corresponding derived
     $p$-adic completions (see \cite{Bhatt-Scholze-2015} and
     \cite[Tag~091N]{Stacks-project})
     \[ R\Gamma_\fg (-, \ZZ(n))^\wedge_p \dfn
@@ -1854,7 +1849,7 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
       \det_\ZZ H^i_\fg (X, \ZZ(n))^{(-1)^{i+1}} \otimes
       \det_\ZZ H^i_\fg (Z, \ZZ(n))^{(-1)^i}\Bigr) \cong \ZZ.
     \end{equation}
-    We may rearrange the terms \emph{at the cost of introducing a $\pm 1$ sign},
+    We can rearrange the terms \emph{at the cost of introducing a $\pm 1$ sign},
     to obtain
     \begin{multline*}
       \det_\ZZ (\tau_{\le m} R\Gamma_\fg (X, \ZZ(n))) \cong
@@ -1883,8 +1878,8 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
 \end{lemma}
 
 \begin{remark}
-  We recall that taking naively a ``cone of a morphism of distinguished
-  triangles''
+  We recall that in the usual derived category $\mathbf{D} (\mathcal{A})$,
+  taking naively a ``cone of a morphism of distinguished triangles''
   $$\begin{tikzpicture}[ampersand replacement=\&]
     \matrix(m)[matrix of math nodes, row sep=1.5em, column sep=1.5em,
     text height=1.5ex, text depth=0.25ex]{
@@ -1928,7 +1923,6 @@ For further details, the reader may consult \cite{Beshenov-Weil-etale-1}.
   \end{tikzpicture}$$
   normally \emph{does not} give a distinguished triangle
   $X'' \to Y'' \to Z'' \to X'' [1]$.
-
   For a thorough discussion of this issue, see \cite{Neeman-1991}.
 \end{remark}
 
@@ -2243,8 +2237,8 @@ is needed to ensure that the regulator morphism exists
   \begin{proof}
     Since $X$ is a noetherian scheme of dimension $0$, it is a finite disjoint
     union of $\Spec A_i$ for some artinian local rings $A_i$. Thanks to
-    $\mathcal{C}1)$, we may assume that $X = \Spec A$, and thanks to
-    $\mathcal{C}0)$, we may assume that $X$ is reduced. But then $A = k$ is a
+    $\mathcal{C}1)$, we can assume that $X = \Spec A$, and thanks to
+    $\mathcal{C}0)$, we can assume that $X$ is reduced. But then $A = k$ is a
     field. Since $X$ is a scheme of finite type over $\Spec \ZZ$, we conclude
     that $X = \Spec \FF_q \in \mathcal{C} (\ZZ)$.
   \end{proof}
@@ -2268,7 +2262,7 @@ is needed to ensure that the regulator morphism exists
     $C/\FF_q$, using the operations $\mathcal{C}0)$, $\mathcal{C}1)$,
     $\mathcal{C}2)$ that appear in the definition of $\mathcal{C} (\ZZ)$.
 
-    Thanks to $\mathcal{C}0)$, we may assume that $B$ is reduced. Consider the
+    Thanks to $\mathcal{C}0)$, we can assume that $B$ is reduced. Consider the
     normalization $\nu\colon B' \to B$. This is a birational morphism, and there
     exist open dense subsets $U' \subseteq B'$ and $U \subseteq B$ such that
     $\left.\nu\right|_{U'}\colon U' \xrightarrow{\cong} U$. Now $B\setminus U$
@@ -2277,7 +2271,7 @@ is needed to ensure that the regulator morphism exists
     $U' \in \mathcal{C} (\ZZ)$, and this would imply $B \in \mathcal{C} (\ZZ)$.
 
     Now $U'$ is a finite disjoint union of normal integral schemes, so by
-    $\mathcal{C}1)$ we may assume that $U'$ is integral. Consider the generic
+    $\mathcal{C}1)$ we can assume that $U'$ is integral. Consider the generic
     point $\eta \in U'$ and the residue field $F = \kappa (\eta)$. There are two
     distinct cases to consider.
 
@@ -2384,16 +2378,16 @@ introduction.
 
 In this appendix we include a brief overview of determinants of complexes.
 The original construction is due to Knudsen and Mumford
-\cite{Knudsen-Mumford-1976}, and other useful expositions may be found in
+\cite{Knudsen-Mumford-1976}, and other useful expositions can be found in
 \cite[Appendix~A]{Gelfand-Kapranov-Zelevinsky-1994} and
 \cite[\S 2.1]{Kato-1993}.
 
 For our purposes, let $R$ be a commutative ring, which is an integral domain
 (we will be interested in $R = \ZZ$, $\QQ$, $\RR$). Denote by
-$\mathcal{P}_\is (R)$\footnote{$\mathcal{P}$ for ``Picard''.} the category of
-graded invertible $R$-modules. It has as its objects pairs $(L,r)$, where $L$ is
-an invertible $R$-module (= projective of rank $1$) and $r \in \ZZ$. The
-morphisms in this category are given by
+$\mathcal{P}_\is (R)$ (``Picard'') the category of graded invertible
+$R$-modules. It has as its objects pairs $(L,r)$, where $L$ is an invertible
+$R$-module (= projective of rank $1$) and $r \in \ZZ$. The morphisms in this
+category are given by
 \[ \Hom_{\mathcal{P}_\is (R)} ((L,r), (M,s)) = \begin{cases}
     \Isom_R (L,M), & r = s, \\
     \emptyset, & r \ne s.
@@ -2427,7 +2421,7 @@ $$(L,r) \otimes_R (L^{-1}, -r) \cong \bone.$$
 
 This gives a functor $\det_R\colon \mathcal{C}_\is (R) \to \mathcal{P}_\is (R)$.
 The main result of \cite[Chapter~I]{Knudsen-Mumford-1976} is that this
-construction may be generalized as follows. Let $\mathbf{D} (R)$ be the derived
+construction can be generalized as follows. Let $\mathbf{D} (R)$ be the derived
 category of the category of $R$-modules. Recall that a complex $A^\bullet$ is
 \textbf{perfect} if it is quasi-isomorphic to a bounded complex of finitely
 generated projective $R$-modules. We denote by $\Parf_\is (R)$ the subcategory
@@ -2435,7 +2429,7 @@ of $\mathbf{D} (R)$ whose objects consist of perfect complexes, and whose
 morphisms are quasi-isomorphisms of complexes.
 
 \begin{theorem}[Knudsen--Mumford]
-  The determinant may be extended to perfect complexes of $R$-modules as
+  The determinant can be extended to perfect complexes of $R$-modules as
   follows.
 
   \begin{enumerate}
@@ -2561,8 +2555,7 @@ distinguished triangles.
 \end{remark}
 
 A particular very simple case of interest is when all cohomology groups
-$H^i (A^\bullet)$ are finite; then it is easy to understand what the determinant
-means.
+$H^i (A^\bullet)$ are finite.
 
 \begin{lemma}
   \label{lemma:determinant-for-torsion-cohomology}
