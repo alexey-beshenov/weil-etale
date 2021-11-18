@@ -634,10 +634,11 @@ lemmas are summarized in the below table.
 
 First we consider the usual, non-equivariant cohomology. As is well-known,
 $R\Gamma_c (X (\CC), \ZZ)$ are perfect complexes, i.e. the cohomology groups
-$H^i_c (X (\CC), \ZZ)$ are finitely generated and zero for $|i| \gg 0$.  The
-same is true for $H^i_c (X (\CC), \ZZ (n))$ (here the twist in $\ZZ (n)$ only
-changes the $G_\RR$-module structure). For $\QQ/\ZZ$ coefficients, the following
-result will be useful.
+$H^i_c (X (\CC), \ZZ)$ are finitely generated and zero for $|i| \gg 0$.  This
+follows from the fact that $X (\CC)$ has homotopy type of a finite CW-complex
+\cite{van-der-Waerden-30}. The same is true for $H^i_c (X (\CC), \ZZ (n))$ (here
+the twist in $\ZZ (n)$ only changes the $G_\RR$-module structure). For $\QQ/\ZZ$
+coefficients, the following result will be useful.
 
 \begin{lemma}
   \label{lemma:extensions-of-cofinite-type-groups}
@@ -2521,7 +2522,8 @@ First we recall that every complex of abelian groups $A^\bullet$ is
 quasi-isomorphic to its cohomology:
 \[ A^\bullet \cong \bigoplus_{i\in \ZZ} H^i (A^\bullet) [-i] \cong
 \prod_{i\in \ZZ} H^i (A^\bullet) [-i] =
-\Bigl(\cdots \to H^{i-1} (A^\bullet) \xrightarrow{0} H^i (A^\bullet) \xrightarrow{0} H^{i+1} (A^\bullet) \to \cdots\Bigr). \]
+\Bigl(\cdots \to H^{i-1} (A^\bullet) \xrightarrow{0} H^i (A^\bullet) \xrightarrow{0} H^{i+1} (A^\bullet) \to \cdots\Bigr) \]
+---see for instance \cite[\S 1.6]{Krause-2007}.
 
 This gives us a useful expression for morphisms in the derived category.
 Since

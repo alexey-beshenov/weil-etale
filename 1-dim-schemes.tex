@@ -166,7 +166,7 @@ the following definition.
 \end{definition}
 
 In particular, if $X$ lives entirely in positive characteristic, then it is
-abelian. The goal is to prove the following result.
+abelian. The goal of this text is to prove the following result.
 
 \begin{theorem}
   \label{main-theorem}
@@ -1116,12 +1116,13 @@ $A^D \dfn \Hom (A, \QQ/\ZZ)$ and $A^* \dfn \Hom (A, \ZZ)$.
 Now we explain what will be intended by the regulator in our setting.
 
 \begin{definition}
-  We let the \textbf{regulator morphism} be
+  We let the \textbf{regulator morphism} be the composition
   \[ \varrho_{X,n}\colon
-    H^{-1} (X_\et, \ZZ^c (n)) \to
+    H^{-1} (X_\et, \ZZ^c (n)) \xrightarrow{x \mapsto x\otimes 1}
     H^{-1} (X_\et, \ZZ^c (n)) \otimes \RR \xrightarrow{Reg_{X,n}}
     H^0_\BM (G_\RR, X(\CC), \RR(n)), \]
-  where the map $Reg_{X,n}$ is defined in \cite[\S 2]{Beshenov-Weil-etale-2}.
+  where the map $Reg_{X,n}$ is constructed in
+  \cite[\S 2]{Beshenov-Weil-etale-2}.
 \end{definition}
 
 The right hand side is Borel--Moore cohomology, defined via
