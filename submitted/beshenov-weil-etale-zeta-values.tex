@@ -186,8 +186,11 @@
 Let $X$ be an \textbf{arithmetic scheme}, by which we mean in this paper that it
 is a separated scheme of finite type $X \to \Spec \ZZ$. Then the corresponding
 \textbf{zeta function} is defined by
-\[ \zeta (X,s) = \prod_{\substack{x \in X \\ \text{closed pt.}}}
-  \frac{1}{1 - N (x)^{-s}}. \]
+\begin{equation}
+  \label{eqn:Euler-product-for-zeta}
+  \zeta (X,s) = \prod_{\substack{x \in X \\ \text{closed pt.}}}
+  \frac{1}{1 - N (x)^{-s}}.
+\end{equation}
 Here, for a closed point $x \in X$, the norm
 $$N (x) = |\kappa (x)| = |\mathcal{O}_{X,x}/\mathfrak{m}_{X,x}|$$
 is the size of the corresponding residue field. The product converges for
@@ -444,8 +447,8 @@ In order to formulate the special value conjecture, we need a regulator morphism
 from motivic cohomology to Deligne(--Beilinson) (co)homology. Such regulators
 were originally introduced by Bloch in \cite{Bloch-1986-Lefschetz}, and here we
 use the construction of Kerr, Lewis, and M\"{u}ller-Stach
-\cite{Kerr-Lewis-Muller-Stach-2006}, which works at the level of complexes.  We
-will simply call it ``the KLM morphism.'' It works under the assumption that
+\cite{Kerr-Lewis-Muller-Stach-2006}, which works at the level of complexes.
+We will simply call it ``the KLM morphism.'' It works under the assumption that
 $X_{\red,\CC}$ is a smooth quasi-projective variety.
 
 For simplicity, in this section we assume that $X$ is reduced (motivic
@@ -735,10 +738,10 @@ see \cite[Proposition~7.12]{Beshenov-Weil-etale-1}.
   \textbf{secondary Euler characteristic}
   \[ \chi' (R\Gamma_\Wc (X, \ZZ (n))) \dfn
     \sum_{i \in \ZZ} (-1)^i \cdot i \cdot \rk_\ZZ H^i_\Wc (X, \ZZ (n)) \]
-  The calculations below show that the
-  usual Euler characteristic of $R\Gamma_\Wc (X, \ZZ (n))$ vanishes, assuming
-  Conjectures~$\mathbf{L}^c (X_\et,n)$ and $\mathbf{B} (X,n)$.
-  See \cite{Ramachandran-2016} for more details on the secondary Euler
+  The calculations below show that the usual Euler characteristic of
+  $R\Gamma_\Wc (X, \ZZ (n))$ vanishes, assuming
+  Conjectures~$\mathbf{L}^c (X_\et,n)$ and $\mathbf{B} (X,n)$.  See
+  \cite{Ramachandran-2016} for more details on the secondary Euler
   characteristic and its occurrences in nature.
 \end{remark}
 
@@ -1244,9 +1247,9 @@ the conjectures studied by Geisser in
 
 \begin{proposition}
   \label{prop:C(X,n)-over-finite-fields}
-  If $X/\FF_q$ is a variety over a finite field, then assuming
-  $\mathbf{L}^c (X_\et,n)$, the special value conjecture
-  $\mathbf{C} (X,n)$ is equivalent to
+  If $X/\FF_q$ is a variety over a finite field, then under the assumption
+  $\mathbf{L}^c (X_\et,n)$, the special value conjecture $\mathbf{C} (X,n)$ is
+  equivalent to
   \begin{align}
     \label{eqn:special-value-for-X/Fq}
     \notag \zeta^* (X,n) & = \pm \prod_{i \in \ZZ} |H_\Wc^i (X, \ZZ(n))|^{(-1)^i} \\
@@ -1257,14 +1260,14 @@ the conjectures studied by Geisser in
   defined in \cite{Geisser-2010-arithmetic-homology}.
 
   \begin{proof}
-    Assuming $\mathbf{L}^c (X_\et,n)$, thanks to
-    \cite[Proposition~7.7]{Beshenov-Weil-etale-1} we have
+    Assuming $\mathbf{L}^c (X_\et,n)$, we have, thanks to
+    \cite[Proposition~7.7]{Beshenov-Weil-etale-1}
     \[ H^i_\Wc (X, \ZZ (n)) \cong
       \Hom (H^{2-i} (X_\et, \ZZ^c (n)), \QQ/\ZZ) \cong
       \Hom (H_{i-1}^c (X_\ar, \ZZ (n)), \QQ/\ZZ). \]
-    The involved cohomology groups are finite and vanish for $|i| \gg 0$
-    (see \cite[Proposition~4.2]{Beshenov-Weil-etale-1}), and therefore by
-    \ref{lemma:determinant-for-torsion-cohomology}, the determinant is given by
+    The cohomology groups involved are finite and vanish for $|i| \gg 0$ by
+    \cite[Proposition~4.2]{Beshenov-Weil-etale-1}, and by
+    Lemma~\ref{lemma:determinant-for-torsion-cohomology} the determinant is given by
     \[ \begin{tikzcd}[row sep=0.75em, column sep=0pt]
         \det_\ZZ R\Gamma_\Wc (X, \ZZ (n)) \ar[equals]{d} & \subset & \det_\ZZ R\Gamma_\Wc (X, \ZZ (n)) \otimes \QQ \ar[equals]{d} \\
         \frac{1}{m}\ZZ & \subset & \QQ
@@ -1275,15 +1278,15 @@ the conjectures studied by Geisser in
 \end{proposition}
 
 \begin{remark}
-  Formulas similar to \eqref{eqn:special-value-for-X/Fq} were suggested long
-  time ago by Lichtenbaum in \cite{Lichtenbaum-1984}.
+  Formulas similar to \eqref{eqn:special-value-for-X/Fq} were proposed by
+  Lichtenbaum early on in \cite{Lichtenbaum-1984}.
 \end{remark}
 
 \begin{theorem}
   \label{thm:C(X,n)-over-finite-fields}
   Let $X/\FF_q$ be a variety over a finite field satisfying
-  $\mathbf{L}^c (X_\et, n)$ for $n < 0$. Then Conjecture~$\mathbf{C} (X,n)$
-  holds.
+  Conjecture~$\mathbf{L}^c (X_\et, n)$ for $n < 0$. Then
+  Conjecture~$\mathbf{C} (X,n)$ holds.
 \end{theorem}
 
 We note that \eqref{prop:C(X,n)-over-finite-fields} is equivalent to the special
@@ -1293,39 +1296,40 @@ Conjecture~$\mathbf{P}_0 (X)$ in the statement of
 \cite[Theorem~4.5]{Geisser-2010-arithmetic-homology} is implied by our
 Conjecture~$\mathbf{L}^c (X_\et,n)$ thanks to
 \cite[Proposition~4.1]{Geisser-2010-arithmetic-homology}. Geisser's proof
-eventually reduces to \cite{Milne-1986}, but for our case of $s = n < 0$, the
-situation is easier, and we can give a more direct explanation, using earlier
-results from \cite{Bayer-Neukirch-1978} regarding Grothendieck's trace formula.
+eventually reduces to Milne's work \cite{Milne-1986}, but for our case of
+$s = n < 0$, the situation is simpler and we can give a direct explanation,
+using earlier results of B\'{a}yer and Neukirch \cite{Bayer-Neukirch-1978}
+concerning Grothendieck's trace formula.
 
 \begin{proof}
-  In this case the conjecture reduces to
+  By the previous proposition, the conjecture reduces to
   $$\zeta (X,n) = \prod_{i \in \ZZ} |H^i (X_\et, \ZZ^c (n))|^{(-1)^i}.$$
 
-  By duality \cite[Theorem~I]{Beshenov-Weil-etale-1}, we have
+  By duality \cite[Theorem~I]{Beshenov-Weil-etale-1}
   $$|H^{2-i} (X_\et, \ZZ^c (n))| = |H^i_c (X_\et, \ZZ (n))|,$$
   where
   \[ \ZZ (n) \dfn
     \bigoplus_{\ell \ne p} \QQ_\ell/\ZZ_\ell (n) [-1] \dfn
     \bigoplus_{\ell \ne p} \mu_{\ell^\infty}^{\otimes n} [-1] \dfn
-    \bigoplus_{\ell \ne p} \varinjlim_r \mu_{\ell^r}^{\otimes n} [-1]. \]
+    \bigoplus_{\ell \ne p} \varinjlim_r \mu_{\ell^r}^{\otimes n} [-1], \]
+  and $p$ is the characteristic of the base field.
   Now $H^i_c (X_\et, \QQ_\ell (n)) = 0$ for $n < 0$, and therefore
-  $H^i_c (X_\et, \ZZ_\ell (n)) \cong
-  H^{i-1}_c (X_\et, \QQ_\ell/\ZZ_\ell (n))$.
-  This means that our conjectural formula can be written as
+  $H^i_c (X_\et, \ZZ_\ell (n)) \cong H^{i-1}_c (X_\et, \QQ_\ell/\ZZ_\ell (n))$.
+  This means that our formula can be written as
   \[ \zeta (X,n) =
     \prod_{\ell \ne p} \prod_{i \in \ZZ} |H^i_c (X_\et, \ZZ_\ell (n))|^{(-1)^i}. \]
 
   Grothendieck's trace formula (see \cite{Grothendieck-FL} or
   \cite[Rapport]{SGA4-1-2}) reads
   \[ Z (X,t) =
-    \prod_{i \in \ZZ} \det \bigl(1 - tF \bigm| H^i_c (\overline{X}, \QQ_\ell)\bigr)^{(-1)^{i+1}}. \]
-  Here $\overline{X} \dfn X \times_{\Spec \FF_q} \overline{\FF}_q$, and $F$
-  is the Frobenius acting on $H^i_c (\overline{X}, \QQ_\ell)$. Substituting
+    \prod_{i \in \ZZ} \det \bigl(1 - tF \bigm| H^i_c (\overline{X}, \QQ_\ell)\bigr)^{(-1)^{i+1}}, \]
+  where $\overline{X} \dfn X \times_{\Spec \FF_q} \overline{\FF}_q$ and $F$ is
+  the Frobenius acting on $H^i_c (\overline{X}, \QQ_\ell)$. Substituting
   $t = q^{-n}$,
   \[ \zeta (X,n) =
     \prod_{i \in \ZZ} \det \bigl(1 - q^{-n} F \bigm| H^i_c (\overline{X}, \QQ_\ell)\bigr)^{(-1)^{i+1}}. \]
-  Then following the proof of \cite[Theorem~(3.1)]{Bayer-Neukirch-1978}, we
-  obtain for each $\ell \ne p$
+  Then, by the proof of \cite[Theorem~(3.1)]{Bayer-Neukirch-1978}, for each
+  $\ell \ne p$, we obtain
   \begin{equation}
     \label{eqn:bayer-neukirch}
     |\zeta (X,n)|_\ell =
@@ -1333,32 +1337,34 @@ results from \cite{Bayer-Neukirch-1978} regarding Grothendieck's trace formula.
   \end{equation}
 
   On the other hand, for $n < 0$ we have $|\zeta (X,n)|_p = 1$. This fact can
-  be justified, without assuming that $X$ is smooth or projective,
-  for instance, using the trace formula for rigid cohomology
-  \cite[p.\,1446]{Kedlaya-2006}, which gives
-  $Z (X,t) = \prod_i P_i (t)^{(-1)^{i+1}}$, where $P_i (t) \in \ZZ[t]$ and
-  $P_i (0) = 1$. In particular, $P_i (q^{-n}) \equiv 1 \pmod{p}$.
-  We conclude that the product formula gives from \eqref{eqn:bayer-neukirch}
+  be justified, without assuming that $X$ is smooth or projective, e.g., using
+  Kedlaya's trace formula for rigid cohomology \cite[p.\,1446]{Kedlaya-2006},
+  which gives
+  \[ Z (X,t) = \prod_i P_i (t)^{(-1)^{i+1}},
+    \quad\text{where }
+    P_i (t) \in \ZZ[t] \text{ and } P_i (0) = 1. \]
+  In particular, $P_i (q^{-n}) \equiv 1 \pmod{p}$.
+
+  The product formula recovers from \eqref{eqn:bayer-neukirch} our special value
+  formula:
   \[ \zeta (X,n) =
-    \prod_{\ell \ne p} \prod_{i \in \ZZ} |H^i_c (X, \ZZ_\ell (n))|^{(-1)^i}, \]
-  which is precisely our special value formula.
+    \prod_{\ell \ne p} \prod_{i \in \ZZ} |H^i_c (X, \ZZ_\ell (n))|^{(-1)^i}. \qedhere \]
 \end{proof}
 
 \begin{remark}
-  The fact that $|\zeta (X,n)|_p = 1$ observed in the above argument explains
-  why Weil-\'{e}tale cohomology ignores the $p$-primary part in a sense.
+  The fact that $|\zeta (X,n)|_p = 1$, as observed in the argument above,
+  explains why our Weil-\'{e}tale cohomology ignores the $p$-primary part in
+  some sense.
 \end{remark}
 
-Let us consider a couple of particular examples to see how the special value
-conjecture works. It is to be noted that for a general arithmetic scheme $X$,
-calculating the motivic cohomology $H^i (X_\et, \ZZ^c (n))$ (and therefore our
-Weil-\'{e}tale cohomology $H^i_\Wc (X, \ZZ(n))$) is by no means a trivial task. The
-finite generation of $H^i (X_\et, \ZZ^c (n))$ is only known for particular cases
-(see \cite[\S 8]{Beshenov-Weil-etale-1}), and calculating the torsion part,
-which bears the arithmetic information, is even more difficult. Similarly, an
-explicit calculation of the regulator map $Reg_{X,n}$ is highly
-nontrivial. Therefore, for the moment we give some toy examples over finite
-fields.
+Let us consider a few particular examples to see how the special value
+conjecture works. Note that for a general arithmetic scheme $X$, calculating the
+motivic cohomology $H^i (X_\et, \ZZ^c (n))$ (and hence our Weil-\'{e}tale
+cohomology $H^i_\Wc (X, \ZZ(n))$) is by no means a trivial task; even the finite
+generation is known only for certain cases
+(see \cite[\S 8]{Beshenov-Weil-etale-1}). Similarly, an explicit computation of
+the regulator map $Reg_{X,n}$ is highly nontrivial. Therefore, we give some easy
+examples over finite fields.
 
 \begin{example}
   \label{example:C(X,n)-for-Spec-Fq}
@@ -1372,13 +1378,13 @@ fields.
       0, & i \ne 1
     \end{cases}
   \end{equation}
-  (see for instance \cite[Example~4.2]{Geisser-2017}).
-  Therefore, the formula \eqref{eqn:special-value-for-X/Fq} indeed recovers
-  $\zeta (X,n)$ up to sign.
+  (see, for example, \cite[Example~4.2]{Geisser-2017}). Therefore, formula
+  \eqref{eqn:special-value-for-X/Fq} indeed recovers $\zeta (X,n)$ up to sign.
 
-  Similarly, replacing $\Spec \FF_q$ with $\Spec \FF_{q^m}$, viewed as a variety
-  over $\FF_q$, we have $\zeta (\Spec \FF_{q^m},s) = \zeta (\Spec \FF_q, ms)$,
-  and \eqref{eqn:motivic-cohomology-of-Fq} also changes accordingly.
+  Similarly, if we replace $\Spec \FF_q$ with $\Spec \FF_{q^m}$, considered as a
+  variety over $\FF_q$, then
+  $\zeta (\Spec \FF_{q^m},s) = \zeta (\Spec \FF_q, ms)$, and
+  \eqref{eqn:motivic-cohomology-of-Fq} also changes accordingly.
 \end{example}
 
 \begin{example}
@@ -1389,13 +1395,13 @@ fields.
       \Spec \FF_q \sqcup \Spec \FF_q \ar{r}\ar{d}\tikzpb & \PP^1_{\FF_q} \ar{d} \\
       \Spec \FF_q \ar{r} & X
     \end{tikzcd} \]
-  This is similar to \cite[\S 8, Example~2]{Geisser-2006}. Geisser uses
-  eh-topology and long exact sequences associated to abstract blowup squares
-  \cite[Proposition~3.2]{Geisser-2006}. In our case, the same works, since
-  according to \cite[Theorem~I]{Beshenov-Weil-etale-1}, one has
+  This is similar to \cite[\S 8, Example~2]{Geisser-2006}. Geisser uses the
+  eh-topology and long exact sequences associated with abstract blowup squares
+  \cite[Proposition~3.2]{Geisser-2006}. In our case the same reasoning works,
+  because by \cite[Theorem~I]{Beshenov-Weil-etale-1}, one has
   $H^i (X_\et, \ZZ^c (n)) \cong \Hom (H^{2-i}_c (X_\et, \ZZ (n)),\QQ/\ZZ)$,
-  where $\ZZ (n) = \varinjlim_{p\nmid m} \mu_m^{\otimes n} [-1]$, and
-  for such sheaves \'{e}tale cohomology and eh-cohomology agree by
+  where $\ZZ (n) = \varinjlim_{p\nmid m} \mu_m^{\otimes n} [-1]$, and \'{e}tale
+  cohomology and eh-cohomology coincide for such sheaves by
   \cite[Theorem~3.6]{Geisser-2006}.
 
   Using the projective bundle formula, we calculate from
@@ -1405,26 +1411,27 @@ fields.
       \ZZ/(q^{-n} - 1), & i = +1, \\
       0, & i \ne \pm 1.
     \end{cases} \]
-  Following the same argument from \cite[\S 8, Example~2]{Geisser-2006},
-  the short exact sequences
+  By the argument from \cite[\S 8, Example~2]{Geisser-2006}, the short exact
+  sequences
   \[ 0 \to H^i (\PP^1_{\FF_q,\et}, \ZZ^c (n)) \to
     H^i (X_\et, \ZZ^c (n)) \to
     H^{i+1} ((\Spec \FF_q)_\et, \ZZ^c (n)) \to 0 \]
-  give us
+  give
   \[ H^i (X_\et, \ZZ^c (n)) = \begin{cases}
       \ZZ/(q^{1-n} - 1), & i = -1, \\
       \ZZ/(q^{-n} - 1), & i = 0,1, \\
       0, & \text{otherwise}.
     \end{cases} \]
-  The formula \eqref{eqn:special-value-for-X/Fq} recovers the correct value
+  The formula \eqref{eqn:special-value-for-X/Fq} gives the correct value
   $\zeta (X,n)$.
 \end{example}
 
 \begin{example}
   In general, if $X/\FF_q$ is a curve, then Conjecture~$\mathbf{L}^c (X_\et,n)$
-  holds; see for instance \cite[Proposition~4.3]{Geisser-2017}. The cohomology
-  $H^i (X_\et, \ZZ^c(n))$ is concentrated in degrees $-1, 0, +1$ by duality and
-  the reasons of cohomological dimension, and the special value formula reads
+  holds; see for example \cite[Proposition~4.3]{Geisser-2017}. The cohomology
+  $H^i (X_\et, \ZZ^c(n))$ is concentrated in degrees $-1, 0, +1$ by duality
+  \cite[Theorem~I]{Beshenov-Weil-etale-1} and the reasons of cohomological
+  dimension, and the special value formula is
   \[ \zeta^* (X,n) =
     \pm \frac{|H^0 (X_\et, \ZZ^c (n))|}{|H^{-1} (X_\et, \ZZ^c (n))|\cdot |H^1 (X_\et, \ZZ^c (n))|}. \]
 \end{example}
@@ -1434,8 +1441,8 @@ fields.
 \section{Compatibility with operations on schemes}
 \label{sec:compatibility-with-operations}
 
-From the definition of $\zeta (X,s)$, the following basic properties follow
-easily.
+The following basic properties follow from the definition of $\zeta (X,s)$
+(formula \eqref{eqn:Euler-product-for-zeta}).
 
 \begin{enumerate}
 \item[1)] \textbf{Disjoint unions}: if $X = \coprod_{1 \le i \le r} X_i$ is a
@@ -1451,8 +1458,8 @@ easily.
   \end{align*}
 
 \item[2)] \textbf{Closed-open decompositions}: if $Z \subset X$ is a closed
-  subscheme and $U = X\setminus Z$ is its open complement, then we will say that
-  we have a \textbf{closed-open decomposition} and write
+  subscheme and $U = X\setminus Z$ is its open complement, then we say that we
+  have a \textbf{closed-open decomposition} and write
   $Z \not\hookrightarrow X \hookleftarrow U$. In this case
   \begin{equation}
     \label{eqn:zeta-function-for-closed-open-decompositions}
@@ -1491,11 +1498,11 @@ this is indeed the case.
     $$\mathbf{L}^c (X_\et,n) \iff \mathbf{L}^c (X_{i,\et},n)\text{ for all }i.$$
 
   \item[2)] For a closed-open decomposition
-    $Z \not\hookrightarrow X \hookleftarrow U$, if two out of three conjectures
+    $Z \not\hookrightarrow X \hookleftarrow U$, if two of the three conjectures
     \[ \mathbf{L}^c (X_\et,n), \quad
       \mathbf{L}^c (Z_\et,n), \quad
       \mathbf{L}^c (U_\et, n) \]
-    hold, then the third holds as well.
+    are true, then the third is also true.
 
   \item[3)] For an arithmetic scheme $X$ and any $r \ge 0$, one has
     $$\mathbf{L}^c (\AA^r_{X,\et}, n) \iff \mathbf{L}^c (X_\et, n-r).$$
@@ -1531,11 +1538,11 @@ this is indeed the case.
         R\Gamma (U_\et, \RR^c (n)) \ar{d}\ar{r}{Reg_{U,n}} & R\Gamma_\BM (G_\RR, U (\CC), \RR (n)) [1] \ar{d} \\
         R\Gamma (Z_\et, \RR^c (n)) [1]\ar{r}{Reg_{Z,n} [1]} & R\Gamma_\BM (G_\RR, Z (\CC), \RR (n)) [2]
       \end{tikzcd} \]
-    In particular, if two out of three conjectures
+    In particular, if two of the three conjectures
     \[ \mathbf{B} (X,n), \quad
       \mathbf{B} (Z,n), \quad
       \mathbf{B} (U,n) \]
-    hold, then the third holds as well.
+    are true, then the third is also true.
 
   \item[3)] For any $r \ge 0$, the diagram
     \[ \begin{tikzcd}
@@ -1547,21 +1554,21 @@ this is indeed the case.
   \end{enumerate}
 
   \begin{proof}
-    Part 1) is clear, since all cohomologies involved in the definition of
-    $Reg_{X,n}$ decompose into direct sums over $i = 1,\ldots r$.
-    Parts 2) and 3) boil down to the corresponding functoriality properties
-    for the KLM morphism \eqref{eqn:KLM-morphism-1}, namely that it commutes
-    with proper pushforwards and flat pullbacks. For this we refer to
-    \cite[Lemma~3, Lemma~4]{Weisschuh-2017}, and it can be also verified
-    directly from the KLM formula. For closed-open decompositions,
-    the distinguished triangle
+    Part 1) is clear because all cohomologies that enter the definition of
+    $Reg_{X,n}$ decompose into direct sums over $i = 1,\ldots r$.  Parts 2) and
+    3) boil down to the corresponding functoriality properties for the KLM
+    morphism \eqref{eqn:KLM-morphism-1}, namely that it commutes with proper
+    pushforwards and flat pullbacks by
+    \cite[Lemma~3, Lemma~4]{Weisschuh-2017}. For closed-open decompositions, the
+    distinguished triangle
     \[ R\Gamma (Z_\et, \RR^c (n)) \to R\Gamma (X_\et, \RR^c (n)) \to
       R\Gamma (U_\et, \RR^c (n)) \to R\Gamma (Z_\et, \RR^c (n)) [1] \]
-    comes precisely from proper pushforward along $Z \hookrightarrow X$ and flat
-    pullback along $U \hookrightarrow X$ (see \cite[Corollary~7.2]{Geisser-2010}
-    and \cite[\S 3]{Bloch-1986}). Similarly, the quasi-isomorphism
+    comes exactly from the proper pushforward along $Z \hookrightarrow X$ and
+    flat pullback along $U \hookrightarrow X$ (see
+    \cite[Corollary~7.2]{Geisser-2010} and \cite[\S 3]{Bloch-1986}). Similarly,
+    the quasi-isomorphism
     $R\Gamma (X_\et, \RR^c (n-r)) [2r] \cong R\Gamma (\AA^r_{X,\et}, \RR^c (n))$
-    comes from the flat pullback along $p\colon \AA^r_X \to X$.
+    results from the flat pullback along $p\colon \AA^r_X \to X$.
   \end{proof}
 \end{lemma}
 
@@ -1577,20 +1584,21 @@ this is indeed the case.
     $$\mathbf{VO} (X,n) \iff \mathbf{VO} (X_i,n)\text{ for all }i.$$
 
   \item[2)] For a closed-open decomposition
-    $Z \not\hookrightarrow X \hookleftarrow U$, if two out of three conjectures
+    $Z \not\hookrightarrow X \hookleftarrow U$,
+    if two of the three conjectures
     \[ \mathbf{VO} (X,n), \quad
       \mathbf{VO} (Z,n), \quad
       \mathbf{VO} (U,n) \]
-    hold, then the third holds as well.
+    are true, then the third is also true.
 
   \item[3)] For any $r \ge 0$, one has
     $$\mathbf{VO} (\AA^r_X, n) \iff \mathbf{VO} (X, n-r).$$
   \end{enumerate}
 
   \begin{proof}
-    We already observed in Proposition~\ref{prop:VO(X,n)-assuming-B(X,n)} above
-    that under Conjecture~$\mathbf{B} (X,n)$ we can rewrite
-    $\mathbf{VO} (X,n)$ as
+    We have already observed in Proposition~\ref{prop:VO(X,n)-assuming-B(X,n)}
+    that under Conjecture~$\mathbf{B} (X,n)$ we can rewrite $\mathbf{VO} (X,n)$
+    as
     $$\ord_{s=n} \zeta (X,s) = \chi (R\Gamma_c (G_\RR, X(\CC), \RR (n))).$$
 
     In part 1), we have
@@ -1598,7 +1606,7 @@ this is indeed the case.
     and for the corresponding $G_\RR$-equivariant cohomology,
     \[ R\Gamma_c (G_\RR, X(\CC), \RR (n)) =
       \bigoplus_{1 \le i \le r} R\Gamma_c (G_\RR, X(\CC), \RR (n)). \]
-    The statement follows from the additivity of Euler characteristic:
+    The statement follows from the additivity of the Euler characteristic:
     \[ \begin{tikzcd}[column sep=5em]
         \ord_{s=n} \zeta (X,s) \ar[equals]{r}{\mathbf{VO} (X,n)}\ar[equals]{d} & \chi (R\Gamma_c (G_\RR, X(\CC), \RR (n))) \ar[equals]{d} \\
         \sum\limits_{1 \le i \le r} \ord_{s=n} \zeta (X_i,s) \ar[equals]{r}{\forall i \mathbf{VO} (X_i,n)} & \sum\limits_{1 \le i \le r} \chi (R\Gamma_c (G_\RR, X_i (\CC), \RR (n)))
@@ -1611,74 +1619,76 @@ this is indeed the case.
       R\Gamma_c (G_\RR, Z (\CC), \RR (n)) \\
       \to R\Gamma_c (G_\RR, U (\CC), \RR (n)) [1]
   \end{multline*}
-    and the additivity of Euler characteristic gives
-    \[ \begin{tikzcd}[column sep=4em]
-        \ord_{s=n} \zeta (X,s) \ar[equals]{r}{\mathbf{VO} (X,n)}\ar[equals]{d} & \chi (R\Gamma_c (G_\RR, X(\CC), \RR (n))) \ar[equals]{d} \\
-        \ord_{s=n} \zeta (Z,s) \ar[equals]{r}{\mathbf{VO} (Z,n)} & \chi (R\Gamma_c (G_\RR, Z (\CC), \RR (n))) \\[-2em]
-        + & + \\[-2em]
-        \ord_{s=n} \zeta (U,s) \ar[equals]{r}{\mathbf{VO} (Z,n)} & \chi (R\Gamma_c (G_\RR, U (\CC), \RR (n)))
-      \end{tikzcd} \]
+  and the additivity of the Euler characteristic gives
+  \[ \begin{tikzcd}[column sep=4em]
+      \ord_{s=n} \zeta (X,s) \ar[equals]{r}{\mathbf{VO} (X,n)}\ar[equals]{d} & \chi (R\Gamma_c (G_\RR, X(\CC), \RR (n))) \ar[equals]{d} \\
+      \ord_{s=n} \zeta (Z,s) \ar[equals]{r}{\mathbf{VO} (Z,n)} & \chi (R\Gamma_c (G_\RR, Z (\CC), \RR (n))) \\[-2em]
+      + & + \\[-2em]
+      \ord_{s=n} \zeta (U,s) \ar[equals]{r}{\mathbf{VO} (Z,n)} & \chi (R\Gamma_c (G_\RR, U (\CC), \RR (n)))
+    \end{tikzcd} \]
 
-    Finally, in part 3), assume for simplicity that $X_\CC$ is connected of
-    dimension $d_\CC$. Then the Poincar\'{e} duality and homotopy invariance of the
-    usual cohomology without compact support give us
-    \begin{multline*}
-      R\Gamma_c (G_\RR, \AA^r (\CC) \times X (\CC), \RR (n)) \\
-      \stackrel{\text{P.D.}}{\cong}
-      \RHom (R\Gamma (G_\RR, \AA^r (\CC) \times X (\CC), \RR (d_\CC + r - n)), \RR) [-2d_\CC - 2r] \\
-      \stackrel{\text{H.I.}}{\cong}
-      \RHom (R\Gamma (G_\RR, X (\CC), \RR (d_\CC + r - n)), \RR) [-2d_\CC - 2r] \\
-      \stackrel{\text{P.D.}}{\cong}
-      R\Gamma_c (G_\RR, X (\CC), \RR (n - r)) [-2r].
-    \end{multline*}
-    The twist $[-2r]$ is even, hence it does not affect the Euler
-    characteristic, so that we obtain
-    \[ \begin{tikzcd}[column sep=4em]
-        \ord_{s=n} \zeta (\AA^r_X,s) \ar[equals]{r}{\mathbf{VO} (\AA^r_X,n)}\ar[equals]{d} & \chi (R\Gamma_c (G_\RR, \AA^r (\CC) \times X(\CC), \RR (n))) \ar[equals]{d} \\
-        \ord_{s=n-r} \zeta (X,s) \ar[equals]{r}{\mathbf{VO} (X,n-r)} & \chi (R\Gamma_c (G_\RR, X (\CC), \RR (n-r)))
-      \end{tikzcd} \]
+  Finally, in part 3), we assume for simplicity that $X_\CC$ is connected of
+  dimension $d_\CC$. Then the Poincar\'{e} duality and homotopy invariance of
+  the usual cohomology without compact support give us
+  \begin{multline*}
+    R\Gamma_c (G_\RR, \AA^r (\CC) \times X (\CC), \RR (n)) \\
+    \stackrel{\text{P.D.}}{\cong}
+    \RHom (R\Gamma (G_\RR, \AA^r (\CC) \times X (\CC), \RR (d_\CC + r - n)), \RR) [-2d_\CC - 2r] \\
+    \stackrel{\text{H.I.}}{\cong}
+    \RHom (R\Gamma (G_\RR, X (\CC), \RR (d_\CC + r - n)), \RR) [-2d_\CC - 2r] \\
+    \stackrel{\text{P.D.}}{\cong}
+    R\Gamma_c (G_\RR, X (\CC), \RR (n - r)) [-2r].
+  \end{multline*}
+  The twist $[-2r]$ is even and therefore has no effect on the Euler
+  characteristic, so that we obtain
+  \[ \begin{tikzcd}[column sep=4em]
+      \ord_{s=n} \zeta (\AA^r_X,s) \ar[equals]{r}{\mathbf{VO} (\AA^r_X,n)}\ar[equals]{d} & \chi (R\Gamma_c (G_\RR, \AA^r (\CC) \times X(\CC), \RR (n))) \ar[equals]{d} \\
+      \ord_{s=n-r} \zeta (X,s) \ar[equals]{r}{\mathbf{VO} (X,n-r)} & \chi (R\Gamma_c (G_\RR, X (\CC), \RR (n-r)))
+    \end{tikzcd} \]
   \end{proof}
 \end{proposition}
 
-\begin{remark}
-  Recall that the formula that appears in the original statement of
-  $\mathbf{VO} (X,n)$ reads
-  \begin{equation}
-    \label{eqn:VO(X,n)-original-formula}
-    \ord_{s=n} \zeta (X,s) = \chi' (R\Gamma_\Wc (X,\ZZ(n))) \dfn
-    \sum_{i\in \ZZ} (-1)^i\cdot i \cdot \rk_\ZZ H^i_\Wc (X,\ZZ(n)).
-  \end{equation}
-  Conjecture~$\mathbf{B} (X,n)$ in the above argument is needed to rewrite
-  this in terms of the usual Euler characteristic. We used
-  $\chi (R\Gamma_c (G_\RR, X (\CC), \RR (n)))$, but we could do the same with
-  $\chi (\RHom (R\Gamma (X_\et, \ZZ^c (n)), \RR) [1])$.
+% \begin{remark}
+%   Recall that the formula that appears in the original statement of
+%   $\mathbf{VO} (X,n)$ reads
+%   \begin{equation}
+%     \label{eqn:VO(X,n)-original-formula}
+%     \ord_{s=n} \zeta (X,s) = \chi' (R\Gamma_\Wc (X,\ZZ(n))) \dfn
+%     \sum_{i\in \ZZ} (-1)^i\cdot i \cdot \rk_\ZZ H^i_\Wc (X,\ZZ(n)).
+%   \end{equation}
+%   Conjecture~$\mathbf{B} (X,n)$ in the above argument is needed to rewrite
+%   this in terms of the usual Euler characteristic. We used
+%   $\chi (R\Gamma_c (G_\RR, X (\CC), \RR (n)))$, but we could do the same with
+%   $\chi (\RHom (R\Gamma (X_\et, \ZZ^c (n)), \RR) [1])$.
 
-  The least interesting part 1) of the previous proposition could be proved
-  directly from \eqref{eqn:VO(X,n)-original-formula}, since
-  $H^i_\Wc (X,\ZZ(n)) = \bigoplus_j H^i_\Wc (X_j,\ZZ(n))$. Parts 2) and 3) would
-  be problematic to prove directly from \eqref{eqn:VO(X,n)-original-formula}
-  without assuming $\mathbf{B} (X,n)$, since the secondary Euler characteristic
-  $\chi' (-)$ does not behave as the usual Euler characteristic $\chi (-)$.
-  In particular, it is not additive for distinguished triangles.
-\end{remark}
+%   The least interesting part 1) of the previous proposition could be proved
+%   directly from \eqref{eqn:VO(X,n)-original-formula}, since
+%   $H^i_\Wc (X,\ZZ(n)) = \bigoplus_j H^i_\Wc (X_j,\ZZ(n))$. Parts 2) and 3) would
+%   be problematic to prove directly from \eqref{eqn:VO(X,n)-original-formula}
+%   without assuming $\mathbf{B} (X,n)$, since the secondary Euler characteristic
+%   $\chi' (-)$ does not behave as the usual Euler characteristic $\chi (-)$.
+%   In particular, it is not additive for distinguished triangles.
+% \end{remark}
 
 Our next goal is to prove similar compatibilities for
-Conjecture~$\mathbf{C} (X,n)$, the same way it was done in
-Proposition~\ref{prop:compatibility-of-VO(X,n)} for $\mathbf{VO} (X,n)$.  We
-will split the proof into three technical lemmas
+Conjecture~$\mathbf{C} (X,n)$, as was done in
+Proposition~\ref{prop:compatibility-of-VO(X,n)} for $\mathbf{VO} (X,n)$.
+We split the proof into three technical lemmas
 \ref{lemma:lambda-and-disjoint-unions},
 \ref{lemma:lambda-and-closed-open-decompositions},
-\ref{lemma:lambda-and-affine-bundles}, each for the corresponding
-compatibility.
+\ref{lemma:lambda-and-affine-bundles}, each for the corresponding compatibility.
 
 \begin{lemma}
   \label{lemma:lambda-and-disjoint-unions}
   Let $n < 0$ and let $X = \coprod_{1 \le i \le r} X_i$ be a finite disjoint
   union of arithmetic schemes. Assume $\mathbf{L}^c (X_\et,n)$ and
   $\mathbf{B} (X,n)$. Then there is a quasi-isomorphism of complexes
-  \[ \bigoplus_{1 \le i \le r} R\Gamma_\Wc (X_i, \ZZ(n)) \cong
-    R\Gamma_\Wc (X, \ZZ(n)), \]
-  which after passing to the determinants gives a commutative diagram
+  \begin{equation}
+    \label{eqn:RGamma-Wc-and-disjoint-unions}
+    \bigoplus_{1 \le i \le r} R\Gamma_\Wc (X_i, \ZZ(n)) \cong
+    R\Gamma_\Wc (X, \ZZ(n)),
+  \end{equation}
+  which after taking the determinants gives a commutative diagram
 
   \begin{equation}
     \label{eqn:lambda-and-disjoint-unions}
@@ -1689,10 +1699,12 @@ compatibility.
   \end{equation}
 
   \begin{proof}
-    From the construction of $R\Gamma_\Wc (X, \ZZ(n))$ it is clear that for
-    $X = \coprod_{1 \le i \le r} X_i$ all involved cohomologies decompose into
-    the corresponding direct sum over $i = 1,\ldots,r$, and at the end after
-    tensoring with $\RR$ one obtains a commutative diagram
+    For $X = \coprod_{1 \le i \le r} X_i$, all cohomology groups in our
+    construction of $R\Gamma_\Wc (X, \ZZ(n))$ in \cite{Beshenov-Weil-etale-1}
+    decompose into the corresponding direct sum over $i = 1,\ldots,r$, and
+    \eqref{eqn:RGamma-Wc-and-disjoint-unions} follows.
+
+    After tensoring with $\RR$, we obtain a commutative diagram
 
     \[ \begin{tikzcd}[column sep=1.25em]
         \bigoplus_i \left(\!\!\!\begin{array}{c} R\Gamma_c (G_\RR, X_i (\CC), \RR (n)) [-2] \\ \oplus \\ R\Gamma_c (G_\RR, X_i (\CC), \RR (n)) [-1] \end{array}\!\!\!\right) \ar{d}{\bigoplus_i Reg_{X_i,n}^\vee [-1] \oplus id}[swap]{\cong} \ar{r}{\cong} & \begin{array}{c} R\Gamma_c (G_\RR, X (\CC), \RR (n)) [-2] \\ \oplus \\ R\Gamma_c (G_\RR, X (\CC), \RR (n)) [-1] \end{array} \ar{d}{Reg_{X,n}^\vee [-1] \oplus id}[swap]{\cong} \\
@@ -1711,7 +1723,7 @@ compatibility.
     \mathbf{L}^c (U_\et,n), ~ \mathbf{L}^c (X_\et,n), ~ \mathbf{L}^c (Z_\et,n),\\
     \mathbf{B} (U,n), ~ \mathbf{B} (X,n), ~ \mathbf{B} (Z_\et,n)
   \end{gather*}
-  hold (in each case, it is enough to assume two out of three thanks to Lemma
+  hold (it suffices to assume two of the three conjectures thanks to Lemmas
   \ref{lemma:compatibility-of-Lc(X,n)} and \ref{lemma:compatibility-of-B(X,n)}).
   Then there is an isomorphism of determinants
   \begin{equation}
@@ -1730,43 +1742,25 @@ compatibility.
   \end{equation}
 
   \begin{proof}
-    Morally, we expect in this situation a distinguished triangle of the form
-    \begin{equation}
-      \label{eqn:U-X-Z-triangle-for-RGamma-Wc}
-      R\Gamma_\Wc (U, \ZZ(n)) \to
-      R\Gamma_\Wc (X, \ZZ(n)) \to
-      R\Gamma_\Wc (Z, \ZZ(n)) \to
-      R\Gamma_\Wc (U, \ZZ(n)) [1].
-    \end{equation}
-    However, even the complex $R\Gamma_\Wc (X, \ZZ(n))$ was constructed in
-    \cite{Beshenov-Weil-etale-1} up to a non-canonical isomorphism in
-    the derived category $\mathbf{D} (\ZZ)$, so this is problematic. In the
-    absence of a better definition, we will construct the isomorphism
-    \eqref{eqn:isomorphism-of-det-RGamma-Wc-for-closed-open-decompositions} in
-    an ad hoc manner.
-
-    A closed-open decomposition $Z \not\hookrightarrow X \hookleftarrow U$ gives
-    us distinguished triangles
+    A closed-open decomposition $Z \not\hookrightarrow X \hookleftarrow U$
+    induces the distinguished triangles
     \[ \begin{tikzcd}[row sep=0pt,column sep=1em,font=\small]
         R\Gamma (Z_\et, \ZZ^c (n)) \ar{r} & R\Gamma (X_\et, \ZZ^c (n)) \ar{r} & R\Gamma (U_\et, \ZZ^c (n)) \ar{r} & {[1]} \\
         R\Gamma_c (U_\et, \ZZ (n)) \ar{r} & R\Gamma_c (X_\et, \ZZ (n)) \ar{r} & R\Gamma_c (Z_\et, \ZZ (n)) \ar{r} & {[1]} \\
         R\Gamma_c (G_\RR, U (\CC), \RR (n)) \ar{r} & R\Gamma_c (G_\RR, X (\CC), \RR (n)) \ar{r} & R\Gamma_c (G_\RR, Z (\CC), \RR (n)) \ar{r} & {[1]}
       \end{tikzcd} \]
-    The first triangle is \cite[Corollary~7.2]{Geisser-2010}, and it means that
-    $R\Gamma (-, \ZZ^c (n))$ behaves like Borel--Moore homology, while the
-    following two triangles are the usual ones for cohomology with compact
-    support.
-    These fit together in a commutative diagram displayed on
-    figure~\ref{fig:RGamma-Wc-and-closed-open-decompositions} below
-    (page \pageref{fig:RGamma-Wc-and-closed-open-decompositions}).
-    For brevity, we denote $\RHom (X,Y)$ by $[X,Y]$ in the diagram.
-    Similarly,
-    figure~\ref{fig:RGamma-Wc-and-closed-open-decompositions-otimes-Q}
-    displays the same diagram tensored with $\QQ$.
+    The first triangle is \cite[Corollary~7.2]{Geisser-2010} and it means that
+    $R\Gamma (-, \ZZ^c (n))$ behaves like Borel--Moore homology. The following
+    two are the usual triangles for cohomology with compact support. These fit
+    together in a commutative diagram shown in
+    Figure~\ref{fig:RGamma-Wc-and-closed-open-decompositions} below
+    (p.~\pageref{fig:RGamma-Wc-and-closed-open-decompositions}). Figure~\ref{fig:RGamma-Wc-and-closed-open-decompositions-otimes-Q}
+    on p.~\pageref{fig:RGamma-Wc-and-closed-open-decompositions-otimes-Q} shows
+    the same diagram tensored with $\QQ$.
 
-    In this diagram, we start from the morphism of triangles
-    $(\alpha_{U,n}, \alpha_{X,n}, \alpha_{Z,n})$, and then take the respective
-    cones $R\Gamma_\fg (-, \ZZ(n))$. In fact, by
+    In this diagram we start from the morphism of triangles
+    $(\alpha_{U,n}, \alpha_{X,n}, \alpha_{Z,n})$ and then take the corresponding
+    cones $R\Gamma_\fg (-, \ZZ(n))$. By
     \cite[Proposition~5.6]{Beshenov-Weil-etale-1}, these cones are defined up to
     a \emph{unique} isomorphism in the derived category $\mathbf{D} (\ZZ)$, and
     the same argument shows that the induced morphisms of complexes
@@ -1778,11 +1772,11 @@ compatibility.
       R\Gamma_\fg (U, \ZZ(n)) [1]
     \end{equation}
     are also well-defined
-    (see \cite[Corollary~A.3]{Beshenov-Weil-etale-1}). A priori, it does not
-    have to be a distinguished triangle, but we claim that it induces a long
-    exact sequence in cohomology.
+    (see \cite[Corollary~A.3]{Beshenov-Weil-etale-1}). A priori,
+    \eqref{eqn:triangle-RGamma-fg} need not be a distinguished triangle, but we
+    claim that it induces a long exact sequence in cohomology.
 
-    For this note that tensoring the diagram with $\ZZ/m\ZZ$ gives us an
+    To this end, note that tensoring the diagram with $\ZZ/m\ZZ$ gives us an
     isomorphism
     \[ \begin{tikzcd}[column sep=1em,font=\small]
         R\Gamma_c (U_\et, \ZZ/m\ZZ (n)) \ar{r}\ar{d}{\cong} & R\Gamma_c (X_\et, \ZZ/m\ZZ (n)) \ar{r}\ar{d}{\cong} & R\Gamma_c (Z_\et, \ZZ/m\ZZ (n)) \ar{r}\ar{d}{\cong} & {[1]}\ar{d}{\cong} \\
@@ -1793,12 +1787,12 @@ compatibility.
     \cite[Tag~091N]{Stacks-project})
     \[ R\Gamma_\fg (-, \ZZ(n))^\wedge_p \dfn
       R\varprojlim_k (R\Gamma_\fg (-, \ZZ(n)) \otimes^\mathbf{L} \ZZ/p^k\ZZ), \]
-    and these give us a distinguished triangle for each prime $p$
+    which give us a distinguished triangle for each prime $p$
     \[ R\Gamma_\fg (U, \ZZ(n))^\wedge_p \to
       R\Gamma_\fg (X, \ZZ(n))^\wedge_p \to
       R\Gamma_\fg (Z, \ZZ(n))^\wedge_p \to
       R\Gamma_\fg (U, \ZZ(n))^\wedge_p [1]. \]
-    On the level of cohomology, there are natural isomorphisms
+    At the level of cohomology, there are natural isomorphisms
     \cite[Tag~0A06]{Stacks-project}
     \[ H^i (R\Gamma_\fg (-, \ZZ(n))^\wedge_p) \cong
       H^i_\fg (-, \ZZ(n)) \otimes \ZZ_p. \]
@@ -1810,9 +1804,8 @@ compatibility.
       H^i_\fg (Z, \ZZ(n)) \otimes \ZZ_p \\
       \to H^{i+1}_\fg (U, \ZZ(n)) \otimes \ZZ_p \to \cdots
     \end{multline*}
-    induced by \eqref{eqn:triangle-RGamma-fg}. But now since the groups
-    $H^i_\fg (-, \ZZ(n))$ are finitely generated, by flatness of $\ZZ_p$ this
-    implies that the sequence
+    induced by \eqref{eqn:triangle-RGamma-fg}. By finite generation of
+    $H^i_\fg (-, \ZZ(n))$ and flatness of $\ZZ_p$ this implies that the sequence
     \begin{equation}
       \label{eqn:RGamma-fg-long-exact-sequence}
       \cdots \to H^i_\fg (U, \ZZ(n)) \to
@@ -1829,9 +1822,9 @@ compatibility.
         \tau_{\le m} R\Gamma_c (G_\RR, Z (\CC), \ZZ (n))[-1] \ar{r}\ar{d} & R\Gamma_\Wc (Z, \ZZ (n))\ar{d}\ar{r} & \tau_{\le m} R\Gamma_\fg (Z,\ZZ(n)) \ar{d}\ar{r} & {[0]} \ar{d} \\
         \tau_{\le m} R\Gamma_c (G_\RR, U (\CC), \ZZ (n)) \ar{r} & R\Gamma_\Wc (U, \ZZ (n)) [1] \ar{r} & \tau_{\le m} R\Gamma_\fg (U,\ZZ(n)) [1] \ar{r} & {[1]}
       \end{tikzcd} \]
-    Here we took truncations for $m$ big enough similarly to the proof of
-    Lemma~\ref{lemma:determinant-of-RGamma-Wc-well-defined}. There are
-    canonical isomorphisms
+    Here we took truncations for $m$ big enough, as the proof of
+    Lemma~\ref{lemma:determinant-of-RGamma-Wc-well-defined}. There are canonical
+    isomorphisms
     \begin{align*}
       \notag \det_\ZZ R\Gamma_\Wc (U, \ZZ(n)) & \cong \begin{array}{c} \det_\ZZ (\tau_{\le m} R\Gamma_c (G_\RR, U (\CC), \ZZ (n)) [-1]) \\ \otimes \\ \det_\ZZ (\tau_{\le m} R\Gamma_\fg (U, \ZZ(n))), \end{array} \\
       \\
@@ -1843,8 +1836,8 @@ compatibility.
       \\
       \det_\ZZ (\tau_{\le m} R\Gamma_\fg (X, \ZZ(n))) & \cong \begin{array}{c} \det_\ZZ (\tau_{\le m} R\Gamma_\fg (U, \ZZ (n))) \\ \otimes \\ \det_\ZZ (\tau_{\le m} R\Gamma_\fg (Z, \ZZ(n))).\end{array}
     \end{align*}
-    Here the first four isomorphisms come from true distinguished triangles,
-    while the last isomorphism comes from the cohomology long exact sequence
+    The first four isomorphisms arise from true distinguished triangles, while
+    the last isomorphism comes from the long exact sequence
     \eqref{eqn:RGamma-fg-long-exact-sequence}, which gives an isomorphism
     \begin{equation}\small
       \bigotimes_{i \le m}
@@ -1852,7 +1845,8 @@ compatibility.
       \det_\ZZ H^i_\fg (X, \ZZ(n))^{(-1)^{i+1}} \otimes
       \det_\ZZ H^i_\fg (Z, \ZZ(n))^{(-1)^i}\Bigr) \cong \ZZ.
     \end{equation}
-    We can rearrange the terms \emph{at the cost of introducing a $\pm 1$ sign},
+    We can rearrange the terms
+    (at the expense of introducing a $\pm 1$ sign),
     to obtain
     \begin{multline*}
       \det_\ZZ (\tau_{\le m} R\Gamma_\fg (X, \ZZ(n))) \cong
@@ -1863,25 +1857,33 @@ compatibility.
       \det_\ZZ (\tau_{\le m} R\Gamma_\fg (Z, \ZZ(n))).
     \end{multline*}
 
-    All the above gives us the desired isomorphism of integral determinants
+    All this gives us the desired isomorphism of integral determinants
     \eqref{eqn:isomorphism-of-det-RGamma-Wc-for-closed-open-decompositions}.
 
-    Now we consider the diagram with distinguished rows on
-    Figure~\ref{fig:Regulators-and-closed-open-decompositions}.
-    Here the three squares with regulators involved commute thanks to
+    Let us now consider the diagram with distinguished rows in
+    Figure~\ref{fig:Regulators-and-closed-open-decompositions}
+    (p.~\pageref{fig:Regulators-and-closed-open-decompositions}).
+    Here the three squares with the regulators involved commute thanks to
     Lemma~\ref{lemma:compatibility-of-B(X,n)}. Taking the determinants, we
-    obtain \eqref{eqn:lambda-and-closed-open-decompositions}, using the
-    compatibility of determinants with distinguished triangles. We note that we
-    did not construct an integral distinguished triangle
-    \eqref{eqn:U-X-Z-triangle-for-RGamma-Wc}; instead we only have that the
-    bottom arrow in \eqref{eqn:lambda-and-closed-open-decompositions} is induced
-    by the ad hoc isomorphism of determinants
-    \eqref{eqn:isomorphism-of-det-RGamma-Wc-for-closed-open-decompositions}.
+    obtain \eqref{eqn:lambda-and-closed-open-decompositions}, by the
+    compatibility with distinguished triangles.
   \end{proof}
 \end{lemma}
 
 \begin{remark}
-  We recall that in the usual derived category $\mathbf{D} (\mathcal{A})$,
+  Morally, we expect that a closed-open decomposition induces a distinguished
+  triangle of the form
+  \begin{equation}
+    \label{eqn:closed-open-decompositions-hypothetical-RGamma-triangle}
+    R\Gamma_\Wc (U, \ZZ(n)) \to
+    R\Gamma_\Wc (X, \ZZ(n)) \to
+    R\Gamma_\Wc (Z, \ZZ(n)) \to [1].
+  \end{equation}
+  However, $R\Gamma_\Wc (X, \ZZ(n))$ is defined in \cite{Beshenov-Weil-etale-1}
+  as a mapping fber of a morphism in $\mathbf{D} (\ZZ)$, so it is not quite
+  functorial.
+
+  We recall that in the usual derived (1-)category $\mathbf{D} (\mathcal{A})$,
   taking naively a ``cone of a morphism of distinguished triangles''
   $$\begin{tikzpicture}[ampersand replacement=\&]
     \matrix(m)[matrix of math nodes, row sep=1.5em, column sep=1.5em,
@@ -1924,10 +1926,60 @@ compatibility.
 
     \node[font=\small] at ($(m-3-3)!.5!(m-4-4)$) {(ac)};
   \end{tikzpicture}$$
-  normally \emph{does not} give a distinguished triangle
+  usually \emph{does not} yield a distinguished triangle
   $X'' \to Y'' \to Z'' \to X'' [1]$.
-  For a thorough discussion of this issue, see \cite{Neeman-1991}.
+  For a thorough discussion of this problem, see \cite{Neeman-1991}.
+
+  For lack of a better definition for
+  $R\Gamma_\Wc (X, \ZZ(n))$, we constructed the isomorphism
+  \eqref{eqn:isomorphism-of-det-RGamma-Wc-for-closed-open-decompositions}
+  ad hoc, without the hypothetical triangle
+  \eqref{eqn:closed-open-decompositions-hypothetical-RGamma-triangle}.
 \end{remark}
+
+\begin{landscape}
+  \begin{figure}
+    \[ \begin{tikzcd}[font=\small]
+        &[2em] &[-2.5em] &[-2.5em] &[-2.5em] R\Gamma_\Wc (U, \ZZ (n))\ar{dl} &[-2.5em] \\
+        {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}{\alpha_{U,n}}\ar{dd} & R\Gamma_c (U_\et, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd} \ar{rr} & & R\Gamma_\fg (U, \ZZ (n))\ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\exists!} \ar[crossing over]{rr} & & {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
+        & & R\Gamma_c (G_\RR, U (\CC), \ZZ (n)) & & R\Gamma_\Wc (X, \ZZ (n))\ar{dl} \\
+        {[R\Gamma (X_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}{\alpha_{X,n}}\ar{dd} & R\Gamma_c (X_\et, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd} \ar{rr} & & R\Gamma_\fg (X, \ZZ (n)) \ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\exists!} \ar[crossing over]{rr} & & {[R\Gamma (X_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
+        & & R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (Z, \ZZ (n))\ar{dl} \\
+        {[R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}{\alpha_{Z,n}}\ar{dd} & R\Gamma_c (Z_\et, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd} \ar{rr} & & R\Gamma_\fg (Z, \ZZ (n)) \ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\exists!} \ar[crossing over]{rr} & & {[R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
+        & & R\Gamma_c (G_\RR, Z (\CC), \ZZ (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (U, \ZZ (n)) [1]\ar{dl} \\
+        {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]]} \ar{r}{\alpha_{U,n} [1]} & R\Gamma_c (U_\et, \ZZ (n)) [1] \ar{dr}{u_\infty} \ar{rr} & & R\Gamma_\fg (U, \ZZ (n)) [1] \ar{dl}[swap]{i_\infty [1]} \ar{rr} & & {[R\Gamma (U_\et, \ZZ^c (n)), \QQ]} \\
+        & & R\Gamma_c (G_\RR, U (\CC), \ZZ (n)) [1] \ar[<-,near end,crossing over]{uu} \\
+      \end{tikzcd} \]
+
+    \caption{Diagram induced by a closed-open decomposition
+      $Z \not\hookrightarrow X \hookleftarrow U$.
+      For brevity, we denote
+      $\RHom (A^\bullet,B^\bullet)$ by $[A^\bullet,B^\bullet]$}
+    \label{fig:RGamma-Wc-and-closed-open-decompositions}
+  \end{figure}
+\end{landscape}
+
+\begin{landscape}
+  \begin{figure}
+    \[ \begin{tikzcd}[font=\small]
+        &[2em] &[-2.5em] &[-2.5em] &[-2.5em] R\Gamma_\Wc (U, \QQ (n))\ar{dl}\ar{dd} &[-2.5em] \\
+        {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}\ar{dd} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (U, \QQ (n))\ar{dl}[swap]{0} \ar[dashed]{dd}{\exists!} \ar[crossing over,near start]{rr}{\cong} & & {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
+        & & R\Gamma_c (G_\RR, U (\CC), \QQ (n)) & & R\Gamma_\Wc (X, \QQ (n))\ar{dl}\ar{dd} \\
+        {[R\Gamma (X_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}\ar{dd} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (X, \QQ (n)) \ar{dl}[swap]{0} \ar[dashed]{dd}{\exists!} \ar[crossing over,near start]{rr}{\cong} & & {[R\Gamma (X_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
+        & & R\Gamma_c (G_\RR, X (\CC), \QQ (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (Z, \QQ (n))\ar{dl}\ar{dd} \\
+        {[R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}\ar{dd} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (Z, \QQ (n)) \ar{dl}[swap]{0} \ar[dashed]{dd}{\exists!} \ar[crossing over,near start]{rr}{\cong} & & {[R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
+        & & R\Gamma_c (G_\RR, Z (\CC), \QQ (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (U, \QQ (n)) [1]\ar{dl} \\
+        {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]]} \ar{r} & 0 \ar{dr} \ar{rr} & & R\Gamma_\fg (U, \QQ (n)) [1] \ar{dl}[swap]{0} \ar{rr}{\cong} & & {[R\Gamma (U_\et, \ZZ^c (n)), \QQ]} \\
+        & & R\Gamma_c (G_\RR, U (\CC), \QQ (n)) [1] \ar[<-,near end,crossing over]{uu} \\
+      \end{tikzcd} \]
+
+    \caption{Diagram induced by a closed-open decomposition
+      $Z \not\hookrightarrow X \hookleftarrow U$, tensored with $\QQ$.
+      For brevity, we denote
+      $\RHom (A^\bullet,B^\bullet)$ by $[A^\bullet,B^\bullet]$}
+    \label{fig:RGamma-Wc-and-closed-open-decompositions-otimes-Q}
+  \end{figure}
+\end{landscape}
 
 \begin{landscape}
   \begin{figure}
@@ -1937,7 +1989,7 @@ compatibility.
         R\Gamma_\Wc (U, \RR (n)) \ar{r} & R\Gamma_\Wc (X, \RR (n)) \ar{r} & R\Gamma_\Wc (Z, \RR (n)) \ar{r} & R\Gamma_\Wc (U, \RR (n)) [1]
       \end{tikzcd} \]
 
-    \caption{A diagram induced by a closed-open decomposition
+    \caption{Diagram induced by a closed-open decomposition
       $Z \not\hookrightarrow X \hookleftarrow U$}
     \label{fig:Regulators-and-closed-open-decompositions}
   \end{figure}
@@ -1962,175 +2014,31 @@ compatibility.
   \end{equation}
 
   \begin{proof}
-    We refer to figure~\ref{fig:RGamma-Wc-and-affine-bundles} below (page
-    \pageref{fig:RGamma-Wc-and-affine-bundles}) that shows how the flat morphism
-    $p\colon \AA^r_X \to X$ induces the desired quasi-isomorphism
-    \eqref{eqn:RGamma-Wc-and-affine-bundles}. Everything comes down to the
-    homotopy property of motivic cohomology, namely the fact that $p$ induces a
+    We refer to Figure~\ref{fig:RGamma-Wc-and-affine-bundles}
+    (p.~\pageref{fig:RGamma-Wc-and-affine-bundles}), which shows how the flat
+    morphism $p\colon \AA^r_X \to X$ induces the desired quasi-isomorphism
+    \eqref{eqn:RGamma-Wc-and-affine-bundles}. It all boils down to the homotopy
+    property of motivic cohomology, namely the fact that $p$ induces a
     quasi-isomorphism
     \[ p^*\colon R\Gamma (X_\et, \ZZ^c (n-r)) [2r] \xrightarrow{\cong}
-      R\Gamma (\AA^r_{X,\et}, \ZZ^c (n)) \]
-    ---for this see e.g. \cite[Lemma~5.11]{Morin-2014}.
+      R\Gamma (\AA^r_{X,\et}, \ZZ^c (n)); \]
+    see, e.g. \cite[Lemma~5.11]{Morin-2014}.
     After passing to real coefficients, we obtain the following diagram:
     \[ \begin{tikzcd}[column sep=1em, font=\small]
         \begin{array}{c} R\Gamma_c (G_\RR, \AA^r_X (\CC), \RR (n)) [-2] \\ \oplus \\ R\Gamma_c (G_\RR, \AA^r_X (\CC), \RR (n)) [-1] \end{array} \ar{d}{Reg_{\AA^r_X,n}^\vee [-1] \oplus id}[swap]{\cong} \ar{r}{\cong} & \begin{array}{c} R\Gamma_c (G_\RR, X (\CC), \RR (n-r)) [-2] [-2r] \\ \oplus \\ R\Gamma_c (G_\RR, X (\CC), \RR (n-r)) [-1] [-2r] \end{array} \ar{d}{Reg_{X,n-r}^\vee [-1] [-2r] \oplus id}[swap]{\cong} \\
         \begin{array}{c} \RHom (R\Gamma (\AA^r_{X,\et}, \ZZ^c (n)), \RR) [-1] \\ \oplus \\ R\Gamma_c (G_\RR, \AA^r_X (\CC), \RR (n)) [-1] \end{array} \ar{d}{\text{split}}[swap]{\cong} \ar{r}{\cong} & \begin{array}{c} \RHom (R\Gamma (X_\et, \ZZ^c (n-r)) [2r], \RR) [-1] \\ \oplus \\ R\Gamma_c (G_\RR, X (\CC), \RR (n-r)) [-1] [-2r] \end{array} \ar{d}{\text{split}}[swap]{\cong} \\
         R\Gamma_\Wc (\AA^r_X, \RR (n)) \ar{r}{\cong} & R\Gamma_\Wc (X, \RR (n-r)) [-2r]
       \end{tikzcd} \]
-    Here the first square commutes by the compatibility of the regulator with
-    affine bundles (Lemma~\ref{lemma:compatibility-of-B(X,n)}), and the second
-    square commutes because the quasi-isomorphism
+    Here the first square is commutative due to the compatibility of the
+    regulator with affine bundles (Lemma~\ref{lemma:compatibility-of-B(X,n)}),
+    and the second square commutes because the quasi-isomorphism
     \eqref{eqn:RGamma-Wc-and-affine-bundles} gives compatible splittings
-    (again, see figure~\ref{fig:RGamma-Wc-and-affine-bundles} below).
-    Taking the determinants, we obtain the desired commutative diagram
+    (see again Figure~\ref{fig:RGamma-Wc-and-affine-bundles} on
+    p.~\pageref{fig:RGamma-Wc-and-affine-bundles}). Taking the determinants, we
+    obtain the desired commutative diagram
     \eqref{eqn:lambda-and-affine-bundles}.
   \end{proof}
 \end{lemma}
-
-\begin{theorem}
-  \label{thm:compatibility-of-C(X,n)}
-  For an arithmetic scheme $X$ and $n < 0$, assume $\mathbf{L}^c (X_\et,n)$,
-  $\mathbf{B} (X,n)$, and the meromorphic continuation of $\zeta (X,s)$ around
-  $s = n$.
-
-  \begin{enumerate}
-  \item[1)] If $X = \coprod_{1 \le i \le r} X_i$ is a finite disjoint union of
-    arithmetic schemes, then
-    $$\mathbf{C} (X,n) \iff \mathbf{C} (X_i,n)\text{ for all }i.$$
-
-  \item[2)] For a closed-open decomposition
-    $Z \not\hookrightarrow X \hookleftarrow U$, if two out of three conjectures
-    \[ \mathbf{C} (X,n), \quad
-      \mathbf{C} (Z,n), \quad
-      \mathbf{C} (U,n) \]
-    hold, then the third holds as well.
-
-  \item[3)] For any $r \ge 0$, one has
-    $$\mathbf{C} (\AA^r_X, n) \iff \mathbf{C} (X, n-r).$$
-  \end{enumerate}
-
-  \begin{proof}
-    Follows from the previous lemmas
-    \ref{lemma:lambda-and-disjoint-unions},
-    \ref{lemma:lambda-and-closed-open-decompositions},
-    \ref{lemma:lambda-and-affine-bundles},
-    together with the respective identities for zeta functions
-    \eqref{eqn:zeta-function-for-disjoint-unions},
-    \eqref{eqn:zeta-function-for-closed-open-decompositions},
-    \eqref{eqn:zeta-function-for-affine-space}.
-  \end{proof}
-\end{theorem}
-
-\begin{remark}
-  As a formal consequence of compatibility with closed-open decompositions, if
-  we apply it to the canonical closed embedding $X_\red \hookrightarrow X$,
-  then we conclude that
-  $R\Gamma_\Wc (X, \ZZ(n)) \cong R\Gamma_\Wc (X_\red, \ZZ(n))$. This is not
-  surprising, because Weil-\'{e}tale complexes are constructed from a variant of
-  cycle complexes / higher Chow groups, and these do not distinguish $X$ from
-  $X_\red$ (unlike, for instance, algebraic $K$-groups).
-
-  This is actually the desired behavior for us, since neither the zeta function
-  does: $\zeta (X,s) = \zeta (X_\red,s)$.
-\end{remark}
-
-\begin{remark}
-  If $X/\FF_q$ is a variety over a finite field, then the proof of
-  Theorem~\ref{thm:compatibility-of-C(X,n)} simplifies drastically: we can work
-  with the formula \eqref{eqn:special-value-for-X/Fq}, and the following
-  properties of motivic cohomology:
-  \begin{enumerate}
-  \item[1)] $R\Gamma (\coprod_i X_{i,\et}, \ZZ^c (n)) \cong
-    \bigoplus_i R\Gamma (X_{i,\et}, \ZZ^c (n))$;
-
-  \item[2)] triangles
-    \[ R\Gamma (Z_\et, \ZZ^c (n)) \to
-      R\Gamma (X_\et, \ZZ^c (n)) \to
-      R\Gamma (U_\et, \ZZ^c (n)) \to
-      R\Gamma (Z_\et, \ZZ^c (n))[1] \]
-    associated to closed-open decompositions;
-
-  \item[3)] homotopy invariance
-    $R\Gamma (X_\et, \ZZ^c (n-r)) [2r] \cong
-    R\Gamma (\AA^r_{X,\et}, \ZZ^c (n))$.
-  \end{enumerate}
-  There are no regulators involved in this case, so we do not need the technical
-  lemmas
-  \ref{lemma:lambda-and-disjoint-unions},
-  \ref{lemma:lambda-and-closed-open-decompositions},
-  \ref{lemma:lambda-and-affine-bundles}.
-\end{remark}
-
-Considering the projective space $\PP_X^r = \PP_\ZZ^r \times X$,
-we have a formula for the zeta function
-\begin{equation}
-  \label{eqn:zeta-function-for-projective-space}
-  \zeta (\PP_X^r, s) = \prod_{0 \le i \le r} \zeta (X, s-i).
-\end{equation}
-
-\begin{corollary}[projective bundles]
-  Let $X$ be an arithmetic scheme, $n < 0$, and $r \ge 0$.
-  For $i = 0,\ldots,r$ assume Conjectures $\mathbf{L}^c (X_\et,n-i)$,
-  $\mathbf{B} (X,n-i)$, and meromorphic continuation of $\zeta (X,s)$ around
-  $s = n-i$. Then
-  \[ \mathbf{C} (X,n-i)\text{ for }i = 0,\ldots,r \Longrightarrow
-    \mathbf{C} (\PP_X^r, n). \]
-
-  \begin{proof}
-    Applied to the closed-open decomposition
-    $\PP_X^{r-1} \not\hookrightarrow \PP_X^r \hookleftarrow \AA_X^r$,
-    Theorem~\ref{thm:compatibility-of-C(X,n)} gives
-    \[ \mathbf{C} (X, n-r) \text{ and } \mathbf{C} (\PP_X^{r-1}, n)
-      \Longrightarrow
-      \mathbf{C} (\AA_X^r, n) \text{ and } \mathbf{C} (\PP_X^{r-1}, n)
-      \Longrightarrow
-      \mathbf{C} (\PP_X^r,n). \]
-    The claim follows by induction on $r$.
-    (Note that the same inductive argument proves the formula
-    \eqref{eqn:zeta-function-for-projective-space} from
-    \eqref{eqn:zeta-function-for-affine-space}.)
-    \end{proof}
-\end{corollary}
-
-\begin{landscape}
-  \begin{figure}
-    \[ \begin{tikzcd}[font=\small]
-        &[2em] &[-2.5em] &[-2.5em] &[-2.5em] R\Gamma_\Wc (U, \ZZ (n))\ar{dl} &[-2.5em] \\
-        {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}{\alpha_{U,n}}\ar{dd} & R\Gamma_c (U_\et, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd} \ar{rr} & & R\Gamma_\fg (U, \ZZ (n))\ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\exists!} \ar[crossing over]{rr} & & {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
-        & & R\Gamma_c (G_\RR, U (\CC), \ZZ (n)) & & R\Gamma_\Wc (X, \ZZ (n))\ar{dl} \\
-        {[R\Gamma (X_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}{\alpha_{X,n}}\ar{dd} & R\Gamma_c (X_\et, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd} \ar{rr} & & R\Gamma_\fg (X, \ZZ (n)) \ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\exists!} \ar[crossing over]{rr} & & {[R\Gamma (X_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
-        & & R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (Z, \ZZ (n))\ar{dl} \\
-        {[R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}{\alpha_{Z,n}}\ar{dd} & R\Gamma_c (Z_\et, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd} \ar{rr} & & R\Gamma_\fg (Z, \ZZ (n)) \ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\exists!} \ar[crossing over]{rr} & & {[R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
-        & & R\Gamma_c (G_\RR, Z (\CC), \ZZ (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (U, \ZZ (n)) [1]\ar{dl} \\
-        {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]]} \ar{r}{\alpha_{U,n} [1]} & R\Gamma_c (U_\et, \ZZ (n)) [1] \ar{dr}{u_\infty} \ar{rr} & & R\Gamma_\fg (U, \ZZ (n)) [1] \ar{dl}[swap]{i_\infty [1]} \ar{rr} & & {[R\Gamma (U_\et, \ZZ^c (n)), \QQ]} \\
-        & & R\Gamma_c (G_\RR, U (\CC), \ZZ (n)) [1] \ar[<-,near end,crossing over]{uu} \\
-      \end{tikzcd} \]
-
-    \caption{Diagram induced by a closed-open decomposition
-      $Z \not\hookrightarrow X \hookleftarrow U$}
-    \label{fig:RGamma-Wc-and-closed-open-decompositions}
-  \end{figure}
-\end{landscape}
-
-\begin{landscape}
-  \begin{figure}
-    \[ \begin{tikzcd}[font=\small]
-        &[2em] &[-2.5em] &[-2.5em] &[-2.5em] R\Gamma_\Wc (U, \QQ (n))\ar{dl}\ar{dd} &[-2.5em] \\
-        {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}\ar{dd} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (U, \QQ (n))\ar{dl}[swap]{0} \ar[dashed]{dd}{\exists!} \ar[crossing over,near start]{rr}{\cong} & & {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
-        & & R\Gamma_c (G_\RR, U (\CC), \QQ (n)) & & R\Gamma_\Wc (X, \QQ (n))\ar{dl}\ar{dd} \\
-        {[R\Gamma (X_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}\ar{dd} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (X, \QQ (n)) \ar{dl}[swap]{0} \ar[dashed]{dd}{\exists!} \ar[crossing over,near start]{rr}{\cong} & & {[R\Gamma (X_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
-        & & R\Gamma_c (G_\RR, X (\CC), \QQ (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (Z, \QQ (n))\ar{dl}\ar{dd} \\
-        {[R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}\ar{dd} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (Z, \QQ (n)) \ar{dl}[swap]{0} \ar[dashed]{dd}{\exists!} \ar[crossing over,near start]{rr}{\cong} & & {[R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
-        & & R\Gamma_c (G_\RR, Z (\CC), \QQ (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (U, \QQ (n)) [1]\ar{dl} \\
-        {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]]} \ar{r} & 0 \ar{dr} \ar{rr} & & R\Gamma_\fg (U, \QQ (n)) [1] \ar{dl}[swap]{0} \ar{rr}{\cong} & & {[R\Gamma (U_\et, \ZZ^c (n)), \QQ]} \\
-        & & R\Gamma_c (G_\RR, U (\CC), \QQ (n)) [1] \ar[<-,near end,crossing over]{uu} \\
-      \end{tikzcd} \]
-
-    \caption{Diagram induced by a closed-open decomposition
-      $Z \not\hookrightarrow X \hookleftarrow U$, tensored with $\QQ$}
-    \label{fig:RGamma-Wc-and-closed-open-decompositions-otimes-Q}
-  \end{figure}
-\end{landscape}
 
 \begin{landscape}
   \begin{figure}
@@ -2150,10 +2058,115 @@ we have a formula for the zeta function
 
     \caption{Isomorphism
       $R\Gamma_\Wc (\AA^r_X, \ZZ (n)) \cong R\Gamma_\Wc (X, \ZZ (n-r)) [-2r]$
-      and its splitting after tensoring with $\QQ$}
+      and its splitting after tensoring with $\QQ$.
+      For brevity, we denote
+      $\RHom (A^\bullet,B^\bullet)$ by $[A^\bullet,B^\bullet]$}
     \label{fig:RGamma-Wc-and-affine-bundles}
   \end{figure}
 \end{landscape}
+
+\begin{theorem}
+  \label{thm:compatibility-of-C(X,n)}
+  For an arithmetic scheme $X$ and $n < 0$, assume $\mathbf{L}^c (X_\et,n)$,
+  $\mathbf{B} (X,n)$, and the meromorphic continuation of $\zeta (X,s)$ around
+  $s = n$.
+
+  \begin{enumerate}
+  \item[1)] If $X = \coprod_{1 \le i \le r} X_i$ is a finite disjoint union of
+    arithmetic schemes, then
+    $$\mathbf{C} (X,n) \iff \mathbf{C} (X_i,n)\text{ for all }i.$$
+
+  \item[2)] For a closed-open decomposition
+    $Z \not\hookrightarrow X \hookleftarrow U$, if two of three conjectures
+    \[ \mathbf{C} (X,n), \quad
+      \mathbf{C} (Z,n), \quad
+      \mathbf{C} (U,n) \]
+    are true, then the third is also true.
+
+  \item[3)] For any $r \ge 0$, one has
+    $$\mathbf{C} (\AA^r_X, n) \iff \mathbf{C} (X, n-r).$$
+  \end{enumerate}
+
+  \begin{proof}
+    Follows from Lemmas
+    \ref{lemma:lambda-and-disjoint-unions},
+    \ref{lemma:lambda-and-closed-open-decompositions},
+    \ref{lemma:lambda-and-affine-bundles},
+    together with the corresponding identities for the zeta functions
+    \eqref{eqn:zeta-function-for-disjoint-unions},
+    \eqref{eqn:zeta-function-for-closed-open-decompositions},
+    \eqref{eqn:zeta-function-for-affine-space}.
+  \end{proof}
+\end{theorem}
+
+\begin{remark}
+  As a formal consequence of compatibility with closed-open decompositions, if
+  we apply it to the canonical closed embedding $X_\red \hookrightarrow X$,
+  then we find that
+  $R\Gamma_\Wc (X, \ZZ(n)) \cong R\Gamma_\Wc (X_\red, \ZZ(n))$. This is not
+  surprising, since Weil-\'{e}tale complexes are constructed from a variant of
+  cycle complexes, and these do not distinguish $X$ from $X_\red$ (unlike, for
+  example, algebraic $K$-groups). This is actually the desired behavior for us,
+  since the zeta function does not do this either:
+  $\zeta (X,s) = \zeta (X_\red,s)$.
+\end{remark}
+
+\begin{remark}
+  If $X/\FF_q$ is a variety over a finite field, then the proof of
+  Theorem~\ref{thm:compatibility-of-C(X,n)} simplifies drastically: we can work
+  with the formula \eqref{eqn:special-value-for-X/Fq} and the following
+  properties of motivic cohomology:
+  \begin{enumerate}
+  \item[1)] $R\Gamma (\coprod_i X_{i,\et}, \ZZ^c (n)) \cong
+    \bigoplus_i R\Gamma (X_{i,\et}, \ZZ^c (n))$;
+
+  \item[2)] triangles
+    \[ R\Gamma (Z_\et, \ZZ^c (n)) \to
+      R\Gamma (X_\et, \ZZ^c (n)) \to
+      R\Gamma (U_\et, \ZZ^c (n)) \to
+      R\Gamma (Z_\et, \ZZ^c (n))[1] \]
+    associated to closed-open decompositions;
+
+  \item[3)] homotopy invariance
+    $R\Gamma (X_\et, \ZZ^c (n-r)) [2r] \cong
+    R\Gamma (\AA^r_{X,\et}, \ZZ^c (n))$.
+  \end{enumerate}
+  In this case, no regulators are involved, so we do not need the technical
+  Lemmas \ref{lemma:lambda-and-disjoint-unions},
+  \ref{lemma:lambda-and-closed-open-decompositions},
+  \ref{lemma:lambda-and-affine-bundles}.
+\end{remark}
+
+If we consider the projective space $\PP_X^r = \PP_\ZZ^r \times X$, we have a
+formula for the zeta function
+\begin{equation}
+  \label{eqn:zeta-function-for-projective-space}
+  \zeta (\PP_X^r, s) = \prod_{0 \le i \le r} \zeta (X, s-i).
+\end{equation}
+
+\begin{corollary}[Projective bundles]
+  Let $X$ be an arithmetic scheme, $n < 0$, and $r \ge 0$.
+  For $i = 0,\ldots,r$ assume Conjectures $\mathbf{L}^c (X_\et,n-i)$,
+  $\mathbf{B} (X,n-i)$, and the meromorphic continuation of $\zeta (X,s)$ around
+  $s = n-i$. Then
+  \[ \mathbf{C} (X,n-i)\text{ for }i = 0,\ldots,r \Longrightarrow
+    \mathbf{C} (\PP_X^r, n). \]
+
+  \begin{proof}
+    Applied to the closed-open decomposition
+    $\PP_X^{r-1} \not\hookrightarrow \PP_X^r \hookleftarrow \AA_X^r$,
+    Theorem~\ref{thm:compatibility-of-C(X,n)} gives
+    \[ \mathbf{C} (X, n-r) \text{ and } \mathbf{C} (\PP_X^{r-1}, n)
+      \Longrightarrow
+      \mathbf{C} (\AA_X^r, n) \text{ and } \mathbf{C} (\PP_X^{r-1}, n)
+      \Longrightarrow
+      \mathbf{C} (\PP_X^r,n). \]
+    The assertion follows by induction on $r$.
+    (The same inductive argument proves the identity
+    \eqref{eqn:zeta-function-for-projective-space} from
+    \eqref{eqn:zeta-function-for-affine-space}.)
+    \end{proof}
+\end{corollary}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2186,10 +2199,10 @@ This approach is motivated by \cite[\S 5]{Morin-2014}.
     $\mathcal{C} (\ZZ)$.
 
   \item[$\mathcal{C}2)$] Let $Z \not\hookrightarrow X \hookleftarrow U$ be a
-    closed-open decomposition such that
-    $Z_{\red,\CC}$, $X_{\red,\CC}$, $U_{\red,\CC}$ are smooth and
-    quasi-projective. Then if two out of three schemes $Z,X,U$ lie in
-    $\mathcal{C} (\ZZ)$, then the third lies as well.
+    closed-open decomposition such that $Z_{\red,\CC}$, $X_{\red,\CC}$,
+    $U_{\red,\CC}$ are smooth and quasi-projective. Then if two of the three
+    schemes $Z,X,U$ lie in $\mathcal{C} (\ZZ)$, then the third also lies in
+    $\mathcal{C} (\ZZ)$.
 
   \item[$\mathcal{C}3)$] If $X$ lies in $\mathcal{C} (\ZZ)$, then the affine
     space $\AA^r_X$ also lies in $\mathcal{C} (\ZZ)$ for each $r \ge 0$.
@@ -2260,10 +2273,10 @@ is needed to ensure that the regulator morphism exists
   Then $B \in \mathcal{C} (\ZZ)$.
 
   \begin{proof}
-    We will see that such a scheme can be obtained from $\Spec \mathcal{O}_F$
-    for an abelian number field $F/\QQ$, or a curve over a finite field
-    $C/\FF_q$, using the operations $\mathcal{C}0)$, $\mathcal{C}1)$,
-    $\mathcal{C}2)$ that appear in the definition of $\mathcal{C} (\ZZ)$.
+    We verify that such a scheme can be obtained from $\Spec \mathcal{O}_F$ for
+    an abelian number field $F/\QQ$, or a curve over a finite field $C/\FF_q$,
+    using the operations $\mathcal{C}0)$, $\mathcal{C}1)$, $\mathcal{C}2)$ that
+    appear in the definition of $\mathcal{C} (\ZZ)$.
 
     Thanks to $\mathcal{C}0)$, we can assume that $B$ is reduced. Consider the
     normalization $\nu\colon B' \to B$. This is a birational morphism, and there
@@ -2386,7 +2399,7 @@ The original construction is due to Knudsen and Mumford
 \cite[\S 2.1]{Kato-1993}.
 
 For our purposes, let $R$ be a commutative ring, which is an integral domain
-(we will be interested in $R = \ZZ$, $\QQ$, $\RR$). Denote by
+(we are interested in $R = \ZZ$, $\QQ$, $\RR$). Denote by
 $\mathcal{P}_\is (R)$ (``Picard'') the category of graded invertible
 $R$-modules. It has as its objects pairs $(L,r)$, where $L$ is an invertible
 $R$-module (= projective of rank $1$) and $r \in \ZZ$. The morphisms in this
@@ -2553,11 +2566,11 @@ distinguished triangles.
 \end{proposition}
 
 \begin{remark}
-  In what follows, for $(L,r) \in \mathcal{P}_\is (R)$ we will forget about
-  $r$ and treat the determinant as an invertible $R$-module.
+  In what follows, for $(L,r) \in \mathcal{P}_\is (R)$ we forget about $r$ and
+  treat the determinant as an invertible $R$-module.
 \end{remark}
 
-A particular very simple case of interest is when all cohomology groups
+A particular simple case of interest is when all cohomology groups
 $H^i (A^\bullet)$ are finite.
 
 \begin{lemma}
