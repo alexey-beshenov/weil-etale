@@ -211,12 +211,12 @@ Early on, Lichtenbaum conjectured that both numbers $\ord_{s = n} \zeta (X,s)$
 and $\zeta^* (X,n)$ should have a cohomological interpretation related to the
 \'{e}tale motivic cohomology of $X$ (see e.g. \cite{Lichtenbaum-1984} for
 varieties over finite fields). This is made precise in Lichtenbaum's
-Weil-\'{e}tale program. It suggests the existence of \textbf{Weil-\'{e}tale
-  cohomology}, which is a suitable modification of the motivic cohomology that
-encodes information about the vanishing order and the special value of
-$\zeta (X,n)$ at $s = n$.
+Weil-\'{e}tale program. It suggests the existence of
+\textbf{Weil-\'{e}tale cohomology}, which is a suitable modification of motivic
+cohomology that encodes the information about the vanishing order and the
+special value of $\zeta (X,n)$ at $s = n$.
 
-For Lichtenbaum's work on this topic, we refer the reader to
+For Lichtenbaum's recent work on this topic, we refer the reader to
 \cite{Lichtenbaum-2005,Lichtenbaum-2009-Euler-char,Lichtenbaum-2009-number-rings,Lichtenbaum-2021}.
 
 The case of varieties over finite fields $X/\FF_q$ is now well understood thanks
@@ -224,26 +224,26 @@ to the work of Geisser
 \cite{Geisser-2004,Geisser-2006,Geisser-2010-arithmetic-homology}.
 
 Flach and Morin considered the case of proper, regular arithmetic schemes
-$X$. In \cite{Flach-Morin-2012} they defined and studied the corresponding
+$X$. In \cite{Flach-Morin-2012} they have studied the corresponding
 Weil-\'{e}tale topos. Later, in \cite{Morin-2014} Morin gave an explicit
 construction of Weil-\'{e}tale cohomology groups $H^i_\Wc (X, \ZZ)$ for a proper
 and regular arithmetic scheme $X$. This construction was further generalized by
 Flach and Morin in \cite{Flach-Morin-2018} to groups $H^i_\Wc (X, \ZZ(n))$ with
 weights $n \in \ZZ$, again for proper and regular $X$.
 
-Motivated by the work of Flach and Morin, the author in
-\cite{Beshenov-Weil-etale-1} constructed Weil-\'{e}tale cohomology groups
-$H^i_\Wc (X, \ZZ (n))$ for any arithmetic scheme $X$ (removing the assumptions
-that $X$ is proper or regular) and strictly negative weights $n < 0$.
-The construction is based on the following assumption
-(see \cite[\S 8]{Beshenov-Weil-etale-1} for the known cases).
+Motivated by the work of Flach and Morin, the author constructed in
+\cite{Beshenov-Weil-etale-1} Weil-\'{e}tale cohomology groups
+$H^i_\Wc (X, \ZZ (n))$ for any arithmetic scheme $X$ (removing the assumption
+that $X$ is proper or regular) and strictly negative weights $n < 0$.  The
+construction is based on the following assumption.
 
 \begin{conjecture*}
   $\mathbf{L}^c (X_\et,n)$: the cohomology groups $H^i (X_\et, \ZZ^c (n))$ are
   finitely generated for all $i \in \ZZ$.
 \end{conjecture*}
 
-Under this conjecture, we defined in \cite[\S 7]{Beshenov-Weil-etale-1} perfect
+For the known cases, see \cite[\S 8]{Beshenov-Weil-etale-1}. Under this
+conjecture, we constructed in \cite[\S 7]{Beshenov-Weil-etale-1} perfect
 complexes of abelian groups $R\Gamma_\Wc (X, \ZZ(n))$ and the corresponding
 cohomology groups
 $$H^i_\Wc (X, \ZZ(n)) \dfn H^i (R\Gamma_\Wc (X, \ZZ(n))).$$
@@ -255,7 +255,7 @@ $\zeta (X,s)$ at $s = n < 0$.  Specifically, we make the following conjectures.
 \begin{enumerate}
 \item[1)] \textbf{Conjecture}~$\mathbf{VO} (X,n)$
   (see \S\ref{sec:vanishing-order-conjecture}):
-  \emph{the vanishing order is given by}
+  \emph{the vanishing order is given by the weighted alternating sum of ranks}
   \[ \ord_{s=n} \zeta (X,s) =
     \sum_{i\in \ZZ} (-1)^i \cdot i \cdot \rk_\ZZ H_\Wc^i (X, \ZZ(n)). \]
 
@@ -328,9 +328,9 @@ construction of Kerr, Lewis, and M\"{u}ller-Stach
 Conjecture~$\mathbf{B} (X,n)$.
 
 Then \S\ref{sec:vanishing-order-conjecture} is devoted to
-Conjecture~$\mathbf{VO} (X,n)$ about vanishing order. We also explain why it is
-consistent with a conjecture of Soul\'{e} and the vanishing order arising from
-the expected functional equation.
+Conjecture~$\mathbf{VO} (X,n)$ about the vanishing order. We also explain why it
+is consistent with a conjecture of Soul\'{e}, and with the vanishing order
+arising from the expected functional equation.
 
 In \S\ref{sec:special-value-conjecture} we state Conjecture~$\mathbf{C} (X,n)$
 about the special value.
@@ -362,9 +362,28 @@ We denote by
   R\Gamma_\Wc (X, \ZZ (n))
 \]
 the complexes of abelian groups constructed in \cite{Beshenov-Weil-etale-1}
-under Conjecture~$\mathbf{L}^c (X_\et,n)$.
+under Conjecture~$\mathbf{L}^c (X_\et,n)$. We set
+\begin{align*}
+  H^i_\fg (X, \ZZ (n)) & \dfn H^i (R\Gamma_\fg (X, \ZZ (n))), \\
+  H^i_\Wc (X, \ZZ (n)) & \dfn H^i (R\Gamma_\Wc (X, \ZZ (n))).
+\end{align*}
 
-For the rational coefficients, we set
+By \cite[Proposition 5.5, Proposition 7.12]{Beshenov-Weil-etale-1}, these
+cohomology groups are finitely generated, assuming
+Conjecture~$\mathbf{L}^c (X_\et,n)$; moreover, the groups $H^i_\Wc (X, \ZZ(n))$
+are bounded, and $H^i_\fg (X, \ZZ (n))$ are bounded from below and finite
+$2$-torsion for $i \gg 0$.
+
+Briefly, the construction fits in the following diagram in the derived category
+$\mathbf{D} (\ZZ)$ with distinguished triangles:
+\[ \begin{tikzcd}[column sep=1.5em]
+    &[-3em] \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]) \ar{d}{\alpha_{X,n}} \ar{r} &[-2.5em] 0 \ar{d} \\
+    & R\Gamma_c (X_\et, \ZZ(n)) \ar{d}\ar{r}{u_\infty^*} & R\Gamma_c (G_\RR, X (\CC), \ZZ(n))\ar{d}{id} \\
+    R\Gamma_\Wc (X, \ZZ (n)) \ar{r} & R\Gamma_\fg (X, \ZZ(n)) \ar[dashed]{r}{i_\infty^*}\ar{d} & R\Gamma_c (G_\RR, X (\CC), \ZZ(n)) \ar{r} \ar{d} & {[1]} \\
+    & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-1]) \ar{r} & 0
+\end{tikzcd} \]
+For more details, see \cite{Beshenov-Weil-etale-1}. For the rational
+coefficients, we set
 \begin{align*}
   R\Gamma_\fg (X, \QQ (n)) & \dfn R\Gamma_\fg (X, \ZZ (n)) \otimes \QQ, \\
   R\Gamma_\Wc (X, \QQ (n)) & \dfn R\Gamma_\Wc (X, \ZZ (n)) \otimes \QQ.
@@ -383,11 +402,10 @@ the complex conjugation. For a subring $A \subseteq \RR$ we denote by $A (n)$
 the $G_\RR$-module $(2\pi i)^n\,A$, and also the corresponding constant
 $G_\RR$-equivariant sheaf on $X (\CC)$.
 
-We denote by $R\Gamma_c (X (\CC), A (n))$
-(resp. $R\Gamma_c (G_\RR, X (\CC), A (n))$) the cohomology with compact
-support (resp. $G_\RR$-equivariant cohomology with compact support) of $X$ with
-$A (n)$-coefficients. For more details on $G_\RR$-equivariant cohomology,
-see \cite[\S 1]{Beshenov-Weil-etale-1}. With real coefficients, we have
+We denote by $R\Gamma_c (X (\CC), A (n))$ the cohomology with compact support
+with $A (n)$-coefficients, and its $G_\RR$-equivariant version is defined by
+$$R\Gamma_c (G_\RR, X (\CC), A (n)) \dfn R\Gamma (G_\RR, R\Gamma_c (X (\CC), A (n)))$$
+For real coefficients, we have
 $$H_c^i (G_\RR, X (\CC), \RR (n)) = H^i_c (X (\CC), \RR (n))^{G_\RR},$$
 where the $G_\RR$-action on $H^i_c (X (\CC), \RR (n))$ naturally comes from the
 corresponding action on $X (\CC)$ and $\RR (n)$.
@@ -404,14 +422,14 @@ support. In particular, we are interested in
 \subsection*{Acknowledgments}
 
 Parts of this work are based on the results of my doctoral thesis, which I wrote
-at the Université de Bordeaux and the Universiteit Leiden under the supervision
-of Baptiste Morin and Bas Edixhoven. I am very grateful to them for their
-support in working on this project. I am also indebted to Matthias Flach, as the
-ideas for this work came from \cite{Flach-Morin-2018}. I thank Stephen
-Lichtenbaum and Niranjan Ramachandran who kindly agreed to act as reviewers for
-my thesis and provided me with many useful comments and suggestions. Finally,
-I thank Jos\'{e} Jaime Hern\'{a}ndez Castillo, Diosel L\'{o}pez Cruz, and Maxim
-Mornev for several fruitful discussions.
+under the supervision of Baptiste Morin (Université de Bordeaux) and Bas
+Edixhoven (Universiteit Leiden). I am very grateful to them for their support in
+working on this project. I am also indebted to Matthias Flach, as the ideas for
+this work came from \cite{Flach-Morin-2018}. I thank Stephen Lichtenbaum and
+Niranjan Ramachandran who kindly agreed to act as reviewers for my thesis and
+provided me with many useful comments and suggestions. Finally, I thank Jos\'{e}
+Jaime Hern\'{a}ndez Castillo, Diosel L\'{o}pez Cruz, and Maxim Mornev for
+several fruitful discussions.
 
 This paper was edited while I visited the Center for Research in Mathematics
 (CIMAT), Guanajuato. I personally thank Pedro Luis del \'{A}ngel and
@@ -423,11 +441,11 @@ Xavier G\'{o}mez Mont for their hospitality.
 \label{sec:regulator}
 
 In order to formulate the special value conjecture, we need a regulator morphism
-from motivic cohomology to Deligne--Beilinson (co)homology. Such regulators were
-originally introduced by Bloch in \cite{Bloch-1986-Lefschetz}, and here we use
-the construction of Kerr, Lewis, and M\"{u}ller-Stach
-\cite{Kerr-Lewis-Muller-Stach-2006}, which works at the level of complexes.
-We will simply call it ``the KLM morphism.'' It works under the assumption that
+from motivic cohomology to Deligne(--Beilinson) (co)homology. Such regulators
+were originally introduced by Bloch in \cite{Bloch-1986-Lefschetz}, and here we
+use the construction of Kerr, Lewis, and M\"{u}ller-Stach
+\cite{Kerr-Lewis-Muller-Stach-2006}, which works at the level of complexes.  We
+will simply call it ``the KLM morphism.'' It works under the assumption that
 $X_{\red,\CC}$ is a smooth quasi-projective variety.
 
 For simplicity, in this section we assume that $X$ is reduced (motivic
@@ -446,10 +464,9 @@ The KLM regulator has the form of a morphism in the derived category
 \end{equation}
 
 Here $z^p (X_\CC, -\bullet)$ denotes the Bloch's cycle complex
-\cite{Bloch-1986}. We recall that, according to the definition, $z^p (X_\CC, i)$
-is freely generated by algebraic cycles
-$Z \subset X_\CC \times_{\Spec \CC} \Delta_\CC^i$ of codimension $p$ which
-intersect properly the faces of the algebraic simplex
+\cite{Bloch-1986}. According to the definition, $z^p (X_\CC, i)$ is freely
+generated by algebraic cycles $Z \subset X_\CC \times_{\Spec \CC} \Delta_\CC^i$
+of codimension $p$ which intersect properly the faces of the algebraic simplex
 $\Delta_\CC^i = \Spec \CC [t_0,\ldots,t_i]/(1 - \sum_j t_j)$. It is more
 convenient for us to work with
 $$z_{d_\CC - p} (X_\CC, i) = z^p (X_\CC, i),$$
@@ -458,7 +475,7 @@ dimension $p+i$.
 
 The complex ${}' C_\mathcal{D}^{\bullet} (\overline{X}_\CC, D, \QQ (k))$ on the
 right-hand side of \eqref{eqn:KLM-morphism-1} computes Deligne(--Beilinson)
-homology, as defined in \cite{Jannsen-1988}. In particular, if we take
+homology, as defined by Jannsen \cite{Jannsen-1988}. In particular, if we take
 $p = d_\CC + 1 - n$, tensor it with $\RR$ and shift it by $2n$, we obtain
 \begin{equation}
   \label{eqn:KLM-morphism-2}
@@ -473,7 +490,7 @@ $p = d_\CC + 1 - n$, tensor it with $\RR$ and shift it by $2n$, we obtain
   \item Originally, the KLM morphism is defined using a cubical version of cycle
     complexes, but these are quasi-isomorphic to the usual simplicial cycle
     complexes (see \cite{Levine-1994}), so we make no distinction here.
-    For a simplicial version, see \cite{Kerr-Lewis-Lopatto-2018}.
+    For an explicit simplicial version, see \cite{Kerr-Lewis-Lopatto-2018}.
 
   \item The KLM morphism is defined as a true morphism of complexes (not just a
     morphism in the derived category) on a subcomplex
@@ -589,9 +606,9 @@ we have
   \label{eqn:KLM-morphism-5}
   \Gamma (X_{\CC,\et}, \RR^c (n-1)) \cong R\Gamma (X_{\CC,\et}, \RR^c (n-1)).
 \end{equation}
-We note that \cite[Theorem~3.1]{Geisser-2010} holds unconditionally, since the
+(We note that \cite[Theorem~3.1]{Geisser-2010} holds unconditionally, since the
 Beilinson--Lichtenbaum conjecture follows from the Bloch--Kato conjecture, which
-is now a theorem. (See also \cite{Geisser-2004-Dedekind} where the consequences
+is now a theorem; see also \cite{Geisser-2004-Dedekind} where the consequences
 of Bloch--Kato for motivic cohomology are deduced.)
 
 Finally, the base change from $X$ to $X_\CC$ naturally maps cycles
@@ -662,9 +679,8 @@ role in everything that follows.
   morphism or Conjecture~$\mathbf{B} (X,n)$ is brought, we tacitly assume this
   restriction. This is rather unfortunate, since Weil-\'{e}tale cohomology was
   constructed in \cite{Beshenov-Weil-etale-1} for any arithmetic scheme,
-  assuming only Conjecture~$\mathbf{L}^c (X_\et,n)$. The definition of the
-  regulator for singular $X_{\red,\CC}$ is an interesting project for future
-  work.
+  assuming only Conjecture~$\mathbf{L}^c (X_\et,n)$. Defining the regulator for
+  singular $X_{\red,\CC}$ is an interesting project for future work.
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -679,14 +695,13 @@ $s = n$.
 \begin{conjecture}
   $\mathbf{VO} (X,n)$: one has
   \[ \ord_{s=n} \zeta (X,s) =
-    \chi' (R\Gamma_\Wc (X, \ZZ (n))) \dfn
     \sum_{i \in \ZZ} (-1)^i \cdot i \cdot \rk_\ZZ H^i_\Wc (X, \ZZ (n)). \]
 \end{conjecture}
 
-We note that the right-hand side makes sense assuming
-Conjecture~$\mathbf{L}^c (X_\et,n)$, according to which $H^i_\Wc (X, \ZZ (n))$
-are finitely generated groups, trivial for $|i| \gg 0$
-(see \cite[Proposition~7.12]{Beshenov-Weil-etale-1}).
+We note that the right-hand side makes sense under
+Conjecture~$\mathbf{L}^c (X_\et,n)$, which implies that $H^i_\Wc (X, \ZZ (n))$
+are finitely generated groups, trivial for $|i| \gg 0$;
+see \cite[Proposition~7.12]{Beshenov-Weil-etale-1}.
 
 \begin{remark}
   Conjecture~$\mathbf{VO} (X,n)$ is similar to
@@ -716,8 +731,11 @@ are finitely generated groups, trivial for $|i| \gg 0$
 \end{remark}
 
 \begin{remark}
-  The alternating sum in the formula is the so-called
-  \textbf{secondary Euler characteristic}. The calculations below show that the
+  The alternating sum in Conjecture~$\mathbf{VO} (X,n)$ is the so-called
+  \textbf{secondary Euler characteristic}
+  \[ \chi' (R\Gamma_\Wc (X, \ZZ (n))) \dfn
+    \sum_{i \in \ZZ} (-1)^i \cdot i \cdot \rk_\ZZ H^i_\Wc (X, \ZZ (n)) \]
+  The calculations below show that the
   usual Euler characteristic of $R\Gamma_\Wc (X, \ZZ (n))$ vanishes, assuming
   Conjectures~$\mathbf{L}^c (X_\et,n)$ and $\mathbf{B} (X,n)$.
   See \cite{Ramachandran-2016} for more details on the secondary Euler
@@ -842,7 +860,7 @@ $R\Gamma (X_\et, \ZZ^c (n)) [1]$.
   \end{align*}
   Here the terms $h^{p,q}$ with $p < q$ come from $\sigma (H^{p,q}) = H^{q,p}$,
   while $h^{p,(-1)^{n-p}}$ come from the action on $H^{p,p}$.
-  We see that our conjectural formula gives the expected vanishing orders.
+  We see that our conjectural formula recovers the expected vanishing order.
 \end{remark}
 
 Let us look at some particular examples when the meromorphic continuation for
@@ -884,11 +902,11 @@ $\zeta (X,s)$ is known.
   The complex $R\Gamma_c (X (\CC), \RR (n))$ consists of a single $G_\RR$-module
   in degree $0$ given by
   $$\RR (n)^{\oplus r_1} \oplus (\RR (n) \oplus \RR (n))^{\oplus r_2},$$
-  with the action of $G_\RR$ on the first summand
-  $\RR (n)^{\oplus r_1}$ by complex conjugation and the action on the
-  second summand $(\RR (n) \oplus \RR (n))^{\oplus r_2}$ via
-  $(x,y) \mapsto (\overline{y}, \overline{x})$. The corresponding real
-  space of fixed points has dimension
+  with the action of $G_\RR$ on the first summand $\RR (n)^{\oplus r_1}$ via the
+  complex conjugation and the action on the second summand
+  $(\RR (n) \oplus \RR (n))^{\oplus r_2}$ via
+  $(x,y) \mapsto (\overline{y}, \overline{x})$. The corresponding real space of
+  fixed points has dimension
   \[ \dim_\RR H^0_c (G_\RR, X (\CC), \RR (n)) = \begin{cases}
       r_2, & n \text{ odd},\\
       r_1 + r_2, & n \text{ even},\\
@@ -896,10 +914,9 @@ $\zeta (X,s)$ is known.
   which indeed coincides with the vanishing order of the Dedekind zeta function
   $\zeta (X,s) = \zeta_F (s)$ at $s = n < 0$.
 
-  On the motivic cohomology side
-  (see e.g. \cite[Proposition~4.14]{Geisser-2017}), for $n < 0$ the groups
-  $H^i (X_\et, \ZZ^c (n)) = H^{i+2} (X_\et, \ZZ (1-n))$ are finite, except for
-  $i = -1$, where
+  On the motivic cohomology side \cite[Proposition~4.14]{Geisser-2017}, for
+  $n < 0$ the groups $H^i (X_\et, \ZZ^c (n)) = H^{i+2} (X_\et, \ZZ (1-n))$ are
+  finite, except for $i = -1$, where
   \[ \rk_\ZZ H^{-1} (X_\et, \ZZ^c (n)) =
     \rk_\ZZ H^1 (X_\et, \ZZ (1-n)) = \begin{cases}
       r_2, & n \text{ odd},\\
@@ -915,12 +932,10 @@ $\zeta (X,s)$ is known.
                            & = \sum_{i \in \ZZ} (-1)^{i+1} \rk_\ZZ H^i (X_\et, \ZZ^c (n)) = 0,
   \end{align*}
   since $X (\CC) = \emptyset$, and also because $\mathbf{L}^c (X_\et, n)$
-
-  implies $\rk_\ZZ H^i (X_\et, \ZZ^c (n)) = 0$ in the case of varieties over finite
-  fields \cite[Proposition~4.2]{Beshenov-Weil-etale-1}. Therefore, the
-  conjecture simply asserts that $\zeta (X,s)$ has no zeros or poles at
-  $s = n < 0$.
-
+  implies $\rk_\ZZ H^i (X_\et, \ZZ^c (n)) = 0$ in the case of varieties over
+  finite fields, as observed in
+  \cite[Proposition~4.2]{Beshenov-Weil-etale-1}. Therefore, the conjecture
+  simply asserts that $\zeta (X,s)$ has no zeros or poles at $s = n < 0$.
   This is indeed the case. We have $\zeta (X,s) = Z (X,q^{-s})$, where
   $$Z (X,t) = \exp \Bigl(\sum_{k\ge 1} \frac{\# X (\FF_{q^k})}{k}\,t^k\Bigr)$$
   is the Hasse--Weil zeta function. According to Deligne's work on Weil's
@@ -930,7 +945,7 @@ $\zeta (X,s)$ is known.
   is neither a zero nor a pole of $Z (X,s)$.
 
   We also note that our definition of $H^i_\Wc (X, \ZZ(n))$, and pretty much
-  everything said above only makes sense for $n < 0$. Already for $n = 0$, for
+  everything said above, only makes sense for $n < 0$. Already for $n = 0$, for
   example, the zeta function of a smooth projective curve $X/\FF_q$ has a simple
   pole at $s = 0$.
 \end{example}
@@ -985,9 +1000,9 @@ $\zeta (X,s)$ is known.
 
 \begin{lemma}
   \label{lemma:smile-theta}
-  Assuming $\mathbf{L}^c (X_\et,n)$ and $\mathbf{B} (X,n)$, the morphism
-  $\smile\theta$ induces a long exact sequence of finite dimensional real vector
-  spaces
+  Assuming Conjectures $\mathbf{L}^c (X_\et,n)$ and $\mathbf{B} (X,n)$, the
+  morphism $\smile\theta$ induces a long exact sequence of finite dimensional
+  real vector spaces
   \[ \cdots \to H^{i-1}_\Wc (X, \RR (n))
     \xrightarrow{\smile\theta}
     H^i_\Wc (X, \RR (n))
@@ -1002,23 +1017,23 @@ $\zeta (X,s)$ is known.
         \cdots & \oplus & \oplus & \cdots \\[-2em]
         & H_c^{i-1} (G_\RR, X (\CC), \RR (n))\ar{uur}[description]{\cong} & H_c^i (G_\RR, X (\CC), \RR (n))
       \end{tikzcd} \]
-    Here the diagonal arrows are isomorphisms according to $\mathbf{B} (X,n)$,
+    The diagonal arrows are isomorphisms according to $\mathbf{B} (X,n)$,
     so the sequence is exact.
   \end{proof}
 \end{lemma}
 
-We recall that the Weil-\'{e}tale complex $R\Gamma_\Wc (X, \ZZ(n))$ is defined in
-\cite{Beshenov-Weil-etale-1} up to a \emph{non-unique} isomorphism in the
+The Weil-\'{e}tale complex $R\Gamma_\Wc (X, \ZZ(n))$ is defined in
+\cite[\S 7]{Beshenov-Weil-etale-1} up to a \emph{non-unique} isomorphism in the
 derived category $\mathbf{D} (\ZZ)$ via a distinguished triangle
 \begin{equation}
   \label{eqn:triangle-defining-RGamma-Wc}
   R\Gamma_\Wc (X, \ZZ(n)) \to R\Gamma_\fg (X,\ZZ(n)) \xrightarrow{i_\infty}
   R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \to [1]
 \end{equation}
-This is quite unpleasant, and there ought to be a better, more canonical
-construction of $R\Gamma_\Wc (X, \ZZ(n))$. However, this is not a big issue for
-the moment, since the special value conjecture will be formulated not in terms
-of $R\Gamma_\Wc (X, \ZZ (n))$, but in terms of its determinant
+This is rather awkward, and there should be a better, more canonical
+construction of $R\Gamma_\Wc (X, \ZZ(n))$. For our purposes, however, this is
+not much of a problem, since the special value conjecture is not formulated in
+terms of $R\Gamma_\Wc (X, \ZZ (n))$, but in terms of its determinant
 $\det_\ZZ R\Gamma_\Wc (X, \ZZ(n))$ (see Appendix~\ref{app:determinants}), which
 is well-defined.
 
@@ -1028,24 +1043,25 @@ is well-defined.
   canonical isomorphism.
 
   \begin{proof}
-    Two different choices of the mapping fiber in
-    \eqref{eqn:triangle-defining-RGamma-Wc} give us an isomorphism of
+    Two different choices for the mapping fiber in
+    \eqref{eqn:triangle-defining-RGamma-Wc} yield an isomorphism of
     distinguished triangles
     \[ \begin{tikzcd}
         R\Gamma_\Wc (X, \ZZ(n)) \ar{r}\ar{d}{f}[swap]{\cong} & R\Gamma_\fg (X,\ZZ(n)) \ar{r}{i_\infty}\ar{d}{id} & R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \ar{r}\ar{d}{id} & {[1]}\ar{d}{f}[swap]{\cong} \\
         R\Gamma_\Wc (X, \ZZ(n))' \ar{r} & R\Gamma_\fg (X,\ZZ(n)) \ar{r}{i_\infty} & R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \ar{r} & {[1]}
       \end{tikzcd} \]
-    Now the idea is to use the functoriality of determinants with respect to
+    The idea is to use functoriality of determinants with respect to
     isomorphisms of distinguished triangles
-    (see \ref{prop:det-and-isos-of-triangles}). The only technical issue is that
-    whenever $X (\RR) \ne \emptyset$, the complexes $R\Gamma_\fg (X,\ZZ(n))$ and
-    $R\Gamma_c (G_\RR, X (\CC), \ZZ (n))$ are not perfect, but possibly have
-    finite $2$-torsion in $H^i (-)$ for arbitrarily big $i$ (in
-    \cite{Beshenov-Weil-etale-1} we called such complexes
-    \textbf{almost perfect}). On the other hand, the determinants are only
-    defined for perfect complexes. Luckily, $H^i (i_\infty^*)$ is an isomorphism
-    for $i \gg 0$, so that for $m$ big enough we can take the corresponding
-    canonical truncations $\tau_{\le m}$:
+    (Proposition~\ref{prop:det-and-isos-of-triangles}). The only technical problem
+    is that whenever $X (\RR) \ne \emptyset$, the complexes
+    $R\Gamma_\fg (X,\ZZ(n))$ and $R\Gamma_c (G_\RR, X (\CC), \ZZ (n))$ are not
+    perfect, but may have finite $2$-torsion in $H^i (-)$ for arbitrarily big
+    $i$ (in \cite{Beshenov-Weil-etale-1} we called such complexes
+    \textbf{almost perfect}). On the other hand, the determinants are defined
+    only for perfect complexes. Fortunately, $H^i (i_\infty^*)$ is an
+    isomorphism for $i \gg 0$ by the boundedness of $H^i_\Wc (X, \ZZ(n))$
+    \cite[Proposition~7.12]{Beshenov-Weil-etale-1}, so that for $m$ big enough
+    we can take the corresponding canonical truncations $\tau_{\le m}$:
     \[ \begin{tikzcd}[row sep=1.5em, column sep=0.75em, font=\small]
         \tau_{\le m} R\Gamma_\Wc (X, \ZZ(n)) \ar{r}\ar{d}{\cong} & \tau_{\le m} R\Gamma_\fg (X,\ZZ(n)) \ar{r}\ar{d} & \tau_{\le m} R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \ar{r}\ar{d} & {[1]}\ar{d}{\cong} \\
         R\Gamma_\Wc (X, \ZZ(n)) \ar{r}\ar{d} & R\Gamma_\fg (X,\ZZ(n)) \ar{r}{i_\infty}\ar{d} & R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \ar{r}\ar{d} & {[1]}\ar{d} \\
@@ -1053,12 +1069,12 @@ is well-defined.
         {[1]} \ar{r} & {[1]} \ar{r} & {[1]} \ar{r} & {[2]}
       \end{tikzcd} \]
 
-    The truncations give us (rotating the triangles for convenience)
+    The truncations give us (rotating the triangles)
     \[ \begin{tikzcd}[column sep=1em,font=\small]
         \tau_{\le m} R\Gamma_c (G_\RR, X (\CC), \ZZ (n))[-1] \ar{r}\ar{d}{id} & R\Gamma_\Wc (X, \ZZ (n))\ar{d}{f}[swap]{\cong}\ar{r} & \tau_{\le m} R\Gamma_\fg (X,\ZZ(n)) \ar{d}{id}\ar{r} & {[0]} \ar{d}{id} \\
         \tau_{\le m} R\Gamma_c (G_\RR, X (\CC), \ZZ (n))[-1] \ar{r} & R\Gamma_\Wc (X, \ZZ (n))' \ar{r} & \tau_{\le m} R\Gamma_\fg (X,\ZZ(n)) \ar{r} & {[0]}
       \end{tikzcd} \]
-    Now according to \ref{prop:det-and-isos-of-triangles}, we have a commutative
+    By Proposition~\ref{prop:det-and-isos-of-triangles}, we have a commutative
     diagram
     \[ \begin{tikzcd}
         \begin{array}{c} \det_\ZZ \tau_{\le m} R\Gamma_c (G_\RR, X (\CC), \ZZ (n))[-1] \\ \otimes \\ \det_\ZZ \tau_{\le m} R\Gamma_\fg (X,\ZZ(n)) \end{array} \ar{r}{i}[swap]{\cong} \ar{d}{id} & \det_\ZZ R\Gamma_\Wc (X,\ZZ(n)) \ar{d}{\det_\ZZ (f)}[swap]{\cong} \\
@@ -1072,8 +1088,9 @@ is well-defined.
   The non-canonical splitting
   \[ R\Gamma_\Wc (X, \QQ(n)) \cong
     \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-1] \oplus
-    R\Gamma_c (G_\RR, X (\CC), \QQ (n)) [-1]. \]
-  Gives a canonical isomorphism of determinants
+    R\Gamma_c (G_\RR, X (\CC), \QQ (n)) [-1] \]
+  from \cite[Proposition~7.13]{Beshenov-Weil-etale-1} yields a canonical
+  isomorphism of determinants
   \[ \det_\QQ R\Gamma_\Wc (X, \QQ(n)) \cong
     \begin{array}{c}
       \det_\QQ \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-1] \\
@@ -1083,12 +1100,9 @@ is well-defined.
 
   \begin{proof}
     This is similar to the previous lemma; in fact, after tensoring with $\QQ$,
-    we obtain perfect complexes of $\QQ$-vector spaces, so that the truncations
-    are not needed anymore.
-
-    We recall from \cite[Proposition~7.4]{Beshenov-Weil-etale-1} that
-    $i_\infty^* \otimes \QQ = 0$, and thanks to this there is an isomorphism of
-    triangles
+    we obtain perfect complexes of $\QQ$-vector spaces, so the truncations are
+    no longer needed. By \cite[Proposition~7.4]{Beshenov-Weil-etale-1} we have
+    $i_\infty^* \otimes \QQ = 0$, so there is an isomorphism of triangles
     \begin{equation}
       \label{eqn:splitting-of-RGamma-Wc-triangles}
       \begin{tikzcd}[row sep=1em]
@@ -1107,7 +1121,7 @@ is well-defined.
       \xrightarrow{g} \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-1]
     \end{multline*}
     tensored with $\QQ$ (see \cite[Proposition~5.7]{Beshenov-Weil-etale-1}).
-    The distinguished column on the right of
+    The distinguished column on the right-hand side of
     \eqref{eqn:splitting-of-RGamma-Wc-triangles} is the direct sum
     \[ \begin{tikzcd}[row sep=1.5em]
         R\Gamma_c (G_\RR, X (\CC), \QQ (n)) [-1]\ar{d}{id} &[-2em] &[-2em] 0\ar{d} \\
@@ -1116,14 +1130,14 @@ is well-defined.
         R\Gamma_c (G_\RR, X (\CC), \QQ (n)) & & 0
       \end{tikzcd} \]
     The splitting isomorphism $f$ in
-    \eqref{eqn:splitting-of-RGamma-Wc-triangles} is by no means
-    canonical. However, after taking the determinants, we obtain a commutative
-    diagram (see \ref{prop:det-and-isos-of-triangles})
+    \eqref{eqn:splitting-of-RGamma-Wc-triangles} is not canonical at
+    all. However, after taking the determinants, we obtain a commutative diagram
+    (see Proposition~\ref{prop:det-and-isos-of-triangles})
     \[ \begin{tikzcd}[column sep=1em, font=\small]
         \begin{array}{c} \det_\QQ R\Gamma_c (G_\RR, X (\CC), \QQ (n)) [-1] \\ \otimes_\QQ \\ \det_\QQ R\Gamma_\fg (X, \QQ(n)) \end{array} \ar{r}{i}[swap]{\cong} \ar{d}{id \otimes \det_\ZZ (g\otimes \QQ)}[swap]{\cong} & \det_\QQ R\Gamma_\Wc (X, \QQ(n)) \ar{d}{\det_\ZZ (f)}[swap]{\cong}\ar[dashed]{dl}{\cong} \\
         \begin{array}{c} \det_\QQ R\Gamma_c (G_\RR, X (\CC), \QQ (n)) [-1] \\ \otimes_\QQ \\ \det_\QQ \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-1] \end{array} \ar{r}{i'}[swap]{\cong} & \det_\QQ \left(\!\!\!\begin{array}{c} \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-1] \\ \oplus \\ R\Gamma_c (G_\RR, X (\CC), \QQ (n)) [-1] \end{array}\!\!\!\right)
       \end{tikzcd} \]
-    Here the dashed diagonal arrow is the desired canonical isomorphism.
+    The dashed diagonal arrow is the desired canonical isomorphism.
   \end{proof}
 \end{lemma}
 
@@ -1142,11 +1156,11 @@ is well-defined.
   Note that the first complex has determinant
   \[ \det_\RR \left(\!\!\begin{array}{c} R\Gamma_c (G_\RR, X (\CC), \RR (n)) [-2] \\ \oplus \\ R\Gamma_c (G_\RR, X (\CC), \RR (n)) [-1] \end{array}\!\!\right) \cong
     \begin{array}{c} \det_\RR R\Gamma_c (G_\RR, X (\CC), \RR (n)) \\ \otimes_\RR \\ (\det_\RR R\Gamma_c (G_\RR, X (\CC), \RR (n)))^{-1} \end{array} \cong \RR, \]
-  and for the last complex, by compatibility with base change, we have a
+  and for the last complex, by the compatibility with base change, we have a
   canonical isomorphism
   \[ \det_\RR R\Gamma_\Wc (X, \RR (n)) \cong
     (\det_\ZZ R\Gamma_\Wc (X, \ZZ (n))) \otimes \RR. \]
-  Therefore, after taking determinants, the quasi-isomorphism
+  Therefore, after taking the determinants, the quasi-isomorphism
   \eqref{eqn:definition-of-lambda} induces a canonical isomorphism
   \begin{equation}
     \label{eqn:morphism-lambda}
@@ -1161,23 +1175,22 @@ is well-defined.
     \lambda\colon \RR \xrightarrow{\cong}
     \bigotimes_{i\in \ZZ} (\det_\RR H^i_\Wc (X, \RR (n)))^{(-1)^i} \\
     \xrightarrow{\cong} \Bigl(\bigotimes_{i\in \ZZ} (\det_\ZZ H^i_\Wc (X, \ZZ (n)))^{(-1)^i}\Bigr) \otimes \RR \\
-    \xrightarrow{\cong} (\det_\ZZ R\Gamma_\Wc (X, \ZZ (n))) \otimes \RR.
+    \xrightarrow{\cong} (\det_\ZZ R\Gamma_\Wc (X, \ZZ (n))) \otimes \RR,
   \end{multline*}
-  Here the first isomorphism comes from Lemma~\ref{lemma:smile-theta}.
+  where the first isomorphism comes from Lemma~\ref{lemma:smile-theta}.
 \end{remark}
 
 We are ready to state the main conjecture of this paper. The determinant
-$\det_\ZZ R\Gamma_\Wc (X, \ZZ (n)))$ is a free $\ZZ$-module of rank $1$ (which
-does not sound very interesting), but the whole point of the determinant
-business is that the isomorphism \eqref{eqn:morphism-lambda} embeds it
-canonically into $\RR$. We conjecture that this embedding gives the special
-value of $\zeta (X,s)$ at $s = n$ in the following sense.
+$\det_\ZZ R\Gamma_\Wc (X, \ZZ (n)))$ is a free $\ZZ$-module of rank $1$, and the
+isomorphism \eqref{eqn:morphism-lambda} canonically embeds it in $\RR$. We
+conjecture that this embedding gives the special value of $\zeta (X,s)$ at
+$s = n$ in the following sense.
 
 \begin{conjecture}
   $\mathbf{C} (X,n)$: let $X$ be an arithmetic scheme and $n < 0$ a strictly
-  negative integer. Assuming $\mathbf{L}^c (X_\et, n)$, $\mathbf{B} (X,n)$, and
-  meromorphic continuation of $\zeta (X,s)$ around $s = n < 0$, the
-  corresponding special value is determined up to sign by
+  negative integer. Assuming Conjectures~$\mathbf{L}^c (X_\et, n)$,
+  $\mathbf{B} (X,n)$ and the meromorphic continuation of $\zeta (X,s)$ around
+  $s = n < 0$, the corresponding special value is determined up to sign by
   \[ \lambda (\zeta^* (X,n)^{-1}) \cdot \ZZ =
     \det_\ZZ R\Gamma_\Wc (X, \ZZ (n)), \]
   where $\lambda$ is the canonical isomorphism \eqref{eqn:morphism-lambda}.
@@ -1198,15 +1211,14 @@ value of $\zeta (X,s)$ at $s = n$ in the following sense.
     \det_\ZZ R\Gamma_\dR (X/\ZZ)/\Fil^n. \]
   If $n < 0$, then
   $\Delta (X/\ZZ,n) = \det_\ZZ R\Gamma_\Wc (X, \ZZ(n))$. Moreover, $C (X,n)$ is
-  some rational number, defined via $\prod_p |c_p (X,n)|_p$.
-  Here $c_p (X,n) \in \QQ_p^\times/\ZZ_p^\times$ are the ``local factors''
+  a rational number, defined via $\prod_p |c_p (X,n)|_p$.
+  Here $c_p (X,n) \in \QQ_p^\times/\ZZ_p^\times$ are the local factors
   described in \cite[\S 5.4]{Flach-Morin-2018}, but
-  \cite[Proposition~5.8]{Flach-Morin-2018} says that if $n \le 0$, then
+  \cite[Proposition~5.8]{Flach-Morin-2018} states that if $n \le 0$, then
   $c_p (X,n) \equiv 1 \pmod{\ZZ_p^\times}$ for all $p$. Therefore, $C (X,n) = 1$
-  in our situation. Finally, the trivialization isomorphism ``$\lambda_\infty$''
-  is defined precisely the same way as our $\lambda$. Therefore,
-  \eqref{eqn:FM-special-value} coincides with Conjecture~$\mathbf{C} (X,n)$
-  for $n < 0$.
+  in our situation. Finally, the trivialization isomorphism $\lambda_\infty$ is
+  defined exactly as our $\lambda$. Therefore, \eqref{eqn:FM-special-value} for
+  $n < 0$ agrees with Conjecture~$\mathbf{C} (X,n)$.
 
   Flach and Morin prove that their conjecture is consistent with the Tamagawa
   number conjecture of Bloch--Kato--Fontaine--Perrin-Riou
@@ -1216,8 +1228,8 @@ value of $\zeta (X,s)$ at $s = n$ in the following sense.
 
 \begin{remark}
   Some canonical isomorphisms of determinants involve multiplication by $\pm 1$,
-  so there is no surprise that the resulting conjecture is stated up to sign
-  $\pm 1$. However, this is not a big issue, since the sign can be recovered
+  so it is no surprise that the resulting conjecture is stated up to sign
+  $\pm 1$. This is not a major problem, however, since the sign can be recovered
   from the (conjectural) functional equation.
 \end{remark}
 
@@ -1227,8 +1239,8 @@ value of $\zeta (X,s)$ at $s = n$ in the following sense.
 \label{sec:finite-fields}
 
 For varieties over finite fields, our special value conjecture corresponds to
-the conjectures studied by Geisser in \cite{Geisser-2004}, \cite{Geisser-2006},
-\cite{Geisser-2010-arithmetic-homology}.
+the conjectures studied by Geisser in
+\cite{Geisser-2004,Geisser-2006,Geisser-2010-arithmetic-homology}.
 
 \begin{proposition}
   \label{prop:C(X,n)-over-finite-fields}
@@ -1303,8 +1315,8 @@ results from \cite{Bayer-Neukirch-1978} regarding Grothendieck's trace formula.
   \[ \zeta (X,n) =
     \prod_{\ell \ne p} \prod_{i \in \ZZ} |H^i_c (X_\et, \ZZ_\ell (n))|^{(-1)^i}. \]
 
-  Recall that Grothendieck's trace formula
-  (see \cite{Grothendieck-FL} or \cite[Rapport]{SGA4-1-2}) reads
+  Grothendieck's trace formula (see \cite{Grothendieck-FL} or
+  \cite[Rapport]{SGA4-1-2}) reads
   \[ Z (X,t) =
     \prod_{i \in \ZZ} \det \bigl(1 - tF \bigm| H^i_c (\overline{X}, \QQ_\ell)\bigr)^{(-1)^{i+1}}. \]
   Here $\overline{X} \dfn X \times_{\Spec \FF_q} \overline{\FF}_q$, and $F$
@@ -1657,16 +1669,7 @@ will split the proof into three technical lemmas
 \ref{lemma:lambda-and-disjoint-unions},
 \ref{lemma:lambda-and-closed-open-decompositions},
 \ref{lemma:lambda-and-affine-bundles}, each for the corresponding
-compatibility. We briefly recall the construction of our Weil-\'{e}tale
-complex. It fits in the following diagram in the derived category
-$\mathbf{D} (\ZZ)$ with distinguished triangles:
-\[ \begin{tikzcd}[column sep=1.5em]
-    &[-3em] \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-2]) \ar{d}{\alpha_{X,n}} \ar{r} &[-2.5em] 0 \ar{d} \\
-    & R\Gamma_c (X_\et, \ZZ(n)) \ar{d}\ar{r}{u_\infty^*} & R\Gamma_c (G_\RR, X (\CC), \ZZ(n))\ar{d}{id} \\
-    R\Gamma_\Wc (X, \ZZ (n)) \ar{r} & R\Gamma_\fg (X, \ZZ(n)) \ar[dashed]{r}{i_\infty^*}\ar{d} & R\Gamma_c (G_\RR, X (\CC), \ZZ(n)) \ar{r} \ar{d} & {[1]} \\
-    & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-1]) \ar{r} & 0
-\end{tikzcd} \]
-For more details, see \cite{Beshenov-Weil-etale-1}.
+compatibility.
 
 \begin{lemma}
   \label{lemma:lambda-and-disjoint-unions}
