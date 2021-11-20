@@ -1052,14 +1052,14 @@ is well-defined.
       \end{tikzcd} \]
     The idea is to use functoriality of determinants with respect to
     isomorphisms of distinguished triangles
-    (Proposition~\ref{prop:det-and-isos-of-triangles}). The only technical problem
-    is that whenever $X (\RR) \ne \emptyset$, the complexes
-    $R\Gamma_\fg (X,\ZZ(n))$ and $R\Gamma_c (G_\RR, X (\CC), \ZZ (n))$ are not
-    perfect, but may have finite $2$-torsion in $H^i (-)$ for arbitrarily big
-    $i$ (in \cite{Beshenov-Weil-etale-1} we called such complexes
-    \textbf{almost perfect}). On the other hand, the determinants are defined
-    only for perfect complexes. Fortunately, $H^i (i_\infty^*)$ is an
-    isomorphism for $i \gg 0$ by the boundedness of $H^i_\Wc (X, \ZZ(n))$
+    (see Appendix~\ref{app:determinants}). The only technical problem is that
+    whenever $X (\RR) \ne \emptyset$, the complexes $R\Gamma_\fg (X,\ZZ(n))$ and
+    $R\Gamma_c (G_\RR, X (\CC), \ZZ (n))$ are not perfect, but may have finite
+    $2$-torsion in $H^i (-)$ for arbitrarily big $i$ (in
+    \cite{Beshenov-Weil-etale-1} we called such complexes \textbf{almost
+      perfect}). On the other hand, the determinants are defined only for
+    perfect complexes. Fortunately, $H^i (i_\infty^*)$ is an isomorphism for
+    $i \gg 0$ by the boundedness of $H^i_\Wc (X, \ZZ(n))$
     \cite[Proposition~7.12]{Beshenov-Weil-etale-1}, so that for $m$ big enough
     we can take the corresponding canonical truncations $\tau_{\le m}$:
     \[ \begin{tikzcd}[row sep=1.5em, column sep=0.75em, font=\small]
@@ -1074,8 +1074,8 @@ is well-defined.
         \tau_{\le m} R\Gamma_c (G_\RR, X (\CC), \ZZ (n))[-1] \ar{r}\ar{d}{id} & R\Gamma_\Wc (X, \ZZ (n))\ar{d}{f}[swap]{\cong}\ar{r} & \tau_{\le m} R\Gamma_\fg (X,\ZZ(n)) \ar{d}{id}\ar{r} & {[0]} \ar{d}{id} \\
         \tau_{\le m} R\Gamma_c (G_\RR, X (\CC), \ZZ (n))[-1] \ar{r} & R\Gamma_\Wc (X, \ZZ (n))' \ar{r} & \tau_{\le m} R\Gamma_\fg (X,\ZZ(n)) \ar{r} & {[0]}
       \end{tikzcd} \]
-    By Proposition~\ref{prop:det-and-isos-of-triangles}, we have a commutative
-    diagram
+    By the functoriality of determinants (see Appendix~\ref{app:determinants}),
+    we have a commutative diagram
     \[ \begin{tikzcd}
         \begin{array}{c} \det_\ZZ \tau_{\le m} R\Gamma_c (G_\RR, X (\CC), \ZZ (n))[-1] \\ \otimes \\ \det_\ZZ \tau_{\le m} R\Gamma_\fg (X,\ZZ(n)) \end{array} \ar{r}{i}[swap]{\cong} \ar{d}{id} & \det_\ZZ R\Gamma_\Wc (X,\ZZ(n)) \ar{d}{\det_\ZZ (f)}[swap]{\cong} \\
         \begin{array}{c} \det_\ZZ \tau_{\le m} R\Gamma_c (G_\RR, X (\CC), \ZZ (n))[-1] \\ \otimes \\ \det_\ZZ \tau_{\le m} R\Gamma_\fg (X, \ZZ (n)) \end{array} \ar{r}{i'}[swap]{\cong} & \det_\ZZ R\Gamma_\Wc (X,\ZZ(n))
@@ -1132,7 +1132,7 @@ is well-defined.
     The splitting isomorphism $f$ in
     \eqref{eqn:splitting-of-RGamma-Wc-triangles} is not canonical at
     all. However, after taking the determinants, we obtain a commutative diagram
-    (see Proposition~\ref{prop:det-and-isos-of-triangles})
+    (see Appendix~\ref{app:determinants})
     \[ \begin{tikzcd}[column sep=1em, font=\small]
         \begin{array}{c} \det_\RR R\Gamma_c (G_\RR, X (\CC), \RR (n)) [-1] \\ \otimes_\RR \\ \det_\RR R\Gamma_\fg (X, \RR(n)) \end{array} \ar{r}{i}[swap]{\cong} \ar{d}{id \otimes \det_\RR (g\otimes \RR)}[swap]{\cong} & \det_\RR R\Gamma_\Wc (X, \RR (n)) \ar{d}{\det_\RR (f)}[swap]{\cong}\ar[dashed]{dl}{\cong} \\
         \begin{array}{c} \det_\RR R\Gamma_c (G_\RR, X (\CC), \RR (n)) [-1] \\ \otimes_\RR \\ \det_\RR \RHom (R\Gamma (X_\et, \ZZ^c (n)), \RR) [-1] \end{array} \ar{r}{i'}[swap]{\cong} & \det_\RR \left(\!\!\!\begin{array}{c} \RHom (R\Gamma (X_\et, \ZZ^c (n)), \RR) [-1] \\ \oplus \\ R\Gamma_c (G_\RR, X (\CC), \RR (n)) [-1] \end{array}\!\!\!\right)
@@ -2405,31 +2405,34 @@ introduction.
 \section{Determinants of complexes}
 \label{app:determinants}
 
-Here we include a brief overview of determinants of complexes. The original
-construction is due to Knudsen and Mumford \cite{Knudsen-Mumford-1976}, and
+Here we give a brief overview of the determinants of complexes. The original
+construction goes back to Knudsen and Mumford \cite{Knudsen-Mumford-1976}, and
 useful expositions can be found in
-\cite[Appendix~A]{Gelfand-Kapranov-Zelevinsky-1994} and
-\cite[\S 2.1]{Kato-1993}.
+\cite[Appendix~A]{Gelfand-Kapranov-Zelevinsky-1994} and \cite[\S
+2.1]{Kato-1993}.
 
-For our purposes, let $R$ be an integral domain (we are interested in $R = \ZZ$,
-$\QQ$, $\RR$). Denote by $\mathcal{P}_\is (R)$ the category of graded invertible
-$R$-modules. It has as its objects pairs $(L,r)$, where $L$ is an invertible
-$R$-module (= projective of rank $1$) and $r \in \ZZ$. The morphisms in this
-category are given by
-\[ \Hom_{\mathcal{P}_\is (R)} ((L,r), (M,s)) = \begin{cases}
-    \Isom_R (L,M), & r = s, \\
-    \emptyset, & r \ne s.
-  \end{cases} \]
-This category is equipped with tensor products
-$$(L,r) \otimes_R (M,s) = (L\otimes_R M, r + s)$$
-with commutativity isomorphisms
-\[
-  \psi\colon (L,r) \otimes_R (M,s)
-  \xrightarrow{\cong}
-  (M,s) \otimes_R (L,r),
-  \quad
-  \ell \otimes m \mapsto (-1)^{rs}\,m\otimes \ell.
-\]
+For our purposes, let $R$ be an integral domain.
+
+\begin{definition}
+  Denote by $\mathcal{P}_\is (R)$ the category of
+  \textbf{graded invertible $R$-modules}. It has as objects pairs $(L,r)$, where
+  $L$ is an invertible $R$-module (i.e. projective of rank $1$) and
+  $r \in \ZZ$. The morphisms in this category are given by
+  \[ \Hom_{\mathcal{P}_\is (R)} ((L,r), (M,s)) = \begin{cases}
+      \Isom_R (L,M), & r = s, \\
+      \emptyset, & r \ne s.
+    \end{cases} \]
+  This category is equipped with tensor products
+  $$(L,r) \otimes_R (M,s) = (L\otimes_R M, r + s)$$
+  with commutativity isomorphisms
+  \[
+    (L,r) \otimes_R (M,s)
+    \xrightarrow{\cong}
+    (M,s) \otimes_R (L,r),
+    \quad
+    \ell \otimes m \mapsto (-1)^{rs}\,m\otimes \ell.
+  \]
+\end{definition}
 
 The unit object with respect to this product is $\bone = (R,0)$, and for each
 $(L,r) \in \mathcal{P}_\is (R)$ the inverse is given by $(L^{-1}, -r)$ where
@@ -2438,152 +2441,103 @@ $L \otimes_R \iHom_R (L,R) \to R$ induces an isomorphism
 $$(L,r) \otimes_R (L^{-1}, -r) \cong \bone.$$
 
 \begin{definition}
-  \label{dfn:determinant-of-projective-fg-module}
   Denote by $\mathcal{C}_\is (R)$ the category whose objects are finitely
-  generated projective $R$-modules and whose morphisms are isomorphisms.  For
-  $A \in \mathcal{C}_\is (R)$ we define the corresponding determinant as an
-  object in $\mathcal{P}_\is (R)$ given by
-  $$\det_R (A) = \Bigl(\bigwedge^{\rk_R A}_R A, \rk_R A\Bigr).$$
+  generated projective $R$-modules and whose morphisms are isomorphisms.
+  For $A \in \mathcal{C}_\is (R)$ we define the corresponding determinant by
+  \begin{equation}
+    \label{eqn:det-proj-module}
+    \det_R (A) = \Bigl(\bigwedge^{\rk_R A}_R A, \rk_R A\Bigr) \in \mathcal{P}_\is (R).
+  \end{equation}
   Here $\rk_R A$ is the rank of $A$, so that the top exterior power
   $\bigwedge^{\rk_R A}_R A$ is an invertible $R$-module.
 \end{definition}
 
-This gives a functor $\det_R\colon \mathcal{C}_\is (R) \to \mathcal{P}_\is (R)$.
+This yields a functor
+$\det_R\colon \mathcal{C}_\is (R) \to \mathcal{P}_\is (R)$.
+For $(L,r) \in \mathcal{P}_\is (R)$ we usually forget about $r$ and treat the
+determinant as an invertible $R$-module.
+
 The main result of \cite[Chapter~I]{Knudsen-Mumford-1976} is that this
-construction can be generalized as follows. Let $\mathbf{D} (R)$ be the derived
-category of the category of $R$-modules. Recall that a complex $A^\bullet$ is
-\textbf{perfect} if it is quasi-isomorphic to a bounded complex of finitely
-generated projective $R$-modules. We denote by $\Parf_\is (R)$ the subcategory
-of $\mathbf{D} (R)$ whose objects consist of perfect complexes, and whose
-morphisms are quasi-isomorphisms of complexes.
+construction can be generalized as follows.
+
+\begin{definition}
+  Let $\mathbf{D} (R)$ be the derived category of the category of
+  $R$-modules. Recall that a complex $A^\bullet$ is \textbf{perfect} if it is
+  quasi-isomorphic to a bounded complex of finitely generated projective
+  $R$-modules. We denote by $\Parf_\is (R)$ the subcategory of $\mathbf{D} (R)$
+  whose objects consist of perfect complexes, and whose morphisms are
+  quasi-isomorphisms of complexes.
+\end{definition}
 
 \begin{theorem}[Knudsen--Mumford]
-  The determinant can be extended to perfect complexes of $R$-modules as
-  follows.
+  The determinant extends to perfect complexes of $R$-modules as a functor
+  $$\det_R\colon \Parf_\is (R) \to \mathcal{P}_\is (R),$$
+  satisfying the following properties.
 
-  \begin{enumerate}
-  \item[I)] For every ring $R$ there exists a functor
-    $$\det_R\colon \Parf_\is (R) \to \mathcal{P}_\is (R)$$
-    such that $\det_R (0) = \bone$.
+  \begin{itemize}
+  \item $\det_R (0) = \bone$.
 
-  \item[II)] For every short exact sequence of complexes in $\Parf_\is (R)$
-    \[ 0 \to A^\bullet \xrightarrow{\alpha} B^\bullet
-      \xrightarrow{\beta} C^\bullet \to 0 \]
-    there exists an isomorphism
-    \[ i_R (\alpha,\beta)\colon
-      \det_R A^\bullet \otimes_R \det_R C^\bullet
-      \xrightarrow{\cong} \det_R B^\bullet. \]
-    In particular, for the short exact sequence
+  \item For a distinguished triangle of complexes in $\Parf_\is (R)$
+    \[ A^\bullet \xrightarrow{u}
+      B^\bullet \xrightarrow{v}
+      C^\bullet \xrightarrow{w} A^\bullet [1] \]
+    there is a canonical isomorphism
+    \[ i_R (u,v,w)\colon \det_R A^\bullet \otimes_R \det_R C^\bullet
+      \xrightarrow{\cong} \det_R B^\bullet, \]
+
+  \item In particular, there exist canonical isomorphisms
+    \[ \det_R (A^\bullet \oplus B^\bullet) \cong
+      \det_R (A^\bullet) \otimes_R \det_R (B^\bullet). \]
+
+  \item For the triangles
     \[ \begin{tikzcd}[column sep=1em]
-        &[-1.5em] 0 \ar{r} & A^\bullet \ar{r}{id} & A^\bullet \ar{r} & 0^\bullet \ar{r} & 0 &[-1.5em] \\[-2em]
-        \text{(resp.} & 0 \ar{r} & 0^\bullet \ar{r} & A^\bullet \ar{r}{id} & A^\bullet \ar{r} & 0 & \text{)}
+        A^\bullet \ar{r}{id} & A^\bullet \ar{r} & 0^\bullet \ar{r} & A^\bullet [1] \\[-2em]
+        0^\bullet \ar{r} & A^\bullet \ar{r}{id} & A^\bullet \ar{r} & 0^\bullet [1]
       \end{tikzcd} \]
-    the isomorphism $i_R (id,0)$ (resp. $i_R (0,id)$) is the canonical isomorphism
-    $$\det_R A^\bullet \otimes_R \bone \xrightarrow{\cong} \det_R A^\bullet$$
-  \end{enumerate}
+    the isomorphism $i_R$ comes from the canonical isomorphism
+    $\det_R A^\bullet \otimes_R \bone \cong \det_R A^\bullet$.
 
-  Moreover, the following properties hold.
-
-  \begin{enumerate}
-  \item[i)] Given an isomorphism of short exact sequences of complexes
+  \item For an isomorphism of distinguished triangles
     \[ \begin{tikzcd}
-        0 \ar{r} & A^\bullet \ar{r}{\alpha}\ar{d}{u}[swap]{\cong} & B^\bullet \ar{r}{\beta}\ar{d}{v}[swap]{\cong} & C^\bullet \ar{r}\ar{d}{w}[swap]{\cong} & 0 \\
-        0 \ar{r} & A'^\bullet \ar{r}{\alpha'} & B'^\bullet \ar{r}{\beta'} & C'^\bullet \ar{r} & 0
+        A^\bullet \ar{r}{u}\ar{d}{f}[swap]{\cong} & B^\bullet \ar{r}{v}\ar{d}{g}[swap]{\cong} & C^\bullet \ar{r}{w}\ar{d}{h}[swap]{\cong} & A^\bullet [1]\ar{d}{f[1]}[swap]{\cong} \\
+        A'^\bullet \ar{r}{u'} & B'^\bullet \ar{r}{v'} & C'^\bullet \ar{r}{w'} & A'^\bullet [1]
       \end{tikzcd} \]
     the diagram
     \[ \begin{tikzcd}[column sep=5em]
-        \det_R A^\bullet \otimes_R \det_R C^\bullet \ar{r}{i^* (\alpha,\beta)}[swap]{\cong}\ar{d}{\det_R (u) \otimes \det_R (w)}[swap]{\cong} & \det_R B^\bullet\ar{d}{\det_R (v)}[swap]{\cong} \\
-        \det_R A'^\bullet \otimes_R \det_R C'^\bullet \ar{r}{i^* (\alpha',\beta')}[swap]{\cong} & \det_R B'^\bullet
+        \det_R A^\bullet \otimes_R \det_R C^\bullet \ar{r}{i_R (u,v,w)}[swap]{\cong}\ar{d}{\det_R (f) \otimes \det_R (h)}[swap]{\cong} & \det_R B^\bullet\ar{d}{\det_R (g)}[swap]{\cong} \\
+        \det_R A'^\bullet \otimes_R \det_R C'^\bullet \ar{r}{i_R (u',v',w')}[swap]{\cong} & \det_R B'^\bullet
       \end{tikzcd} \]
-    commutes.
+    is commutative.
 
-  \item[ii)] Given a commutative $3\times 3$ diagram with rows and columns short
-    exact sequences
-    \[ \begin{tikzcd}[row sep=1em, column sep=1em]
-        & 0\ar{d} & 0\ar{d} & 0\ar{d} \\
-        0\ar{r} & A^\bullet\ar{r}{\alpha}\ar{d}{u} & B^\bullet\ar{r}{\beta}\ar{d}{u'} & C^\bullet\ar{r}\ar{d}{u''} & 0 \\
-        0\ar{r} & A'^\bullet\ar{r}{\alpha'}\ar{d}{v} & B'^\bullet\ar{r}{\beta'}\ar{d}{v'} & C'^\bullet\ar{r}\ar{d}{v''} & 0 \\
-        0\ar{r} & A''^\bullet\ar{r}{\alpha''}\ar{d} & B''^\bullet\ar{r}{\beta''}\ar{d} & C''^\bullet\ar{r}\ar{d} & 0 \\
-        & 0 & 0 & 0
-      \end{tikzcd} \]
-    the diagram
-    \[ \begin{tikzcd}[column sep=7em]
-        \det_R A^\bullet \otimes_R \det_R C^\bullet \otimes_R \det_R A''^\bullet \otimes_R \det_R C''^\bullet \ar{r}{i_R (\alpha,\beta) \otimes i_R (\alpha'',\beta'')}[swap]{\cong}\ar{d}{id \otimes \psi \otimes id}[swap]{\cong} & \det_R B^\bullet \otimes_R \det_R B''^\bullet\ar{dd}{i_R (u',v')}[swap]{\cong} \\
-        (\det_R A^\bullet \otimes_R \det_R A''^\bullet) \otimes_R (\det_R C^\bullet \otimes_R \det_R C''^\bullet)\ar{d}[swap]{\cong}{i_R (u,v) \otimes i_R (u'',v'')} \\
-        \det_R A'^\bullet \otimes_R \det_R C'^\bullet \ar{r}{i_R (\alpha',\beta')}[swap]{\cong} & \det_R B'^\bullet
-      \end{tikzcd} \]
-    commutes.
+  \item $\det$ is compatible with base change: given a ring homomorphism
+    $R\to S$, there is a natural isomorphism
+    \[ \det_S (A^\bullet \otimes_R^\mathbf{L} S)
+      \xrightarrow{\cong}
+      (\det_R A^\bullet) \otimes_R S. \]
+    Moreover, it is compatible with the isomorphisms $i_R$ and $i_S$ associated
+    with distinguished triangles.
 
-  \item[iii)] $\det$ and $i$ commute with base change. Namely, given a ring
-    homomorphism $f\colon R\to S$, there is a natural isomorphism
-    \[ \eta_A = \eta_{A^\bullet} (f)\colon
-      \det_S (A^\bullet \otimes_R^\mathbf{L} S) \xrightarrow{\cong}
-      (\det_R A^\bullet) \otimes_R S, \]
-    such that for every short exact sequence of complexes
-    \[ 0 \to A^\bullet \xrightarrow{\alpha} B^\bullet \xrightarrow{\beta}
-      C^\bullet \to 0 \]
-    the diagram
-    \[ \begin{tikzcd}[column sep=5em]
-        \det_S (A^\bullet \otimes_R^\mathbf{L} S) \otimes_S \det_S (C^\bullet \otimes_R^\mathbf{L} S) \ar{d}{\eta_A \otimes \eta_C}[swap]{\cong}\ar{r}{i_S (\alpha\otimes S, \beta\otimes S)}[swap]{\cong} & \det_S (B^\bullet \otimes_R^\mathbf{L} S) \ar{d}{\eta_B}[swap]{\cong} \\
-        \Bigl((\det_R A^\bullet) \otimes_R S\Bigr) \otimes_S \Bigl((\det_R C^\bullet) \otimes_R S\Bigr) \ar{r}{i_R (\alpha,\beta) \otimes S}[swap]{\cong} & (\det_R B^\bullet) \otimes_R S
-      \end{tikzcd} \]
-    commutes. Similarly, there is compatibility with compositions of base
-    changes along $R \xrightarrow{f} S \xrightarrow{g} T$ (we omit the
-    corresponding commutative diagram).
-  \end{enumerate}
-\end{theorem}
-
-\begin{remark}
-  We refer to \cite{Knudsen-Mumford-1976} for the actual construction.
-  In practice, the following considerations are useful; see [ibid.] for the
-  proofs.
-
-  \begin{enumerate}
-  \item[1)] If $A^\bullet$ is a bounded complex where each object $A^i$ is
-    perfect (i.e. admits a finite length resolution by finitely generated
-    projective $R$-modules), then
+  \item If $A^\bullet$ is a bounded complex where each object $A^i$ is perfect
+    (i.e. admits a finite length resolution by finitely generated projective
+    $R$-modules), then
     $$\det_R A^\bullet \cong \bigotimes_{i\in \ZZ} (\det_R A^i)^{(-1)^i}.$$
     In particular, if each $A^i$ is already a finitely generated projective
     $R$-module, then $\det_R A^i$ in the above formula is given by
-    \ref{dfn:determinant-of-projective-fg-module}.
+    \eqref{eqn:det-proj-module}.
 
-  \item[2)] If the cohomology modules $H^i (A^\bullet)$ are perfect, then
-    \[ \det_R A^\bullet \cong
-      \bigotimes_{i\in \ZZ} (\det_R H^i (A^\bullet))^{(-1)^i}. \]
-  \end{enumerate}
-\end{remark}
+  \item If the cohomology modules $H^i (A^\bullet)$ are perfect, then
+    \begin{equation}
+      \label{eqn:det-in-terms-of-cohomology}
+      \det_R A^\bullet \cong
+      \bigotimes_{i\in \ZZ} (\det_R H^i (A^\bullet))^{(-1)^i}.
+    \end{equation}
+  \end{itemize}
+\end{theorem}
 
-The determinants also behave well not only with short exact sequences, but with
-distinguished triangles.
+We refer the reader to \cite{Knudsen-Mumford-1976} for the actual construction
+and proofs.
 
-\begin{proposition}[{\cite[Proposition~7]{Knudsen-Mumford-1976}}]
-  \label{prop:det-and-isos-of-triangles}
-  For a distinguished triangle of complexes in $\Parf_\is (R)$
-  \[ A^\bullet \xrightarrow{u} B^\bullet \xrightarrow{v} C^\bullet
-    \xrightarrow{w} A^\bullet [1] \]
-  there is a canonical isomorphism
-  \[ i_R (u,v,w)\colon \det_R A^\bullet \otimes_R \det_R C^\bullet
-    \xrightarrow{\cong} \det_R B^\bullet, \]
-  which is functorial in the following sense: given a (quasi-)isomorphism of
-  distinguished triangles
-  \[ \begin{tikzcd}
-      A^\bullet \ar{r}{u}\ar{d}{f}[swap]{\cong} & B^\bullet \ar{r}{v}\ar{d}{g}[swap]{\cong} & C^\bullet \ar{r}{w}\ar{d}{h}[swap]{\cong} & A^\bullet [1]\ar{d}{f[1]}[swap]{\cong} \\
-      A'^\bullet \ar{r}{u} & B'^\bullet \ar{r}{v} & C'^\bullet \ar{r}{w} & A'^\bullet [1]
-    \end{tikzcd} \]
-  the diagram
-  \[ \begin{tikzcd}[column sep=5em]
-      \det_R A^\bullet \otimes_R \det_R C^\bullet \ar{r}{i_R (u,v,w)}[swap]{\cong}\ar{d}{\det_R (f) \otimes \det_R (h)}[swap]{\cong} & \det_R B^\bullet\ar{d}{\det_R (g)}[swap]{\cong} \\
-      \det_R A'^\bullet \otimes_R \det_R C'^\bullet \ar{r}{i_R (u',v',w')}[swap]{\cong} & \det_R B'^\bullet
-    \end{tikzcd} \]
-  commutes.
-\end{proposition}
-
-\begin{remark}
-  In this paper, for $(L,r) \in \mathcal{P}_\is (R)$ we forget about $r$ and
-  treat the determinant as an invertible $R$-module.
-\end{remark}
-
-A particular simple case of interest is when all cohomology groups
+A particularly simple case of interest is when all cohomology groups
 $H^i (A^\bullet)$ are finite.
 
 \begin{lemma}
@@ -2606,25 +2560,17 @@ $H^i (A^\bullet)$ are finite.
   \begin{proof}
     Since $\det_\ZZ (A\oplus B) \cong \det_\ZZ A \otimes \det_\ZZ B$, in
     part 1) it suffices to consider the case of a cyclic group
-    $A = \ZZ/m\ZZ$. Then we have a quasi-isomorphism of complexes
+    $A = \ZZ/m\ZZ$. Using the resolution
     \[ \ZZ/m\ZZ [0] \cong \Bigl[
       \mathop{m\ZZ}_{\text{deg.\,}-1} \hookrightarrow
       \mathop{\ZZ}_{\text{deg.\,}0}
-      \Bigr]. \]
-    Therefore,
+      \Bigr], \]
+    we calculate
     $$\det_\ZZ (\ZZ/m\ZZ) \cong \ZZ \otimes (m\ZZ)^{-1} \cong (m\ZZ)^{-1},$$
-    which corresponds to $\frac{1}{m}\,\ZZ$ inside $\QQ$.
-    Part 2) follows immediately from 1) using the isomorphism
-    \[ \det_\ZZ A^\bullet \cong
-      \bigotimes_{i\in \ZZ} (\det_\ZZ H^i (A^\bullet))^{(-1)^i}. \qedhere \]
+    which corresponds to $\frac{1}{m}\,\ZZ$ in $\QQ$.
+    Part 2) follows directly from 1) and \eqref{eqn:det-in-terms-of-cohomology}.
   \end{proof}
 \end{lemma}
-
-\begin{remark}
-  The above argument works in a more general setting, assuming $R$ is a regular
-  noetherian ring and $A$ is a finitely generated torsion $R$-module (replacing
-  $\QQ$ with the total quotient field $Q (R)$).
-\end{remark}
 
 \end{appendices}
 
