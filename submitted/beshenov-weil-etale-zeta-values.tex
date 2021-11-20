@@ -384,19 +384,17 @@ $\mathbf{D} (\ZZ)$ with distinguished triangles:
     R\Gamma_\Wc (X, \ZZ (n)) \ar{r} & R\Gamma_\fg (X, \ZZ(n)) \ar[dashed]{r}{i_\infty^*}\ar{d} & R\Gamma_c (G_\RR, X (\CC), \ZZ(n)) \ar{r} \ar{d} & {[1]} \\
     & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ [-1]) \ar{r} & 0
 \end{tikzcd} \]
-For more details, see \cite{Beshenov-Weil-etale-1}. For the rational
-coefficients, we set
+For more details, see \cite{Beshenov-Weil-etale-1}.
+For real coefficients, we set
 \begin{align*}
-  R\Gamma_\fg (X, \QQ (n)) & \dfn R\Gamma_\fg (X, \ZZ (n)) \otimes \QQ, \\
-  R\Gamma_\Wc (X, \QQ (n)) & \dfn R\Gamma_\Wc (X, \ZZ (n)) \otimes \QQ.
+  R\Gamma_\fg (X, \RR (n)) & \dfn R\Gamma_\fg (X, \ZZ (n)) \otimes \RR, \\
+  R\Gamma_\Wc (X, \RR (n)) & \dfn R\Gamma_\Wc (X, \ZZ (n)) \otimes \RR.
 \end{align*}
 Accordingly,
 \begin{align*}
-  H^i_\fg (X, \QQ (n)) & \dfn H^i (R\Gamma_\fg (X, \QQ (n))) = H^i_\fg (X, \ZZ (n)) \otimes \QQ, \\
-  H^i_\Wc (X, \QQ (n)) & \dfn H^i (R\Gamma_\Wc (X, \QQ (n))) = H^i_\Wc (X, \ZZ (n)) \otimes \QQ.
+  H^i_\fg (X, \RR (n)) & \dfn H^i (R\Gamma_\fg (X, \RR (n))) = H^i_\fg (X, \ZZ (n)) \otimes \RR, \\
+  H^i_\Wc (X, \RR (n)) & \dfn H^i (R\Gamma_\Wc (X, \RR (n))) = H^i_\Wc (X, \ZZ (n)) \otimes \RR.
 \end{align*}
-Similarly, we define the corresponding complexes and cohomology with
-real coefficients $\RR (n)$.
 
 By $X (\CC)$ we denote the space of complex points of $X$ with the usual
 analytic topology. It carries a natural action of $G_\RR = \Gal (\CC/\RR)$ via
@@ -500,8 +498,8 @@ $p = d_\CC + 1 - n$, tensor it with $\RR$ and shift it by $2n$, we obtain
     becomes a quasi-isomorphism if we pass to rational coefficients. In the
     original paper \cite{Kerr-Lewis-Muller-Stach-2006} this is stated without
     tensoring with $\QQ$ , but the omission is acknowledged later in
-    \cite{Kerr-Lewis-2007}. For our purposes, it suffices to have a
-    regulator with coefficients in $\QQ$, or even in $\RR$.
+    \cite{Kerr-Lewis-2007}. For our purposes, it suffices to have a regulator
+    with coefficients in $\RR$.
 
   \item The case of a smooth quasi-projective $X_\CC$, where one must consider a
     compactification by a normal crossing divisor as above, is treated in
@@ -1088,56 +1086,56 @@ is well-defined.
 
 \begin{lemma}
   The non-canonical splitting
-  \[ R\Gamma_\Wc (X, \QQ(n)) \cong
-    \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-1] \oplus
-    R\Gamma_c (G_\RR, X (\CC), \QQ (n)) [-1] \]
+  \[ R\Gamma_\Wc (X, \RR(n)) \cong
+    \RHom (R\Gamma (X_\et, \ZZ^c (n)), \RR) [-1] \oplus
+    R\Gamma_c (G_\RR, X (\CC), \RR (n)) [-1] \]
   from \cite[Proposition~7.13]{Beshenov-Weil-etale-1} yields a canonical
   isomorphism of determinants
-  \[ \det_\QQ R\Gamma_\Wc (X, \QQ(n)) \cong
+  \[ \det_\RR R\Gamma_\Wc (X, \RR (n)) \cong
     \begin{array}{c}
-      \det_\QQ \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-1] \\
-      \otimes_\QQ \\
-      \det_\QQ R\Gamma_c (G_\RR, X (\CC), \QQ (n)) [-1]
+      \det_\RR \RHom (R\Gamma (X_\et, \ZZ^c (n)), \RR) [-1] \\
+      \otimes_\RR \\
+      \det_\RR R\Gamma_c (G_\RR, X (\CC), \RR (n)) [-1]
     \end{array} \]
 
   \begin{proof}
-    This is similar to the previous lemma; in fact, after tensoring with $\QQ$,
-    we obtain perfect complexes of $\QQ$-vector spaces, so the truncations are
-    no longer needed. By \cite[Proposition~7.4]{Beshenov-Weil-etale-1} we have
-    $i_\infty^* \otimes \QQ = 0$, so there is an isomorphism of triangles
+    This is similar to the previous lemma; in fact, after tensoring with $\RR$,
+    we obtain perfect complexes of real vector spaces, so the truncations are no
+    longer needed. By \cite[Proposition~7.4]{Beshenov-Weil-etale-1} we have
+    $i_\infty^* \otimes \RR = 0$, so there is an isomorphism of triangles
     \begin{equation}
       \label{eqn:splitting-of-RGamma-Wc-triangles}
       \begin{tikzcd}[row sep=1em]
-        R\Gamma_c (G_\RR, X (\CC), \QQ (n)) [-1] \ar{r}{id}\ar{d} & R\Gamma_c (G_\RR, X (\CC), \QQ (n)) [-1]\ar{d} \\
-        R\Gamma_\Wc (X, \QQ(n)) \ar[dashed]{r}{f}[swap]{\cong}\ar{d} & \begin{array}{c} \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-1] \\ \oplus \\ R\Gamma_c (G_\RR, X (\CC), \QQ (n)) [-1] \end{array}\ar{d} \\
-        R\Gamma_\fg (X, \QQ(n)) \ar{r}{g\otimes \QQ}[swap]{\cong}\ar{d} & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-1] \ar{d} \\
-        R\Gamma_c (G_\RR, X (\CC), \QQ (n)) \ar{r}{id} & R\Gamma_c (G_\RR, X (\CC), \QQ (n))
+        R\Gamma_c (G_\RR, X (\CC), \RR (n)) [-1] \ar{r}{id}\ar{d} & R\Gamma_c (G_\RR, X (\CC), \RR (n)) [-1]\ar{d} \\
+        R\Gamma_\Wc (X, \RR (n)) \ar[dashed]{r}{f}[swap]{\cong}\ar{d} & \begin{array}{c} \RHom (R\Gamma (X_\et, \ZZ^c (n)), \RR) [-1] \\ \oplus \\ R\Gamma_c (G_\RR, X (\CC), \RR (n)) [-1] \end{array}\ar{d} \\
+        R\Gamma_\fg (X, \RR (n)) \ar{r}{g\otimes \RR}[swap]{\cong}\ar{d} & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \RR) [-1] \ar{d} \\
+        R\Gamma_c (G_\RR, X (\CC), \RR (n)) \ar{r}{id} & R\Gamma_c (G_\RR, X (\CC), \RR (n))
       \end{tikzcd}
     \end{equation}
     Here the third horizontal arrow comes from the triangle defining
     $R\Gamma_\fg (X, \ZZ(n))$
     \begin{multline*}
-      \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-2] \xrightarrow{\alpha_{X,n}}
+      \RHom (R\Gamma (X_\et, \ZZ^c (n)), \RR) [-2] \xrightarrow{\alpha_{X,n}}
       R\Gamma_c (X_\et, \ZZ (n)) \to
       R\Gamma_\fg (X, \ZZ(n)) \\
-      \xrightarrow{g} \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-1]
+      \xrightarrow{g} \RHom (R\Gamma (X_\et, \ZZ^c (n)), \RR) [-1]
     \end{multline*}
-    tensored with $\QQ$ (see \cite[Proposition~5.7]{Beshenov-Weil-etale-1}).
+    tensored with $\RR$ (see \cite[Proposition~5.7]{Beshenov-Weil-etale-1}).
     The distinguished column on the right-hand side of
     \eqref{eqn:splitting-of-RGamma-Wc-triangles} is the direct sum
     \[ \begin{tikzcd}[row sep=1.5em]
-        R\Gamma_c (G_\RR, X (\CC), \QQ (n)) [-1]\ar{d}{id} &[-2em] &[-2em] 0\ar{d} \\
-        R\Gamma_c (G_\RR, X (\CC), \QQ (n)) [-1]\ar{d} & \oplus & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-1]\ar{d}{id} \\
-        0 \ar{d} & & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-1] \ar{d} \\
-        R\Gamma_c (G_\RR, X (\CC), \QQ (n)) & & 0
+        R\Gamma_c (G_\RR, X (\CC), \RR (n)) [-1]\ar{d}{id} &[-2em] &[-2em] 0\ar{d} \\
+        R\Gamma_c (G_\RR, X (\CC), \RR (n)) [-1]\ar{d} & \oplus & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \RR) [-1]\ar{d}{id} \\
+        0 \ar{d} & & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \RR) [-1] \ar{d} \\
+        R\Gamma_c (G_\RR, X (\CC), \RR (n)) & & 0
       \end{tikzcd} \]
     The splitting isomorphism $f$ in
     \eqref{eqn:splitting-of-RGamma-Wc-triangles} is not canonical at
     all. However, after taking the determinants, we obtain a commutative diagram
     (see Proposition~\ref{prop:det-and-isos-of-triangles})
     \[ \begin{tikzcd}[column sep=1em, font=\small]
-        \begin{array}{c} \det_\QQ R\Gamma_c (G_\RR, X (\CC), \QQ (n)) [-1] \\ \otimes_\QQ \\ \det_\QQ R\Gamma_\fg (X, \QQ(n)) \end{array} \ar{r}{i}[swap]{\cong} \ar{d}{id \otimes \det_\ZZ (g\otimes \QQ)}[swap]{\cong} & \det_\QQ R\Gamma_\Wc (X, \QQ(n)) \ar{d}{\det_\ZZ (f)}[swap]{\cong}\ar[dashed]{dl}{\cong} \\
-        \begin{array}{c} \det_\QQ R\Gamma_c (G_\RR, X (\CC), \QQ (n)) [-1] \\ \otimes_\QQ \\ \det_\QQ \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-1] \end{array} \ar{r}{i'}[swap]{\cong} & \det_\QQ \left(\!\!\!\begin{array}{c} \RHom (R\Gamma (X_\et, \ZZ^c (n)), \QQ) [-1] \\ \oplus \\ R\Gamma_c (G_\RR, X (\CC), \QQ (n)) [-1] \end{array}\!\!\!\right)
+        \begin{array}{c} \det_\RR R\Gamma_c (G_\RR, X (\CC), \RR (n)) [-1] \\ \otimes_\RR \\ \det_\RR R\Gamma_\fg (X, \RR(n)) \end{array} \ar{r}{i}[swap]{\cong} \ar{d}{id \otimes \det_\RR (g\otimes \RR)}[swap]{\cong} & \det_\RR R\Gamma_\Wc (X, \RR (n)) \ar{d}{\det_\RR (f)}[swap]{\cong}\ar[dashed]{dl}{\cong} \\
+        \begin{array}{c} \det_\RR R\Gamma_c (G_\RR, X (\CC), \RR (n)) [-1] \\ \otimes_\RR \\ \det_\RR \RHom (R\Gamma (X_\et, \ZZ^c (n)), \RR) [-1] \end{array} \ar{r}{i'}[swap]{\cong} & \det_\RR \left(\!\!\!\begin{array}{c} \RHom (R\Gamma (X_\et, \ZZ^c (n)), \RR) [-1] \\ \oplus \\ R\Gamma_c (G_\RR, X (\CC), \RR (n)) [-1] \end{array}\!\!\!\right)
       \end{tikzcd} \]
     The dashed diagonal arrow is the desired canonical isomorphism.
   \end{proof}
@@ -1755,7 +1753,7 @@ We split the proof into three technical lemmas
     Figure~\ref{fig:RGamma-Wc-and-closed-open-decompositions} below
     (p.~\pageref{fig:RGamma-Wc-and-closed-open-decompositions}). Figure~\ref{fig:RGamma-Wc-and-closed-open-decompositions-otimes-Q}
     on p.~\pageref{fig:RGamma-Wc-and-closed-open-decompositions-otimes-Q} shows
-    the same diagram tensored with $\QQ$.
+    the same diagram tensored with $\RR$.
 
     In this diagram we start from the morphism of triangles
     $(\alpha_{U,n}, \alpha_{X,n}, \alpha_{Z,n})$ and then take the corresponding
@@ -1940,20 +1938,18 @@ We split the proof into three technical lemmas
   \begin{figure}
     \[ \begin{tikzcd}[font=\small]
         &[2em] &[-2.5em] &[-2.5em] &[-2.5em] R\Gamma_\Wc (U, \ZZ (n))\ar{dl} &[-2.5em] \\
-        {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}{\alpha_{U,n}}\ar{dd} & R\Gamma_c (U_\et, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd} \ar{rr} & & R\Gamma_\fg (U, \ZZ (n))\ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\exists!} \ar[crossing over]{rr} & & {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
+        \RHom (R\Gamma (U_\et, \ZZ^c (n)), \QQ[-2]) \ar{r}{\alpha_{U,n}}\ar{dd} & R\Gamma_c (U_\et, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd} \ar{rr} & & R\Gamma_\fg (U, \ZZ (n))\ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\exists!} \ar[crossing over]{rr} & & \cdots [-1] \ar{dd} \\
         & & R\Gamma_c (G_\RR, U (\CC), \ZZ (n)) & & R\Gamma_\Wc (X, \ZZ (n))\ar{dl} \\
-        {[R\Gamma (X_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}{\alpha_{X,n}}\ar{dd} & R\Gamma_c (X_\et, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd} \ar{rr} & & R\Gamma_\fg (X, \ZZ (n)) \ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\exists!} \ar[crossing over]{rr} & & {[R\Gamma (X_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
+        \RHom(R\Gamma (X_\et, \ZZ^c (n)), \QQ[-2]) \ar{r}{\alpha_{X,n}}\ar{dd} & R\Gamma_c (X_\et, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd} \ar{rr} & & R\Gamma_\fg (X, \ZZ (n)) \ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\exists!} \ar[crossing over]{rr} & & \cdots [-1] \ar{dd} \\
         & & R\Gamma_c (G_\RR, X (\CC), \ZZ (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (Z, \ZZ (n))\ar{dl} \\
-        {[R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}{\alpha_{Z,n}}\ar{dd} & R\Gamma_c (Z_\et, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd} \ar{rr} & & R\Gamma_\fg (Z, \ZZ (n)) \ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\exists!} \ar[crossing over]{rr} & & {[R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
+        \RHom(R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-2]) \ar{r}{\alpha_{Z,n}}\ar{dd} & R\Gamma_c (Z_\et, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd} \ar{rr} & & R\Gamma_\fg (Z, \ZZ (n)) \ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\exists!} \ar[crossing over]{rr} & & \cdots [-1] \ar{dd} \\
         & & R\Gamma_c (G_\RR, Z (\CC), \ZZ (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (U, \ZZ (n)) [1]\ar{dl} \\
-        {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]]} \ar{r}{\alpha_{U,n} [1]} & R\Gamma_c (U_\et, \ZZ (n)) [1] \ar{dr}{u_\infty} \ar{rr} & & R\Gamma_\fg (U, \ZZ (n)) [1] \ar{dl}[swap]{i_\infty [1]} \ar{rr} & & {[R\Gamma (U_\et, \ZZ^c (n)), \QQ]} \\
+        \RHom(R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]) \ar{r}{\alpha_{U,n} [1]} & R\Gamma_c (U_\et, \ZZ (n)) [1] \ar{dr}{u_\infty} \ar{rr} & & R\Gamma_\fg (U, \ZZ (n)) [1] \ar{dl}[swap]{i_\infty [1]} \ar{rr} & & \cdots [0] \\
         & & R\Gamma_c (G_\RR, U (\CC), \ZZ (n)) [1] \ar[<-,near end,crossing over]{uu} \\
       \end{tikzcd} \]
 
     \caption{Diagram induced by a closed-open decomposition
-      $Z \not\hookrightarrow X \hookleftarrow U$.
-      For brevity, we denote
-      $\RHom (A^\bullet,B^\bullet)$ by $[A^\bullet,B^\bullet]$}
+      $Z \not\hookrightarrow X \hookleftarrow U$.}
     \label{fig:RGamma-Wc-and-closed-open-decompositions}
   \end{figure}
 \end{landscape}
@@ -1961,21 +1957,19 @@ We split the proof into three technical lemmas
 \begin{landscape}
   \begin{figure}
     \[ \begin{tikzcd}[font=\small]
-        &[2em] &[-2.5em] &[-2.5em] &[-2.5em] R\Gamma_\Wc (U, \QQ (n))\ar{dl}\ar{dd} &[-2.5em] \\
-        {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}\ar{dd} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (U, \QQ (n))\ar{dl}[swap]{0} \ar[dashed]{dd}{\exists!} \ar[crossing over,near start]{rr}{\cong} & & {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
-        & & R\Gamma_c (G_\RR, U (\CC), \QQ (n)) & & R\Gamma_\Wc (X, \QQ (n))\ar{dl}\ar{dd} \\
-        {[R\Gamma (X_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}\ar{dd} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (X, \QQ (n)) \ar{dl}[swap]{0} \ar[dashed]{dd}{\exists!} \ar[crossing over,near start]{rr}{\cong} & & {[R\Gamma (X_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
-        & & R\Gamma_c (G_\RR, X (\CC), \QQ (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (Z, \QQ (n))\ar{dl}\ar{dd} \\
-        {[R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-2]]} \ar{r}\ar{dd} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (Z, \QQ (n)) \ar{dl}[swap]{0} \ar[dashed]{dd}{\exists!} \ar[crossing over,near start]{rr}{\cong} & & {[R\Gamma (Z_\et, \ZZ^c (n)), \QQ[-1]]} \ar{dd} \\
-        & & R\Gamma_c (G_\RR, Z (\CC), \QQ (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (U, \QQ (n)) [1]\ar{dl} \\
-        {[R\Gamma (U_\et, \ZZ^c (n)), \QQ[-1]]} \ar{r} & 0 \ar{dr} \ar{rr} & & R\Gamma_\fg (U, \QQ (n)) [1] \ar{dl}[swap]{0} \ar{rr}{\cong} & & {[R\Gamma (U_\et, \ZZ^c (n)), \QQ]} \\
-        & & R\Gamma_c (G_\RR, U (\CC), \QQ (n)) [1] \ar[<-,near end,crossing over]{uu} \\
+        &[2em] &[-2.5em] &[-2.5em] &[-2.5em] R\Gamma_\Wc (U, \RR (n))\ar{dl}\ar{dd} &[-2.5em] \\
+        \RHom (R\Gamma (U_\et, \ZZ^c (n)), \RR[-2]) \ar{r}\ar{dd} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (U, \RR (n))\ar{dl}[swap]{0} \ar[dashed]{dd}{\exists!} \ar[crossing over,near start]{rr}{\cong} & & \RHom (R\Gamma (U_\et, \ZZ^c (n)), \RR[-1]) \ar{dd} \\
+        & & R\Gamma_c (G_\RR, U (\CC), \RR (n)) & & R\Gamma_\Wc (X, \RR (n))\ar{dl}\ar{dd} \\
+        \RHom (R\Gamma (X_\et, \ZZ^c (n)), \RR[-2]) \ar{r}\ar{dd} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (X, \RR (n)) \ar{dl}[swap]{0} \ar[dashed]{dd}{\exists!} \ar[crossing over,near start]{rr}{\cong} & & \RHom (R\Gamma (X_\et, \ZZ^c (n)), \RR[-1]) \ar{dd} \\
+        & & R\Gamma_c (G_\RR, X (\CC), \RR (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (Z, \RR (n))\ar{dl}\ar{dd} \\
+        \RHom (R\Gamma (Z_\et, \ZZ^c (n)), \RR[-2]) \ar{r}\ar{dd} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (Z, \RR (n)) \ar{dl}[swap]{0} \ar[dashed]{dd}{\exists!} \ar[crossing over,near start]{rr}{\cong} & & \RHom (R\Gamma (Z_\et, \ZZ^c (n)), \RR[-1]) \ar{dd} \\
+        & & R\Gamma_c (G_\RR, Z (\CC), \RR (n)) \ar[<-,near end,crossing over]{uu} & & R\Gamma_\Wc (U, \RR (n)) [1]\ar{dl} \\
+        \RHom (R\Gamma (U_\et, \ZZ^c (n)), \RR[-1]) \ar{r} & 0 \ar{dr} \ar{rr} & & R\Gamma_\fg (U, \RR (n)) [1] \ar{dl}[swap]{0} \ar{rr}{\cong} & & \RHom (R\Gamma (U_\et, \ZZ^c (n)), \RR) \\
+        & & R\Gamma_c (G_\RR, U (\CC), \RR (n)) [1] \ar[<-,near end,crossing over]{uu} \\
       \end{tikzcd} \]
 
     \caption{Diagram induced by a closed-open decomposition
-      $Z \not\hookrightarrow X \hookleftarrow U$, tensored with $\QQ$.
-      For brevity, we denote
-      $\RHom (A^\bullet,B^\bullet)$ by $[A^\bullet,B^\bullet]$}
+      $Z \not\hookrightarrow X \hookleftarrow U$, tensored with $\RR$.}
     \label{fig:RGamma-Wc-and-closed-open-decompositions-otimes-Q}
   \end{figure}
 \end{landscape}
@@ -2042,24 +2036,21 @@ We split the proof into three technical lemmas
 \begin{landscape}
   \begin{figure}
     \[ \begin{tikzcd}[font=\small,column sep=1em]
-        &[2.75em] &[-2.5em] &[-2.5em] &[-2.5em] R\Gamma_\Wc (\AA^r_X, \ZZ (n))\ar{dl}\ar[dashed,near start]{dd}{\cong} &[-2.5em] \\
-        {[R\Gamma (\AA^r_{X,\et}, \ZZ^c (n)), \QQ[-2]]} \ar{r}{\alpha_{\AA^r_X,n}}\ar{dd}{(p^*)^\vee}[swap]{\cong} & R\Gamma_c (\AA^r_{X,\et}, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd}{p_*}[swap]{\cong} \ar{rr} & & R\Gamma_\fg (\AA^r_X, \ZZ (n))\ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\cong} \ar[crossing over]{rr} & & {[+1]} \ar{dd}{\cong} \\
+        &[0.5em] &[-2.75em] &[-2.75em] &[-2.75em] R\Gamma_\Wc (\AA^r_X, \ZZ (n))\ar{dl}\ar[dashed,near start]{dd}{\cong} &[-2.75em] \\
+        \RHom (R\Gamma (\AA^r_{X,\et}, \ZZ^c (n)), \QQ[-2]) \ar{r}{\alpha_{\AA^r_X,n}}\ar{dd}{(p^*)^\vee}[swap]{\cong} & R\Gamma_c (\AA^r_{X,\et}, \ZZ (n)) \ar{dr}{u_\infty} \ar{dd}{p_*}[swap]{\cong} \ar{rr} & & R\Gamma_\fg (\AA^r_X, \ZZ (n))\ar{dl}[swap]{i_\infty} \ar[dashed]{dd}{\cong} \ar[crossing over]{rr} & & \cdots [-1] \ar{dd}{\cong} \\
         & & R\Gamma_c (G_\RR, \AA^r_X (\CC), \ZZ (n)) & & R\Gamma_\Wc (X, \ZZ (n-r)) [-2r]\ar{dl} \\
-        {[R\Gamma (X_\et, \ZZ^c (n-r)) [2r], \QQ[-2]]} \ar{r}{\alpha_{X,n-r} [-2r]} & R\Gamma_c (X_\et, \ZZ (n-r)) [-2r] \ar{dr}{u_\infty} \ar{rr} & & R\Gamma_\fg (X, \ZZ (n-r)) [-2r] \ar{dl}[swap]{i_\infty} \ar{rr} & & {[+1]} \\
+        \RHom (R\Gamma (X_\et, \ZZ^c (n-r)) [2r], \QQ[-2]) \ar[outer sep=0.75em]{r}{\alpha_{X,n-r} [-2r]} & R\Gamma_c (X_\et, \ZZ (n-r)) [-2r] \ar{dr}{u_\infty} \ar{rr} & & R\Gamma_\fg (X, \ZZ (n-r)) [-2r] \ar{dl}[swap]{i_\infty} \ar{rr} & & \cdots [-1] \\
         & & R\Gamma_c (G_\RR, X (\CC), \ZZ (n-r)) [-2r] \ar[<-,near end,crossing over]{uu}[swap]{p_*}{\cong}\\
-        & & \otimes \QQ = \\
-        & & & & R\Gamma_\Wc (\AA^r_X, \QQ (n))\ar{dl}\ar[dashed,near start]{dd}{\cong} & \\
-        {[R\Gamma (\AA^r_{X,\et}, \ZZ^c (n)), \QQ[-2]]} \ar{r}\ar{dd}{(p^*)^\vee}[swap]{\cong} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (\AA^r_X, \QQ (n))\ar{dl}[swap]{0} \ar[dashed]{dd}{\cong} \ar[crossing over]{rr} & & {[+1]} \ar{dd}{\cong} \\
-        & & R\Gamma_c (G_\RR, \AA^r_X (\CC), \QQ (n)) & & R\Gamma_\Wc (X, \QQ (n-r)) [-2r]\ar{dl} \\
-        {[R\Gamma (X_\et, \ZZ^c (n-r)) [2r], \QQ[-2]]} \ar{r} & 0 \ar{dr} \ar{rr} & & R\Gamma_\fg (X, \QQ (n-r)) [-2r] \ar{dl}[swap]{0} \ar{rr} & & {[+1]} \\
-        & & R\Gamma_c (G_\RR, X (\CC), \QQ (n-r)) [-2r] \ar[<-,near end,crossing over]{uu}[swap]{p_*}{\cong}
+        & & & & R\Gamma_\Wc (\AA^r_X, \RR (n))\ar{dl}\ar[dashed,near start]{dd}{\cong} & \\
+        \RHom (R\Gamma (\AA^r_{X,\et}, \ZZ^c (n)), \RR[-2]) \ar{r}\ar{dd}{(p^*)^\vee}[swap]{\cong} & 0 \ar{dr} \ar{dd} \ar{rr} & & R\Gamma_\fg (\AA^r_X, \RR (n))\ar{dl}[swap]{0} \ar[dashed]{dd}{\cong} \ar[crossing over]{rr} & & \cdots [-1] \ar{dd}{\cong} \\
+        & & R\Gamma_c (G_\RR, \AA^r_X (\CC), \RR (n)) & & R\Gamma_\Wc (X, \RR (n-r)) [-2r]\ar{dl} \\
+        \RHom (R\Gamma (X_\et, \ZZ^c (n-r)) [2r], \RR[-2]) \ar{r} & 0 \ar{dr} \ar{rr} & & R\Gamma_\fg (X, \RR (n-r)) [-2r] \ar{dl}[swap]{0} \ar{rr} & & \cdots [-1] \\
+        & & R\Gamma_c (G_\RR, X (\CC), \RR (n-r)) [-2r] \ar[<-,near end,crossing over]{uu}[swap]{p_*}{\cong}
       \end{tikzcd} \]
 
     \caption{Isomorphism
       $R\Gamma_\Wc (\AA^r_X, \ZZ (n)) \cong R\Gamma_\Wc (X, \ZZ (n-r)) [-2r]$
-      and its splitting after tensoring with $\QQ$.
-      For brevity, we denote
-      $\RHom (A^\bullet,B^\bullet)$ by $[A^\bullet,B^\bullet]$}
+      and its splitting after tensoring with $\RR$.}
     \label{fig:RGamma-Wc-and-affine-bundles}
   \end{figure}
 \end{landscape}
@@ -2448,7 +2439,7 @@ $$(L,r) \otimes_R (L^{-1}, -r) \cong \bone.$$
 
 \begin{definition}
   \label{dfn:determinant-of-projective-fg-module}
-  We denote by $\mathcal{C}_\is (R)$ the category whose objects are finitely
+  Denote by $\mathcal{C}_\is (R)$ the category whose objects are finitely
   generated projective $R$-modules and whose morphisms are isomorphisms.  For
   $A \in \mathcal{C}_\is (R)$ we define the corresponding determinant as an
   object in $\mathcal{P}_\is (R)$ given by
