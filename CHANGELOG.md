@@ -38,7 +38,7 @@ Minor additions:
 
 ## Weil-étale cohomology and zeta-values of arithmetic schemes at negative integers
 
-### version 2
+### Version 2
 
 Minor additions:
 
@@ -47,7 +47,7 @@ Minor additions:
 
 * direct proof via trace formula in section 5.
 
-### version 3
+### Version 3
 
 * The new title is "Weil-étale cohomology and zeta-values of arithmetic schemes
   at negative integers".
