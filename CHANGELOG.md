@@ -1,6 +1,8 @@
 # Changelog
 
-## Weil-étale part I, version 2
+## Weil-étale cohomology and duality for arithmetic schemes in negative weights
+
+### Version 2
 
 Minor additions:
 
@@ -14,8 +16,7 @@ Minor additions:
   Lichtenbaum's conjectures on finite generation of étale motivic
   cohomology at the beginning of section 8.
 
-
-## Weil-étale part I, version 3
+### Version 3
 
 Minor additions:
 
@@ -26,8 +27,18 @@ Minor additions:
 
 * comparison with the construction of Flach and Morin in section 8.
 
+### Version 4
 
-## Weil-étale part II, version 2
+* The new title is "Weil-étale cohomology and duality for arithmetic schemes
+  in negative weights".
+
+* Various improvements in the exposition thanks to suggestions
+  of an anonymous referee, in particular in sec. 3 and 6.
+
+
+## Weil-étale cohomology and zeta-values of arithmetic schemes at negative integers
+
+### version 2
 
 Minor additions:
 
@@ -35,3 +46,12 @@ Minor additions:
   finite generation by duality,
 
 * direct proof via trace formula in section 5.
+
+### version 3
+
+* The new title is "Weil-étale cohomology and zeta-values of arithmetic schemes
+  at negative integers".
+
+* Minor improvements in the exposition.
+
+* Updated references to 2012.11034

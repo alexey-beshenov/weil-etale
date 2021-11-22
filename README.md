@@ -1,14 +1,14 @@
 # Papers on Weil-étale cohomology
 
-* `weil-etale-1.tex`:
-  Weil-étale cohomology for arbitrary arithmetic schemes and n < 0.
-  Part I: Construction of Weil-étale complexes
+* `beshenov-weil-etale-cohomology.tex`:
+  Weil-étale cohomology and duality for arithmetic schemes
+  in negative weights
 
   arXiv link: https://arxiv.org/abs/2012.11034
 
-* `weil-etale-2.tex`:
-  Weil-étale cohomology for arbitrary arithmetic schemes and n < 0.
-  Part II: The special value conjecture
+* `beshenov-weil-etale-zeta-values.tex`:
+  Weil-étale cohomology and zeta-values of arithmetic schemes
+  at negative integers
 
   arXiv link: https://arxiv.org/abs/2102.12114
 
