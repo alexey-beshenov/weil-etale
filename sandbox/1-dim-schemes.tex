@@ -1,6 +1,135 @@
 \documentclass[draft]{article}
 
-\input{../definitions.tex}
+\usepackage{amsmath,amssymb}
+
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\fchar}{char}
+\DeclareMathOperator{\Fil}{Fil}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Tot}{Tot}
+\DeclareMathOperator{\vol}{vol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\PP}{\mathbb{P}}
+
+\DeclareMathOperator{\Gr}{Gr}
+
+\newcommand{\Parf}{\mathcal{P}\!\text{\it arf}}
+
+% force \nolimits on \det:
+\renewcommand{\det}{\operatorname{det}}
+
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\emptyset}{\varnothing}
+
+\newcommand{\ar}{\text{\it ar}}
+\newcommand{\BM}{\text{\it BM}}
+\newcommand{\codiv}{\text{\it codiv}}
+\newcommand{\DB}{{\mathcal{D}\text{-}\mathcal{B}}}
+\renewcommand{\div}{\text{\it div}}
+\newcommand{\dR}{\text{\it dR}}
+\newcommand{\et}{\text{\it \'{e}t}}
+\newcommand{\fg}{\text{\it fg}}
+\newcommand{\is}{\text{\it is}}
+\newcommand{\red}{\text{\it red}}
+\newcommand{\tors}{\text{\it tors}}
+\newcommand{\Wc}{\text{\it W,c}}
+\newcommand{\Zar}{\text{\it Zar}}
+
+\newcommand{\dfn}{\mathrel{\mathop:}=}
+\newcommand{\rdfn}{=\mathrel{\mathop:}}
+
+\newcommand{\iHom}{\underline{\Hom}}
+\newcommand{\RHom}{R\!\Hom}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{babel}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{patterns}
+\newcommand{\tikzpb}{\ar[phantom,pos=0.2]{dr}{\text{\large$\lrcorner$}}}
+\newcommand{\tikzpbur}{\ar[phantom,pos=0.2]{dl}{\text{\large$\llcorner$}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[draft]{hyperref}
+
+\hypersetup{
+    colorlinks,
+    linkcolor={red!60!black},
+    citecolor={blue!60!black},
+    urlcolor={blue!80!black}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsthm}
+
+\newtheoremstyle{myplain}
+{\topsep}   % ABOVESPACE
+{\topsep}   % BELOWSPACE
+{\itshape}  % BODYFONT
+{0pt}       % INDENT (empty value is the same as 0pt)
+{\scshape} % HEADFONT
+{.}         % HEADPUNCT
+{5pt plus 1pt minus 1pt} % HEADSPACE
+{}   % CUSTOM-HEAD-SPEC
+
+\theoremstyle{myplain}
+\newtheorem{maintheorem}{Theorem}
+\renewcommand*{\themaintheorem}{\Roman{maintheorem}}
+\newtheorem*{maintheorem*}{Main theorem}
+\newtheorem*{thetheorem*}{Theorem}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+
+\newtheoremstyle{mydefinition}
+{\topsep}   % ABOVESPACE
+{\topsep}   % BELOWSPACE
+{}  % BODYFONT
+{0pt}       % INDENT (empty value is the same as 0pt)
+{\scshape} % HEADFONT
+{.}         % HEADPUNCT
+{5pt plus 1pt minus 1pt} % HEADSPACE
+{}   % CUSTOM-HEAD-SPEC
+
+\theoremstyle{mydefinition}
+\newtheorem*{conjecture*}{Conjecture}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{Zeta-values of abelian one-dimensional arithmetic schemes at strictly
   negative integers} \author{Alexey Beshenov}
@@ -11,8 +140,7 @@
   \begin{tabular}{@{}l@{}}%
     \\
     Alexey Beshenov \\
-    Center for Research in Mathematics (CIMAT), Guanajuato, Mexico \\
-    % E-mail: \texttt{alexey.beshenov@cimat.mx} \\
+    E-mail: \texttt{cadadr@gmail.com} \\
     URL: \url{https://cadadr.org/}
   \end{tabular}}
 
@@ -23,18 +151,19 @@
 \maketitle
 
 \begin{abstract}
-  Let $X \to \Spec \ZZ$ be an arithmetic scheme (separated, of finite type) of
-  Krull dimension $1$. We write down a formula for the special value of
-  $\zeta (X,s)$ at $s = n < 0$, in terms of \'{e}tale motivic cohomology of $X$ and
-  a regulator. We prove it in the case when for each generic point $\eta \in X$
-  with $\fchar \kappa (\eta) = 0$, the extension $\kappa (\eta)/\QQ$ is
-  abelian. Further, we conjecture that the formula holds for any one-dimensional
-  arithmetic scheme.
+  Let $X$ be an arithmetic scheme (i.e. separated, of finite type over
+  $\Spec \ZZ$) of Krull dimension $1$. We write down a formula for the special
+  value of $\zeta (X,s)$ at $s = n < 0$, in terms of \'{e}tale motivic
+  cohomology of $X$ and a regulator. We prove it in the case when for each
+  generic point $\eta \in X$ with $\fchar \kappa (\eta) = 0$, the extension
+  $\kappa (\eta)/\QQ$ is abelian. Further, we conjecture that the formula holds
+  for any one-dimensional arithmetic scheme.
 
-  This is a consequence of Weil-\'{e}tale formalism developed by the author in
-  \cite{Beshenov-Weil-etale-1,Beshenov-Weil-etale-2}, following the work of
-  Flach and Morin \cite{Flach-Morin-2018}. In particular, we calculate
-  Weil-\'{e}tale cohomology of one-dimensional arithmetic schemes.
+  This is a consequence of the Weil-\'{e}tale formalism developed by the author
+  in \cite{Beshenov-Weil-etale-1} and \cite{Beshenov-Weil-etale-2}, following
+  the work of Flach and Morin \cite{Flach-Morin-2018}. In particular, we
+  calculate Weil-\'{e}tale cohomology of one-dimensional $X$ and make explicit
+  the special value conjecture from \cite{Beshenov-Weil-etale-2} for this case.
 \end{abstract}
 
 \tableofcontents
@@ -43,17 +172,17 @@
 
 \section{Introduction}
 
-Let $X$ be an \textbf{arithmetic scheme}, by which we will mean throughout this
+Let $X$ be an \textbf{arithmetic scheme}, by which we mean throughout this
 text that it is separated and of finite type over $\Spec \ZZ$.
 The \textbf{zeta function} associated to $X$ (see e.g. \cite{Serre-1965}) is
 given by
 \[ \zeta (X,s) = \prod_{\substack{x \in X \\ \text{closed pt.}}}
-  \frac{1}{1 - \#\kappa (x)^{-s}}, \]
+  \frac{1}{1 - |\kappa (x)|^{-s}}, \]
 where $\kappa (x) = \mathcal{O}_{X,x}/\mathfrak{m}_{X,x}$ denotes the residue
 field of a point. The above product converges for $\Re s > \dim X$, and
 conjecturally admits a meromorphic continuation to the whole complex plane.
 Even though this is a wide open conjecture in general, this is well-known for
-$\dim X = 1$, which will be the case of interest for us.
+$\dim X = 1$, which is the case of interest in this article.
 
 If $\zeta (X,s)$ admits a meromorphic continuation around $s = n$, then denote
 by
@@ -68,21 +197,21 @@ $$\zeta^* (X,n) = \lim_{s \to n} (s - n)^{-d_n}\,\zeta (X,s).$$
 
 A primordial example of special value formulas is Dirichlet's
 \textbf{analytic class number formula}. Namely, for a number field $F/\QQ$, we
-will denote by $\mathcal{O}_F$ the corresponding ring of integers. Then
-$\zeta_F (s) = \zeta (X,s)$ for $X = \Spec \mathcal{O}_F$ is the Dedekind zeta
-function attached to $F$.  It is an easy consequence of the well-known
-functional equation for $\zeta_F (s)$ that it has a zero at $s = 0$ of order
-$r_1 + r_2 - 1$, where $r_1$ (resp. $r_2$) is the number of real embeddings
-$F \hookrightarrow \RR$ (resp. conjugate pairs of complex embeddings
+denote by $\mathcal{O}_F$ the corresponding ring of integers. Then
+$\zeta_F (s) = \zeta (X,s)$ for $X = \Spec \mathcal{O}_F$ is the
+\textbf{Dedekind zeta function} attached to $F$.  It is an easy consequence of
+the well-known functional equation for $\zeta_F (s)$ that it has a zero at
+$s = 0$ of order $r_1 + r_2 - 1$, where $r_1$ (resp. $2 r_2$) is the number of
+real embeddings $F \hookrightarrow \RR$ (resp. complex embeddings
 $F \hookrightarrow \CC$). The corresponding special value is given by
 \begin{equation}
   \label{eqn:zeta-F-at-s=0}
   \zeta^*_F (0) = -\frac{h_F}{\omega_F}\,R_F,
 \end{equation}
-where $h_F = \# \Pic (\mathcal{O}_F)$ is the class number,
-$\omega_F = \# (\mathcal{O}_F)^\times_\tors$ is the number of roots of unity in
-$F$, and $R_F$ is the regulator, which is a positive real number;
-see for instance \cite[\S VII.5]{Neukirch-1999}.
+where $h_F = |\Pic (\mathcal{O}_F)|$ is the class number,
+$\omega_F = |(\mathcal{O}_F)^\times_\tors|$ is the number of roots of unity in
+$F$, and $R_F \in \RR$ is the regulator; see for instance
+\cite[\S VII.5]{Neukirch-1999}.
 
 It is natural to ask whether such formulas exist for $s = n \in \ZZ$ other than
 $s = 0$ (or $s = 1$, which is related via the functional equation to $s = 0$).
@@ -91,40 +220,40 @@ numbers $h_F$ and $\omega_F$ and the regulator $R_F$. Many special value
 conjectures, of varying generality, originate from this question.
 
 Lichtenbaum proposed in his pioneering work \cite{Lichtenbaum-1973} formulas in
-terms of algebraic $K$-theory. Later this was also restated in terms of
-cohomology groups $H^i (\Spec \mathcal{O}_F [1/p]_\et, \ZZ_p (n))$
-for $i = 1,2$ and all primes $p$, and the corresponding formula is known as
+terms of algebraic $K$-theory. Later these were also restated in terms of
+the $p$-adic cohomology groups $H^i (\Spec \mathcal{O}_F [1/p]_\et, \ZZ_p (n))$
+for $i = 1,2$ and all primes $p$; the corresponding formula is known as the
 ``cohomological Lichtenbaum conjecture''; see for instance
 \cite{Huber-Kings-2003}. We will not go into the details, since instead of
-working with $p$-adic cohomology
-$H^i (\Spec \mathcal{O}_F [1/p]_\et, \ZZ_p (n))$ for varying $p$, it will more
-convenient for us to use motivic cohomology.
+working with $p$-adic cohomology for varying $p$, it is more convenient for us
+to use motivic cohomology.
 
 A suitable generalization of $R_F$ are the ``higher regulators'' that have been
 considered starting from Borel's work \cite{Borel-1977}, and later on by
 Beilinson \cite{Beilinson-1984}.
 
-We will not make any attempt at giving a proper historical overview of the
+We do not not make any attempt at giving a proper historical overview of the
 subject and writing down all conjectural formulas; the interested reader may
-consult lecture notes \cite{Kolster-2004} and surveys
-\cite{Goncharov-2005,Kahn-2005}.
+consult, e.g. \cite{Kolster-2004,Goncharov-2005,Kahn-2005}.
 
 \vspace{1em}
 
-Lichtenbaum has envisioned a more recent research program, known as
+Later Lichtenbaum proposed a new research program known as
 \textbf{Weil-\'{e}tale cohomology}; see e.g.
-\cite{Lichtenbaum-2005,Lichtenbaum-2009-number-rings,Lichtenbaum-2009-Euler-char}.
+\cite{Lichtenbaum-2005,Lichtenbaum-2009-Euler-char,Lichtenbaum-2009-number-rings,Lichtenbaum-2021}.
 It suggests that for an arithmetic scheme $X$ the special value of $\zeta (X,s)$
-at $s = n \in \ZZ$ should be expressible in terms of Weil-\'{e}tale cohomology
-$H^i_\Wc (X,\ZZ(n))$, which is a suitable modification of the (\'{e}tale) motivic
-cohomology of $X$, that gives finitely generated abelian groups. Flach and Morin
-gave in \cite{Flach-Morin-2018} an explicit construction of Weil-\'{e}tale
-cohomology for a proper and regular arithmetic scheme $X$, and stated a precise
-conjectural relation of $H^i_\Wc (X,\ZZ(n))$ to $\zeta^* (X,n)$.
+at $s = n \in \ZZ$ should be expressible in terms of Weil-\'{e}tale cohomology,
+which is a suitable modification of the \'{e}tale motivic cohomology of $X$,
+that gives finitely generated abelian groups. Flach and Morin gave in
+\cite{Flach-Morin-2018} a construction of Weil-\'{e}tale cohomology
+groups $H^i_\Wc (X,\ZZ(n))$ for a proper and regular arithmetic scheme $X$, and
+stated a precise conjectural relation of $H^i_\Wc (X,\ZZ(n))$ to
+$\zeta^* (X,n)$.
 
 In particular, in \cite[\S 5.8.3]{Flach-Morin-2018} they write down explicitly
-their special value formula for the case of $X = \Spec \mathcal{O}_F$. For us it
-will be convenient to put it as
+their special value formula for the case of $X = \Spec \mathcal{O}_F$. For
+$n \le 0$ and in terms of the cohomology groups $H^i (X_\et, \ZZ^c (n))$, it
+reads
 \begin{equation}
   \label{eqn:flach-morin-zeta-F-formula}
   \zeta_F^* (n) = \pm\frac{|H^0 (X_\et, \ZZ^c (n))|}{|H^{-1} (X_\et, \ZZ^c (n))_\tors|}\,R_{F,n}
@@ -132,9 +261,11 @@ will be convenient to put it as
 \end{equation}
 The definition of groups $H^i (X_\et, \ZZ^c (n))$ is reviewed below, and the
 regulator $R_{F,n} = R_{\Spec \mathcal{O}_F,n}$ is defined in
-\S\ref{sec:regulators}. According to \cite[Proposition~5.35]{Flach-Morin-2018},
-the above formula holds unconditionally for abelian number fields $F/\QQ$, via
-reduction to the Tamagawa number conjecture of
+\S\ref{sec:regulators}.
+
+According to \cite[Proposition~5.35]{Flach-Morin-2018}, the formula
+\eqref{eqn:flach-morin-zeta-F-formula} holds unconditionally for abelian number
+fields $F/\QQ$, via reduction to the Tamagawa number conjecture of
 Bloch--Kato--Fontaine--Perrin-Riou.
 
 In particular, if we take $n = 0$, then $\ZZ^c (0) \cong \mathbb{G}_m [1]$, and
@@ -145,6 +276,13 @@ $R_{F,0}$ is the usual regulator of Dirichlet, so that
   \pm \frac{|\Pic (\mathcal{O}_F)|}{|(\mathcal{O}_F)^\times_\tors|}\,R_F, \]
 which is the classical formula \eqref{eqn:zeta-F-at-s=0}.
 
+We also mention that Flach and Morin have a similar special value formula for
+$n > 0$ which involves a ``correction factor'' $C (X,n) \in \QQ$. In this text
+we will not say anything about the case of $n > 0$; the reader may consult
+\cite{Flach-Morin-2018} for further details, and also the subsequent papers
+\cite{Flach-Morin-2020,Flach-Morin-2020-Muenster,Morin-2021-THH} which further
+investigate the nature of the correction factor $C (X,n)$.
+
 In case of $n < 0$, the author has extended in
 \cite{Beshenov-Weil-etale-1,Beshenov-Weil-etale-2} the work of Flach and Morin
 to any arithmetic scheme $X$ (thus removing the assumption that $X$ is proper or
@@ -153,17 +291,18 @@ special value formula for one-dimensional arithmetic schemes.
 
 \vspace{1em}
 
-In order to state an unconditional result, it will be convenient to introduce
-the following definition.
+In order to state the main result, it is convenient to introduce the following
+terminology.
 
 \begin{definition}
+  \label{dfn:abelian-scheme}
   We say that a one-dimensional arithmetic scheme $X$ is \textbf{abelian} if
   each generic point $\eta \in X$ with $\fchar \kappa (\eta) = 0$ corresponds to
   an abelian extension $\kappa (\eta)/\QQ$.
 \end{definition}
 
-In particular, if $X$ lives entirely in positive characteristic, then it is
-abelian. The goal of this text is to prove the following result.
+\noindent (In particular, if $X$ lives entirely in positive characteristic, then
+it is abelian.) The goal of this text is to prove the following result.
 
 \begin{theorem}
   \label{main-theorem}
@@ -179,7 +318,7 @@ abelian. The goal of this text is to prove the following result.
   \item $H^i (X_\et, \ZZ^c (n))$ is a version of (\'{e}tale) motivic cohomology,
     reviewed below;
 
-  \item the ``correcting factor'' $2^\delta$ is given by
+  \item the ``correction factor'' $2^\delta$ is given by
     \begin{equation}
       \label{eqn:delta}
       \delta = \delta_{X,n} =
@@ -191,32 +330,30 @@ abelian. The goal of this text is to prove the following result.
     and $r_1 = |X (\RR)|$ is the number of real places of $X$,
 
   \item $R_{X,n}$ is a positive real number, defined in \S\ref{sec:regulators}
-    via Beilinson's regulator map.
+    via a regulator map.
   \end{itemize}
 \end{theorem}
 
-We further conjecture that the special value formula still holds for non-abelian
-one-dimensional schemes. This is equivalent to Tamagawa number conjecture for
-non-abelian number fields.
+We further conjecture that the formula \eqref{eqn:special-value-formula} still
+holds for non-abelian one-dimensional schemes. This is equivalent to the
+Tamagawa number conjecture for non-abelian number fields.
 
 \vspace{1em}
 
-We will give two proofs of \eqref{eqn:special-value-formula}. The first proof
-can be found in \S\ref{sec:special-value-formula} after some preliminary
-calculations of motivic and Weil-\'{e}tale cohomology. We observe that the special
-value formula is the same as conjecture $\mathbf{C} (X,n)$ that was stated in
-\cite{Beshenov-Weil-etale-2}, specialized to $\dim X = 1$ and written out more
-explicitly. The second proof in \S\ref{sec:demystification} is more elementary
-and self-contained. Essentially it is the same argument, only written out in a
-more explicit manner.
+We give two proofs of \eqref{eqn:special-value-formula}: first a direct argument
+in \S\ref{sec:direct-proof}, and then an argument in terms of Weil-\'{e}tale
+cohomology in \S\ref{sec:Weil-etale-proof}. Namely, we observe in
+\S\ref{sec:Weil-etale-proof} that the special value formula is the same as
+conjecture $\mathbf{C} (X,n)$ that was stated in \cite{Beshenov-Weil-etale-2},
+specialized to $\dim X = 1$ and written out more explicitly.
 
 The purpose of this text is twofold. Firstly, we establish a new special value
 formula, generalizing several formulas that can be found in the
-literature. Secondly, we go through the construction of Weil-\'{e}tale cohomology
-$H^i_\Wc (X, \ZZ(n))$ from \cite{Beshenov-Weil-etale-1}, explaining it in the
-case of one-dimensional schemes. It is not very surprising that such a special
-value formula exists, but the right cohomological invariants to state it are
-suggested by the Weil-\'{e}tale framework.
+literature. Secondly, we go through the construction of Weil-\'{e}tale
+cohomology $H^i_\Wc (X, \ZZ(n))$ from \cite{Beshenov-Weil-etale-1}, explaining
+it in the case of one-dimensional schemes. It is not very surprising that such a
+special value formula exists, but the right cohomological invariants to state it
+were suggested by the Weil-\'{e}tale framework.
 
 This text was inspired by the work of Jordan and Poonen
 \cite{Jordan-Poonen-2020}, where the authors write down a formula for
@@ -229,31 +366,65 @@ property.
 
 \subsection*{Notation and conventions}
 
-Throughout this text $X$ will always denote a one-dimensional
-\textbf{arithmetic scheme}; that is, separated scheme of finite type
-$X \to \Spec \ZZ$ of Krull dimension $1$. The number $n$ will be a fixed
-\emph{strictly negative} integer.
+\paragraph{Abelian groups.}
+For an abelian group $A$, we denote
+\begin{align*}
+  A^D & \dfn \Hom (A, \QQ/\ZZ), \\
+  A^* & \dfn \Hom (A, \ZZ).
+\end{align*}
+In particular, there is an exact sequence
+\begin{equation}
+  \label{eqn:exact-sequence-A*-etc}
+  0 \to A^* \to \Hom (A,\QQ) \to A^D \to (A_\tors)^D \to 0
+\end{equation}
+
+Note that for a finitely generated group $A$, the $\ZZ$-dual $A^*$ is free of
+the same rank. If $A$ is finite, then there is a (non-canonical) isomorphism
+$A^D \cong A$, and in particular $|A^D| = |A|$.
+
+\paragraph{Schemes.}
+Throughout this text $X$ always denotes a
+\textbf{one-dimensional arithmetic scheme}; that is, separated scheme of finite
+type $X \to \Spec \ZZ$ of Krull dimension $1$.
+
+We remark that the restriction that $X$ is abelian
+(Definition~\ref{dfn:abelian-scheme}) is only needed for the
+proofs of Theorem~\ref{main-theorem} in \S\ref{sec:direct-proof} and
+\S\ref{sec:Weil-etale-proof}. Our calculations in
+\S\S\ref{sec:vanishing-order},
+\ref{sec:GR-equivariant-cohomology},
+\ref{sec:etale-motivic-cohomology},
+\ref{sec:regulators},
+\ref{sec:Weil-etale-cohomology-of-X}
+work for any one-dimensional arithmetic scheme $X$.
+
+\paragraph{Weights.}
+The number $n$ will be a fixed \emph{strictly negative} integer.
 
 \paragraph{Motivic cohomology.}
-We will work with \'{e}tale motivic cohomology defined in terms of Bloch's cycle
-complexes. These were introduced by Bloch in \cite{Bloch-1986} for varieties
-over fields, and for the version over $\Spec \ZZ$ that we will use, see
-\cite{Geisser-2004-Dedekind,Geisser-2005}.
+We will work with a version of \'{e}tale motivic cohomology defined in terms of
+\textbf{Bloch's cycle complexes}. These were introduced by Bloch in
+\cite{Bloch-1986} for varieties over fields, and for the version over
+$\Spec \ZZ$, see \cite{Geisser-2004-Dedekind,Geisser-2005}.
 
-Namely, we let $\Delta^i = \Spec \ZZ [t_0,\ldots,t_i] / (1 - \sum_i t_i)$ be the
-algebraic simplex. Denote by $z_n (X, i)$ the group freely generated by
-algebraic cycles $Z \subset X \times \Delta^i$ of dimension $n+i$. Then for
-$n < 0$ we let $\ZZ^c (n)$ be the complex of \'{e}tale sheaves
-$U \rightsquigarrow z_n (U, -\bullet) [2n]$. The corresponding (hyper)cohomology
-$H^i (X_\et, \ZZ^c (n))$ is what we will call motivic cohomology throughout this
-text. For a proper regular arithmetic scheme $X$ of dimension $d$ we have
-$\ZZ^c (n) = \ZZ (d-n) [2d]$, where $\ZZ (m)$ is the other motivic complex that
-usually appears in the literature.
+Briefly, we let $\Delta^i = \Spec \ZZ [t_0,\ldots,t_i] / (1 - \sum_i t_i)$ be
+the algebraic simplex. Denote by $z_n (X, i)$ the group freely generated by
+algebraic cycles $Z \subset X \times \Delta^i$ of dimension $n+i$.
+For $n < 0$ we consider the complex of \'{e}tale sheaves
+$$\ZZ^c (n) \dfn z_n (\text{\textvisiblespace}, -\bullet) [2n].$$
+The corresponding (hyper)cohomology
+$$H^i (X_\et, \ZZ^c (n)) \dfn H^i (R\Gamma (X_\et, \ZZ^c (n)))$$
+is what we will call motivic cohomology throughout this text. For a proper
+regular arithmetic scheme $X$ of pure dimension $d$ we have
+$$\ZZ^c (n) \cong \ZZ (d-n) [2d],$$
+where $\ZZ (m)$ is the other motivic complex that usually appears in the
+literature.
 
-We recall from \cite[Corollary~7.2]{Geisser-2010} that our motivic cohomology
-satisfies the localization property: if $Z \subset X$ is a closed subscheme and
-$U = X\setminus Z$ is its closed complement, then there is a distinguished
-triangle
+For further results about $\ZZ^c (n)$, we refer to \cite{Geisser-2010}. In
+particular, we recall from \cite[Corollary~7.2]{Geisser-2010} that the groups
+$H^i (X_\et, \ZZ^c (n))$ satify the localization property: if $Z \subset X$ is a
+closed subscheme and $U = X\setminus Z$ is its closed complement, then there is
+a distinguished triangle
 \[ R\Gamma (Z_\et, \ZZ^c (n)) \to
   R\Gamma (X_\et, \ZZ^c (n)) \to
   R\Gamma (U_\et, \ZZ^c (n)) \to 
@@ -267,80 +438,46 @@ which gives a long exact sequence
   H^{i+1} (Z_\et, \ZZ^c (n)) \to \cdots
 \end{multline}
 This means that $H^i (-, \ZZ^c (n))$ behaves like (motivic) Borel--Moore
-homology. For the corresponding zeta functions, we have
-$$\zeta (X,s) = \zeta (Z,s)\,\zeta (U,s)$$
----this is clear from the definition.
+homology.
+
+For the corresponding zeta functions, we have
+$$\zeta (X,s) = \zeta (Z,s)\,\zeta (U,s).$$
 
 In general, the groups $H^i (X_\et, \ZZ^c (n))$ are very difficult to
 compute. However, these are rather well-understood for one-dimensional
-arithmetic schemes $X$; see \S\ref{sec:motivic-cohomology-structure} below.
-
-\paragraph{Abelian groups.}
-In all our calculations, an arithmetic duality
-\cite[Theorem~I]{Beshenov-Weil-etale-1} will play a major role. It affirms that
-certain groups are $\QQ/\ZZ$-dual to finitely generated groups
-$H^i (X_\et, \ZZ^c(n))$. It will be convenient to fix some notation.
-
-\begin{definition}
-  \label{dfn:A-D-and-A-star}
-  Given a finitely generated abelian group $A$, we denote
-  \[ A^D \dfn \Hom (A, \QQ/\ZZ), \quad
-    A^* \dfn \Hom (A, \ZZ). \]
-\end{definition}
-
-\begin{remark}
-  \label{rmk:A-D-and-A-star}
-  We have the following immediate observations.
-  \begin{itemize}
-  \item There is an exact sequence
-    $0 \to A^* \to \Hom (A,\QQ) \to A^D \to (A_\tors)^D \to 0$
-
-  \item $A^*$ is a free group, and $\rk_\ZZ A^* = \rk_\ZZ A$.
-
-  \item If $A$ is finite, then there is a \emph{non-canonical} isomorphism
-    $A^D \cong A$, and in particular $|A^D| = |A|$.
-  \end{itemize}
-\end{remark}
-
-% \begin{definition}
-%   We will say that an abelian group $A$ is of \textbf{cofinite type} if
-%   $A \cong B^D$ for some finitely generated abelian group $B$.
-% \end{definition}
-
-% If $B \cong \ZZ^{\oplus n} \oplus T$, where $T$ is a finite group, then we have
-% $A \cong (\QQ/\ZZ)^{\oplus n} \oplus T^D$. Here
-% \[ A_\div \dfn (\QQ/\ZZ)^{\oplus n}, \quad
-%   A_\codiv \dfn A/A_\div \cong T^D \]
-% are respectively the divisible and \textbf{codivisible} part of $A$.
+arithmetic schemes $X$; see \S\ref{sec:etale-motivic-cohomology} below.
 
 \subsection*{Outline of the paper}
 
-In \S\ref{sec:devissage} we prove a d\'{e}vissage lemma, which shows how a property
-that holds for curves over finite fields and for number rings may be generalized
-to any one-dimensional arithmetic scheme. This is an elementary argument, but it
-is isolated in order not to repeat the same reasoning in several proofs.
+In \S\ref{sec:devissage} we prove a d\'{e}vissage lemma, which shows how a
+property that holds for curves over finite fields and for number rings may be
+generalized to any one-dimensional arithmetic scheme. This is an elementary
+argument, isolated in order not to repeat the same reasoning in several proofs.
 
-Then in \S\ref{sec:motivic-cohomology-structure} we put together various
-well-known results in order to to describe motivic cohomology groups
-$H^i (X_\et, \ZZ^c(n))$ for one-dimensional arithmetic schemes.
+In \S\ref{sec:vanishing-order} we calculate the vanishing order of $\zeta (X,s)$
+at $s = n < 0$. Then in \S\ref{sec:GR-equivariant-cohomology} we calculate the
+$G_\RR$-equivariant cohomology groups of the finite discrete space of complex
+points $X(\CC)$. In \S\ref{sec:etale-motivic-cohomology} we put together various
+well-known results in order to describe the motivic cohomology groups
+$H^i (X_\et, \ZZ^c(n))$.
 
-The following \S\ref{sec:Weil-etale-cohomology-of-X} is dedicated to an explicit
-description of Weil-\'{e}tale cohomology groups $H^i_\Wc (X, \ZZ(n))$ that were
-defined in \cite{Beshenov-Weil-etale-1}, again for the particular case of
-one-dimensional $X$. In \S\ref{sec:regulators} we define the regulator, and in
-\S\ref{sec:special-value-formula} the calculations of Weil-\'{e}tale cohomology are
-used to write down an explicit formula for the special value $\zeta^* (X,n)$,
-which corresponds to the conjecture $\mathbf{C} (X,n)$ from
-\cite{Beshenov-Weil-etale-2}. The main theorem is then deduced from the results
-of \cite{Beshenov-Weil-etale-2}.
+We define in \S\ref{sec:regulators} the regulator that appears in the special
+value formula.
 
-In \S\ref{sec:demystification} it is explained how to prove the formula
-directly, using localization. This is essentially the argument from
-\cite{Beshenov-Weil-etale-2}, only written out explicitly for one-dimensional
-$X$.
+Our first ``elementary'' proof of the main result is contained in
+\S\label{sec:direct-proof}.
 
-We conclude in \S\ref{sec:examples} with a couple of examples that illustrate
-how the special value formula works.
+Then \S\ref{sec:Weil-etale-cohomology-of-X} is dedicated to a calculation of the
+Weil-\'{e}tale cohomology groups $H^i_\Wc (X, \ZZ(n))$ from
+\cite{Beshenov-Weil-etale-1}, in the case of one-dimensional $X$. We use these
+calculations in \S\ref{sec:Weil-etale-proof} in order to make explicit
+Conjecture $\mathbf{C} (X,n)$ from \cite{Beshenov-Weil-etale-2}, again for
+one-dimensional $X$. This gives a second, more conceptual proof of the main
+result, and also explains how we arrived to \eqref{eqn:special-value-formula} in
+the first place.
+
+Finally, we conclude in \S\ref{sec:examples} with a couple of examples that
+illustrate how the special value formula works.
 
 \subsection*{Acknowledgments}
 
@@ -348,7 +485,7 @@ I am grateful to Baptiste Morin for various discussions that led to this text.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-\section{D\'{e}vissage lemma}
+\section{D\'{e}vissage lemma for one-dimensional schemes}
 \label{sec:devissage}
 
 The main idea of this text is to consider a property that holds for spectra of
@@ -419,6 +556,7 @@ repeatedly in everything that follows.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Vanishing order of $\zeta (X,s)$ at $s = n < 0$}
+\label{sec:vanishing-order}
 
 Consider the finite discrete space of complex points
 $X(\CC) = \Hom (\Spec \CC, X)$. There is a canonical action of complex
@@ -465,31 +603,19 @@ arithmetic scheme $X$ we have
 where the sums are over generic points $\eta \in X$ with residue field
 $\kappa (\eta)$ of characteristic $0$.
 
-\vspace{1em}
-
-It will be convenient to introduce the following notation.
-\begin{definition}
-  \label{dfn:dn}
-  If $X$ is a one-dimensional arithmetic scheme with $r_1$ real and $2r_2$
-  complex places, we define for $n < 0$
-  \[ d_n =
+\begin{proposition}
+  \label{prop:vanishing-order-equals-dn}
+  Let $X$ be a one-dimensional arithmetic scheme with $r_1$ real and $2r_2$
+  complex places. For $n < 0$, the vanishing order of $\zeta (X,s)$ at $s = n$
+  is given by
+  \begin{equation}
+    \label{eqn:dn}
+    d_n = \ord_{s = n} \zeta (X,s) =
     \begin{cases}
       r_1 + r_2, & n\text{ even}, \\
       r_2, & n\text{ odd}.
-    \end{cases} \]
-\end{definition}
-
-There is no coincidence that this notation coincides with
-\eqref{eqn:vanishing-order}; we will prove this
-in Proposition~\ref{prop:vanishing-order-equals-dn} below.
-
-In the subsequent calculations the number $d_n$ from definition~\ref{dfn:dn}
-will appear frequently, so we make a digression to explain its arithmetic
-meaning.
-
-\begin{proposition}
-  \label{prop:vanishing-order-equals-dn}
-  We have $d_n = \ord_{s = n} \zeta (X,s)$.
+    \end{cases}
+  \end{equation}
 
   \begin{proof}
     For $X = \Spec \mathcal{O}_F$ the claim is a consequence of the functional
@@ -518,6 +644,7 @@ meaning.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{$G_\RR$-equivariant cohomology of $X(\CC)$}
+\label{sec:GR-equivariant-cohomology}
 
 Viewing $\ZZ (n) = (2\pi i)^n\,\ZZ$ as a constant $G_\RR$-equivariant sheaf on
 $X(\CC)$, we consider the $G_\RR$-equivariant cohomology groups (resp. Tate
@@ -552,6 +679,7 @@ will use this notation for consistency with the general case, treated in
                                       \widehat{H}^i_c (G_\RR, X(\CC), \ZZ (n)), & i \ge 1.
                                     \end{cases}
   \end{align*}
+  Here $d_n$ is given by \eqref{eqn:dn}.
 
   \begin{proof}
     We have
@@ -615,8 +743,8 @@ will use this notation for consistency with the general case, treated in
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{\'{E}tale motivic cohomology}
-\label{sec:motivic-cohomology-structure}
+\section{\'{E}tale motivic cohomology of one-dimensional $X$}
+\label{sec:etale-motivic-cohomology}
 
 In this section we review some results regarding the structure of \'{e}tale motivic
 cohomology $H^i (X_\et, \ZZ^c(n))$. What follows is rather well-known, but we
@@ -637,6 +765,7 @@ one-dimensional arithmetic scheme.
       0, & i \ge 2, ~ i\equiv n ~ (2).
     \end{cases}
   \end{equation}
+  Here $d_n$ is given by \eqref{eqn:dn}.
 
   Further, if $X = \Spec \mathcal{O}_F$ for a number field $F/\QQ$, then
   \begin{equation}
@@ -665,10 +794,9 @@ support, for which we refer to \cite[Appendix~B]{Beshenov-Weil-etale-1} or
 \cite[\S 2]{Geisser-Schmidt-2018}. In particular,
 $\widehat{H}^i_c (X_\et, \ZZ (n)) = H^i_c (X_\et, \ZZ (n))$ whenever
 $X (\RR) = \emptyset$.
-We recall from definition~\ref{dfn:A-D-and-A-star} that $A^D$ denotes
-$\Hom (A, \QQ/\ZZ)$. We note that \eqref{eqn:arithmetic-duality} is a powerful
-result, and it is deduced in \cite{Beshenov-Weil-etale-1} from Geisser's work
-\cite{Geisser-2010}.
+Here $A^D$ denotes the group $\Hom (A, \QQ/\ZZ)$. We note that
+\eqref{eqn:arithmetic-duality} is a powerful result, and it is deduced in
+\cite{Beshenov-Weil-etale-1} from Geisser's work \cite{Geisser-2010}.
 
 \begin{proof}[Proof of Proposition~\ref{prop:structure-of-motivic-cohomology}]
   We will use the d\'{e}vissage lemma~\ref{lemma:devissage}. We will say that
@@ -813,7 +941,7 @@ result, and it is deduced in \cite{Beshenov-Weil-etale-1} from Geisser's work
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Regulators}
+\section{Regulator for one-dimensional $X$}
 \label{sec:regulators}
 
 Now we explain what will be intended by the regulator in our setting.
@@ -844,10 +972,10 @@ target simplifies in case of $n < 0$, as explained in
 \end{remark}
 
 \begin{remark}
-  If $X = \Spec \mathcal{O}_F$, then $\varrho_{X,n}$ is the usual Beilinson
-  regulator map
-  \[ H^1 (X_\et, \ZZ (1-n)) \to H^1_\BM (G_\RR, X(\CC), \RR(1-n)) \]
-  that also appears in the special value conjecture in
+  If $X = \Spec \mathcal{O}_F$, then $\varrho_{X,n}$ can be identified with the
+  usual Beilinson regulator map
+  \[ H^1 (X_\et, \ZZ (1-n)) \to H^1_\mathcal{D} (G_\RR, X(\CC), \RR(1-n)) \]
+  that appears in the special value conjecture in
   \cite[\S 5.8.3]{Flach-Morin-2018}.
 \end{remark}
 
@@ -960,8 +1088,8 @@ $H^0_\BM (G_\RR, X(\CC), \RR (n)) = 0$, and we set $R_{X,n} = 1$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Direct proof of the formula}
-\label{sec:demystification}
+\section{Direct proof of the special value formula}
+\label{sec:direct-proof}
 
 In this section we explain how to prove our special value formula directly,
 combining via localization the known special value formulas for
@@ -1004,8 +1132,8 @@ $X = \Spec \mathcal{O}_F$ and curves over finite fields $X/\FF_q$.
 
     For part 1), we refer to \cite[\S 5]{Beshenov-Weil-etale-2}.
     Part 2) follows from \cite[\S 5.8.3]{Flach-Morin-2018}, and in particular
-    \cite[Proposition~5.35]{Flach-Morin-2018}\footnote{The latter uses reduction
-      to the Tamagawa number conjecture.}.
+    \cite[Proposition~5.35]{Flach-Morin-2018}.
+    (The latter uses reduction to the Tamagawa number conjecture.)
     The formula is equivalent to \eqref{eqn:special-value-formula}, since
     $2^\delta = |H^1 (X_\et, \ZZ (n))|$ by
     \eqref{eqn:2-torsion-in-H1-Zc-for-Spec-OF}.
@@ -1066,7 +1194,7 @@ $X = \Spec \mathcal{O}_F$ and curves over finite fields $X/\FF_q$.
 
 Now Lemma~\ref{lemma:elementary-proof-1} and \ref{lemma:elementary-proof-2}
 above, together with the d\'{e}vissage lemma~\ref{lemma:devissage} prove
-theorem~\ref{main-theorem} stated in the introduction.
+Theorem~\ref{main-theorem} stated in the introduction.
 
 \begin{remark}
   Note that $\zeta (\Spec \FF_q, n) = \frac{1}{1 - q^{-n}} < 0$, and therefore
@@ -1078,7 +1206,7 @@ theorem~\ref{main-theorem} stated in the introduction.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Calculations of Weil-\'{e}tale cohomology}
+\section{Weil-\'{e}tale cohomology of one-dimensional $X$}
 \label{sec:Weil-etale-cohomology-of-X}
 
 In this section we calculate Weil-\'{e}tale cohomology groups $H^i_\Wc (X, \ZZ(n))$
@@ -1166,8 +1294,7 @@ Here we calculate $H^i_\Wc (X, \ZZ(n))$ for one-dimensional $X$.
   \end{enumerate}
 \end{proposition}
 
-We recall from definition~\ref{dfn:A-D-and-A-star} that
-$A^D \dfn \Hom (A, \QQ/\ZZ)$ and $A^* \dfn \Hom (A, \ZZ)$.
+We recall that $A^D \dfn \Hom (A, \QQ/\ZZ)$ and $A^* \dfn \Hom (A, \ZZ)$.
 
 \begin{proof}
   From the definition of $R\Gamma_\fg (X, \ZZ(n))$, we have a long exact
@@ -1246,7 +1373,7 @@ $A^D \dfn \Hom (A, \QQ/\ZZ)$ and $A^* \dfn \Hom (A, \ZZ)$.
     R\widehat{\Gamma}_c (G_\RR, X(\CC), \ZZ(n)) \to \cdots [1] \]
   ---see \cite[Lemma~6.14]{Flach-Morin-2018}.
   From the definition of $\widehat{\alpha}_{X,n}$, we calculate
-  (see remark~\ref{rmk:A-D-and-A-star})
+  from the exact sequence \eqref{eqn:exact-sequence-A*-etc}
   \begin{align*}
     \ker H^i (\widehat{\alpha}_{X,n}) & = H^{2-i} (X_\et, \ZZ^c(n))^*, \\
     \coker H^i (\widehat{\alpha}_{X,n}) & \cong (H^{2-i} (X_\et, \ZZ^c (n))_\tors)^D.
@@ -1311,7 +1438,7 @@ $A^D \dfn \Hom (A, \QQ/\ZZ)$ and $A^* \dfn \Hom (A, \ZZ)$.
 \begin{remark}
   A priori, the short exact sequence \eqref{eqn:H1Wc-ses} does not have to
   split. This will not bother us for the determinant calculations in
-  \S\ref{sec:special-value-formula} below.
+  \S\ref{sec:Weil-etale-proof} below.
 \end{remark}
 
 \begin{remark}
@@ -1378,8 +1505,8 @@ $A^D \dfn \Hom (A, \QQ/\ZZ)$ and $A^* \dfn \Hom (A, \ZZ)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-\section{Weil-\'{e}tale proof of the formula}
-\label{sec:special-value-formula}
+\section{Weil-\'{e}tale proof of the special value formula}
+\label{sec:Weil-etale-proof}
 
 Now we write down explicitly the special value conjecture $\mathbf{C} (X,n)$
 stated in \cite[\S 4]{Beshenov-Weil-etale-2}. For this one considers the
@@ -1418,7 +1545,7 @@ terms)
   =
   \det_\ZZ H^0_c (G_\RR, X(\CC), \ZZ(n))^{-1} \otimes_\ZZ
   \det_\ZZ H^{-1} (X_\et, \ZZ^c(n))^* \otimes_\ZZ \\
-  \det_\ZZ (T_1)^{-1} \det_\ZZ  \det_\ZZ H^0 (X_\et, \ZZ^c(n))^D \otimes_\ZZ \det_\ZZ ((H^{-1} (X_\et, \ZZ^c(n))_\tors)^D)^{-1}.
+  \det_\ZZ (T_1)^{-1} \otimes_\ZZ  \det_\ZZ H^0 (X_\et, \ZZ^c(n))^D \otimes_\ZZ \det_\ZZ ((H^{-1} (X_\et, \ZZ^c(n))_\tors)^D)^{-1}.
 \end{multline*}
 Recall that $T_1$, $H^0 (X_\et, \ZZ^c(n))^D$,
 $(H^{-1} (X_\et, \ZZ^c(n))_\tors)^D$ are finite groups, while the groups
@@ -1441,7 +1568,7 @@ via the regulator morphism
            & = 2^\delta\,\frac{|H^0 (X_\et, \ZZ^c (n))|}{|H^{-1} (X_\et, \ZZ^c(n))_\tors|\cdot |H^1 (X_\et, \ZZ^c(n))|}\,R_{X,n},
   \end{align*}
   the number $\delta$ is given by \eqref{eqn:delta}, and $R_{X,n}$ is
-  the regulator from definition~\ref{dfn:regulator}.
+  the regulator from Definition~\ref{dfn:regulator}.
 
   \begin{proof}
     For finite groups $T_1$, $H^0 (X_\et, \ZZ^c(n))^D$,
@@ -1454,8 +1581,8 @@ via the regulator morphism
   \end{proof}
 \end{proposition}
 
-We recall that conjecture $\mathbf{C} (X,n)$ from
-\cite[\S 4]{Beshenov-Weil-etale-2} asserts that
+We recall Conjecture $\mathbf{C} (X,n)$ from
+\cite[\S 4]{Beshenov-Weil-etale-2} asserts that the canonical embedding
 $\det_\ZZ R\Gamma_\Wc (X, \ZZ(n)) \subset \RR$ corresponds to
 $\zeta^* (X,n)^{-1}\,\ZZ \subset \RR$. This leads to the following conclusion.
 
@@ -1467,7 +1594,7 @@ $\zeta^* (X,n)^{-1}\,\ZZ \subset \RR$. This leads to the following conclusion.
 
 It is proved in \cite[\S 7]{Beshenov-Weil-etale-2} that $\mathbf{C} (X,n)$ holds
 unconditionally for an abelian one-dimensional arithmetic scheme $X$. Together
-with the above proposition, this proves theorem~\ref{main-theorem} stated in the
+with the above proposition, this proves Theorem~\ref{main-theorem} stated in the
 introduction.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1543,12 +1670,13 @@ The second example is suggested by \cite[\S 7]{Jordan-Poonen-2020}.
   and an isomorphism
   $H^1 (\Spec \ZZ_\et, \ZZ (4)) \cong K_7 (\ZZ)$.
   We have $K_6 (\ZZ) = 0$ and $K_7 (\ZZ) \cong \ZZ/240\ZZ$;
-  see for instance Weibel's survey \cite{Weibel-2005}\footnote{Strictly
-    speaking, this reasoning is \emph{backward}: as explained in
-    \cite{Weibel-2005}, in fact one calculates motivic cohomology of
-    $\Spec \mathcal{O}_F$ in order to obtain the $K$-theory of $\mathcal{O}_F$,
-    not vice versa. Our explanation just serves to reduce everything to the
-    well-known tables of $K$-groups of $\ZZ$.}.  We conclude that
+  see for instance Weibel's survey \cite{Weibel-2005}.
+  % Strictly speaking, this reasoning is \emph{backward}: as explained in
+  % \cite{Weibel-2005}, in fact one calculates motivic cohomology of
+  % $\Spec \mathcal{O}_F$ in order to obtain the $K$-theory of $\mathcal{O}_F$,
+  % not vice versa. Our explanation just serves to reduce everything to the
+  % well-known tables of $K$-groups of $\ZZ$.
+  We conclude that
   \begin{align*}
     H^{-1} (\Spec \ZZ_\et, \ZZ^c (-3)) & \cong H^1 (\Spec \ZZ_\et, \ZZ (4)) \cong \ZZ/240\ZZ, \\
     H^0 (\Spec \ZZ_\et, \ZZ^c (-3)) & \cong H^2 (\Spec \ZZ_\et, \ZZ (4)) \cong \ZZ/2\ZZ, \\
@@ -1624,7 +1752,7 @@ The second example is suggested by \cite[\S 7]{Jordan-Poonen-2020}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \pagebreak
-\bibliographystyle{../amsalpha-cust}
+\bibliographystyle{abbrv}
 \bibliography{../weil-etale}
 
 \end{document}
