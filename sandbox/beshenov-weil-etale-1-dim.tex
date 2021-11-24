@@ -151,9 +151,9 @@
 \maketitle
 
 \begin{abstract}
-  Let $X$ be an arithmetic scheme (i.e. separated, of finite type over
+  Let $X$ be an arithmetic scheme (i.e., separated, of finite type over
   $\Spec \ZZ$) of Krull dimension $1$. For the associated zeta function
-  $\zeta (X,s)$, we write down a formula for the special value at $s = n < 0$ in  
+  $\zeta (X,s)$, we write down a formula for the special value at $s = n < 0$ in
   terms of the \'{e}tale motivic cohomology of $X$ and a regulator. We prove it
   in the case when for each generic point $\eta \in X$ with
   $\fchar \kappa (\eta) = 0$, the extension $\kappa (\eta)/\QQ$ is
@@ -162,10 +162,10 @@
 
   This is a consequence of the Weil-\'{e}tale formalism developed by the author
   in \cite{Beshenov-Weil-etale-1} and \cite{Beshenov-Weil-etale-2}, following
-  the work of Flach and Morin \cite{Flach-Morin-2018}. In particular, we
-  calculate the Weil-\'{e}tale cohomology of one-dimensional arithmetic schemes
-  and show that our special value formula is a particular case of the main
-  conjecture from \cite{Beshenov-Weil-etale-2}.
+  the work of Flach and Morin \cite{Flach-Morin-2018}. We also calculate the
+  Weil-\'{e}tale cohomology of one-dimensional arithmetic schemes and show that
+  our special value formula is a particular case of the main conjecture from
+  \cite{Beshenov-Weil-etale-2}.
 \end{abstract}
 
 % \tableofcontents
@@ -182,9 +182,9 @@ associated to $X$ (see, e.g. \cite{Serre-1965}) is given by
 where the norm of a closed point $x\in X$ is the size of the corresponding
 residue field:
 $$N (x) \dfn |\kappa (x)| \dfn |\mathcal{O}_{X,x}/\mathfrak{m}_{X,x}|$$
-The above product converges for $\Re s > \dim X$, and is supposed to have a
+The above product converges for $\Re s > \dim X$ and is supposed to have a
 meromorphic continuation to the whole complex plane. Although the latter is a
-wide open conjecture in general, it is well-known for one-dimensional schemes,
+wide-open conjecture in general, it is well-known for one-dimensional schemes,
 which is the case of interest in this article.
 
 If $\zeta (X,s)$ admits a meromorphic continuation around $s = n$, we denote by
@@ -228,7 +228,7 @@ work \cite{Lichtenbaum-1973}. Later these were also reformulated in terms of
 $p$-adic cohomology $H^i (\Spec \mathcal{O}_F [1/p]_\et, \ZZ_p (n))$ for
 $i = 1,2$ and all primes $p$; the corresponding formula is known as the
 \textbf{cohomological Lichtenbaum conjecture}; see, for example,
-\cite[\S 1.7]{Huber-Kings-2003} for the stament and a proof for abelian number
+\cite[\S 1.7]{Huber-Kings-2003} for the statement and a proof for abelian number
 fields $F/\QQ$. We will not go into details here, since it is more convenient
 for us to use motivic cohomology instead of working with $p$-adic cohomology for
 varying $p$.
@@ -254,17 +254,17 @@ cohomology groups $H^i_\Wc (X,\ZZ(n))$ for a proper and regular arithmetic
 scheme $X$, and stated a precise conjectural relation of $H^i_\Wc (X,\ZZ(n))$ to
 the special value $\zeta^* (X,n)$.
 
-In particular, in \cite[\S 5.8.3]{Flach-Morin-2018} they write down an explicit
-formula for the case of $X = \Spec \mathcal{O}_F$. For $n \le 0$ and in terms of
-cohomology groups $H^i (X_\et, \ZZ^c (n))$, it reads
+In \cite[\S 5.8.3]{Flach-Morin-2018} they write down an explicit formula for the
+case of $X = \Spec \mathcal{O}_F$. For $n \le 0$ and in terms of cohomology
+groups $H^i (X_\et, \ZZ^c (n))$, it reads
 \begin{equation}
   \label{eqn:flach-morin-zeta-F-formula}
   \zeta_F^* (n) = \pm\frac{|H^0 (X_\et, \ZZ^c (n))|}{|H^{-1} (X_\et, \ZZ^c (n))_\tors|}\,R_{F,n}
   \quad \text{for }n \le 0.
 \end{equation}
-The definition of $H^i (X_\et, \ZZ^c (n))$ is reviewed below. In particular,
-these groups make sense for negative weight $n$. The regulator
-$R_{F,n} = R_{\Spec \mathcal{O}_F,n}$ is defined in \S\ref{sec:regulators}.
+The definition of $H^i (X_\et, \ZZ^c (n))$ is reviewed below.
+The regulator $R_{F,n} = R_{\Spec \mathcal{O}_F,n}$ is defined in
+\S\ref{sec:regulators}.
 
 By \cite[Proposition~5.35]{Flach-Morin-2018}, formula
 \eqref{eqn:flach-morin-zeta-F-formula} holds unconditionally for abelian number
@@ -304,8 +304,9 @@ To state the main result, it is useful to introduce the following terminology.
   an abelian extension $\kappa (\eta)/\QQ$.
 \end{definition}
 
-In particular, if $X$ lives in positive characteristic, then it is abelian. The term ``abelian'' is ad hoc and was suggested by analogy with the
-notion of \textbf{abelian number fields}. Hopefully there is no confusion with
+If $X$ lives in positive characteristic, then it is trivially abelian.
+The term ``abelian'' is ad hoc and was suggested by analogy with the notion of
+\textbf{abelian number fields}. Hopefully there is no confusion with
 ``abelian schemes'', which are generalizations of abelian varieties.
 
 Our goal is to prove the following result.
@@ -341,7 +342,7 @@ Our goal is to prove the following result.
 \end{theorem}
 
 We further conjecture that formula \eqref{eqn:special-value-formula} holds for
-all one-dimensional arithmetic schemes, not necessary abelian. This is
+all one-dimensional arithmetic schemes, not necessarily abelian. This is
 equivalent to the Tamagawa number conjecture for non-abelian number fields.
 
 \vspace{1em}
@@ -358,7 +359,7 @@ The purpose of this text is twofold. First, we establish a new special value
 formula, which generalizes several formulas found in the literature. Second, we
 review the construction of Weil-\'{e}tale cohomology $H^i_\Wc (X, \ZZ(n))$ from
 \cite{Beshenov-Weil-etale-1} and the special value conjecture from
-\cite{Beshenov-Weil-etale-2}, and explain it in the case of one-dimensional
+\cite{Beshenov-Weil-etale-2} and explain it in the case of one-dimensional
 schemes. It is not very surprising that a special value formula like
 \eqref{eqn:special-value-formula} exists, but the right cohomological invariants
 to state it have been suggested by the Weil-\'{e}tale framework.
@@ -379,7 +380,7 @@ For an abelian group $A$, we denote
   A^D & \dfn \Hom (A, \QQ/\ZZ), \\
   A^* & \dfn \Hom (A, \ZZ).
 \end{align*}
-In particular, there is an exact sequence
+There is an exact sequence
 \begin{equation}
   \label{eqn:exact-sequence-A*-etc}
   0 \to A^* \to \Hom (A,\QQ) \to A^D \to (A_\tors)^D \to 0
@@ -483,8 +484,8 @@ Weil-\'{e}tale cohomology groups $H^i_\Wc (X, \ZZ(n))$ from
 
 We use these calculations in \S\ref{sec:Weil-etale-proof} to formulate
 explicitly the conjecture $\mathbf{C} (X,n)$ from [3], again for one-dimensional
-$X$. This is a second, more conceptual proof of the main result, and also
-explains how we arrived at \eqref{eqn:special-value-formula} in the first place.
+$X$. This is a second, more conceptual proof of the main result, and it explains
+how we arrived at \eqref{eqn:special-value-formula} in the first place.
 
 Finally, we conclude in \S\ref{sec:examples} with a couple of examples showing
 how our special value formula works.
@@ -1155,11 +1156,11 @@ curves over finite fields $X/\FF_q$ via localization.
     \vspace{1em}
 
     For part 1), we refer the reader to \cite[\S 5]{Beshenov-Weil-etale-2}.
-    Part 2) follows from \cite[\S 5.8.3]{Flach-Morin-2018}, and in particular
-    from \cite[Proposition~5.35]{Flach-Morin-2018}. (The latter uses reduction to
-    the Tamagawa number conjecture.) The formula is equivalent to
-    \eqref{eqn:special-value-formula}, since $2^\delta = |H^1 (X_\et, \ZZ (n))|$
-    by \eqref{eqn:2-torsion-in-H1-Zc-for-Spec-OF}.
+    Part 2) follows from \cite[Proposition~5.35]{Flach-Morin-2018}.
+    (The latter uses reduction to the Tamagawa number conjecture.)
+    The formula is equivalent to \eqref{eqn:special-value-formula}, since
+    $2^\delta = |H^1 (X_\et, \ZZ (n))|$ by
+    \eqref{eqn:2-torsion-in-H1-Zc-for-Spec-OF}.
   \end{proof}
 \end{lemma}
 
@@ -1282,7 +1283,7 @@ carried out in two steps.
   The resulting groups
   $$H^i_\Wc (X, \ZZ(n)) \dfn H^i (R\Gamma_\Wc (X, \ZZ(n)))$$
   are finitely generated and vanish for $i \notin [0, 2\dim X + 1]$.
-  We refer to \cite[\S 7]{Beshenov-Weil-etale-1} for the general properies.
+  We refer to \cite[\S 7]{Beshenov-Weil-etale-1} for the general properties.
 \end{itemize}
 
 Here we calculate $H^i_\Wc (X, \ZZ(n))$ for one-dimensional $X$.
@@ -1370,7 +1371,7 @@ We recall that $A^D \dfn \Hom (A, \QQ/\ZZ)$ and $A^* \dfn \Hom (A, \ZZ)$.
   \vspace{1em}
 
   We proceed to compute $H^i_\Wc (X, \ZZ(n))$ for $i \ge 2$. It is more
-  convenient to do this without passng explicitly through
+  convenient to do this without passing explicitly through
   $H^i_\fg (X, \ZZ(n))$. Consider the morphism of complexes
   \[ \widehat{\alpha}_{X,n}\colon
     \RHom (R\Gamma (X_\et, \ZZ^c(n)), \QQ[-2]) \to
@@ -1391,7 +1392,7 @@ We recall that $A^D \dfn \Hom (A, \QQ/\ZZ)$ and $A^* \dfn \Hom (A, \ZZ)$.
       & R\Gamma_c (X_\et, \ZZ(n))
     \end{tikzcd} \]
   Here the vertical arrow comes from the definition of modified \'{e}tale
-  cohomology with compact support, and it sits in an exact triangle
+  cohomology with compact support and it sits in an exact triangle
   \[ R\widehat{\Gamma}_c (X_\et, \ZZ(n)) \to
     R\Gamma_c (X_\et, \ZZ(n)) \xrightarrow{\widehat{u}^*_\infty}
     R\widehat{\Gamma}_c (G_\RR, X(\CC), \ZZ(n)) \to \cdots [1] \]
@@ -1404,7 +1405,7 @@ We recall that $A^D \dfn \Hom (A, \QQ/\ZZ)$ and $A^* \dfn \Hom (A, \ZZ)$.
   \end{align*}
 
   We denote a cone of $\widehat{\alpha}_{X,n}$ by
-  $R\widehat{\Gamma}_\fg (X, \ZZ(n))$, and set
+  $R\widehat{\Gamma}_\fg (X, \ZZ(n))$ and set
   $$\widehat{H}^i_\fg (X, \ZZ(n)) \dfn H^i (R\widehat{\Gamma}_\fg (X, \ZZ(n))),$$
   so that there is a long exact sequence
   \begin{multline*}
@@ -1620,7 +1621,7 @@ introduction.
 \label{sec:examples}
 
 We conclude with two examples that illustrate how localization arguments
-work. The first is rather general, and consists in specifying
+work. The first is rather general and consists in specifying
 \S\ref{sec:direct-proof} to the case of a non-maximal order in a number field.
 
 \begin{example}
