@@ -144,7 +144,7 @@
     URL: \url{https://cadadr.org/}
   \end{tabular}}
 
-\numberwithin{equation}{section}
+% \numberwithin{equation}{section}
 
 \begin{document}
 
@@ -317,7 +317,7 @@ Our goal is to prove the following result.
   \begin{equation}
     \label{eqn:special-value-formula}
     \zeta^* (X,n) =
-    \pm 2^\delta\,\frac{|H^0 (X_\et, \ZZ^c (n)|}{|H^{-1} (X_\et, \ZZ^c (n))_\tors| \cdot |H^1 (X_\et, \ZZ^c (n))|}\,R_{X,n}.
+    \pm 2^\delta\,\frac{|H^0 (X_\et, \ZZ^c (n))|}{|H^{-1} (X_\et, \ZZ^c (n))_\tors| \cdot |H^1 (X_\et, \ZZ^c (n))|}\,R_{X,n}.
   \end{equation}
   Here
   \begin{itemize}
@@ -498,18 +498,18 @@ I am grateful to Baptiste Morin for various discussions that led to this text.
 \section{D\'{e}vissage lemma for one-dimensional schemes}
 \label{sec:devissage}
 
-The main idea of this work is to consider a property that holds for spectra of
+The main idea of this paper is to consider a property that holds for spectra of
 number rings $X = \Spec \mathcal{O}_F$ and curves over finite fields $X/\FF_q$,
-and then formally generalize it to any one-dimensional arithmetic scheme.
-For this we isolate in this section a d\'{e}vissage argument, which will be used
-repeatedly in continuation.
+and then generalize it formally to any one-dimensional arithmetic scheme.
+To this end, in this section we isolate a d\'{e}vissage argument which will be
+used repeatedly in the rest of the paper.
 
 \begin{lemma}
   \label{lemma:devissage}
   Let $\mathcal{P}$ be a property of arithmetic schemes of Krull dimension
-  $\le 1$. Assume that it satisfies the following compatibilities.
+  $\le 1$. Suppose that it satisfies the following compatibilities.
   \begin{enumerate}
-  \item[a)] $\mathcal{P} (X)$ holds if and only if $\mathcal{P} (X_\red)$ does.
+  \item[a)] $\mathcal{P} (X)$ holds if and only if $\mathcal{P} (X_\red)$ holds.
 
   \item[b)] If $X = \coprod_i X_i$ is a finite disjoint union, then
     $\mathcal{P} (X)$ is equivalent to the conjunction of $\mathcal{P} (X_i)$ for
@@ -530,14 +530,14 @@ repeatedly in continuation.
   Then $\mathcal{P} (X)$ holds for any one-dimensional arithmetic scheme $X$.
 
   \begin{proof}
-    First suppose that $\dim X = 0$. Then thanks to a), we may assume that $X$
+    First suppose that $\dim X = 0$. Then, thanks to a), we can assume that $X$
     is reduced, and then $X = \coprod_i \Spec \FF_{q,i}$ is a finite disjoint
-    union of spectra of finite fields, so that $\mathcal{P} (X)$ holds thanks to
-    0) and b).
+    union of spectra of finite fields such that $\mathcal{P} (X)$ holds thanks
+    to 0) and b).
 
-    Now consider the case of $\dim X = 1$. Again, we may assume that $X$ is
-    reduced. Consider the normalization $\nu\colon X' \to X$. This is a
-    birational morphism: there exist dense open subschemes $U \subset X$ and
+    Now consider the case of $\dim X = 1$. Again, we can assume that $X$ is
+    reduced. Let us consider the normalization $\nu\colon X' \to X$. This is a
+    birational morphism: there are dense open subschemes $U \subset X$ and
     $U' \subset X'$ such that
     $\left.\nu\right|_{U'}\colon U' \xrightarrow{\cong} U$ is an
     isomorphism. Thanks to c), we have
@@ -545,8 +545,8 @@ repeatedly in continuation.
       \mathcal{P} (U) \iff
       \mathcal{P} (U') \iff
       \mathcal{P} (X'). \]
-    Therefore, we may assume that $X$ is regular. Now $X = \coprod_i X_i$ is a
-    finite disjoint union of normal integral schemes, so thanks to b), we may
+    Therefore, we can assume that $X$ is regular. Now $X = \coprod_i X_i$ is a
+    finite disjoint union of normal integral schemes, so thanks to b), we can
     assume that $X$ is integral. There are two cases.
 
     \begin{itemize}
@@ -555,9 +555,9 @@ repeatedly in continuation.
 
     \item If $X \to \Spec \ZZ$ is a dominant morphism, consider an open affine
       neighborhood of the generic point $U \subset X$. Again, $\mathcal{P} (X)$
-      is equivalent to $\mathcal{P} (U)$, so it will be enough to prove the
-      claim for $U$. We have $U = \Spec \mathcal{O}_{F,S}$ for some number field
-      $F/\QQ$ and a finite set of places $S$, hence everything again reduces to
+      is equivalent to $\mathcal{P} (U)$, so it suffices to prove the claim for
+      $U$. We have $U = \Spec \mathcal{O}_{F,S}$ for a number field $F/\QQ$ and
+      a finite set of places $S$, so everything reduces again to
       $\mathcal{P} (\Spec \mathcal{O}_F)$. \qedhere
     \end{itemize}
   \end{proof}
@@ -569,49 +569,51 @@ repeatedly in continuation.
 \label{sec:vanishing-order}
 
 \begin{definition}
-  Given a one-dimensional arithmetic scheme $X$, we consider the finite discrete
+  Given a one-dimensional arithmetic scheme $X$, consider the finite discrete
   space of complex points
   $$X(\CC) \dfn \Hom (\Spec \CC, X).$$
-  There is a canonical action of complex conjugation $G_\RR \dfn \Gal (\CC/\RR)$
-  on $X(\CC)$. The fixed points of this action correspond to the real points
-  $X (\RR)$. We put $r_1 = |X (\RR)|$. The non-real points come in conjugate
-  pairs, and we denote their number by $2 r_2$.
+  There is a canonical action of the complex conjugation
+  $G_\RR \dfn \Gal (\CC/\RR)$ on $X(\CC)$. The fixed points of this action
+  correspond to the real points $X (\RR)$. We set $r_1 = |X (\RR)|$. The
+  non-real points come in conjugate pairs, and we denote their number by
+  $2 r_2$.
 \end{definition}
 
-\begin{equation}
-  \label{eqn:complex-conjugation-on-X(C)}
-  \begin{tikzpicture}
-    \matrix(m)[matrix of math nodes, row sep=1em, column sep=1em,
-    text height=1ex, text depth=0.2ex]{
-      ~ & ~ & ~ & ~ & ~ & \bullet & \bullet & \cdots & \bullet \\
-      \bullet & \bullet & \cdots & \bullet \\
-      ~ & ~ & ~ & ~ & ~ & \bullet & \bullet & \cdots & \bullet \\};
+\begin{figure}
+  \[ \begin{tikzpicture}
+      \matrix(m)[matrix of math nodes, row sep=1em, column sep=1em,text height=1ex, text depth=0.2ex]{
+        ~ & ~ & ~ & ~ & ~ & \bullet & \bullet & \cdots & \bullet \\
+        \bullet & \bullet & \cdots & \bullet \\
+        ~ & ~ & ~ & ~ & ~ & \bullet & \bullet & \cdots & \bullet \\};
 
-    \draw[->] (m-2-1) edge[loop above,min distance=10mm] (m-2-1);
-    \draw[->] (m-2-2) edge[loop above,min distance=10mm] (m-2-2);
-    \draw[->] (m-2-4) edge[loop above,min distance=10mm] (m-2-4);
+      \draw[->] (m-2-1) edge[loop above,min distance=10mm] (m-2-1);
+      \draw[->] (m-2-2) edge[loop above,min distance=10mm] (m-2-2);
+      \draw[->] (m-2-4) edge[loop above,min distance=10mm] (m-2-4);
 
-    \draw[->] (m-1-6) edge[bend left] (m-3-6);
-    \draw[->] (m-1-7) edge[bend left] (m-3-7);
-    \draw[->] (m-1-9) edge[bend left] (m-3-9);
+      \draw[->] (m-1-6) edge[bend left] (m-3-6);
+      \draw[->] (m-1-7) edge[bend left] (m-3-7);
+      \draw[->] (m-1-9) edge[bend left] (m-3-9);
 
-    \draw[->] (m-3-6) edge[bend left] (m-1-6);
-    \draw[->] (m-3-7) edge[bend left] (m-1-7);
-    \draw[->] (m-3-9) edge[bend left] (m-1-9);
+      \draw[->] (m-3-6) edge[bend left] (m-1-6);
+      \draw[->] (m-3-7) edge[bend left] (m-1-7);
+      \draw[->] (m-3-9) edge[bend left] (m-1-9);
 
-    \draw [decorate,decoration={brace,amplitude=5pt,mirror}] ($(m-3-1)+(-0.5em,-0.5em)$) -- ($(m-3-4)+(0.5em,-0.5em)$);
-    \draw [decorate,decoration={brace,amplitude=5pt,mirror}] ($(m-3-6)+(-0.5em,-0.5em)$) -- ($(m-3-9)+(0.5em,-0.5em)$);
+      \draw [decorate,decoration={brace,amplitude=5pt,mirror}] ($(m-3-1)+(-0.5em,-0.5em)$) -- ($(m-3-4)+(0.5em,-0.5em)$);
+      \draw [decorate,decoration={brace,amplitude=5pt,mirror}] ($(m-3-6)+(-0.5em,-0.5em)$) -- ($(m-3-9)+(0.5em,-0.5em)$);
 
-    \draw ($(m-3-1)!.5!(m-3-4)$) node[yshift=-2em,anchor=base] {$r_1$ points};
-    \draw ($(m-3-6)!.5!(m-3-9)$) node[yshift=-2em,anchor=base] {$2 r_2$ points};
-  \end{tikzpicture}
-\end{equation}
+      \draw ($(m-3-1)!.5!(m-3-4)$) node[yshift=-2em,anchor=base] {$r_1$ points};
+      \draw ($(m-3-6)!.5!(m-3-9)$) node[yshift=-2em,anchor=base] {$2 r_2$ points};
+    \end{tikzpicture} \]
+
+  \caption{$G_\RR \dfn \Gal (\CC/\RR)$ acting on $X (\CC)$}
+  \label{fig:complex-conjugation-on-X(C)}
+\end{figure}
 
 Equivalently, for a number field $F/\QQ$, denote by $r_1 (F)$ the number of real
-embeddings $F \hookrightarrow \RR$ and and by $r_2 (F)$ the number of pairs of
+embeddings $F \hookrightarrow \RR$ and by $r_2 (F)$ the number of pairs of
 complex embeddings $F \hookrightarrow \CC$. Then $r_1 (F) = r_1$ and
 $r_2 (F) = r_2$ for $X = \Spec \mathcal{O}_F$. In general, for a one-dimensional
-arithmetic scheme $X$ we have
+arithmetic scheme $X$, we have
 \begin{align*}
   r_1 & = \sum_{\fchar \kappa (\eta) = 0} r_1 (\kappa (\eta)), \\
   r_2 & = \sum_{\fchar \kappa (\eta) = 0} r_2 (\kappa (\eta)),
@@ -636,9 +638,9 @@ $\kappa (\eta)$ of characteristic $0$.
   \begin{proof}
     For $X = \Spec \mathcal{O}_F$ the claim is a consequence of the functional
     equation for the Dedekind zeta function \cite[\S VII.5]{Neukirch-1999}.
-    It is also true for $X/\FF_q$ since in this case $\zeta (X,s)$ has no zeros
-    or poles at $s = n < 0$ according to \cite[pp.\,26--27]{Katz-1994}.
-    We proceed with the d\'{e}vissage lemma~\ref{lemma:devissage}.
+    It also holds for $X/\FF_q$ since in this case $\zeta (X,s)$ has no zeros or
+    poles at $s = n < 0$ according to \cite[pp.\,26--27]{Katz-1994}.
+    We now proceed using Lemma~\ref{lemma:devissage}.
 
     We have $\zeta (X,s) = \zeta (X_\red,s)$ and
     $r_{1,2} (X) = r_{1,2} (X_\red)$.
@@ -671,9 +673,9 @@ cohomology)
   H^i_c (G_\RR, X(\CC), \ZZ(n)) & \dfn H^i \Bigl(R\Gamma (G_\RR, R\Gamma_c (X(\CC), \ZZ(n)))\Bigr), \\
   \widehat{H}^i_c (G_\RR, X(\CC), \ZZ(n)) & \dfn H^i \Bigl(R\widehat{\Gamma} (G_\RR, R\Gamma_c (X(\CC), \ZZ(n)))\Bigr).
 \end{align*}
-Of course, $X(\CC)$ is just a finite discrete space, so there is no need to use
-cohomology with compact support, but we use this notation for consistency
-with the general case treated in \cite{Beshenov-Weil-etale-1}. Since
+Of course, $X(\CC)$ is just a finite discrete space, so it is not necessary to
+use cohomology with compact support, but we use this notation for consistency
+with the general case considered in \cite{Beshenov-Weil-etale-1}. Since
 $\dim X(\CC) = 0$, we have
 \begin{align*}
   H^i_c (G_\RR, X(\CC), \ZZ(n)) & \cong H^i (G_\RR, H^0_c (X(\CC), \ZZ(n))), \\
@@ -682,32 +684,33 @@ $\dim X(\CC) = 0$, we have
 
 \begin{proposition}
   Let $X$ be a one-dimensional arithmetic scheme with $r_1$ real and $2r_2$
-  complex places. Then the $G_\RR$-equivariant cohomology of $X(\CC)$ is given
-  by
-  \begin{align*}
+  complex places. Then the $G_\RR$-equivariant cohomology of $X(\CC)$ is
+  \begin{align}
+    \label{eqn:Tate-GR-cohomology-of-X(C)}
     \widehat{H}^i_c (G_\RR, X(\CC), \ZZ (n)) & \cong
                                               \begin{cases}
                                                 (\ZZ/2\ZZ)^{\oplus r_1}, & i \equiv n ~ (2), \\
                                                 0, & i \not\equiv n ~ (2);
                                               \end{cases} \\
+    \label{eqn:usual-GR-cohomology-of-X(C)}
     H^i_c (G_\RR, X(\CC), \ZZ (n)) & \cong
                                     \begin{cases}
                                       0, & i < 0, \\
                                       \ZZ^{\oplus d_n}, & i = 0, \\
                                       \widehat{H}^i_c (G_\RR, X(\CC), \ZZ (n)), & i \ge 1.
                                     \end{cases}
-  \end{align*}
-  Here $d_n$ is given by \eqref{eqn:dn}.
+  \end{align}
+  Here $d_n$ is the vanishing order given by \eqref{eqn:dn}.
 
   \begin{proof}
     We have
     \[ H^0_c (X(\CC), \ZZ(n)) \cong
       \ZZ (n)^{\oplus r_1} \oplus (\ZZ (n) \oplus \ZZ (n))^{\oplus r_2}, \]
     and the $G_\RR$-action on the two summands is given by
-    $x \mapsto \overline{x}$ and $(x,y) \mapsto (\overline{y}, \overline{x})$
-    respectively. (See \eqref{eqn:complex-conjugation-on-X(C)} above.)
+    $x \mapsto \overline{x}$ and $(x,y) \mapsto (\overline{y}, \overline{x})$,
+    respectively. (See Figure~\eqref{fig:complex-conjugation-on-X(C)}.)
 
-    We recall that Tate cohomology of a finite cyclic group is $2$-periodic:
+    We recall that the Tate cohomology of a finite cyclic group is $2$-periodic:
     \[ \widehat{H}^i (G,A) \cong
       \begin{cases}
         \widehat{H}^0 (G,A), & i\text{ even}, \\
@@ -718,22 +721,22 @@ $\dim X(\CC) = 0$, we have
     \[ 0 \to \widehat{H}_0 (G,A) \to
       A_G \xrightarrow{N} A^G \to
       \widehat{H}^0 (G,A) \to 0 \]
-    where $N\colon A_G\to A^G$ is the norm map, induced by the action of
-    $\sum_{g\in G} g$.
+    where $N$ is the norm map induced by the action of $\sum_{g\in G} g$.
 
     \vspace{1em}
 
-    Therefore, we may consider two cases.
+    Therefore, we can consider two cases.
     \begin{enumerate}
     \item[1)] \textbf{$G_\RR$-module $A = \ZZ (n)$ with action via
         $x \mapsto \overline{x}$.}
-      In this case we see that
+      In this case, we see that
       \[ A^{G_\RR} \cong
         \begin{cases}
           \ZZ, & n\text{ even}, \\
           0, & n\text{ odd}.
         \end{cases} \]
-      Similarly it is easy to calculate the coinvariants $A_{G_\RR}$, and
+      Similarly, it is straightforward to calculate the coinvariants
+      $A_{G_\RR}$, and
       \[ \widehat{H}^0 (G_\RR, A) \cong
         \begin{cases}
           \ZZ/2\ZZ, & n\text{ even},\\
@@ -751,9 +754,9 @@ $\dim X(\CC) = 0$, we have
       $\widehat{H}^0 (G_\RR,A) = \widehat{H}_0 (G_\RR,A) = 0$.
     \end{enumerate}
 
-    Putting together these two calculations, we obtain Tate cohomology groups
-    $\widehat{H}^i_c (G_\RR, X(\CC), \ZZ (n))$. For the usual cohomology, we
-    have
+    Combining these two calculations, we obtain Tate cohomology groups
+    \eqref{eqn:Tate-GR-cohomology-of-X(C)}. For the usual cohomology
+    \eqref{eqn:usual-GR-cohomology-of-X(C)}, we have
     \begin{align*}
       H^0_c (G_\RR, X(\CC), \ZZ (n)) & \cong H^0_c (X(\CC), \ZZ (n))^{G_\RR}, \\
       H^i_c (G_\RR, X(\CC), \ZZ (n)) & \cong \widehat{H}^i_c (G_\RR, X(\CC), \ZZ (n)) \quad \text{for }i \ge 1. \qedhere
@@ -766,10 +769,10 @@ $\dim X(\CC) = 0$, we have
 \section{\'{E}tale motivic cohomology of one-dimensional schemes}
 \label{sec:etale-motivic-cohomology}
 
-In this section we review the structure of \'{e}tale motivic cohomology
+In this section we review the structure of the \'{e}tale motivic cohomology
 $H^i (X_\et, \ZZ^c(n))$ for one-dimensional $X$ and $n < 0$. What follows is
-rather well-known, but we put together the references and state the
-corresponding results for a general one-dimensional arithmetic scheme.
+fairly well-known, but we compile the references and state the result for a
+general one-dimensional arithmetic scheme.
 
 \begin{proposition}
   \label{prop:structure-of-motivic-cohomology}
@@ -797,9 +800,9 @@ corresponding results for a general one-dimensional arithmetic scheme.
   \end{equation}
 \end{proposition}
 
-An important ingredient of our proof is \cite[Theorem~I]{Beshenov-Weil-etale-1},
-which states that if $H^i (X_\et, \ZZ^c (n))$ are finitely generated groups for
-all $i \in \ZZ$, then
+An important ingredient of our proof is the arithmetic duality theorem
+\cite[Theorem~I]{Beshenov-Weil-etale-1}, which states that if
+$H^i (X_\et, \ZZ^c (n))$ are finitely generated groups for all $i \in \ZZ$, then
 \begin{equation}
   \label{eqn:arithmetic-duality}
   \widehat{H}^i_c (X_\et, \ZZ (n)) \cong
@@ -817,17 +820,17 @@ support, for which we refer to \cite[\S 2]{Geisser-Schmidt-2018} and
   \text{if }X (\RR) = \emptyset.
 \]
 Here $A^D$ denotes the group $\Hom (A, \QQ/\ZZ)$. We note that
-\eqref{eqn:arithmetic-duality} is a powerful result, and it is deduced in
-\cite{Beshenov-Weil-etale-1} from Geisser's work \cite{Geisser-2010}.
+\eqref{eqn:arithmetic-duality} is a powerful result, deduced in
+\cite{Beshenov-Weil-etale-1} from the work of Geisser \cite{Geisser-2010}.
 
 \begin{proof}[Proof of Proposition~\ref{prop:structure-of-motivic-cohomology}]
-  We use the d\'{e}vissage lemma~\ref{lemma:devissage}. We will say that
-  $\mathcal{P} (X)$ holds if the motivic cohomology of $X$ has the structure
+  We use Lemma~\ref{lemma:devissage}. We will say that $\mathcal{P} (X)$ holds
+  if the motivic cohomology of $X$ has the structure
   \eqref{eqn:structure-of-motivic-cohomology}.
 
   \vspace{1em}
 
-  \textbf{First consider the case of a finite field $X = \Spec \FF_q$}.
+  \textbf{Let us first consider the case of a finite field $X = \Spec \FF_q$}.
   We have
   \begin{equation}
     \label{eqn:motivic-cohomology-finite-fields}
@@ -837,11 +840,11 @@ Here $A^D$ denotes the group $\Hom (A, \QQ/\ZZ)$. We note that
       0, & i \ne 1.
     \end{cases}
   \end{equation}
-  ---see for instance \cite[Example~4.2]{Geisser-2017}. This is related to
-  Quillen's calculation of $K$-theory of finite fields \cite{Quillen-1972}.
+  ---see, for example, \cite[Example~4.2]{Geisser-2017}. This is related to
+  Quillen's calculation of the $K$-theory of finite fields \cite{Quillen-1972}.
 
   In general, if $X$ is a zero-dimensional arithmetic scheme, then the motivic
-  cohomology coincides for $X$ and $X_\red$, hence we may assume that $X$ is
+  cohomology of $X$ and $X_\red$ coincide, so we can assume that $X$ is
   reduced. Then $X$ is a finite disjoint union of $X_i = \Spec \FF_{q_i}$, and
   \begin{equation}
     H^i (X, \ZZ^c (n)) = \begin{cases}
@@ -856,13 +859,13 @@ Here $A^D$ denotes the group $\Hom (A, \QQ/\ZZ)$. We note that
   \textbf{Now we check the compatibility properties for $\mathcal{P}$}.
   If $X = \coprod_i X_i$ is a finite disjoint union, then
   $H^i (X_\et, \ZZ^c (n)) \cong \bigoplus_i H^i (X_{i,\et}, \ZZ^c (n))$,
-  so that the property $\mathcal{P}$ is compatible with disjoint unions.
+  hence the property $\mathcal{P}$ is compatible with disjoint unions.
 
   Similarly, if $U \subset X$ is a dense open subscheme, and $Z = X\setminus U$
   its closed complement, then $\dim Z = 0$. We consider the long exact sequence
   \eqref{eqn:localization-les}. Since the cohomology of $Z$ is concentrated in
   $i = 1$, we have $H^i (X_\et, \ZZ^c (n)) \cong H^i (U_\et, \ZZ^c (n))$ for
-  $i \ne 0,1$, and what remains is an exact sequence
+  $i \ne 0,1$, and what is left is an exact sequence
   \begin{multline*}
     0 \to H^0 (X_\et, \ZZ^c (n)) \to
     H^0 (U_\et, \ZZ^c (n)) \to \\
@@ -883,23 +886,23 @@ Here $A^D$ denotes the group $\Hom (A, \QQ/\ZZ)$. We note that
   \eqref{eqn:arithmetic-duality} holds. The $\QQ/\ZZ$-dual groups
   \[ H^i_c (X_\et, \ZZ(n)) =
     \bigoplus_\ell H^{i-1}_c (X_\et, \QQ_\ell/\ZZ_\ell (n)) \]
-  are finite by \cite[Theorem~3]{Kahn-2003}, and concentrated in
-  $i = 1,2,3$ for dimension reasons. It follows that in this case
-  $H^i (X_\et, \ZZ^c (n))$ are finite groups concentrated in $i = -1,0,1$,
-  and the property $\mathcal{P} (X)$ holds.
+  are finite by \cite[Theorem~3]{Kahn-2003}, and concentrated in $i = 1,2,3$ for
+  dimension reasons. It follows that $H^i (X_\et, \ZZ^c (n))$ in this case are
+  finite groups concentrated in $i = -1,0,1$, and the property $\mathcal{P} (X)$
+  holds.
 
   \vspace{1em}
 
   \textbf{It remains to consider the case of $X = \Spec \mathcal{O}_F$}.
-  In this case finite generation of $H^i (X_\et, \ZZ^c (n))$ is also known; see
-  for instance \cite[Proposition~4.14]{Geisser-2017}. Therefore, the duality
-  \eqref{eqn:arithmetic-duality} holds. We have
+  In this case, the finite generation of $H^i (X_\et, \ZZ^c (n))$ is also known;
+  see, for example, \cite[Proposition~4.14]{Geisser-2017}. Therefore, the
+  duality \eqref{eqn:arithmetic-duality} holds. We have
   $\widehat{H}^i_c (\Spec \mathcal{O}_F [1/p], \mu_{p^r}^{\otimes n}) = 0$ for
-  $i \ge 3$ by Artin--Verdier duality
-  \cite[Chapter~II, Corollary~3.3]{Milne-ADT}, or by
-  \cite[p.\,268]{Soule-1979}. Therefore, it follows that
-  $\widehat{H}^i_c (X_\et, \ZZ (n)) = 0$ for $i \ge 4$, and hence by duality
-  \eqref{eqn:arithmetic-duality}, $H^i (X_\et, \ZZ^c (n)) = 0$ for $i \le -2$.
+  $i \ge 3$ by Artin--Verdier duality \cite[Chapter~II,
+  Corollary~3.3]{Milne-ADT}, or by \cite[p.\,268]{Soule-1979}. Therefore, it
+  follows that $\widehat{H}^i_c (X_\et, \ZZ (n)) = 0$ for $i \ge 4$, and hence
+  by duality \eqref{eqn:arithmetic-duality}, $H^i (X_\et, \ZZ^c (n)) = 0$ for
+  $i \le -2$.
 
   Now we identify the finite $2$-torsion in $H^i (X_\et, \ZZ^c (n))$ for
   $i \ge 2$. By \cite[Lemma~6.14]{Flach-Morin-2018}, there is an exact
@@ -918,22 +921,24 @@ Here $A^D$ denotes the group $\Hom (A, \QQ/\ZZ)$. We note that
       (\ZZ/2\ZZ)^{\oplus r_1}, & i\not\equiv n ~ (2), \\
       0, & i\equiv n ~ (2).
     \end{cases} \]
-  By duality, we have for $i \ge 2$
+  By duality, for $i \ge 2$ we have
   \[ H^i (X_\et, \ZZ^c (n)) \cong
     \begin{cases}
       (\ZZ/2\ZZ)^{\oplus r_1}, & i\not\equiv n ~ (2), \\
       0, & i\equiv n ~ (2).
     \end{cases} \]
 
-  Now we determine the ranks of $H^i (X_\et, \ZZ^c (n))$ for $i = -1,0,1$. According to \cite[Proposition~2.1]{Kolster-Sands-2008}, for
-  $i = -1,0$ the Chern character
+  Now we determine the ranks of $H^i (X_\et, \ZZ^c (n))$ for $i = -1,0,1$.
+  By \cite[Proposition~2.1]{Kolster-Sands-2008} the Chern character for
+  $i = -1,0$
   $$K_{-2n - i} (X) \to H^i (X_\et, \ZZ^c(n))$$
-  has finite $2$-torsion kernel and cokernel. Originally the target group is
-  defined with $X_\Zar$, and we identify it with the cohomology on $X_\et$ using
-  the Beilinson--Lichtenbaum conjecture, which is now a theorem
-  \cite[Theorem~1.2]{Geisser-2004-Dedekind}, and we further use the isomorphism
-  \eqref{eqn:Zc(n)-vs-Z(d-n)} to identify our motivic cohomology with the one
-  used in \cite{Kolster-Sands-2008}.
+  has a finite $2$-torsion kernel and cokernel.
+
+  (Originally the target group is defined with $X_\Zar$, and we identify it with
+  the cohomology on $X_\et$ using the Beilinson--Lichtenbaum conjecture, which
+  is now a theorem \cite[Theorem~1.2]{Geisser-2004-Dedekind}. We further use the
+  isomorphism \eqref{eqn:Zc(n)-vs-Z(d-n)} to identify our motivic cohomology
+  with the one used in \cite{Kolster-Sands-2008}.)
 
   For $i = -1,0$ we have
   $$\rk_\ZZ H^i (X_\et, \ZZ^c(n)) = \rk_\ZZ K_{-2n - i} (X).$$
@@ -944,8 +949,8 @@ Here $A^D$ denotes the group $\Hom (A, \QQ/\ZZ)$. We note that
       r_1 + r_2, & n \text{ even}, \\
       r_2, & n \text{ odd}.
     \end{cases} \]
-  Finally, we have by \cite[p.\,179]{Kolster-Sands-2008} and
-  \eqref{eqn:Zc(n)-vs-Z(d-n)}
+  Finally, by \cite[p.\,179]{Kolster-Sands-2008} and
+  \eqref{eqn:Zc(n)-vs-Z(d-n)}, we have
   \[ H^1 (X_\et, \ZZ^c(n)) \cong
     \begin{cases}
       (\ZZ/2\ZZ)^{\oplus r_1}, & n\text{ even}, \\
@@ -1002,14 +1007,13 @@ target simplifies in case of $n < 0$, as explained in
 
   \begin{proof}
     If $X/\FF_q$, then the claim is trivial. For $X = \Spec \mathcal{O}_F$, this
-    is a well-known property of Beilinson's regulator. To apply the
-    d\'{e}vissage lemma~\ref{lemma:devissage}, we need to check the
-    compatibility with disjoint unions and taking a dense open subscheme
-    $U \subset X$. For disjoint unions, this is clear. For a dense open
-    subscheme $U \subset X$, the closed complement $Z = X\setminus U$ has
-    dimension $0$, and the localization exact sequence
-    \eqref{eqn:localization-les} with the long exact sequence for cohomology
-    with compact support give integral isomorphisms
+    is a well-known property of Beilinson's regulator. To apply
+    Lemma~\ref{lemma:devissage}, we need to check the compatibility with
+    disjoint unions and taking a dense open subscheme $U \subset X$. For
+    disjoint unions, this is clear. For a dense open subscheme $U \subset X$,
+    the closed complement $Z = X\setminus U$ has dimension $0$, and the
+    localization exact sequence \eqref{eqn:localization-les} with the long exact
+    sequence for cohomology with compact support give integral isomorphisms
     \begin{align*}
       H^{-1} (X_\et, \ZZ^c (n)) & \xrightarrow{\cong} H^{-1} (U_\et, \ZZ^c (n)), \\
       H^0_c (G_\RR, U(\CC), \ZZ(n)) & \xrightarrow{\cong} H^0_c (G_\RR, Z(\CC), \ZZ(n)).
@@ -1130,7 +1134,7 @@ $X = \Spec \mathcal{O}_F$ and curves over finite fields $X/\FF_q$.
 
   \begin{proof}
     In part 0), the motivic cohomology and zeta function do not distinguish
-    between $X$ and $X_\red$, so that we may suppose that $X$ is a finite
+    between $X$ and $X_\red$, so that we can suppose that $X$ is a finite
     disjoint union of $\Spec \FF_{q_i}$. Thanks to
     \eqref{eqn:motivic-cohomology-finite-fields},
     \[ \zeta (X,n) = \prod_i \frac{1}{1 - q_i^{-n}} =
@@ -1186,7 +1190,7 @@ $X = \Spec \mathcal{O}_F$ and curves over finite fields $X/\FF_q$.
       \notag \zeta (Z,n) & = \pm\frac{1}{|H^1 (Z_\et, \ZZ^c (n))|}.
     \end{align}
     Here $\delta = \delta_{X,n} = \delta_{U,n}$, and $R = R_{X,n} = R_{U,n}$
-    (see lemma~\ref{lemma:regulator-dense-open-subset}). We note that
+    (see Lemma~\ref{lemma:regulator-dense-open-subset}). We note that
     $|H^{-1} (X_\et, \ZZ^c (n))_\tors| = |H^{-1} (U_\et, \ZZ^c (n))_\tors|$.
     On the other hand, the exact sequence of finite groups
     \begin{multline}
@@ -1205,8 +1209,8 @@ $X = \Spec \mathcal{O}_F$ and curves over finite fields $X/\FF_q$.
   \end{proof}
 \end{lemma}
 
-Now Lemma~\ref{lemma:elementary-proof-1} and \ref{lemma:elementary-proof-2}
-above, together with the d\'{e}vissage lemma~\ref{lemma:devissage} prove
+Now Lemmas~\ref{lemma:elementary-proof-1} and \ref{lemma:elementary-proof-2}
+above, together with Lemma~\ref{lemma:devissage} prove
 Theorem~\ref{main-theorem} stated in the introduction.
 
 \begin{remark}
@@ -1630,7 +1634,7 @@ work. The first is rather generic, and consists in specifying
   $Z' = X'\setminus U'$, then we have
   $$\zeta_\mathcal{O} (s) = \frac{\zeta (Z,s)}{\zeta (Z',s)}\,\zeta_F (s).$$
   For this identity formulated in classical terms of algebraic number theory,
-  see for instance \cite{Jenner-1969}. In particular,
+  see, for example, \cite{Jenner-1969}. In particular,
   \[ \zeta^*_\mathcal{O} (n) =
     \pm \frac{|H^1 (Z'_\et, \ZZ^c(n))|}{|H^1 (Z_\et, \ZZ^c(n))|}\,\zeta^*_F (n). \]
 
@@ -1728,7 +1732,7 @@ The second example is suggested by \cite[\S 7]{Jordan-Poonen-2020}.
     (\Spec \ZZ \setminus \{ (2), (p) \}) \sqcup
     (\Spec \FF_p [t] \setminus (t)). \]
 
-  We may calculate via localizations that
+  We calculate via localizations that
   \begin{align*}
     H^{-1} (X_\et, \ZZ^c (-3)) & \cong H^{-1} ((X\setminus Z)_\et, \ZZ^c (-3)) \cong
                                  \ZZ/240\ZZ \oplus \ZZ/(p^4 - 1)\ZZ, \\
