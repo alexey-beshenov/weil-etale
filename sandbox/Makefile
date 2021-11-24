@@ -1,13 +1,13 @@
-all: 1-dim-schemes.pdf
+all: beshenov-weil-etale-1-dim.pdf
 
-1-dim-schemes.pdf: 1-dim-schemes.tex
-	pdflatex 1-dim-schemes
-	bibtex 1-dim-schemes
-	pdflatex 1-dim-schemes
-	pdflatex 1-dim-schemes
+beshenov-weil-etale-1-dim.pdf: beshenov-weil-etale-1-dim.tex
+	pdflatex beshenov-weil-etale-1-dim
+	bibtex beshenov-weil-etale-1-dim
+	pdflatex beshenov-weil-etale-1-dim
+	pdflatex beshenov-weil-etale-1-dim
 
 clean:
 	rm -f *.aux *.bbl *.blg *.log *.out *.toc *~
-	rm -f 1-dim-schemes.pdf
+	rm -f beshenov-weil-etale-1-dim.pdf
 
 .PHONY: all clean
