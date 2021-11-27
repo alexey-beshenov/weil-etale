@@ -1,19 +1,24 @@
 # Papers on Weil-étale cohomology
 
-* `beshenov-weil-etale-cohomology.tex`:
-  Weil-étale cohomology and duality for arithmetic schemes
-  in negative weights
+1. **Weil-étale cohomology and duality for arithmetic schemes
+   in negative weights**
 
-  arXiv link: https://arxiv.org/abs/2012.11034
+     * Submitted for publication
+     * LaTeX source: `beshenov-weil-etale-cohomology.tex`
+     * arXiv link: https://arxiv.org/abs/2012.11034
 
-* `beshenov-weil-etale-zeta-values.tex`:
-  Weil-étale cohomology and zeta-values of arithmetic schemes
-  at negative integers
+2. **Weil-étale cohomology and zeta-values of arithmetic schemes
+   at negative integers**
 
-  arXiv link: https://arxiv.org/abs/2102.12114
+     * Submitted for publication
+     * LaTeX source: `beshenov-weil-etale-zeta-values.tex`
+     * arXiv link: https://arxiv.org/abs/2102.12114
 
-* `beshenov-weil-etale-1-dim.tex`:
-  Zeta-values of one-dimensional arithmetic schemes at n < 0
+3. **Zeta-values of one-dimensional arithmetic schemes at n < 0**
+
+     * Submitted for publication
+     * LaTeX source: `beshenov-weil-etale-1-dim.tex`
+     * arXiv link: TBA
 
 
 ## Compiling LaTeX sources
