@@ -16,7 +16,7 @@
 
      * Submitted for publication
      * LaTeX source: `beshenov-weil-etale-1-dim.tex`
-     * arXiv link: TBA
+     * arXiv link: https://arxiv.org/abs/2111.13398
 
 
 ## Compiling LaTeX sources
