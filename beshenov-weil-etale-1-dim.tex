@@ -1,9 +1,23 @@
-\documentclass{article}
+\documentclass{amsart}
 
 \usepackage{amsmath,amssymb}
 
-% \usepackage{tocloft}
-% \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Zeta-values of one-dimensional arithmetic schemes at strictly negative integers}
+\author{Alexey Beshenov}
+\date{}
+\keywords{Weil-étale cohomology, motivic cohomology, special values of zeta-functions}
+\subjclass[2020]{Primary 19F27, Secondary 14F20, 14F42}
+\email{cadadr@gmail.com}
+
+% Mathematics Subject Classification 2020:
+% 19F27 Étale cohomology, higher regulators, zeta and L-functions (K-theoretic aspects)
+% 14F20 Étale and other Grothendieck topologies and (co)homologies
+% 14F42 Motivic cohomology; motivic homotopy theory
+
+\renewcommand\leftmark{A. BESHENOV}
+\renewcommand\rightmark{ZETA-VALUES OF 1D ARITHM. SCHEMES AT N$<$0}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -82,9 +96,9 @@
 \hypersetup{
   final,
   colorlinks,
-  linkcolor={red!60!black},
-  citecolor={blue!60!black},
-  urlcolor={blue!80!black}
+  linkcolor={black},
+  citecolor={black},
+  urlcolor={black}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -112,7 +126,6 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 
-
 \newtheoremstyle{mydefinition}
 {\topsep}   % ABOVESPACE
 {\topsep}   % BELOWSPACE
@@ -131,22 +144,6 @@
 \newtheorem{example}[theorem]{Example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\title{Zeta-values of one-dimensional arithmetic schemes at strictly negative integers}
-\author{Alexey Beshenov}
-\date{}
-
-\AtEndDocument{%
-  \par
-  \medskip
-  \begin{tabular}{@{}l@{}}%
-    \\
-    Alexey Beshenov \\
-    E-mail: \texttt{cadadr@gmail.com} \\
-    URL: \url{https://cadadr.org/}
-  \end{tabular}}
-
-% \numberwithin{equation}{section}
 
 \begin{document}
 
@@ -277,15 +274,15 @@ In particular, if we take $n = 0$, then $\ZZ^c (0) \cong \mathbb{G}_m [1]$, and
 $R_{F,0}$ is the usual Dirichlet regulator, so
 \eqref{eqn:flach-morin-zeta-F-formula} becomes the classical formula
 \eqref{eqn:zeta-F-at-s=0}:
-\[ \zeta_F^* (0) =
+$$\zeta_F^* (0) =
   \pm \frac{|H^1 (\Spec \mathcal{O}_{F,\et}, \mathbb{G}_m)|}{|H^0 (\Spec \mathcal{O}_{F,\et}, \mathbb{G}_m)_\tors|}\,R_F =
-  \pm \frac{|\Pic (\mathcal{O}_F)|}{|(\mathcal{O}_F)^\times_\tors|}\,R_F, \]
+  \pm \frac{|\Pic (\mathcal{O}_F)|}{|(\mathcal{O}_F)^\times_\tors|}\,R_F.$$
 
-We also mention that Flach and Morin have a similar special value formula for
+  We also mention that Flach and Morin have a similar special value formula for
 $n > 0$, which includes a correction factor $C (X,n) \in \QQ$. In this text we
 will say nothing about the case of $n > 0$; the reader can consult
 \cite{Flach-Morin-2018} for more details, and also the subsequent papers
-\cite{Flach-Morin-2020,Flach-Morin-2020-Muenster,Morin-2021-THH} which shed
+\cite{Flach-Morin-2020-Muenster,Flach-Morin-2021,Morin-2021-THH} which shed
 light on the nature of the correction factor $C (X,n)$.
 
 For $n < 0$, the author in \cite{Beshenov-Weil-etale-1} and
@@ -310,10 +307,6 @@ If $X$ lives in positive characteristic, then it is trivially abelian.
 The term ``abelian'' is ad hoc and was suggested by analogy with the notion of
 \textbf{abelian number fields}. Hopefully there is no confusion with the
 ``abelian schemes'' that are generalizations of abelian varieties.
-
-%% Force page break
-%% TODO REMOVE LATER
-\pagebreak
 
 Our goal is to prove the following result.
 
@@ -441,7 +434,7 @@ To avoid any confusion, all our calculations will be in terms of $\ZZ^c (n)$.
 
 By \cite[Corollary~7.2]{Geisser-2010}, the groups $H^i (X_\et, \ZZ^c (n))$
 satisfy the \textbf{localization property}: if $Z \subset X$ is a closed
-subscheme and $U = X\setminus Z$ is its closed complement, then there is a
+subscheme and $U = X\setminus Z$ is its open complement, then there is a
 distinguished triangle
 \[ R\Gamma (Z_\et, \ZZ^c (n)) \to
   R\Gamma (X_\et, \ZZ^c (n)) \to
@@ -497,7 +490,9 @@ how our special value formula works.
 
 \subsection*{Acknowledgments}
 
-I am grateful to Baptiste Morin for various discussions that led to this text.
+I am grateful to Baptiste Morin for various discussions that led to this work.
+I also thank the anonymous referee for revising a preliminary version
+of this text and spotting some inaccuracies.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
@@ -946,12 +941,17 @@ We recall that $(-)^D$ denotes the group $\Hom (-, \QQ/\ZZ)$. We note that
   By \cite[Proposition~2.1]{Kolster-Sands-2008} the Chern character for
   $i = -1,0$
   $$K_{-2n - i} (X) \to H^i (X_\et, \ZZ^c(n))$$
-  has a finite $2$-torsion kernel and cokernel.
-  (Originally, the target group is defined over $X_\Zar$, and we identify it
-  with the cohomology on $X_\et$ using the Beilinson--Lichtenbaum conjecture,
-  which is now a theorem \cite[Theorem~1.2]{Geisser-2004-Dedekind}. We further
-  use the isomorphism \eqref{eqn:Zc(n)-vs-Z(d-n)} to identify our motivic
-  cohomology with the one used in \cite{Kolster-Sands-2008}.)
+  has a finite $2$-torsion kernel and cokernel. Originally, the target
+  group is defined over $X_\Zar$, and we identify it with the
+  cohomology on $X_\et$ using the Beilinson--Lichtenbaum conjecture
+  $H^j (X_\Zar, \ZZ(m)) \cong H^j (X_\et, \ZZ(m))$ for $j \le m+1$,
+  which is now a theorem thanks to the Bloch--Kato conjecture and
+  \cite[Theorem~1.2]{Geisser-2004-Dedekind}; we further use the
+  isomorphism \eqref{eqn:Zc(n)-vs-Z(d-n)} to identify our motivic
+  cohomology with the one used in \cite{Kolster-Sands-2008}:
+  \[ H^{2+i} (X_\Zar, \ZZ (1-n)) \stackrel{i \le -n}{\cong}
+     H^{2+i} (X_\et, \ZZ (1-n)) \cong
+     H^i (X_\et, \ZZ^c(n)). \]
 
   For $i = -1,0$ we have therefore
   $$\rk_\ZZ H^i (X_\et, \ZZ^c(n)) = \rk_\ZZ K_{-2n - i} (X).$$
@@ -1035,7 +1035,7 @@ target simplifies in the case of $n < 0$, as explained in
     cohomology with compact support yields integral isomorphisms
     \begin{align*}
       H^{-1} (X_\et, \ZZ^c (n)) & \xrightarrow{\cong} H^{-1} (U_\et, \ZZ^c (n)), \\
-      H^0_c (G_\RR, U(\CC), \ZZ(n)) & \xrightarrow{\cong} H^0_c (G_\RR, Z(\CC), \ZZ(n)).
+      H^0_c (G_\RR, U(\CC), \ZZ(n)) & \xrightarrow{\cong} H^0_c (G_\RR, X(\CC), \ZZ(n)).
     \end{align*}
 
     We now have a commutative diagram
@@ -1057,7 +1057,8 @@ target simplifies in the case of $n < 0$, as explained in
     H^{-1} (X_\et, \ZZ^c (n)) \xrightarrow{\varrho_{X,n}}
     H^0_\BM (G_\RR, X(\CC), \RR(n))
     \bigr)\Bigr), \]
-  where the volume is taken with respect to the canonical integral structure.
+  where the volume is taken with respect to the canonical integral structure
+  coming from $\Hom(H^0_c (G_\RR, X(\CC), \ZZ(n)), \ZZ)$.  
 \end{definition}
 
 If $X(\CC) = \emptyset$, or $n$ is odd and $r_2 = 0$, then
@@ -1694,7 +1695,7 @@ The second example is suggested by \cite[\S 7]{Jordan-Poonen-2020}.
   Let $p$ be an odd prime. Consider the affine scheme
   \[ X = \Spec (\ZZ [1/2] \times_{\FF_p} \FF_p [t]) =
     \Spec \ZZ [1/2] \mathop{\sqcup}_{\Spec \FF_p} \AA^1_{\FF_p} \]
-  obtained from $\Spec \ZZ [1/p]$ and $\AA^1_{\FF_p} = \Spec \FF_p [t]$ by
+  obtained from $\Spec \ZZ [1/2]$ and $\AA^1_{\FF_p} = \Spec \FF_p [t]$ by
   gluing together the points corresponding to the prime ideals
   $(p) \subset \ZZ [1/2]$ and $(t) \subset \FF_p [t]$:
   \[ \ZZ [1/2] \times_{\FF_p} \FF_p [t] =
@@ -1778,7 +1779,6 @@ The second example is suggested by \cite[\S 7]{Jordan-Poonen-2020}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\pagebreak
 \bibliographystyle{abbrv}
 \bibliography{weil-etale}
 
